@@ -1,0 +1,20 @@
+/* ====================================
+   MamRaj Nexus Academy
+   Main Stylesheet
+==================================== */
+
+@import url("base.css");
+
+@import url("header.css");
+
+@import url("about.css");
+
+@import url("features.css");
+
+@import url("timeline.css");
+
+@import url("footer.css");
+
+@import url("animations.css");
+
+@import url("responsive.css");
