@@ -1,0 +1,650 @@
+/* ==========================================
+   MamRaj Nexus Academy
+   Signup Styles
+==========================================*/
+
+/* ================= PAGE ================= */
+
+.signup-page{
+
+min-height:100vh;
+
+padding:50px;
+
+background:linear-gradient(135deg,#F8F3EE,#FFFDFB);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.signup-container{
+
+width:100%;
+
+max-width:1500px;
+
+display:grid;
+
+grid-template-columns:420px 1fr;
+
+background:#fff;
+
+border-radius:30px;
+
+overflow:hidden;
+
+box-shadow:0 25px 60px rgba(0,0,0,.08);
+
+}
+
+/* ================= LEFT ================= */
+
+.signup-left{
+
+background:linear-gradient(135deg,#1E2A5A,#283872);
+
+padding:60px 45px;
+
+color:#fff;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+.academy-logo h1{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+}
+
+.academy-logo span{
+
+color:#D4AF37;
+
+}
+
+.academy-logo p{
+
+line-height:1.8;
+
+opacity:.9;
+
+margin-bottom:40px;
+
+}
+
+/* ================= JOURNEY ================= */
+
+.progress-box{
+
+display:flex;
+
+flex-direction:column;
+
+gap:25px;
+
+margin:40px 0;
+
+}
+
+.progress-box h3{
+
+margin-bottom:10px;
+
+}
+
+.progress-step{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+opacity:.65;
+
+transition:.3s;
+
+}
+
+.progress-step.active{
+
+opacity:1;
+
+}
+
+.step-number{
+
+width:50px;
+
+height:50px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.15);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-weight:700;
+
+font-size:18px;
+
+}
+
+.progress-step.active .step-number{
+
+background:#D4AF37;
+
+color:#1E2A5A;
+
+}
+
+.signup-illustration{
+
+display:flex;
+
+justify-content:center;
+
+margin-top:30px;
+
+}
+
+.signup-illustration i{
+
+font-size:140px;
+
+color:rgba(255,255,255,.12);
+
+}
+
+/* ================= RIGHT ================= */
+
+.signup-right{
+
+padding:60px;
+
+background:#FCFAF7;
+
+overflow-y:auto;
+
+}
+
+.signup-card{
+
+max-width:760px;
+
+margin:auto;
+
+}
+
+.signup-header{
+
+margin-bottom:35px;
+
+text-align:center;
+
+}
+
+.signup-header h2{
+
+font-size:36px;
+
+color:#1E2A5A;
+
+margin-bottom:10px;
+
+}
+
+.signup-header p{
+
+color:#666;
+
+}
+
+/* ================= FORM ================= */
+
+.form-row{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+margin-bottom:20px;
+
+}
+
+.form-group{
+
+margin-bottom:22px;
+
+}
+
+.form-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+color:#1E2A5A;
+
+}
+
+.form-group input,
+
+.form-group select{
+
+width:100%;
+
+padding:15px 18px;
+
+border:1px solid #ddd;
+
+border-radius:14px;
+
+font-size:15px;
+
+background:#fff;
+
+transition:.3s;
+
+}
+
+.form-group input:focus,
+
+.form-group select:focus{
+
+outline:none;
+
+border-color:#C58B73;
+
+box-shadow:0 0 0 4px rgba(197,139,115,.15);
+
+}
+/* ==========================================
+   Signup.css - Part 2
+   Role Cards + Password + Terms + Responsive
+==========================================*/
+
+/* ===============================
+   ROLE SELECTION
+================================*/
+
+.role-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+margin-top:15px;
+
+}
+
+.role-card{
+
+position:relative;
+
+padding:25px;
+
+background:#fff;
+
+border:2px solid #eee;
+
+border-radius:18px;
+
+cursor:pointer;
+
+transition:.35s;
+
+text-align:center;
+
+}
+
+.role-card:hover{
+
+transform:translateY(-8px);
+
+border-color:#C58B73;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+.role-card input{
+
+position:absolute;
+
+opacity:0;
+
+}
+
+.role-card i{
+
+font-size:34px;
+
+color:#C58B73;
+
+margin-bottom:15px;
+
+}
+
+.role-card h4{
+
+margin-bottom:8px;
+
+color:#1E2A5A;
+
+}
+
+.role-card p{
+
+font-size:14px;
+
+color:#666;
+
+}
+
+.role-card:has(input:checked){
+
+border-color:#1E2A5A;
+
+background:#F8F3EE;
+
+}
+
+/* ===============================
+   PASSWORD FIELD
+================================*/
+
+.password-field{
+
+position:relative;
+
+}
+
+.password-field input{
+
+padding-right:55px;
+
+}
+
+.toggle-password{
+
+position:absolute;
+
+top:50%;
+
+right:15px;
+
+transform:translateY(-50%);
+
+border:none;
+
+background:none;
+
+cursor:pointer;
+
+font-size:18px;
+
+color:#888;
+
+}
+
+/* ===============================
+   PASSWORD STRENGTH
+================================*/
+
+.password-strength{
+
+margin-top:10px;
+
+margin-bottom:25px;
+
+}
+
+.strength-bar{
+
+height:8px;
+
+background:#eee;
+
+border-radius:50px;
+
+overflow:hidden;
+
+}
+
+#strengthFill{
+
+display:block;
+
+width:0;
+
+height:100%;
+
+background:#ff4d4d;
+
+transition:.35s;
+
+}
+
+#strengthText{
+
+margin-top:10px;
+
+font-size:14px;
+
+color:#666;
+
+}
+
+/* ===============================
+   TERMS
+================================*/
+
+.terms-box{
+
+margin:25px 0;
+
+font-size:14px;
+
+}
+
+.terms-box label{
+
+display:flex;
+
+align-items:flex-start;
+
+gap:10px;
+
+line-height:1.7;
+
+cursor:pointer;
+
+}
+
+.terms-box input{
+
+margin-top:4px;
+
+}
+
+.terms-box a{
+
+color:#C58B73;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+/* ===============================
+   SIGNUP BUTTON
+================================*/
+
+.login-btn{
+
+margin-top:10px;
+
+}
+
+/* ===============================
+   SOCIAL SIGNUP
+================================*/
+
+.social-login{
+
+margin-top:30px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.social{
+
+transition:.35s;
+
+}
+
+.social:hover{
+
+transform:translateY(-4px);
+
+}
+
+/* ===============================
+   LOGIN LINK
+================================*/
+
+.signup-link{
+
+margin-top:30px;
+
+text-align:center;
+
+font-size:15px;
+
+}
+
+.signup-link a{
+
+color:#C58B73;
+
+font-weight:700;
+
+text-decoration:none;
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================*/
+
+@media(max-width:992px){
+
+.signup-container{
+
+grid-template-columns:1fr;
+
+}
+
+.signup-left{
+
+display:none;
+
+}
+
+.signup-right{
+
+padding:40px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.form-row{
+
+grid-template-columns:1fr;
+
+}
+
+.role-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.signup-right{
+
+padding:30px;
+
+}
+
+.signup-header h2{
+
+font-size:30px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.signup-page{
+
+padding:20px;
+
+}
+
+.signup-right{
+
+padding:25px 18px;
+
+}
+
+.signup-header h2{
+
+font-size:26px;
+
+}
+
+.role-card{
+
+padding:20px;
+
+}
+
+.role-card i{
+
+font-size:28px;
+
+}
+
+}
