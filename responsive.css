@@ -1,0 +1,1921 @@
+/* ==========================================
+   MamRaj Nexus Academy
+   Responsive CSS
+   Part 1
+==========================================*/
+
+/* ===============================
+   LARGE DESKTOP
+================================*/
+
+@media(max-width:1400px){
+
+.container{
+
+max-width:1180px;
+
+}
+
+.hero-left h1{
+
+font-size:58px;
+
+}
+
+.hero-container{
+
+gap:50px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+}
+
+}
+
+/* ===============================
+   LAPTOP
+================================*/
+
+@media(max-width:1200px){
+
+.container{
+
+width:92%;
+
+}
+
+.hero{
+
+padding-top:150px;
+
+}
+
+.hero-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.hero-left{
+
+order:2;
+
+}
+
+.hero-right{
+
+order:1;
+
+max-width:700px;
+
+margin:auto;
+
+}
+
+.hero-left p{
+
+margin:auto;
+
+margin-bottom:35px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-stats{
+
+grid-template-columns:repeat(2,1fr);
+
+margin-top:40px;
+
+}
+
+.about-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.highlight-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.career-wrapper{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.features-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.why-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.partners-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.testimonial-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.achievement-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:40px;
+
+}
+
+.contact-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ==========================================
+   Responsive.css
+   Part 2 (992px)
+==========================================*/
+
+@media (max-width:992px){
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+
+height:80px;
+
+}
+
+.nav-links{
+
+position:fixed;
+
+top:80px;
+
+right:-100%;
+
+width:300px;
+
+height:calc(100vh - 80px);
+
+background:#ffffff;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:flex-start;
+
+padding:40px 30px;
+
+gap:25px;
+
+box-shadow:-10px 0 30px rgba(0,0,0,.08);
+
+transition:.35s;
+
+z-index:999;
+
+}
+
+.nav-links.active{
+
+right:0;
+
+}
+
+.menu-toggle{
+
+display:block;
+
+}
+
+.nav-buttons{
+
+display:none;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:80px;
+
+}
+
+.hero-left h1{
+
+font-size:50px;
+
+}
+
+.hero-left p{
+
+font-size:17px;
+
+}
+
+.hero-container{
+
+gap:50px;
+
+}
+
+.glass-card{
+
+padding:28px;
+
+}
+
+.dashboard-cards{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+}
+
+.mini-card{
+
+padding:18px;
+
+}
+
+/* ================= ABOUT ================= */
+
+.about-content h3{
+
+font-size:34px;
+
+}
+
+.image-card img{
+
+height:500px;
+
+}
+
+.mission-item{
+
+padding:18px;
+
+}
+
+/* ================= WHY US ================= */
+
+.why-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.why-card{
+
+padding:30px;
+
+}
+
+/* ================= FEATURES ================= */
+
+.features-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.feature-card{
+
+padding:30px;
+
+}
+
+/* ================= CAREER ================= */
+
+.career-content h2{
+
+font-size:42px;
+
+}
+
+.career-image{
+
+margin-top:30px;
+
+}
+
+.career-image i{
+
+font-size:130px;
+
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+
+margin-top:40px;
+
+}
+
+.timeline::before{
+
+left:28px;
+
+}
+
+.timeline-item{
+
+padding-left:80px;
+
+}
+
+.timeline-icon{
+
+width:50px;
+
+height:50px;
+
+left:4px;
+
+font-size:20px;
+
+}
+
+.timeline-content{
+
+padding:24px;
+
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+/* ================= PARTNERS ================= */
+
+.partners-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-grid{
+
+grid-template-columns:1fr;
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-wrapper{
+
+gap:40px;
+
+}
+
+.contact-form{
+
+padding:30px;
+
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter-box{
+
+padding:45px 35px;
+
+}
+
+.newsletter-box form{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.newsletter-box input{
+
+width:100%;
+
+}
+
+.newsletter-box button{
+
+width:100%;
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer-grid{
+
+grid-template-columns:1fr 1fr;
+
+gap:35px;
+
+}
+
+}
+/* ==========================================
+   Responsive.css
+   Part 3 (768px)
+==========================================*/
+
+@media (max-width:768px){
+
+/* ================= GLOBAL ================= */
+
+section{
+
+padding:80px 0;
+
+}
+
+.container{
+
+width:94%;
+
+}
+
+.section-title{
+
+margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+line-height:1.3;
+
+}
+
+.section-title p{
+
+font-size:16px;
+
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+padding:0;
+
+}
+
+.navbar{
+
+height:75px;
+
+}
+
+.logo h2{
+
+font-size:24px;
+
+}
+
+.menu-toggle{
+
+font-size:28px;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+padding-top:130px;
+
+padding-bottom:70px;
+
+}
+
+.hero-container{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+}
+
+.hero-left{
+
+text-align:center;
+
+}
+
+.hero-left h1{
+
+font-size:42px;
+
+line-height:1.25;
+
+}
+
+.hero-left p{
+
+font-size:16px;
+
+margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:100%;
+
+text-align:center;
+
+margin-left:0;
+
+}
+
+.hero-stats{
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+}
+
+.stat{
+
+padding:20px;
+
+}
+
+.stat h2{
+
+font-size:30px;
+
+}
+
+/* ================= DASHBOARD ================= */
+
+.glass-card{
+
+padding:25px;
+
+}
+
+.dashboard-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.mini-card{
+
+padding:20px;
+
+}
+
+/* ================= ABOUT ================= */
+
+.about-wrapper{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+}
+
+.image-card img{
+
+height:380px;
+
+}
+
+.experience{
+
+left:20px;
+
+bottom:20px;
+
+padding:15px 20px;
+
+}
+
+.experience h2{
+
+font-size:30px;
+
+}
+
+.about-content{
+
+text-align:center;
+
+}
+
+.about-content h3{
+
+font-size:30px;
+
+}
+
+.about-buttons{
+
+justify-content:center;
+
+}
+
+.mission-item{
+
+text-align:left;
+
+}
+
+/* ================= HIGHLIGHTS ================= */
+
+.highlight-wrapper{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+}
+
+.highlight-card{
+
+grid-template-columns:1fr;
+
+padding:30px;
+
+}
+
+/* ================= FEATURES ================= */
+
+.features-grid{
+
+grid-template-columns:1fr;
+
+gap:25px;
+
+}
+
+.feature-card{
+
+padding:28px;
+
+}
+
+/* ================= CAREER ================= */
+
+.career-wrapper{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.career-content h2{
+
+font-size:36px;
+
+}
+
+.career-buttons{
+
+justify-content:center;
+
+}
+
+.career-image i{
+
+font-size:100px;
+
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline::before{
+
+left:22px;
+
+}
+
+.timeline-item{
+
+padding-left:70px;
+
+margin-bottom:45px;
+
+}
+
+.timeline-icon{
+
+width:44px;
+
+height:44px;
+
+left:0;
+
+font-size:18px;
+
+}
+
+.timeline-content{
+
+padding:22px;
+
+}
+
+.timeline-content h3{
+
+font-size:22px;
+
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement-grid{
+
+grid-template-columns:1fr;
+
+}
+
+/* ================= PARTNERS ================= */
+
+.partners-grid{
+
+grid-template-columns:1fr;
+
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.testimonial-card{
+
+padding:28px;
+
+}
+
+/* ================= FAQ ================= */
+
+.faq-item{
+
+padding:24px;
+
+}
+
+.faq-item h3{
+
+font-size:18px;
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-info{
+
+text-align:center;
+
+}
+
+.contact-info h3{
+
+font-size:30px;
+
+}
+
+.contact-form{
+
+padding:25px;
+
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+
+padding:80px 0;
+
+}
+
+.newsletter-box{
+
+padding:35px 25px;
+
+}
+
+.newsletter-box h2{
+
+font-size:30px;
+
+}
+
+.newsletter-box form{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.newsletter-box input,
+
+.newsletter-box button{
+
+width:100%;
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+gap:40px;
+
+}
+
+.social-icons{
+
+justify-content:center;
+
+}
+
+footer hr{
+
+margin:30px 0 20px;
+
+}
+
+}
+/* ==========================================
+   Responsive.css
+   Part 4 (576px)
+==========================================*/
+
+@media (max-width:576px){
+
+/* ================= GLOBAL ================= */
+
+html{
+
+font-size:15px;
+
+}
+
+section{
+
+padding:65px 0;
+
+}
+
+.container{
+
+width:95%;
+
+}
+
+.section-title{
+
+margin-bottom:40px;
+
+}
+
+.section-title h2{
+
+font-size:28px;
+
+line-height:1.35;
+
+}
+
+.section-title p{
+
+font-size:15px;
+
+}
+
+/* ================= HEADER ================= */
+
+.navbar{
+
+height:70px;
+
+}
+
+.logo h2{
+
+font-size:20px;
+
+}
+
+.nav-links{
+
+width:100%;
+
+top:70px;
+
+height:calc(100vh - 70px);
+
+padding:30px 25px;
+
+}
+
+.menu-toggle{
+
+font-size:26px;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+padding-top:115px;
+
+padding-bottom:55px;
+
+}
+
+.badge{
+
+font-size:13px;
+
+padding:8px 16px;
+
+}
+
+.hero-left h1{
+
+font-size:34px;
+
+line-height:1.3;
+
+}
+
+.hero-left p{
+
+font-size:15px;
+
+margin-bottom:25px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.primary-btn,
+
+.secondary-btn{
+
+width:100%;
+
+padding:14px;
+
+text-align:center;
+
+}
+
+/* ================= HERO STATS ================= */
+
+.hero-stats{
+
+grid-template-columns:1fr;
+
+gap:15px;
+
+}
+
+.stat{
+
+padding:18px;
+
+}
+
+.stat h2{
+
+font-size:28px;
+
+}
+
+/* ================= DASHBOARD CARD ================= */
+
+.glass-card{
+
+padding:20px;
+
+border-radius:20px;
+
+}
+
+.card-header{
+
+flex-direction:column;
+
+gap:10px;
+
+text-align:center;
+
+}
+
+.dashboard-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.ai-box{
+
+padding:20px;
+
+}
+
+.ai-box button{
+
+width:100%;
+
+}
+
+/* ================= ABOUT ================= */
+
+.image-card img{
+
+height:300px;
+
+}
+
+.experience{
+
+left:15px;
+
+bottom:15px;
+
+padding:12px 16px;
+
+}
+
+.experience h2{
+
+font-size:24px;
+
+}
+
+.about-content h3{
+
+font-size:26px;
+
+}
+
+.mission-item{
+
+padding:16px;
+
+gap:15px;
+
+}
+
+.mission-item .icon{
+
+width:48px;
+
+height:48px;
+
+font-size:16px;
+
+}
+
+/* ================= FEATURES ================= */
+
+.feature-card{
+
+padding:24px;
+
+}
+
+.feature-icon{
+
+width:65px;
+
+height:65px;
+
+font-size:26px;
+
+}
+
+.feature-card h3{
+
+font-size:22px;
+
+}
+
+/* ================= CAREER ================= */
+
+.career-content h2{
+
+font-size:30px;
+
+}
+
+.career-content p{
+
+font-size:15px;
+
+}
+
+.career-image{
+
+display:none;
+
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline::before{
+
+left:18px;
+
+}
+
+.timeline-item{
+
+padding-left:58px;
+
+margin-bottom:35px;
+
+}
+
+.timeline-icon{
+
+width:38px;
+
+height:38px;
+
+font-size:16px;
+
+}
+
+.timeline-content{
+
+padding:18px;
+
+}
+
+.timeline-content h3{
+
+font-size:20px;
+
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement-card{
+
+padding:30px 20px;
+
+}
+
+.achievement-card h2{
+
+font-size:42px;
+
+}
+
+/* ================= PARTNERS ================= */
+
+.partner-card{
+
+padding:30px 20px;
+
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-card{
+
+padding:25px;
+
+}
+
+.testimonial-card::before{
+
+font-size:55px;
+
+}
+
+/* ================= FAQ ================= */
+
+.faq-item{
+
+padding:20px;
+
+}
+
+.faq-item h3{
+
+font-size:17px;
+
+padding-right:35px;
+
+}
+
+.faq-item::after{
+
+right:20px;
+
+font-size:24px;
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-info{
+
+text-align:left;
+
+}
+
+.contact-info h3{
+
+font-size:26px;
+
+}
+
+.contact-form{
+
+padding:20px;
+
+}
+
+.contact-form input,
+
+.contact-form textarea{
+
+padding:14px 16px;
+
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+
+padding:70px 0;
+
+}
+
+.newsletter-box{
+
+padding:30px 20px;
+
+border-radius:20px;
+
+}
+
+.newsletter-box h2{
+
+font-size:26px;
+
+}
+
+.newsletter-box input,
+
+.newsletter-box button{
+
+padding:14px 18px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+padding:70px 0 25px;
+
+}
+
+.footer-grid{
+
+gap:30px;
+
+}
+
+.footer-grid h3{
+
+font-size:20px;
+
+}
+
+.social-icons{
+
+gap:12px;
+
+}
+
+.social-icons a{
+
+width:42px;
+
+height:42px;
+
+font-size:18px;
+
+}
+
+.copyright{
+
+font-size:13px;
+
+}
+
+}
+/* ==========================================
+   MamRaj Nexus Academy
+   Responsive.css
+   Part 5 (400px & Utility Fixes)
+==========================================*/
+
+@media (max-width:400px){
+
+/* ================= GLOBAL ================= */
+
+html{
+
+font-size:14px;
+
+}
+
+.container{
+
+width:96%;
+
+}
+
+section{
+
+padding:55px 0;
+
+}
+
+/* ================= HEADER ================= */
+
+.navbar{
+
+height:65px;
+
+}
+
+.logo h2{
+
+font-size:18px;
+
+line-height:1.3;
+
+}
+
+.menu-toggle{
+
+font-size:22px;
+
+}
+
+.nav-links{
+
+top:65px;
+
+padding:25px 20px;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+padding-top:100px;
+
+padding-bottom:45px;
+
+}
+
+.badge{
+
+font-size:12px;
+
+padding:7px 14px;
+
+}
+
+.hero-left h1{
+
+font-size:28px;
+
+line-height:1.35;
+
+}
+
+.hero-left p{
+
+font-size:14px;
+
+}
+
+.primary-btn,
+
+.secondary-btn{
+
+font-size:14px;
+
+padding:12px 18px;
+
+}
+
+/* ================= HERO STATS ================= */
+
+.stat{
+
+padding:15px;
+
+}
+
+.stat h2{
+
+font-size:24px;
+
+}
+
+.stat p{
+
+font-size:13px;
+
+}
+
+/* ================= DASHBOARD ================= */
+
+.glass-card{
+
+padding:16px;
+
+}
+
+.card-header h3{
+
+font-size:18px;
+
+}
+
+.progress-box p{
+
+font-size:14px;
+
+}
+
+.mini-card{
+
+padding:16px;
+
+}
+
+.mini-card h4{
+
+font-size:22px;
+
+}
+
+.mini-card i{
+
+font-size:22px;
+
+}
+
+.ai-box{
+
+padding:16px;
+
+}
+
+.ai-box button{
+
+padding:12px;
+
+font-size:14px;
+
+}
+
+/* ================= ABOUT ================= */
+
+.image-card img{
+
+height:240px;
+
+}
+
+.experience{
+
+padding:10px 14px;
+
+}
+
+.experience h2{
+
+font-size:20px;
+
+}
+
+.about-content h3{
+
+font-size:22px;
+
+}
+
+.mission-item{
+
+padding:14px;
+
+gap:12px;
+
+}
+
+.mission-item .icon{
+
+width:40px;
+
+height:40px;
+
+font-size:15px;
+
+}
+
+/* ================= FEATURES ================= */
+
+.feature-card{
+
+padding:20px;
+
+}
+
+.feature-icon{
+
+width:55px;
+
+height:55px;
+
+font-size:22px;
+
+}
+
+.feature-card h3{
+
+font-size:20px;
+
+}
+
+/* ================= CAREER ================= */
+
+.career-content h2{
+
+font-size:24px;
+
+}
+
+.career-content p{
+
+font-size:14px;
+
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline::before{
+
+left:14px;
+
+}
+
+.timeline-item{
+
+padding-left:46px;
+
+}
+
+.timeline-icon{
+
+width:32px;
+
+height:32px;
+
+font-size:14px;
+
+left:0;
+
+}
+
+.timeline-content{
+
+padding:16px;
+
+}
+
+.timeline-content h3{
+
+font-size:18px;
+
+}
+
+.timeline-content span{
+
+font-size:12px;
+
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievement-card{
+
+padding:24px 18px;
+
+}
+
+.achievement-card h2{
+
+font-size:34px;
+
+}
+
+.achievement-card h4{
+
+font-size:18px;
+
+}
+
+/* ================= PARTNERS ================= */
+
+.partner-card{
+
+padding:24px 18px;
+
+}
+
+.partner-card h3{
+
+font-size:20px;
+
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-card{
+
+padding:20px;
+
+}
+
+.testimonial-card::before{
+
+font-size:42px;
+
+top:10px;
+
+right:15px;
+
+}
+
+/* ================= FAQ ================= */
+
+.faq-item{
+
+padding:16px;
+
+}
+
+.faq-item h3{
+
+font-size:16px;
+
+}
+
+.faq-item::after{
+
+font-size:20px;
+
+right:15px;
+
+}
+
+/* ================= CONTACT ================= */
+
+.contact-info h3{
+
+font-size:22px;
+
+}
+
+.contact-form{
+
+padding:16px;
+
+}
+
+.contact-form input,
+
+.contact-form textarea{
+
+padding:12px 14px;
+
+font-size:14px;
+
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter-box{
+
+padding:24px 16px;
+
+}
+
+.newsletter-box h2{
+
+font-size:22px;
+
+}
+
+.newsletter-box p{
+
+font-size:14px;
+
+}
+
+.newsletter-box input,
+
+.newsletter-box button{
+
+font-size:14px;
+
+padding:12px 14px;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+padding:60px 0 20px;
+
+}
+
+.footer-grid{
+
+gap:25px;
+
+}
+
+.footer-grid h3{
+
+font-size:18px;
+
+}
+
+.footer-grid p,
+
+.footer-grid a{
+
+font-size:14px;
+
+}
+
+.social-icons{
+
+gap:10px;
+
+}
+
+.social-icons a{
+
+width:38px;
+
+height:38px;
+
+font-size:16px;
+
+}
+
+.copyright{
+
+font-size:12px;
+
+}
+
+}
+
+/* ==========================================
+   Utility Fixes
+==========================================*/
+
+img{
+
+max-width:100%;
+
+height:auto;
+
+}
+
+iframe{
+
+max-width:100%;
+
+}
+
+button,
+
+input,
+
+textarea,
+
+select{
+
+font-family:'Poppins',sans-serif;
+
+}
+
+.primary-btn,
+
+.secondary-btn{
+
+white-space:nowrap;
+
+}
+
+body{
+
+overflow-x:hidden;
+
+}
