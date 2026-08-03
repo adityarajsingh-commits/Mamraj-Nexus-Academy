@@ -1,0 +1,209 @@
+/* ==========================================
+   MamRaj Nexus Academy
+   Timeline & Achievements
+==========================================*/
+
+/* ================= JOURNEY ================= */
+
+.journey{
+    background:#ffffff;
+    position:relative;
+}
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:70px auto 0;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:40px;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:linear-gradient(
+        to bottom,
+        var(--secondary),
+        var(--gold)
+    );
+    border-radius:50px;
+}
+
+.timeline-item{
+    position:relative;
+    display:flex;
+    gap:30px;
+    margin-bottom:60px;
+    padding-left:95px;
+}
+
+.timeline-icon{
+    position:absolute;
+    left:10px;
+    top:0;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--primary);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    border:5px solid #fff;
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.timeline-item:hover .timeline-icon{
+    background:var(--secondary);
+    transform:scale(1.08);
+}
+
+.timeline-content{
+    width:100%;
+    background:#fff;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.timeline-content:hover{
+    transform:translateY(-6px);
+}
+
+.timeline-content span{
+    display:inline-block;
+    color:var(--secondary);
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:12px;
+    letter-spacing:1px;
+}
+
+.timeline-content h3{
+    margin-bottom:15px;
+    color:var(--primary);
+}
+
+.timeline-content p{
+    color:var(--gray);
+}
+
+/* ================= ACHIEVEMENTS ================= */
+
+.achievements{
+    background:linear-gradient(
+        180deg,
+        #F8F3EE,
+        #ffffff
+    );
+}
+
+.achievement-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+.achievement-card{
+    background:#fff;
+    text-align:center;
+    padding:40px 25px;
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.achievement-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(
+        90deg,
+        var(--secondary),
+        var(--gold)
+    );
+}
+
+.achievement-card:hover{
+    transform:translateY(-10px);
+}
+
+.achievement-card h2{
+    font-size:54px;
+    color:var(--secondary);
+    margin-bottom:10px;
+}
+
+.achievement-card h4{
+    color:var(--primary);
+    margin-bottom:15px;
+}
+
+.achievement-card p{
+    font-size:15px;
+}
+
+/* ================= STEP ANIMATION ================= */
+
+.timeline-item{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp .8s forwards;
+}
+
+.timeline-item:nth-child(2){
+    animation-delay:.15s;
+}
+
+.timeline-item:nth-child(3){
+    animation-delay:.3s;
+}
+
+.timeline-item:nth-child(4){
+    animation-delay:.45s;
+}
+
+.timeline-item:nth-child(5){
+    animation-delay:.6s;
+}
+
+.timeline-item:nth-child(6){
+    animation-delay:.75s;
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ================= ACHIEVEMENT HOVER ================= */
+
+.achievement-card:hover h2{
+    color:var(--gold);
+    transition:.3s;
+}
+
+.achievement-card:hover{
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.10),
+        0 0 30px rgba(197,139,115,.18);
+}
