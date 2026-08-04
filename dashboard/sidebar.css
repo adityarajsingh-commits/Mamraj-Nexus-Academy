@@ -1,0 +1,346 @@
+/* ==========================================
+   MamRaj Nexus Academy
+   Sidebar CSS
+==========================================*/
+
+/* ===============================
+   SIDEBAR
+================================*/
+
+.sidebar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:280px;
+
+height:100vh;
+
+background:linear-gradient(
+180deg,
+#1E2A5A,
+#27376F
+);
+
+color:#fff;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+padding:30px 20px;
+
+overflow-y:auto;
+
+z-index:1000;
+
+transition:.35s ease;
+
+}
+
+/* ===============================
+   LOGO
+================================*/
+
+.logo{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.logo h2{
+
+font-size:30px;
+
+font-weight:700;
+
+}
+
+.logo span{
+
+color:#D4AF37;
+
+}
+
+/* ===============================
+   NAVIGATION
+================================*/
+
+.sidebar nav{
+
+flex:1;
+
+}
+
+.sidebar nav ul{
+
+list-style:none;
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.sidebar nav ul li{
+
+border-radius:16px;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.sidebar nav ul li a{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:15px 18px;
+
+text-decoration:none;
+
+color:#E5E7EB;
+
+font-size:15px;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+.sidebar nav ul li a i{
+
+width:22px;
+
+text-align:center;
+
+font-size:18px;
+
+}
+
+/* Hover */
+
+.sidebar nav ul li:hover{
+
+background:rgba(255,255,255,.08);
+
+}
+
+.sidebar nav ul li:hover a{
+
+color:#fff;
+
+padding-left:24px;
+
+}
+
+/* Active */
+
+.sidebar nav ul li.active{
+
+background:#C58B73;
+
+box-shadow:0 10px 25px rgba(197,139,115,.35);
+
+}
+
+.sidebar nav ul li.active a{
+
+color:#fff;
+
+font-weight:600;
+
+}
+
+/* ===============================
+   LOGOUT
+================================*/
+
+.logout{
+
+padding-top:25px;
+
+border-top:1px solid rgba(255,255,255,.12);
+
+}
+
+.logout button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:16px;
+
+background:#D4AF37;
+
+color:#1E2A5A;
+
+font-weight:600;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:12px;
+
+transition:.35s;
+
+}
+
+.logout button:hover{
+
+transform:translateY(-3px);
+
+background:#fff;
+
+}
+
+/* ===============================
+   CUSTOM SCROLLBAR
+================================*/
+
+.sidebar::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+background:rgba(255,255,255,.25);
+
+border-radius:20px;
+
+}
+
+/* ===============================
+   COLLAPSED SIDEBAR
+================================*/
+
+.sidebar.collapsed{
+
+width:90px;
+
+}
+
+.sidebar.collapsed .logo h2{
+
+font-size:20px;
+
+}
+
+.sidebar.collapsed .logo span{
+
+display:none;
+
+}
+
+.sidebar.collapsed nav ul li a{
+
+justify-content:center;
+
+padding:16px;
+
+}
+
+.sidebar.collapsed nav ul li a span{
+
+display:none;
+
+}
+
+.sidebar.collapsed .logout button span{
+
+display:none;
+
+}
+
+.sidebar.collapsed .logout button{
+
+padding:16px;
+
+}
+
+/* ===============================
+   MOBILE
+================================*/
+
+@media(max-width:992px){
+
+.sidebar{
+
+transform:translateX(-100%);
+
+}
+
+.sidebar.active{
+
+transform:translateX(0);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.sidebar{
+
+width:260px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.sidebar{
+
+width:240px;
+
+padding:20px 15px;
+
+}
+
+.logo h2{
+
+font-size:26px;
+
+}
+
+.sidebar nav ul li a{
+
+font-size:14px;
+
+padding:14px 15px;
+
+}
+
+.logout button{
+
+padding:14px;
+
+}
+
+}
