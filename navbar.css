@@ -1,0 +1,476 @@
+/* ==========================================
+   MamRaj Nexus Academy
+   Navbar CSS
+==========================================*/
+
+/* ===============================
+   TOPBAR
+================================*/
+
+.topbar{
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+height:85px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 30px;
+
+margin-bottom:35px;
+
+background:rgba(255,255,255,.82);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+}
+
+/* ===============================
+   LEFT
+================================*/
+
+.topbar .left{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+}
+
+.menu-btn{
+
+width:50px;
+
+height:50px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F8F3EE;
+
+cursor:pointer;
+
+font-size:20px;
+
+color:#1E2A5A;
+
+transition:.35s;
+
+display:none;
+
+}
+
+.menu-btn:hover{
+
+background:#1E2A5A;
+
+color:#fff;
+
+}
+
+/* ===============================
+   SEARCH
+================================*/
+
+.search-box{
+
+width:420px;
+
+max-width:100%;
+
+height:52px;
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+padding:0 18px;
+
+background:#F8F3EE;
+
+border-radius:16px;
+
+transition:.35s;
+
+}
+
+.search-box:hover{
+
+background:#fff;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.search-box i{
+
+color:#888;
+
+}
+
+.search-box input{
+
+flex:1;
+
+border:none;
+
+outline:none;
+
+background:transparent;
+
+font-size:15px;
+
+font-family:"Poppins",sans-serif;
+
+}
+
+/* ===============================
+   RIGHT
+================================*/
+
+.topbar .right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+/* ===============================
+   ICON BUTTONS
+================================*/
+
+.topbar .right button{
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:14px;
+
+background:#F8F3EE;
+
+cursor:pointer;
+
+font-size:18px;
+
+color:#1E2A5A;
+
+transition:.35s;
+
+position:relative;
+
+}
+
+.topbar .right button:hover{
+
+background:#1E2A5A;
+
+color:#fff;
+
+transform:translateY(-3px);
+
+}
+
+/* Notification Dot */
+
+.topbar .right button::after{
+
+content:"";
+
+position:absolute;
+
+top:12px;
+
+right:12px;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:#ff3b30;
+
+}
+
+/* Remove dot for dark mode button */
+
+.topbar .right button:last-of-type::after{
+
+display:none;
+
+}
+
+/* ===============================
+   PROFILE
+================================*/
+
+.profile{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:8px 12px;
+
+border-radius:18px;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.profile:hover{
+
+background:#F8F3EE;
+
+}
+
+.profile img{
+
+width:52px;
+
+height:52px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #C58B73;
+
+}
+
+.profile h4{
+
+font-size:16px;
+
+color:#1E2A5A;
+
+margin-bottom:3px;
+
+}
+
+.profile span{
+
+font-size:13px;
+
+color:#777;
+
+}
+
+/* ===============================
+   PROFILE DROPDOWN
+================================*/
+
+.profile{
+
+position:relative;
+
+}
+
+.profile-menu{
+
+position:absolute;
+
+top:70px;
+
+right:0;
+
+width:220px;
+
+background:#fff;
+
+border-radius:18px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+
+overflow:hidden;
+
+display:none;
+
+z-index:100;
+
+}
+
+.profile-menu.active{
+
+display:block;
+
+animation:dropdown .3s ease;
+
+}
+
+.profile-menu a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:15px 20px;
+
+text-decoration:none;
+
+color:#333;
+
+transition:.3s;
+
+}
+
+.profile-menu a:hover{
+
+background:#F8F3EE;
+
+}
+
+.profile-menu a i{
+
+width:20px;
+
+text-align:center;
+
+color:#C58B73;
+
+}
+
+/* ===============================
+   ANIMATION
+================================*/
+
+@keyframes dropdown{
+
+from{
+
+opacity:0;
+
+transform:translateY(-10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===============================
+   RESPONSIVE
+================================*/
+
+@media(max-width:992px){
+
+.menu-btn{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.search-box{
+
+width:260px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.topbar{
+
+padding:0 18px;
+
+height:75px;
+
+}
+
+.search-box{
+
+display:none;
+
+}
+
+.profile h4,
+
+.profile span{
+
+display:none;
+
+}
+
+.profile{
+
+padding:0;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.topbar{
+
+padding:0 15px;
+
+}
+
+.topbar .right{
+
+gap:10px;
+
+}
+
+.topbar .right button{
+
+width:42px;
+
+height:42px;
+
+font-size:16px;
+
+}
+
+.profile img{
+
+width:45px;
+
+height:45px;
+
+}
+
+}
