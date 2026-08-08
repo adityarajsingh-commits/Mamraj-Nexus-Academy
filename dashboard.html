@@ -1,685 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>MamRaj Nexus Academy | Dashboard</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-Dashboard |
-MamRaj Nexus Academy
-
-</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"rel="stylesheet">
-
-<link rel="stylesheet" href="dashboard.css">
-
-<link rel="stylesheet" href="sidebar.css">
-
-<link rel="stylesheet" href="navbar.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
 
-<!-- =========================================
-SIDEBAR
-========================================= -->
+<div class="app">
 
-<aside class="sidebar">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-<div class="logo">
+        <div class="brand">
+            <div class="brand-logo">M</div>
 
-<h2>
-
-MamRaj
-
-<span>Nexus</span>
-
-</h2>
-
-</div>
-
-<nav>
-
-<ul>
-
-<li class="active">
-
-<a href="internship.html">
-
-<i class="fa-solid fa-house"></i>
-
-Dashboard
-
-</a>
-
-</li>
-
-<li>
-
-<a href="internship.html">
-
-<i class="fa-solid fa-briefcase"></i>
-
-Internships
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-folder-open"></i>
-
-Projects
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-file-circle-check"></i>
-
-Applications
-
-</a>
-
-</li>
-
-<li>
-
-<a href="certifications.html">
-
-<i class="fa-solid fa-award"></i>
-
-Certificates
-
-</a>
-
-</li>
-
-<li>
-
-<a href="shivaay-ai.html">
-
-<i class="fa-solid fa-robot"></i>
-
-Shivaay AI
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-file-lines"></i>
-
-Resume Builder
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-chart-column"></i>
-
-ATS Checker
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-calendar-days"></i>
-
-Calendar
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-users"></i>
-
-Community
-
-</a>
-
-</li>
-
-<li>
-
-<a href="#">
-
-<i class="fa-solid fa-gear"></i>
-
-Settings
-
-</a>
-
-</li>
-
-</ul>
-
-</nav>
-
-<div class="logout">
-
-<button>
-
-<i class="fa-solid fa-right-from-bracket"></i>
-
-Logout
-
-</button>
-
-</div>
-
-</aside>
-
-<!-- =========================================
-MAIN CONTENT
-========================================= -->
-
-<div class="main-content">
-
-<!-- =========================================
-TOP NAVBAR
-========================================= -->
-
-<header class="topbar">
-
-<div class="left">
-
-<button
-class="menu-btn">
-
-<i class="fa-solid fa-bars"></i>
-
-</button>
-
-<div class="search-box">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
-<input
-
-type="search"
-
-placeholder="Search internships, projects...">
-
-</div>
-
-</div>
-
-<div class="right">
-
-<button>
-
-<i class="fa-regular fa-bell"></i>
-
-</button>
-
-<button>
-
-<i class="fa-regular fa-envelope"></i>
-
-</button>
-
-<button>
-
-<i class="fa-solid fa-moon"></i>
-
-</button>
-
-<div class="profile">
-
-<img
-
-src="https://ui-avatars.com/api/?name=Student"
-
-alt="profile">
-
-<div>
-
-<h4>
-
-Aditya Singh
-
-</h4>
-
-<span>
-
-Student
-
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</header>
-
-<!-- =========================================
-WELCOME SECTION
-========================================= -->
-
-<section class="welcome">
-
-<div class="welcome-left">
-
-<h1>
-
-Welcome Back,
-
-<span>
-
-Aditya 👋
-
-</span>
-
-</h1>
-
-<p>
-
-Ready to continue your internship journey?
-
-</p>
-
-</div>
-
-<div class="welcome-right">
-
-<button>
-
-Apply Internship
-
-</button>
-
-</div>
-
-</section>
-
-<!-- =========================================
-ANALYTICS GRID
-========================================= -->
-
-<section class="analytics">
-
-<div class="card">
-
-<i class="fa-solid fa-briefcase"></i>
-
-<h2>
-
-05
-
-</h2>
-
-<p>
-
-Active Applications
-
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-folder-open"></i>
-
-<h2>
-
-03
-
-</h2>
-
-<p>
-
-Live Projects
-
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-award"></i>
-
-<h2>
-
-12
-
-</h2>
-
-<p>
-
-Certificates
-
-</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-chart-line"></i>
-
-<h2>
-
-86%
-
-</h2>
-
-<p>
-
-Profile Score
-
-</p>
-
-</div>
-
-</section>
-
-<!-- =========================================
-CONTENT PLACEHOLDER
-========================================= -->
-
-<!-- =========================================
-DASHBOARD GRID
-========================================= -->
-
-<section class="dashboard-grid">
-
-    <!-- LEFT COLUMN -->
-
-    <div class="left-column">
-
-        <!-- Internship Progress -->
-
-        <div class="panel">
-
-            <div class="panel-header">
-
-                <h2>Internship Progress</h2>
-
-                <a href="#">View All</a>
-
+            <div>
+                <h2>MamRaj</h2>
+                <span>NEXUS ACADEMY</span>
             </div>
-
-            <div class="progress-item">
-
-                <div class="progress-title">
-
-                    <span>Frontend Developer Internship</span>
-
-                    <span>75%</span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <span style="width:75%"></span>
-
-                </div>
-
-            </div>
-
-            <div class="progress-item">
-
-                <div class="progress-title">
-
-                    <span>Graphic Design Internship</span>
-
-                    <span>45%</span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <span style="width:45%"></span>
-
-                </div>
-
-            </div>
-
-            <div class="progress-item">
-
-                <div class="progress-title">
-
-                    <span>AI Internship</span>
-
-                    <span>20%</span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <span style="width:20%"></span>
-
-                </div>
-
-            </div>
-
         </div>
 
-        <!-- Quick Actions -->
+        <div class="sidebar-section">
+            <p class="section-title">MAIN</p>
 
-        <div class="panel">
+            <a href="#" class="nav-item active">
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </a>
 
-            <div class="panel-header">
+            <a href="#" class="nav-item">
+                <span>▣</span>
+                <span>My Courses</span>
+            </a>
 
-                <h2>Quick Actions</h2>
+            <a href="#" class="nav-item">
+                <span>◈</span>
+                <span>Learning Path</span>
+            </a>
 
-            </div>
-
-            <div class="quick-actions">
-
-                <button>
-
-                    <i class="fa-solid fa-paper-plane"></i>
-
-                    Apply Internship
-
-                </button>
-
-                <button>
-
-                    <i class="fa-solid fa-file-arrow-up"></i>
-
-                    Upload Resume
-
-                </button>
-
-                <button>
-
-                    <i class="fa-solid fa-award"></i>
-
-                    Certificates
-
-                </button>
-
-                <button>
-
-                    <i class="fa-solid fa-robot"></i>
-
-                    Shivaay AI
-
-                </button>
-
-            </div>
-
+            <a href="#" class="nav-item">
+                <span>◆</span>
+                <span>Projects</span>
+            </a>
         </div>
 
-    </div>
+        <div class="sidebar-section">
+            <p class="section-title">AI & CAREER</p>
 
-    <!-- RIGHT COLUMN -->
+            <a href="#" class="nav-item shivaay-link">
+                <span>✦</span>
+                <span>Shivaay AI</span>
+                <small>AI</small>
+            </a>
 
-    <div class="right-column">
+            <a href="#" class="nav-item">
+                <span>⌕</span>
+                <span>Resume / ATS</span>
+            </a>
 
-        <!-- Today's Tasks -->
-
-        <div class="panel">
-
-            <div class="panel-header">
-
-                <h2>Today's Tasks</h2>
-
-            </div>
-
-            <ul class="task-list">
-
-                <li>
-
-                    <input type="checkbox">
-
-                    Submit Frontend Assignment
-
-                </li>
-
-                <li>
-
-                    <input type="checkbox">
-
-                    Update Resume
-
-                </li>
-
-                <li>
-
-                    <input type="checkbox">
-
-                    Complete AI Quiz
-
-                </li>
-
-                <li>
-
-                    <input type="checkbox">
-
-                    Apply to 2 Internships
-
-                </li>
-
-            </ul>
-
+            <a href="#" class="nav-item">
+                <span>◉</span>
+                <span>Interview Prep</span>
+            </a>
         </div>
 
-        <!-- Recent Notifications -->
+        <div class="sidebar-section">
+            <p class="section-title">ACHIEVEMENT</p>
 
-        <div class="panel">
+            <a href="#" class="nav-item">
+                <span>🏆</span>
+                <span>Certifications</span>
+            </a>
 
-            <div class="panel-header">
+            <a href="#" class="nav-item">
+                <span>▤</span>
+                <span>Assessments</span>
+            </a>
 
-                <h2>Notifications</h2>
+            <a href="#" class="nav-item">
+                <span>◔</span>
+                <span>Progress</span>
+            </a>
+        </div>
 
-            </div>
+        <div class="sidebar-bottom">
 
-            <div class="notification">
-
-                <i class="fa-solid fa-circle-check"></i>
+            <div class="support-card">
+                <div class="support-icon">?</div>
 
                 <div>
-
-                    <strong>
-
-                        Internship Approved
-
-                    </strong>
-
-                    <p>
-
-                        Your Frontend Internship has been approved.
-
-                    </p>
-
+                    <strong>Need Help?</strong>
+                    <p>Talk to our support team.</p>
                 </div>
-
             </div>
 
-            <div class="notification">
+            <a href="#" class="nav-item">
+                <span>⚙</span>
+                <span>Settings</span>
+            </a>
 
-                <i class="fa-solid fa-bell"></i>
-
-                <div>
-
-                    <strong>
-
-                        New Project
-
-                    </strong>
-
-                    <p>
-
-                        A new live project has been assigned.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="notification">
-
-                <i class="fa-solid fa-award"></i>
-
-                <div>
-
-                    <strong>
-
-                        Certificate Ready
-
-                    </strong>
-
-                    <p>
-
-                        Download your Graphic Design certificate.
-
-                    </p>
-
-                </div>
-
-            </div>
+            <a href="#" class="nav-item logout">
+                <span>↪</span>
+                <span>Logout</span>
+            </a>
 
         </div>
 
-    </div>
+    </aside>
 
-</section>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <button class="mobile-menu" id="menuBtn">
+                ☰
+            </button>
+
+            <div class="page-title">
+                <span>Learning Portal</span>
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-btn">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        AS
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Aditya Singh</strong>
+                        <span>Student</span>
+                    </div>
+
+                    <span class="arrow">⌄</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- WELCOME -->
+            <section class="welcome-card">
+
+                <div class="welcome-content">
+
+                    <span class="eyebrow">
+                        WELCOME BACK 👋
+                    </span>
+
+                    <h2>
+                        Keep building your
+                        <span>future.</span>
+                    </h2>
+
+                    <p>
+                        Continue your learning journey and turn
+                        your skills into real-world opportunities.
+                    </p>
+
+                    <button class="primary-btn">
+                        Continue Learning
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+                <div class="welcome-visual">
+
+                    <div class="orb orb-one"></div>
+                    <div class="orb orb-two"></div>
+
+                    <div class="floating-card card-one">
+                        <span>🔥</span>
+                        <div>
+                            <strong>7 Day Streak</strong>
+                            <small>Keep going!</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-two">
+                        <span>⚡</span>
+                        <div>
+                            <strong>82%</strong>
+                            <small>Course Progress</small>
+                        </div>
+                    </div>
+
+                    <div class="hero-symbol">
+                        N
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ◫
+                    </div>
+
+                    <div>
+                        <span>Courses</span>
+                        <strong>06</strong>
+                    </div>
+
+                    <small class="positive">
+                        +2 this month
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ◔
+                    </div>
+
+                    <div>
+                        <span>Learning Hours</span>
+                        <strong>42.5</strong>
+                    </div>
+
+                    <small class="positive">
+                        +8.4 hrs
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ✓
+                    </div>
+
+                    <div>
+                        <span>Completed</span>
+                        <strong>18</strong>
+                    </div>
+
+                    <small>
+                        Lessons
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        🏆
+                    </div>
+
+                    <div>
+                        <span>Certificates</span>
+                        <strong>04</strong>
+                    </div>
+
+                    <small class="positive">
+                        +1 earned
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- GRID -->
+            <section class="dashboard-grid">
+
+                <!-- CONTINUE LEARNING -->
+                <div class="panel continue-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-label">
+                                YOUR LEARNING
+                            </span>
+
+                            <h2>Continue Learning</h2>
+                        </div>
+
+                        <a href="#">View all →</a>
+
+                    </div>
+
+
+                    <div class="course-item">
+
+                        <div class="course-logo python">
+                            Py
+                        </div>
+
+                        <div class="course-info">
+
+                            <div class="course-title">
+                                <strong>Python Programming</strong>
+                                <span>82%</span>
+                            </div>
+
+                            <p>
+                                Advanced Python & OOP
+                            </p>
+
+                            <div class="progress">
+                                <div style="width:82%"></div>
+                            </div>
+
+                            <small>
+                                Lesson 18 of 22
+                            </small>
+
+                        </div>
+
+                        <button class="resume-btn">
+                            Resume
+                        </button>
+
+                    </div>
+
+
+                    <div class="course-item">
+
+                        <div class="course-logo web">
+                            &lt;/&gt;
+                        </div>
+
+                        <div class="course-info">
+
+                            <div class="course-title">
+                                <strong>Full Stack Web Development</strong>
+                                <span>64%</span>
+                            </div>
+
+                            <p>
+                                React, Node.js & APIs
+                            </p>
+
+                            <div class="progress">
+                                <div style="width:64%"></div>
+                            </div>
+
+                            <small>
+                                Lesson 24 of 37
+                            </small>
+
+                        </div>
+
+                        <button class="resume-btn">
+                            Resume
+                        </button>
+
+                    </div>
+
+
+                    <div class="course-item">
+
+                        <div class="course-logo data">
+                            ◉
+                        </div>
+
+                        <div class="course-info">
+
+                            <div class="course-title">
+                                <strong>Data Science</strong>
+                                <span>41%</span>
+                            </div>
+
+                            <p>
+                                Python, ML & Data Analysis
+                            </p>
+
+                            <div class="progress">
+                                <div style="width:41%"></div>
+                            </div>
+
+                            <small>
+                                Lesson 12 of 29
+                            </small>
+
+                        </div>
+
+                        <button class="resume-btn">
+                            Resume
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHIVAAY -->
+                <div class="panel shivaay-panel">
+
+                    <div class="shivaay-header">
+
+                        <div class="shivaay-icon">
+                            ✦
+                        </div>
+
+                        <div>
+                            <span>YOUR AI MENTOR</span>
+                            <h2>Shivaay AI</h2>
+                        </div>
+
+                    </div>
+
+                    <div class="shivaay-body">
+
+                        <p>
+                            Your personal AI mentor is ready to
+                            help you learn, build and grow.
+                        </p>
+
+                        <div class="ai-features">
+
+                            <div>
+                                <span>✦</span>
+                                Ask anything
+                            </div>
+
+                            <div>
+                                <span>✓</span>
+                                Get instant explanations
+                            </div>
+
+                            <div>
+                                <span>⚡</span>
+                                Build projects faster
+                            </div>
+
+                        </div>
+
+                        <button class="ai-btn">
+                            Open Shivaay AI
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTTOM GRID -->
+            <section class="bottom-grid">
+
+                <!-- ACTIVITY -->
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-label">
+                                ACTIVITY
+                            </span>
+
+                            <h2>Weekly Learning</h2>
+                        </div>
+
+                        <span class="week-label">
+                            This Week
+                        </span>
+
+                    </div>
+
+                    <div class="chart">
+
+                        <div class="chart-days">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                        <div class="bars">
+
+                            <div style="height:45%">
+                                <span>1.8h</span>
+                            </div>
+
+                            <div style="height:70%">
+                                <span>2.8h</span>
+                            </div>
+
+                            <div style="height:55%">
+                                <span>2.2h</span>
+                            </div>
+
+                            <div style="height:85%">
+                                <span>3.4h</span>
+                            </div>
+
+                            <div style="height:65%">
+                                <span>2.6h</span>
+                            </div>
+
+                            <div style="height:92%">
+                                <span>3.7h</span>
+                            </div>
+
+                            <div style="height:35%">
+                                <span>1.4h</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACHIEVEMENTS -->
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-label">
+                                ACHIEVEMENTS
+                            </span>
+
+                            <h2>Recent Badges</h2>
+                        </div>
+
+                        <a href="#">View all →</a>
+
+                    </div>
+
+                    <div class="badges">
+
+                        <div class="badge">
+                            <div>🔥</div>
+                            <strong>7 Day Streak</strong>
+                            <small>Aug 07</small>
+                        </div>
+
+                        <div class="badge">
+                            <div>🚀</div>
+                            <strong>Project Builder</strong>
+                            <small>Aug 05</small>
+                        </div>
+
+                        <div class="badge">
+                            <div>⚡</div>
+                            <strong>Fast Learner</strong>
+                            <small>Aug 01</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
 
 </div>
 
-<script src="assets/js/dashboard.js"></script>
+<script>
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.querySelector(".sidebar");
+
+menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+});
+
+</script>
 
 </body>
-
 </html>
