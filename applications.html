@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Applications | MamRaj Nexus Academy</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="applications.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="internships.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Internships</span>
+            </a>
+
+            <a href="projects.html">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="applications.html" class="active">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="certifications.html">
+                <i class="fa-solid fa-award"></i>
+                <span>Certificates</span>
+            </a>
+
+            <a href="shivaay-ai.html">
+                <i class="fa-solid fa-robot"></i>
+                <span>Shivay AI</span>
+            </a>
+
+            <a href="resume-builder.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="ats-checker.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>ATS Checker</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-help">
+            <i class="fa-solid fa-circle-question"></i>
+
+            <div>
+                <strong>Need Help?</strong>
+                <small>Ask Shivaay AI</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <div class="heading-icon">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+
+                <div>
+                    <h2>Applications</h2>
+                    <span>Track all your internship applications</span>
+                </div>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification"></span>
+                </button>
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-envelope"></i>
+                </button>
+
+                <button class="icon-btn" id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        ST
+                    </div>
+
+                    <div>
+                        <strong>Aditya Singh</strong>
+                        <span>Student</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+
+        <section class="application-hero">
+
+            <div>
+
+                <span class="hero-label">
+                    APPLICATION CENTER
+                </span>
+
+                <h1>
+                    Your Career Journey,
+                    <span>One Step at a Time.</span>
+                </h1>
+
+                <p>
+                    Track applications, monitor interview stages
+                    and stay updated on your internship journey.
+                </p>
+
+                <a href="internships.html"
+                   class="apply-btn">
+
+                    Find New Internships
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="circle">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                </div>
+
+                <strong>05</strong>
+
+                <span>Active Applications</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="application-stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon total">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+                    <strong>08</strong>
+                    <span>Total Applications</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon review">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+
+                <div>
+                    <strong>03</strong>
+                    <span>Under Review</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon interview">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <div>
+                    <strong>02</strong>
+                    <span>Interviews</span>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon selected">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <strong>03</strong>
+                    <span>Selected</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATION SECTION -->
+
+        <section class="applications-section">
+
+            <div class="section-top">
+
+                <div>
+                    <span class="small-title">
+                        APPLICATION TRACKER
+                    </span>
+
+                    <h2>My Applications</h2>
+                </div>
+
+
+                <div class="filters">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            id="searchInput"
+                            type="text"
+                            placeholder="Search applications..."
+                        >
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="applied">
+                            Applied
+                        </option>
+
+                        <option value="review">
+                            Under Review
+                        </option>
+
+                        <option value="interview">
+                            Interview
+                        </option>
+
+                        <option value="selected">
+                            Selected
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPLICATION TABLE -->
+
+            <div class="application-container">
+
+                <div class="table-head">
+
+                    <span>INTERNSHIP</span>
+                    <span>COMPANY</span>
+                    <span>APPLIED ON</span>
+                    <span>STATUS</span>
+                    <span>ACTION</span>
+
+                </div>
+
+
+                <!-- APPLICATION 1 -->
+
+                <div class="application-row"
+                     data-status="interview"
+                     data-name="Frontend Developer">
+
+                    <div class="internship-info">
+
+                        <div class="company-logo blue">
+                            F
+                        </div>
+
+                        <div>
+                            <strong>Frontend Developer</strong>
+                            <span>Web Development</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="company-name">
+                        MamRaj Web Studio
+                    </div>
+
+
+                    <div class="date">
+                        05 Aug 2026
+                    </div>
+
+
+                    <div>
+                        <span class="status interview">
+                            Interview
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <button class="view-application"
+                                onclick="viewApplication(this)">
+
+                            View
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- APPLICATION 2 -->
+
+                <div class="application-row"
+                     data-status="review"
+                     data-name="Backend Developer">
+
+                    <div class="internship-info">
+
+                        <div class="company-logo rose">
+                            B
+                        </div>
+
+                        <div>
+                            <strong>Backend Developer</strong>
+                            <span>Python / APIs</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="company-name">
+                        Nexus Technologies
+                    </div>
+
+
+                    <div class="date">
+                        03 Aug 2026
+                    </div>
+
+
+                    <div>
+                        <span class="status review">
+                            Under Review
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <button class="view-application"
+                                onclick="viewApplication(this)">
+
+                            View
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- APPLICATION 3 -->
+
+                <div class="application-row"
+                     data-status="selected"
+                     data-name="UI UX Designer">
+
+                    <div class="internship-info">
+
+                        <div class="company-logo gold">
+                            U
+                        </div>
+
+                        <div>
+                            <strong>UI/UX Designer</strong>
+                            <span>Product Design</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="company-name">
+                        Creative Labs
+                    </div>
+
+
+                    <div class="date">
+                        01 Aug 2026
+                    </div>
+
+
+                    <div>
+                        <span class="status selected">
+                            Selected
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <button class="view-application"
+                                onclick="viewApplication(this)">
+
+                            View
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- APPLICATION 4 -->
+
+                <div class="application-row"
+                     data-status="applied"
+                     data-name="Data Analyst">
+
+                    <div class="internship-info">
+
+                        <div class="company-logo green">
+                            D
+                        </div>
+
+                        <div>
+                            <strong>Data Analyst</strong>
+                            <span>Python / SQL</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="company-name">
+                        DataSphere
+                    </div>
+
+
+                    <div class="date">
+                        30 Jul 2026
+                    </div>
+
+
+                    <div>
+                        <span class="status applied">
+                            Applied
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <button class="view-application"
+                                onclick="viewApplication(this)">
+
+                            View
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- APPLICATION 5 -->
+
+                <div class="application-row"
+                     data-status="rejected"
+                     data-name="Digital Marketing Intern">
+
+                    <div class="internship-info">
+
+                        <div class="company-logo dark">
+                            M
+                        </div>
+
+                        <div>
+                            <strong>Digital Marketing Intern</strong>
+                            <span>Marketing</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="company-name">
+                        GrowthWorks
+                    </div>
+
+
+                    <div class="date">
+                        27 Jul 2026
+                    </div>
+
+
+                    <div>
+                        <span class="status rejected">
+                            Not Selected
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <button class="view-application"
+                                onclick="viewApplication(this)">
+
+                            View
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div class="empty-state"
+                 id="emptyState">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <h3>No applications found</h3>
+
+                <p>
+                    Try another search or status filter.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- APPLICATION TIMELINE -->
+
+        <section class="journey-section">
+
+            <div class="journey-header">
+
+                <div>
+                    <span class="small-title">
+                        HOW IT WORKS
+                    </span>
+
+                    <h2>Application Journey</h2>
+                </div>
+
+                <span class="journey-note">
+                    Your typical internship journey
+                </span>
+
+            </div>
+
+
+            <div class="journey">
+
+                <div class="journey-step completed">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+
+                    <strong>Applied</strong>
+
+                    <span>
+                        Application submitted
+                    </span>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step completed">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+
+                    <strong>Review</strong>
+
+                    <span>
+                        Recruiter reviews profile
+                    </span>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step active">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+
+                    <strong>Interview</strong>
+
+                    <span>
+                        Technical / HR round
+                    </span>
+
+                </div>
+
+
+                <div class="journey-line"></div>
+
+
+                <div class="journey-step">
+
+                    <div class="step-icon">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <strong>Selected</strong>
+
+                    <span>
+                        Start your internship
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- APPLICATION MODAL -->
+
+<div class="modal"
+     id="applicationModal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="application-modal">
+
+        <button class="close-modal"
+                onclick="closeApplication()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <span class="modal-label">
+            APPLICATION DETAILS
+        </span>
+
+        <h2 id="modalJob">
+            Frontend Developer
+        </h2>
+
+        <p id="modalCompany">
+            MamRaj Web Studio
+        </p>
+
+
+        <div class="modal-status">
+
+            <span class="status interview">
+                Interview
+            </span>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <div>
+                <span>Application ID</span>
+                <strong>MNA-APP-2026-0085</strong>
+            </div>
+
+            <div>
+                <span>Applied On</span>
+                <strong>05 Aug 2026</strong>
+            </div>
+
+            <div>
+                <span>Mode</span>
+                <strong>Remote</strong>
+            </div>
+
+            <div>
+                <span>Duration</span>
+                <strong>3 Months</strong>
+            </div>
+
+        </div>
+
+
+        <div class="modal-timeline">
+
+            <div class="modal-step done">
+                <span></span>
+                <div>
+                    <strong>Application Submitted</strong>
+                    <small>05 Aug 2026</small>
+                </div>
+            </div>
+
+            <div class="modal-step done">
+                <span></span>
+                <div>
+                    <strong>Profile Reviewed</strong>
+                    <small>06 Aug 2026</small>
+                </div>
+            </div>
+
+            <div class="modal-step current">
+                <span></span>
+                <div>
+                    <strong>Interview Scheduled</strong>
+                    <small>08 Aug 2026</small>
+                </div>
+            </div>
+
+            <div class="modal-step">
+                <span></span>
+                <div>
+                    <strong>Final Decision</strong>
+                    <small>Pending</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <button class="modal-primary">
+            View Internship
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="applications.js"></script>
+
+</body>
+</html>
