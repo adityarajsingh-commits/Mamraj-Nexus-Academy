@@ -1,1 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Resume Builder | MamRaj Nexus Academy</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="resume-builder.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="internships.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Internships</span>
+            </a>
+
+            <a href="projects.html">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="applications.html">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="certifications.html">
+                <i class="fa-solid fa-award"></i>
+                <span>Certificates</span>
+            </a>
+
+            <a href="shivaay-ai.html">
+                <i class="fa-solid fa-robot"></i>
+                <span>Shivaay AI</span>
+            </a>
+
+            <a href="resume-builder.html" class="active">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="ats-checker.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>ATS Checker</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <i class="fa-solid fa-circle-question"></i>
+
+            <div>
+                <strong>Need Help?</strong>
+                <small>Ask Shivaay AI</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+                <span class="eyebrow">CAREER TOOLS</span>
+                <h2>Resume Builder</h2>
+                <p>Create a professional, ATS-friendly resume.</p>
+            </div>
+
+            <div class="top-right">
+
+                <button class="top-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button class="top-btn">
+                    <i class="fa-regular fa-envelope"></i>
+                </button>
+
+                <button class="top-btn" id="themeBtn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">ST</div>
+
+                    <div>
+                        <strong>Aditya Singh</strong>
+                        <small>Student</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- BUILDER -->
+
+        <section class="builder">
+
+            <!-- FORM -->
+
+            <div class="builder-form">
+
+                <div class="builder-header">
+
+                    <div>
+                        <span class="eyebrow">
+                            BUILD YOUR RESUME
+                        </span>
+
+                        <h1>Professional Resume</h1>
+
+                        <p>
+                            Fill in your details and preview
+                            your resume instantly.
+                        </p>
+                    </div>
+
+                    <div class="progress">
+
+                        <span id="progressText">
+                            20%
+                        </span>
+
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                id="progressFill">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PERSONAL -->
+
+                <div class="form-card">
+
+                    <div class="form-title">
+                        <div class="form-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <div>
+                            <h3>Personal Information</h3>
+                            <span>Basic information about you</span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label>Full Name</label>
+
+                            <input
+                                id="fullName"
+                                type="text"
+                                value="Aditya Singh"
+                                placeholder="Your full name">
+                        </div>
+
+
+                        <div class="field">
+                            <label>Professional Title</label>
+
+                            <input
+                                id="jobTitle"
+                                type="text"
+                                value="Software Developer"
+                                placeholder="e.g. Software Developer">
+                        </div>
+
+
+                        <div class="field">
+                            <label>Email</label>
+
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="you@example.com">
+                        </div>
+
+
+                        <div class="field">
+                            <label>Phone</label>
+
+                            <input
+                                id="phone"
+                                type="text"
+                                placeholder="+91 XXXXX XXXXX">
+                        </div>
+
+
+                        <div class="field full">
+                            <label>Location</label>
+
+                            <input
+                                id="location"
+                                type="text"
+                                placeholder="City, State, Country">
+                        </div>
+
+
+                        <div class="field full">
+
+                            <label>Professional Summary</label>
+
+                            <textarea
+                                id="summary"
+                                rows="5"
+                                placeholder="Write a concise professional summary..."></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <div class="form-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+
+                        <div>
+                            <h3>Skills</h3>
+                            <span>Add your strongest skills</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-input">
+
+                        <input
+                            id="skillInput"
+                            type="text"
+                            placeholder="e.g. Python">
+
+                        <button id="addSkill">
+                            Add Skill
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="skill-list"
+                        id="skillList">
+
+                        <span>Python</span>
+                        <span>JavaScript</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>MySQL</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <div class="form-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+
+                        <div>
+                            <h3>Experience</h3>
+                            <span>Your work experience</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="experience">
+
+                        <input
+                            id="expRole"
+                            type="text"
+                            placeholder="Job Title">
+
+                        <input
+                            id="expCompany"
+                            type="text"
+                            placeholder="Company">
+
+                        <div class="date-grid">
+
+                            <input
+                                id="expStart"
+                                type="text"
+                                placeholder="Start Date">
+
+                            <input
+                                id="expEnd"
+                                type="text"
+                                placeholder="End Date">
+
+                        </div>
+
+                        <textarea
+                            id="expDescription"
+                            rows="4"
+                            placeholder="Describe your responsibilities and achievements..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EDUCATION -->
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <div class="form-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <div>
+                            <h3>Education</h3>
+                            <span>Your academic background</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="education">
+
+                        <input
+                            id="eduDegree"
+                            type="text"
+                            placeholder="Degree / Course">
+
+                        <input
+                            id="eduInstitute"
+                            type="text"
+                            placeholder="Institution">
+
+                        <input
+                            id="eduYear"
+                            type="text"
+                            placeholder="Year">
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECTS -->
+
+                <div class="form-card">
+
+                    <div class="form-title">
+
+                        <div class="form-icon">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+
+                        <div>
+                            <h3>Projects</h3>
+                            <span>Highlight your best projects</span>
+                        </div>
+
+                    </div>
+
+
+                    <input
+                        id="projectName"
+                        type="text"
+                        placeholder="Project Name">
+
+                    <textarea
+                        id="projectDescription"
+                        rows="4"
+                        placeholder="Project description, technologies and achievements..."></textarea>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="builder-actions">
+
+                    <button
+                        class="secondary-btn"
+                        id="saveResume">
+
+                        <i class="fa-regular fa-floppy-disk"></i>
+                        Save Resume
+
+                    </button>
+
+
+                    <button
+                        class="primary-btn"
+                        id="downloadResume">
+
+                        <i class="fa-solid fa-download"></i>
+                        Download Resume
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PREVIEW -->
+
+            <div class="preview-area">
+
+                <div class="preview-top">
+
+                    <div>
+                        <span class="eyebrow">
+                            LIVE PREVIEW
+                        </span>
+
+                        <h3>Your Resume</h3>
+                    </div>
+
+                    <a href="ats-checker.html"
+                       class="ats-link">
+
+                        <i class="fa-solid fa-chart-column"></i>
+                        Check ATS Score
+
+                    </a>
+
+                </div>
+
+
+                <div class="resume-paper"
+                     id="resumePaper">
+
+                    <div class="resume-header">
+
+                        <h1 id="previewName">
+                            Aditya Singh
+                        </h1>
+
+                        <h2 id="previewTitle">
+                            Software Developer
+                        </h2>
+
+                        <div class="contact-line">
+
+                            <span id="previewEmail">
+                                email@example.com
+                            </span>
+
+                            <span id="previewPhone">
+                                +91 XXXXX XXXXX
+                            </span>
+
+                            <span id="previewLocation">
+                                India
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resume-section">
+
+                        <h3>PROFILE</h3>
+
+                        <p id="previewSummary">
+                            Motivated technology professional passionate
+                            about software development, web technologies
+                            and building practical digital solutions.
+                        </p>
+
+                    </div>
+
+
+                    <div class="resume-section">
+
+                        <h3>SKILLS</h3>
+
+                        <div
+                            class="preview-skills"
+                            id="previewSkills">
+
+                            <span>Python</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>MySQL</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resume-section">
+
+                        <h3>EXPERIENCE</h3>
+
+                        <div class="resume-item">
+
+                            <div class="resume-item-top">
+
+                                <strong id="previewRole">
+                                    Experience
+                                </strong>
+
+                                <span id="previewDates">
+                                    2025 – Present
+                                </span>
+
+                            </div>
+
+                            <b id="previewCompany">
+                                Company Name
+                            </b>
+
+                            <p id="previewExperience">
+                                Professional experience and
+                                achievements will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resume-section">
+
+                        <h3>EDUCATION</h3>
+
+                        <div class="resume-item">
+
+                            <strong id="previewDegree">
+                                Bachelor of Technology
+                            </strong>
+
+                            <b id="previewInstitute">
+                                University / Institution
+                            </b>
+
+                            <span id="previewYear">
+                                2024
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resume-section">
+
+                        <h3>PROJECTS</h3>
+
+                        <div class="resume-item">
+
+                            <strong id="previewProject">
+                                Project Name
+                            </strong>
+
+                            <p id="previewProjectDescription">
+                                Project details will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="resume-builder.js"></script>
+
+</body>
+</html>
