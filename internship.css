@@ -1,0 +1,1555 @@
+/* =========================================
+   MAMRAJ NEXUS ACADEMY
+   INTERNSHIP DASHBOARD
+========================================= */
+
+:root {
+
+    --navy: #17275c;
+    --navy-light: #26386f;
+
+    --orange: #cf9678;
+    --orange-dark: #bd8061;
+
+    --bg: #f8f9fc;
+    --white: #ffffff;
+
+    --text: #17254f;
+    --muted: #72798b;
+
+    --border: #e6e9ef;
+
+    --shadow:
+        0 8px 30px rgba(24, 39, 89, .06);
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+}
+
+
+/* =========================================
+   APP LAYOUT
+========================================= */
+
+.app-layout {
+
+    min-height: 100vh;
+
+    display: flex;
+
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+
+    width: 310px;
+
+    min-width: 310px;
+
+    height: 100vh;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 52px 20px 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #202f68 0%,
+            #263b78 100%
+        );
+
+    color: white;
+
+    overflow-y: auto;
+
+}
+
+
+/* BRAND */
+
+.brand {
+
+    text-align: center;
+
+    margin-bottom: 58px;
+
+}
+
+.brand-main {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: white;
+
+    letter-spacing: -.8px;
+
+}
+
+.brand-main span {
+
+    color: #e8ad18;
+
+}
+
+.brand-sub {
+
+    font-size: 11px;
+
+    letter-spacing: 7px;
+
+    margin-top: 5px;
+
+    opacity: .9;
+
+}
+
+
+/* =========================================
+   SIDEBAR NAV
+========================================= */
+
+.sidebar-nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.sidebar-nav a {
+
+    height: 52px;
+
+    padding: 0 20px;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    text-decoration: none;
+
+    color: rgba(255,255,255,.95);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: .25s ease;
+
+}
+
+.sidebar-nav a i {
+
+    width: 20px;
+
+    font-size: 17px;
+
+    text-align: center;
+
+}
+
+.sidebar-nav a:hover {
+
+    background:
+        rgba(255,255,255,.1);
+
+    transform:
+        translateX(3px);
+
+}
+
+.sidebar-nav a.active {
+
+    background:
+        var(--orange);
+
+    color: white;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 25px
+        rgba(207,150,120,.28);
+
+}
+
+
+/* =========================================
+   PREMIUM
+========================================= */
+
+.premium-card {
+
+    margin-top: auto;
+
+    padding: 20px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+.premium-icon {
+
+    color: #f4bb12;
+
+    font-size: 30px;
+
+    margin-bottom: 7px;
+
+}
+
+.premium-card h3 {
+
+    font-size: 16px;
+
+    color: #f3b915;
+
+    margin-bottom: 8px;
+
+}
+
+.premium-card p {
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    color: white;
+
+    margin-bottom: 15px;
+
+}
+
+.premium-card button {
+
+    width: 100%;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    padding: 11px;
+
+    background: var(--orange);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.premium-card button:hover {
+
+    background: var(--orange-dark);
+
+}
+
+
+/* =========================================
+   SIDEBAR FOOTER
+========================================= */
+
+.sidebar-footer {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: rgba(255,255,255,.8);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.main-content {
+
+    width: calc(100% - 310px);
+
+    min-height: 100vh;
+
+    margin-left: 310px;
+
+}
+
+
+/* =========================================
+   TOPBAR
+========================================= */
+
+.topbar {
+
+    height: 100px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #f0f1f4;
+
+    padding:
+        0 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 900;
+
+}
+
+
+/* SEARCH */
+
+.top-search {
+
+    width: min(490px, 55%);
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 0 20px;
+
+    border-radius: 16px;
+
+    background: #f8f7f7;
+
+}
+
+.top-search i {
+
+    color: #6f7686;
+
+}
+
+.top-search input {
+
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+}
+
+
+/* ACTIONS */
+
+.top-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+.notification-btn {
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 0;
+
+    border-radius: 15px;
+
+    background: #faf8f6;
+
+    color: var(--navy);
+
+    font-size: 18px;
+
+    position: relative;
+
+    cursor: pointer;
+
+}
+
+.notification-btn span {
+
+    position: absolute;
+
+    top: -5px;
+
+    right: -4px;
+
+    width: 19px;
+
+    height: 19px;
+
+    border-radius: 50%;
+
+    background: #e92323;
+
+    color: white;
+
+    font-size: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* PROFILE */
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.profile-avatar {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 3px solid #d49a7b;
+
+    background: #f1f1f1;
+
+    color: #26324c;
+
+    font-weight: 500;
+
+    font-size: 17px;
+
+}
+
+.profile-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.profile-info strong {
+
+    font-size: 14px;
+
+    color: var(--navy);
+
+}
+
+.profile-info small {
+
+    color: #7d7f88;
+
+    font-size: 11px;
+
+    margin-top: 3px;
+
+}
+
+.profile > i {
+
+    font-size: 11px;
+
+    margin-left: 12px;
+
+}
+
+
+/* =========================================
+   PAGE CONTENT
+========================================= */
+
+.page-content {
+
+    padding:
+        38px 42px 70px;
+
+    max-width: 1500px;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.page-heading {
+
+    margin-bottom: 25px;
+
+}
+
+.page-heading h1 {
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    color: #101e4c;
+
+}
+
+.page-heading h1 span {
+
+    margin-left: 5px;
+
+}
+
+.page-heading p {
+
+    margin-top: 10px;
+
+    color: #242b38;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   FILTER BOX
+========================================= */
+
+.filter-box {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 16px;
+
+    padding: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        auto;
+
+    gap: 12px;
+
+    box-shadow: var(--shadow);
+
+    margin-bottom: 28px;
+
+}
+
+.filter-search {
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 15px;
+
+    border:
+        1px solid
+        #dfe3ea;
+
+    border-radius: 11px;
+
+}
+
+.filter-search i {
+
+    color: #727989;
+
+}
+
+.filter-search input {
+
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+}
+
+.filter-box select {
+
+    height: 48px;
+
+    border:
+        1px solid
+        #dfe3ea;
+
+    border-radius: 11px;
+
+    padding: 0 12px;
+
+    background: white;
+
+    color: #404653;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    outline: 0;
+
+}
+
+.search-button {
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background: var(--navy);
+
+    color: white;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.search-button:hover {
+
+    background: #0f1e50;
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 17px;
+
+    margin-bottom: 36px;
+
+}
+
+.stat-card {
+
+    min-height: 120px;
+
+    padding: 20px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    box-shadow: var(--shadow);
+
+}
+
+.stat-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    min-width: 55px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+
+}
+
+.stat-icon.blue {
+
+    background: #e6f0ff;
+
+    color: #2475dd;
+
+}
+
+.stat-icon.green {
+
+    background: #e7f7ed;
+
+    color: #17934d;
+
+}
+
+.stat-icon.orange {
+
+    background: #fff0df;
+
+    color: #ec7c16;
+
+}
+
+.stat-icon.purple {
+
+    background: #f0e9ff;
+
+    color: #7040d4;
+
+}
+
+.stat-card strong {
+
+    display: block;
+
+    font-size: 22px;
+
+    color: var(--navy);
+
+}
+
+.stat-card h4 {
+
+    font-size: 12px;
+
+    margin: 2px 0;
+
+    color: #1b2232;
+
+}
+
+.stat-card p {
+
+    font-size: 10px;
+
+    color: #858b98;
+
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+
+}
+
+.section-header h2 {
+
+    font-size: 20px;
+
+    color: var(--navy);
+
+}
+
+
+/* =========================================
+   COMPANIES
+========================================= */
+
+.companies-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+
+}
+
+.company-card {
+
+    height: 125px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 13px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    box-shadow: var(--shadow);
+
+}
+
+.company-card strong {
+
+    font-size: 12px;
+
+    color: #151b29;
+
+}
+
+.company-logo {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 700;
+
+}
+
+.google {
+
+    font-size: 38px;
+
+    color: #4285f4;
+
+}
+
+.amazon {
+
+    font-size: 42px;
+
+    font-family: Arial;
+
+}
+
+.infosys {
+
+    color: #147ac2;
+
+    font-size: 14px;
+
+}
+
+.tata {
+
+    border-radius: 50%;
+
+    background: #2580c5;
+
+    color: white;
+
+    font-size: 25px;
+
+}
+
+.meesho {
+
+    border-radius: 10px;
+
+    background: #a90f58;
+
+    color: white;
+
+    font-size: 25px;
+
+}
+
+.microsoft {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2px;
+
+    padding: 7px;
+
+}
+
+.microsoft span {
+
+    width: 15px;
+
+    height: 15px;
+
+    background: #f25022;
+
+}
+
+.microsoft span:nth-child(2) {
+
+    background: #7fba00;
+
+}
+
+.microsoft span:nth-child(3) {
+
+    background: #00a4ef;
+
+}
+
+.microsoft span:nth-child(4) {
+
+    background: #ffb900;
+
+}
+
+
+/* =========================================
+   INFO BANNER
+========================================= */
+
+.info-banner {
+
+    min-height: 88px;
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border:
+        1px solid
+        #d7e5fa;
+
+    border-radius: 14px;
+
+    background: #edf5ff;
+
+    margin-bottom: 38px;
+
+}
+
+.info-banner-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    min-width: 45px;
+
+    border-radius: 50%;
+
+    background: #d9e9ff;
+
+    color: #2674d7;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.info-banner strong {
+
+    font-size: 12px;
+
+    color: var(--navy);
+
+}
+
+.info-banner p {
+
+    font-size: 11px;
+
+    color: #4d5c75;
+
+    margin-top: 5px;
+
+}
+
+.info-banner button {
+
+    margin-left: auto;
+
+    border: 1px solid #dce2ec;
+
+    border-radius: 10px;
+
+    background: white;
+
+    padding: 12px 17px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   RECOMMENDATIONS
+========================================= */
+
+.recommendation-header a {
+
+    text-decoration: none;
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================
+   INTERNSHIP GRID
+========================================= */
+
+.internship-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+}
+
+.internship-card {
+
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 14px;
+
+    padding: 19px;
+
+    box-shadow: var(--shadow);
+
+    transition: .25s;
+
+}
+
+.internship-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(24,39,89,.1);
+
+}
+
+.card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+}
+
+.card-top h3 {
+
+    font-size: 14px;
+
+    color: var(--navy);
+
+    line-height: 1.4;
+
+}
+
+.card-top p {
+
+    margin-top: 7px;
+
+    font-size: 11px;
+
+    color: #777e8b;
+
+}
+
+.match {
+
+    height: fit-content;
+
+    padding: 6px 9px;
+
+    white-space: nowrap;
+
+    border-radius: 20px;
+
+    background: #e5f8ed;
+
+    color: #15914b;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+.card-details {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+.card-details span {
+
+    font-size: 10px;
+
+    color: #5f6673;
+
+}
+
+.card-details i {
+
+    margin-right: 4px;
+
+    color: #d27753;
+
+}
+
+.card-details span:last-child i {
+
+    color: #15914b;
+
+}
+
+.card-bottom {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 22px;
+
+}
+
+.apply-btn {
+
+    text-decoration: none;
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+}
+
+.save-btn {
+
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        1px solid
+        #e1e4e9;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: var(--navy);
+
+    cursor: pointer;
+
+}
+
+.save-btn:hover {
+
+    background: #f4f6fa;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .companies-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+    .internship-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .filter-box {
+
+        grid-template-columns:
+            2fr 1fr 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .sidebar {
+
+        width: 240px;
+
+        min-width: 240px;
+
+    }
+
+    .main-content {
+
+        width: calc(100% - 240px);
+
+        margin-left: 240px;
+
+    }
+
+    .brand-main {
+
+        font-size: 23px;
+
+    }
+
+    .filter-box {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        width: 75px;
+
+        min-width: 75px;
+
+        padding:
+            30px 10px;
+
+    }
+
+    .brand-main {
+
+        font-size: 0;
+
+    }
+
+    .brand-main::before {
+
+        content: "MN";
+
+        font-size: 20px;
+
+    }
+
+    .brand-main span {
+
+        display: none;
+
+    }
+
+    .brand-sub {
+
+        display: none;
+
+    }
+
+    .sidebar-nav a {
+
+        justify-content: center;
+
+        padding: 0;
+
+    }
+
+    .sidebar-nav a span {
+
+        display: none;
+
+    }
+
+    .premium-card,
+    .sidebar-footer {
+
+        display: none;
+
+    }
+
+    .main-content {
+
+        width: calc(100% - 75px);
+
+        margin-left: 75px;
+
+    }
+
+    .topbar {
+
+        padding: 0 20px;
+
+    }
+
+    .top-search {
+
+        width: 100%;
+
+    }
+
+    .profile-info,
+    .profile > i {
+
+        display: none;
+
+    }
+
+    .page-content {
+
+        padding:
+            25px 20px 50px;
+
+    }
+
+    .companies-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .internship-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .filter-box {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .companies-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+    .page-heading h1 {
+
+        font-size: 27px;
+
+    }
+
+    .topbar {
+
+        height: 80px;
+
+    }
+
+    .top-actions {
+
+        gap: 10px;
+
+    }
+
+    .notification-btn {
+
+        display: none;
+
+    }
+
+}
