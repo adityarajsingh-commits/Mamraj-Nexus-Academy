@@ -1,22 +1,465 @@
-/* ====================================
-   MamRaj Nexus Academy
-   Main Stylesheet
-==================================== */
+/* =====================================================
+   TESTIMONIALS
+===================================================== */
 
-@import url("base.css");
+.testimonials {
 
-@import url("header.css");
+    padding: 115px 35px;
 
-@import url("about.css");
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #fbf6f1 100%
+        );
 
-@import url("features.css");
+    position: relative;
 
-@import url("timeline.css");
+    overflow: hidden;
 
-@import url("footer.css");
+}
 
-@import url("animations.css");
 
-@import url("responsive.css");
+/* subtle background decoration */
 
-@import url("navbar.css");
+.testimonials::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(201,139,112,.08);
+
+    filter: blur(80px);
+
+    left: -180px;
+
+    top: 100px;
+
+}
+
+.testimonials::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(29,44,99,.06);
+
+    filter: blur(80px);
+
+    right: -150px;
+
+    bottom: 80px;
+
+}
+
+
+/* GRID */
+
+.testimonial-grid {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* CARD */
+
+.testimonial-card {
+
+    position: relative;
+
+    padding: 32px;
+
+    min-height: 310px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background:
+        rgba(255,255,255,.9);
+
+    border:
+        1px solid
+        #e9e7e5;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(28,40,80,.06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+}
+
+.testimonial-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 60px
+        rgba(28,40,80,.12);
+
+    border-color:
+        rgba(201,139,112,.35);
+
+}
+
+
+/* FEATURED */
+
+.testimonial-card.featured {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fff8f4
+        );
+
+    border-color:
+        rgba(201,139,112,.3);
+
+}
+
+
+/* QUOTE */
+
+.quote-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        #fff0e8;
+
+    color:
+        var(--orange);
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* STARS */
+
+.testimonial-stars {
+
+    color: #e7a72b;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* TEXT */
+
+.testimonial-text {
+
+    color:
+        #60697c;
+
+    font-size: 12px;
+
+    line-height: 1.9;
+
+    flex: 1;
+
+}
+
+
+/* USER */
+
+.testimonial-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        #eeeeef;
+
+}
+
+
+/* AVATAR */
+
+.testimonial-avatar {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        var(--navy);
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    border:
+        3px solid
+        #eef1fa;
+
+}
+
+.testimonial-avatar.peach {
+
+    background:
+        var(--orange);
+
+    border-color:
+        #fff0e8;
+
+}
+
+.testimonial-avatar.purple {
+
+    background:
+        #7254c8;
+
+    border-color:
+        #eeeaff;
+
+}
+
+
+/* NAME */
+
+.testimonial-user strong {
+
+    display: block;
+
+    color:
+        var(--navy);
+
+    font-size: 11px;
+
+}
+
+.testimonial-user span {
+
+    display: block;
+
+    color:
+        #969cab;
+
+    font-size: 8px;
+
+    margin-top: 3px;
+
+}
+
+
+/* TRUST STRIP */
+
+.testimonial-trust {
+
+    max-width: 850px;
+
+    margin:
+        55px auto 0;
+
+    padding:
+        22px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    background:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        #e7e6e5;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(20,30,70,.04);
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.trust-item {
+
+    text-align: center;
+
+}
+
+.trust-item strong {
+
+    display: block;
+
+    color:
+        var(--navy);
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+.trust-item span {
+
+    display: block;
+
+    color:
+        #888f9d;
+
+    font-size: 8px;
+
+    margin-top: 3px;
+
+}
+
+.trust-line {
+
+    width: 1px;
+
+    height: 35px;
+
+    background:
+        #e2e3e7;
+
+}
+
+
+/* =====================================================
+   TESTIMONIAL RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .testimonial-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .testimonial-card:last-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .testimonials {
+
+        padding:
+            80px 20px;
+
+    }
+
+    .testimonial-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+    .testimonial-card:last-child {
+
+        grid-column:
+            auto;
+
+    }
+
+    .testimonial-trust {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 20px;
+
+    }
+
+    .trust-line {
+
+        display: none;
+
+    }
+
+}
