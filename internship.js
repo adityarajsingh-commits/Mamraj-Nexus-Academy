@@ -20,7 +20,7 @@ const internshipCards = document.querySelectorAll(".internship-card");
 const saveButtons = document.querySelectorAll(".save-btn");
 
 const searchButton = document.querySelector(".hero-search button");
-
+const internshipCards = document.querySelectorAll(".internship-card");
 /* ===============================
    SEARCH
 =============================== */
