@@ -1553,3 +1553,14 @@ body {
     }
 
 }
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 310px;
+}
+
+.main-content {
+    margin-left: 310px;
+    width: calc(100% - 310px);
+}
