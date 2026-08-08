@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certifications | MamRaj Nexus Academy</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="certifications.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="internships.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Internships</span>
+            </a>
+
+            <a href="projects.html">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="applications.html">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="certifications.html" class="active">
+                <i class="fa-solid fa-award"></i>
+                <span>Certificates</span>
+            </a>
+
+            <a href="shivaay-ai.html">
+                <i class="fa-solid fa-robot"></i>
+                <span>Shivay AI</span>
+            </a>
+
+            <a href="resume-builder.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="ats-checker.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>ATS Checker</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-help">
+
+                <i class="fa-solid fa-circle-question"></i>
+
+                <div>
+                    <strong>Need Help?</strong>
+                    <small>Ask Shivaay AI</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="page-title">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+
+                <div>
+                    <h2>My Certifications</h2>
+                    <span>Track your achievements and credentials</span>
+                </div>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-envelope"></i>
+                </button>
+
+                <button class="icon-btn" id="themeToggle">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        ST
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Aditya Singh</strong>
+                        <span>Student</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="cert-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    <i class="fa-solid fa-star"></i>
+                    YOUR ACHIEVEMENTS
+                </span>
+
+                <h1>
+                    Showcase Your
+                    <span>Skills.</span>
+                </h1>
+
+                <p>
+                    Earn verified certifications, demonstrate
+                    your expertise and make your profile
+                    stand out to recruiters.
+                </p>
+
+                <button class="explore-btn"
+                        onclick="scrollToAvailable()">
+
+                    Explore Certifications
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="hero-badge">
+
+                <div class="badge-ring">
+
+                    <i class="fa-solid fa-award"></i>
+
+                </div>
+
+                <strong>12</strong>
+
+                <span>Certificates Earned</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon earned">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+
+                <div>
+                    <strong>12</strong>
+                    <span>Certificates Earned</span>
+                </div>
+
+                <div class="stat-trend">
+                    +3 this month
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon progress">
+                    <i class="fa-solid fa-spinner"></i>
+                </div>
+
+                <div>
+                    <strong>03</strong>
+                    <span>In Progress</span>
+                </div>
+
+                <div class="stat-trend neutral">
+                    Keep learning
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon available">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+                    <strong>24</strong>
+                    <span>Available</span>
+                </div>
+
+                <div class="stat-trend">
+                    New courses
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon score">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <strong>86%</strong>
+                    <span>Completion Rate</span>
+                </div>
+
+                <div class="stat-trend">
+                    +8%
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <section class="cert-section"
+                 id="availableSection">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        YOUR LEARNING
+                    </span>
+
+                    <h2>Certifications</h2>
+
+                </div>
+
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search certificates..."
+                        >
+
+                    </div>
+
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            All Categories
+                        </option>
+
+                        <option value="development">
+                            Development
+                        </option>
+
+                        <option value="data">
+                            Data & AI
+                        </option>
+
+                        <option value="design">
+                            Design
+                        </option>
+
+                        <option value="business">
+                            Business
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABS -->
+
+            <div class="tabs">
+
+                <button class="tab active"
+                        data-tab="all">
+                    All
+                </button>
+
+                <button class="tab"
+                        data-tab="earned">
+                    Earned
+                </button>
+
+                <button class="tab"
+                        data-tab="progress">
+                    In Progress
+                </button>
+
+                <button class="tab"
+                        data-tab="available">
+                    Available
+                </button>
+
+            </div>
+
+
+            <!-- ================= CERTIFICATE GRID ================= -->
+
+            <div class="certificate-grid"
+                 id="certificateGrid">
+
+
+                <!-- CERTIFICATE 1 -->
+
+                <article class="certificate-card"
+                         data-status="earned"
+                         data-category="development"
+                         data-name="Full Stack Web Development">
+
+                    <div class="certificate-cover web">
+
+                        <div class="cover-top">
+
+                            <span class="verified">
+                                <i class="fa-solid fa-circle-check"></i>
+                                VERIFIED
+                            </span>
+
+                            <i class="fa-solid fa-code"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            N
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            Full Stack Web
+                            Development
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Development
+                            </span>
+
+                            <span class="earned-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                Aug 2026
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Full Stack Web Development
+                        </h3>
+
+                        <p>
+                            HTML, CSS, JavaScript, APIs
+                            and modern web development.
+                        </p>
+
+
+                        <div class="certificate-id">
+                            <span>Certificate ID</span>
+                            <strong>MNA-FSW-2026-00124</strong>
+                        </div>
+
+
+                        <div class="card-actions">
+
+                            <button class="view-btn"
+                                    onclick="viewCertificate(this)">
+
+                                <i class="fa-regular fa-eye"></i>
+                                View
+
+                            </button>
+
+                            <button class="download-btn"
+                                    onclick="downloadCertificate(this)">
+
+                                <i class="fa-solid fa-download"></i>
+                                Download
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERTIFICATE 2 -->
+
+                <article class="certificate-card"
+                         data-status="earned"
+                         data-category="data"
+                         data-name="Python Data Analytics">
+
+                    <div class="certificate-cover data">
+
+                        <div class="cover-top">
+
+                            <span class="verified">
+                                <i class="fa-solid fa-circle-check"></i>
+                                VERIFIED
+                            </span>
+
+                            <i class="fa-brands fa-python"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            Py
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            Python Data
+                            Analytics
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Data & AI
+                            </span>
+
+                            <span class="earned-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                Jul 2026
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Python Data Analytics
+                        </h3>
+
+                        <p>
+                            Python, NumPy, Pandas and
+                            data visualization fundamentals.
+                        </p>
+
+                        <div class="certificate-id">
+                            <span>Certificate ID</span>
+                            <strong>MNA-PDA-2026-00098</strong>
+                        </div>
+
+                        <div class="card-actions">
+
+                            <button class="view-btn"
+                                    onclick="viewCertificate(this)">
+
+                                <i class="fa-regular fa-eye"></i>
+                                View
+
+                            </button>
+
+                            <button class="download-btn"
+                                    onclick="downloadCertificate(this)">
+
+                                <i class="fa-solid fa-download"></i>
+                                Download
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERTIFICATE 3 -->
+
+                <article class="certificate-card"
+                         data-status="progress"
+                         data-category="data"
+                         data-name="Machine Learning Fundamentals">
+
+                    <div class="certificate-cover ml">
+
+                        <div class="cover-top">
+
+                            <span class="progress-label">
+                                IN PROGRESS
+                            </span>
+
+                            <i class="fa-solid fa-brain"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            AI
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            Machine Learning
+                            Fundamentals
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Data & AI
+                            </span>
+
+                            <span class="progress-percent">
+                                68%
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Machine Learning Fundamentals
+                        </h3>
+
+                        <p>
+                            Learn regression, classification,
+                            clustering and model evaluation.
+                        </p>
+
+
+                        <div class="course-progress">
+
+                            <div>
+                                <span>Course Progress</span>
+                                <strong>68%</strong>
+                            </div>
+
+                            <div class="progress-bar">
+                                <span style="width:68%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <button class="continue-btn">
+
+                            Continue Learning
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERTIFICATE 4 -->
+
+                <article class="certificate-card"
+                         data-status="available"
+                         data-category="design"
+                         data-name="UI UX Design">
+
+                    <div class="certificate-cover design">
+
+                        <div class="cover-top">
+
+                            <span class="available-label">
+                                AVAILABLE
+                            </span>
+
+                            <i class="fa-solid fa-pen-ruler"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            UX
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            UI/UX Design
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Design
+                            </span>
+
+                            <span class="duration">
+                                <i class="fa-regular fa-clock"></i>
+                                8 Weeks
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            UI/UX Design
+                        </h3>
+
+                        <p>
+                            Learn user research, wireframes,
+                            prototypes and visual design.
+                        </p>
+
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="fa-solid fa-book"></i>
+                                42 Lessons
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-signal"></i>
+                                Beginner
+                            </span>
+
+                        </div>
+
+
+                        <button class="start-btn">
+
+                            Start Certification
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERTIFICATE 5 -->
+
+                <article class="certificate-card"
+                         data-status="earned"
+                         data-category="business"
+                         data-name="Professional Communication">
+
+                    <div class="certificate-cover business">
+
+                        <div class="cover-top">
+
+                            <span class="verified">
+                                <i class="fa-solid fa-circle-check"></i>
+                                VERIFIED
+                            </span>
+
+                            <i class="fa-solid fa-comments"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            PC
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            Professional
+                            Communication
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Business
+                            </span>
+
+                            <span class="earned-date">
+                                <i class="fa-regular fa-calendar"></i>
+                                Jun 2026
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Professional Communication
+                        </h3>
+
+                        <p>
+                            Communication, presentations,
+                            teamwork and workplace skills.
+                        </p>
+
+                        <div class="certificate-id">
+
+                            <span>Certificate ID</span>
+
+                            <strong>
+                                MNA-PC-2026-00067
+                            </strong>
+
+                        </div>
+
+                        <div class="card-actions">
+
+                            <button class="view-btn"
+                                    onclick="viewCertificate(this)">
+
+                                <i class="fa-regular fa-eye"></i>
+                                View
+
+                            </button>
+
+                            <button class="download-btn"
+                                    onclick="downloadCertificate(this)">
+
+                                <i class="fa-solid fa-download"></i>
+                                Download
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CERTIFICATE 6 -->
+
+                <article class="certificate-card"
+                         data-status="available"
+                         data-category="development"
+                         data-name="React Development">
+
+                    <div class="certificate-cover react">
+
+                        <div class="cover-top">
+
+                            <span class="available-label">
+                                AVAILABLE
+                            </span>
+
+                            <i class="fa-brands fa-react"></i>
+
+                        </div>
+
+                        <div class="certificate-symbol">
+                            ⚛
+                        </div>
+
+                        <span class="cover-title">
+                            MamRaj Nexus Academy
+                        </span>
+
+                        <strong>
+                            React Development
+                        </strong>
+
+                    </div>
+
+
+                    <div class="certificate-body">
+
+                        <div class="card-meta">
+
+                            <span class="category">
+                                Development
+                            </span>
+
+                            <span class="duration">
+                                <i class="fa-regular fa-clock"></i>
+                                6 Weeks
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            React Development
+                        </h3>
+
+                        <p>
+                            Components, hooks, state management
+                            and modern React applications.
+                        </p>
+
+                        <div class="course-info">
+
+                            <span>
+                                <i class="fa-solid fa-book"></i>
+                                36 Lessons
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-signal"></i>
+                                Intermediate
+                            </span>
+
+                        </div>
+
+                        <button class="start-btn">
+
+                            Start Certification
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty-state"
+                 id="emptyState">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <h3>No certifications found</h3>
+
+                <p>
+                    Try changing your search or filter.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= CERTIFICATE MODAL ================= -->
+
+<div class="modal"
+     id="certificateModal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="certificate-modal">
+
+        <button class="modal-close"
+                onclick="closeCertificate()">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-certificate">
+
+            <div class="modal-logo">
+                M
+            </div>
+
+            <span>
+                MAMRAJ NEXUS ACADEMY
+            </span>
+
+            <h4>
+                CERTIFICATE OF ACHIEVEMENT
+            </h4>
+
+            <p>
+                This certificate is proudly presented to
+            </p>
+
+            <h2>
+                Aditya Singh
+            </h2>
+
+            <p>
+                for successfully completing
+            </p>
+
+            <h3 id="modalCertificateName">
+                Full Stack Web Development
+            </h3>
+
+            <div class="modal-line"></div>
+
+            <div class="modal-footer">
+
+                <span>
+                    Certificate ID:
+                    <strong id="modalCertificateId">
+                        MNA-FSW-2026-00124
+                    </strong>
+                </span>
+
+                <span>
+                    MamRaj Nexus Academy
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button onclick="downloadCertificate()">
+                <i class="fa-solid fa-download"></i>
+                Download
+            </button>
+
+            <button class="verify-modal-btn">
+                <i class="fa-solid fa-shield-check"></i>
+                Verify Certificate
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="certifications.js"></script>
+
+</body>
+</html>
