@@ -1,277 +1,121 @@
-/* ==========================================
+/* =====================================================
    MamRaj Nexus Academy
-   Internship Portal
-==========================================*/
+   Internships Page
+   Search + Filters + Save + Sorting
+===================================================== */
 
 "use strict";
 
-/* ===============================
+
+/* =====================================================
+   INTERNSHIP DATA
+===================================================== */
+
+const internships = [
+
+    {
+        id: "full-stack-001",
+        title: "Full Stack Developer Intern",
+        company: "TechNova Solutions",
+        location: "Remote",
+        duration: "3–6 months",
+        stipend: 15000,
+        match: 92
+    },
+
+    {
+        id: "data-analyst-001",
+        title: "Data Analyst Intern",
+        company: "Analytics Vidhya",
+        location: "Bangalore",
+        duration: "2–6 months",
+        stipend: 12000,
+        match: 87
+    },
+
+    {
+        id: "uiux-001",
+        title: "UI/UX Design Intern",
+        company: "PixelCrayons",
+        location: "Remote",
+        duration: "3 months",
+        stipend: 10000,
+        match: 84
+    },
+
+    {
+        id: "python-001",
+        title: "Python Developer Intern",
+        company: "CodeVerse Technologies",
+        location: "Delhi",
+        duration: "4 months",
+        stipend: 18000,
+        match: 89
+    },
+
+    {
+        id: "frontend-001",
+        title: "Frontend Developer Intern",
+        company: "WebCraft Labs",
+        location: "Mumbai",
+        duration: "3–6 months",
+        stipend: 14000,
+        match: 86
+    },
+
+    {
+        id: "marketing-001",
+        title: "Digital Marketing Intern",
+        company: "GrowthX",
+        location: "Remote",
+        duration: "3 months",
+        stipend: 9000,
+        match: 81
+    }
+
+];
+
+
+/* =====================================================
    DOM ELEMENTS
-=============================== */
+===================================================== */
 
-const searchInput = document.querySelector(".hero-search input");
+const searchInput =
+    document.querySelector(".hero-search-input");
 
-const locationFilter = document.querySelectorAll(".hero-search select")[0];
+const locationFilter =
+    document.querySelector(".location-filter");
 
-const durationFilter = document.querySelectorAll(".hero-search select")[1];
+const durationFilter =
+    document.querySelector(".duration-filter");
 
-const internshipCards = document.querySelectorAll(".internship-card");
+const stipendFilter =
+    document.querySelector(".stipend-filter");
 
-const saveButtons = document.querySelectorAll(".save-btn");
+const searchButton =
+    document.querySelector(".search-button");
 
-const searchButton = document.querySelector(".hero-search button");
-const internshipCards = document.querySelectorAll(".internship-card");
-/* ===============================
-   SEARCH
-=============================== */
+const internshipGrid =
+    document.querySelector(".internship-grid");
 
-function searchInternships(){
 
-const keyword = searchInput.value.toLowerCase();
-
-internshipCards.forEach(card=>{
-
-const text = card.innerText.toLowerCase();
-
-if(text.includes(keyword)){
-
-card.style.display="block";
-
-}else{
-
-card.style.display="none";
-
-}
-
-});
-
-}
-
-if(searchButton){
-
-searchButton.addEventListener("click",searchInternships);
-
-}
-
-if(searchInput){
-
-searchInput.addEventListener("keyup",searchInternships);
-
-}
-
-/* ===============================
-   LOCATION FILTER
-=============================== */
-
-function filterLocation(){
-
-const location = locationFilter.value.toLowerCase();
-
-internshipCards.forEach(card=>{
-
-if(location==="remote"){
-
-card.style.display = card.innerText.toLowerCase().includes("remote")
-
-? "block"
-
-: "none";
-
-}
-
-else if(location==="hybrid"){
-
-card.style.display = card.innerText.toLowerCase().includes("hybrid")
-
-? "block"
-
-: "none";
-
-}
-
-else if(location==="on-site"){
-
-card.style.display =
-
-!card.innerText.toLowerCase().includes("remote") &&
-
-!card.innerText.toLowerCase().includes("hybrid")
-
-? "block"
-
-: "none";
-
-}
-
-else{
-
-card.style.display="block";
-
-}
-
-});
-
-}
-
-locationFilter.addEventListener("change",filterLocation);
-
-/* ===============================
-   DURATION FILTER
-=============================== */
-
-function filterDuration(){
-
-const value = durationFilter.value.toLowerCase();
-
-internshipCards.forEach(card=>{
-
-if(value==="duration"){
-
-card.style.display="block";
-
-return;
-
-}
-
-if(card.innerText.toLowerCase().includes(value)){
-
-card.style.display="block";
-
-}else{
-
-card.style.display="none";
-
-}
-
-});
-
-}
-
-durationFilter.addEventListener("change",filterDuration);
-
-/* ===============================
-   SAVE INTERNSHIP
-=============================== */
-
-saveButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-btn.classList.toggle("active");
-
-const icon = btn.querySelector("i");
-
-if(btn.classList.contains("active")){
-
-icon.classList.remove("fa-regular");
-
-icon.classList.add("fa-solid");
-
-showToast("Internship saved successfully ❤️");
-
-}else{
-
-icon.classList.remove("fa-solid");
-
-icon.classList.add("fa-regular");
-
-showToast("Removed from saved internships");
-
-}
-
-});
-
-});
-
-/* ===============================
-   TOAST
-=============================== */
-
-function showToast(message){
-
-const toast=document.createElement("div");
-
-toast.className="toast";
-
-toast.innerHTML=message;
-
-document.body.appendChild(toast);
-
-Object.assign(toast.style,{
-
-position:"fixed",
-
-bottom:"30px",
-
-right:"30px",
-
-padding:"16px 24px",
-
-background:"#1E2A5A",
-
-color:"#fff",
-
-borderRadius:"14px",
-
-boxShadow:"0 15px 40px rgba(0,0,0,.15)",
-
-zIndex:"9999",
-
-opacity:"0",
-
-transition:".3s"
-
-});
-
-setTimeout(()=>{
-
-toast.style.opacity="1";
-
-},100);
-
-setTimeout(()=>{
-
-toast.style.opacity="0";
-
-setTimeout(()=>toast.remove(),300);
-
-},2500);
-
-}
-
-/* ===============================
-   PAGE LOAD
-=============================== */
-
-window.addEventListener("load",()=>{
-
-showToast("🚀 Internship Portal Ready");
-
-});
-
-console.log("Internship Module Loaded");
-/* ==========================================
-   PART 2
-   Pagination • Saved Data • Apply Workflow
-========================================== */
-
-/* ===============================
+/* =====================================================
    LOCAL STORAGE
-================================ */
+===================================================== */
 
-const STORAGE_KEY = "mamraj_saved_internships";
+const SAVED_KEY =
+    "mamraj_saved_internships";
 
-function getSavedInternships(){
 
-    try{
+function getSavedInternships() {
+
+    try {
 
         return JSON.parse(
-            localStorage.getItem(STORAGE_KEY)
+            localStorage.getItem(SAVED_KEY)
         ) || [];
 
-    }catch(error){
-
-        console.error("Unable to read saved internships",error);
+    } catch (error) {
 
         return [];
 
@@ -279,959 +123,252 @@ function getSavedInternships(){
 
 }
 
-function saveInternships(data){
+
+function saveInternships(data) {
 
     localStorage.setItem(
-        STORAGE_KEY,
+        SAVED_KEY,
         JSON.stringify(data)
     );
 
 }
 
-/* ===============================
-   UNIQUE INTERNSHIP ID
-================================ */
 
-function getInternshipId(card,index){
+/* =====================================================
+   CHECK SAVED
+===================================================== */
 
-    const title =
-        card.querySelector(".company h3")?.innerText ||
-        `internship-${index}`;
+function isSaved(id) {
 
-    const company =
-        card.querySelector(".company p")?.innerText ||
-        "";
+    const saved =
+        getSavedInternships();
 
-    return `${title}-${company}`
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g,"-")
-        .replace(/^-|-$/g,"");
+    return saved.includes(id);
 
 }
 
-/* ===============================
-   RESTORE SAVED INTERNSHIPS
-================================ */
 
-function restoreSavedInternships(){
+/* =====================================================
+   TOGGLE SAVE
+===================================================== */
 
-    const saved = getSavedInternships();
+function toggleSave(id) {
 
-    internshipCards.forEach((card,index)=>{
+    let saved =
+        getSavedInternships();
 
-        const id = getInternshipId(card,index);
+    if (saved.includes(id)) {
 
-        const button =
-            card.querySelector(".save-btn");
-
-        const icon =
-            button?.querySelector("i");
-
-        if(!button || !icon) return;
-
-        if(saved.includes(id)){
-
-            button.classList.add("active");
-
-            icon.classList.remove("fa-regular");
-
-            icon.classList.add("fa-solid");
-
-        }
-
-    });
-
-}
-
-/* ===============================
-   IMPROVED SAVE HANDLER
-================================ */
-
-saveButtons.forEach((button,index)=>{
-
-    button.addEventListener("click",()=>{
-
-        const card =
-            button.closest(".internship-card");
-
-        if(!card) return;
-
-        const id =
-            getInternshipId(card,index);
-
-        let saved =
-            getSavedInternships();
-
-        if(button.classList.contains("active")){
-
-            if(!saved.includes(id)){
-
-                saved.push(id);
-
-            }
-
-            saveInternships(saved);
-
-        }else{
-
-            saved =
-                saved.filter(item=>item !== id);
-
-            saveInternships(saved);
-
-        }
-
-        updateSavedCounter();
-
-    });
-
-});
-
-/* ===============================
-   SAVED COUNTER
-================================ */
-
-function updateSavedCounter(){
-
-    const count =
-        getSavedInternships().length;
-
-    const counter =
-        document.querySelector(".saved-count");
-
-    if(counter){
-
-        counter.textContent = count;
-
-    }
-
-}
-
-/* ===============================
-   PAGINATION
-================================ */
-
-const pageButtons =
-    document.querySelectorAll(".page-btn");
-
-let currentPage = 1;
-
-const cardsPerPage = 6;
-
-function showPage(page){
-
-    currentPage = page;
-
-    const cards =
-        Array.from(
-            document.querySelectorAll(
-                ".internship-card"
-            )
-        );
-
-    const totalPages =
-        Math.ceil(
-            cards.length / cardsPerPage
-        );
-
-    cards.forEach((card,index)=>{
-
-        const start =
-            (page - 1) * cardsPerPage;
-
-        const end =
-            start + cardsPerPage;
-
-        card.style.display =
-            index >= start && index < end
-                ? ""
-                : "none";
-
-    });
-
-    pageButtons.forEach((button,index)=>{
-
-        if(
-            index > 0 &&
-            index < pageButtons.length - 1
-        ){
-
-            button.classList.toggle(
-                "active",
-                Number(button.innerText) === page
+        saved =
+            saved.filter(
+                item => item !== id
             );
-
-        }
-
-    });
-
-}
-
-pageButtons.forEach((button,index)=>{
-
-    button.addEventListener("click",()=>{
-
-        const text =
-            button.innerText.trim();
-
-        if(text === "‹" || index === 0){
-
-            if(currentPage > 1){
-
-                showPage(currentPage - 1);
-
-            }
-
-            return;
-
-        }
-
-        if(
-            text === "›" ||
-            index === pageButtons.length - 1
-        ){
-
-            const totalPages =
-                Math.ceil(
-                    internshipCards.length /
-                    cardsPerPage
-                );
-
-            if(currentPage < totalPages){
-
-                showPage(currentPage + 1);
-
-            }
-
-            return;
-
-        }
-
-        const page =
-            Number(text);
-
-        if(!isNaN(page)){
-
-            showPage(page);
-
-        }
-
-    });
-
-});
-
-/* ===============================
-   APPLY BUTTON
-================================ */
-
-const applyButtons =
-    document.querySelectorAll(".apply-btn");
-
-applyButtons.forEach(button=>{
-
-    button.addEventListener("click",(event)=>{
-
-        const card =
-            button.closest(".internship-card");
-
-        if(!card) return;
-
-        const title =
-            card.querySelector(".company h3")
-            ?.innerText ||
-            "this internship";
-
-        const company =
-            card.querySelector(".company p")
-            ?.innerText ||
-            "";
-
-        const confirmed =
-            confirm(
-                `Apply for ${title} at ${company}?`
-            );
-
-        if(!confirmed){
-
-            event.preventDefault();
-
-            return;
-
-        }
-
-        localStorage.setItem(
-            "lastSelectedInternship",
-            JSON.stringify({
-
-                title:title,
-
-                company:company,
-
-                appliedAt:new Date().toISOString()
-
-            })
-        );
-
-    });
-
-});
-
-/* ===============================
-   RECOMMENDATION SORTING
-================================ */
-
-function getMatchPercentage(card){
-
-    const text =
-        card.innerText;
-
-    const match =
-        text.match(/(\d+)%\s*Match/i);
-
-    return match
-        ? Number(match[1])
-        : 0;
-
-}
-
-function sortByMatch(){
-
-    const grid =
-        document.querySelector(
-            ".internship-grid"
-        );
-
-    if(!grid) return;
-
-    const cards =
-        Array.from(
-            grid.querySelectorAll(
-                ".internship-card"
-            )
-        );
-
-    cards.sort(
-        (a,b)=>
-            getMatchPercentage(b) -
-            getMatchPercentage(a)
-    );
-
-    cards.forEach(card=>{
-
-        grid.appendChild(card);
-
-    });
-
-}
-
-/* ===============================
-   LOAD MORE
-================================ */
-
-const loadMoreButton =
-    document.querySelector(
-        ".load-more-btn"
-    );
-
-if(loadMoreButton){
-
-    loadMoreButton.addEventListener(
-        "click",
-        ()=>{
-
-            internshipCards.forEach(
-                card=>{
-
-                    card.style.display="";
-
-                }
-            );
-
-            loadMoreButton.style.display=
-                "none";
-
-            showToast(
-                "More internships loaded 🚀"
-            );
-
-        }
-    );
-
-}
-
-/* ===============================
-   INITIALIZE
-================================ */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    ()=>{
-
-        restoreSavedInternships();
-
-        updateSavedCounter();
-
-    }
-);
-/* ==========================================
-   MamRaj Nexus Academy
-   internships.js
-   PART 3
-
-   Advanced Search
-   Combined Filters
-   Sorting
-   Application Tracking
-========================================== */
-
-"use strict";
-
-/* ===============================
-   ADVANCED FILTER ELEMENTS
-================================ */
-
-const internshipGrid =
-    document.querySelector(".internship-grid");
-
-const allInternshipCards =
-    internshipGrid
-        ? Array.from(
-            internshipGrid.querySelectorAll(
-                ".internship-card"
-            )
-        )
-        : [];
-
-
-/* ===============================
-   READ CARD DATA
-================================ */
-
-function getCardData(card, index){
-
-    const title =
-        card.querySelector(".company h3")
-            ?.textContent
-            .trim() || "";
-
-    const company =
-        card.querySelector(".company p")
-            ?.textContent
-            .trim() || "";
-
-    const details =
-        Array.from(
-            card.querySelectorAll(".details span")
-        ).map(item =>
-            item.textContent
-                .trim()
-                .toLowerCase()
-        );
-
-    const skills =
-        Array.from(
-            card.querySelectorAll(".skills span")
-        ).map(item =>
-            item.textContent
-                .trim()
-                .toLowerCase()
-        );
-
-    const matchText =
-        card.querySelector(".match p")
-            ?.textContent || "";
-
-    const match =
-        Number(
-            matchText.match(/\d+/)?.[0] || 0
-        );
-
-    return {
-
-        id: getInternshipId(card,index),
-
-        title,
-
-        company,
-
-        details,
-
-        skills,
-
-        match,
-
-        element: card
-
-    };
-
-}
-
-
-/* ===============================
-   CREATE INTERNSHIP DATA
-================================ */
-
-const internshipData =
-    allInternshipCards.map(
-        (card,index)=>
-            getCardData(card,index)
-    );
-
-
-/* ===============================
-   ADVANCED SEARCH
-================================ */
-
-function advancedSearch(){
-
-    const keyword =
-        searchInput?.value
-            .trim()
-            .toLowerCase() || "";
-
-    const selectedLocation =
-        locationFilter?.value
-            .trim()
-            .toLowerCase() || "";
-
-    const selectedDuration =
-        durationFilter?.value
-            .trim()
-            .toLowerCase() || "";
-
-    internshipData.forEach(data => {
-
-        const searchableText = [
-
-            data.title,
-
-            data.company,
-
-            ...data.details,
-
-            ...data.skills
-
-        ].join(" ");
-
-        const keywordMatch =
-            !keyword ||
-            searchableText.includes(keyword);
-
-        let locationMatch = true;
-
-        if(
-            selectedLocation &&
-            selectedLocation !== "remote"
-        ){
-
-            locationMatch =
-                searchableText.includes(
-                    selectedLocation
-                );
-
-        }
-
-        if(
-            selectedLocation === "remote"
-        ){
-
-            locationMatch =
-                searchableText.includes("remote");
-
-        }
-
-        let durationMatch = true;
-
-        if(
-            selectedDuration &&
-            selectedDuration !== "duration"
-        ){
-
-            durationMatch =
-                searchableText.includes(
-                    selectedDuration
-                );
-
-        }
-
-        const visible =
-            keywordMatch &&
-            locationMatch &&
-            durationMatch;
-
-        data.element.style.display =
-            visible ? "" : "none";
-
-    });
-
-}
-
-
-/* ===============================
-   REPLACE BASIC SEARCH
-================================ */
-
-if(searchInput){
-
-    searchInput.addEventListener(
-        "input",
-        advancedSearch
-    );
-
-}
-
-if(locationFilter){
-
-    locationFilter.addEventListener(
-        "change",
-        advancedSearch
-    );
-
-}
-
-if(durationFilter){
-
-    durationFilter.addEventListener(
-        "change",
-        advancedSearch
-    );
-
-}
-
-
-/* ===============================
-   RESULT COUNTER
-================================ */
-
-function updateResultCounter(){
-
-    const visible =
-        allInternshipCards.filter(
-            card =>
-                card.style.display !== "none"
-        ).length;
-
-    const counter =
-        document.querySelector(
-            ".result-count"
-        );
-
-    if(counter){
-
-        counter.textContent =
-            `${visible} internships found`;
-
-    }
-
-}
-
-
-/* ===============================
-   SORTING
-================================ */
-
-function sortInternships(type){
-
-    if(!internshipGrid) return;
-
-    const cards =
-        Array.from(
-            internshipGrid.querySelectorAll(
-                ".internship-card"
-            )
-        );
-
-    if(type === "match"){
-
-        cards.sort(
-            (a,b)=>
-                getMatchPercentage(b) -
-                getMatchPercentage(a)
-        );
-
-    }
-
-    if(type === "stipend"){
-
-        cards.sort(
-            (a,b)=>
-                extractStipend(b) -
-                extractStipend(a)
-        );
-
-    }
-
-    if(type === "title"){
-
-        cards.sort((a,b)=>{
-
-            const titleA =
-                a.querySelector(
-                    ".company h3"
-                )?.textContent || "";
-
-            const titleB =
-                b.querySelector(
-                    ".company h3"
-                )?.textContent || "";
-
-            return titleA.localeCompare(
-                titleB
-            );
-
-        });
-
-    }
-
-    cards.forEach(card => {
-
-        internshipGrid.appendChild(card);
-
-    });
-
-}
-
-
-/* ===============================
-   STIPEND EXTRACTION
-================================ */
-
-function extractStipend(card){
-
-    const details =
-        Array.from(
-            card.querySelectorAll(
-                ".details span"
-            )
-        );
-
-    const stipendElement =
-        details.find(item =>
-            item.textContent
-                .toLowerCase()
-                .includes("₹")
-        );
-
-    if(!stipendElement){
-
-        return 0;
-
-    }
-
-    const numbers =
-        stipendElement.textContent
-            .replace(/,/g,"")
-            .match(/\d+/);
-
-    return numbers
-        ? Number(numbers[0])
-        : 0;
-
-}
-
-
-/* ===============================
-   SORT DROPDOWN
-================================ */
-
-const sortSelect =
-    document.querySelector(
-        ".sort-internships"
-    );
-
-if(sortSelect){
-
-    sortSelect.addEventListener(
-        "change",
-        event => {
-
-            sortInternships(
-                event.target.value
-            );
-
-        }
-    );
-
-}
-
-
-/* ===============================
-   APPLICATION TRACKING
-================================ */
-
-const APPLICATION_KEY =
-    "mamraj_applications";
-
-
-function getApplications(){
-
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                APPLICATION_KEY
-            )
-        ) || [];
-
-    }catch(error){
-
-        console.error(
-            "Unable to load applications",
-            error
-        );
-
-        return [];
-
-    }
-
-}
-
-
-function saveApplications(applications){
-
-    localStorage.setItem(
-
-        APPLICATION_KEY,
-
-        JSON.stringify(applications)
-
-    );
-
-}
-
-
-/* ===============================
-   APPLY TO INTERNSHIP
-================================ */
-
-function registerApplication(card){
-
-    const title =
-        card.querySelector(
-            ".company h3"
-        )?.textContent.trim() || "";
-
-    const company =
-        card.querySelector(
-            ".company p"
-        )?.textContent.trim() || "";
-
-    const applications =
-        getApplications();
-
-    const alreadyApplied =
-        applications.some(
-            application =>
-                application.title === title &&
-                application.company === company
-        );
-
-    if(alreadyApplied){
 
         showToast(
-            "You have already applied for this internship."
+            "Internship removed from saved."
         );
 
-        return false;
+    } else {
+
+        saved.push(id);
+
+        showToast(
+            "Internship saved successfully."
+        );
 
     }
 
-    applications.push({
+    saveInternships(saved);
 
-        id:
-            `${Date.now()}-${Math.random()
-                .toString(36)
-                .slice(2,8)}`,
-
-        title,
-
-        company,
-
-        status:"Applied",
-
-        appliedAt:
-            new Date().toISOString(),
-
-        progress:25
-
-    });
-
-    saveApplications(applications);
-
-    showToast(
-        "Application submitted successfully 🚀"
+    renderInternships(
+        getFilteredInternships()
     );
-
-    return true;
 
 }
 
 
-/* ===============================
-   APPLY BUTTON ENHANCEMENT
-================================ */
+/* =====================================================
+   CREATE CARD
+===================================================== */
 
-document
-    .querySelectorAll(".apply-btn")
-    .forEach(button => {
+function createInternshipCard(internship) {
+
+    const saved =
+        isSaved(internship.id);
+
+
+    return `
+
+        <article
+            class="internship-card"
+            data-id="${internship.id}"
+        >
+
+            <div class="card-top">
+
+                <div>
+
+                    <h3>
+                        ${internship.title}
+                    </h3>
+
+                    <p>
+                        ${internship.company}
+                    </p>
+
+                </div>
+
+
+                <span class="match">
+                    ${internship.match}% Match
+                </span>
+
+            </div>
+
+
+            <div class="card-details">
+
+                <span>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    ${internship.location}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    ${internship.duration}
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    ₹${internship.stipend.toLocaleString("en-IN")}
+                    / month
+
+                </span>
+
+            </div>
+
+
+            <div class="card-bottom">
+
+                <a
+                    href="internship-details.html?id=${internship.id}"
+                    class="apply-btn"
+                >
+                    View Internship
+                </a>
+
+
+                <button
+                    class="save-btn ${saved ? "saved" : ""}"
+                    data-save="${internship.id}"
+                    aria-label="Save internship"
+                >
+
+                    <i class="${
+                        saved
+                            ? "fa-solid"
+                            : "fa-regular"
+                    } fa-bookmark"></i>
+
+                </button>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =====================================================
+   RENDER INTERNSHIPS
+===================================================== */
+
+function renderInternships(data) {
+
+    if (!internshipGrid) return;
+
+
+    if (!data.length) {
+
+        internshipGrid.innerHTML = `
+
+            <div class="no-results">
+
+                <div class="no-results-icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+                <h3>
+                    No internships found
+                </h3>
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+                <button
+                    id="clearFilters"
+                    class="clear-filter-btn"
+                >
+                    Clear Filters
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    internshipGrid.innerHTML =
+        data
+            .map(createInternshipCard)
+            .join("");
+
+
+    attachCardEvents();
+
+}
+
+
+/* =====================================================
+   CARD EVENTS
+===================================================== */
+
+function attachCardEvents() {
+
+    const saveButtons =
+        document.querySelectorAll(
+            "[data-save]"
+        );
+
+
+    saveButtons.forEach(button => {
 
         button.addEventListener(
             "click",
-            event => {
+            function () {
 
-                const card =
-                    button.closest(
-                        ".internship-card"
-                    );
+                const id =
+                    this.dataset.save;
 
-                if(!card) return;
-
-                const title =
-                    card.querySelector(
-                        ".company h3"
-                    )?.textContent.trim() || "";
-
-                const company =
-                    card.querySelector(
-                        ".company p"
-                    )?.textContent.trim() || "";
-
-                const applications =
-                    getApplications();
-
-                const alreadyApplied =
-                    applications.some(
-                        application =>
-                            application.title === title &&
-                            application.company === company
-                    );
-
-                if(alreadyApplied){
-
-                    event.preventDefault();
-
-                    showToast(
-                        "Already applied to this internship."
-                    );
-
-                    return;
-
-                }
-
-                const confirmed =
-                    confirm(
-                        `Apply for ${title} at ${company}?`
-                    );
-
-                if(!confirmed){
-
-                    event.preventDefault();
-
-                    return;
-
-                }
-
-                registerApplication(card);
+                toggleSave(id);
 
             }
         );
@@ -1239,136 +376,361 @@ document
     });
 
 
-/* ===============================
-   APPLICATION STATISTICS
-================================ */
-
-function updateApplicationStats(){
-
-    const applications =
-        getApplications();
-
-    const total =
-        applications.length;
-
-    const pending =
-        applications.filter(
-            application =>
-                application.status ===
-                "Applied"
-        ).length;
-
-    const shortlisted =
-        applications.filter(
-            application =>
-                application.status ===
-                "Shortlisted"
-        ).length;
-
-    const rejected =
-        applications.filter(
-            application =>
-                application.status ===
-                "Rejected"
-        ).length;
-
-
-    const totalElement =
-        document.querySelector(
-            "[data-stat='applications']"
-        );
-
-    const pendingElement =
-        document.querySelector(
-            "[data-stat='pending']"
-        );
-
-    const shortlistedElement =
-        document.querySelector(
-            "[data-stat='shortlisted']"
-        );
-
-    const rejectedElement =
-        document.querySelector(
-            "[data-stat='rejected']"
+    const clearButton =
+        document.getElementById(
+            "clearFilters"
         );
 
 
-    if(totalElement){
+    if (clearButton) {
 
-        totalElement.textContent =
-            total;
-
-    }
-
-    if(pendingElement){
-
-        pendingElement.textContent =
-            pending;
-
-    }
-
-    if(shortlistedElement){
-
-        shortlistedElement.textContent =
-            shortlisted;
-
-    }
-
-    if(rejectedElement){
-
-        rejectedElement.textContent =
-            rejected;
+        clearButton.addEventListener(
+            "click",
+            clearFilters
+        );
 
     }
 
 }
 
 
-/* ===============================
-   SHIVAAI AI MATCH
-================================ */
+/* =====================================================
+   SEARCH
+===================================================== */
 
-function getRecommendedInternships(){
+function getSearchValue() {
 
-    return internshipData
+    if (!searchInput) return "";
 
-        .sort(
-            (a,b)=>
-                b.match - a.match
-        )
-
-        .slice(0,3);
+    return searchInput
+        .value
+        .trim()
+        .toLowerCase();
 
 }
 
 
-function showAIRecommendations(){
+/* =====================================================
+   FILTER DATA
+===================================================== */
 
-    const recommendations =
-        getRecommendedInternships();
+function getFilteredInternships() {
 
-    console.log(
-        "Shivaay AI Recommendations:",
-        recommendations
+    const search =
+        getSearchValue();
+
+
+    const location =
+        locationFilter
+            ? locationFilter.value.toLowerCase()
+            : "";
+
+
+    const duration =
+        durationFilter
+            ? durationFilter.value.toLowerCase()
+            : "";
+
+
+    const stipend =
+        stipendFilter
+            ? stipendFilter.value
+            : "";
+
+
+    return internships.filter(
+        internship => {
+
+
+            /* SEARCH */
+
+            const searchableText = `
+
+                ${internship.title}
+                ${internship.company}
+                ${internship.location}
+                ${internship.duration}
+
+            `.toLowerCase();
+
+
+            const matchesSearch =
+                !search ||
+                searchableText.includes(
+                    search
+                );
+
+
+            /* LOCATION */
+
+            const matchesLocation =
+                !location ||
+                internship.location
+                    .toLowerCase()
+                    .includes(location);
+
+
+            /* DURATION */
+
+            const matchesDuration =
+                !duration ||
+                internship.duration
+                    .toLowerCase()
+                    .includes(duration);
+
+
+            /* STIPEND */
+
+            let matchesStipend =
+                true;
+
+
+            if (stipend) {
+
+                matchesStipend =
+                    internship.stipend >=
+                    Number(stipend);
+
+            }
+
+
+            return (
+
+                matchesSearch &&
+                matchesLocation &&
+                matchesDuration &&
+                matchesStipend
+
+            );
+
+        }
     );
 
 }
 
 
-/* ===============================
-   INITIALIZE PART 3
-================================ */
+/* =====================================================
+   APPLY FILTERS
+===================================================== */
+
+function applyFilters() {
+
+    const filtered =
+        getFilteredInternships();
+
+
+    renderInternships(
+        filtered
+    );
+
+}
+
+
+/* =====================================================
+   SEARCH BUTTON
+===================================================== */
+
+if (searchButton) {
+
+    searchButton.addEventListener(
+        "click",
+        applyFilters
+    );
+
+}
+
+
+/* =====================================================
+   LIVE SEARCH
+===================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        applyFilters
+    );
+
+}
+
+
+/* =====================================================
+   FILTER EVENTS
+===================================================== */
+
+[
+    locationFilter,
+    durationFilter,
+    stipendFilter
+
+].forEach(filter => {
+
+    if (filter) {
+
+        filter.addEventListener(
+            "change",
+            applyFilters
+        );
+
+    }
+
+});
+
+
+/* =====================================================
+   ENTER KEY SEARCH
+===================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                applyFilters();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR FILTERS
+===================================================== */
+
+function clearFilters() {
+
+    if (searchInput) {
+
+        searchInput.value = "";
+
+    }
+
+
+    if (locationFilter) {
+
+        locationFilter.value = "";
+
+    }
+
+
+    if (durationFilter) {
+
+        durationFilter.value = "";
+
+    }
+
+
+    if (stipendFilter) {
+
+        stipendFilter.value = "";
+
+    }
+
+
+    renderInternships(
+        internships
+    );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const oldToast =
+        document.querySelector(
+            ".internship-toast"
+        );
+
+
+    if (oldToast) {
+
+        oldToast.remove();
+
+    }
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        "internship-toast";
+
+
+    toast.innerHTML = `
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <span>
+            ${message}
+        </span>
+
+    `;
+
+
+    document.body.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.add(
+                "show"
+            );
+
+        },
+        20
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+            setTimeout(
+                () => toast.remove(),
+                300
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
-    ()=>{
+    () => {
 
-        updateResultCounter();
-
-        updateApplicationStats();
-
-        showAIRecommendations();
+        renderInternships(
+            internships
+        );
 
     }
 );
