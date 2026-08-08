@@ -1,465 +1,907 @@
 /* =====================================================
-   TESTIMONIALS
+   MamRaj Nexus Academy
+   Internship Details Page
+   Separate Style Sheet
 ===================================================== */
 
-.testimonials {
-
-    padding: 115px 35px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #fbf6f1 100%
-        );
-
-    position: relative;
-
-    overflow: hidden;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-/* subtle background decoration */
-
-.testimonials::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 350px;
-
-    height: 350px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(201,139,112,.08);
-
-    filter: blur(80px);
-
-    left: -180px;
-
-    top: 100px;
-
+:root {
+    --navy: #1E2A5A;
+    --navy-light: #30437E;
+    --rose: #C58B73;
+    --gold: #D4AF37;
+    --cream: #F8F3EE;
+    --white: #ffffff;
+    --text: #263238;
+    --muted: #6b7280;
+    --border: #e7e7e7;
+    --success: #16803c;
 }
 
-.testimonials::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-
-    height: 300px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(29,44,99,.06);
-
-    filter: blur(80px);
-
-    right: -150px;
-
-    bottom: 80px;
-
+html {
+    scroll-behavior: smooth;
 }
 
-
-/* GRID */
-
-.testimonial-grid {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-
-    position: relative;
-
-    z-index: 2;
-
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
 }
 
+/* =====================================================
+   NAVBAR
+===================================================== */
 
-/* CARD */
-
-.testimonial-card {
-
-    position: relative;
-
-    padding: 32px;
-
-    min-height: 310px;
+.details-navbar {
+    width: 100%;
+    min-height: 76px;
+    padding: 0 6%;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
 
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.details-logo a {
+    text-decoration: none;
+    display: flex;
     flex-direction: column;
+}
 
-    background:
-        rgba(255,255,255,.9);
+.details-logo strong {
+    color: var(--navy);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+}
 
-    border:
-        1px solid
-        #e9e7e5;
+.details-logo span {
+    color: var(--rose);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.details-navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.details-navbar nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.details-navbar nav a:hover,
+.details-navbar nav a.active {
+    color: var(--navy);
+}
+
+.details-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.details-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.details-profile span {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.internship-details-page {
+    width: min(1200px, 92%);
+    margin: auto;
+    padding: 35px 0 80px;
+}
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.breadcrumb a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumb i {
+    font-size: 9px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.details-hero {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .06);
+
+    margin-bottom: 30px;
+}
+
+.details-company-logo {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
 
     border-radius: 22px;
 
-    box-shadow:
-        0 15px 45px
-        rgba(28,40,80,.06);
+    background: var(--cream);
 
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    color: var(--rose);
+    font-size: 38px;
 }
 
-.testimonial-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    box-shadow:
-        0 25px 60px
-        rgba(28,40,80,.12);
-
-    border-color:
-        rgba(201,139,112,.35);
-
+.details-hero-content {
+    flex: 1;
 }
 
+.verified-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
 
-/* FEATURED */
+    color: var(--success);
 
-.testimonial-card.featured {
+    font-size: 12px;
+    font-weight: 600;
 
-    background:
-
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #fff8f4
-        );
-
-    border-color:
-        rgba(201,139,112,.3);
-
+    margin-bottom: 8px;
 }
 
+.details-hero-content h1 {
+    color: var(--navy);
+    font-size: 34px;
+    line-height: 1.3;
 
-/* QUOTE */
+    margin-bottom: 5px;
+}
 
-.quote-icon {
+.details-hero-content h3 {
+    color: var(--muted);
+    font-size: 17px;
+    font-weight: 500;
 
-    width: 42px;
+    margin-bottom: 18px;
+}
 
-    height: 42px;
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 13px;
+
+    background: var(--cream);
+    border-radius: 25px;
+
+    color: #555;
+    font-size: 13px;
+}
+
+.hero-meta i {
+    color: var(--rose);
+}
+
+.details-save-btn {
+    border: 1px solid var(--border);
+    background: var(--white);
+
+    color: var(--navy);
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.details-save-btn:hover,
+.details-save-btn.saved {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+/* =====================================================
+   MAIN GRID
+===================================================== */
+
+.details-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 350px;
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.details-main {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.details-section {
+    background: var(--white);
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .05);
+}
+
+.details-section h2 {
+    color: var(--navy);
+    font-size: 22px;
+
+    margin-bottom: 18px;
+}
+
+.details-section p {
+    color: #626262;
+    font-size: 14px;
+    line-height: 1.8;
+
+    margin-bottom: 14px;
+}
+
+.details-section p:last-child {
+    margin-bottom: 0;
+}
+
+/* =====================================================
+   LIST
+===================================================== */
+
+.details-list {
+    padding-left: 20px;
+}
+
+.details-list li {
+    color: #626262;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    margin-bottom: 10px;
+}
+
+.details-list li::marker {
+    color: var(--rose);
+}
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.details-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.details-skills span {
+    background: #EEF2FF;
+
+    color: var(--navy);
+
+    padding: 9px 15px;
+
+    border-radius: 25px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: .3s;
+}
+
+.details-skills span:hover {
+    background: var(--navy);
+    color: var(--white);
+}
+
+/* =====================================================
+   BENEFITS
+===================================================== */
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.benefits-grid > div {
+    padding: 20px;
+
+    background: var(--cream);
+
+    border-radius: 16px;
+
+    transition: .3s;
+}
+
+.benefits-grid > div:hover {
+    transform: translateY(-5px);
+}
+
+.benefits-grid i {
+    color: var(--rose);
+    font-size: 25px;
+
+    margin-bottom: 12px;
+}
+
+.benefits-grid h3 {
+    color: var(--navy);
+
+    font-size: 15px;
+
+    margin-bottom: 7px;
+}
+
+.benefits-grid p {
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.details-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    position: sticky;
+    top: 100px;
+}
+
+.apply-panel,
+.company-panel {
+    background: var(--white);
+
+    padding: 28px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+.apply-panel > h2 {
+    color: var(--navy);
+
+    font-size: 30px;
+}
+
+.apply-panel > span {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+/* =====================================================
+   APPLY INFORMATION
+===================================================== */
+
+.apply-info {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    margin: 22px 0;
+    padding: 8px 0;
+}
+
+.apply-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin: 15px 0;
+}
+
+.apply-info i {
+    color: var(--rose);
+
+    width: 18px;
+}
+
+.apply-info strong {
+    margin-left: auto;
+
+    color: var(--navy);
+}
+
+/* =====================================================
+   APPLY BUTTON
+===================================================== */
+
+.apply-now-details {
+    width: 100%;
+
+    border: none;
+
+    background: var(--navy);
+    color: var(--white);
+
+    padding: 16px;
 
     border-radius: 13px;
 
+    font-family: inherit;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.apply-now-details:hover {
+    background: var(--rose);
+
+    transform: translateY(-2px);
+}
+
+.apply-now-details i {
+    margin-left: 8px;
+}
+
+.apply-panel small {
+    display: block;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-top: 15px;
+}
+
+.apply-panel small i {
+    color: var(--success);
+}
+
+/* =====================================================
+   COMPANY
+===================================================== */
+
+.company-panel h3 {
+    color: var(--navy);
+
+    font-size: 18px;
+
+    margin-bottom: 20px;
+}
+
+.company-profile {
     display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        #fff0e8;
-
-    color:
-        var(--orange);
-
-    font-size: 16px;
-
-    margin-bottom: 18px;
-
-}
-
-
-/* STARS */
-
-.testimonial-stars {
-
-    color: #e7a72b;
-
-    font-size: 12px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 15px;
-
-}
-
-
-/* TEXT */
-
-.testimonial-text {
-
-    color:
-        #60697c;
-
-    font-size: 12px;
-
-    line-height: 1.9;
-
-    flex: 1;
-
-}
-
-
-/* USER */
-
-.testimonial-user {
-
-    display: flex;
-
     align-items: center;
 
     gap: 12px;
 
-    margin-top: 25px;
-
-    padding-top: 18px;
-
-    border-top:
-        1px solid
-        #eeeeef;
-
+    margin-bottom: 18px;
 }
 
+.company-profile-icon {
+    width: 52px;
+    height: 52px;
 
-/* AVATAR */
+    border-radius: 14px;
 
-.testimonial-avatar {
+    background: var(--cream);
 
-    width: 43px;
-
-    height: 43px;
-
-    border-radius: 50%;
+    color: var(--rose);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    background:
-        var(--navy);
-
-    color: white;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    border:
-        3px solid
-        #eef1fa;
-
 }
 
-.testimonial-avatar.peach {
-
-    background:
-        var(--orange);
-
-    border-color:
-        #fff0e8;
-
-}
-
-.testimonial-avatar.purple {
-
-    background:
-        #7254c8;
-
-    border-color:
-        #eeeaff;
-
-}
-
-
-/* NAME */
-
-.testimonial-user strong {
-
+.company-profile strong {
     display: block;
 
-    color:
-        var(--navy);
+    color: var(--navy);
+
+    font-size: 14px;
+}
+
+.company-profile span {
+    display: block;
+
+    color: var(--muted);
 
     font-size: 11px;
-
 }
 
-.testimonial-user span {
+.company-panel p {
+    color: #666;
 
-    display: block;
+    font-size: 13px;
 
-    color:
-        #969cab;
+    line-height: 1.7;
 
-    font-size: 8px;
-
-    margin-top: 3px;
-
+    margin-bottom: 12px;
 }
 
+.company-panel > a {
+    color: var(--rose);
 
-/* TRUST STRIP */
+    text-decoration: none;
 
-.testimonial-trust {
+    font-size: 13px;
 
-    max-width: 850px;
+    font-weight: 600;
+}
 
-    margin:
-        55px auto 0;
+/* =====================================================
+   APPLICATION MODAL
+===================================================== */
 
-    padding:
-        22px 30px;
+.apply-modal {
+    position: fixed;
 
-    display: flex;
+    inset: 0;
+
+    display: none;
 
     align-items: center;
+    justify-content: center;
 
-    justify-content: space-around;
+    padding: 20px;
 
-    background:
-        rgba(255,255,255,.8);
+    background: rgba(15, 23, 42, .68);
 
-    border:
-        1px solid
-        #e7e6e5;
+    backdrop-filter: blur(5px);
 
-    border-radius: 18px;
+    z-index: 5000;
+}
 
-    box-shadow:
-        0 15px 40px
-        rgba(20,30,70,.04);
+.apply-modal.show {
+    display: flex;
+}
+
+.apply-modal-content {
+    width: min(520px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: var(--white);
+
+    padding: 35px;
+
+    border-radius: 24px;
 
     position: relative;
 
-    z-index: 2;
-
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
 }
 
-.trust-item {
+.close-modal {
+    position: absolute;
 
-    text-align: center;
+    top: 18px;
+    right: 18px;
 
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--cream);
+
+    cursor: pointer;
+
+    transition: .3s;
 }
 
-.trust-item strong {
-
-    display: block;
-
-    color:
-        var(--navy);
-
-    font-size: 20px;
-
-    font-weight: 700;
-
+.close-modal:hover {
+    background: var(--navy);
+    color: var(--white);
 }
 
-.trust-item span {
+.modal-icon {
+    width: 60px;
+    height: 60px;
 
-    display: block;
+    border-radius: 18px;
 
-    color:
-        #888f9d;
+    background: var(--cream);
 
-    font-size: 8px;
+    color: var(--rose);
 
-    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    font-size: 25px;
+
+    margin-bottom: 18px;
 }
 
-.trust-line {
+.apply-modal-content h2 {
+    color: var(--navy);
 
-    width: 1px;
-
-    height: 35px;
-
-    background:
-        #e2e3e7;
-
+    margin-bottom: 7px;
 }
 
+.apply-modal-content > p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
 
 /* =====================================================
-   TESTIMONIAL RESPONSIVE
+   FORM
 ===================================================== */
 
-@media (max-width: 900px) {
-
-    .testimonial-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
-    }
-
-    .testimonial-card:last-child {
-
-        grid-column:
-            1 / -1;
-
-    }
-
+#internshipApplicationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
+#internshipApplicationForm label {
+    color: var(--navy);
 
-@media (max-width: 600px) {
+    font-size: 13px;
 
-    .testimonials {
+    font-weight: 600;
 
-        padding:
-            80px 20px;
+    margin-top: 8px;
+}
 
+#internshipApplicationForm input,
+#internshipApplicationForm textarea {
+    width: 100%;
+
+    border: 1px solid #E1E5EA;
+
+    border-radius: 12px;
+
+    padding: 13px 15px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition: .3s;
+}
+
+#internshipApplicationForm input:focus,
+#internshipApplicationForm textarea:focus {
+    border-color: var(--rose);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(197, 139, 115, .1);
+}
+
+#internshipApplicationForm textarea {
+    resize: vertical;
+}
+
+#internshipApplicationForm input[type="file"] {
+    padding: 10px;
+}
+
+.submit-application {
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 15px;
+
+    background: var(--navy);
+
+    color: var(--white);
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.submit-application:hover {
+    background: var(--rose);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+
+    .details-navbar {
+        padding: 15px 4%;
     }
 
-    .testimonial-grid {
-
-        grid-template-columns:
-            1fr;
-
+    .details-navbar nav {
+        gap: 18px;
     }
 
-    .testimonial-card:last-child {
-
-        grid-column:
-            auto;
-
+    .details-layout {
+        grid-template-columns: 1fr;
     }
 
-    .testimonial-trust {
+    .details-sidebar {
+        position: static;
+    }
+}
 
-        display: grid;
+@media (max-width: 768px) {
 
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 20px;
-
+    .details-navbar {
+        flex-wrap: wrap;
     }
 
-    .trust-line {
+    .details-navbar nav {
+        width: 100%;
 
+        order: 3;
+
+        justify-content: center;
+    }
+
+    .details-profile span {
         display: none;
-
     }
 
+    .details-hero {
+        flex-wrap: wrap;
+
+        padding: 25px;
+    }
+
+    .details-hero-content {
+        min-width: calc(100% - 120px);
+    }
+
+    .details-hero-content h1 {
+        font-size: 27px;
+    }
+
+    .details-save-btn {
+        margin-left: 115px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .internship-details-page {
+        width: 94%;
+    }
+
+    .details-hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .details-company-logo {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+
+        font-size: 28px;
+    }
+
+    .details-hero-content {
+        min-width: 100%;
+    }
+
+    .details-hero-content h1 {
+        font-size: 24px;
+    }
+
+    .details-save-btn {
+        margin-left: 0;
+    }
+
+    .details-section,
+    .apply-panel,
+    .company-panel {
+        padding: 22px;
+    }
+
+    .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .apply-modal-content {
+        padding: 25px;
+    }
 }
