@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATS Resume Checker | MamRaj Nexus Academy</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="ats-checker.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="internships.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Internships</span>
+            </a>
+
+            <a href="projects.html">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="applications.html">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="certifications.html">
+                <i class="fa-solid fa-award"></i>
+                <span>Certificates</span>
+            </a>
+
+            <a href="shivaay-ai.html">
+                <i class="fa-solid fa-robot"></i>
+                <span>Shivaay AI</span>
+            </a>
+
+            <a href="resume-builder.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="ats-checker.html" class="active">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>ATS Checker</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <i class="fa-solid fa-circle-question"></i>
+
+            <div>
+                <strong>Need Help?</strong>
+                <small>Ask Shivaay AI</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="eyebrow">
+                    CAREER INTELLIGENCE
+                </span>
+
+                <h2>Resume ATS Checker</h2>
+
+                <p>
+                    Optimize your resume before applying.
+                </p>
+
+            </div>
+
+
+            <div class="top-right">
+
+                <button class="top-btn">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <button class="top-btn" id="themeBtn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        AS
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Aditya Singh
+                        </strong>
+
+                        <small>
+                            Student
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-icon">
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <span class="eyebrow">
+                        AI POWERED ANALYSIS
+                    </span>
+
+                    <h1>
+                        Is your resume
+                        <span>ATS-ready?</span>
+                    </h1>
+
+                    <p>
+                        Upload your resume and compare it
+                        against a job description to discover
+                        exactly what recruiters and ATS systems
+                        may be looking for.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-badge">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                <div>
+
+                    <strong>
+                        Smart Analysis
+                    </strong>
+
+                    <small>
+                        Powered by Shivaay AI
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCANNER -->
+
+        <section class="scanner-grid">
+
+
+            <!-- RESUME -->
+
+            <div class="scan-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon">
+                        <i class="fa-solid fa-file-arrow-up"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Upload Resume
+                        </h3>
+
+                        <p>
+                            PDF or DOCX • Max 5 MB
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="upload-box"
+                    id="uploadBox">
+
+                    <input
+                        type="file"
+                        id="resumeFile"
+                        accept=".pdf,.doc,.docx"
+                        hidden>
+
+
+                    <div class="upload-icon">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    </div>
+
+
+                    <h4>
+                        Drop your resume here
+                    </h4>
+
+                    <p>
+                        or click to browse your files
+                    </p>
+
+
+                    <button
+                        type="button"
+                        id="browseBtn">
+
+                        Choose Resume
+
+                    </button>
+
+
+                    <div
+                        class="selected-file"
+                        id="selectedFile">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+
+                        <span id="fileName">
+                            No file selected
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB DESCRIPTION -->
+
+            <div class="scan-card">
+
+                <div class="card-heading">
+
+                    <div class="heading-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Job Description
+                        </h3>
+
+                        <p>
+                            Paste the job you're targeting
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="jobDescription"
+                    class="job-description"
+                    placeholder="Paste the complete job description here...
+
+Example:
+Looking for a Software Developer with experience in Python, JavaScript, React, SQL, REST APIs and Git. Candidate should have strong problem-solving and communication skills."></textarea>
+
+
+                <div class="job-footer">
+
+                    <span id="wordCount">
+                        0 words
+                    </span>
+
+                    <button
+                        class="clear-btn"
+                        id="clearJob">
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTION -->
+
+        <div class="scan-action">
+
+            <button
+                class="analyze-btn"
+                id="analyzeBtn">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Analyze Resume
+
+            </button>
+
+            <button
+                class="demo-btn"
+                id="demoBtn">
+
+                <i class="fa-solid fa-flask"></i>
+
+                Try Demo Analysis
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <section
+            class="results"
+            id="results">
+
+
+            <div class="results-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ATS REPORT
+                    </span>
+
+                    <h2>
+                        Resume Analysis
+                    </h2>
+
+                    <p>
+                        Here's how your resume performs
+                        against the target role.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="download-report"
+                    id="downloadReport">
+
+                    <i class="fa-solid fa-download"></i>
+
+                    Download Report
+
+                </button>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="score-grid">
+
+
+                <div class="score-card main-score">
+
+                    <div class="score-circle">
+
+                        <svg viewBox="0 0 120 120">
+
+                            <circle
+                                class="score-bg"
+                                cx="60"
+                                cy="60"
+                                r="50">
+                            </circle>
+
+                            <circle
+                                class="score-progress"
+                                id="scoreProgress"
+                                cx="60"
+                                cy="60"
+                                r="50">
+                            </circle>
+
+                        </svg>
+
+                        <div class="score-number">
+
+                            <strong id="score">
+                                78
+                            </strong>
+
+                            <span>
+                                /100
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-info">
+
+                        <span class="score-label">
+                            ATS SCORE
+                        </span>
+
+                        <h3 id="scoreTitle">
+                            Good Match
+                        </h3>
+
+                        <p id="scoreMessage">
+                            Your resume has a strong foundation,
+                            but there are a few areas you can improve.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Keyword Match
+                        </span>
+
+                        <i class="fa-solid fa-key"></i>
+
+                    </div>
+
+                    <strong id="keywordScore">
+                        82%
+                    </strong>
+
+                    <div class="metric-bar">
+
+                        <span
+                            id="keywordBar"
+                            style="width:82%">
+                        </span>
+
+                    </div>
+
+                    <small>
+                        Relevant keywords detected
+                    </small>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Skills Match
+                        </span>
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+                    <strong id="skillsScore">
+                        76%
+                    </strong>
+
+                    <div class="metric-bar">
+
+                        <span
+                            id="skillsBar"
+                            style="width:76%">
+                        </span>
+
+                    </div>
+
+                    <small>
+                        Skills aligned with role
+                    </small>
+
+                </div>
+
+
+                <div class="score-card">
+
+                    <div class="metric-top">
+
+                        <span>
+                            Formatting
+                        </span>
+
+                        <i class="fa-solid fa-file-circle-check"></i>
+
+                    </div>
+
+                    <strong id="formatScore">
+                        94%
+                    </strong>
+
+                    <div class="metric-bar">
+
+                        <span
+                            id="formatBar"
+                            style="width:94%">
+                        </span>
+
+                    </div>
+
+                    <small>
+                        ATS-friendly formatting
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="details-grid">
+
+
+                <!-- KEYWORDS -->
+
+                <div class="detail-card">
+
+                    <div class="detail-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                KEYWORD ANALYSIS
+                            </span>
+
+                            <h3>
+                                Missing Keywords
+                            </h3>
+
+                        </div>
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </div>
+
+
+                    <div
+                        class="keyword-list"
+                        id="missingKeywords">
+
+                        <span>
+                            REST APIs
+                        </span>
+
+                        <span>
+                            React
+                        </span>
+
+                        <span>
+                            Docker
+                        </span>
+
+                        <span>
+                            Agile
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STRENGTHS -->
+
+                <div class="detail-card">
+
+                    <div class="detail-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                WHAT'S WORKING
+                            </span>
+
+                            <h3>
+                                Resume Strengths
+                            </h3>
+
+                        </div>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+
+                    <ul class="strength-list">
+
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Clear professional summary
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Strong technical skills
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            Good resume structure
+                        </li>
+
+                        <li>
+                            <i class="fa-solid fa-check"></i>
+                            ATS-readable sections
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- IMPROVEMENTS -->
+
+                <div class="detail-card improvement-card">
+
+                    <div class="detail-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                SHIVAAY AI
+                            </span>
+
+                            <h3>
+                                Recommended Improvements
+                            </h3>
+
+                        </div>
+
+                        <i class="fa-solid fa-robot"></i>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <div class="recommendation-number">
+                            01
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Add role-specific keywords
+                            </strong>
+
+                            <p>
+                                Include important technologies
+                                and skills mentioned in the job
+                                description.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <div class="recommendation-number">
+                            02
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Quantify achievements
+                            </strong>
+
+                            <p>
+                                Use measurable results such as
+                                percentages, revenue or performance
+                                improvements.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation">
+
+                        <div class="recommendation-number">
+                            03
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Strengthen project descriptions
+                            </strong>
+
+                            <p>
+                                Mention technologies, your role
+                                and the impact of each project.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ATS TIPS -->
+
+                <div class="detail-card tips-card">
+
+                    <div class="detail-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                ATS BEST PRACTICES
+                            </span>
+
+                            <h3>
+                                Quick Checklist
+                            </h3>
+
+                        </div>
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+
+                    <div class="check-item checked">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Standard section headings
+                        </span>
+
+                    </div>
+
+
+                    <div class="check-item checked">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Simple readable layout
+                        </span>
+
+                    </div>
+
+
+                    <div class="check-item checked">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        <span>
+                            Contact information included
+                        </span>
+
+                    </div>
+
+
+                    <div class="check-item warning">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        <span>
+                            Add more job-specific keywords
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CTA -->
+
+            <div class="ai-cta">
+
+                <div class="ai-cta-icon">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        READY TO IMPROVE?
+                    </span>
+
+                    <h3>
+                        Let Shivaay AI optimize your resume.
+                    </h3>
+
+                    <p>
+                        Get personalized suggestions for your
+                        target role and improve your chances of
+                        getting shortlisted.
+                    </p>
+
+                </div>
+
+                <a href="shivaay-ai.html">
+
+                    Open Shivaay AI
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="ats-checker.js"></script>
+
+</body>
+</html>
