@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shivaay AI | MamRaj Nexus Academy</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="shivaay-ai.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="internships.html">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Internships</span>
+            </a>
+
+            <a href="projects.html">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="applications.html">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+            </a>
+
+            <a href="certificates.html">
+                <i class="fa-solid fa-award"></i>
+                <span>Certificates</span>
+            </a>
+
+            <a href="shivaay-ai.html" class="active">
+                <i class="fa-solid fa-robot"></i>
+                <span>Shivay AI</span>
+            </a>
+
+            <a href="resume-builder.html">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Resume Builder</span>
+            </a>
+
+            <a href="ats-checker.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>ATS Checker</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-help">
+
+                <i class="fa-solid fa-circle-question"></i>
+
+                <div>
+                    <strong>Need Help?</strong>
+                    <small>Ask Shivaay AI</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="top-title">
+
+                <div class="mini-ai-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div>
+                    <strong>Shivaay AI</strong>
+                    <span>Your Career Assistant</span>
+                </div>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="icon-btn">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <button class="icon-btn">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                </button>
+
+
+                <button class="icon-btn"
+                        id="themeToggle">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        ST
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong>Aditya Singh</strong>
+
+                        <span>Student</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= AI LAYOUT ================= -->
+
+        <section class="ai-layout">
+
+
+            <!-- CHAT HISTORY -->
+
+            <aside class="chat-history">
+
+                <button class="new-chat"
+                        id="newChat">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    New Conversation
+
+                </button>
+
+
+                <div class="history-title">
+
+                    <span>RECENT CHATS</span>
+
+                </div>
+
+
+                <div class="history-list">
+
+                    <button class="history-item active">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>Career roadmap</span>
+
+                    </button>
+
+
+                    <button class="history-item">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>Resume improvement</span>
+
+                    </button>
+
+
+                    <button class="history-item">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>Python project ideas</span>
+
+                    </button>
+
+
+                    <button class="history-item">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>Interview preparation</span>
+
+                    </button>
+
+
+                    <button class="history-item">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <span>Internship guidance</span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="ai-capabilities">
+
+                    <span class="history-title">
+                        SHIVAAY CAN HELP
+                    </span>
+
+                    <div class="capability">
+
+                        <i class="fa-solid fa-route"></i>
+
+                        <span>Career Roadmap</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        <span>Resume Review</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <span>Project Guidance</span>
+
+                    </div>
+
+                    <div class="capability">
+
+                        <i class="fa-solid fa-user-tie"></i>
+
+                        <span>Interview Prep</span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ================= CHAT ================= -->
+
+            <div class="chat-container">
+
+
+                <!-- AI HEADER -->
+
+                <div class="chat-header">
+
+                    <div class="ai-profile">
+
+                        <div class="ai-avatar">
+
+                            <i class="fa-solid fa-sparkles"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h2>Shivaay AI</h2>
+
+                            <div class="online-status">
+
+                                <span></span>
+
+                                Online · Career Assistant
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button class="chat-menu">
+
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- CHAT MESSAGES -->
+
+                <div class="chat-messages"
+                     id="chatMessages">
+
+
+                    <!-- WELCOME -->
+
+                    <div class="welcome-area">
+
+                        <div class="big-ai-avatar">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                            <span></span>
+
+                        </div>
+
+                        <h1>
+                            Hello, Aditya 👋
+                        </h1>
+
+                        <p>
+                            I'm Shivaay, your personal AI career
+                            assistant. What would you like to
+                            work on today?
+                        </p>
+
+                    </div>
+
+
+                    <!-- AI MESSAGE -->
+
+                    <div class="message ai-message">
+
+                        <div class="message-avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+
+                        <div class="message-content">
+
+                            <div class="message-name">
+                                Shivaay AI
+                            </div>
+
+                            <div class="message-bubble">
+
+                                I can help you build your career
+                                step-by-step — from learning skills
+                                and building projects to preparing
+                                for interviews and finding internships.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUICK PROMPTS -->
+
+                    <div class="quick-prompts">
+
+                        <button data-prompt="Create a career roadmap for me">
+
+                            <i class="fa-solid fa-route"></i>
+
+                            <span>
+                                Create my career roadmap
+                            </span>
+
+                        </button>
+
+
+                        <button data-prompt="Help me improve my resume">
+
+                            <i class="fa-solid fa-file-lines"></i>
+
+                            <span>
+                                Improve my resume
+                            </span>
+
+                        </button>
+
+
+                        <button data-prompt="Suggest projects for my skills">
+
+                            <i class="fa-solid fa-code"></i>
+
+                            <span>
+                                Suggest projects
+                            </span>
+
+                        </button>
+
+
+                        <button data-prompt="Prepare me for a technical interview">
+
+                            <i class="fa-solid fa-user-tie"></i>
+
+                            <span>
+                                Prepare for interview
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- INPUT AREA -->
+
+                <div class="chat-input-area">
+
+                    <div class="input-wrapper">
+
+                        <button class="attach-btn">
+
+                            <i class="fa-solid fa-paperclip"></i>
+
+                        </button>
+
+
+                        <textarea
+                            id="messageInput"
+                            rows="1"
+                            placeholder="Ask Shivaay anything about your career..."
+                        ></textarea>
+
+
+                        <button class="voice-btn">
+
+                            <i class="fa-solid fa-microphone"></i>
+
+                        </button>
+
+
+                        <button class="send-btn"
+                                id="sendMessage">
+
+                            <i class="fa-solid fa-arrow-up"></i>
+
+                        </button>
+
+                    </div>
+
+                    <p class="ai-disclaimer">
+
+                        Shivaay AI can make mistakes.
+                        Verify important information.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= RIGHT PANEL ================= -->
+
+            <aside class="ai-right-panel">
+
+                <div class="career-card">
+
+                    <div class="career-card-header">
+
+                        <div>
+
+                            <span>
+                                YOUR CAREER
+                            </span>
+
+                            <h3>
+                                Progress
+                            </h3>
+
+                        </div>
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+
+                    <div class="career-score">
+
+                        <div class="score-circle">
+
+                            <strong>72%</strong>
+
+                            <span>Ready</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="career-progress">
+
+                        <div>
+
+                            <span>Skills</span>
+
+                            <strong>78%</strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <span style="width:78%"></span>
+                        </div>
+
+
+                        <div>
+
+                            <span>Projects</span>
+
+                            <strong>65%</strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <span style="width:65%"></span>
+                        </div>
+
+
+                        <div>
+
+                            <span>Resume</span>
+
+                            <strong>84%</strong>
+
+                        </div>
+
+                        <div class="progress">
+                            <span style="width:84%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recommendation-card">
+
+                    <div class="recommendation-icon">
+
+                        <i class="fa-solid fa-lightbulb"></i>
+
+                    </div>
+
+                    <span>SHIVAAY RECOMMENDS</span>
+
+                    <h3>
+                        Build one more
+                        real-world project
+                    </h3>
+
+                    <p>
+                        Adding a strong full-stack project
+                        could improve your portfolio score.
+                    </p>
+
+                    <button>
+                        Explore Projects
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="daily-card">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <div>
+
+                        <strong>
+                            7 Day Learning Streak
+                        </strong>
+
+                        <span>
+                            Keep going, Aditya!
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="shivaay-ai.js"></script>
+
+</body>
+</html>
