@@ -1,3 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MamRaj Nexus Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+:root{
+    --navy:#1d2c63;
+    --navy-dark:#101b42;
+    --orange:#c98b70;
+    --orange-light:#e6b19a;
+    --cream:#fbf6f1;
+    --white:#fff;
+    --text:#17234f;
+    --muted:#69728a;
+    --border:#e8e8ed;
+    --shadow:0 20px 60px rgba(24,37,85,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;height:88px;z-index:999;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(20,30,70,.05);transition:.25s}
+.navbar.scrolled{box-shadow:0 8px 30px rgba(20,30,70,.08)}
+.nav-container{max-width:1380px;height:100%;margin:auto;padding:0 35px;display:flex;align-items:center;justify-content:space-between}
+.logo{position:relative;display:flex;align-items:baseline;gap:5px;font-size:21px;font-weight:700;white-space:nowrap}
+.logo-mam{color:var(--navy)} .logo-nexus{color:var(--orange)}
+.logo small{position:absolute;left:2px;bottom:-13px;font-size:7px;letter-spacing:4px;color:#7b8291}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;font-weight:500;color:#4e566d;transition:.25s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active:after{content:"";position:absolute;left:50%;bottom:-10px;width:5px;height:5px;border-radius:50%;background:var(--orange);transform:translateX(-50%)}
+.dashboard-btn{display:flex;align-items:center;gap:10px;padding:14px 25px;border-radius:50px;color:#fff;background:var(--navy);font-size:13px;font-weight:600;box-shadow:0 10px 25px rgba(29,44,99,.18);transition:.25s}
+.dashboard-btn:hover{transform:translateY(-2px)}
+.mobile-menu{display:none;width:44px;height:44px;border:0;border-radius:12px;background:var(--navy);color:#fff}
+
+/* HERO */
+.hero{min-height:850px;padding:150px 35px 45px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 30%,rgba(207,150,120,.13),transparent 30%),radial-gradient(circle at 15% 75%,rgba(29,44,99,.06),transparent 28%),var(--cream)}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.glow-one{width:300px;height:300px;background:rgba(207,150,120,.12);right:-100px;top:180px}
+.glow-two{width:220px;height:220px;background:rgba(29,44,99,.07);left:-100px;bottom:150px}
+.hero-grid{position:absolute;inset:0;opacity:.3;background-image:linear-gradient(rgba(29,44,99,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,44,99,.035) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+.hero-container{max-width:1250px;margin:auto;min-height:590px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:80px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:50px;background:rgba(255,255,255,.8);border:1px solid rgba(29,44,99,.08);color:var(--navy);font-size:10px;font-weight:600;margin-bottom:24px}
+.eyebrow-dot{width:7px;height:7px;background:#43bd76;border-radius:50%;box-shadow:0 0 0 4px rgba(67,189,118,.12)}
+.hero-content h1{font-size:clamp(48px,5.4vw,78px);line-height:1.04;letter-spacing:-3.5px;color:var(--navy);font-weight:700}
+.hero-content h1 span,.hero-content h1 strong{color:var(--orange)}
+.hero-description{max-width:650px;margin-top:27px;font-size:16px;line-height:1.9;color:#5d667d}
+.hero-description strong{color:var(--navy)}
+.hero-buttons{display:flex;gap:14px;margin-top:34px}
+.primary-btn,.secondary-btn{min-height:52px;padding:0 22px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-size:12px;font-weight:600;transition:.25s}
+.primary-btn{color:#fff;background:var(--navy);box-shadow:0 12px 25px rgba(29,44,99,.2)}
+.primary-btn:hover,.secondary-btn:hover{transform:translateY(-3px)}
+.secondary-btn{color:var(--navy);border:1px solid #dfe2e9;background:rgba(255,255,255,.65)}
+.hero-trust{display:flex;align-items:center;gap:13px;margin-top:34px}
+.trust-avatars{display:flex}
+.trust-avatars span{width:31px;height:31px;margin-left:-6px;border-radius:50%;border:2px solid var(--cream);background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600}
+.trust-avatars span:first-child{margin-left:0;background:var(--orange)}
+.trust-avatars span:nth-child(2){background:#536aa5}.trust-avatars span:nth-child(3){background:#6e7eaf}.trust-avatars span:last-child{background:#fff;color:var(--navy)}
+.stars{color:#e9a91c;font-size:11px;letter-spacing:2px}.hero-trust p{color:#7b8291;font-size:9px;margin-top:2px}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;height:500px;display:flex;align-items:center;justify-content:center}
+.hero-dashboard{width:480px;min-height:400px;padding:27px;border-radius:25px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.9);box-shadow:0 35px 80px rgba(25,39,86,.13);transform:perspective(1000px) rotateY(-5deg) rotateX(2deg);position:relative;z-index:2}
+.dashboard-top{display:flex;align-items:center;justify-content:space-between}.dashboard-top small{color:#9aa0ad;font-size:8px;letter-spacing:1.5px;font-weight:600}.dashboard-top h3{color:var(--navy);font-size:16px;margin-top:6px}
+.progress-circle{width:57px;height:57px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);background:conic-gradient(var(--orange) 78%,#ececf1 78%);position:relative}
+.progress-circle:after{content:"";position:absolute;inset:6px;background:#fff;border-radius:50%}
+.progress-circle:before{content:"78%";position:absolute;z-index:2;font-size:11px}
+.progress-line{height:5px;margin-top:23px;background:#edf0f4;border-radius:20px}.progress-line span{display:block;width:78%;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--navy),var(--orange))}
+.journey{margin-top:27px}.journey-item{display:flex;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid #f0f1f4}.journey-item:last-child{border-bottom:0}
+.journey-icon{width:40px;height:40px;min-width:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#f1f3f7;color:#9ca3b0;font-size:13px}
+.journey-item.completed .journey-icon{background:#e7f7ee;color:#2ba363}.journey-item.active .journey-icon{background:#fff0e9;color:var(--orange)}
+.journey-item strong{display:block;color:var(--navy);font-size:11px}.journey-item small{display:block;color:#969cab;font-size:9px;margin-top:3px}
+.floating-card{position:absolute;z-index:5;padding:13px 17px;display:flex;align-items:center;gap:11px;border-radius:15px;background:#fff;box-shadow:0 18px 40px rgba(20,30,70,.12);border:1px solid rgba(30,40,80,.06)}
+.floating-top{top:25px;right:-5px;animation:floatCard 4s ease-in-out infinite}.floating-bottom{bottom:28px;left:-5px;animation:floatCard 5s ease-in-out infinite reverse}
+.floating-card strong{display:block;font-size:10px;color:var(--navy)}.floating-card small{display:block;font-size:8px;color:#9298a6;margin-top:2px}
+.floating-icon,.ai-avatar{width:37px;height:37px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.floating-icon.purple{background:#f0e9ff;color:#7751d5}.ai-avatar{background:var(--navy);color:#fff}.online-dot{width:7px;height:7px;border-radius:50%;background:#38c877;margin-left:4px;box-shadow:0 0 0 4px rgba(56,200,119,.12)}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-stats{max-width:1000px;margin:30px auto 0;padding:20px 35px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(29,44,99,.07);display:flex;align-items:center;justify-content:space-around;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:4}
+.hero-stat{text-align:center}.hero-stat strong{display:block;font-size:22px;color:var(--navy)}.hero-stat span{font-size:9px;color:#858b99}.stat-divider{width:1px;height:35px;background:#e5e6eb}
+
+/* COMMON SECTIONS */
+.overview,.courses{padding:110px 35px;background:#fff}
+.section-heading{max-width:800px;margin:0 auto 45px}.section-heading.center{text-align:center}
+.section-tag{color:var(--orange);font-size:9px;letter-spacing:2px;font-weight:700;margin-bottom:13px}
+.section-heading h2{font-size:clamp(32px,4vw,48px);line-height:1.15;color:var(--navy);letter-spacing:-1.5px}.section-heading h2 span{color:var(--orange)}
+.section-heading p{margin-top:15px;color:var(--muted);font-size:13px;line-height:1.8}
+
+/* FEATURES */
+.feature-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature-card{padding:27px;border:1px solid var(--border);border-radius:18px;transition:.3s}
+.feature-card:hover,.course-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.feature-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:20px}
+.feature-icon.blue{background:#e9f1ff;color:#3976db}.feature-icon.orange{background:#fff0e8;color:var(--orange)}.feature-icon.green{background:#e6f8ed;color:#2caa64}.feature-icon.purple{background:#f0eaff;color:#7953d4}
+.feature-card h3{color:var(--navy);font-size:15px}.feature-card p{color:#777f91;font-size:10px;line-height:1.8;margin-top:10px}.feature-card a{display:inline-flex;align-items:center;gap:7px;color:var(--navy);font-size:10px;font-weight:600;margin-top:20px}
+
+/* COURSES */
+.courses{background:var(--cream)}
+.course-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.course-card{overflow:hidden;background:#fff;border-radius:20px;border:1px solid var(--border);transition:.3s}
+.course-image{height:170px;display:flex;align-items:center;justify-content:center;font-size:55px}.course-image.web{background:linear-gradient(135deg,#e8f0ff,#d9e5ff);color:var(--navy)}.course-image.data{background:linear-gradient(135deg,#fff0e8,#ffe1d2);color:var(--orange)}.course-image.design{background:linear-gradient(135deg,#eee8ff,#e0d7ff);color:#7353cf}
+.course-content{padding:22px}.course-content>span{color:var(--orange);font-size:8px;letter-spacing:1.5px;font-weight:700}.course-content h3{color:var(--navy);font-size:16px;margin-top:7px}.course-content p{color:#7b8291;font-size:10px;line-height:1.7;margin-top:8px}.course-bottom{margin-top:20px;display:flex;justify-content:space-between;align-items:center;color:var(--navy);font-size:10px}
+
+/* TESTIMONIALS */
+.testimonials{padding:115px 35px;background:linear-gradient(180deg,#fff 0%,#fbf6f1 100%);position:relative;overflow:hidden}
+.testimonials:before,.testimonials:after{content:"";position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}.testimonials:before{width:350px;height:350px;background:rgba(201,139,112,.08);left:-180px;top:100px}.testimonials:after{width:300px;height:300px;background:rgba(29,44,99,.06);right:-150px;bottom:80px}
+.testimonial-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2}
+.testimonial-card{position:relative;padding:32px;min-height:310px;display:flex;flex-direction:column;background:rgba(255,255,255,.9);border:1px solid #e9e7e5;border-radius:22px;box-shadow:0 15px 45px rgba(28,40,80,.06);transition:.35s}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(28,40,80,.12);border-color:rgba(201,139,112,.35)}
+.testimonial-card.featured{background:linear-gradient(145deg,#fff,#fff8f4);border-color:rgba(201,139,112,.3)}
+.quote-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:#fff0e8;color:var(--orange);font-size:16px;margin-bottom:18px}
+.testimonial-stars{color:#e7a72b;font-size:12px;letter-spacing:3px;margin-bottom:15px}.testimonial-text{color:#60697c;font-size:12px;line-height:1.9;flex:1}
+.testimonial-user{display:flex;align-items:center;gap:12px;margin-top:25px;padding-top:18px;border-top:1px solid #eeeeef}
+.testimonial-avatar{width:43px;height:43px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-size:10px;font-weight:700;border:3px solid #eef1fa}
+.testimonial-avatar.peach{background:var(--orange);border-color:#fff0e8}.testimonial-avatar.purple{background:#7254c8;border-color:#eeeaff}
+.testimonial-user strong{display:block;color:var(--navy);font-size:11px}.testimonial-user span{display:block;color:#969cab;font-size:8px;margin-top:3px}
+.testimonial-trust{max-width:850px;margin:55px auto 0;padding:22px 30px;display:flex;align-items:center;justify-content:space-around;background:rgba(255,255,255,.8);border:1px solid #e7e6e5;border-radius:18px;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:2}
+.trust-item{text-align:center}.trust-item strong{display:block;color:var(--navy);font-size:20px}.trust-item span{display:block;color:#888f9d;font-size:8px;margin-top:3px}.trust-line{width:1px;height:35px;background:#e2e3e7}
+
+/* CTA */
+.career-cta{max-width:1200px;min-height:390px;margin:100px auto;padding:70px;border-radius:30px;position:relative;overflow:hidden;background:linear-gradient(120deg,#17275c,#263c7b);color:#fff}
+.career-cta .section-tag{color:var(--orange-light)}.cta-content{max-width:600px;position:relative;z-index:3}.career-cta h2{font-size:clamp(35px,4vw,54px);line-height:1.12;letter-spacing:-2px}.career-cta h2 span{color:var(--orange-light)}.career-cta p{max-width:570px;margin-top:18px;color:#c8cee0;font-size:12px;line-height:1.9}
+.cta-button{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:15px 23px;border-radius:12px;background:#fff;color:var(--navy);font-size:11px;font-weight:700}
+.cta-decoration{position:absolute;right:-80px;top:-100px;width:500px;height:500px}.circle{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12)}.circle-one{inset:30px}.circle-two{inset:100px}.circle-three{inset:170px}
+
+/* FOOTER */
+footer{background:var(--navy-dark);color:#fff;padding:65px 35px 25px}.footer-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:50px}.footer-logo{font-size:21px;font-weight:700}.footer-logo span{color:var(--orange)}.footer-brand p{max-width:280px;margin-top:12px;color:#aeb6cc;font-size:10px;line-height:1.8}.footer-links{display:flex;gap:80px}.footer-links div{display:flex;flex-direction:column;gap:9px}.footer-links h4{font-size:11px;margin-bottom:6px}.footer-links a{color:#aeb6cc;font-size:9px}.footer-links a:hover{color:#fff}.footer-bottom{max-width:1200px;margin:50px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;color:#8992ac;font-size:8px}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+.nav-links{gap:18px}.hero-container{gap:35px}.hero-content h1{font-size:55px}.hero-visual{transform:scale(.9)}.feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+.testimonial-grid{grid-template-columns:1fr 1fr}.testimonial-card:last-child{grid-column:1/-1}
+}
+@media(max-width:800px){
+.nav-links,.dashboard-btn{display:none}.mobile-menu{display:block}
+.hero{padding-top:125px}.hero-container{grid-template-columns:1fr;text-align:center}.hero-content{display:flex;flex-direction:column;align-items:center}.hero-description{max-width:600px}.hero-visual{margin-top:20px;transform:scale(.8)}
+.hero-stats{flex-wrap:wrap;gap:20px}.stat-divider{display:none}.course-grid{grid-template-columns:1fr;max-width:500px}
+.career-cta{margin:60px 20px;padding:45px 30px}.footer-container{flex-direction:column}
+}
+@media(max-width:600px){
+.testimonials{padding:80px 20px}.testimonial-grid{grid-template-columns:1fr}.testimonial-card:last-child{grid-column:auto}.testimonial-trust{display:grid;grid-template-columns:1fr 1fr;gap:20px}.trust-line{display:none}
+}
+@media(max-width:500px){
+.nav-container{padding:0 20px}.hero{padding-left:20px;padding-right:20px}.hero-content h1{font-size:43px;letter-spacing:-2px}.hero-description{font-size:13px}
+.hero-buttons{flex-direction:column;width:100%}.primary-btn,.secondary-btn{width:100%}.hero-visual{transform:scale(.62);width:160%;margin-left:-30%}
+.hero-stats{padding:20px;display:grid;grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}.overview,.courses{padding:75px 20px}
+.footer-links{gap:30px;flex-wrap:wrap}.footer-bottom{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+<div class="nav-container">
+
+<a href="#home" class="logo">
+<span class="logo-mam">MamRaj</span>
+<span class="logo-nexus">Nexus</span>
+<small>ACADEMY</small>
+</a>
+
+<nav class="nav-links">
+<a href="#home" class="active">Home</a>
+<a href="#courses">Courses</a>
+<a href="internships.html">Internships</a>
+<a href="#placements">Placements</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<a href="dashboard.html" class="dashboard-btn">
+Dashboard <i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+<div class="hero-glow glow-one"></div>
+<div class="hero-glow glow-two"></div>
+<div class="hero-grid"></div>
+
+<div class="hero-container">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+<span class="eyebrow-dot"></span>
+India's Student Career Platform
+</div>
+
+<h1>
+Learn.
+<span>Build.</span><br>
+<strong>Intern.</strong> Get Hired.
+</h1>
+
+<p class="hero-description">
+An AI-powered academy that helps students master industry-ready skills,
+complete internships, earn verified certificates, and secure placements
+with the guidance of <strong>Shivaay AI.</strong>
+</p>
+
+<div class="hero-buttons">
+<a href="#courses" class="primary-btn">
+Start Learning <i class="fa-solid fa-arrow-right"></i>
+</a>
+<a href="internships.html" class="secondary-btn">
+<i class="fa-solid fa-briefcase"></i> Explore Internships
+</a>
+</div>
+
+<div class="hero-trust">
+<div class="trust-avatars">
+<span>AS</span><span>MR</span><span>PS</span><span>+</span>
+</div>
+<div>
+<div class="stars">★★★★★</div>
+<p>Trusted by ambitious students</p>
+</div>
+</div>
+
+</div>
+
+<div class="hero-visual">
+
+<div class="floating-card floating-top">
+<div class="floating-icon purple"><i class="fa-solid fa-rocket"></i></div>
+<div><strong>Internship Ready</strong><small>Build your career</small></div>
+</div>
+
+<div class="hero-dashboard">
+
+<div class="dashboard-top">
+<div>
+<small>YOUR CAREER JOURNEY</small>
+<h3>You're making progress!</h3>
+</div>
+<div class="progress-circle"></div>
+</div>
+
+<div class="progress-line"><span></span></div>
+
+<div class="journey">
+
+<div class="journey-item completed">
+<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
+<div><strong>Learn Skills</strong><small>Completed</small></div>
+</div>
+
+<div class="journey-item completed">
+<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
+<div><strong>Build Projects</strong><small>Completed</small></div>
+</div>
+
+<div class="journey-item active">
+<div class="journey-icon"><i class="fa-solid fa-briefcase"></i></div>
+<div><strong>Get Internship</strong><small>12 opportunities available</small></div>
+</div>
+
+<div class="journey-item">
+<div class="journey-icon"><i class="fa-solid fa-user-tie"></i></div>
+<div><strong>Get Hired</strong><small>Your next milestone</small></div>
+</div>
+
+</div>
+</div>
+
+<div class="floating-card floating-bottom">
+<div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+<div><strong>Shivaay AI</strong><small>Your AI career mentor</small></div>
+<span class="online-dot"></span>
+</div>
+
+</div>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat"><strong>100+</strong><span>Courses</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>500+</strong><span>Internship Opportunities</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>50+</strong><span>Hiring Partners</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>10K+</strong><span>Students</span></div>
+</div>
+
+</section>
+
+<section class="overview" id="about">
+<div class="section-heading">
+<div class="section-tag">WHY MAMRAJ NEXUS</div>
+<h2>Everything you need <span>to move forward.</span></h2>
+<p>Learn practical skills, gain real-world experience, and build a career that actually goes somewhere.</p>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<div class="feature-icon blue"><i class="fa-solid fa-graduation-cap"></i></div>
+<h3>Industry-Ready Courses</h3>
+<p>Learn skills that companies actually look for with practical and structured learning paths.</p>
+<a href="#courses">Explore Courses <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon orange"><i class="fa-solid fa-briefcase"></i></div>
+<h3>Real Internships</h3>
+<p>Discover internships from startups, growing companies and established organizations.</p>
+<a href="internships.html">Find Internships <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon green"><i class="fa-solid fa-certificate"></i></div>
+<h3>Verified Certificates</h3>
+<p>Showcase your learning journey with professional certificates you can add to your resume.</p>
+<a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="feature-card">
+<div class="feature-icon purple"><i class="fa-solid fa-robot"></i></div>
+<h3>Shivaay AI</h3>
+<p>Get personalized guidance for skills, projects, resumes, interviews and your career journey.</p>
+<a href="#">Meet Shivaay <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+</div>
+</section>
+
+<section class="courses" id="courses">
+<div class="section-heading center">
+<div class="section-tag">LEARN & GROW</div>
+<h2>Build skills that <span>open doors.</span></h2>
+<p>Choose a learning path and start building your future today.</p>
+</div>
+
+<div class="course-grid">
+
+<div class="course-card">
+<div class="course-image web"><i class="fa-solid fa-code"></i></div>
+<div class="course-content">
+<span>DEVELOPMENT</span>
+<h3>Full Stack Web Development</h3>
+<p>HTML, CSS, JavaScript, React, Node.js and real-world projects.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
+
+<div class="course-card">
+<div class="course-image data"><i class="fa-solid fa-chart-line"></i></div>
+<div class="course-content">
+<span>DATA & AI</span>
+<h3>Data Science & AI</h3>
+<p>Python, data analytics, machine learning and AI fundamentals.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
+
+<div class="course-card">
+<div class="course-image design"><i class="fa-solid fa-pen-ruler"></i></div>
+<div class="course-content">
+<span>DESIGN</span>
+<h3>UI/UX Design</h3>
+<p>Learn design thinking, Figma, wireframes and product design.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="testimonials" id="testimonials">
+
+<div class="section-heading center">
+<div class="section-tag">STUDENT STORIES</div>
+<h2>Loved by students. <span>Built for their future.</span></h2>
+<p>Real journeys from students who are learning, building and taking their next career step with MamRaj Nexus Academy.</p>
+</div>
+
+<div class="testimonial-grid">
+
 <!-- =====================================================
      TESTIMONIALS
 ===================================================== -->
@@ -158,54 +562,140 @@
 
 
 
-    <!-- TRUST STRIP -->
-
-    <div class="testimonial-trust">
-
-        <div class="trust-item">
-
-            <strong>
-                4.9/5
-            </strong>
-
-            <span>
-                Student Experience
-            </span>
-
-        </div>
-
-
-        <div class="trust-line"></div>
-
-
-        <div class="trust-item">
-
-            <strong>
-                10K+
-            </strong>
-
-            <span>
-                Students Reached
-            </span>
-
-        </div>
-
-
-        <div class="trust-line"></div>
-
-
-        <div class="trust-item">
-
-            <strong>
-                500+
-            </strong>
-
-            <span>
-                Opportunities
-            </span>
-
-        </div>
-
-    </div>
+<div class="testimonial-trust">
+<div class="trust-item"><strong>4.9/5</strong><span>Student Experience</span></div>
+<div class="trust-line"></div>
+<div class="trust-item"><strong>10K+</strong><span>Students Reached</span></div>
+<div class="trust-line"></div>
+<div class="trust-item"><strong>500+</strong><span>Opportunities</span></div>
+</div>
 
 </section>
+
+<section class="career-cta" id="placements">
+<div class="cta-content">
+<div class="section-tag">YOUR NEXT CHAPTER</div>
+<h2>Don't just learn.<br><span>Build your career.</span></h2>
+<p>From your first course to your first internship and eventually your first job — MamRaj Nexus Academy is built to walk with you.</p>
+<a href="dashboard.html" class="cta-button">Start Your Journey <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<div class="cta-decoration">
+<div class="circle circle-one"></div>
+<div class="circle circle-two"></div>
+<div class="circle circle-three"></div>
+</div>
+</section>
+
+</main>
+
+<footer id="contact">
+<div class="footer-container">
+
+<div class="footer-brand">
+<div class="footer-logo">MamRaj <span>Nexus</span></div>
+<p>Empowering students to learn, build and get hired.</p>
+</div>
+
+<div class="footer-links">
+<div>
+<h4>Academy</h4>
+<a href="#courses">Courses</a>
+<a href="internships.html">Internships</a>
+<a href="#">Certificates</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="#about">About</a>
+<a href="#placements">Placements</a>
+<a href="#contact">Contact</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="#">Instagram</a>
+<a href="#">LinkedIn</a>
+<a href="#">Email Us</a>
+</div>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<span>© 2026 MamRaj Nexus Academy</span>
+<span>A MamRaj Web Studio Initiative</span>
+</div>
+</footer>
+
+<script>
+"use strict";
+
+const mobileMenu = document.getElementById("mobileMenu");
+const navLinks = document.querySelector(".nav-links");
+const navbar = document.querySelector(".navbar");
+
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("mobile-open");
+    });
+}
+
+window.addEventListener("scroll", () => {
+    if (navbar) {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    }
+});
+
+const links = document.querySelectorAll(".nav-links a");
+
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        links.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+        if (window.innerWidth <= 800) {
+            navLinks.classList.remove("mobile-open");
+        }
+    });
+});
+
+const revealElements = document.querySelectorAll(
+    ".feature-card, .course-card, .testimonial-card, .section-heading"
+);
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+        }
+    });
+}, { threshold: 0.12 });
+
+revealElements.forEach(element => {
+    element.classList.add("reveal");
+    observer.observe(element);
+});
+</script>
+
+<style>
+@media(max-width:800px){
+    .nav-links.mobile-open{
+        display:flex;
+        position:absolute;
+        top:88px;
+        left:15px;
+        right:15px;
+        padding:20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        background:#fff;
+        border-radius:16px;
+        box-shadow:0 20px 50px rgba(20,30,70,.12);
+    }
+}
+</style>
+
+</body>
+</html>
+
+
+
+    <
