@@ -1,799 +1,763 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MamRaj Nexus Academy</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <meta name="description"
-          content="MamRaj Nexus Academy - Learn, Build, Intern and Get Hired.">
+<style>
+:root{
+    --navy:#1d2c63;
+    --navy-dark:#101b42;
+    --orange:#c98b70;
+    --orange-light:#e6b19a;
+    --cream:#fbf6f1;
+    --white:#fff;
+    --text:#17234f;
+    --muted:#69728a;
+    --border:#e8e8ed;
+    --shadow:0 20px 60px rgba(24,37,85,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
 
-    <meta name="theme-color"
-          content="#172554">
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;height:88px;z-index:999;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(20,30,70,.05);transition:.25s}
+.navbar.scrolled{box-shadow:0 8px 30px rgba(20,30,70,.08)}
+.nav-container{max-width:1380px;height:100%;margin:auto;padding:0 35px;display:flex;align-items:center;justify-content:space-between}
+.logo{position:relative;display:flex;align-items:baseline;gap:5px;font-size:21px;font-weight:700;white-space:nowrap}
+.logo-mam{color:var(--navy)} .logo-nexus{color:var(--orange)}
+.logo small{position:absolute;left:2px;bottom:-13px;font-size:7px;letter-spacing:4px;color:#7b8291}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:13px;font-weight:500;color:#4e566d;transition:.25s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active:after{content:"";position:absolute;left:50%;bottom:-10px;width:5px;height:5px;border-radius:50%;background:var(--orange);transform:translateX(-50%)}
+.dashboard-btn{display:flex;align-items:center;gap:10px;padding:14px 25px;border-radius:50px;color:#fff;background:var(--navy);font-size:13px;font-weight:600;box-shadow:0 10px 25px rgba(29,44,99,.18);transition:.25s}
+.dashboard-btn:hover{transform:translateY(-2px)}
+.mobile-menu{display:none;width:44px;height:44px;border:0;border-radius:12px;background:var(--navy);color:#fff}
 
-    <title>
-        MamRaj Nexus Academy | Learn. Build. Intern. Get Hired.
-    </title>
+/* HERO */
+.hero{min-height:850px;padding:150px 35px 45px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 30%,rgba(207,150,120,.13),transparent 30%),radial-gradient(circle at 15% 75%,rgba(29,44,99,.06),transparent 28%),var(--cream)}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.glow-one{width:300px;height:300px;background:rgba(207,150,120,.12);right:-100px;top:180px}
+.glow-two{width:220px;height:220px;background:rgba(29,44,99,.07);left:-100px;bottom:150px}
+.hero-grid{position:absolute;inset:0;opacity:.3;background-image:linear-gradient(rgba(29,44,99,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,44,99,.035) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+.hero-container{max-width:1250px;margin:auto;min-height:590px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:80px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:50px;background:rgba(255,255,255,.8);border:1px solid rgba(29,44,99,.08);color:var(--navy);font-size:10px;font-weight:600;margin-bottom:24px}
+.eyebrow-dot{width:7px;height:7px;background:#43bd76;border-radius:50%;box-shadow:0 0 0 4px rgba(67,189,118,.12)}
+.hero-content h1{font-size:clamp(48px,5.4vw,78px);line-height:1.04;letter-spacing:-3.5px;color:var(--navy);font-weight:700}
+.hero-content h1 span,.hero-content h1 strong{color:var(--orange)}
+.hero-description{max-width:650px;margin-top:27px;font-size:16px;line-height:1.9;color:#5d667d}
+.hero-description strong{color:var(--navy)}
+.hero-buttons{display:flex;gap:14px;margin-top:34px}
+.primary-btn,.secondary-btn{min-height:52px;padding:0 22px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-size:12px;font-weight:600;transition:.25s}
+.primary-btn{color:#fff;background:var(--navy);box-shadow:0 12px 25px rgba(29,44,99,.2)}
+.primary-btn:hover,.secondary-btn:hover{transform:translateY(-3px)}
+.secondary-btn{color:var(--navy);border:1px solid #dfe2e9;background:rgba(255,255,255,.65)}
+.hero-trust{display:flex;align-items:center;gap:13px;margin-top:34px}
+.trust-avatars{display:flex}
+.trust-avatars span{width:31px;height:31px;margin-left:-6px;border-radius:50%;border:2px solid var(--cream);background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600}
+.trust-avatars span:first-child{margin-left:0;background:var(--orange)}
+.trust-avatars span:nth-child(2){background:#536aa5}.trust-avatars span:nth-child(3){background:#6e7eaf}.trust-avatars span:last-child{background:#fff;color:var(--navy)}
+.stars{color:#e9a91c;font-size:11px;letter-spacing:2px}.hero-trust p{color:#7b8291;font-size:9px;margin-top:2px}
 
-    <!-- Google Font -->
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+/* HERO VISUAL */
+.hero-visual{position:relative;height:500px;display:flex;align-items:center;justify-content:center}
+.hero-dashboard{width:480px;min-height:400px;padding:27px;border-radius:25px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.9);box-shadow:0 35px 80px rgba(25,39,86,.13);transform:perspective(1000px) rotateY(-5deg) rotateX(2deg);position:relative;z-index:2}
+.dashboard-top{display:flex;align-items:center;justify-content:space-between}.dashboard-top small{color:#9aa0ad;font-size:8px;letter-spacing:1.5px;font-weight:600}.dashboard-top h3{color:var(--navy);font-size:16px;margin-top:6px}
+.progress-circle{width:57px;height:57px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);background:conic-gradient(var(--orange) 78%,#ececf1 78%);position:relative}
+.progress-circle:after{content:"";position:absolute;inset:6px;background:#fff;border-radius:50%}
+.progress-circle:before{content:"78%";position:absolute;z-index:2;font-size:11px}
+.progress-line{height:5px;margin-top:23px;background:#edf0f4;border-radius:20px}.progress-line span{display:block;width:78%;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--navy),var(--orange))}
+.journey{margin-top:27px}.journey-item{display:flex;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid #f0f1f4}.journey-item:last-child{border-bottom:0}
+.journey-icon{width:40px;height:40px;min-width:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#f1f3f7;color:#9ca3b0;font-size:13px}
+.journey-item.completed .journey-icon{background:#e7f7ee;color:#2ba363}.journey-item.active .journey-icon{background:#fff0e9;color:var(--orange)}
+.journey-item strong{display:block;color:var(--navy);font-size:11px}.journey-item small{display:block;color:#969cab;font-size:9px;margin-top:3px}
+.floating-card{position:absolute;z-index:5;padding:13px 17px;display:flex;align-items:center;gap:11px;border-radius:15px;background:#fff;box-shadow:0 18px 40px rgba(20,30,70,.12);border:1px solid rgba(30,40,80,.06)}
+.floating-top{top:25px;right:-5px;animation:floatCard 4s ease-in-out infinite}.floating-bottom{bottom:28px;left:-5px;animation:floatCard 5s ease-in-out infinite reverse}
+.floating-card strong{display:block;font-size:10px;color:var(--navy)}.floating-card small{display:block;font-size:8px;color:#9298a6;margin-top:2px}
+.floating-icon,.ai-avatar{width:37px;height:37px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+.floating-icon.purple{background:#f0e9ff;color:#7751d5}.ai-avatar{background:var(--navy);color:#fff}.online-dot{width:7px;height:7px;border-radius:50%;background:#38c877;margin-left:4px;box-shadow:0 0 0 4px rgba(56,200,119,.12)}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-stats{max-width:1000px;margin:30px auto 0;padding:20px 35px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(29,44,99,.07);display:flex;align-items:center;justify-content:space-around;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:4}
+.hero-stat{text-align:center}.hero-stat strong{display:block;font-size:22px;color:var(--navy)}.hero-stat span{font-size:9px;color:#858b99}.stat-divider{width:1px;height:35px;background:#e5e6eb}
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+/* COMMON SECTIONS */
+.overview,.courses{padding:110px 35px;background:#fff}
+.section-heading{max-width:800px;margin:0 auto 45px}.section-heading.center{text-align:center}
+.section-tag{color:var(--orange);font-size:9px;letter-spacing:2px;font-weight:700;margin-bottom:13px}
+.section-heading h2{font-size:clamp(32px,4vw,48px);line-height:1.15;color:var(--navy);letter-spacing:-1.5px}.section-heading h2 span{color:var(--orange)}
+.section-heading p{margin-top:15px;color:var(--muted);font-size:13px;line-height:1.8}
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-          rel="stylesheet">
+/* FEATURES */
+.feature-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature-card{padding:27px;border:1px solid var(--border);border-radius:18px;transition:.3s}
+.feature-card:hover,.course-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.feature-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:20px}
+.feature-icon.blue{background:#e9f1ff;color:#3976db}.feature-icon.orange{background:#fff0e8;color:var(--orange)}.feature-icon.green{background:#e6f8ed;color:#2caa64}.feature-icon.purple{background:#f0eaff;color:#7953d4}
+.feature-card h3{color:var(--navy);font-size:15px}.feature-card p{color:#777f91;font-size:10px;line-height:1.8;margin-top:10px}.feature-card a{display:inline-flex;align-items:center;gap:7px;color:var(--navy);font-size:10px;font-weight:600;margin-top:20px}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+/* COURSES */
+.courses{background:var(--cream)}
+.course-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.course-card{overflow:hidden;background:#fff;border-radius:20px;border:1px solid var(--border);transition:.3s}
+.course-image{height:170px;display:flex;align-items:center;justify-content:center;font-size:55px}.course-image.web{background:linear-gradient(135deg,#e8f0ff,#d9e5ff);color:var(--navy)}.course-image.data{background:linear-gradient(135deg,#fff0e8,#ffe1d2);color:var(--orange)}.course-image.design{background:linear-gradient(135deg,#eee8ff,#e0d7ff);color:#7353cf}
+.course-content{padding:22px}.course-content>span{color:var(--orange);font-size:8px;letter-spacing:1.5px;font-weight:700}.course-content h3{color:var(--navy);font-size:16px;margin-top:7px}.course-content p{color:#7b8291;font-size:10px;line-height:1.7;margin-top:8px}.course-bottom{margin-top:20px;display:flex;justify-content:space-between;align-items:center;color:var(--navy);font-size:10px}
 
-    <!-- YOUR CSS -->
-    <link rel="stylesheet" href="style.css">
+/* TESTIMONIALS */
+.testimonials{padding:115px 35px;background:linear-gradient(180deg,#fff 0%,#fbf6f1 100%);position:relative;overflow:hidden}
+.testimonials:before,.testimonials:after{content:"";position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}.testimonials:before{width:350px;height:350px;background:rgba(201,139,112,.08);left:-180px;top:100px}.testimonials:after{width:300px;height:300px;background:rgba(29,44,99,.06);right:-150px;bottom:80px}
+.testimonial-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2}
+.testimonial-card{position:relative;padding:32px;min-height:310px;display:flex;flex-direction:column;background:rgba(255,255,255,.9);border:1px solid #e9e7e5;border-radius:22px;box-shadow:0 15px 45px rgba(28,40,80,.06);transition:.35s}
+.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(28,40,80,.12);border-color:rgba(201,139,112,.35)}
+.testimonial-card.featured{background:linear-gradient(145deg,#fff,#fff8f4);border-color:rgba(201,139,112,.3)}
+.quote-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:#fff0e8;color:var(--orange);font-size:16px;margin-bottom:18px}
+.testimonial-stars{color:#e7a72b;font-size:12px;letter-spacing:3px;margin-bottom:15px}.testimonial-text{color:#60697c;font-size:12px;line-height:1.9;flex:1}
+.testimonial-user{display:flex;align-items:center;gap:12px;margin-top:25px;padding-top:18px;border-top:1px solid #eeeeef}
+.testimonial-avatar{width:43px;height:43px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-size:10px;font-weight:700;border:3px solid #eef1fa}
+.testimonial-avatar.peach{background:var(--orange);border-color:#fff0e8}.testimonial-avatar.purple{background:#7254c8;border-color:#eeeaff}
+.testimonial-user strong{display:block;color:var(--navy);font-size:11px}.testimonial-user span{display:block;color:#969cab;font-size:8px;margin-top:3px}
+.testimonial-trust{max-width:850px;margin:55px auto 0;padding:22px 30px;display:flex;align-items:center;justify-content:space-around;background:rgba(255,255,255,.8);border:1px solid #e7e6e5;border-radius:18px;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:2}
+.trust-item{text-align:center}.trust-item strong{display:block;color:var(--navy);font-size:20px}.trust-item span{display:block;color:#888f9d;font-size:8px;margin-top:3px}.trust-line{width:1px;height:35px;background:#e2e3e7}
+
+/* CTA */
+.career-cta{max-width:1200px;min-height:390px;margin:100px auto;padding:70px;border-radius:30px;position:relative;overflow:hidden;background:linear-gradient(120deg,#17275c,#263c7b);color:#fff}
+.career-cta .section-tag{color:var(--orange-light)}.cta-content{max-width:600px;position:relative;z-index:3}.career-cta h2{font-size:clamp(35px,4vw,54px);line-height:1.12;letter-spacing:-2px}.career-cta h2 span{color:var(--orange-light)}.career-cta p{max-width:570px;margin-top:18px;color:#c8cee0;font-size:12px;line-height:1.9}
+.cta-button{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:15px 23px;border-radius:12px;background:#fff;color:var(--navy);font-size:11px;font-weight:700}
+.cta-decoration{position:absolute;right:-80px;top:-100px;width:500px;height:500px}.circle{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12)}.circle-one{inset:30px}.circle-two{inset:100px}.circle-three{inset:170px}
+
+/* FOOTER */
+footer{background:var(--navy-dark);color:#fff;padding:65px 35px 25px}.footer-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:50px}.footer-logo{font-size:21px;font-weight:700}.footer-logo span{color:var(--orange)}.footer-brand p{max-width:280px;margin-top:12px;color:#aeb6cc;font-size:10px;line-height:1.8}.footer-links{display:flex;gap:80px}.footer-links div{display:flex;flex-direction:column;gap:9px}.footer-links h4{font-size:11px;margin-bottom:6px}.footer-links a{color:#aeb6cc;font-size:9px}.footer-links a:hover{color:#fff}.footer-bottom{max-width:1200px;margin:50px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;color:#8992ac;font-size:8px}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1050px){
+.nav-links{gap:18px}.hero-container{gap:35px}.hero-content h1{font-size:55px}.hero-visual{transform:scale(.9)}.feature-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+.testimonial-grid{grid-template-columns:1fr 1fr}.testimonial-card:last-child{grid-column:1/-1}
+}
+@media(max-width:800px){
+.nav-links,.dashboard-btn{display:none}.mobile-menu{display:block}
+.hero{padding-top:125px}.hero-container{grid-template-columns:1fr;text-align:center}.hero-content{display:flex;flex-direction:column;align-items:center}.hero-description{max-width:600px}.hero-visual{margin-top:20px;transform:scale(.8)}
+.hero-stats{flex-wrap:wrap;gap:20px}.stat-divider{display:none}.course-grid{grid-template-columns:1fr;max-width:500px}
+.career-cta{margin:60px 20px;padding:45px 30px}.footer-container{flex-direction:column}
+}
+@media(max-width:600px){
+.testimonials{padding:80px 20px}.testimonial-grid{grid-template-columns:1fr}.testimonial-card:last-child{grid-column:auto}.testimonial-trust{display:grid;grid-template-columns:1fr 1fr;gap:20px}.trust-line{display:none}
+}
+@media(max-width:500px){
+.nav-container{padding:0 20px}.hero{padding-left:20px;padding-right:20px}.hero-content h1{font-size:43px;letter-spacing:-2px}.hero-description{font-size:13px}
+.hero-buttons{flex-direction:column;width:100%}.primary-btn,.secondary-btn{width:100%}.hero-visual{transform:scale(.62);width:160%;margin-left:-30%}
+.hero-stats{padding:20px;display:grid;grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}.overview,.courses{padding:75px 20px}
+.footer-links{gap:30px;flex-wrap:wrap}.footer-bottom{flex-direction:column;gap:8px}
+}
+</style>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup,
+  signInWithEmailAndPassword, createUserWithEmailAndPassword,
+  signOut, onAuthStateChanged, updateProfile
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.firebasestorage.app",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+window.mamrajAuth = {
+  auth, googleProvider, signInWithPopup, signInWithEmailAndPassword,
+  createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile
+};
+</script>
+
+<style>
+.auth-area{display:flex;align-items:center;gap:10px}
+.auth-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:1px solid #e0e3ea;border-radius:12px;background:#fff;color:var(--navy);font-size:11px;font-weight:700;cursor:pointer}
+.auth-user{display:none;align-items:center;gap:8px}.auth-user.show{display:flex}
+.auth-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)}
+.auth-user-name{font-size:10px;font-weight:700;color:var(--navy);max-width:100px;overflow:hidden;text-overflow:ellipsis}
+.logout-btn{border:0;background:none;color:#858b99;font-size:8px;cursor:pointer;padding:2px 0}
+.auth-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(10,18,45,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.auth-overlay.open{display:flex}
+.auth-modal{position:relative;width:min(430px,100%);background:#fff;border-radius:24px;padding:32px;box-shadow:0 35px 100px rgba(0,0,0,.25)}
+.auth-close{position:absolute;right:16px;top:16px;border:0;width:34px;height:34px;border-radius:50%;background:#f3f4f7;color:var(--navy);cursor:pointer}
+.auth-brand{font-size:19px;font-weight:700;color:var(--navy)}.auth-brand span{color:var(--orange)}
+.auth-modal h2{margin-top:20px;font-size:25px;color:var(--navy)}
+.auth-modal>p{margin-top:6px;font-size:10px;line-height:1.7;color:#7c8495}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#f4f5f8;padding:4px;border-radius:10px;margin-top:22px}
+.auth-tab{border:0;background:transparent;padding:10px;border-radius:7px;color:#818797;font-size:10px;font-weight:700;cursor:pointer}
+.auth-tab.active{background:#fff;color:var(--navy);box-shadow:0 4px 12px rgba(20,30,70,.07)}
+.auth-form{margin-top:18px}.auth-form label{display:block;margin:11px 0 6px;font-size:9px;font-weight:600;color:#555d70}
+.auth-form input{width:100%;height:44px;border:1px solid #e0e3e9;border-radius:10px;padding:0 12px;font-family:inherit;font-size:11px;outline:none}
+.auth-form input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(201,139,112,.1)}
+.auth-submit,.google-btn{width:100%;height:45px;border-radius:10px;font-family:inherit;font-size:10px;font-weight:700;cursor:pointer}
+.auth-submit{border:0;background:var(--navy);color:#fff;margin-top:16px}.auth-submit:disabled{opacity:.6}
+.auth-divider{display:flex;align-items:center;gap:10px;margin:17px 0;color:#9ca2ad;font-size:8px}.auth-divider:before,.auth-divider:after{content:"";height:1px;background:#e8e9ed;flex:1}
+.google-btn{border:1px solid #e0e3e9;background:#fff;color:#303746}
+.auth-message{text-align:center;min-height:16px;margin-top:9px;font-size:9px;color:#c35e46}.auth-message.success{color:#26955c}
+.auth-note{text-align:center;margin-top:13px;color:#9a9fac;font-size:8px;line-height:1.6}
+@media(max-width:800px){.auth-area{display:none}.auth-modal{padding:27px}}
+</style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
+<header class="navbar">
+<div class="nav-container">
 
-<header>
+<a href="#home" class="logo">
+<span class="logo-mam">MamRaj</span>
+<span class="logo-nexus">Nexus</span>
+<small>ACADEMY</small>
+</a>
 
-    <nav class="navbar">
+<nav class="nav-links">
+<a href="#home" class="active">Home</a>
+<a href="#courses">Courses</a>
+<a href="internships.html">Internships</a>
+<a href="#placements">Placements</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
 
-        <!-- LOGO -->
-        <a href="index.html"
-           class="logo">
+<div class="auth-area">
+<button class="auth-btn" id="openLoginBtn"><i class="fa-regular fa-user"></i> Sign In</button>
+<div class="auth-user" id="authUser">
+<img class="auth-avatar" id="authAvatar" alt="Profile">
+<div><div class="auth-user-name" id="authUserName">Student</div><button class="logout-btn" id="logoutBtn">Sign out</button></div>
+</div>
+<a href="dashboard.html" class="dashboard-btn" id="dashboardLink">Dashboard <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 
-            MamRaj
-            <span>Nexus Academy</span>
+<button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
 
-        </a>
-
-        <!-- NAVIGATION -->
-        <div class="nav-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#courses">
-                Courses
-            </a>
-
-            <a href="internship.html">
-                Internships
-            </a>
-
-            <a href="#placements">
-                Placements
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
-
-
-    </nav>
-
+</div>
 </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose"><i class="fa-solid fa-xmark"></i></button>
+    <div class="auth-brand">MamRaj <span>Nexus</span></div>
+    <h2 id="authTitle">Welcome back 👋</h2>
+    <p id="authSubtitle">Sign in to access your student dashboard and career journey.</p>
 
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab">Sign In</button>
+      <button class="auth-tab" id="signupTab">Create Account</button>
+    </div>
+
+    <form class="auth-form" id="authForm">
+      <div id="nameBox" style="display:none">
+        <label>Full Name</label>
+        <input id="authName" type="text" placeholder="Enter your full name">
+      </div>
+      <label>Email Address</label>
+      <input id="authEmail" type="email" placeholder="you@example.com" required>
+      <label>Password</label>
+      <input id="authPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required>
+      <button class="auth-submit" id="authSubmit" type="submit">Sign In</button>
+      <div class="auth-message" id="authMessage"></div>
+    </form>
+
+    <div class="auth-divider">OR</div>
+
+    <button class="google-btn" id="googleBtn">
+      <b style="color:#4285f4;font-size:15px">G</b> Continue with Google
+    </button>
+    <div class="auth-note">Your account is used to securely access your MamRaj Nexus student dashboard.</div>
+  </div>
+</div>
 <main>
 
-<section class="hero"
-         id="home">
+<section class="hero" id="home">
+<div class="hero-glow glow-one"></div>
+<div class="hero-glow glow-two"></div>
+<div class="hero-grid"></div>
 
-    <!-- HERO TEXT -->
+<div class="hero-container">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>
+<div class="eyebrow">
+<span class="eyebrow-dot"></span>
+India's Student Career Platform
+</div>
 
-            Learn.
-            Build.
-            <span>Intern.</span>
-            Get Hired.
+<h1>
+Learn.
+<span>Build.</span><br>
+<strong>Intern.</strong> Get Hired.
+</h1>
 
-        </h1>
+<p class="hero-description">
+An AI-powered academy that helps students master industry-ready skills,
+complete internships, earn verified certificates, and secure placements
+with the guidance of <strong>Shivaay AI.</strong>
+</p>
 
+<div class="hero-buttons">
+<a href="#courses" class="primary-btn">
+Start Learning <i class="fa-solid fa-arrow-right"></i>
+</a>
+<a href="internships.html" class="secondary-btn">
+<i class="fa-solid fa-briefcase"></i> Explore Internships
+</a>
+</div>
 
-        <p>
+<div class="hero-trust">
+<div class="trust-avatars">
+<span>AS</span><span>MR</span><span>PS</span><span>+</span>
+</div>
+<div>
+<div class="stars">★★★★★</div>
+<p>Trusted by ambitious students</p>
+</div>
+</div>
 
-            An AI-powered academy that helps students
-            master industry-ready skills, complete
-            internships, earn verified certificates,
-            and secure placements with the guidance
-            of <strong>Shivay AI.</strong>
+</div>
 
-        </p>
+<div class="hero-visual">
 
+<div class="floating-card floating-top">
+<div class="floating-icon purple"><i class="fa-solid fa-rocket"></i></div>
+<div><strong>Internship Ready</strong><small>Build your career</small></div>
+</div>
 
-        <!-- CTA -->
+<div class="hero-dashboard">
 
-        <div class="hero-buttons">
+<div class="dashboard-top">
+<div>
+<small>YOUR CAREER JOURNEY</small>
+<h3>You're making progress!</h3>
+</div>
+<div class="progress-circle"></div>
+</div>
 
-            <a href="#courses"
-               class="btn-primary">
+<div class="progress-line"><span></span></div>
 
-                Start Learning
+<div class="journey">
 
-                <i class="fa-solid fa-arrow-right"></i>
+<div class="journey-item completed">
+<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
+<div><strong>Learn Skills</strong><small>Completed</small></div>
+</div>
 
-            </a>
+<div class="journey-item completed">
+<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
+<div><strong>Build Projects</strong><small>Completed</small></div>
+</div>
 
+<div class="journey-item active">
+<div class="journey-icon"><i class="fa-solid fa-briefcase"></i></div>
+<div><strong>Get Internship</strong><small>12 opportunities available</small></div>
+</div>
 
-            <a href="internships.html"
-               class="btn-secondary">
+<div class="journey-item">
+<div class="journey-icon"><i class="fa-solid fa-user-tie"></i></div>
+<div><strong>Get Hired</strong><small>Your next milestone</small></div>
+</div>
 
-                Explore Internships
+</div>
+</div>
 
-                <i class="fa-solid fa-briefcase"></i>
+<div class="floating-card floating-bottom">
+<div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
+<div><strong>Shivaay AI</strong><small>Your AI career mentor</small></div>
+<span class="online-dot"></span>
+</div>
 
-            </a>
+</div>
+</div>
 
-        </div>
-
-    </div>
-
-
-    <!-- HERO VISUAL -->
-
-    <div class="hero-visual">
-
-        <!-- MAIN CARD -->
-
-        <div class="hero-card">
-
-            <div class="hero-card-icon">
-
-                <i class="fa-solid fa-graduation-cap"></i>
-
-            </div>
-
-
-            <h3>
-                Your Career,
-                Powered by AI.
-            </h3>
-
-
-            <p>
-
-                Learn practical skills,
-                build real projects,
-                gain experience and
-                move closer to your dream career.
-
-            </p>
-
-
-            <div style="
-                margin-top:25px;
-                padding-top:18px;
-                border-top:1px solid rgba(255,255,255,.15);
-            ">
-
-                <strong style="
-                    font-size:28px;
-                ">
-                    10K+
-                </strong>
-
-                <span style="
-                    display:block;
-                    color:rgba(255,255,255,.65);
-                    font-size:12px;
-                ">
-                    Learner Opportunities
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- FLOATING CARD 1 -->
-
-        <div class="floating-card card-one">
-
-            <strong>
-                100+
-            </strong>
-
-            <span>
-                Courses
-            </span>
-
-        </div>
-
-
-        <!-- FLOATING CARD 2 -->
-
-        <div class="floating-card card-two">
-
-            <strong>
-                500+
-            </strong>
-
-            <span>
-                Internship Opportunities
-            </span>
-
-        </div>
-
-    </div>
+<div class="hero-stats">
+<div class="hero-stat"><strong>100+</strong><span>Courses</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>500+</strong><span>Internship Opportunities</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>50+</strong><span>Hiring Partners</span></div>
+<div class="stat-divider"></div>
+<div class="hero-stat"><strong>10K+</strong><span>Students</span></div>
+</div>
 
 </section>
 
+<section class="overview" id="about">
+<div class="section-heading">
+<div class="section-tag">WHY MAMRAJ NEXUS</div>
+<h2>Everything you need <span>to move forward.</span></h2>
+<p>Learn practical skills, gain real-world experience, and build a career that actually goes somewhere.</p>
+</div>
 
-<!-- =====================================================
-     ACADEMY OVERVIEW
-===================================================== -->
+<div class="feature-grid">
 
-<section class="overview"
-         id="about">
+<div class="feature-card">
+<div class="feature-icon blue"><i class="fa-solid fa-graduation-cap"></i></div>
+<h3>Industry-Ready Courses</h3>
+<p>Learn skills that companies actually look for with practical and structured learning paths.</p>
+<a href="#courses">Explore Courses <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 
-    <div class="section-title">
+<div class="feature-card">
+<div class="feature-icon orange"><i class="fa-solid fa-briefcase"></i></div>
+<h3>Real Internships</h3>
+<p>Discover internships from startups, growing companies and established organizations.</p>
+<a href="internships.html">Find Internships <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 
-        <span>
-            WHY MAMRAJ NEXUS
-        </span>
+<div class="feature-card">
+<div class="feature-icon green"><i class="fa-solid fa-certificate"></i></div>
+<h3>Verified Certificates</h3>
+<p>Showcase your learning journey with professional certificates you can add to your resume.</p>
+<a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 
-        <h2>
-            Academy Overview
-        </h2>
+<div class="feature-card">
+<div class="feature-icon purple"><i class="fa-solid fa-robot"></i></div>
+<h3>Shivaay AI</h3>
+<p>Get personalized guidance for skills, projects, resumes, interviews and your career journey.</p>
+<a href="#">Meet Shivaay <i class="fa-solid fa-arrow-right"></i></a>
+</div>
 
-        <p>
+</div>
+</section>
 
-            One ecosystem for learning,
-            practical experience and career growth.
+<section class="courses" id="courses">
+<div class="section-heading center">
+<div class="section-tag">LEARN & GROW</div>
+<h2>Build skills that <span>open doors.</span></h2>
+<p>Choose a learning path and start building your future today.</p>
+</div>
 
-        </p>
+<div class="course-grid">
 
-    </div>
+<div class="course-card">
+<div class="course-image web"><i class="fa-solid fa-code"></i></div>
+<div class="course-content">
+<span>DEVELOPMENT</span>
+<h3>Full Stack Web Development</h3>
+<p>HTML, CSS, JavaScript, React, Node.js and real-world projects.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
 
+<div class="course-card">
+<div class="course-image data"><i class="fa-solid fa-chart-line"></i></div>
+<div class="course-content">
+<span>DATA & AI</span>
+<h3>Data Science & AI</h3>
+<p>Python, data analytics, machine learning and AI fundamentals.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
 
-    <!-- STATS -->
+<div class="course-card">
+<div class="course-image design"><i class="fa-solid fa-pen-ruler"></i></div>
+<div class="course-content">
+<span>DESIGN</span>
+<h3>UI/UX Design</h3>
+<p>Learn design thinking, Figma, wireframes and product design.</p>
+<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
+</div>
+</div>
 
-    <div class="stats">
+</div>
+</section>
 
-        <div class="stat-card">
+<section class="testimonials" id="testimonials">
 
-            <strong>
-                100+
-            </strong>
+<div class="section-heading center">
+<div class="section-tag">STUDENT STORIES</div>
+<h2>Loved by students. <span>Built for their future.</span></h2>
+<p>Real journeys from students who are learning, building and taking their next career step with MamRaj Nexus Academy.</p>
+</div>
 
-            <span>
-                Courses
-            </span>
+<div class="testimonial-grid">
 
-        </div>
+<article class="testimonial-card featured">
+<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">
+MamRaj Nexus Academy gave me a clear direction when I was confused about what to learn next.
+The learning path and internship opportunities made my career journey much more structured.
+</p>
+<div class="testimonial-user">
+<div class="testimonial-avatar">AS</div>
+<div><strong>Aditya Sharma</strong><span>B.Tech Student</span></div>
+</div>
+</article>
 
+<article class="testimonial-card">
+<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">
+I really liked the way courses and internships are brought together in one platform.
+It feels less like just another learning website and more like a complete career ecosystem.
+</p>
+<div class="testimonial-user">
+<div class="testimonial-avatar peach">PR</div>
+<div><strong>Priya Raj</strong><span>Computer Science Student</span></div>
+</div>
+</article>
 
-        <div class="stat-card">
+<article class="testimonial-card">
+<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+<div class="testimonial-stars">★★★★★</div>
+<p class="testimonial-text">
+The idea of having AI guidance along with practical projects and internships is what attracted me.
+Shivaay AI makes the experience feel much more personal.
+</p>
+<div class="testimonial-user">
+<div class="testimonial-avatar purple">RK</div>
+<div><strong>Rahul Kumar</strong><span>Engineering Student</span></div>
+</div>
+</article>
 
-            <strong>
-                500+
-            </strong>
+</div>
 
-            <span>
-                Internship Opportunities
-            </span>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <strong>
-                50+
-            </strong>
-
-            <span>
-                Industry Skills
-            </span>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <strong>
-                24/7
-            </strong>
-
-            <span>
-                AI Career Guidance
-            </span>
-
-        </div>
-
-    </div>
+<div class="testimonial-trust">
+<div class="trust-item"><strong>4.9/5</strong><span>Student Experience</span></div>
+<div class="trust-line"></div>
+<div class="trust-item"><strong>10K+</strong><span>Students Reached</span></div>
+<div class="trust-line"></div>
+<div class="trust-item"><strong>500+</strong><span>Opportunities</span></div>
+</div>
 
 </section>
 
-
-<!-- =====================================================
-     COURSES
-===================================================== -->
-
-<section id="courses"
-         style="
-             padding-top:80px;
-             padding-bottom:80px;
-         ">
-
-    <div class="section-title">
-
-        <span>
-            LEARN
-        </span>
-
-        <h2>
-            Build Skills That Matter.
-        </h2>
-
-        <p>
-
-            Learn practical, industry-focused
-            skills through structured courses
-            and real-world projects.
-
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-        <!-- CARD -->
-
-        <article class="course-card">
-
-            <div style="
-                width:50px;
-                height:50px;
-                border-radius:15px;
-                background:#F8F3EE;
-                color:#C58B73;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                margin-bottom:20px;
-            ">
-
-                <i class="fa-solid fa-code"></i>
-
-            </div>
-
-
-            <h3>
-                Web Development
-            </h3>
-
-
-            <p>
-
-                Master HTML, CSS, JavaScript,
-                frontend frameworks and modern
-                web development.
-
-            </p>
-
-        </article>
-
-
-        <!-- CARD -->
-
-        <article class="course-card">
-
-            <div style="
-                width:50px;
-                height:50px;
-                border-radius:15px;
-                background:#F8F3EE;
-                color:#C58B73;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                margin-bottom:20px;
-            ">
-
-                <i class="fa-solid fa-brain"></i>
-
-            </div>
-
-
-            <h3>
-                AI & Machine Learning
-            </h3>
-
-
-            <p>
-
-                Learn AI concepts, machine learning,
-                data analysis and build intelligent
-                real-world applications.
-
-            </p>
-
-        </article>
-
-
-        <!-- CARD -->
-
-        <article class="course-card">
-
-            <div style="
-                width:50px;
-                height:50px;
-                border-radius:15px;
-                background:#F8F3EE;
-                color:#C58B73;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                margin-bottom:20px;
-            ">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-            </div>
-
-
-            <h3>
-                Career & Professional Skills
-            </h3>
-
-
-            <p>
-
-                Improve communication,
-                resume building, interviews,
-                LinkedIn and workplace skills.
-
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     INTERNSHIPS
-===================================================== -->
-
-<section id="placements"
-         style="
-             padding-top:80px;
-             padding-bottom:80px;
-         ">
-
-    <div class="section-title">
-
-        <span>
-            EXPERIENCE
-        </span>
-
-        <h2>
-            Learn. Then Prove It.
-        </h2>
-
-        <p>
-
-            Gain hands-on experience through
-            real projects and structured internships.
-
-        </p>
-
-    </div>
-
-
-    <div class="cards">
-
-        <article class="card">
-
-            <h3>
-                Real Projects
-            </h3>
-
-            <p>
-
-                Work on practical projects that
-                strengthen your portfolio and
-                demonstrate your skills.
-
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                Industry Internships
-            </h3>
-
-            <p>
-
-                Apply your knowledge in structured
-                internship opportunities and gain
-                valuable professional experience.
-
-            </p>
-
-        </article>
-
-
-        <article class="card">
-
-            <h3>
-                Verified Certificates
-            </h3>
-
-            <p>
-
-                Earn certificates that showcase
-                your learning achievements and
-                completed experiences.
-
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section id="about-academy"
-         style="
-             padding-top:80px;
-             padding-bottom:80px;
-         ">
-
-    <div class="section-title">
-
-        <span>
-            OUR MISSION
-        </span>
-
-        <h2>
-            Education Meets Opportunity.
-        </h2>
-
-        <p>
-
-            MamRaj Nexus Academy brings learning,
-            projects, internships and career
-            opportunities together in one ecosystem.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section id="contact"
-         style="
-             padding-top:80px;
-             padding-bottom:100px;
-         ">
-
-    <div class="section-title">
-
-        <span>
-            GET STARTED
-        </span>
-
-        <h2>
-            Ready to Build Your Future?
-        </h2>
-
-        <p>
-
-            Start your journey with
-            MamRaj Nexus Academy today.
-
-        </p>
-
-    </div>
-
-
-    <div class="hero-buttons">
-
-        <a href="#courses"
-           class="btn-primary">
-
-            Explore Courses
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-
-        <a href="internship.html"
-           class="btn-secondary">
-
-            Find an Internship
-
-            <i class="fa-solid fa-briefcase"></i>
-
-        </a>
-
-    </div>
-
+<section class="career-cta" id="placements">
+<div class="cta-content">
+<div class="section-tag">YOUR NEXT CHAPTER</div>
+<h2>Don't just learn.<br><span>Build your career.</span></h2>
+<p>From your first course to your first internship and eventually your first job — MamRaj Nexus Academy is built to walk with you.</p>
+<a href="dashboard.html" class="cta-button">Start Your Journey <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+<div class="cta-decoration">
+<div class="circle circle-one"></div>
+<div class="circle circle-two"></div>
+<div class="circle circle-three"></div>
+</div>
 </section>
 
 </main>
 
+<footer id="contact">
+<div class="footer-container">
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<div class="footer-brand">
+<div class="footer-logo">MamRaj <span>Nexus</span></div>
+<p>Empowering students to learn, build and get hired.</p>
+</div>
 
-<footer>
+<div class="footer-links">
+<div>
+<h4>Academy</h4>
+<a href="#courses">Courses</a>
+<a href="internships.html">Internships</a>
+<a href="#">Certificates</a>
+</div>
+<div>
+<h4>Company</h4>
+<a href="#about">About</a>
+<a href="#placements">Placements</a>
+<a href="#contact">Contact</a>
+</div>
+<div>
+<h4>Connect</h4>
+<a href="#">Instagram</a>
+<a href="#">LinkedIn</a>
+<a href="#">Email Us</a>
+</div>
+</div>
 
-    <div style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:30px;
-        flex-wrap:wrap;
-    ">
+</div>
 
-        <div>
-
-            <h3 style="
-                font-family:'Manrope', sans-serif;
-                font-size:22px;
-                margin-bottom:8px;
-            ">
-
-                MamRaj Nexus Academy
-
-            </h3>
-
-            <p style="
-                color:rgba(255,255,255,.65);
-                font-size:13px;
-            ">
-
-                Learn. Build. Intern. Get Hired.
-
-            </p>
-
-        </div>
-
-
-        <div style="
-            display: flex;
-            gap:20px;
-            font-size:13px;
-        ">
-
-            <a href="#courses">
-                Courses
-            </a>
-
-            <a href="internships.html">
-                Internships
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div style="
-        margin-top:40px;
-        padding-top:20px;
-        border-top:1px solid rgba(255,255,255,.12);
-        color:rgba(255,255,255,.45);
-        font-size:12px;
-    ">
-
-        © 2026 MamRaj Nexus Academy.
-        All rights reserved.
-
-    </div>
-
+<div class="footer-bottom">
+<span>© 2026 MamRaj Nexus Academy</span>
+<span>A MamRaj Web Studio Initiative</span>
+</div>
 </footer>
 
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
+"use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
+const mobileMenu = document.getElementById("mobileMenu");
+const navLinks = document.querySelector(".nav-links");
+const navbar = document.querySelector(".navbar");
 
-    /* Smooth anchor navigation */
-
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-        link.addEventListener("click", function(event) {
-
-            const targetId =
-                this.getAttribute("href");
-
-            const target =
-                document.querySelector(targetId);
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-
-        });
-
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener("click", () => {
+        navLinks.classList.toggle("mobile-open");
     });
+}
 
-
-    /* Navbar shadow on scroll */
-
-    const navbar =
-        document.querySelector(".navbar");
-
-    window.addEventListener("scroll", () => {
-
-        if (!navbar) return;
-
-        if (window.scrollY > 20) {
-
-            navbar.style.boxShadow =
-                "0 10px 35px rgba(23,37,84,.08)";
-
-        } else {
-
-            navbar.style.boxShadow = "none";
-
-        }
-
-    });
-
+window.addEventListener("scroll", () => {
+    if (navbar) {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+    }
 });
 
+const links = document.querySelectorAll(".nav-links a");
+
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        links.forEach(item => item.classList.remove("active"));
+        link.classList.add("active");
+        if (window.innerWidth <= 800) {
+            navLinks.classList.remove("mobile-open");
+        }
+    });
+});
+
+const revealElements = document.querySelectorAll(
+    ".feature-card, .course-card, .testimonial-card, .section-heading"
+);
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+        }
+    });
+}, { threshold: 0.12 });
+
+revealElements.forEach(element => {
+    element.classList.add("reveal");
+    observer.observe(element);
+});
 </script>
 
-</body>
+<style>
+@media(max-width:800px){
+    .nav-links.mobile-open{
+        display:flex;
+        position:absolute;
+        top:88px;
+        left:15px;
+        right:15px;
+        padding:20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        background:#fff;
+        border-radius:16px;
+        box-shadow:0 20px 50px rgba(20,30,70,.12);
+    }
+}
+</style>
 
+
+<script type="module">
+const $ = id => document.getElementById(id);
+let mode = "login";
+
+function openAuth(){ $("authOverlay").classList.add("open"); }
+function closeAuth(){ $("authOverlay").classList.remove("open"); $("authMessage").textContent=""; }
+function msg(text, ok=false){ $("authMessage").textContent=text; $("authMessage").className="auth-message"+(ok?" success":""); }
+
+function setMode(value){
+  mode=value;
+  const signup=value==="signup";
+  $("loginTab").classList.toggle("active",!signup);
+  $("signupTab").classList.toggle("active",signup);
+  $("nameBox").style.display=signup?"block":"none";
+  $("authName").required=signup;
+  $("authSubmit").textContent=signup?"Create Account":"Sign In";
+  $("authTitle").textContent=signup?"Create your account 🚀":"Welcome back 👋";
+  $("authSubtitle").textContent=signup
+    ?"Create your student account and start your career journey."
+    :"Sign in to access your student dashboard and career journey.";
+  msg("");
+}
+
+$("openLoginBtn")?.addEventListener("click",openAuth);
+$("authClose")?.addEventListener("click",closeAuth);
+$("loginTab")?.addEventListener("click",()=>setMode("login"));
+$("signupTab")?.addEventListener("click",()=>setMode("signup"));
+$("authOverlay")?.addEventListener("click",e=>{if(e.target===$("authOverlay"))closeAuth();});
+
+$("authForm")?.addEventListener("submit",async e=>{
+  e.preventDefault();
+  if(!window.mamrajAuth){msg("Add your Firebase configuration first.");return;}
+  $("authSubmit").disabled=true;
+  try{
+    const a=window.mamrajAuth;
+    if(mode==="signup"){
+      const c=await a.createUserWithEmailAndPassword(a.auth,$("authEmail").value.trim(),$("authPassword").value);
+      if($("authName").value.trim()) await a.updateProfile(c.user,{displayName:$("authName").value.trim()});
+      msg("Account created successfully.",true);
+    }else{
+      await a.signInWithEmailAndPassword(a.auth,$("authEmail").value.trim(),$("authPassword").value);
+      msg("Signed in successfully.",true);
+    }
+    setTimeout(closeAuth,600);
+  }catch(error){
+    const map={
+      "auth/invalid-credential":"Invalid email or password.",
+      "auth/user-not-found":"No account found with this email.",
+      "auth/wrong-password":"Incorrect password.",
+      "auth/email-already-in-use":"This email is already registered.",
+      "auth/weak-password":"Password must be at least 6 characters.",
+      "auth/invalid-email":"Enter a valid email address."
+    };
+    msg(map[error.code]||error.message);
+  }finally{$("authSubmit").disabled=false;}
+});
+
+$("googleBtn")?.addEventListener("click",async()=>{
+  if(!window.mamrajAuth){msg("Add your Firebase configuration first.");return;}
+  try{
+    const a=window.mamrajAuth;
+    await a.signInWithPopup(a.auth,a.googleProvider);
+    msg("Google sign-in successful.",true);
+    setTimeout(closeAuth,600);
+  }catch(error){
+    msg(error.code==="auth/popup-closed-by-user"?"Google sign-in was cancelled.":error.message);
+  }
+});
+
+$("logoutBtn")?.addEventListener("click",()=>{
+  if(window.mamrajAuth) window.mamrajAuth.signOut(window.mamrajAuth.auth);
+});
+
+if(window.mamrajAuth){
+  window.mamrajAuth.onAuthStateChanged(window.mamrajAuth.auth,user=>{
+    const login=$("openLoginBtn"), userBox=$("authUser"), dash=$("dashboardLink");
+    if(user){
+      login.style.display="none";
+      userBox.classList.add("show");
+      dash.style.display="inline-flex";
+      $("authUserName").textContent=user.displayName||user.email.split("@")[0];
+      $("authAvatar").src=user.photoURL||"https://ui-avatars.com/api/?name="+encodeURIComponent(user.displayName||"Student")+"&background=1d2c63&color=fff";
+    }else{
+      login.style.display="inline-flex";
+      userBox.classList.remove("show");
+      dash.style.display="none";
+    }
+  });
+}
+</script>
+</body>
 </html>
