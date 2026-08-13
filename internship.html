@@ -1,624 +1,3054 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Internships | MamRaj Nexus Academy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root{
-    --navy:#1d2c63;
-    --navy2:#263b78;
-    --peach:#c98b70;
-    --cream:#f7f8fb;
-    --white:#fff;
-    --text:#17234f;
-    --muted:#788197;
-    --line:#e5e8ef;
-    --green:#20a464;
-    --shadow:0 12px 35px rgba(29,44,99,.07);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Poppins,sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
+    <title>Internships | MamRaj Nexus Academy</title>
 
-/* SIDEBAR */
-.sidebar{
-    position:fixed;left:0;top:0;bottom:0;width:305px;
-    background:linear-gradient(180deg,#1e3070 0%,#263b78 100%);
-    color:#fff;z-index:1000;padding:52px 16px 20px;
-}
-.brand{padding:0 17px 45px}
-.brand-title{font-size:28px;font-weight:800;letter-spacing:-1.4px}
-.brand-title span{color:#f0ad00}
-.brand-sub{font-size:9px;letter-spacing:5px;text-align:center;margin-top:5px;color:#e8eaf3}
-.side-nav{display:flex;flex-direction:column;gap:8px}
-.side-link{
-    display:flex;align-items:center;gap:18px;padding:17px 21px;
-    border-radius:17px;font-size:13px;font-weight:600;color:#edf0f8;
-    transition:.25s;
-}
-.side-link i{width:18px;text-align:center;font-size:16px}
-.side-link:hover{background:rgba(255,255,255,.08);transform:translateX(3px)}
-.side-link.active{background:var(--peach);box-shadow:0 12px 25px rgba(0,0,0,.12)}
-.premium-box{
-    margin-top:10px;padding:24px 15px;border:1px solid rgba(255,255,255,.28);
-    border-radius:17px;text-align:center;background:rgba(255,255,255,.04)
-}
-.premium-box i{font-size:28px;color:#ffc400}
-.premium-box strong{display:block;color:#ffc400;font-size:13px;margin-top:8px}
-.premium-box span{display:block;color:#d8dceb;font-size:9px;margin-top:4px}
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* MAIN */
-.main{margin-left:305px;min-height:100vh}
-.topbar{
-    height:104px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);
-    display:flex;align-items:center;justify-content:space-between;padding:0 43px;
-    position:sticky;top:0;z-index:900;backdrop-filter:blur(16px)
-}
-.global-search{
-    width:min(490px,52%);height:53px;border-radius:15px;background:#f6f5f6;
-    display:flex;align-items:center;padding:0 18px;gap:12px;color:#778197
-}
-.global-search input{border:0;outline:0;background:transparent;width:100%;font-size:12px;color:var(--text)}
-.user-area{display:flex;align-items:center;gap:18px}
-.bell{width:49px;height:49px;border:0;border-radius:15px;background:#faf7f5;color:var(--navy);position:relative}
-.bell .count{position:absolute;right:-3px;top:-4px;width:20px;height:20px;border-radius:50%;background:#ef2929;color:#fff;font-size:9px;display:grid;place-items:center}
-.user{display:flex;align-items:center;gap:11px}
-.avatar{width:58px;height:58px;border-radius:50%;border:3px solid var(--peach);display:grid;place-items:center;font-weight:700;background:#f4f4f4;font-size:16px}
-.user strong{display:block;font-size:13px}.user span{font-size:10px;color:#7e8491}.chevron{margin-left:14px;color:var(--navy)}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-/* CONTENT */
-.content{max-width:1030px;margin:0 auto;padding:38px 42px 80px}
-.page-head{margin-bottom:26px}
-.page-head h1{font-size:35px;letter-spacing:-1.5px;color:var(--navy)}
-.page-head h1 span{font-size:29px;margin-left:5px}
-.page-head p{font-size:12px;margin-top:8px;color:#2e3b61}
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
 
-/* SEARCH */
-.filter-panel{
-    background:#fff;border:1px solid var(--line);border-radius:17px;padding:10px 14px;
-    display:grid;grid-template-columns:1.8fr .9fr .9fr .9fr auto;gap:10px;box-shadow:var(--shadow)
-}
-.field{height:48px;border:1px solid #dce1e9;border-radius:11px;display:flex;align-items:center;padding:0 13px;gap:9px;background:#fff}
-.field i{color:#6f7d97;font-size:14px}.field input,.field select{width:100%;border:0;outline:0;background:transparent;color:#3d4862;font-size:10px}
-.search-btn{height:48px;padding:0 21px;border:0;border-radius:11px;background:var(--navy);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;gap:7px}
-.search-btn:hover{background:var(--navy2);transform:translateY(-1px)}
+    <style>
 
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin:27px 0 37px}
-.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 19px;display:flex;align-items:center;gap:15px;box-shadow:0 8px 25px rgba(29,44,99,.04)}
-.stat-icon{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:20px}
-.blue{background:#e7f0ff;color:#3575df}.green{background:#e7f8ef;color:#20a464}.orange{background:#fff0df;color:#ed8417}.purple{background:#f0e9ff;color:#7852d1}
-.stat strong{font-size:20px;display:block;line-height:1}.stat b{display:block;font-size:10px;margin-top:7px}.stat small{font-size:8px;color:#8991a1}
+        /* =====================================================
+           ROOT
+        ===================================================== */
 
-/* SECTION */
-.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.section-title h2{font-size:20px;color:var(--navy)}
-.section-title span{font-size:9px;color:#8a91a0}
+        :root {
+            --navy: #1d2c63;
+            --navy-light: #2c4385;
+            --peach: #c98b70;
 
-/* MAMRAJ FEATURE */
-.mamraj-feature{
-    position:relative;overflow:hidden;background:linear-gradient(120deg,#192b63,#2d4485);
-    color:#fff;border-radius:22px;padding:27px 30px;margin-bottom:34px;
-    box-shadow:0 18px 45px rgba(29,44,99,.15)
-}
-.mamraj-feature:after{
-    content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.12);
-    border-radius:50%;right:-80px;top:-100px
-}
-.feature-content{position:relative;z-index:2}
-.feature-kicker{font-size:8px;letter-spacing:2px;color:#f0b299;font-weight:700}
-.feature-title{font-size:24px;font-weight:700;margin-top:5px}.feature-title span{color:#efb195}
-.feature-copy{font-size:10px;color:#d2d8e8;max-width:650px;line-height:1.8;margin-top:8px}
-.company-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:30px;background:rgba(255,255,255,.1);font-size:8px;margin-top:14px}
-.company-badge i{color:#65d39b}
+            --cream: #f7f8fb;
+            --white: #ffffff;
 
-/* CARDS */
-.internship-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
-.internship-card{
-    background:#fff;border:1px solid var(--line);border-radius:17px;padding:21px;
-    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;position:relative
-}
-.internship-card:hover{transform:translateY(-8px);box-shadow:0 22px 45px rgba(29,44,99,.12);border-color:rgba(201,139,112,.35)}
-.card-top{display:flex;justify-content:space-between;gap:15px}
-.company-logo{width:49px;height:49px;border-radius:13px;background:#f1f3f8;color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:14px}
-.company-logo.mamraj{background:#fff0e9;color:var(--peach)}
-.card-company{font-size:8px;color:#858d9d;margin-bottom:4px}
-.card-title{font-size:15px;color:var(--navy);line-height:1.35}
-.badge{font-size:7px;padding:5px 8px;border-radius:20px;background:#e9f8f0;color:#208b59;height:max-content;font-weight:700}
-.card-desc{font-size:9px;color:#798195;line-height:1.75;margin:16px 0}
-.meta{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:17px;border-bottom:1px solid #edf0f4}
-.meta span{font-size:8px;color:#687287;background:#f7f8fa;padding:6px 8px;border-radius:7px}
-.card-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
-.stipend{font-size:10px;color:var(--navy);font-weight:700}.stipend small{display:block;color:#9aa0ad;font-weight:400;font-size:7px;margin-top:2px}
-.apply-btn{border:0;border-radius:9px;background:var(--navy);color:#fff;padding:10px 15px;font-size:9px;font-weight:700}
-.apply-btn:hover{background:var(--peach)}
-.no-results{display:none;grid-column:1/-1;background:#fff;border:1px dashed #ccd2de;border-radius:17px;padding:55px;text-align:center;color:#7d8596}
-.no-results.show{display:block}.no-results i{font-size:24px;color:var(--navy);margin-bottom:10px}.no-results h3{font-size:15px;color:var(--navy)}.no-results p{font-size:9px;margin-top:5px}
+            --text: #17234f;
+            --muted: #788197;
 
-/* RESPONSIVE */
-@media(max-width:1100px){
-    .sidebar{width:255px}.main{margin-left:255px}.filter-panel{grid-template-columns:1.5fr 1fr 1fr;}.filter-panel .search-btn{grid-column:auto}.stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:800px){
-    .sidebar{width:74px;padding:25px 10px}.brand-title{font-size:0}.brand-title:after{content:"MN";font-size:22px}.brand-sub{display:none}.brand{padding:0 0 35px;text-align:center}
-    .side-link{justify-content:center;padding:15px}.side-link span,.premium-box{display:none}.side-link i{font-size:17px}
-    .main{margin-left:74px}.topbar{padding:0 18px;height:82px}.global-search{width:55%}.user strong,.user span,.chevron{display:none}.content{padding:28px 20px 60px}
-    .filter-panel{grid-template-columns:1fr 1fr}.filter-panel .search-field{grid-column:1/-1}.search-btn{width:100%;justify-content:center}
-    .internship-grid{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-    .stats{grid-template-columns:1fr}.topbar{gap:10px}.global-search{width:100%}.bell{display:none}.user{display:none}
-    .page-head h1{font-size:28px}.mamraj-feature{padding:23px}.feature-title{font-size:20px}
-    .filter-panel{grid-template-columns:1fr}.filter-panel .search-field{grid-column:auto}.search-btn{grid-column:auto}
-}
+            --line: #e5e8ef;
 
-.loading-state{
-    grid-column:1/-1;
-    min-height:170px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    color:#7d8596;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:17px;
-    font-size:10px;
-}
-.loading-state i{color:var(--navy);font-size:18px}
-.live-dot{
-    display:inline-block;
-    width:6px;height:6px;border-radius:50%;
-    background:#20a464;
-    box-shadow:0 0 0 4px rgba(32,164,100,.12);
-    margin-right:5px;
-}
-@media(max-width:560px){.loading-state{min-height:140px}}
-</style>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {
-  getFirestore, collection, query, where, onSnapshot
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+            --green: #20a464;
+            --orange: #ed8417;
+            --purple: #7852d1;
 
-const firebaseConfig = {
-  apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
-  authDomain: "mamraj-nexus-academy.firebaseapp.com",
-  projectId: "mamraj-nexus-academy",
-  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
-  messagingSenderId: "548826957068",
-  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
-  measurementId: "G-Z64L57P9XV"
-};
+            --shadow:
+                0 15px 40px rgba(29, 44, 99, 0.07);
+        }
 
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+        /* =====================================================
+           RESET
+        ===================================================== */
 
-window.mamrajDB = { db, collection, query, where, onSnapshot };
-</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            width: 290px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #1d2d6b 0%,
+                    #273c7b 100%
+                );
+
+            color: white;
+
+            padding: 42px 15px 20px;
+
+            z-index: 1000;
+        }
+
+        .brand {
+            padding: 0 18px 42px;
+        }
+
+        .brand-title {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+        }
+
+        .brand-title span {
+            color: #f1b000;
+        }
+
+        .brand-sub {
+            margin-top: 5px;
+
+            text-align: center;
+
+            font-size: 8px;
+            letter-spacing: 5px;
+
+            color: #e4e7f0;
+        }
+
+
+        .side-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .side-link {
+            display: flex;
+            align-items: center;
+
+            gap: 17px;
+
+            padding: 15px 19px;
+
+            border-radius: 15px;
+
+            color: #edf0f8;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            transition: .25s ease;
+        }
+
+        .side-link i {
+            width: 19px;
+            text-align: center;
+        }
+
+        .side-link:hover {
+            background: rgba(255,255,255,.08);
+            transform: translateX(3px);
+        }
+
+        .side-link.active {
+            background: var(--peach);
+
+            box-shadow:
+                0 12px 28px rgba(0,0,0,.13);
+        }
+
+
+        .premium-box {
+            margin-top: 20px;
+
+            padding: 20px 15px;
+
+            text-align: center;
+
+            border:
+                1px solid rgba(255,255,255,.25);
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.04);
+        }
+
+        .premium-box i {
+            color: #ffc400;
+            font-size: 25px;
+        }
+
+        .premium-box strong {
+            display: block;
+
+            margin-top: 7px;
+
+            color: #ffc400;
+
+            font-size: 12px;
+        }
+
+        .premium-box span {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #d6dbea;
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .main {
+            min-height: 100vh;
+
+            margin-left: 290px;
+        }
+
+
+        /* =====================================================
+           TOPBAR
+        ===================================================== */
+
+        .topbar {
+            height: 92px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 900;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            background:
+                rgba(255,255,255,.95);
+
+            border-bottom:
+                1px solid var(--line);
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        .global-search {
+            width: 470px;
+
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            padding: 0 17px;
+
+            background: #f6f6f7;
+
+            border-radius: 14px;
+
+            color: #778197;
+        }
+
+        .global-search input {
+            width: 100%;
+
+            border: 0;
+            outline: 0;
+
+            background: transparent;
+
+            color: var(--text);
+
+            font-size: 11px;
+        }
+
+
+        .user-area {
+            display: flex;
+            align-items: center;
+
+            gap: 17px;
+        }
+
+        .bell {
+            width: 46px;
+            height: 46px;
+
+            position: relative;
+
+            border: 0;
+
+            border-radius: 14px;
+
+            background: #faf7f5;
+
+            color: var(--navy);
+        }
+
+        .bell-count {
+            position: absolute;
+
+            top: -4px;
+            right: -4px;
+
+            width: 19px;
+            height: 19px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: #ed2929;
+
+            color: white;
+
+            font-size: 8px;
+        }
+
+
+        .user {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 52px;
+            height: 52px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            border: 3px solid var(--peach);
+
+            background: #f2f3f5;
+
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .user-info strong {
+            display: block;
+
+            font-size: 12px;
+        }
+
+        .user-info span {
+            display: block;
+
+            margin-top: 2px;
+
+            color: #818898;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+            max-width: 1080px;
+
+            margin: auto;
+
+            padding:
+                38px 42px
+                80px;
+        }
+
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            color: var(--navy);
+
+            font-size: 34px;
+
+            letter-spacing: -1.4px;
+        }
+
+        .page-heading p {
+            max-width: 750px;
+
+            margin-top: 8px;
+
+            color: #4a5570;
+
+            font-size: 11px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =====================================================
+           SEARCH PANEL
+        ===================================================== */
+
+        .filter-panel {
+            display: grid;
+
+            grid-template-columns:
+                1.7fr
+                .9fr
+                .9fr
+                .9fr
+                auto;
+
+            gap: 9px;
+
+            padding: 11px;
+
+            background: white;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 17px;
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .field {
+            height: 47px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 0 12px;
+
+            border:
+                1px solid #dfe3ea;
+
+            border-radius: 10px;
+
+            background: white;
+        }
+
+        .field i {
+            color: #738099;
+
+            font-size: 13px;
+        }
+
+        .field input,
+        .field select {
+            width: 100%;
+
+            border: 0;
+            outline: 0;
+
+            background: transparent;
+
+            color: #404b63;
+
+            font-size: 9px;
+        }
+
+
+        .search-btn {
+            height: 47px;
+
+            padding:
+                0 20px;
+
+            display: flex;
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: var(--navy);
+
+            color: white;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .search-btn:hover {
+            background: var(--navy-light);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 16px;
+
+            margin:
+                26px 0
+                35px;
+        }
+
+
+        .stat {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 20px;
+
+            background: white;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 16px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(29,44,99,.04);
+        }
+
+
+        .stat-icon {
+            width: 53px;
+            height: 53px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            font-size: 19px;
+        }
+
+        .blue {
+            color: #3575df;
+            background: #e7f0ff;
+        }
+
+        .green {
+            color: #20a464;
+            background: #e7f8ef;
+        }
+
+        .orange {
+            color: #ed8417;
+            background: #fff0df;
+        }
+
+        .purple {
+            color: #7852d1;
+            background: #f0e9ff;
+        }
+
+
+        .stat strong {
+            display: block;
+
+            min-width: 48px;
+
+            color: var(--navy);
+
+            font-size: 20px;
+
+            font-variant-numeric:
+                tabular-nums;
+        }
+
+        .stat b {
+            display: block;
+
+            margin-top: 4px;
+
+            font-size: 9px;
+        }
+
+        .stat small {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #9299a7;
+
+            font-size: 7px;
+        }
+
+
+        /* =====================================================
+           MAMRAJ FEATURE
+        ===================================================== */
+
+        .mamraj-feature {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 27px 29px;
+
+            margin-bottom: 32px;
+
+            border-radius: 21px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #192b63,
+                    #30498c
+                );
+
+            color: white;
+
+            box-shadow:
+                0 18px 45px
+                rgba(29,44,99,.15);
+        }
+
+        .mamraj-feature::after {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            right: -90px;
+            top: -120px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            border-radius: 50%;
+        }
+
+        .feature-kicker {
+            position: relative;
+            z-index: 2;
+
+            color: #f0b299;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            font-weight: 700;
+        }
+
+        .feature-title {
+            position: relative;
+            z-index: 2;
+
+            margin-top: 5px;
+
+            font-size: 23px;
+
+            font-weight: 700;
+        }
+
+        .feature-title span {
+            color: #efb195;
+        }
+
+        .feature-copy {
+            position: relative;
+            z-index: 2;
+
+            max-width: 720px;
+
+            margin-top: 7px;
+
+            color: #d4d9e7;
+
+            font-size: 9px;
+
+            line-height: 1.8;
+        }
+
+        .feature-badge {
+            position: relative;
+            z-index: 2;
+
+            display: inline-flex;
+            align-items: center;
+
+            gap: 7px;
+
+            margin-top: 14px;
+
+            padding: 7px 10px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,.1);
+
+            font-size: 7px;
+        }
+
+        .feature-badge i {
+            color: #5fdaa0;
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 {
+            color: var(--navy);
+
+            font-size: 19px;
+        }
+
+        .section-title span {
+            color: #8991a1;
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           INTERNSHIP GRID
+        ===================================================== */
+
+        .internship-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 17px;
+        }
+
+
+        .internship-card {
+            position: relative;
+
+            padding: 21px;
+
+            background: white;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 17px;
+
+            transition:
+                .35s ease;
+        }
+
+        .internship-card:hover {
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(201,139,112,.4);
+
+            box-shadow:
+                0 25px 50px
+                rgba(29,44,99,.12);
+        }
+
+
+        .card-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .company-area {
+            display: flex;
+
+            gap: 13px;
+        }
+
+
+        .company-logo {
+            width: 49px;
+            height: 49px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            background: #fff0e9;
+
+            color: var(--peach);
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+
+        .card-company {
+            margin-bottom: 4px;
+
+            color: #8a91a0;
+
+            font-size: 7px;
+
+            font-weight: 600;
+        }
+
+        .card-title {
+            color: var(--navy);
+
+            font-size: 14px;
+
+            line-height: 1.4;
+        }
+
+
+        .badge {
+            height: max-content;
+
+            padding: 5px 8px;
+
+            border-radius: 20px;
+
+            background: #e8f8ef;
+
+            color: #208b59;
+
+            font-size: 7px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        .card-desc {
+            min-height: 48px;
+
+            margin:
+                15px 0;
+
+            color: #798195;
+
+            font-size: 8px;
+
+            line-height: 1.8;
+        }
+
+
+        .meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            padding-bottom: 16px;
+
+            border-bottom:
+                1px solid #edf0f4;
+        }
+
+        .meta span {
+            padding: 6px 8px;
+
+            border-radius: 7px;
+
+            background: #f7f8fa;
+
+            color: #687287;
+
+            font-size: 7px;
+        }
+
+        .meta i {
+            margin-right: 3px;
+        }
+
+
+        .card-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+
+        .stipend {
+            color: var(--navy);
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+        .stipend small {
+            display: block;
+
+            margin-top: 3px;
+
+            color: #9aa0ad;
+
+            font-size: 6px;
+
+            font-weight: 400;
+        }
+
+
+        .apply-btn {
+            padding:
+                10px 15px;
+
+            border: 0;
+
+            border-radius: 9px;
+
+            background: var(--navy);
+
+            color: white;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .apply-btn:hover {
+            background: var(--peach);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           EMPTY / LOADING
+        ===================================================== */
+
+        .loading {
+            grid-column: 1/-1;
+
+            min-height: 180px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            background: white;
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 17px;
+
+            color: #7d8596;
+
+            font-size: 9px;
+        }
+
+        .loading i {
+            color: var(--navy);
+
+            font-size: 18px;
+        }
+
+
+        .no-results {
+            display: none;
+
+            grid-column: 1/-1;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+            background: white;
+
+            border:
+                1px dashed #ccd2de;
+
+            border-radius: 17px;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        .no-results i {
+            color: var(--navy);
+
+            font-size: 23px;
+        }
+
+        .no-results h3 {
+            margin-top: 10px;
+
+            color: var(--navy);
+
+            font-size: 14px;
+        }
+
+        .no-results p {
+            margin-top: 5px;
+
+            color: #7d8596;
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:1100px) {
+
+            .sidebar {
+                width: 250px;
+            }
+
+            .main {
+                margin-left: 250px;
+            }
+
+            .filter-panel {
+                grid-template-columns:
+                    1.5fr 1fr 1fr;
+            }
+
+            .search-btn {
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+
+        @media(max-width:800px) {
+
+            .sidebar {
+                width: 72px;
+
+                padding:
+                    25px 9px;
+            }
+
+            .brand-title {
+                font-size: 0;
+            }
+
+            .brand-title::after {
+                content: "MN";
+
+                font-size: 21px;
+            }
+
+            .brand-sub {
+                display: none;
+            }
+
+            .brand {
+                padding:
+                    0 0 30px;
+
+                text-align: center;
+            }
+
+            .side-link {
+                justify-content: center;
+
+                padding: 15px;
+            }
+
+            .side-link span {
+                display: none;
+            }
+
+            .premium-box {
+                display: none;
+            }
+
+            .main {
+                margin-left: 72px;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .global-search {
+                width: 58%;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .content {
+                padding:
+                    28px 20px
+                    60px;
+            }
+
+            .filter-panel {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .search-field {
+                grid-column: 1/-1;
+            }
+
+            .internship-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media(max-width:560px) {
+
+            .topbar {
+                height: 75px;
+            }
+
+            .global-search {
+                width: 100%;
+            }
+
+            .user-area {
+                display: none;
+            }
+
+            .page-heading h1 {
+                font-size: 28px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .search-field {
+                grid-column: auto;
+            }
+
+            .mamraj-feature {
+                padding: 23px;
+            }
+
+            .feature-title {
+                font-size: 20px;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
 <aside class="sidebar">
+
     <div class="brand">
-        <div class="brand-title">MamRaj <span>Nexus</span></div>
-        <div class="brand-sub">ACADEMY</div>
+
+        <div class="brand-title">
+            MamRaj <span>Nexus</span>
+        </div>
+
+        <div class="brand-sub">
+            ACADEMY
+        </div>
+
     </div>
+
 
     <nav class="side-nav">
-        <a href="dashboard.html" class="side-link"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
-        <a href="#" class="side-link active"><i class="fa-solid fa-briefcase"></i><span>Internships</span></a>
-        <a href="#" class="side-link"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a>
-        <a href="#" class="side-link"><i class="fa-solid fa-file-circle-check"></i><span>Applications</span></a>
-        <a href="#" class="side-link"><i class="fa-solid fa-award"></i><span>Certificates</span></a>
-        <a href="#" class="side-link"><i class="fa-solid fa-robot"></i><span>Shivaay AI</span></a>
+
+        <a href="dashboard.html" class="side-link">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+        <a href="internships.html"
+           class="side-link active">
+
+            <i class="fa-solid fa-briefcase"></i>
+
+            <span>
+                Internships
+            </span>
+
+        </a>
+
+
+        <a href="projects.html"
+           class="side-link">
+
+            <i class="fa-solid fa-folder-open"></i>
+
+            <span>
+                Projects
+            </span>
+
+        </a>
+
+
+        <a href="applications.html"
+           class="side-link">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <span>
+                Applications
+            </span>
+
+        </a>
+
+
+        <a href="certificates.html"
+           class="side-link">
+
+            <i class="fa-solid fa-award"></i>
+
+            <span>
+                Certificates
+            </span>
+
+        </a>
+
+
+        <a href="shivaay-ai.html"
+           class="side-link">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <span>
+                Shivaay AI
+            </span>
+
+        </a>
+
     </nav>
 
+
     <div class="premium-box">
+
         <i class="fa-solid fa-crown"></i>
-        <strong>Go Premium</strong>
-        <span>Unlock advanced career tools</span>
+
+        <strong>
+            Go Premium
+        </strong>
+
+        <span>
+            Unlock advanced career tools
+        </span>
+
     </div>
+
 </aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="main">
 
-<header class="topbar">
-    <div class="global-search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="globalSearch" type="text" placeholder="Search internships, skills or companies...">
-    </div>
 
-    <div class="user-area">
-        <button class="bell">
-            <i class="fa-regular fa-bell"></i>
-            <span class="count">3</span>
-        </button>
-        <div class="user">
-            <div class="avatar">AS</div>
-            <div>
-                <strong>Aditya Singh</strong>
-                <span>Student</span>
-            </div>
-            <i class="fa-solid fa-chevron-down chevron"></i>
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="global-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="globalSearch"
+                type="text"
+                placeholder="Search internships, skills or companies..."
+            >
+
         </div>
-    </div>
-</header>
 
-<main class="content">
 
-<section class="page-head">
-    <h1>Internships <span>🚀</span></h1>
-    <p>Discover internships and career opportunities from India's leading companies — plus opportunities inside the MamRaj ecosystem.</p>
-</section>
+        <div class="user-area">
 
-<section class="filter-panel">
-    <div class="field search-field">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="roleSearch" type="text" placeholder="Search by role, company or skills...">
-    </div>
+            <button class="bell">
 
-    <div class="field">
-        <select id="locationFilter">
-            <option value="">All Locations</option>
-            <option>Remote</option>
-            <option>Kanpur</option>
-            <option>India</option>
-        </select>
-    </div>
+                <i class="fa-regular fa-bell"></i>
 
-    <div class="field">
-        <select id="durationFilter">
-            <option value="">All Durations</option>
-            <option value="1-3">1–3 Months</option>
-            <option value="3-6">3–6 Months</option>
-            <option value="6">6+ Months</option>
-        </select>
-    </div>
+                <span class="bell-count">
+                    3
+                </span>
 
-    <div class="field">
-        <select id="stipendFilter">
-            <option value="">All Stipends</option>
-            <option value="paid">Paid</option>
-            <option value="unpaid">Unpaid</option>
-        </select>
-    </div>
+            </button>
 
-    <button class="search-btn" id="searchBtn">
-        <i class="fa-solid fa-magnifying-glass"></i> Search
-    </button>
-</section>
 
-<section class="stats">
-    <div class="stat">
-        <div class="stat-icon blue"><i class="fa-solid fa-briefcase"></i></div>
-        <div><strong id="activeInternshipsCount" class="counter-number" data-value="0">0</strong><b>Active Internships</b><small id="activeInternshipsMeta">Live from database</small></div>
-    </div>
-    <div class="stat">
-        <div class="stat-icon green"><i class="fa-solid fa-building"></i></div>
-        <div><strong id="companiesCount" class="counter-number" data-value="0">0</strong><b>Top Companies</b><small id="companiesMeta">Live from database</small></div>
-    </div>
-    <div class="stat">
-        <div class="stat-icon orange"><i class="fa-solid fa-location-dot"></i></div>
-        <div><strong id="locationsCount" class="counter-number" data-value="0">0</strong><b>Locations</b><small id="locationsMeta">Live from database</small></div>
-    </div>
-    <div class="stat">
-        <div class="stat-icon purple"><i class="fa-solid fa-users"></i></div>
-        <div><strong id="placedStudentsCount" class="counter-number" data-value="0">0</strong><b>Students Placed</b><small id="placedStudentsMeta">Live from database</small></div>
-    </div>
-</section>
+            <div class="user">
 
-<section class="mamraj-feature">
-    <div class="feature-content">
-        <div class="feature-kicker">MAMRAJ ECOSYSTEM</div>
-        <div class="feature-title">Build with <span>MamRaj</span>. Grow with MamRaj.</div>
-        <p class="feature-copy">
-            Explore in-house internship opportunities across web development, AI, design,
-            content and digital growth through MamRaj Web Studio and the MamRaj Nexus Academy ecosystem.
-        </p>
-        <div class="company-badge"><i class="fa-solid fa-circle-check"></i> In-house opportunities</div>
-    </div>
-</section>
+                <div class="avatar">
+                    AS
+                </div>
 
-<div class="section-title">
-    <h2>MamRaj Company Internships</h2>
-    <span id="resultCount">4 opportunities</span>
+                <div class="user-info">
+
+                    <strong>
+                        Aditya Singh
+                    </strong>
+
+                    <span>
+                        Student
+                    </span>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- CONTENT -->
+
+    <main class="content">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="page-heading">
+
+            <h1>
+                Internships 🚀
+            </h1>
+
+            <p>
+                Discover real-world internship opportunities and build
+                practical experience with MamRaj Web Studio and the
+                MamRaj Nexus Academy ecosystem.
+            </p>
+
+        </section>
+
+
+
+        <!-- SEARCH -->
+
+        <section class="filter-panel">
+
+
+            <div class="field search-field">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    id="roleSearch"
+                    type="text"
+                    placeholder="Search by role, company or skill..."
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <select id="locationFilter">
+
+                    <option value="">
+                        All Locations
+                    </option>
+
+                    <option value="Remote">
+                        Remote
+                    </option>
+
+                    <option value="Kanpur">
+                        Kanpur
+                    </option>
+
+                    <option value="India">
+                        India
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <select id="durationFilter">
+
+                    <option value="">
+                        All Durations
+                    </option>
+
+                    <option value="1-3">
+                        1–3 Months
+                    </option>
+
+                    <option value="3-6">
+                        3–6 Months
+                    </option>
+
+                    <option value="6">
+                        6+ Months
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <i class="fa-solid fa-money-bill"></i>
+
+                <select id="stipendFilter">
+
+                    <option value="">
+                        All Stipends
+                    </option>
+
+                    <option value="paid">
+                        Paid
+                    </option>
+
+                    <option value="unpaid">
+                        Unpaid
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                class="search-btn"
+                id="searchBtn"
+            >
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Search
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LIVE STATS
+        ================================================= -->
+
+        <section class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                </div>
+
+                <div>
+
+                    <strong
+                        id="activeInternshipsCount"
+                        data-value="0"
+                    >
+                        0
+                    </strong>
+
+                    <b>
+                        Active Internships
+                    </b>
+
+                    <small>
+                        Live database
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-building"></i>
+
+                </div>
+
+                <div>
+
+                    <strong
+                        id="companiesCount"
+                        data-value="0"
+                    >
+                        0
+                    </strong>
+
+                    <b>
+                        Companies
+                    </b>
+
+                    <small>
+                        Active companies
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                </div>
+
+                <div>
+
+                    <strong
+                        id="locationsCount"
+                        data-value="0"
+                    >
+                        0
+                    </strong>
+
+                    <b>
+                        Locations
+                    </b>
+
+                    <small>
+                        Current listings
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div>
+
+                    <strong
+                        id="placedStudentsCount"
+                        data-value="0"
+                    >
+                        0
+                    </strong>
+
+                    <b>
+                        Students Placed
+                    </b>
+
+                    <small>
+                        Live records
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAMRAJ FEATURE
+        ================================================= -->
+
+        <section class="mamraj-feature">
+
+            <div class="feature-kicker">
+                MAMRAJ WEB STUDIO
+            </div>
+
+
+            <div class="feature-title">
+
+                Build with
+                <span>MamRaj.</span>
+
+                Grow with us.
+
+            </div>
+
+
+            <p class="feature-copy">
+
+                Work on real digital products, websites,
+                AI-powered solutions, design systems and
+                digital growth projects through MamRaj Web Studio.
+
+            </p>
+
+
+            <div class="feature-badge">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                In-house internship opportunities
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INTERNSHIPS
+        ================================================= -->
+
+        <div class="section-title">
+
+            <h2>
+                MamRaj Web Studio Internships
+            </h2>
+
+            <span id="resultCount">
+                Loading...
+            </span>
+
+        </div>
+
+
+
+        <section
+            class="internship-grid"
+            id="internshipGrid"
+        >
+
+
+            <!-- =================================================
+                 FULL STACK
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    full stack web developer
+                    mamraj web studio
+                    html css javascript
+                    react node backend frontend
+                "
+                data-location="Remote"
+                data-duration="3-6"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                Full Stack Web Developer Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Work on real MamRaj websites,
+                    dashboards, APIs and responsive
+                    digital products.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        3–6 Months
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                    <span>
+                        React
+                    </span>
+
+                    <span>
+                        Node.js
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="Full Stack Web Developer Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 FRONTEND
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    frontend developer
+                    mamraj web studio
+                    html css javascript react
+                    responsive website ui
+                "
+                data-location="Remote"
+                data-duration="1-3"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                Frontend Developer Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Build responsive landing pages,
+                    websites and interactive frontend
+                    experiences.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        1–3 Months
+                    </span>
+
+                    <span>
+                        HTML/CSS
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                    <span>
+                        React
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="Frontend Developer Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 BACKEND
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    backend developer
+                    mamraj web studio
+                    node express api
+                    mongodb firebase database
+                "
+                data-location="Remote"
+                data-duration="3-6"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                Backend Developer Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Develop APIs, backend services,
+                    authentication systems and
+                    database-driven applications.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        3–6 Months
+                    </span>
+
+                    <span>
+                        Node.js
+                    </span>
+
+                    <span>
+                        APIs
+                    </span>
+
+                    <span>
+                        Firebase
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="Backend Developer Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 UI UX
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    ui ux graphic design
+                    mamraj web studio
+                    figma canva
+                    product design
+                "
+                data-location="Remote"
+                data-duration="1-3"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                UI/UX & Graphic Design Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Design modern interfaces,
+                    landing pages, dashboards,
+                    social creatives and product experiences.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        1–3 Months
+                    </span>
+
+                    <span>
+                        Figma
+                    </span>
+
+                    <span>
+                        UI/UX
+                    </span>
+
+                    <span>
+                        Canva
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="UI/UX & Graphic Design Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SEO
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    seo digital marketing
+                    mamraj web studio
+                    search engine optimization
+                    analytics content marketing
+                "
+                data-location="Remote"
+                data-duration="1-3"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                SEO & Digital Marketing Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Work on SEO research,
+                    website optimization, content strategy
+                    and digital growth campaigns.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        1–3 Months
+                    </span>
+
+                    <span>
+                        SEO
+                    </span>
+
+                    <span>
+                        Analytics
+                    </span>
+
+                    <span>
+                        Marketing
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="SEO & Digital Marketing Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 CONTENT
+            ================================================= -->
+
+            <article
+                class="internship-card"
+                data-search="
+                    content creator social media
+                    mamraj web studio
+                    instagram linkedin copywriting
+                    content marketing
+                "
+                data-location="Remote"
+                data-duration="1-3"
+                data-stipend="paid"
+            >
+
+                <div class="card-top">
+
+                    <div class="company-area">
+
+                        <div class="company-logo">
+                            MW
+                        </div>
+
+                        <div>
+
+                            <div class="card-company">
+                                MAMRAJ WEB STUDIO
+                            </div>
+
+                            <h3 class="card-title">
+                                Content & Social Media Intern
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                    <span class="badge">
+                        In-house
+                    </span>
+
+                </div>
+
+
+                <p class="card-desc">
+
+                    Create engaging content for
+                    Instagram, LinkedIn and other
+                    MamRaj digital channels.
+
+                </p>
+
+
+                <div class="meta">
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Remote
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        1–3 Months
+                    </span>
+
+                    <span>
+                        Instagram
+                    </span>
+
+                    <span>
+                        LinkedIn
+                    </span>
+
+                    <span>
+                        Content
+                    </span>
+
+                </div>
+
+
+                <div class="card-bottom">
+
+                    <div class="stipend">
+
+                        Performance Based
+
+                        <small>
+                            Compensation details on selection
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        class="apply-btn"
+                        data-role="Content & Social Media Intern"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <h3>
+                    No internships found
+                </h3>
+
+                <p>
+                    Try another role, company, skill or filter.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
 </div>
 
-<section class="internship-grid" id="internshipGrid">
-    <div class="loading-state" id="loadingState">
-        <i class="fa-solid fa-circle-notch fa-spin"></i>
-        <span>Loading live internships...</span>
-    </div>
 
-    <div class="no-results" id="noResults">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <h3>No internships found</h3>
-        <p>Try another role, skill, location or filter.</p>
-    </div>
-</section>
 
-</main>
-</div>
+<!-- =====================================================
+     FIREBASE + JAVASCRIPT
+===================================================== -->
 
 <script type="module">
-const $ = id => document.getElementById(id);
 
-let internships = [];
-let activeSearch = "";
-let activeLocation = "";
-let activeDuration = "";
-let activeStipend = "";
-
-const grid = $("internshipGrid");
-const noResults = $("noResults");
-const loadingState = $("loadingState");
-const resultCount = $("resultCount");
-
-function setText(id, value) {
-    const el = $(id);
-    if (el) el.textContent = value;
-}
-
-function safe(value) {
-    return String(value ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-}
+    import {
+        initializeApp
+    }
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
+    import {
+        getFirestore,
+        collection,
+        onSnapshot,
+        query,
+        where
+    }
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-function formatDigits(value) {
-    return Math.max(0, Number(value) || 0).toLocaleString("en-IN");
-}
+    /* =====================================================
+       FIREBASE CONFIG
+    ===================================================== */
 
-/*
-  STEP-METER COUNTER
-  Example:
-  0 → 10 → 20 → 30 → ... → 120 → 124
-  The final value is always the exact live Firebase value.
-*/
-function animateCounter(elementId, target, duration = 1500) {
-    const el = $(elementId);
-    if (!el) return;
+    const firebaseConfig = {
 
-    target = Math.max(0, Number(target) || 0);
+        apiKey:
+            "YOUR_API_KEY",
 
-    const oldValue = Number(el.dataset.value || 0);
-    el.dataset.value = String(target);
+        authDomain:
+            "YOUR_PROJECT.firebaseapp.com",
 
-    if (oldValue === target) {
-        el.textContent = formatDigits(target);
-        return;
+        projectId:
+            "YOUR_PROJECT_ID",
+
+        storageBucket:
+            "YOUR_PROJECT.firebasestorage.app",
+
+        messagingSenderId:
+            "YOUR_MESSAGING_SENDER_ID",
+
+        appId:
+            "YOUR_APP_ID"
+
+    };
+
+
+    /* =====================================================
+       INITIALIZE FIREBASE
+    ===================================================== */
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const db =
+        getFirestore(app);
+
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const roleSearch =
+        document.getElementById("roleSearch");
+
+    const globalSearch =
+        document.getElementById("globalSearch");
+
+    const locationFilter =
+        document.getElementById("locationFilter");
+
+    const durationFilter =
+        document.getElementById("durationFilter");
+
+    const stipendFilter =
+        document.getElementById("stipendFilter");
+
+    const searchBtn =
+        document.getElementById("searchBtn");
+
+    const cards =
+        [...document.querySelectorAll(".internship-card")];
+
+    const noResults =
+        document.getElementById("noResults");
+
+    const resultCount =
+        document.getElementById("resultCount");
+
+
+
+    /* =====================================================
+       LOCAL CARD FILTER
+    ===================================================== */
+
+    function filterCards() {
+
+        const search =
+            roleSearch.value
+                .trim()
+                .toLowerCase();
+
+
+        const location =
+            locationFilter.value;
+
+
+        const duration =
+            durationFilter.value;
+
+
+        const stipend =
+            stipendFilter.value;
+
+
+        let visible =
+            0;
+
+
+        cards.forEach(card => {
+
+            const text =
+                card.dataset.search
+                    .toLowerCase();
+
+
+            const cardLocation =
+                card.dataset.location;
+
+
+            const cardDuration =
+                card.dataset.duration;
+
+
+            const cardStipend =
+                card.dataset.stipend;
+
+
+            const matchesSearch =
+                !search ||
+                text.includes(search);
+
+
+            const matchesLocation =
+                !location ||
+                cardLocation === location;
+
+
+            const matchesDuration =
+                !duration ||
+                cardDuration === duration;
+
+
+            const matchesStipend =
+                !stipend ||
+                cardStipend === stipend;
+
+
+            const show =
+                matchesSearch &&
+                matchesLocation &&
+                matchesDuration &&
+                matchesStipend;
+
+
+            card.style.display =
+                show
+                    ? ""
+                    : "none";
+
+
+            if (show) {
+                visible++;
+            }
+
+        });
+
+
+        resultCount.textContent =
+            `${visible} ${
+                visible === 1
+                    ? "opportunity"
+                    : "opportunities"
+            }`;
+
+
+        noResults.classList.toggle(
+            "show",
+            visible === 0
+        );
+
     }
 
-    // Decide the jump size.
-    // Large values use 10-step jumps, smaller values use 5 or 1.
-    const distance = Math.abs(target - oldValue);
-    const jump = distance >= 20 ? 10 : distance >= 8 ? 5 : 1;
 
-    const values = [];
-    let current = oldValue;
 
-    while (
-        (target > oldValue && current < target) ||
-        (target < oldValue && current > target)
-    ) {
-        if (target > oldValue) {
-            current = Math.min(current + jump, target);
-        } else {
-            current = Math.max(current - jump, target);
+    /* =====================================================
+       SEARCH EVENTS
+    ===================================================== */
+
+    roleSearch.addEventListener(
+        "input",
+        filterCards
+    );
+
+
+    globalSearch.addEventListener(
+        "input",
+        () => {
+
+            roleSearch.value =
+                globalSearch.value;
+
+            filterCards();
+
         }
-        values.push(current);
-    }
+    );
 
-    const interval = Math.max(55, Math.floor(duration / Math.max(values.length, 1)));
 
-    el.textContent = formatDigits(oldValue);
-    el.classList.remove("counting");
-    void el.offsetWidth;
-    el.classList.add("counting");
+    searchBtn.addEventListener(
+        "click",
+        filterCards
+    );
 
-    let index = 0;
 
-    function nextStep() {
-        if (index >= values.length) {
-            el.textContent = formatDigits(target);
-            el.classList.remove("counting");
+    [
+        locationFilter,
+        durationFilter,
+        stipendFilter
+    ]
+    .forEach(element => {
+
+        element.addEventListener(
+            "change",
+            filterCards
+        );
+
+    });
+
+
+
+    /* =====================================================
+       STEP METER COUNTER
+    ===================================================== */
+
+    function animateCounter(
+        elementId,
+        target
+    ) {
+
+        const element =
+            document.getElementById(
+                elementId
+            );
+
+
+        if (!element)
+            return;
+
+
+        target =
+            Number(target) || 0;
+
+
+        const previous =
+            Number(
+                element.dataset.value || 0
+            );
+
+
+        if (previous === target) {
+
+            element.textContent =
+                target.toLocaleString(
+                    "en-IN"
+                );
+
             return;
         }
 
-        el.textContent = formatDigits(values[index]);
-        index++;
 
-        setTimeout(nextStep, interval);
+        element.dataset.value =
+            target;
+
+
+        const difference =
+            Math.abs(
+                target - previous
+            );
+
+
+        /*
+         * Large numbers:
+         * 0 → 10 → 20 → ...
+         *
+         * Small changes:
+         * 124 → 125
+         */
+
+        let step;
+
+
+        if (difference >= 20) {
+
+            step = 10;
+
+        } else if (difference >= 8) {
+
+            step = 5;
+
+        } else {
+
+            step = 1;
+
+        }
+
+
+        const values = [];
+
+
+        let current =
+            previous;
+
+
+        while (
+            target > previous &&
+            current < target
+        ) {
+
+            current =
+                Math.min(
+                    current + step,
+                    target
+                );
+
+            values.push(
+                current
+            );
+
+        }
+
+
+        while (
+            target < previous &&
+            current > target
+        ) {
+
+            current =
+                Math.max(
+                    current - step,
+                    target
+                );
+
+            values.push(
+                current
+            );
+
+        }
+
+
+        let index =
+            0;
+
+
+        const interval =
+            Math.max(
+                80,
+                1300 /
+                Math.max(
+                    values.length,
+                    1
+                )
+            );
+
+
+        function next() {
+
+            if (
+                index >=
+                values.length
+            ) {
+
+                element.textContent =
+                    target.toLocaleString(
+                        "en-IN"
+                    );
+
+                return;
+
+            }
+
+
+            element.textContent =
+                values[index]
+                    .toLocaleString(
+                        "en-IN"
+                    );
+
+
+            index++;
+
+
+            setTimeout(
+                next,
+                interval
+            );
+
+        }
+
+
+        next();
+
     }
 
-    nextStep();
-}
 
-function renderStats(allDocs) {
-    const active = allDocs.filter(x => String(x.status || "").toLowerCase() === "active");
 
-    const companies = new Set(
-        active.map(x => String(x.company || "").trim()).filter(Boolean)
+    /* =====================================================
+       FIRESTORE — INTERNSHIPS
+    ===================================================== */
+
+    const internshipRef =
+        collection(
+            db,
+            "internships"
+        );
+
+
+    onSnapshot(
+        internshipRef,
+
+        snapshot => {
+
+            const documents =
+                snapshot.docs.map(
+                    doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                );
+
+
+            /*
+             * Only active internships
+             */
+
+            const active =
+                documents.filter(
+                    item =>
+                        String(
+                            item.status
+                        ).toLowerCase()
+                        ===
+                        "active"
+                );
+
+
+            /*
+             * Unique companies
+             */
+
+            const companies =
+                new Set(
+                    active
+                        .map(
+                            item =>
+                                item.company
+                        )
+                        .filter(Boolean)
+                );
+
+
+            /*
+             * Unique locations
+             */
+
+            const locations =
+                new Set(
+                    active
+                        .map(
+                            item =>
+                                item.location
+                        )
+                        .filter(Boolean)
+                );
+
+
+            /*
+             * Update counters
+             */
+
+            animateCounter(
+                "activeInternshipsCount",
+                active.length
+            );
+
+
+            animateCounter(
+                "companiesCount",
+                companies.size
+            );
+
+
+            animateCounter(
+                "locationsCount",
+                locations.size
+            );
+
+
+            /*
+             * Update result text
+             */
+
+            resultCount.textContent =
+                `${active.length} ${
+                    active.length === 1
+                        ? "opportunity"
+                        : "opportunities"
+                }`;
+
+        },
+
+
+        error => {
+
+            console.error(
+                "Firestore error:",
+                error
+            );
+
+            resultCount.textContent =
+                "Database unavailable";
+
+        }
+
     );
 
-    const locations = new Set(
-        active.map(x => String(x.location || "").trim()).filter(Boolean)
+
+
+    /* =====================================================
+       FIRESTORE — STUDENTS PLACED
+    ===================================================== */
+
+    const placedStudentsQuery =
+        query(
+
+            collection(
+                db,
+                "students"
+            ),
+
+            where(
+                "placementStatus",
+                "==",
+                "placed"
+            )
+
+        );
+
+
+    onSnapshot(
+        placedStudentsQuery,
+
+        snapshot => {
+
+            animateCounter(
+                "placedStudentsCount",
+                snapshot.size
+            );
+
+        },
+
+        error => {
+
+            console.error(
+                "Students error:",
+                error
+            );
+
+        }
+
     );
 
-    animateCounter("activeInternshipsCount", active.length);
-    animateCounter("companiesCount", companies.size);
-    animateCounter("locationsCount", locations.size);
 
-    setText("activeInternshipsMeta", "Live • updates instantly");
-    setText("companiesMeta", "Active hiring companies");
-    setText("locationsMeta", "Across current listings");
 
-    // Students placed comes from the students collection listener below.
-}
+    /* =====================================================
+       APPLY BUTTON
+    ===================================================== */
 
-function renderCards() {
-    const existingCards = grid.querySelectorAll(".internship-card");
-    existingCards.forEach(card => card.remove());
+    document
+        .querySelectorAll(".apply-btn")
+        .forEach(button => {
 
-    const filtered = internships.filter(item => {
-        const text = [
-            item.title, item.company, item.description,
-            ...(Array.isArray(item.skills) ? item.skills : [])
-        ].join(" ").toLowerCase();
+            button.addEventListener(
+                "click",
+                () => {
 
-        const matchesText = !activeSearch || text.includes(activeSearch);
-        const matchesLocation = !activeLocation || item.location === activeLocation;
-        const matchesDuration = !activeDuration || item.duration === activeDuration;
-        const matchesStipend = !activeStipend || item.stipendType === activeStipend;
+                    const role =
+                        button.dataset.role;
 
-        return matchesText && matchesLocation && matchesDuration && matchesStipend;
-    });
 
-    filtered.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "internship-card";
+                    /*
+                     * Later connect this to:
+                     *
+                     * application.html
+                     *
+                     * or Firebase applications
+                     */
 
-        const skills = Array.isArray(item.skills) ? item.skills.slice(0,4) : [];
-        const logo = item.logo || String(item.company || "MN").split(/\s+/).map(x => x[0]).join("").slice(0,2).toUpperCase();
+                    window.location.href =
+                        "application.html?role=" +
+                        encodeURIComponent(
+                            role
+                        );
 
-        card.innerHTML = `
-            <div class="card-top">
-                <div style="display:flex;gap:13px">
-                    <div class="company-logo ${String(item.company || "").toLowerCase().includes("mamraj") ? "mamraj" : ""}">
-                        ${item.logoUrl ? `<img src="${safe(item.logoUrl)}" alt="${safe(item.company)}" style="width:100%;height:100%;object-fit:contain;border-radius:13px">` : safe(logo)}
-                    </div>
-                    <div>
-                        <div class="card-company">${safe(item.company)}</div>
-                        <h3 class="card-title">${safe(item.title)}</h3>
-                    </div>
-                </div>
-                <span class="badge">${safe(item.type || "Internship")}</span>
-            </div>
+                }
+            );
 
-            <p class="card-desc">${safe(item.description || "Real-world internship opportunity through MamRaj Nexus Academy.")}</p>
+        });
 
-            <div class="meta">
-                <span><i class="fa-solid fa-location-dot"></i> ${safe(item.location || "Remote")}</span>
-                <span><i class="fa-solid fa-clock"></i> ${safe(item.durationLabel || item.duration || "Flexible")}</span>
-                ${skills.map(skill => `<span><i class="fa-solid fa-code"></i> ${safe(skill)}</span>`).join("")}
-            </div>
 
-            <div class="card-bottom">
-                <div class="stipend">
-                    ${safe(item.stipend || "Details on application")}
-                    <small><span class="live-dot"></span>Live listing</small>
-                </div>
-                <button class="apply-btn" data-id="${safe(item.id)}">Apply Now</button>
-            </div>
-        `;
 
-        grid.insertBefore(card, noResults);
-    });
+    /* =====================================================
+       INITIAL FILTER
+    ===================================================== */
 
-    noResults.classList.toggle("show", filtered.length === 0 && !loadingState);
-    resultCount.innerHTML = `<span class="live-dot"></span>${filtered.length} ${filtered.length === 1 ? "opportunity" : "opportunities"} • Live`;
-}
+    filterCards();
 
-function applyFilters() {
-    activeSearch = ($("roleSearch").value || $("globalSearch").value).trim().toLowerCase();
-    activeLocation = $("locationFilter").value;
-    activeDuration = $("durationFilter").value;
-    activeStipend = $("stipendFilter").value;
-    renderCards();
-}
-
-function listenToInternships() {
-    const { db, collection, onSnapshot } = window.mamrajDB;
-
-    // All active/inactive internship documents are read in real time.
-    onSnapshot(collection(db, "internships"), snapshot => {
-        internships = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-
-        loadingState.style.display = "none";
-        renderStats(internships);
-        applyFilters();
-    }, error => {
-        loadingState.innerHTML = `
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <span>Could not load live internships. Check Firebase configuration/rules.</span>
-        `;
-        console.error("Internship listener:", error);
-    });
-}
-
-function listenToPlacedStudents() {
-    const { db, collection, query, where, onSnapshot } = window.mamrajDB;
-
-    // Expected student document field: placementStatus = "placed"
-    const placedQuery = query(
-        collection(db, "students"),
-        where("placementStatus", "==", "placed")
-    );
-
-    onSnapshot(placedQuery, snapshot => {
-        animateCounter("placedStudentsCount", snapshot.size);
-        setText("placedStudentsMeta", "Live placement records");
-    }, error => {
-        setText("placedStudentsCount", "—");
-        setText("placedStudentsMeta", "Placement data unavailable");
-        console.error("Placed students listener:", error);
-    });
-}
-
-// Search/filter events
-$("roleSearch").addEventListener("input", applyFilters);
-
-$("globalSearch").addEventListener("input", () => {
-    $("roleSearch").value = $("globalSearch").value;
-    applyFilters();
-});
-
-[$("locationFilter"), $("durationFilter"), $("stipendFilter")]
-    .forEach(el => el.addEventListener("change", applyFilters));
-
-$("searchBtn").addEventListener("click", applyFilters);
-
-// Application click
-grid.addEventListener("click", event => {
-    const button = event.target.closest(".apply-btn");
-    if (!button) return;
-
-    const internshipId = button.dataset.id;
-    window.location.href = `application.html?internshipId=${encodeURIComponent(internshipId)}`;
-});
-
-// Start realtime listeners.
-if (window.mamrajDB) {
-    listenToInternships();
-    listenToPlacedStudents();
-} else {
-    loadingState.innerHTML = `
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <span>Firebase is not configured.</span>
-    `;
-}
 </script>
 
 </body>
