@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply | MamRaj Nexus Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    background:#f7f8fb;
+    color:#1d2c63;
+}
+
+.container{
+    width:min(900px,92%);
+    margin:50px auto;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#6d7689;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #e5e8ee;
+    border-radius:22px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(29,44,99,.08);
+}
+
+.header{
+    padding-bottom:25px;
+    margin-bottom:28px;
+    border-bottom:1px solid #edf0f4;
+}
+
+.header h1{
+    font-size:28px;
+}
+
+.header p{
+    margin-top:7px;
+    color:#7d8597;
+    font-size:13px;
+}
+
+.role{
+    display:inline-block;
+    margin-top:15px;
+    padding:8px 13px;
+    border-radius:20px;
+    background:#fff0e9;
+    color:#c98b70;
+    font-size:11px;
+    font-weight:700;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    color:#37415a;
+    font-size:11px;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid #dfe3ea;
+    border-radius:10px;
+    outline:none;
+    padding:13px;
+    font-family:inherit;
+    font-size:12px;
+    transition:.2s;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#c98b70;
+    box-shadow:0 0 0 3px rgba(201,139,112,.1);
+}
+
+.submit{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:0;
+    border-radius:11px;
+    background:#1d2c63;
+    color:#fff;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.submit:hover{
+    background:#c98b70;
+    transform:translateY(-2px);
+}
+
+.success{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#e9f8ef;
+    color:#208b59;
+    font-size:12px;
+}
+
+@media(max-width:650px){
+
+    .card{
+        padding:22px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<a href="internships.html" class="back">
+    ← Back to Internships
+</a>
+
+<div class="card">
+
+<div class="header">
+
+    <h1>
+        Internship Application
+    </h1>
+
+    <p>
+        Start your journey with MamRaj Web Studio.
+    </p>
+
+    <div class="role" id="selectedRole">
+        Internship
+    </div>
+
+</div>
+
+
+<form id="applicationForm">
+
+<div class="form-grid">
+
+<div class="group">
+
+<label>
+Full Name *
+</label>
+
+<input
+    type="text"
+    id="name"
+    required
+    placeholder="Enter your full name"
+>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Email *
+</label>
+
+<input
+    type="email"
+    id="email"
+    required
+    placeholder="Enter your email"
+>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Phone Number *
+</label>
+
+<input
+    type="tel"
+    id="phone"
+    required
+    placeholder="Enter your phone number"
+>
+
+</div>
+
+
+<div class="group">
+
+<label>
+College / University
+</label>
+
+<input
+    type="text"
+    id="college"
+    placeholder="Enter your college"
+>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Course
+</label>
+
+<input
+    type="text"
+    id="course"
+    placeholder="B.Tech, BCA, MCA..."
+>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Graduation Year
+</label>
+
+<select id="graduationYear">
+
+<option value="">
+Select year
+</option>
+
+<option>2026</option>
+<option>2027</option>
+<option>2028</option>
+<option>2029</option>
+<option>2030</option>
+
+</select>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Experience Level
+</label>
+
+<select id="experience">
+
+<option value="">
+Select
+</option>
+
+<option>Fresher</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Experienced</option>
+
+</select>
+
+</div>
+
+
+<div class="group">
+
+<label>
+Portfolio / GitHub
+</label>
+
+<input
+    type="url"
+    id="portfolio"
+    placeholder="https://github.com/..."
+>
+
+</div>
+
+
+<div class="group full">
+
+<label>
+Why should we select you?
+</label>
+
+<textarea
+    id="message"
+    placeholder="Tell us briefly about your skills, projects and goals..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<button
+    type="submit"
+    class="submit"
+    id="submitBtn"
+>
+    Submit Application
+</button>
+
+</form>
+
+
+<div
+    class="success"
+    id="successMessage"
+>
+    ✓ Application submitted successfully. Our team will review your application.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   GET INTERNSHIP FROM URL
+========================================================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const role =
+    params.get("role") ||
+    "MamRaj Web Studio Internship";
+
+
+document.getElementById(
+    "selectedRole"
+).textContent = role;
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+const form =
+    document.getElementById(
+        "applicationForm"
+    );
+
+const submitBtn =
+    document.getElementById(
+        "submitBtn"
+    );
+
+const success =
+    document.getElementById(
+        "successMessage"
+    );
+
+
+form.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Submitting...";
+
+
+        const application = {
+
+            id:
+                "APP-" +
+                Date.now(),
+
+            role: role,
+
+            name:
+                document.getElementById(
+                    "name"
+                ).value.trim(),
+
+            email:
+                document.getElementById(
+                    "email"
+                ).value.trim(),
+
+            phone:
+                document.getElementById(
+                    "phone"
+                ).value.trim(),
+
+            college:
+                document.getElementById(
+                    "college"
+                ).value.trim(),
+
+            course:
+                document.getElementById(
+                    "course"
+                ).value.trim(),
+
+            graduationYear:
+                document.getElementById(
+                    "graduationYear"
+                ).value,
+
+            experience:
+                document.getElementById(
+                    "experience"
+                ).value,
+
+            portfolio:
+                document.getElementById(
+                    "portfolio"
+                ).value.trim(),
+
+            message:
+                document.getElementById(
+                    "message"
+                ).value.trim(),
+
+            status:
+                "Pending",
+
+            submittedAt:
+                new Date().toISOString()
+
+        };
+
+
+        /*
+         * TEMPORARY DEMO STORAGE
+         *
+         * Later replace this with
+         * Firebase Firestore.
+         */
+
+        const applications =
+            JSON.parse(
+                localStorage.getItem(
+                    "mamrajApplications"
+                ) || "[]"
+            );
+
+
+        applications.push(
+            application
+        );
+
+
+        localStorage.setItem(
+            "mamrajApplications",
+            JSON.stringify(
+                applications
+            )
+        );
+
+
+        setTimeout(() => {
+
+            form.style.display =
+                "none";
+
+            success.style.display =
+                "block";
+
+        },800);
+
+    }
+
+);
+
+</script>
+
+</body>
+</html>
