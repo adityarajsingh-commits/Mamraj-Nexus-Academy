@@ -1,324 +1,274 @@
-/* ==========================================
-   MamRaj Nexus Academy
-   Dashboard JavaScript
-==========================================*/
+import {
+    doc,
+    onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-"use strict";
 
-/* ===============================
-   DOM ELEMENTS
-=============================== */
+const auth = window.firebaseAuth;
+const db = window.firebaseDB;
 
-const sidebar = document.querySelector(".sidebar");
 
-const menuBtn = document.querySelector(".menu-btn");
+/* =========================================
+   AUTHENTICATION
+========================================= */
 
-const profile = document.querySelector(".profile");
+auth.onAuthStateChanged(user => {
 
-const navItems = document.querySelectorAll(".sidebar nav ul li");
+    if (!user) {
 
-const cards = document.querySelectorAll(".card");
+        window.location.href =
+            "login.html";
 
-const progressBars = document.querySelectorAll(".progress-bar span");
+        return;
 
-const taskCheckboxes = document.querySelectorAll(".task-list input");
+    }
 
-/* ===============================
-   MOBILE SIDEBAR
-=============================== */
 
-if(menuBtn){
+    console.log(
+        "Dashboard user:",
+        user.uid
+    );
 
-menuBtn.addEventListener("click",()=>{
 
-sidebar.classList.toggle("active");
+    loadStudentDashboard(user.uid);
 
 });
+
+
+/* =========================================
+   LOAD DASHBOARD
+========================================= */
+
+function loadStudentDashboard(uid) {
+
+    const userRef =
+        doc(
+            db,
+            "users",
+            uid
+        );
+
+
+    onSnapshot(
+        userRef,
+
+        snapshot => {
+
+            if (!snapshot.exists()) {
+
+                console.log(
+                    "Student profile not found"
+                );
+
+                return;
+
+            }
+
+
+            const data =
+                snapshot.data();
+
+
+            updateDashboard(data);
+
+        },
+
+        error => {
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
+
+        }
+
+    );
 
 }
 
-/* ===============================
-   ACTIVE SIDEBAR MENU
-=============================== */
 
-navItems.forEach(item=>{
+/* =========================================
+   UPDATE DASHBOARD
+========================================= */
 
-item.addEventListener("click",()=>{
+function updateDashboard(data) {
 
-navItems.forEach(nav=>nav.classList.remove("active"));
 
-item.classList.add("active");
+    /* NAME */
 
-});
+    const name =
+        data.name ||
+        "Student";
 
-});
 
-/* ===============================
-   PROFILE DROPDOWN
-=============================== */
+    const nameElement =
+        document.getElementById(
+            "studentName"
+        );
 
-const profileMenu=document.createElement("div");
 
-profileMenu.className="profile-menu";
+    if (nameElement) {
 
-profileMenu.innerHTML=`
+        nameElement.textContent =
+            name;
 
-<a href="#"><i class="fa-solid fa-user"></i> My Profile</a>
+    }
 
-<a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
 
-<a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    /* ROLE */
 
-`;
+    const roleElement =
+        document.getElementById(
+            "studentRole"
+        );
 
-profile.appendChild(profileMenu);
 
-profile.addEventListener("click",()=>{
+    if (roleElement) {
 
-profileMenu.classList.toggle("active");
+        roleElement.textContent =
+            data.role ||
+            "Student";
 
-});
+    }
 
-document.addEventListener("click",(e)=>{
 
-if(!profile.contains(e.target)){
+    /* COURSES */
 
-profileMenu.classList.remove("active");
+    setValue(
+        "courseCount",
+        data.courseCount || 0
+    );
 
-}
 
-});
+    /* LEARNING HOURS */
 
-/* ===============================
-   PROGRESS BAR ANIMATION
-=============================== */
+    setValue(
+        "learningHours",
+        data.learningHours || 0
+    );
 
-window.addEventListener("load",()=>{
 
-progressBars.forEach(bar=>{
+    /* COMPLETED LESSONS */
 
-const width=bar.style.width;
+    setValue(
+        "completedLessons",
+        data.completedLessons || 0
+    );
 
-bar.style.width="0";
 
-setTimeout(()=>{
+    /* CERTIFICATES */
 
-bar.style.width=width;
+    setValue(
+        "certificateCount",
+        data.certificates || 0
+    );
 
-},300);
 
-});
+    /* STREAK */
 
-});
-
-/* ===============================
-   TASK COMPLETION
-=============================== */
-
-taskCheckboxes.forEach(task=>{
-
-task.addEventListener("change",()=>{
-
-const item=task.parentElement;
-
-if(task.checked){
-
-item.style.textDecoration="line-through";
-
-item.style.opacity=".6";
-
-}else{
-
-item.style.textDecoration="none";
-
-item.style.opacity="1";
+    setValue(
+        "streakCount",
+        data.streak || 0
+    );
 
 }
 
-});
 
-});
+/* =========================================
+   SAFE VALUE UPDATE
+========================================= */
 
-/* ===============================
-   CARD HOVER
-=============================== */
+function setValue(
+    id,
+    value
+) {
 
-cards.forEach(card=>{
+    const element =
+        document.getElementById(id);
 
-card.addEventListener("mouseenter",()=>{
 
-card.style.transform="translateY(-10px)";
+    if (!element)
+        return;
 
-});
 
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="translateY(0)";
-
-});
-
-});
-
-/* ===============================
-   SEARCH
-=============================== */
-
-const searchInput=document.querySelector(".search-box input");
-
-if(searchInput){
-
-searchInput.addEventListener("keyup",(e)=>{
-
-console.log("Searching:",e.target.value);
-
-});
+    animateNumber(
+        element,
+        Number(value)
+    );
 
 }
 
-/* ===============================
-   DARK MODE
-=============================== */
 
-const darkBtn=document.querySelector(".fa-moon");
+/* =========================================
+   NUMBER ANIMATION
+========================================= */
 
-let dark=false;
+function animateNumber(
+    element,
+    target
+) {
 
-if(darkBtn){
+    const duration =
+        900;
 
-darkBtn.parentElement.addEventListener("click",()=>{
+    const start =
+        Number(
+            element.dataset.value || 0
+        );
 
-dark=!dark;
 
-if(dark){
+    const startTime =
+        performance.now();
 
-document.body.classList.add("dark");
 
-darkBtn.classList.remove("fa-moon");
+    function update(time) {
 
-darkBtn.classList.add("fa-sun");
+        const progress =
+            Math.min(
+                (time - startTime) /
+                duration,
+                1
+            );
 
-}else{
 
-document.body.classList.remove("dark");
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
 
-darkBtn.classList.remove("fa-sun");
 
-darkBtn.classList.add("fa-moon");
+        const value =
+            start +
+            (target - start) *
+            eased;
 
-}
 
-});
+        element.textContent =
+            Number.isInteger(target)
+                ? Math.floor(value)
+                : value.toFixed(1);
 
-}
 
-/* ===============================
-   ANALYTICS COUNTER
-=============================== */
+        if (progress < 1) {
 
-const numbers=document.querySelectorAll(".card h2");
+            requestAnimationFrame(
+                update
+            );
 
-numbers.forEach(number=>{
+        }
 
-const value=number.innerText.replace("%","");
+    }
 
-if(isNaN(value)) return;
 
-let start=0;
+    element.dataset.value =
+        target;
 
-const end=parseInt(value);
 
-const timer=setInterval(()=>{
-
-start++;
-
-number.innerText=start+(number.innerText.includes("%")?"%":"");
-
-if(start>=end){
-
-clearInterval(timer);
-
-}
-
-},25);
-
-});
-
-/* ===============================
-   NOTIFICATION
-=============================== */
-
-function notify(message){
-
-const toast=document.createElement("div");
-
-toast.className="toast";
-
-toast.innerHTML=message;
-
-document.body.appendChild(toast);
-
-Object.assign(toast.style,{
-
-position:"fixed",
-
-top:"30px",
-
-right:"30px",
-
-padding:"16px 22px",
-
-background:"#1E2A5A",
-
-color:"#fff",
-
-borderRadius:"14px",
-
-zIndex:"9999",
-
-boxShadow:"0 15px 40px rgba(0,0,0,.15)"
-
-});
-
-setTimeout(()=>{
-
-toast.remove();
-
-},3000);
+    requestAnimationFrame(
+        update
+    );
 
 }
-
-setTimeout(()=>{
-
-notify("🎉 Welcome to MamRaj Nexus Academy!");
-
-},1200);
-
-/* ===============================
-   LOGOUT
-=============================== */
-
-const logout=document.querySelector(".logout button");
-
-if(logout){
-
-logout.addEventListener("click",()=>{
-
-if(confirm("Logout from dashboard?")){
-
-window.location.href="../pages/login.html";
-
-}
-
-});
-
-}
-
-/* ===============================
-   CONSOLE
-=============================== */
-
-console.log("%cMamRaj Nexus Academy Dashboard",
-"font-size:22px;font-weight:bold;color:#1E2A5A");
-
-console.log("%cDashboard Loaded Successfully",
-"color:#C58B73;font-size:14px;");
