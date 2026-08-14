@@ -1562,3 +1562,563 @@ a {
     }
 
 }
+/* =========================================================
+   MAMRAJ NEXUS — PREMIUM BEIGE DASHBOARD THEME
+   Content/layout remains unchanged
+========================================================= */
+
+:root {
+    --primary: #8f6855;
+    --primary-dark: #6f4f40;
+    --primary-light: #eadbd0;
+
+    --beige-bg: #f7f1eb;
+    --cream: #fffaf5;
+    --card: #ffffff;
+
+    --text: #30251f;
+    --muted: #81756d;
+
+    --border: #eadfd6;
+
+    --success: #63856d;
+    --gold: #b18a4a;
+}
+
+
+/* ===============================
+   BODY
+================================ */
+
+body {
+    background: var(--beige-bg) !important;
+    color: var(--text);
+}
+
+
+/* ===============================
+   SIDEBAR
+================================ */
+
+.sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #f9f3ed 0%,
+            #f1e5db 100%
+        ) !important;
+
+    border-right: 1px solid var(--border);
+
+    color: var(--text) !important;
+}
+
+
+/* Logo */
+
+.logo h2,
+.logo h1 {
+    color: #30251f !important;
+}
+
+.logo h2 span,
+.logo h1 span {
+    color: #b5823f !important;
+}
+
+.logo p {
+    color: #9a8375 !important;
+}
+
+
+/* Sidebar navigation */
+
+.nav a {
+    color: #66574e !important;
+}
+
+.nav a i {
+    color: #947362;
+}
+
+.nav a:hover {
+    background: #eee1d6 !important;
+    color: #513e32 !important;
+}
+
+.nav a.active {
+    background:
+        linear-gradient(
+            135deg,
+            #c9967c,
+            #b87f64
+        ) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 10px 25px
+        rgba(145, 100, 75, .18);
+}
+
+.nav a.active i {
+    color: white !important;
+}
+
+
+/* ===============================
+   TOPBAR
+================================ */
+
+.topbar,
+.header,
+header {
+    background: rgba(255,250,245,.96) !important;
+
+    border-bottom:
+        1px solid var(--border) !important;
+}
+
+
+/* Search */
+
+.top-search {
+    background: #f3ebe4 !important;
+
+    border: 1px solid #eadfd6;
+}
+
+.top-search input {
+    color: var(--text);
+}
+
+.top-search i {
+    color: #9b7661;
+}
+
+
+/* ===============================
+   MAIN CONTENT
+================================ */
+
+.main,
+.content {
+    background:
+        linear-gradient(
+            135deg,
+            #f8f3ee 0%,
+            #f5eee7 100%
+        ) !important;
+}
+
+
+/* ===============================
+   HERO / WELCOME SECTION
+================================ */
+
+.hero,
+.welcome-card,
+.welcome-banner {
+    background:
+        linear-gradient(
+            120deg,
+            #8d6755 0%,
+            #b98b73 55%,
+            #cda58e 100%
+        ) !important;
+
+    color: white !important;
+
+    box-shadow:
+        0 20px 45px
+        rgba(117, 78, 60, .16);
+}
+
+
+/* Hero heading */
+
+.hero h1,
+.hero h2,
+.welcome-card h1,
+.welcome-card h2,
+.welcome-banner h1,
+.welcome-banner h2 {
+    color: white !important;
+}
+
+
+/* Hero secondary text */
+
+.hero p,
+.welcome-card p,
+.welcome-banner p {
+    color: #f8eee8 !important;
+}
+
+
+/* Hero button */
+
+.hero button,
+.welcome-card button,
+.welcome-banner button {
+    background: #fffaf6 !important;
+    color: #765342 !important;
+
+    border: none;
+}
+
+.hero button:hover,
+.welcome-card button:hover,
+.welcome-banner button:hover {
+    background: #ead7ca !important;
+}
+
+
+/* ===============================
+   STAT CARDS
+================================ */
+
+.stat-card,
+.stats-card,
+.dashboard-card {
+    background: var(--card) !important;
+
+    border:
+        1px solid var(--border) !important;
+
+    box-shadow:
+        0 12px 30px
+        rgba(100, 75, 60, .06) !important;
+}
+
+.stat-card:hover,
+.stats-card:hover,
+.dashboard-card:hover {
+    border-color: #d5b6a4 !important;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 35px
+        rgba(100, 75, 60, .10) !important;
+}
+
+
+/* ===============================
+   ICON BOXES
+================================ */
+
+.icon-box,
+.stat-icon {
+    background: #f1e3d9 !important;
+
+    color: #956d58 !important;
+}
+
+
+/* Blue icon */
+
+.icon-blue,
+.blue {
+    background: #eee1d6 !important;
+    color: #916a57 !important;
+}
+
+
+/* Green icon */
+
+.icon-green,
+.green {
+    background: #e8eee8 !important;
+    color: #63856d !important;
+}
+
+
+/* Orange icon */
+
+.icon-orange,
+.orange {
+    background: #f6e8d5 !important;
+    color: #ad7847 !important;
+}
+
+
+/* Purple icon */
+
+.icon-purple,
+.purple {
+    background: #eee5df !important;
+    color: #896a59 !important;
+}
+
+
+/* ===============================
+   CARD HEADINGS
+================================ */
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+}
+
+.section-title {
+    color: #4b382d !important;
+}
+
+
+/* ===============================
+   PROGRESS
+================================ */
+
+.progress {
+    background: #eee4dc !important;
+}
+
+.progress-bar {
+    background:
+        linear-gradient(
+            90deg,
+            #a77b63,
+            #c7977d
+        ) !important;
+}
+
+
+/* ===============================
+   COURSE CARDS
+================================ */
+
+.course-card,
+.learning-card {
+    background: #ffffff !important;
+
+    border:
+        1px solid var(--border) !important;
+
+    box-shadow:
+        0 10px 25px
+        rgba(100,75,60,.05);
+}
+
+.course-card:hover,
+.learning-card:hover {
+    border-color: #d4b4a1 !important;
+
+    box-shadow:
+        0 18px 35px
+        rgba(100,75,60,.10);
+}
+
+
+/* ===============================
+   CONTINUE LEARNING
+================================ */
+
+.continue-learning {
+    background: #ffffff !important;
+
+    border:
+        1px solid var(--border) !important;
+}
+
+
+/* ===============================
+   SHIVAAY AI CARD
+================================ */
+
+.ai-card,
+.shivaay-card {
+    background:
+        linear-gradient(
+            135deg,
+            #765546,
+            #a87960
+        ) !important;
+
+    color: white !important;
+}
+
+.ai-card h2,
+.ai-card h3,
+.shivaay-card h2,
+.shivaay-card h3 {
+    color: white !important;
+}
+
+.ai-card p,
+.shivaay-card p {
+    color: #f5e9e1 !important;
+}
+
+
+/* AI icon */
+
+.ai-icon {
+    background: rgba(255,255,255,.15) !important;
+    color: white !important;
+}
+
+
+/* ===============================
+   STREAK BADGE
+================================ */
+
+.streak,
+.streak-badge {
+    background:
+        rgba(255,255,255,.14) !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18) !important;
+
+    color: white !important;
+}
+
+
+/* ===============================
+   COURSE PROGRESS BADGE
+================================ */
+
+.course-progress,
+.progress-badge {
+    background:
+        #f0e3da !important;
+
+    color:
+        #805b49 !important;
+}
+
+
+/* ===============================
+   CERTIFICATE
+================================ */
+
+.certificate-card {
+    background: #fffdf9 !important;
+
+    border:
+        1px solid #eadfd6 !important;
+}
+
+.certificate-card i {
+    color: #b08a4d !important;
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn-primary,
+.primary-btn {
+    background:
+        linear-gradient(
+            135deg,
+            #8e6755,
+            #b8876d
+        ) !important;
+
+    color: white !important;
+
+    border: none !important;
+}
+
+.btn-primary:hover,
+.primary-btn:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #765342,
+            #9d6f58
+        ) !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* ===============================
+   PREMIUM BUTTON
+================================ */
+
+.premium,
+.go-premium {
+    background:
+        linear-gradient(
+            135deg,
+            #ead7c8,
+            #f4e8de
+        ) !important;
+
+    border:
+        1px solid #d8b9a5 !important;
+
+    color: #70503f !important;
+}
+
+.premium i,
+.go-premium i {
+    color: #b18742 !important;
+}
+
+
+/* ===============================
+   AVATAR
+================================ */
+
+.avatar {
+    background: #eee1d7 !important;
+
+    border:
+        2px solid #c18d72 !important;
+
+    color: #65483a !important;
+}
+
+
+/* ===============================
+   NOTIFICATION
+================================ */
+
+.bell {
+    background: #f3e8df !important;
+
+    color: #765442 !important;
+}
+
+
+/* ===============================
+   LINKS
+================================ */
+
+a {
+    color: #89604c;
+}
+
+a:hover {
+    color: #b07d62;
+}
+
+
+/* ===============================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f4eee9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c49a83;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a87860;
+}
