@@ -609,6 +609,281 @@ menuBtn.addEventListener("click", () => {
 });
 
 </script>
+<script type="module">
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+    import {
+        getAuth,
+        onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+    import {
+        getFirestore,
+        doc,
+        onSnapshot
+    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+    /* =========================================
+       YOUR FIREBASE CONFIG
+    ========================================= */
+
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT.firebasestorage.app",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
+
+
+    /* =========================================
+       FIREBASE
+    ========================================= */
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const db = getFirestore(app);
+
+
+    /* =========================================
+       USER LOGIN
+    ========================================= */
+
+    onAuthStateChanged(auth, (user) => {
+
+        if (!user) {
+            return;
+        }
+
+        console.log(
+            "Logged in:",
+            user.email
+        );
+
+
+        /*
+         * Existing dashboard elements
+         */
+
+        const nameElement =
+            document.getElementById("studentName");
+
+        const avatarElement =
+            document.getElementById("userAvatar");
+
+
+        if (nameElement) {
+
+            nameElement.textContent =
+                user.displayName ||
+                user.email.split("@")[0];
+
+        }
+
+
+        if (avatarElement) {
+
+            const name =
+                user.displayName ||
+                user.email;
+
+            avatarElement.textContent =
+                name
+                    .split(" ")
+                    .map(x => x[0])
+                    .join("")
+                    .substring(0, 2)
+                    .toUpperCase();
+
+        }
+
+
+        /*
+         * Load Firestore profile
+         */
+
+        loadStudentData(user.uid);
+
+    });
+
+
+    /* =========================================
+       STUDENT DATA
+    ========================================= */
+
+    function loadStudentData(uid) {
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                uid
+            );
+
+
+        onSnapshot(
+            userRef,
+
+            (snapshot) => {
+
+                if (!snapshot.exists()) {
+                    return;
+                }
+
+
+                const data =
+                    snapshot.data();
+
+
+                /*
+                 * Name
+                 */
+
+                const nameElement =
+                    document.getElementById(
+                        "studentName"
+                    );
+
+                if (nameElement && data.name) {
+
+                    nameElement.textContent =
+                        data.name;
+
+                }
+
+
+                /*
+                 * Role
+                 */
+
+                const roleElement =
+                    document.getElementById(
+                        "studentRole"
+                    );
+
+                if (
+                    roleElement &&
+                    data.role
+                ) {
+
+                    roleElement.textContent =
+                        data.role;
+
+                }
+
+
+                /*
+                 * Courses
+                 */
+
+                const courses =
+                    document.getElementById(
+                        "courseCount"
+                    );
+
+                if (
+                    courses &&
+                    data.courseCount !== undefined
+                ) {
+
+                    courses.textContent =
+                        data.courseCount;
+
+                }
+
+
+                /*
+                 * Learning Hours
+                 */
+
+                const hours =
+                    document.getElementById(
+                        "learningHours"
+                    );
+
+                if (
+                    hours &&
+                    data.learningHours !== undefined
+                ) {
+
+                    hours.textContent =
+                        data.learningHours;
+
+                }
+
+
+                /*
+                 * Completed Lessons
+                 */
+
+                const completed =
+                    document.getElementById(
+                        "completedLessons"
+                    );
+
+                if (
+                    completed &&
+                    data.completedLessons !== undefined
+                ) {
+
+                    completed.textContent =
+                        data.completedLessons;
+
+                }
+
+
+                /*
+                 * Certificates
+                 */
+
+                const certificates =
+                    document.getElementById(
+                        "certificateCount"
+                    );
+
+                if (
+                    certificates &&
+                    data.certificates !== undefined
+                ) {
+
+                    certificates.textContent =
+                        data.certificates;
+
+                }
+
+
+                /*
+                 * Streak
+                 */
+
+                const streak =
+                    document.getElementById(
+                        "streakCard"
+                    );
+
+                if (
+                    streak &&
+                    data.streak !== undefined
+                ) {
+
+                    streak.textContent =
+                        data.streak +
+                        " Day Streak";
+
+                }
+
+            }
+
+        );
+
+    }
+
+</script>
 </body>
 </html>
