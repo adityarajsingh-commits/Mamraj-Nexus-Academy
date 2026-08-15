@@ -1,889 +1,2075 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MamRaj Nexus Academy | Dashboard</title>
+<title>MamRaj Nexus Academy | Dashboard</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+:root{
+    --bg:#f7f1eb;
+    --card:#fffdfb;
+    --brown:#8f6855;
+    --brown-light:#b98b73;
+    --dark:#30251f;
+    --muted:#81756d;
+    --border:#eadfd6;
+    --green:#63856d;
+}
 
-    <link rel="stylesheet" href="dashboard.css">
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--dark);
+}
+
+.app{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#faf5f0,#f0e4da);
+    border-right:1px solid var(--border);
+    padding:24px 16px;
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    z-index:100;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:5px 10px 30px;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--brown),var(--brown-light));
+    color:white;
+    display:grid;
+    place-items:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.brand h2{
+    font-size:18px;
+}
+
+.brand span{
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#9b7661;
+}
+
+.section-title{
+    font-size:9px;
+    letter-spacing:1.5px;
+    color:#a58c7d;
+    margin:20px 10px 8px;
+}
+
+.nav-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    margin:3px 0;
+    color:#67584f;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.nav-item:hover{
+    background:#eee1d6;
+}
+
+.nav-item.active{
+    background:linear-gradient(135deg,var(--brown),#b8876d);
+    color:white;
+}
+
+.sidebar-bottom{
+    margin-top:auto;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    width:calc(100% - 250px);
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+    height:78px;
+    background:#fffaf5;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 34px;
+    position:sticky;
+    top:0;
+    z-index:50;
+}
+
+.page-title span{
+    font-size:9px;
+    color:#9a7b69;
+    letter-spacing:1px;
+}
+
+.page-title h1{
+    margin-top:5px;
+    font-size:20px;
+}
+
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.notification{
+    font-size:18px;
+    cursor:pointer;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#eadbd0;
+    color:#6f4f40;
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+    font-size:11px;
+}
+
+.profile strong{
+    display:block;
+    font-size:11px;
+}
+
+.profile span{
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:none;
+    font-size:22px;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:30px 34px;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome{
+    min-height:220px;
+    padding:32px;
+    border-radius:22px;
+    color:white;
+    background:
+        linear-gradient(
+            120deg,
+            #8d6755,
+            #b98b73,
+            #cda58e
+        );
+    box-shadow:0 20px 45px rgba(117,78,60,.15);
+    display:flex;
+    justify-content:space-between;
+    overflow:hidden;
+}
+
+.welcome-text{
+    max-width:600px;
+}
+
+.welcome-label{
+    font-size:9px;
+    letter-spacing:1.5px;
+}
+
+.welcome h2{
+    margin:12px 0 8px;
+    font-size:30px;
+}
+
+.welcome h2 span{
+    color:#f8d9c5;
+}
+
+.welcome p{
+    max-width:500px;
+    font-size:12px;
+    line-height:1.7;
+    opacity:.9;
+}
+
+.primary-btn{
+    margin-top:15px;
+    border:none;
+    background:#fffaf6;
+    color:#765342;
+    padding:11px 16px;
+    border-radius:9px;
+    font-size:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.welcome-art{
+    width:300px;
+    position:relative;
+}
+
+.big-letter{
+    position:absolute;
+    right:20px;
+    top:10px;
+    font-size:170px;
+    font-weight:bold;
+    color:rgba(255,255,255,.12);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin:20px 0;
+}
+
+.stat{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:17px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    transition:.2s;
+}
+
+.stat:hover{
+    transform:translateY(-3px);
+}
+
+.stat-icon{
+    width:40px;
+    height:40px;
+    border-radius:11px;
+    background:#eee1d6;
+    color:#916a57;
+    display:grid;
+    place-items:center;
+}
+
+.stat span{
+    display:block;
+    font-size:9px;
+    color:var(--muted);
+}
+
+.stat strong{
+    display:block;
+    font-size:20px;
+    margin-top:4px;
+}
+
+.stat small{
+    margin-left:auto;
+    font-size:8px;
+}
+
+.green{
+    color:var(--green);
+}
+
+/* ================= GRID ================= */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1.7fr 1fr;
+    gap:18px;
+}
+
+.panel{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 12px 30px rgba(100,75,60,.05);
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+}
+
+.panel-label{
+    display:block;
+    font-size:8px;
+    letter-spacing:1.4px;
+    color:#a17a66;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.panel h2{
+    font-size:17px;
+}
+
+.panel-header a{
+    color:#946b57;
+    font-size:10px;
+    text-decoration:none;
+}
+
+/* ================= COURSES ================= */
+
+.course-list{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+}
+
+.course{
+    display:grid;
+    grid-template-columns:52px 1fr auto;
+    gap:14px;
+    align-items:center;
+    padding:13px;
+    border:1px solid #eee3db;
+    border-radius:14px;
+    background:#fffdfb;
+    transition:.2s;
+}
+
+.course:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(100,75,60,.07);
+}
+
+.course-icon{
+    width:52px;
+    height:52px;
+    border-radius:13px;
+    background:linear-gradient(135deg,#eee0d6,#f7eee8);
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+    color:#8f6855;
+}
+
+.course-title{
+    font-size:11px;
+    font-weight:bold;
+}
+
+.course-description{
+    margin:5px 0 8px;
+    font-size:9px;
+    color:var(--muted);
+}
+
+.progress{
+    height:6px;
+    background:#eee5de;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        #9b705b,
+        #c99b83
+    );
+    border-radius:20px;
+    transition:width 1s ease;
+}
+
+.course-meta{
+    display:flex;
+    justify-content:space-between;
+    margin-top:5px;
+    font-size:8px;
+    color:#97877d;
+}
+
+.resume{
+    border:none;
+    background:#8f6855;
+    color:white;
+    padding:9px 12px;
+    border-radius:8px;
+    font-size:9px;
+    cursor:pointer;
+}
+
+/* ================= SHIVAAY ================= */
+
+.shivaay{
+    background:linear-gradient(135deg,#765546,#a87960);
+    color:white;
+}
+
+.shivaay-top{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.shivaay-icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:rgba(255,255,255,.15);
+    display:grid;
+    place-items:center;
+    font-size:20px;
+}
+
+.shivaay-top span{
+    font-size:8px;
+    letter-spacing:1px;
+}
+
+.shivaay-top h2{
+    color:white;
+    margin-top:4px;
+}
+
+.shivaay p{
+    margin:18px 0;
+    font-size:10px;
+    line-height:1.7;
+    opacity:.9;
+}
+
+.ai-feature{
+    font-size:9px;
+    margin:11px 0;
+}
+
+.ai-btn{
+    margin-top:12px;
+    border:none;
+    background:#fffaf6;
+    color:#765342;
+    border-radius:9px;
+    padding:11px 14px;
+    font-size:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ================= BOTTOM ================= */
+
+.bottom-grid{
+    display:grid;
+    grid-template-columns:1.25fr 1fr;
+    gap:18px;
+    margin-top:18px;
+}
+
+.bars{
+    height:160px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    gap:10px;
+}
+
+.bar{
+    width:30px;
+    background:linear-gradient(
+        180deg,
+        #c99b83,
+        #8f6855
+    );
+    border-radius:6px 6px 2px 2px;
+    position:relative;
+}
+
+.bar span{
+    position:absolute;
+    top:-18px;
+    font-size:7px;
+    color:#8d7d72;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.days{
+    display:flex;
+    justify-content:space-around;
+    margin-top:10px;
+}
+
+.days span{
+    font-size:8px;
+    color:#8d8178;
+}
+
+.badges{
+    display:flex;
+    gap:10px;
+}
+
+.badge{
+    flex:1;
+    text-align:center;
+    padding:15px 7px;
+    background:#fffaf6;
+    border:1px solid var(--border);
+    border-radius:12px;
+}
+
+.badge div{
+    font-size:24px;
+}
+
+.badge strong{
+    display:block;
+    margin-top:6px;
+    font-size:9px;
+}
+
+.badge small{
+    font-size:8px;
+    color:#97877d;
+}
+
+/* ================= LOADING ================= */
+
+.loading{
+    text-align:center;
+    padding:35px;
+    color:#8d8178;
+    font-size:10px;
+}
+
+.spinner{
+    width:25px;
+    height:25px;
+    border:3px solid #eadfd6;
+    border-top-color:#99705b;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+    margin:auto auto 10px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .dashboard-grid,
+    .bottom-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:750px){
+
+    .sidebar{
+        left:-260px;
+        transition:.25s;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 18px;
+    }
+
+    .profile span{
+        display:none;
+    }
+
+    .content{
+        padding:20px 15px;
+    }
+
+    .welcome{
+        padding:25px;
+    }
+
+    .welcome h2{
+        font-size:24px;
+    }
+
+    .welcome-art{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .course{
+        grid-template-columns:48px 1fr;
+    }
+
+    .course .resume{
+        grid-column:2;
+        justify-self:start;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+<!-- ================= SIDEBAR ================= -->
 
-        <div class="brand">
-            <div class="brand-logo">M</div>
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+        <div class="logo">M</div>
+
+        <div>
+            <h2>MamRaj</h2>
+            <span>NEXUS ACADEMY</span>
+        </div>
+    </div>
+
+
+    <p class="section-title">MAIN</p>
+
+    <a class="nav-item active">
+        <span>⌂</span>
+        Dashboard
+    </a>
+
+    <a class="nav-item">
+        <span>▣</span>
+        My Courses
+    </a>
+
+    <a class="nav-item">
+        <span>◈</span>
+        Learning Path
+    </a>
+
+    <a class="nav-item">
+        <span>◆</span>
+        Projects
+    </a>
+
+
+    <p class="section-title">AI & CAREER</p>
+
+    <a class="nav-item">
+        <span>✦</span>
+        Shivaay AI
+    </a>
+
+    <a class="nav-item">
+        <span>⌕</span>
+        Resume / ATS
+    </a>
+
+    <a class="nav-item">
+        <span>◉</span>
+        Interview Prep
+    </a>
+
+
+    <p class="section-title">ACHIEVEMENT</p>
+
+    <a class="nav-item">
+        <span>🏆</span>
+        Certifications
+    </a>
+
+    <a class="nav-item">
+        <span>▤</span>
+        Assessments
+    </a>
+
+    <a class="nav-item">
+        <span>◔</span>
+        Progress
+    </a>
+
+
+    <div class="sidebar-bottom">
+
+        <a class="nav-item">
+            <span>⚙</span>
+            Settings
+        </a>
+
+        <a class="nav-item" id="logoutBtn">
+            <span>↪</span>
+            Logout
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+<!-- ================= TOPBAR ================= -->
+
+<header class="topbar">
+
+    <button
+        class="mobile-menu"
+        id="menuBtn">
+        ☰
+    </button>
+
+    <div class="page-title">
+
+        <span>LEARNING PORTAL</span>
+
+        <h1>Dashboard</h1>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <div class="notification">
+            🔔
+        </div>
+
+
+        <div class="profile">
+
+            <div
+                class="avatar"
+                id="userAvatar">
+                AS
+            </div>
 
             <div>
-                <h2>MamRaj</h2>
-                <span>NEXUS ACADEMY</span>
-            </div>
-        </div>
 
-        <div class="sidebar-section">
-            <p class="section-title">MAIN</p>
+                <strong id="studentName">
+                    Aditya Singh
+                </strong>
 
-            <a href="#" class="nav-item active">
-                <span>⌂</span>
-                <span>Dashboard</span>
-            </a>
+                <span id="studentRole">
+                    Student
+                </span>
 
-            <a href="#" class="nav-item">
-                <span>▣</span>
-                <span>My Courses</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>◈</span>
-                <span>Learning Path</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>◆</span>
-                <span>Projects</span>
-            </a>
-        </div>
-
-        <div class="sidebar-section">
-            <p class="section-title">AI & CAREER</p>
-
-            <a href="#" class="nav-item shivaay-link">
-                <span>✦</span>
-                <span>Shivaay AI</span>
-                <small>AI</small>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>⌕</span>
-                <span>Resume / ATS</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>◉</span>
-                <span>Interview Prep</span>
-            </a>
-        </div>
-
-        <div class="sidebar-section">
-            <p class="section-title">ACHIEVEMENT</p>
-
-            <a href="#" class="nav-item">
-                <span>🏆</span>
-                <span>Certifications</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>▤</span>
-                <span>Assessments</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <span>◔</span>
-                <span>Progress</span>
-            </a>
-        </div>
-
-        <div class="sidebar-bottom">
-
-            <div class="support-card">
-                <div class="support-icon">?</div>
-
-                <div>
-                    <strong>Need Help?</strong>
-                    <p>Talk to our support team.</p>
-                </div>
             </div>
 
-            <a href="#" class="nav-item">
-                <span>⚙</span>
-                <span>Settings</span>
-            </a>
+        </div>
 
-            <a href="#" class="nav-item logout">
-                <span>↪</span>
-                <span>Logout</span>
-            </a>
+    </div>
+
+</header>
+
+
+<div class="content">
+
+
+<!-- ================= WELCOME ================= -->
+
+<section class="welcome">
+
+    <div class="welcome-text">
+
+        <span class="welcome-label">
+            WELCOME BACK 👋
+        </span>
+
+        <h2>
+            Keep building your
+            <span>future.</span>
+        </h2>
+
+        <p>
+            Continue your learning journey and
+            turn your skills into real-world
+            opportunities.
+        </p>
+
+        <button
+            class="primary-btn"
+            id="continueBtn">
+
+            Continue Learning →
+
+        </button>
+
+    </div>
+
+
+    <div class="welcome-art">
+
+        <div class="big-letter">
+            N
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            ◫
+        </div>
+
+        <div>
+
+            <span>
+                Courses
+            </span>
+
+            <strong id="courseCount">
+                06
+            </strong>
 
         </div>
 
-    </aside>
+        <small class="green">
+            Live
+        </small>
+
+    </div>
 
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
+    <div class="stat">
 
-        <!-- TOP BAR -->
-        <header class="topbar">
+        <div class="stat-icon">
+            ◔
+        </div>
 
-            <button class="mobile-menu" id="menuBtn">
-                ☰
-            </button>
+        <div>
 
-            <div class="page-title">
-                <span>Learning Portal</span>
-                <h1>Dashboard</h1>
+            <span>
+                Learning Hours
+            </span>
+
+            <strong id="learningHours">
+                42.5
+            </strong>
+
+        </div>
+
+        <small class="green">
+            Live
+        </small>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <span>
+                Completed
+            </span>
+
+            <strong id="completedLessons">
+                18
+            </strong>
+
+        </div>
+
+        <small>
+            Lessons
+        </small>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <span>
+                Certificates
+            </span>
+
+            <strong id="certificateCount">
+                04
+            </strong>
+
+        </div>
+
+        <small class="green">
+            Earned
+        </small>
+
+    </div>
+
+
+</section>
+
+
+<!-- ================= DASHBOARD GRID ================= -->
+
+<section class="dashboard-grid">
+
+
+<!-- COURSES -->
+
+<div
+    class="panel"
+    id="learningPanel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <span class="panel-label">
+                YOUR LEARNING
+            </span>
+
+            <h2>
+                Continue Learning
+            </h2>
+
+        </div>
+
+        <a href="#">
+            View all →
+        </a>
+
+    </div>
+
+
+    <div
+        class="course-list"
+        id="courseList">
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Loading your courses...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SHIVAAY -->
+
+<div class="panel shivaay">
+
+    <div class="shivaay-top">
+
+        <div class="shivaay-icon">
+            ✦
+        </div>
+
+        <div>
+
+            <span>
+                YOUR AI MENTOR
+            </span>
+
+            <h2>
+                Shivaay AI
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        Your personal AI mentor is ready
+        to help you learn, build and grow.
+    </p>
+
+
+    <div class="ai-feature">
+        ✦ Ask anything
+    </div>
+
+    <div class="ai-feature">
+        ✓ Get instant explanations
+    </div>
+
+    <div class="ai-feature">
+        ⚡ Build projects faster
+    </div>
+
+
+    <button
+        class="ai-btn"
+        onclick="location.href='shivaay.html'">
+
+        Open Shivaay AI →
+
+    </button>
+
+</div>
+
+
+</section>
+
+
+<!-- ================= BOTTOM ================= -->
+
+<section class="bottom-grid">
+
+
+<!-- WEEKLY LEARNING -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <span class="panel-label">
+                ACTIVITY
+            </span>
+
+            <h2>
+                Weekly Learning
+            </h2>
+
+        </div>
+
+        <span style="
+            font-size:9px;
+            color:#8d8178;
+        ">
+            This Week
+        </span>
+
+    </div>
+
+
+    <div class="bars">
+
+        <div
+            class="bar"
+            style="height:45%">
+            <span>1.8h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:70%">
+            <span>2.8h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:55%">
+            <span>2.2h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:85%">
+            <span>3.4h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:65%">
+            <span>2.6h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:92%">
+            <span>3.7h</span>
+        </div>
+
+        <div
+            class="bar"
+            style="height:35%">
+            <span>1.4h</span>
+        </div>
+
+    </div>
+
+
+    <div class="days">
+
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+        <span>Sun</span>
+
+    </div>
+
+</div>
+
+
+<!-- BADGES -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <span class="panel-label">
+                ACHIEVEMENTS
+            </span>
+
+            <h2>
+                Recent Badges
+            </h2>
+
+        </div>
+
+        <a href="#">
+            View all →
+        </a>
+
+    </div>
+
+
+    <div class="badges">
+
+        <div class="badge">
+
+            <div>
+                🔥
             </div>
 
-            <div class="top-actions">
+            <strong>
+                7 Day Streak
+            </strong>
 
-                <button class="icon-btn">
-                    🔔
-                    <span class="notification-dot"></span>
-                </button>
+            <small>
+                Recent
+            </small>
 
-                <div class="profile">
+        </div>
 
-                    <div class="avatar">
-                        AS
+
+        <div class="badge">
+
+            <div>
+                🚀
+            </div>
+
+            <strong>
+                Project Builder
+            </strong>
+
+            <small>
+                Recent
+            </small>
+
+        </div>
+
+
+        <div class="badge">
+
+            <div>
+                ⚡
+            </div>
+
+            <strong>
+                Fast Learner
+            </strong>
+
+            <small>
+                Recent
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     FIREBASE + DYNAMIC DASHBOARD
+===================================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    doc,
+    collection,
+    onSnapshot,
+    query,
+    orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/*
+=========================================================
+PASTE YOUR FIREBASE CONFIG HERE
+=========================================================
+
+Firebase Console
+→ Project Settings
+→ Your apps
+→ Web app
+→ SDK setup and configuration
+
+Replace these values.
+=========================================================
+*/
+
+const firebaseConfig = {
+
+    apiKey:
+        "YOUR_API_KEY",
+
+    authDomain:
+        "YOUR_PROJECT.firebaseapp.com",
+
+    projectId:
+        "YOUR_PROJECT_ID",
+
+    storageBucket:
+        "YOUR_PROJECT.firebasestorage.app",
+
+    messagingSenderId:
+        "YOUR_SENDER_ID",
+
+    appId:
+        "YOUR_APP_ID"
+
+};
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+let app;
+let auth;
+let db;
+
+const firebaseConfigured =
+    firebaseConfig.apiKey !== "YOUR_API_KEY";
+
+
+if(firebaseConfigured){
+
+    app =
+        initializeApp(
+            firebaseConfig
+        );
+
+    auth =
+        getAuth(app);
+
+    db =
+        getFirestore(app);
+
+}
+
+
+/* =====================================================
+   DEMO COURSES
+===================================================== */
+
+const demoCourses = [
+
+    {
+        id:"web-development",
+
+        title:
+            "Full Stack Web Development",
+
+        description:
+            "HTML, CSS, JavaScript, React & Node.js",
+
+        progress:82,
+
+        completedLessons:18,
+
+        totalLessons:22,
+
+        icon:"</>"
+    },
+
+
+    {
+        id:"python",
+
+        title:
+            "Python Programming",
+
+        description:
+            "Python, OOPs, DSA & Projects",
+
+        progress:64,
+
+        completedLessons:16,
+
+        totalLessons:25,
+
+        icon:"Py"
+    },
+
+
+    {
+        id:"data-science",
+
+        title:
+            "Data Science & AI",
+
+        description:
+            "Python, ML, Data Analysis & AI",
+
+        progress:41,
+
+        completedLessons:10,
+
+        totalLessons:24,
+
+        icon:"AI"
+    }
+
+];
+
+
+/* =====================================================
+   HELPER
+===================================================== */
+
+function setText(
+    id,
+    value
+){
+
+    const element =
+        document.getElementById(
+            id
+        );
+
+    if(
+        element &&
+        value !== undefined &&
+        value !== null
+    ){
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* =====================================================
+   INITIALS
+===================================================== */
+
+function getInitials(
+    name
+){
+
+    return String(name || "Student")
+
+        .split(" ")
+
+        .map(
+            word =>
+                word.charAt(0)
+        )
+
+        .join("")
+
+        .substring(
+            0,
+            2
+        )
+
+        .toUpperCase();
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   RENDER COURSES
+===================================================== */
+
+function renderCourses(
+    courses
+){
+
+    const list =
+        document.getElementById(
+            "courseList"
+        );
+
+
+    if(
+        !courses ||
+        courses.length === 0
+    ){
+
+        list.innerHTML = `
+            <div class="loading">
+                📚
+                <br><br>
+                No courses found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        courses
+        .slice(0,3)
+        .map(
+            course => {
+
+                const progress =
+                    Math.min(
+                        100,
+                        Math.max(
+                            0,
+                            Number(
+                                course.progress || 0
+                            )
+                        )
+                    );
+
+
+                return `
+
+                <div class="course">
+
+                    <div class="course-icon">
+                        ${escapeHTML(
+                            course.icon || "📚"
+                        )}
                     </div>
 
-                    <div class="profile-info">
-                        <strong>Aditya Singh</strong>
-                        <span>Student</span>
+
+                    <div>
+
+                        <div class="course-title">
+                            ${escapeHTML(
+                                course.title ||
+                                "Course"
+                            )}
+                        </div>
+
+
+                        <div class="course-description">
+                            ${escapeHTML(
+                                course.description ||
+                                "Continue learning"
+                            )}
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar"
+                                style="
+                                    width:${progress}%
+                                ">
+                            </div>
+
+                        </div>
+
+
+                        <div class="course-meta">
+
+                            <span>
+                                ${
+                                    course.completedLessons ||
+                                    0
+                                }
+                                /
+                                ${
+                                    course.totalLessons ||
+                                    0
+                                }
+                                lessons
+                            </span>
+
+                            <span>
+                                ${progress}%
+                            </span>
+
+                        </div>
+
                     </div>
 
-                    <span class="arrow">⌄</span>
 
-                </div>
+                    <button
+                        class="resume"
+                        onclick="
+                            resumeCourse(
+                                '${escapeHTML(
+                                    course.id || ""
+                                )}'
+                            )
+                        ">
 
-            </div>
+                        Resume
 
-        </header>
-
-
-        <!-- CONTENT -->
-        <div class="content">
-
-            <!-- WELCOME -->
-            <section class="welcome-card">
-
-                <div class="welcome-content">
-
-                    <span class="eyebrow">
-                        WELCOME BACK 👋
-                    </span>
-
-                    <h2>
-                        Keep building your
-                        <span>future.</span>
-                    </h2>
-
-                    <p>
-                        Continue your learning journey and turn
-                        your skills into real-world opportunities.
-                    </p>
-
-                    <button class="primary-btn">
-                        Continue Learning
-                        <span>→</span>
                     </button>
 
                 </div>
 
-                <div class="welcome-visual">
+                `;
 
-                    <div class="orb orb-one"></div>
-                    <div class="orb orb-two"></div>
+            }
+        )
+        .join("");
 
-                    <div class="floating-card card-one">
-                        <span>🔥</span>
-                        <div>
-                            <strong>7 Day Streak</strong>
-                            <small>Keep going!</small>
-                        </div>
-                    </div>
 
-                    <div class="floating-card card-two">
-                        <span>⚡</span>
-                        <div>
-                            <strong>82%</strong>
-                            <small>Course Progress</small>
-                        </div>
-                    </div>
+    /*
+       Update hero percentage
+    */
 
-                    <div class="hero-symbol">
-                        N
-                    </div>
+    setText(
+        "mainProgress",
+        courses[0].progress + "%"
+    );
 
-                </div>
+}
 
-            </section>
 
+/* =====================================================
+   RESUME COURSE
+===================================================== */
 
-            <!-- STATS -->
-            <section class="stats-grid">
+window.resumeCourse =
+function(courseId){
 
-                <div class="stat-card">
+    window.location.href =
+        "course.html?id=" +
+        encodeURIComponent(
+            courseId
+        );
 
-                    <div class="stat-icon purple">
-                        ◫
-                    </div>
+};
 
-                    <div>
-                        <span>Courses</span>
-                        <strong>06</strong>
-                    </div>
 
-                    <small class="positive">
-                        +2 this month
-                    </small>
+/* =====================================================
+   FIREBASE USER
+===================================================== */
 
-                </div>
+function loadUserData(
+    user
+){
 
+    /*
+       Gmail / Google account name
+    */
 
-                <div class="stat-card">
+    const googleName =
+        user.displayName ||
+        user.email
+            ?.split("@")[0] ||
+        "Student";
 
-                    <div class="stat-icon blue">
-                        ◔
-                    </div>
 
-                    <div>
-                        <span>Learning Hours</span>
-                        <strong>42.5</strong>
-                    </div>
+    setText(
+        "studentName",
+        googleName
+    );
 
-                    <small class="positive">
-                        +8.4 hrs
-                    </small>
 
-                </div>
+    setText(
+        "userAvatar",
+        getInitials(
+            googleName
+        )
+    );
 
 
-                <div class="stat-card">
+    /*
+       Firestore profile
+    */
 
-                    <div class="stat-icon orange">
-                        ✓
-                    </div>
+    if(!db){
+        return;
+    }
 
-                    <div>
-                        <span>Completed</span>
-                        <strong>18</strong>
-                    </div>
 
-                    <small>
-                        Lessons
-                    </small>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon green">
-                        🏆
-                    </div>
-
-                    <div>
-                        <span>Certificates</span>
-                        <strong>04</strong>
-                    </div>
-
-                    <small class="positive">
-                        +1 earned
-                    </small>
-
-                </div>
-
-            </section>
-
-
-            <!-- GRID -->
-            <section class="dashboard-grid">
-
-                <!-- CONTINUE LEARNING -->
-                <div class="panel continue-panel">
-
-                    <div class="panel-header">
-
-                        <div>
-                            <span class="panel-label">
-                                YOUR LEARNING
-                            </span>
-
-                            <h2>Continue Learning</h2>
-                        </div>
-
-                        <a href="#">View all →</a>
-
-                    </div>
-
-
-                    <div class="course-item">
-
-                        <div class="course-logo python">
-                            Py
-                        </div>
-
-                        <div class="course-info">
-
-                            <div class="course-title">
-                                <strong>Python Programming</strong>
-                                <span>82%</span>
-                            </div>
-
-                            <p>
-                                Advanced Python & OOP
-                            </p>
-
-                            <div class="progress">
-                                <div style="width:82%"></div>
-                            </div>
-
-                            <small>
-                                Lesson 18 of 22
-                            </small>
-
-                        </div>
-
-                        <button class="resume-btn">
-                            Resume
-                        </button>
-
-                    </div>
-
-
-                    <div class="course-item">
-
-                        <div class="course-logo web">
-                            &lt;/&gt;
-                        </div>
-
-                        <div class="course-info">
-
-                            <div class="course-title">
-                                <strong>Full Stack Web Development</strong>
-                                <span>64%</span>
-                            </div>
-
-                            <p>
-                                React, Node.js & APIs
-                            </p>
-
-                            <div class="progress">
-                                <div style="width:64%"></div>
-                            </div>
-
-                            <small>
-                                Lesson 24 of 37
-                            </small>
-
-                        </div>
-
-                        <button class="resume-btn">
-                            Resume
-                        </button>
-
-                    </div>
-
-
-                    <div class="course-item">
-
-                        <div class="course-logo data">
-                            ◉
-                        </div>
-
-                        <div class="course-info">
-
-                            <div class="course-title">
-                                <strong>Data Science</strong>
-                                <span>41%</span>
-                            </div>
-
-                            <p>
-                                Python, ML & Data Analysis
-                            </p>
-
-                            <div class="progress">
-                                <div style="width:41%"></div>
-                            </div>
-
-                            <small>
-                                Lesson 12 of 29
-                            </small>
-
-                        </div>
-
-                        <button class="resume-btn">
-                            Resume
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- SHIVAAY -->
-                <div class="panel shivaay-panel">
-
-                    <div class="shivaay-header">
-
-                        <div class="shivaay-icon">
-                            ✦
-                        </div>
-
-                        <div>
-                            <span>YOUR AI MENTOR</span>
-                            <h2>Shivaay AI</h2>
-                        </div>
-
-                    </div>
-
-                    <div class="shivaay-body">
-
-                        <p>
-                            Your personal AI mentor is ready to
-                            help you learn, build and grow.
-                        </p>
-
-                        <div class="ai-features">
-
-                            <div>
-                                <span>✦</span>
-                                Ask anything
-                            </div>
-
-                            <div>
-                                <span>✓</span>
-                                Get instant explanations
-                            </div>
-
-                            <div>
-                                <span>⚡</span>
-                                Build projects faster
-                            </div>
-
-                        </div>
-
-                        <button class="ai-btn">
-                            Open Shivaay AI
-                            <span>→</span>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- BOTTOM GRID -->
-            <section class="bottom-grid">
-
-                <!-- ACTIVITY -->
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-                            <span class="panel-label">
-                                ACTIVITY
-                            </span>
-
-                            <h2>Weekly Learning</h2>
-                        </div>
-
-                        <span class="week-label">
-                            This Week
-                        </span>
-
-                    </div>
-
-                    <div class="chart">
-
-                        <div class="chart-days">
-                            <span>Mon</span>
-                            <span>Tue</span>
-                            <span>Wed</span>
-                            <span>Thu</span>
-                            <span>Fri</span>
-                            <span>Sat</span>
-                            <span>Sun</span>
-                        </div>
-
-                        <div class="bars">
-
-                            <div style="height:45%">
-                                <span>1.8h</span>
-                            </div>
-
-                            <div style="height:70%">
-                                <span>2.8h</span>
-                            </div>
-
-                            <div style="height:55%">
-                                <span>2.2h</span>
-                            </div>
-
-                            <div style="height:85%">
-                                <span>3.4h</span>
-                            </div>
-
-                            <div style="height:65%">
-                                <span>2.6h</span>
-                            </div>
-
-                            <div style="height:92%">
-                                <span>3.7h</span>
-                            </div>
-
-                            <div style="height:35%">
-                                <span>1.4h</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ACHIEVEMENTS -->
-                <div class="panel">
-
-                    <div class="panel-header">
-
-                        <div>
-                            <span class="panel-label">
-                                ACHIEVEMENTS
-                            </span>
-
-                            <h2>Recent Badges</h2>
-                        </div>
-
-                        <a href="#">View all →</a>
-
-                    </div>
-
-                    <div class="badges">
-
-                        <div class="badge">
-                            <div>🔥</div>
-                            <strong>7 Day Streak</strong>
-                            <small>Aug 07</small>
-                        </div>
-
-                        <div class="badge">
-                            <div>🚀</div>
-                            <strong>Project Builder</strong>
-                            <small>Aug 05</small>
-                        </div>
-
-                        <div class="badge">
-                            <div>⚡</div>
-                            <strong>Fast Learner</strong>
-                            <small>Aug 01</small>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-
-    </main>
-
-</div>
-
-<script>
-
-const menuBtn = document.getElementById("menuBtn");
-const sidebar = document.querySelector(".sidebar");
-
-menuBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-});
-
-</script>
-<script type="module">
-    import {
-        initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-    import {
-        getAuth,
-        onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-    import {
-        getFirestore,
-        doc,
-        onSnapshot
-    } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-    /* =========================================
-       YOUR FIREBASE CONFIG
-    ========================================= */
-
-    const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.firebasestorage.app",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-    };
-
-
-    /* =========================================
-       FIREBASE
-    ========================================= */
-
-    const app = initializeApp(firebaseConfig);
-
-    const auth = getAuth(app);
-
-    const db = getFirestore(app);
-
-
-    /* =========================================
-       USER LOGIN
-    ========================================= */
-
-    onAuthStateChanged(auth, (user) => {
-
-        if (!user) {
-            return;
-        }
-
-        console.log(
-            "Logged in:",
-            user.email
+    const userRef =
+        doc(
+            db,
+            "users",
+            user.uid
         );
 
 
-        /*
-         * Existing dashboard elements
-         */
+    onSnapshot(
+        userRef,
+        snapshot => {
 
-        const nameElement =
-            document.getElementById("studentName");
+            if(
+                !snapshot.exists()
+            ){
 
-        const avatarElement =
-            document.getElementById("userAvatar");
+                return;
+
+            }
 
 
-        if (nameElement) {
+            const data =
+                snapshot.data();
 
-            nameElement.textContent =
-                user.displayName ||
-                user.email.split("@")[0];
+
+            setText(
+                "studentName",
+                data.name ||
+                googleName
+            );
+
+
+            setText(
+                "studentRole",
+                data.role ||
+                "Student"
+            );
+
+
+            setText(
+                "userAvatar",
+                getInitials(
+                    data.name ||
+                    googleName
+                )
+            );
+
+
+            setText(
+                "courseCount",
+                data.courseCount ??
+                0
+            );
+
+
+            setText(
+                "learningHours",
+                data.learningHours ??
+                0
+            );
+
+
+            setText(
+                "completedLessons",
+                data.completedLessons ??
+                0
+            );
+
+
+            setText(
+                "certificateCount",
+                data.certificates ??
+                0
+            );
 
         }
+    );
 
 
-        if (avatarElement) {
+    /*
+       Real-time courses
+    */
 
-            const name =
-                user.displayName ||
-                user.email;
-
-            avatarElement.textContent =
-                name
-                    .split(" ")
-                    .map(x => x[0])
-                    .join("")
-                    .substring(0, 2)
-                    .toUpperCase();
-
-        }
+    const coursesRef =
+        collection(
+            db,
+            "users",
+            user.uid,
+            "enrolledCourses"
+        );
 
 
-        /*
-         * Load Firestore profile
-         */
+    try{
 
-        loadStudentData(user.uid);
-
-    });
-
-
-    /* =========================================
-       STUDENT DATA
-    ========================================= */
-
-    function loadStudentData(uid) {
-
-        const userRef =
-            doc(
-                db,
-                "users",
-                uid
+        const coursesQuery =
+            query(
+                coursesRef,
+                orderBy(
+                    "lastAccessed",
+                    "desc"
+                )
             );
 
 
         onSnapshot(
-            userRef,
+            coursesQuery,
+            snapshot => {
 
-            (snapshot) => {
-
-                if (!snapshot.exists()) {
-                    return;
-                }
+                const courses = [];
 
 
-                const data =
-                    snapshot.data();
+                snapshot.forEach(
+                    item => {
+
+                        courses.push({
+
+                            id:
+                                item.id,
+
+                            ...item.data()
+
+                        });
+
+                    }
+                );
 
 
-                /*
-                 * Name
-                 */
+                renderCourses(
+                    courses
+                );
 
-                const nameElement =
-                    document.getElementById(
-                        "studentName"
-                    );
+            },
 
-                if (nameElement && data.name) {
+            error => {
 
-                    nameElement.textContent =
-                        data.name;
+                console.log(
+                    "Course listener:",
+                    error
+                );
 
-                }
-
-
-                /*
-                 * Role
-                 */
-
-                const roleElement =
-                    document.getElementById(
-                        "studentRole"
-                    );
-
-                if (
-                    roleElement &&
-                    data.role
-                ) {
-
-                    roleElement.textContent =
-                        data.role;
-
-                }
-
-
-                /*
-                 * Courses
-                 */
-
-                const courses =
-                    document.getElementById(
-                        "courseCount"
-                    );
-
-                if (
-                    courses &&
-                    data.courseCount !== undefined
-                ) {
-
-                    courses.textContent =
-                        data.courseCount;
-
-                }
-
-
-                /*
-                 * Learning Hours
-                 */
-
-                const hours =
-                    document.getElementById(
-                        "learningHours"
-                    );
-
-                if (
-                    hours &&
-                    data.learningHours !== undefined
-                ) {
-
-                    hours.textContent =
-                        data.learningHours;
-
-                }
-
-
-                /*
-                 * Completed Lessons
-                 */
-
-                const completed =
-                    document.getElementById(
-                        "completedLessons"
-                    );
-
-                if (
-                    completed &&
-                    data.completedLessons !== undefined
-                ) {
-
-                    completed.textContent =
-                        data.completedLessons;
-
-                }
-
-
-                /*
-                 * Certificates
-                 */
-
-                const certificates =
-                    document.getElementById(
-                        "certificateCount"
-                    );
-
-                if (
-                    certificates &&
-                    data.certificates !== undefined
-                ) {
-
-                    certificates.textContent =
-                        data.certificates;
-
-                }
-
-
-                /*
-                 * Streak
-                 */
-
-                const streak =
-                    document.getElementById(
-                        "streakCard"
-                    );
-
-                if (
-                    streak &&
-                    data.streak !== undefined
-                ) {
-
-                    streak.textContent =
-                        data.streak +
-                        " Day Streak";
-
-                }
+                renderCourses(
+                    demoCourses
+                );
 
             }
-
         );
 
     }
 
+    catch(error){
+
+        renderCourses(
+            demoCourses
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   AUTHENTICATION
+===================================================== */
+
+if(
+    firebaseConfigured &&
+    auth
+){
+
+    onAuthStateChanged(
+        auth,
+        user => {
+
+            if(user){
+
+                /*
+                   User is signed in
+                */
+
+                loadUserData(
+                    user
+                );
+
+            }
+
+            else{
+
+                /*
+                   If dashboard is protected,
+                   redirect to login.
+                */
+
+                console.log(
+                    "No authenticated user."
+                );
+
+                renderCourses(
+                    demoCourses
+                );
+
+            }
+
+        }
+    );
+
+}
+
+else{
+
+    /*
+       Firebase config not entered yet.
+       Dashboard still works with demo data.
+    */
+
+    renderCourses(
+        demoCourses
+    );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+.getElementById(
+    "logoutBtn"
+)
+.addEventListener(
+    "click",
+    async function(event){
+
+        event.preventDefault();
+
+
+        if(
+            auth &&
+            firebaseConfigured
+        ){
+
+            try{
+
+                await signOut(
+                    auth
+                );
+
+            }
+
+            catch(error){
+
+                console.error(
+                    error
+                );
+
+            }
+
+        }
+
+
+        window.location.href =
+            "login.html";
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+document
+.getElementById(
+    "menuBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        document
+        .getElementById(
+            "sidebar"
+        )
+        .classList
+        .toggle("open");
+
+    }
+);
+
+
+/* =====================================================
+   CONTINUE LEARNING
+===================================================== */
+
+document
+.getElementById(
+    "continueBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        document
+        .getElementById(
+            "learningPanel"
+        )
+        .scrollIntoView({
+
+            behavior:
+                "smooth",
+
+            block:
+                "center"
+
+        });
+
+    }
+);
+
 </script>
+
 </body>
 </html>
