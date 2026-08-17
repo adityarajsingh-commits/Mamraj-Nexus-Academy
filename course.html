@@ -4,36 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MamRaj Nexus Academy | Web Development</title>
+<title>MamRaj Nexus Academy | 6 Month Web Development</title>
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 :root{
     --navy:#263873;
-    --navy2:#1d2d68;
-    --peach:#c98d72;
+    --navy-dark:#1b2a61;
+    --purple:#51459b;
+    --peach:#ca8f73;
+    --green:#58a276;
     --cream:#f7f1ec;
-    --white:#fff;
-    --text:#28304b;
-    --muted:#817b78;
-    --border:#e8ddd6;
-    --green:#58a174;
-    --locked:#aaa4a0;
+    --white:#ffffff;
+    --text:#28304a;
+    --muted:#837b77;
+    --border:#e7ddd7;
+    --light:#faf7f5;
+    --locked:#aaa39f;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Inter,Arial,sans-serif;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
     background:var(--cream);
     color:var(--text);
     overflow-x:hidden;
 }
 
-/* ================= TOPBAR ================= */
+/* ================= HEADER ================= */
 
 .topbar{
     height:70px;
@@ -51,45 +57,70 @@ body{
     z-index:1000;
 }
 
+.menu-btn{
+    display:none;
+
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:9px;
+
+    background:#f1ebe7;
+
+    color:var(--navy);
+
+    font-size:18px;
+
+    cursor:pointer;
+}
+
 .logo{
     width:40px;
     height:40px;
-    border-radius:11px;
 
     display:grid;
     place-items:center;
 
-    background:#5b43d6;
-    color:#fff;
+    border-radius:11px;
 
-    font-weight:900;
+    background:#5c46d7;
+
+    color:white;
+
     font-size:18px;
+    font-weight:900;
 }
 
 .brand{
-    color:var(--navy);
-    font-weight:900;
     font-size:16px;
+    font-weight:900;
+    color:var(--navy);
 }
 
 .brand small{
     display:block;
     font-size:6px;
     letter-spacing:2px;
-    color:#988a83;
+    color:#9a8e88;
 }
 
-.back{
+.back-btn{
     text-decoration:none;
-    color:var(--navy);
+
     border:1px solid var(--border);
-    border-radius:9px;
+
+    color:var(--navy);
+
     padding:8px 12px;
+
+    border-radius:9px;
+
     font-size:8px;
     font-weight:800;
 }
 
-.course-title{
+.course-name{
     font-size:10px;
     font-weight:900;
     color:var(--navy);
@@ -97,144 +128,170 @@ body{
 
 .header-progress{
     margin-left:auto;
+
     display:flex;
     align-items:center;
     gap:8px;
 }
 
-.progress-bar{
+.progress-line{
     width:150px;
     height:5px;
+
     background:#eee8e4;
+
     border-radius:20px;
+
     overflow:hidden;
 }
 
-.progress-bar div{
+.progress-line span{
+    display:block;
+
     width:0%;
+
     height:100%;
+
     background:var(--green);
+
     transition:.4s;
 }
 
-.percent{
+.header-percent{
     font-size:8px;
     color:#777;
 }
 
-.menu{
-    display:none;
-    width:38px;
-    height:38px;
-    border:0;
-    border-radius:9px;
-    background:#f2ece8;
-}
-
-/* ================= LAYOUT ================= */
+/* ================= MAIN LAYOUT ================= */
 
 .layout{
     display:grid;
-    grid-template-columns:280px minmax(0,1fr) 240px;
-    min-height:calc(100vh - 70px);
+
+    grid-template-columns:
+        280px
+        minmax(0,1fr)
+        245px;
+
+    min-height:
+        calc(100vh - 70px);
 }
 
-/* ================= SIDEBAR ================= */
+/* ================= COURSE SIDEBAR ================= */
 
 .sidebar{
     background:#fff;
+
     border-right:1px solid var(--border);
 
-    height:calc(100vh - 70px);
+    height:
+        calc(100vh - 70px);
+
     position:sticky;
     top:70px;
 
     overflow-y:auto;
+
     padding:18px 12px;
 }
 
-.sidebar-heading{
-    color:#a37863;
-    font-size:7px;
-    font-weight:900;
-    letter-spacing:1.5px;
+.sidebar-title{
+    color:#a47761;
 
-    margin:3px 10px 15px;
+    font-size:7px;
+
+    letter-spacing:1.6px;
+
+    font-weight:900;
+
+    margin:
+        4px 10px 15px;
 }
 
-.unit{
+.month{
     margin-bottom:5px;
 }
 
-.unit-header{
+.month-header{
     width:100%;
-    border:0;
-    background:#fff;
 
     display:flex;
     align-items:center;
-    gap:9px;
+
+    gap:8px;
 
     padding:10px;
+
+    background:#fff;
+
+    border:0;
 
     border-radius:10px;
 
     cursor:pointer;
+
     text-align:left;
 }
 
-.unit-header:hover{
+.month-header:hover{
     background:#faf5f1;
 }
 
-.unit-number{
-    width:27px;
-    height:27px;
+.month-number{
+    width:28px;
+    height:28px;
 
     display:grid;
     place-items:center;
 
     background:#eee9e5;
+
     border-radius:8px;
 
-    color:var(--navy);
     font-size:7px;
     font-weight:900;
+
+    color:var(--navy);
 }
 
-.unit-name{
+.month-name{
     flex:1;
+
     font-size:9px;
+
     font-weight:900;
+
     color:var(--text);
 }
 
-.unit-status{
+.month-lock{
     font-size:9px;
 }
 
-.topics{
-    padding-left:40px;
-    display:none;
+.month.open .topics{
+    display:block;
 }
 
-.unit.open .topics{
-    display:block;
+.topics{
+    display:none;
+
+    padding-left:40px;
 }
 
 .topic{
     width:100%;
 
-    border:0;
-    background:transparent;
+    display:flex;
+    align-items:center;
 
-    border-left:2px solid transparent;
+    gap:7px;
 
     padding:9px 7px;
 
-    display:flex;
-    align-items:center;
-    gap:7px;
+    border:0;
+
+    border-left:2px solid transparent;
+
+    background:transparent;
 
     text-align:left;
 
@@ -251,8 +308,12 @@ body{
 
 .topic.active{
     background:#fbf1ec;
-    border-left-color:var(--peach);
+
+    border-left-color:
+        var(--peach);
+
     color:var(--navy);
+
     font-weight:900;
 }
 
@@ -261,185 +322,261 @@ body{
 }
 
 .topic.locked{
-    color:#b5aeaa;
-    cursor:not-allowed;
-    opacity:.65;
-}
+    color:var(--locked);
 
-.topic-icon{
-    width:16px;
+    cursor:not-allowed;
+
+    opacity:.55;
 }
 
 /* ================= MAIN ================= */
 
 .main{
     min-width:0;
-    padding:24px 35px 60px;
+
+    padding:
+        24px 35px 70px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
     background:
         linear-gradient(
             135deg,
-            #293a78,
-            #584b91
+            #273873,
+            #584a96
         );
+
+    color:#fff;
 
     border-radius:20px;
 
     padding:30px;
 
-    color:#fff;
-
     margin-bottom:15px;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-.hero small{
-    color:#dcd7ff;
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    right:-100px;
+    top:-130px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+.hero-label{
     font-size:7px;
+
+    letter-spacing:1.6px;
+
     font-weight:900;
-    letter-spacing:1.5px;
+
+    color:#dcd7ff;
 }
 
 .hero h1{
     font-size:30px;
+
     margin:8px 0;
 }
 
 .hero p{
-    color:rgba(255,255,255,.78);
+    max-width:720px;
+
+    color:
+        rgba(255,255,255,.78);
+
     font-size:10px;
-    line-height:1.7;
-    max-width:700px;
+
+    line-height:1.8;
 }
 
 .tags{
     display:flex;
+
     gap:6px;
+
     flex-wrap:wrap;
+
     margin-top:15px;
 }
 
 .tag{
-    padding:5px 9px;
+    background:
+        rgba(255,255,255,.13);
+
+    padding:6px 9px;
+
     border-radius:20px;
-    background:rgba(255,255,255,.13);
+
     font-size:7px;
 }
 
-/* STATS */
+/* ================= STATS ================= */
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:10px;
+
     margin-bottom:15px;
 }
 
 .stat{
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:13px;
+
     padding:15px;
 }
 
 .stat small{
-    color:#8d8580;
+    display:block;
+
+    color:#928984;
+
     font-size:7px;
 }
 
 .stat strong{
     display:block;
-    color:var(--navy);
-    font-size:14px;
+
     margin-top:4px;
+
+    color:var(--navy);
+
+    font-size:14px;
 }
 
-/* ================= LESSON ================= */
+/* ================= LESSON CARD ================= */
 
 .lesson-card{
     background:#fff;
+
     border:1px solid var(--border);
+
     border-radius:18px;
+
     padding:28px;
+
+    min-height:500px;
 }
 
 .lesson-meta{
     display:flex;
+
     align-items:center;
+
     gap:8px;
+
     margin-bottom:10px;
 }
 
 .lesson-badge{
     background:var(--peach);
+
     color:#fff;
+
+    padding:5px 10px;
 
     border-radius:20px;
 
-    padding:5px 9px;
-
     font-size:7px;
+
     font-weight:900;
 }
 
 .lesson-time{
-    color:#99918d;
+    color:#928984;
+
     font-size:8px;
 }
 
 .lesson-card h2{
     color:var(--navy);
-    font-size:26px;
+
+    font-size:27px;
+
     margin-bottom:10px;
 }
 
 .lesson-intro{
-    color:#716b68;
+    color:#706966;
+
     font-size:10px;
-    line-height:1.8;
+
+    line-height:1.9;
 }
 
-.content{
+.lesson-content{
     margin-top:25px;
 }
 
-.content h3{
+.lesson-content h3{
     color:var(--navy);
+
     font-size:15px;
-    margin:20px 0 8px;
+
+    margin:
+        22px 0 8px;
 }
 
-.content p{
-    color:#706b68;
+.lesson-content p{
+    color:#716a66;
+
     font-size:10px;
-    line-height:1.8;
+
+    line-height:1.9;
+
+    margin-bottom:10px;
 }
 
-.content ul{
+.lesson-content ul{
     padding-left:20px;
 }
 
-.content li{
-    color:#706b68;
+.lesson-content li{
+    color:#716a66;
+
     font-size:9px;
+
     margin-bottom:7px;
 }
 
-.code-title{
-    margin-top:25px;
-    margin-bottom:7px;
-
+.code-label{
     color:var(--navy);
+
     font-size:9px;
+
     font-weight:900;
+
+    margin:
+        24px 0 7px;
 }
 
 .code{
-    background:#1d2542;
-    color:#e7eaff;
+    background:#1d2644;
+
+    color:#e9edff;
 
     border-radius:12px;
 
@@ -447,56 +584,75 @@ body{
 
     overflow-x:auto;
 
-    font-family:Consolas,monospace;
+    font-family:
+        Consolas,
+        Monaco,
+        monospace;
 
     font-size:9px;
+
     line-height:1.7;
 
     white-space:pre;
 }
 
 .practice{
-    margin-top:20px;
-
     background:#fbf3ed;
-    border:1px solid #ead9cf;
+
+    border:1px solid #ead8cd;
 
     border-radius:13px;
 
     padding:16px;
+
+    margin-top:20px;
 }
 
 .practice strong{
     display:block;
-    color:#93634f;
+
+    color:#956650;
+
     font-size:9px;
+
     margin-bottom:6px;
 }
 
 .practice p{
-    color:#766e69;
+    color:#756d69;
+
     font-size:9px;
 }
 
 .actions{
     display:flex;
+
     gap:8px;
+
     margin-top:22px;
 }
 
 .btn{
     border:0;
+
     border-radius:9px;
 
-    padding:11px 16px;
+    padding:
+        11px 16px;
 
     font-size:8px;
+
     font-weight:900;
 
-    background:var(--navy);
-    color:#fff;
-
     cursor:pointer;
+
+    background:var(--navy);
+
+    color:#fff;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
 }
 
 .btn.complete{
@@ -505,53 +661,75 @@ body{
 
 .btn.secondary{
     background:#fff;
+
     border:1px solid var(--border);
+
     color:var(--navy);
 }
 
-/* ================= RIGHT ================= */
+.btn:disabled{
+    cursor:not-allowed;
 
-.right{
+    opacity:.65;
+
+    transform:none;
+}
+
+/* ================= RIGHT PANEL ================= */
+
+.right-panel{
     background:#fff;
+
     border-left:1px solid var(--border);
 
     padding:20px 15px;
 
     position:sticky;
+
     top:70px;
 
-    height:calc(100vh - 70px);
+    height:
+        calc(100vh - 70px);
+
+    overflow-y:auto;
 }
 
-.right-title{
+.panel-title{
     color:var(--navy);
+
     font-size:9px;
+
     font-weight:900;
+
     margin-bottom:12px;
 }
 
 .progress-card{
     background:#f8f1f5;
+
     border-radius:14px;
+
     padding:18px;
+
     text-align:center;
 }
 
 .progress-circle{
-    width:95px;
-    height:95px;
-
-    border-radius:50%;
+    width:100px;
+    height:100px;
 
     margin:auto;
 
+    border-radius:50%;
+
     display:grid;
+
     place-items:center;
 
     background:
         conic-gradient(
             var(--green) 0deg,
-            #e6dfdb 0deg
+            #e7dfdb 0deg
         );
 
     position:relative;
@@ -562,8 +740,8 @@ body{
 
     position:absolute;
 
-    width:70px;
-    height:70px;
+    width:74px;
+    height:74px;
 
     background:#fff;
 
@@ -572,49 +750,67 @@ body{
 
 .progress-circle span{
     position:relative;
+
     z-index:2;
 
     color:var(--navy);
+
     font-size:16px;
+
     font-weight:900;
 }
 
 .progress-card p{
-    margin-top:12px;
+    color:#8c827d;
+
     font-size:7px;
-    color:#8b817d;
+
     line-height:1.6;
+
+    margin-top:12px;
 }
 
-.unit-progress{
-    margin-top:20px;
+.month-progress{
+    margin-top:22px;
 }
 
-.unit-progress-item{
+.month-progress-item{
     padding:10px 0;
-    border-bottom:1px solid #eee7e2;
+
+    border-bottom:1px solid #eee6e1;
 }
 
-.unit-progress-item strong{
+.month-progress-item strong{
     display:block;
+
     color:var(--navy);
+
     font-size:8px;
 }
 
-.unit-progress-item span{
-    color:#99918c;
+.month-progress-item span{
+    color:#928a85;
+
     font-size:7px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= OVERLAY ================= */
+
+.overlay{
+    display:none;
+}
+
+/* ================= TABLET ================= */
 
 @media(max-width:1150px){
 
     .layout{
-        grid-template-columns:240px minmax(0,1fr);
+        grid-template-columns:
+            245px
+            minmax(0,1fr);
     }
 
-    .right{
+    .right-panel{
         display:none;
     }
 
@@ -623,35 +819,29 @@ body{
     }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 }
+
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
     .topbar{
         height:62px;
-        padding:0 12px;
+
+        padding:
+            0 12px;
     }
 
-    .menu{
+    .menu-btn{
         display:block;
     }
 
-    .course-title{
+    .course-name,
+    .back-btn{
         display:none;
-    }
-
-    .back{
-        display:none;
-    }
-
-    .header-progress{
-        margin-left:auto;
-    }
-
-    .progress-bar{
-        width:70px;
     }
 
     .layout{
@@ -660,29 +850,56 @@ body{
 
     .sidebar{
         position:fixed;
-        left:-285px;
+
+        left:-290px;
+
         top:62px;
 
         width:280px;
-        height:calc(100vh - 62px);
+
+        height:
+            calc(100vh - 62px);
 
         z-index:2000;
 
-        transition:.3s;
+        transition:
+            left .3s ease;
 
-        box-shadow:10px 0 30px rgba(0,0,0,.15);
+        box-shadow:
+            10px 0 35px
+            rgba(0,0,0,.18);
     }
 
     .sidebar.show{
         left:0;
     }
 
+    .overlay{
+        position:fixed;
+
+        inset:62px 0 0 0;
+
+        background:
+            rgba(20,25,50,.35);
+
+        z-index:1500;
+
+        display:none;
+    }
+
+    .overlay.show{
+        display:block;
+    }
+
     .main{
-        padding:14px 12px 40px;
+        padding:
+            14px 12px 40px;
     }
 
     .hero{
         padding:22px;
+
+        border-radius:16px;
     }
 
     .hero h1{
@@ -694,23 +911,33 @@ body{
     }
 
     .lesson-card h2{
-        font-size:21px;
+        font-size:22px;
     }
 }
 
+/* ================= SMALL MOBILE ================= */
+
 @media(max-width:500px){
+
+    .logo{
+        width:35px;
+        height:35px;
+
+        font-size:16px;
+    }
 
     .brand{
         font-size:14px;
     }
 
-    .logo{
-        width:35px;
-        height:35px;
+    .progress-line{
+        width:65px;
     }
 
     .stats{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
+
         gap:7px;
     }
 
@@ -740,11 +967,14 @@ body{
 
     .actions{
         display:grid;
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .btn.complete{
-        grid-column:1/-1;
+        grid-column:
+            1 / -1;
     }
 
     .code{
@@ -760,32 +990,40 @@ body{
 
 <header class="topbar">
 
-    <button class="menu" id="menuBtn">
+    <button
+        class="menu-btn"
+        id="menuBtn">
         ☰
     </button>
 
-    <div class="logo">M</div>
+    <div class="logo">
+        M
+    </div>
 
     <div class="brand">
         MamRaj
         <small>NEXUS ACADEMY</small>
     </div>
 
-    <a href="dashboard.html" class="back">
+    <a
+        href="dashboard.html"
+        class="back-btn">
         ← Dashboard
     </a>
 
-    <div class="course-title">
+    <div class="course-name">
         Full-Stack Web Development
     </div>
 
     <div class="header-progress">
 
-        <div class="progress-bar">
-            <div id="headerProgress"></div>
+        <div class="progress-line">
+            <span id="headerProgress"></span>
         </div>
 
-        <span class="percent" id="headerPercent">
+        <span
+            class="header-percent"
+            id="headerPercent">
             0%
         </span>
 
@@ -794,14 +1032,29 @@ body{
 </header>
 
 
+<!-- ================= OVERLAY ================= -->
+
+<div
+    class="overlay"
+    id="overlay">
+</div>
+
+
+<!-- ================= LAYOUT ================= -->
+
 <div class="layout">
 
-<!-- ================= SIDEBAR ================= -->
 
-<aside class="sidebar" id="sidebar">
+<!-- ======================================================
+     COURSE SIDEBAR
+====================================================== -->
 
-    <div class="sidebar-heading">
-        COURSE CONTENT
+<aside
+    class="sidebar"
+    id="sidebar">
+
+    <div class="sidebar-title">
+        6 MONTH COURSE CONTENT
     </div>
 
     <div id="courseNavigation"></div>
@@ -809,144 +1062,157 @@ body{
 </aside>
 
 
-<!-- ================= MAIN ================= -->
+<!-- ======================================================
+     MAIN CONTENT
+====================================================== -->
 
 <main class="main">
 
-    <section class="hero">
 
-        <small>MAMRAJ NEXUS ACADEMY</small>
+<!-- HERO -->
 
-        <h1>
-            Full-Stack Web Development
-        </h1>
+<section class="hero">
 
-        <p>
-            Learn web development step-by-step,
-            build real projects and become
-            job-ready.
-        </p>
+    <div class="hero-label">
+        MAMRAJ NEXUS ACADEMY • 6 MONTH PROGRAM
+    </div>
 
-        <div class="tags">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Database</span>
-            <span class="tag">AI</span>
-        </div>
+    <h1>
+        Full-Stack Web Development
+    </h1>
 
-    </section>
+    <p>
+        A structured 6-month journey from
+        beginner to job-ready full-stack developer.
+        Learn, practice, build projects and complete
+        a professional capstone project.
+    </p>
 
+    <div class="tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Git</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Database</span>
+        <span class="tag">AI</span>
+    </div>
 
-    <section class="stats">
-
-        <div class="stat">
-            <small>LESSONS</small>
-            <strong id="totalLessons">28</strong>
-        </div>
-
-        <div class="stat">
-            <small>COMPLETED</small>
-            <strong id="completedLessons">0</strong>
-        </div>
-
-        <div class="stat">
-            <small>UNITS</small>
-            <strong>12</strong>
-        </div>
-
-        <div class="stat">
-            <small>LEVEL</small>
-            <strong>Beginner → Pro</strong>
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- ================= LESSON CONTENT ================= -->
+<!-- STATS -->
 
-    <section class="lesson-card">
+<section class="stats">
 
-        <div class="lesson-meta">
+    <div class="stat">
+        <small>DURATION</small>
+        <strong>6 Months</strong>
+    </div>
 
-            <span class="lesson-badge" id="lessonBadge">
-                LESSON 01
-            </span>
+    <div class="stat">
+        <small>WEEKS</small>
+        <strong>24</strong>
+    </div>
 
-            <span class="lesson-time" id="lessonTime">
-                ⏱ 15 min
-            </span>
+    <div class="stat">
+        <small>TOPICS</small>
+        <strong id="totalTopics">48</strong>
+    </div>
 
-        </div>
+    <div class="stat">
+        <small>PROJECTS</small>
+        <strong>10+</strong>
+    </div>
 
-        <h2 id="lessonTitle">
-            How the Web Works
-        </h2>
-
-        <p class="lesson-intro" id="lessonIntro"></p>
-
-
-        <div class="content" id="lessonContent"></div>
-
-
-        <div class="code-title">
-            Example
-        </div>
-
-        <pre class="code"><code id="lessonCode"></code></pre>
+</section>
 
 
-        <div class="practice">
+<!-- LESSON -->
 
-            <strong>
-                🎯 Practice Task
-            </strong>
+<section class="lesson-card">
 
-            <p id="practiceText"></p>
+    <div class="lesson-meta">
 
-        </div>
+        <span
+            class="lesson-badge"
+            id="lessonBadge">
+            MONTH 01 • WEEK 01
+        </span>
 
+        <span
+            class="lesson-time"
+            id="lessonTime">
+            ⏱ 30 min
+        </span>
 
-        <div class="actions">
+    </div>
 
-            <button
-                class="btn complete"
-                id="completeBtn">
+    <h2 id="lessonTitle">
+        Welcome to Web Development
+    </h2>
 
-                ✓ Mark as Complete
+    <p
+        class="lesson-intro"
+        id="lessonIntro">
+    </p>
 
-            </button>
+    <div
+        class="lesson-content"
+        id="lessonContent">
+    </div>
 
-            <button
-                class="btn secondary"
-                id="previousBtn">
+    <div class="code-label">
+        Example
+    </div>
 
-                ← Previous
+    <pre class="code"><code id="lessonCode"></code></pre>
 
-            </button>
+    <div class="practice">
 
-            <button
-                class="btn"
-                id="nextBtn">
+        <strong>
+            🎯 Practice Task
+        </strong>
 
-                Next Topic →
+        <p id="practiceText"></p>
 
-            </button>
+    </div>
 
-        </div>
+    <div class="actions">
 
-    </section>
+        <button
+            class="btn complete"
+            id="completeBtn">
+            ✓ Mark as Complete
+        </button>
+
+        <button
+            class="btn secondary"
+            id="previousBtn">
+            ← Previous
+        </button>
+
+        <button
+            class="btn"
+            id="nextBtn">
+            Next Topic →
+        </button>
+
+    </div>
+
+</section>
 
 </main>
 
 
-<!-- ================= RIGHT ================= -->
+<!-- ======================================================
+     RIGHT PANEL
+====================================================== -->
 
-<aside class="right">
+<aside class="right-panel">
 
-    <div class="right-title">
+    <div class="panel-title">
         YOUR PROGRESS
     </div>
 
@@ -963,20 +1229,19 @@ body{
         </div>
 
         <p>
-            Complete each topic to unlock
-            the next topic.
+            Complete topics sequentially
+            to unlock the next topic.
         </p>
 
     </div>
 
+    <div class="month-progress">
 
-    <div class="unit-progress">
-
-        <div class="right-title">
-            COURSE UNITS
+        <div class="panel-title">
+            6 MONTH JOURNEY
         </div>
 
-        <div id="unitProgress"></div>
+        <div id="monthProgress"></div>
 
     </div>
 
@@ -988,134 +1253,134 @@ body{
 <script>
 
 /* =========================================================
-   COURSE DATA
+   6 MONTH COURSE DATA
+
+   24 WEEKS
+   48 TOPICS
+   2 TOPICS PER WEEK
 ========================================================= */
 
 const course = [
 
+/* ================= MONTH 1 ================= */
+
 {
     id:1,
-    title:"Web Foundations",
+    month:"Month 1",
+    title:"Web Foundations & HTML",
+
+    weeks:[1,2,3,4],
+
     topics:[
 
     {
         id:1,
-        title:"How the Web Works",
-        time:"15 min",
+        week:1,
+        title:"How the Internet Works",
+        time:"30 min",
 
         intro:
-        "Before writing code, understand how a website travels from a user's browser to a web server and back.",
+        "Understand the basic journey of a website from a user's browser to a web server.",
 
         content:`
-            <h3>What is the Web?</h3>
+        <h3>What happens when you open a website?</h3>
 
-            <p>
-            The web allows browsers and servers to
-            communicate with each other using
-            standard protocols such as HTTP and HTTPS.
-            </p>
+        <p>
+        When you type a website address into a browser,
+        the browser sends a request to a server.
+        The server processes the request and sends
+        a response back to your browser.
+        </p>
 
-            <h3>Basic Website Flow</h3>
+        <h3>Basic Web Flow</h3>
 
-            <ul>
-                <li>User enters a website address.</li>
-                <li>Browser sends a request.</li>
-                <li>Server processes the request.</li>
-                <li>Server sends a response.</li>
-                <li>Browser displays the website.</li>
-            </ul>
+        <ul>
+            <li>User enters a URL.</li>
+            <li>Browser sends a request.</li>
+            <li>Server receives the request.</li>
+            <li>Server sends a response.</li>
+            <li>Browser renders the webpage.</li>
+        </ul>
         `,
 
         code:
-`Browser
-   ↓
+`User
+  ↓
+Browser
+  ↓
 HTTP Request
-   ↓
+  ↓
 Web Server
-   ↓
+  ↓
 HTTP Response
-   ↓
+  ↓
 Web Page`,
 
         practice:
-        "Explain the complete journey of a website request in your own words."
+        "Explain the complete journey of opening a website in your own words."
     },
+
 
     {
         id:2,
-        title:"Browser & Server",
-        time:"18 min",
+        week:1,
+        title:"Browser, Server & HTTP",
+        time:"35 min",
 
         intro:
-        "Learn the difference between the browser that the learner uses and the server that delivers application data.",
+        "Learn how browsers, servers and HTTP work together.",
 
         content:`
-            <h3>Browser</h3>
+        <h3>Browser</h3>
 
-            <p>
-            Chrome, Edge, Firefox and Safari are
-            examples of browsers. They interpret
-            HTML, CSS and JavaScript.
-            </p>
+        <p>
+        Chrome, Edge, Firefox and Safari are browsers.
+        They interpret HTML, CSS and JavaScript.
+        </p>
 
-            <h3>Server</h3>
+        <h3>HTTP</h3>
 
-            <p>
-            A server receives requests and sends
-            files or data back to the client.
-            </p>
+        <p>
+        HTTP is used for communication between
+        clients and servers.
+        </p>
         `,
 
         code:
-`Client
-   |
-   | Request
-   ↓
-Server
-   |
-   | Response
-   ↓
-Browser`,
+`GET /index.html HTTP/1.1
+
+Host: example.com`,
 
         practice:
-        "Open browser Developer Tools and inspect the Network tab."
-    }
+        "Open browser Developer Tools and inspect a website's Network tab."
+    },
 
-    ]
-},
-
-{
-    id:2,
-    title:"HTML",
-    topics:[
 
     {
         id:3,
+        week:2,
         title:"HTML Basics",
-        time:"25 min",
+        time:"40 min",
 
         intro:
-        "HTML creates the structure of a webpage using elements and tags.",
+        "Learn the structure of HTML documents and the most important HTML elements.",
 
         content:`
-            <h3>What is HTML?</h3>
+        <h3>HTML</h3>
 
-            <p>
-            HTML stands for HyperText Markup Language.
-            It defines the structure and meaning of
-            content on a webpage.
-            </p>
+        <p>
+        HTML stands for HyperText Markup Language.
+        It creates the structure of webpages.
+        </p>
 
-            <h3>Important Elements</h3>
-
-            <ul>
-                <li>Headings</li>
-                <li>Paragraphs</li>
-                <li>Links</li>
-                <li>Images</li>
-                <li>Lists</li>
-                <li>Buttons</li>
-            </ul>
+        <ul>
+            <li>Headings</li>
+            <li>Paragraphs</li>
+            <li>Links</li>
+            <li>Images</li>
+            <li>Lists</li>
+            <li>Buttons</li>
+        </ul>
         `,
 
         code:
@@ -1140,51 +1405,50 @@ Browser`,
 </html>`,
 
         practice:
-        "Create an HTML page containing your name, introduction and hobbies."
+        "Create a personal introduction page using HTML."
     },
+
 
     {
         id:4,
-        title:"Semantic HTML",
-        time:"22 min",
+        week:2,
+        title:"HTML Semantic Structure",
+        time:"40 min",
 
         intro:
-        "Semantic HTML makes the structure of a webpage meaningful and accessible.",
+        "Build meaningful webpage structures using semantic HTML.",
 
         content:`
-            <h3>Semantic Elements</h3>
+        <h3>Semantic HTML</h3>
 
-            <p>
-            Semantic elements describe their purpose.
-            Examples include header, nav, main,
-            section, article and footer.
-            </p>
+        <p>
+        Semantic elements describe what their
+        content represents.
+        </p>
 
-            <h3>Why Semantic HTML?</h3>
-
-            <ul>
-                <li>Better accessibility</li>
-                <li>Cleaner code</li>
-                <li>Better maintainability</li>
-                <li>Better SEO understanding</li>
-            </ul>
+        <ul>
+            <li>header</li>
+            <li>nav</li>
+            <li>main</li>
+            <li>section</li>
+            <li>article</li>
+            <li>footer</li>
+        </ul>
         `,
 
         code:
 `<header>
-    <h1>My Website</h1>
+    <h1>MamRaj Academy</h1>
 </header>
 
 <nav>
     <a href="#">Home</a>
-    <a href="#">About</a>
 </nav>
 
 <main>
 
     <section>
-        <h2>About</h2>
-        <p>Hello!</p>
+        <h2>Courses</h2>
     </section>
 
 </main>
@@ -1194,31 +1458,26 @@ Browser`,
 </footer>`,
 
         practice:
-        "Create a semantic homepage using header, nav, main, section and footer."
+        "Create a semantic homepage for MamRaj Nexus Academy."
     },
+
 
     {
         id:5,
-        title:"Forms & Tables",
-        time:"28 min",
+        week:3,
+        title:"HTML Forms",
+        time:"40 min",
 
         intro:
-        "Forms collect information while tables display structured information.",
+        "Learn how websites collect user information using forms.",
 
         content:`
-            <h3>HTML Forms</h3>
+        <h3>Forms</h3>
 
-            <p>
-            Forms can contain inputs, labels,
-            buttons, select boxes and text areas.
-            </p>
-
-            <h3>HTML Tables</h3>
-
-            <p>
-            Tables organize information into
-            rows and columns.
-            </p>
+        <p>
+        HTML forms can contain inputs, labels,
+        buttons, selects and textareas.
+        </p>
         `,
 
         code:
@@ -1231,6 +1490,13 @@ Browser`,
     placeholder="Your name"
 >
 
+<label>Email</label>
+
+<input
+    type="email"
+    placeholder="Email"
+>
+
 <button>
     Submit
 </button>
@@ -1238,41 +1504,193 @@ Browser`,
 </form>`,
 
         practice:
-        "Create a student registration form with name, email, phone and course."
+        "Create a student registration form."
+    },
+
+
+    {
+        id:6,
+        week:3,
+        title:"HTML Tables & Media",
+        time:"35 min",
+
+        intro:
+        "Learn how to display structured information and media.",
+
+        content:`
+        <h3>Tables</h3>
+
+        <p>
+        Tables display information in rows and columns.
+        </p>
+
+        <h3>Media</h3>
+
+        <p>
+        HTML supports images, audio and video.
+        </p>
+        `,
+
+        code:
+`<table>
+
+<tr>
+    <th>Name</th>
+    <th>Course</th>
+</tr>
+
+<tr>
+    <td>Aditya</td>
+    <td>Web Development</td>
+</tr>
+
+</table>`,
+
+        practice:
+        "Create a student table with name, course and progress."
+    },
+
+
+    {
+        id:7,
+        week:4,
+        title:"HTML Accessibility",
+        time:"30 min",
+
+        intro:
+        "Make webpages easier to understand and use for everyone.",
+
+        content:`
+        <h3>Accessibility</h3>
+
+        <p>
+        Accessible websites use meaningful HTML,
+        labels, alternative text and logical structures.
+        </p>
+        `,
+
+        code:
+`<img
+    src="student.jpg"
+    alt="Student learning web development"
+>`,
+
+        practice:
+        "Add proper labels and alt text to your previous project."
+    },
+
+
+    {
+        id:8,
+        week:4,
+        title:"HTML Mini Project",
+        time:"60 min",
+
+        intro:
+        "Build your first complete multi-section webpage.",
+
+        content:`
+        <h3>Project</h3>
+
+        <p>
+        Build a personal portfolio homepage using
+        everything learned in Month 1.
+        </p>
+
+        <ul>
+            <li>Header</li>
+            <li>About section</li>
+            <li>Skills</li>
+            <li>Projects</li>
+            <li>Contact form</li>
+            <li>Footer</li>
+        </ul>
+        `,
+
+        code:
+`Portfolio
+ ├── Header
+ ├── About
+ ├── Skills
+ ├── Projects
+ ├── Contact
+ └── Footer`,
+
+        practice:
+        "Build and save your first HTML portfolio project."
     }
 
     ]
 },
 
+/* ================= MONTH 2 ================= */
+
 {
-    id:3,
-    title:"CSS",
+    id:2,
+    month:"Month 2",
+    title:"CSS & Responsive Design",
+
+    weeks:[5,6,7,8],
+
     topics:[
 
     {
-        id:6,
+        id:9,
+        week:5,
         title:"CSS Fundamentals",
-        time:"30 min",
+        time:"40 min",
 
         intro:
-        "CSS controls colors, spacing, typography and visual appearance.",
+        "Learn selectors, properties, colors, fonts and basic styling.",
 
         content:`
-            <h3>CSS</h3>
+        <h3>CSS</h3>
 
-            <p>
-            CSS stands for Cascading Style Sheets.
-            It controls how HTML elements look.
-            </p>
+        <p>
+        CSS controls the visual presentation
+        of HTML content.
+        </p>
 
-            <h3>Box Model</h3>
+        <ul>
+            <li>Selectors</li>
+            <li>Colors</li>
+            <li>Fonts</li>
+            <li>Spacing</li>
+            <li>Borders</li>
+        </ul>
+        `,
 
-            <ul>
-                <li>Content</li>
-                <li>Padding</li>
-                <li>Border</li>
-                <li>Margin</li>
-            </ul>
+        code:
+`body{
+    font-family:Arial;
+    color:#263873;
+}
+
+h1{
+    font-size:32px;
+}`,
+
+        practice:
+        "Style your Month 1 portfolio using an external CSS file."
+    },
+
+
+    {
+        id:10,
+        week:5,
+        title:"CSS Box Model",
+        time:"35 min",
+
+        intro:
+        "Understand content, padding, border and margin.",
+
+        content:`
+        <h3>Box Model</h3>
+
+        <p>
+        Every HTML element can be understood
+        as a rectangular box.
+        </p>
         `,
 
         code:
@@ -1280,46 +1698,74 @@ Browser`,
 
     padding:20px;
 
-    margin:20px;
-
     border:1px solid #ddd;
 
-    border-radius:12px;
-
-    color:#263873;
+    margin:20px;
 
 }`,
 
         practice:
-        "Design a professional profile card using CSS."
+        "Create three cards using the CSS box model."
     },
 
+
     {
-        id:7,
-        title:"Flexbox & Grid",
-        time:"35 min",
+        id:11,
+        week:6,
+        title:"Flexbox",
+        time:"45 min",
 
         intro:
-        "Flexbox and Grid allow developers to create modern responsive layouts.",
+        "Use Flexbox to create flexible one-dimensional layouts.",
 
         content:`
-            <h3>Flexbox</h3>
+        <h3>Flexbox</h3>
 
-            <p>
-            Flexbox is excellent for one-dimensional
-            layouts such as navigation bars.
-            </p>
-
-            <h3>CSS Grid</h3>
-
-            <p>
-            Grid is excellent for two-dimensional
-            layouts containing rows and columns.
-            </p>
+        <p>
+        Flexbox is useful for navigation bars,
+        rows, columns and alignment.
+        </p>
         `,
 
         code:
 `.container{
+
+    display:flex;
+
+    justify-content:
+        space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+}`,
+
+        practice:
+        "Build a responsive navigation bar using Flexbox."
+    },
+
+
+    {
+        id:12,
+        week:6,
+        title:"CSS Grid",
+        time:"45 min",
+
+        intro:
+        "Learn CSS Grid for powerful two-dimensional layouts.",
+
+        content:`
+        <h3>Grid</h3>
+
+        <p>
+        Grid allows you to control rows and columns
+        at the same time.
+        </p>
+        `,
+
+        code:
+`.cards{
 
     display:grid;
 
@@ -1331,65 +1777,182 @@ Browser`,
 }`,
 
         practice:
-        "Create a three-card layout using CSS Grid."
+        "Create a three-column project card section."
     },
 
+
     {
-        id:8,
+        id:13,
+        week:7,
         title:"Responsive Design",
-        time:"30 min",
+        time:"45 min",
 
         intro:
-        "Responsive design allows the same website to work across phones, tablets and desktops.",
+        "Make websites work properly on phones, tablets and desktops.",
 
         content:`
-            <h3>Media Queries</h3>
+        <h3>Responsive Websites</h3>
 
-            <p>
-            Media queries allow CSS to change
-            according to the device screen size.
-            </p>
+        <p>
+        Responsive design changes layouts according
+        to the available screen size.
+        </p>
         `,
 
         code:
 `@media(max-width:768px){
 
-    .container{
+    .cards{
         grid-template-columns:1fr;
     }
 
 }`,
 
         practice:
-        "Make your three-card website responsive on mobile."
+        "Make your portfolio responsive on mobile."
+    },
+
+
+    {
+        id:14,
+        week:7,
+        title:"CSS Animations",
+        time:"40 min",
+
+        intro:
+        "Add subtle animations and interactions to improve user experience.",
+
+        content:`
+        <h3>Transitions</h3>
+
+        <p>
+        CSS transitions make changes smooth.
+        </p>
+        `,
+
+        code:
+`.card{
+
+    transition:
+        transform .3s ease;
+
+}
+
+.card:hover{
+
+    transform:
+        translateY(-8px);
+
+}`,
+
+        practice:
+        "Add hover animations to your project cards."
+    },
+
+
+    {
+        id:15,
+        week:8,
+        title:"Modern UI Design",
+        time:"50 min",
+
+        intro:
+        "Learn practical principles for creating clean modern interfaces.",
+
+        content:`
+        <h3>UI Principles</h3>
+
+        <ul>
+            <li>Consistent spacing</li>
+            <li>Clear hierarchy</li>
+            <li>Readable typography</li>
+            <li>Good contrast</li>
+            <li>Consistent buttons</li>
+        </ul>
+        `,
+
+        code:
+`.button{
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    font-weight:700;
+
+}`,
+
+        practice:
+        "Redesign your portfolio using a consistent design system."
+    },
+
+
+    {
+        id:16,
+        week:8,
+        title:"Responsive Website Project",
+        time:"90 min",
+
+        intro:
+        "Complete a responsive website project using HTML and CSS.",
+
+        content:`
+        <h3>Project Requirements</h3>
+
+        <ul>
+            <li>Responsive navbar</li>
+            <li>Hero section</li>
+            <li>Services</li>
+            <li>Projects</li>
+            <li>Testimonials</li>
+            <li>Contact section</li>
+        </ul>
+        `,
+
+        code:
+`Desktop
+Tablet
+Mobile
+
+        ↓
+
+Same website
+Different layout`,
+
+        practice:
+        "Build and publish a fully responsive business website."
     }
 
     ]
 },
 
+/* ================= MONTH 3 ================= */
+
 {
-    id:4,
-    title:"JavaScript",
+    id:3,
+    month:"Month 3",
+    title:"JavaScript & Web Interactivity",
+
+    weeks:[9,10,11,12],
+
     topics:[
 
     {
-        id:9,
+        id:17,
+        week:9,
         title:"JavaScript Basics",
-        time:"30 min",
+        time:"45 min",
 
         intro:
-        "JavaScript adds logic, interaction and dynamic behaviour to websites.",
+        "Learn variables, data types, operators and basic JavaScript syntax.",
 
         content:`
-            <h3>Core JavaScript Concepts</h3>
+        <h3>JavaScript</h3>
 
-            <ul>
-                <li>Variables</li>
-                <li>Data types</li>
-                <li>Conditions</li>
-                <li>Loops</li>
-                <li>Operators</li>
-            </ul>
+        <p>
+        JavaScript adds logic and interaction
+        to websites.
+        </p>
         `,
 
         code:
@@ -1397,39 +1960,65 @@ Browser`,
 
 let age = 25;
 
-if(age >= 18){
+console.log(name);
 
-    console.log(
-        name + " is an adult"
-    );
+console.log(age);`,
+
+        practice:
+        "Create variables for your name, age, course and city."
+    },
+
+
+    {
+        id:18,
+        week:9,
+        title:"Conditions & Loops",
+        time:"45 min",
+
+        intro:
+        "Learn how programs make decisions and repeat tasks.",
+
+        content:`
+        <h3>Conditions</h3>
+
+        <p>
+        Conditions allow programs to make decisions.
+        </p>
+
+        <h3>Loops</h3>
+
+        <p>
+        Loops repeat code efficiently.
+        </p>
+        `,
+
+        code:
+`for(let i=1;i<=5;i++){
+
+    console.log(i);
 
 }`,
 
         practice:
-        "Create a program that checks whether a number is positive, negative or zero."
+        "Print the numbers 1 to 100 and identify even numbers."
     },
 
+
     {
-        id:10,
-        title:"Functions & Arrays",
-        time:"35 min",
+        id:19,
+        week:10,
+        title:"Functions",
+        time:"45 min",
 
         intro:
-        "Functions make code reusable and arrays allow multiple values to be stored together.",
+        "Create reusable blocks of JavaScript code.",
 
         content:`
-            <h3>Functions</h3>
+        <h3>Functions</h3>
 
-            <p>
-            Functions are reusable blocks of code.
-            </p>
-
-            <h3>Arrays</h3>
-
-            <p>
-            Arrays store multiple values inside
-            a single variable.
-            </p>
+        <p>
+        Functions help organize and reuse logic.
+        </p>
         `,
 
         code:
@@ -1439,302 +2028,40 @@ if(age >= 18){
 
 }
 
-const courses = [
-    "HTML",
-    "CSS",
-    "JavaScript"
-];
-
 console.log(
     greet("Aditya")
 );`,
 
         practice:
-        "Create an array containing five course names and display them using a loop."
+        "Create functions for addition, subtraction and multiplication."
     },
 
+
     {
-        id:11,
-        title:"DOM Manipulation",
-        time:"35 min",
+        id:20,
+        week:10,
+        title:"Arrays & Objects",
+        time:"50 min",
 
         intro:
-        "The DOM allows JavaScript to read and change HTML elements dynamically.",
+        "Store and organize collections of data using arrays and objects.",
 
         content:`
-            <h3>What is the DOM?</h3>
+        <h3>Arrays</h3>
 
-            <p>
-            The Document Object Model represents
-            a webpage as objects that JavaScript
-            can manipulate.
-            </p>
+        <p>
+        Arrays store multiple values.
+        </p>
+
+        <h3>Objects</h3>
+
+        <p>
+        Objects store related properties.
+        </p>
         `,
 
         code:
-`const title =
-document.getElementById("title");
-
-title.textContent =
-"Welcome to MamRaj Academy";`,
-
-        practice:
-        "Create a button that changes a heading when clicked."
-    },
-
-    {
-        id:12,
-        title:"APIs & Async JavaScript",
-        time:"40 min",
-
-        intro:
-        "APIs allow your frontend to communicate with external or backend services.",
-
-        content:`
-            <h3>Fetch API</h3>
-
-            <p>
-            JavaScript can use fetch() to send
-            requests and receive data.
-            </p>
-        `,
-
-        code:
-`async function getData(){
-
-    const response =
-        await fetch(
-            "/api/courses"
-        );
-
-    const data =
-        await response.json();
-
-    console.log(data);
-}`,
-
-        practice:
-        "Fetch JSON data from an API and display it on a webpage."
-    }
-
-    ]
-},
-
-{
-    id:5,
-    title:"Git & GitHub",
-    topics:[
-        {
-            id:13,
-            title:"Git Basics",
-            time:"25 min",
-            intro:"Learn version control and how Git tracks changes in your projects.",
-            content:`
-                <h3>Why Git?</h3>
-                <p>
-                Git lets developers track changes,
-                restore older versions and collaborate.
-                </p>
-            `,
-            code:
-`git init
-
-git add .
-
-git commit -m "Initial commit"
-
-git status`,
-            practice:"Create a Git repository for your web project."
-        },
-
-        {
-            id:14,
-            title:"GitHub Workflow",
-            time:"25 min",
-            intro:"GitHub allows developers to store and collaborate on Git repositories.",
-            content:`
-                <h3>Typical Workflow</h3>
-                <ul>
-                    <li>Create repository</li>
-                    <li>Commit changes</li>
-                    <li>Push code</li>
-                    <li>Share repository</li>
-                </ul>
-            `,
-            code:
-`git remote add origin YOUR_URL
-
-git branch -M main
-
-git push -u origin main`,
-            practice:"Upload your portfolio project to GitHub."
-        }
-    ]
-},
-
-{
-    id:6,
-    title:"React",
-    topics:[
-        {
-            id:15,
-            title:"React Components",
-            time:"35 min",
-            intro:"React allows developers to create interfaces from reusable components.",
-            content:`
-                <h3>Components</h3>
-                <p>
-                A component is an independent and
-                reusable part of a React interface.
-                </p>
-            `,
-            code:
-`function Welcome(){
-
-    return (
-        <h1>
-            Welcome to MamRaj
-        </h1>
-    );
-
-}`,
-            practice:"Create a reusable CourseCard component."
-        },
-
-        {
-            id:16,
-            title:"React State & Hooks",
-            time:"40 min",
-            intro:"State allows React components to remember and update information.",
-            content:`
-                <h3>useState</h3>
-                <p>
-                The useState hook lets functional
-                components manage state.
-                </p>
-            `,
-            code:
-`const [count,setCount] =
-useState(0);
-
-<button
-    onClick={() =>
-        setCount(count + 1)
-    }
->
-    {count}
-</button>`,
-            practice:"Build a counter with increment and reset buttons."
-        }
-    ]
-},
-
-{
-    id:7,
-    title:"Backend",
-    topics:[
-        {
-            id:17,
-            title:"Node.js",
-            time:"35 min",
-            intro:"Node.js lets JavaScript run on the server.",
-            content:`
-                <h3>Node.js</h3>
-                <p>
-                Node.js is commonly used for APIs,
-                backend services and web applications.
-                </p>
-            `,
-            code:
-`const http =
-require("http");
-
-const server =
-http.createServer(
-(req,res) => {
-
-    res.end("Hello Server");
-
-});
-
-server.listen(3000);`,
-            practice:"Create a Node.js server that returns a welcome message."
-        },
-
-        {
-            id:18,
-            title:"Express.js",
-            time:"35 min",
-            intro:"Express makes it easier to create Node.js APIs.",
-            content:`
-                <h3>Routes</h3>
-                <p>
-                Routes define how the server responds
-                to different URLs.
-                </p>
-            `,
-            code:
-`const express =
-require("express");
-
-const app = express();
-
-app.get(
-    "/",
-    (req,res) => {
-        res.json({
-            message:"Hello"
-        });
-    }
-);
-
-app.listen(3000);`,
-            practice:"Create /users and /courses API routes."
-        }
-    ]
-},
-
-{
-    id:8,
-    title:"Database",
-    topics:[
-        {
-            id:19,
-            title:"SQL",
-            time:"35 min",
-            intro:"SQL is used to store and query structured relational data.",
-            content:`
-                <h3>SQL</h3>
-                <p>
-                SQL works with databases containing
-                tables, rows and columns.
-                </p>
-            `,
-            code:
-`SELECT *
-FROM students;
-
-SELECT *
-FROM students
-WHERE course =
-'Web Development';`,
-            practice:"Create a students table and retrieve student records."
-        },
-
-        {
-            id:20,
-            title:"MongoDB",
-            time:"35 min",
-            intro:"MongoDB stores flexible document-based data.",
-            content:`
-                <h3>Documents</h3>
-                <p>
-                MongoDB stores records as documents
-                inside collections.
-                </p>
-            `,
-            code:
-`db.students.insertOne({
+`const student = {
 
     name:"Aditya",
 
@@ -1742,250 +2069,920 @@ WHERE course =
 
     progress:65
 
-});`,
-            practice:"Create a MongoDB collection for courses."
-        }
-    ]
-},
+};`,
 
-{
-    id:9,
-    title:"Authentication",
-    topics:[
-        {
-            id:21,
-            title:"Firebase Authentication",
-            time:"30 min",
-            intro:"Firebase Authentication provides ready-made login and signup functionality.",
-            content:`
-                <h3>Authentication</h3>
-                <p>
-                Users can create accounts and sign in
-                using email and password or other providers.
-                </p>
-            `,
-            code:
-`createUserWithEmailAndPassword(
-    auth,
-    email,
-    password
-);`,
-            practice:"Create a Firebase email/password signup page."
-        },
+        practice:
+        "Create an array of five students represented as objects."
+    },
 
-        {
-            id:22,
-            title:"Protected Routes",
-            time:"30 min",
-            intro:"Protected routes prevent unauthenticated users from accessing private pages.",
-            content:`
-                <h3>Private Pages</h3>
-                <p>
-                A dashboard should normally only be
-                available to authenticated users.
-                </p>
-            `,
-            code:
-`onAuthStateChanged(
-    auth,
-    user => {
 
-        if(!user){
-            location.href =
-            "login.html";
-        }
+    {
+        id:21,
+        week:11,
+        title:"DOM Manipulation",
+        time:"50 min",
+
+        intro:
+        "Use JavaScript to read and change HTML elements.",
+
+        content:`
+        <h3>The DOM</h3>
+
+        <p>
+        The Document Object Model represents
+        webpage elements as objects.
+        </p>
+        `,
+
+        code:
+`const title =
+document.getElementById(
+    "title"
+);
+
+title.textContent =
+"Welcome!";`,
+
+        practice:
+        "Create a button that changes the page heading."
+    },
+
+
+    {
+        id:22,
+        week:11,
+        title:"Events & Forms",
+        time:"50 min",
+
+        intro:
+        "Handle clicks, typing and form submissions using JavaScript.",
+
+        content:`
+        <h3>Events</h3>
+
+        <p>
+        Events allow JavaScript to respond
+        to user actions.
+        </p>
+        `,
+
+        code:
+`button.addEventListener(
+    "click",
+    function(){
+
+        alert("Hello!");
 
     }
 );`,
-            practice:"Protect your dashboard from unauthenticated users."
-        }
+
+        practice:
+        "Create a form and display submitted information dynamically."
+    },
+
+
+    {
+        id:23,
+        week:12,
+        title:"Fetch API & JSON",
+        time:"50 min",
+
+        intro:
+        "Communicate with APIs and work with JSON data.",
+
+        content:`
+        <h3>API</h3>
+
+        <p>
+        APIs allow applications to communicate
+        and exchange data.
+        </p>
+        `,
+
+        code:
+`fetch("/api/courses")
+.then(response =>
+    response.json()
+)
+.then(data =>
+    console.log(data)
+);`,
+
+        practice:
+        "Fetch JSON data and display it as cards."
+    },
+
+
+    {
+        id:24,
+        week:12,
+        title:"JavaScript Project",
+        time:"90 min",
+
+        intro:
+        "Build an interactive application using JavaScript.",
+
+        content:`
+        <h3>Project Options</h3>
+
+        <ul>
+            <li>Todo Application</li>
+            <li>Quiz Application</li>
+            <li>Expense Tracker</li>
+            <li>Weather Application</li>
+        </ul>
+        `,
+
+        code:
+`User Action
+    ↓
+JavaScript
+    ↓
+DOM
+    ↓
+Updated UI`,
+
+        practice:
+        "Build and complete one JavaScript application."
+    }
+
     ]
 },
 
+/* ================= MONTH 4 ================= */
+
 {
-    id:10,
-    title:"Full Stack",
+    id:4,
+    month:"Month 4",
+    title:"Git, GitHub & React",
+
+    weeks:[13,14,15,16],
+
     topics:[
-        {
-            id:23,
-            title:"Frontend + Backend",
-            time:"40 min",
-            intro:"Connect your frontend interface with backend APIs.",
-            content:`
-                <h3>Full Stack Flow</h3>
-                <ul>
-                    <li>Frontend sends request</li>
-                    <li>Backend processes request</li>
-                    <li>Database stores data</li>
-                    <li>Backend returns response</li>
-                    <li>Frontend displays result</li>
-                </ul>
-            `,
-            code:
+
+    {
+        id:25,
+        week:13,
+        title:"Git Fundamentals",
+        time:"35 min",
+
+        intro:
+        "Learn version control and track project changes.",
+
+        content:`
+        <h3>Why Git?</h3>
+
+        <p>
+        Git helps developers track versions
+        and collaborate.
+        </p>
+        `,
+
+        code:
+`git init
+
+git add .
+
+git commit -m "Initial commit"
+
+git status`,
+
+        practice:
+        "Create a Git repository for your previous project."
+    },
+
+
+    {
+        id:26,
+        week:13,
+        title:"GitHub Workflow",
+        time:"35 min",
+
+        intro:
+        "Learn how to store and share projects on GitHub.",
+
+        content:`
+        <h3>GitHub</h3>
+
+        <p>
+        GitHub provides online repositories
+        and collaboration tools.
+        </p>
+        `,
+
+        code:
+`git remote add origin URL
+
+git branch -M main
+
+git push -u origin main`,
+
+        practice:
+        "Upload your portfolio project to GitHub."
+    },
+
+
+    {
+        id:27,
+        week:14,
+        title:"React Fundamentals",
+        time:"50 min",
+
+        intro:
+        "Understand React components and the component-based approach.",
+
+        content:`
+        <h3>React</h3>
+
+        <p>
+        React is a JavaScript library used
+        to build interactive user interfaces.
+        </p>
+        `,
+
+        code:
+`function Welcome(){
+
+    return (
+        <h1>
+            Welcome
+        </h1>
+    );
+
+}`,
+
+        practice:
+        "Create your first React component."
+    },
+
+
+    {
+        id:28,
+        week:14,
+        title:"Components & Props",
+        time:"50 min",
+
+        intro:
+        "Create reusable components and pass information using props.",
+
+        content:`
+        <h3>Props</h3>
+
+        <p>
+        Props allow parent components to send
+        information to child components.
+        </p>
+        `,
+
+        code:
+`function CourseCard({
+    title
+}){
+
+    return (
+        <div>
+            {title}
+        </div>
+    );
+
+}`,
+
+        practice:
+        "Create a reusable CourseCard component."
+    },
+
+
+    {
+        id:29,
+        week:15,
+        title:"React State",
+        time:"50 min",
+
+        intro:
+        "Use state to store information that changes in a React application.",
+
+        content:`
+        <h3>State</h3>
+
+        <p>
+        State allows components to remember
+        and update information.
+        </p>
+        `,
+
+        code:
+`const [
+    count,
+    setCount
+] = useState(0);`,
+
+        practice:
+        "Build a counter using React state."
+    },
+
+
+    {
+        id:30,
+        week:15,
+        title:"React Hooks",
+        time:"55 min",
+
+        intro:
+        "Learn useState, useEffect and practical React hooks.",
+
+        content:`
+        <h3>useEffect</h3>
+
+        <p>
+        useEffect allows components to perform
+        side effects such as API calls.
+        </p>
+        `,
+
+        code:
+`useEffect(() => {
+
+    fetchCourses();
+
+}, []);`,
+
+        practice:
+        "Fetch API data inside a React component."
+    },
+
+
+    {
+        id:31,
+        week:16,
+        title:"React Routing",
+        time:"45 min",
+
+        intro:
+        "Create multiple pages in a React application.",
+
+        content:`
+        <h3>Routing</h3>
+
+        <p>
+        Routing allows users to navigate between
+        different views without reloading the entire app.
+        </p>
+        `,
+
+        code:
+`<Route
+    path="/courses"
+    element={
+        <Courses />
+    }
+/>`,
+
+        practice:
+        "Create Dashboard, Courses and Profile routes."
+    },
+
+
+    {
+        id:32,
+        week:16,
+        title:"React Project",
+        time:"100 min",
+
+        intro:
+        "Build a complete React application.",
+
+        content:`
+        <h3>Project</h3>
+
+        <ul>
+            <li>Dashboard</li>
+            <li>Navigation</li>
+            <li>Course cards</li>
+            <li>Progress</li>
+            <li>Profile</li>
+        </ul>
+        `,
+
+        code:
+`React App
+ ├── Dashboard
+ ├── Courses
+ ├── Progress
+ └── Profile`,
+
+        practice:
+        "Build a learning dashboard similar to MamRaj Nexus Academy."
+    }
+
+    ]
+},
+
+/* ================= MONTH 5 ================= */
+
+{
+    id:5,
+    month:"Month 5",
+    title:"Backend, APIs & Database",
+
+    weeks:[17,18,19,20],
+
+    topics:[
+
+    {
+        id:33,
+        week:17,
+        title:"Node.js Fundamentals",
+        time:"50 min",
+
+        intro:
+        "Run JavaScript on the server and understand backend development.",
+
+        content:`
+        <h3>Node.js</h3>
+
+        <p>
+        Node.js allows JavaScript to run outside
+        the browser.
+        </p>
+        `,
+
+        code:
+`const http =
+require("http");
+
+const server =
+http.createServer(
+(req,res) => {
+
+    res.end("Hello");
+
+});
+
+server.listen(3000);`,
+
+        practice:
+        "Create a Node.js server."
+    },
+
+
+    {
+        id:34,
+        week:17,
+        title:"Express.js",
+        time:"50 min",
+
+        intro:
+        "Build backend routes and APIs using Express.",
+
+        content:`
+        <h3>Express</h3>
+
+        <p>
+        Express simplifies Node.js web server development.
+        </p>
+        `,
+
+        code:
+`const express =
+require("express");
+
+const app =
+express();
+
+app.get(
+    "/",
+    (req,res) => {
+
+        res.json({
+            message:"Hello"
+        });
+
+    }
+);`,
+
+        practice:
+        "Create a basic Express API."
+    },
+
+
+    {
+        id:35,
+        week:18,
+        title:"REST APIs",
+        time:"50 min",
+
+        intro:
+        "Understand GET, POST, PUT and DELETE operations.",
+
+        content:`
+        <h3>REST</h3>
+
+        <ul>
+            <li>GET → Read</li>
+            <li>POST → Create</li>
+            <li>PUT → Update</li>
+            <li>DELETE → Remove</li>
+        </ul>
+        `,
+
+        code:
+`GET    /users
+
+POST   /users
+
+PUT    /users/1
+
+DELETE /users/1`,
+
+        practice:
+        "Design REST endpoints for a course platform."
+    },
+
+
+    {
+        id:36,
+        week:18,
+        title:"API Authentication",
+        time:"55 min",
+
+        intro:
+        "Understand login systems and protected backend resources.",
+
+        content:`
+        <h3>Authentication</h3>
+
+        <p>
+        Authentication verifies who a user is.
+        Authorization determines what that user
+        can access.
+        </p>
+        `,
+
+        code:
+`User
+ ↓
+Login
+ ↓
+Authentication
+ ↓
+Token
+ ↓
+Protected API`,
+
+        practice:
+        "Design a login and protected dashboard flow."
+    },
+
+
+    {
+        id:37,
+        week:19,
+        title:"SQL Database",
+        time:"50 min",
+
+        intro:
+        "Learn relational databases, tables and SQL queries.",
+
+        content:`
+        <h3>SQL</h3>
+
+        <p>
+        SQL databases organize structured data
+        into tables.
+        </p>
+        `,
+
+        code:
+`CREATE TABLE students(
+    id INT,
+    name VARCHAR(100),
+    course VARCHAR(100)
+);
+
+SELECT *
+FROM students;`,
+
+        practice:
+        "Create a database for students and courses."
+    },
+
+
+    {
+        id:38,
+        week:19,
+        title:"MongoDB",
+        time:"50 min",
+
+        intro:
+        "Learn document-based NoSQL database concepts.",
+
+        content:`
+        <h3>MongoDB</h3>
+
+        <p>
+        MongoDB stores flexible JSON-like documents
+        inside collections.
+        </p>
+        `,
+
+        code:
+`db.students.insertOne({
+
+    name:"Aditya",
+
+    course:"Web Development",
+
+    progress:75
+
+});`,
+
+        practice:
+        "Create a MongoDB collection for students."
+    },
+
+
+    {
+        id:39,
+        week:20,
+        title:"Backend + Database",
+        time:"60 min",
+
+        intro:
+        "Connect your Express backend with a database.",
+
+        content:`
+        <h3>Full Backend Flow</h3>
+
+        <p>
+        The API receives a request, processes it,
+        communicates with the database and returns
+        a response.
+        </p>
+        `,
+
+        code:
 `Frontend
    ↓
-API
-   ↓
-Backend
+Express API
    ↓
 Database
    ↓
-Response
+JSON Response
    ↓
 Frontend`,
-            practice:"Draw the architecture of your own full-stack project."
-        },
 
-        {
-            id:24,
-            title:"Full Stack Project",
-            time:"60 min",
-            intro:"Combine everything you have learned into a real-world application.",
-            content:`
-                <h3>Capstone Project</h3>
-                <p>
-                Build a student learning platform
-                containing authentication, courses,
-                lessons and progress tracking.
-                </p>
+        practice:
+        "Build an API that reads course data from a database."
+    },
 
-                <h3>Required Features</h3>
 
-                <ul>
-                    <li>Login</li>
-                    <li>Course dashboard</li>
-                    <li>Lessons</li>
-                    <li>Progress tracking</li>
-                    <li>Database</li>
-                    <li>Admin panel</li>
-                </ul>
-            `,
-            code:
-`Student
-   ↓
-Login
-   ↓
-Dashboard
-   ↓
-Courses
-   ↓
-Lessons
-   ↓
-Progress`,
-            practice:"Create the basic architecture of your capstone project."
-        }
+    {
+        id:40,
+        week:20,
+        title:"Backend Project",
+        time:"120 min",
+
+        intro:
+        "Build the backend for a learning platform.",
+
+        content:`
+        <h3>Required APIs</h3>
+
+        <ul>
+            <li>Register</li>
+            <li>Login</li>
+            <li>Courses</li>
+            <li>Lessons</li>
+            <li>Progress</li>
+            <li>Profile</li>
+        </ul>
+        `,
+
+        code:
+`/api/auth
+
+/api/courses
+
+/api/lessons
+
+/api/progress
+
+/api/profile`,
+
+        practice:
+        "Build and test your learning platform backend."
+    }
+
     ]
 },
 
-{
-    id:11,
-    title:"AI Development",
-    topics:[
-        {
-            id:25,
-            title:"AI APIs",
-            time:"30 min",
-            intro:"AI APIs allow websites to use intelligent services.",
-            content:`
-                <h3>AI Integration</h3>
-                <p>
-                Your frontend can communicate with
-                your backend, which securely communicates
-                with an AI service.
-                </p>
-            `,
-            code:
-`User
- ↓
-Web App
- ↓
-Backend API
- ↓
-AI Service
- ↓
-Response`,
-            practice:"Design an AI assistant interface for students."
-        },
+/* ================= MONTH 6 ================= */
 
-        {
-            id:26,
-            title:"AI Web Application",
-            time:"45 min",
-            intro:"Build an AI-powered application around a real student problem.",
-            content:`
-                <h3>Project Idea</h3>
-                <p>
-                Build an AI learning assistant that
-                explains lessons and creates practice
-                questions.
-                </p>
-            `,
-            code:
+{
+    id:6,
+    month:"Month 6",
+    title:"Full Stack, AI & Deployment",
+
+    weeks:[21,22,23,24],
+
+    topics:[
+
+    {
+        id:41,
+        week:21,
+        title:"Connect Frontend & Backend",
+        time:"60 min",
+
+        intro:
+        "Connect your React frontend with your backend APIs.",
+
+        content:`
+        <h3>Full Stack Architecture</h3>
+
+        <p>
+        A full-stack application combines
+        frontend, backend and database systems.
+        </p>
+        `,
+
+        code:
+`React
+  ↓
+REST API
+  ↓
+Node.js
+  ↓
+Database`,
+
+        practice:
+        "Connect your React dashboard to your backend API."
+    },
+
+
+    {
+        id:42,
+        week:21,
+        title:"User Progress System",
+        time:"60 min",
+
+        intro:
+        "Create a real progress tracking system for learners.",
+
+        content:`
+        <h3>Progress</h3>
+
+        <p>
+        Store completed lessons and calculate
+        learner progress dynamically.
+        </p>
+        `,
+
+        code:
+`completed = 24
+
+total = 48
+
+progress =
+(completed / total) * 100`,
+
+        practice:
+        "Implement lesson completion and progress tracking."
+    },
+
+
+    {
+        id:43,
+        week:22,
+        title:"AI APIs",
+        time:"50 min",
+
+        intro:
+        "Understand how AI services can be integrated into web applications.",
+
+        content:`
+        <h3>AI Integration</h3>
+
+        <p>
+        A secure architecture normally sends
+        AI requests through a backend rather than
+        exposing private credentials in frontend code.
+        </p>
+        `,
+
+        code:
 `Student
+   ↓
+Web App
+   ↓
+Backend
+   ↓
+AI Service
+   ↓
+Response
+   ↓
+Student`,
+
+        practice:
+        "Design an AI assistant for students."
+    },
+
+
+    {
+        id:44,
+        week:22,
+        title:"AI Learning Assistant",
+        time:"75 min",
+
+        intro:
+        "Build the interface and architecture for an AI-powered learning assistant.",
+
+        content:`
+        <h3>Features</h3>
+
+        <ul>
+            <li>Ask questions</li>
+            <li>Explain concepts</li>
+            <li>Generate quizzes</li>
+            <li>Create practice tasks</li>
+            <li>Track learning</li>
+        </ul>
+        `,
+
+        code:
+`Question
    ↓
 AI Assistant
    ↓
-Question
+Explanation
    ↓
-AI Response`,
-            practice:"Create the UI for your AI learning assistant."
-        }
-    ]
-},
+Practice Question`,
 
-{
-    id:12,
-    title:"Deployment",
-    topics:[
-        {
-            id:27,
-            title:"Hosting",
-            time:"30 min",
-            intro:"Deployment makes your application accessible on the internet.",
-            content:`
-                <h3>Deployment</h3>
-                <p>
-                A production website needs hosting,
-                configuration and testing.
-                </p>
+        practice:
+        "Build an AI mentor interface for MamRaj Nexus Academy."
+    },
 
-                <ul>
-                    <li>Build project</li>
-                    <li>Deploy</li>
-                    <li>Configure environment</li>
-                    <li>Test live application</li>
-                </ul>
-            `,
-            code:
-`Local Project
-     ↓
-Production Build
-     ↓
+
+    {
+        id:45,
+        week:23,
+        title:"Deployment",
+        time:"50 min",
+
+        intro:
+        "Learn the basic process of moving your application from local development to production.",
+
+        content:`
+        <h3>Deployment Flow</h3>
+
+        <ul>
+            <li>Test application</li>
+            <li>Create production build</li>
+            <li>Configure environment</li>
+            <li>Deploy frontend</li>
+            <li>Deploy backend</li>
+            <li>Connect database</li>
+        </ul>
+        `,
+
+        code:
+`Local
+  ↓
+GitHub
+  ↓
+Build
+  ↓
 Hosting
-     ↓
+  ↓
 Live Website`,
-            practice:"Deploy one of your projects."
-        },
 
-        {
-            id:28,
-            title:"Domain & SSL",
-            time:"25 min",
-            intro:"A domain gives your website a professional address and SSL enables HTTPS.",
-            content:`
-                <h3>Domain</h3>
-                <p>
-                A domain is the address users type
-                to reach your website.
-                </p>
+        practice:
+        "Deploy one of your previous projects."
+    },
 
-                <h3>SSL</h3>
-                <p>
-                HTTPS encrypts communication between
-                the browser and server.
-                </p>
-            `,
-            code:
+
+    {
+        id:46,
+        week:23,
+        title:"Domain, SSL & Production",
+        time:"45 min",
+
+        intro:
+        "Learn domains, HTTPS, environment variables and production basics.",
+
+        content:`
+        <h3>Production Checklist</h3>
+
+        <ul>
+            <li>Custom domain</li>
+            <li>HTTPS / SSL</li>
+            <li>Environment variables</li>
+            <li>Error handling</li>
+            <li>Performance</li>
+            <li>Security</li>
+        </ul>
+        `,
+
+        code:
 `http://example.com
 
         ↓
@@ -1993,24 +2990,144 @@ Live Website`,
 https://example.com
 
         🔒`,
-            practice:"Connect a custom domain to your deployed project."
-        }
+
+        practice:
+        "Prepare one project for production deployment."
+    },
+
+
+    {
+        id:47,
+        week:24,
+        title:"Final Capstone Planning",
+        time:"90 min",
+
+        intro:
+        "Plan your final professional full-stack project before development.",
+
+        content:`
+        <h3>Capstone Requirements</h3>
+
+        <ul>
+            <li>Authentication</li>
+            <li>Dashboard</li>
+            <li>Frontend</li>
+            <li>Backend API</li>
+            <li>Database</li>
+            <li>Progress tracking</li>
+            <li>Responsive design</li>
+            <li>AI feature</li>
+            <li>Deployment</li>
+        </ul>
+
+        <h3>Recommended Project</h3>
+
+        <p>
+        Build a complete Learning Management System
+        similar to MamRaj Nexus Academy.
+        </p>
+        `,
+
+        code:
+`LMS
+
+ ├── Authentication
+ ├── Dashboard
+ ├── Courses
+ ├── Lessons
+ ├── Progress
+ ├── Projects
+ ├── AI Mentor
+ └── Certificates`,
+
+        practice:
+        "Prepare the architecture, database structure and feature list for your capstone."
+    },
+
+
+    {
+        id:48,
+        week:24,
+        title:"Final Capstone Project",
+        time:"Multiple Sessions",
+
+        intro:
+        "Complete your final full-stack project and demonstrate everything learned during the six-month program.",
+
+        content:`
+        <h3>🏆 Final Project</h3>
+
+        <p>
+        Build, test and deploy a complete
+        production-style web application.
+        </p>
+
+        <h3>Final Evaluation</h3>
+
+        <ul>
+            <li>UI / UX quality</li>
+            <li>Responsive design</li>
+            <li>Frontend functionality</li>
+            <li>Backend APIs</li>
+            <li>Database</li>
+            <li>Authentication</li>
+            <li>AI integration</li>
+            <li>GitHub repository</li>
+            <li>Live deployment</li>
+            <li>Project presentation</li>
+        </ul>
+
+        <h3>🎓 Course Completion</h3>
+
+        <p>
+        After completing all topics and the final
+        capstone, the learner becomes eligible for
+        the MamRaj Nexus Academy course completion
+        certificate according to the academy's
+        completion criteria.
+        </p>
+        `,
+
+        code:
+`FINAL PROJECT
+
+Frontend
+    ↓
+React
+    ↓
+Backend API
+    ↓
+Node.js
+    ↓
+Database
+    ↓
+AI
+    ↓
+Deployment
+    ↓
+🌐 LIVE APPLICATION`,
+
+        practice:
+        "Deploy your final project, prepare your GitHub repository and present your application."
+    }
+
     ]
+
 }
 
 ];
 
 
 /* =========================================================
-   STATE
+   STORAGE
 ========================================================= */
 
-const STORAGE =
-    "mamraj_web_course_progress";
+const STORAGE_KEY =
+    "mamraj_nexus_6_month_web_course";
 
 let completed =
     JSON.parse(
-        localStorage.getItem(STORAGE)
+        localStorage.getItem(STORAGE_KEY)
         || "[]"
     );
 
@@ -2018,51 +3135,46 @@ let currentTopic = 1;
 
 
 /* =========================================================
-   HELPERS
+   FIND TOPIC
 ========================================================= */
 
 function findTopic(id){
 
-    for(const unit of course){
+    for(const month of course){
 
         const topic =
-            unit.topics.find(
-                t => t.id === id
+            month.topics.find(
+                item => item.id === id
             );
 
         if(topic){
 
             return {
-                unit,
+                month,
                 topic
             };
 
         }
+
     }
 
     return null;
 }
 
 
-function getUnit(id){
+/* =========================================================
+   COMPLETION
+========================================================= */
 
-    return course.find(
-        unit => unit.id === id
-    );
-}
-
-
-function isCompleted(id){
+function isComplete(id){
 
     return completed.includes(id);
 }
 
 
-/*
-    Topic can open only when:
-    - It is first topic
-    - OR previous topic is completed
-*/
+/* =========================================================
+   TOPIC UNLOCK
+========================================================= */
 
 function isTopicUnlocked(id){
 
@@ -2076,20 +3188,25 @@ function isTopicUnlocked(id){
 }
 
 
-/*
-    Unit unlocks only when
-    every topic of previous
-    unit is completed.
-*/
+/* =========================================================
+   MONTH UNLOCK
+========================================================= */
 
-function isUnitUnlocked(unitId){
+function isMonthUnlocked(monthId){
 
-    if(unitId === 1){
+    if(monthId === 1){
         return true;
     }
 
     const previous =
-        getUnit(unitId - 1);
+        course.find(
+            month =>
+                month.id === monthId - 1
+        );
+
+    if(!previous){
+        return false;
+    }
 
     return previous.topics.every(
         topic =>
@@ -2106,17 +3223,21 @@ function isUnitUnlocked(unitId){
 
 function buildNavigation(){
 
-    const nav =
+    const container =
         document.getElementById(
             "courseNavigation"
         );
 
-    nav.innerHTML = "";
+    container.innerHTML = "";
 
-    course.forEach(unit => {
+
+    course.forEach(month => {
 
         const unlocked =
-            isUnitUnlocked(unit.id);
+            isMonthUnlocked(
+                month.id
+            );
+
 
         const wrapper =
             document.createElement(
@@ -2124,7 +3245,23 @@ function buildNavigation(){
             );
 
         wrapper.className =
-            "unit";
+            "month";
+
+
+        if(
+            unlocked &&
+            month.topics.some(
+                topic =>
+                    topic.id ===
+                    currentTopic
+            )
+        ){
+
+            wrapper.classList.add(
+                "open"
+            );
+
+        }
 
 
         const header =
@@ -2133,27 +3270,45 @@ function buildNavigation(){
             );
 
         header.className =
-            "unit-header";
+            "month-header";
+
 
         header.innerHTML = `
 
-            <span class="unit-number">
-                ${String(unit.id).padStart(2,"0")}
+            <span class="month-number">
+                ${String(month.id).padStart(2,"0")}
             </span>
 
-            <span class="unit-name">
-                ${unit.title}
+            <span class="month-name">
+                ${month.title}
             </span>
 
-            <span class="unit-status">
-                ${
-                    unlocked
-                    ? "↓"
-                    : "🔒"
-                }
+            <span class="month-lock">
+                ${unlocked ? "↓" : "🔒"}
             </span>
 
         `;
+
+
+        header.onclick = () => {
+
+            if(!unlocked){
+
+                alert(
+                    "🔒 Complete Month " +
+                    (month.id - 1) +
+                    " before unlocking " +
+                    month.month + "."
+                );
+
+                return;
+            }
+
+            wrapper.classList.toggle(
+                "open"
+            );
+
+        };
 
 
         const topics =
@@ -2165,53 +3320,7 @@ function buildNavigation(){
             "topics";
 
 
-        /*
-            First available unit
-            opens automatically.
-        */
-
-        if(
-            unlocked &&
-            (
-                unit.id === 1 ||
-                unit.topics.some(
-                    topic =>
-                        topic.id === currentTopic
-                )
-            )
-        ){
-
-            wrapper.classList.add(
-                "open"
-            );
-
-        }
-
-
-        header.addEventListener(
-            "click",
-            () => {
-
-                if(!unlocked){
-
-                    alert(
-                        "🔒 Complete Unit " +
-                        (unit.id - 1) +
-                        " first."
-                    );
-
-                    return;
-                }
-
-                wrapper.classList.toggle(
-                    "open"
-                );
-
-            }
-        );
-
-
-        unit.topics.forEach(topic => {
+        month.topics.forEach(topic => {
 
             const unlockedTopic =
                 isTopicUnlocked(
@@ -2223,7 +3332,6 @@ function buildNavigation(){
                 document.createElement(
                     "button"
                 );
-
 
             button.className =
                 "topic";
@@ -2241,7 +3349,7 @@ function buildNavigation(){
 
 
             if(
-                isCompleted(
+                isComplete(
                     topic.id
                 )
             ){
@@ -2253,9 +3361,7 @@ function buildNavigation(){
             }
 
 
-            if(
-                !unlockedTopic
-            ){
+            if(!unlockedTopic){
 
                 button.classList.add(
                     "locked"
@@ -2266,9 +3372,9 @@ function buildNavigation(){
 
             button.innerHTML = `
 
-                <span class="topic-icon">
+                <span>
                     ${
-                        isCompleted(topic.id)
+                        isComplete(topic.id)
                         ? "✓"
                         : unlockedTopic
                         ? "○"
@@ -2277,36 +3383,34 @@ function buildNavigation(){
                 </span>
 
                 <span>
-                    ${topic.title}
+                    W${String(topic.week).padStart(2,"0")}
+                    • ${topic.title}
                 </span>
 
             `;
 
 
-            button.addEventListener(
-                "click",
-                () => {
+            button.onclick = () => {
 
-                    if(
-                        !isTopicUnlocked(
-                            topic.id
-                        )
-                    ){
-
-                        alert(
-                            "🔒 Complete the previous topic first."
-                        );
-
-                        return;
-                    }
-
-
-                    openTopic(
+                if(
+                    !isTopicUnlocked(
                         topic.id
+                    )
+                ){
+
+                    alert(
+                        "🔒 Complete the previous topic first."
                     );
 
+                    return;
                 }
-            );
+
+
+                openTopic(
+                    topic.id
+                );
+
+            };
 
 
             topics.appendChild(
@@ -2324,7 +3428,7 @@ function buildNavigation(){
             topics
         );
 
-        nav.appendChild(
+        container.appendChild(
             wrapper
         );
 
@@ -2364,19 +3468,16 @@ function openTopic(id){
         id;
 
 
-    const {
-        unit,
-        topic
-    } = result;
+    const topic =
+        result.topic;
 
 
     document.getElementById(
         "lessonBadge"
     ).textContent =
-        "UNIT " +
-        String(unit.id).padStart(2,"0") +
-        " • TOPIC " +
-        String(id).padStart(2,"0");
+        result.month.month.toUpperCase() +
+        " • WEEK " +
+        String(topic.week).padStart(2,"0");
 
 
     document.getElementById(
@@ -2418,9 +3519,9 @@ function openTopic(id){
 
     updateCompleteButton();
 
-    buildNavigation();
-
     updateProgress();
+
+    buildNavigation();
 
 
     window.scrollTo({
@@ -2436,108 +3537,109 @@ function openTopic(id){
 ========================================================= */
 
 document
-    .getElementById(
-        "completeBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.getElementById(
+    "completeBtn"
+)
+.addEventListener(
+    "click",
+    () => {
+
+        if(
+            isComplete(
+                currentTopic
+            )
+        ){
+            return;
+        }
+
+
+        completed.push(
+            currentTopic
+        );
+
+
+        completed.sort(
+            (a,b) => a-b
+        );
+
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(
+                completed
+            )
+        );
+
+
+        updateCompleteButton();
+
+        updateProgress();
+
+        buildNavigation();
+
+
+        const current =
+            findTopic(
+                currentTopic
+            );
+
+
+        const month =
+            current.month;
+
+
+        const monthComplete =
+            month.topics.every(
+                topic =>
+                    isComplete(
+                        topic.id
+                    )
+            );
+
+
+        if(monthComplete){
 
             if(
-                !completed.includes(
-                    currentTopic
-                )
+                month.id <
+                course.length
             ){
 
-                completed.push(
-                    currentTopic
-                );
+                alert(
+                    "🎉 " +
+                    month.month +
+                    " completed!\n\n" +
 
-                localStorage.setItem(
-                    STORAGE,
-                    JSON.stringify(
-                        completed
-                    )
+                    "🔓 " +
+                    course[
+                        month.id
+                    ].month +
+                    " is now unlocked!"
                 );
 
             }
-
-
-            updateCompleteButton();
-
-            updateProgress();
-
-            buildNavigation();
-
-
-            /*
-                Find next topic
-            */
-
-            const next =
-                findTopic(
-                    currentTopic + 1
-                );
-
-
-            /*
-                Check if current unit
-                is completed.
-            */
-
-            const current =
-                findTopic(
-                    currentTopic
-                );
-
-
-            const unit =
-                current.unit;
-
-
-            const unitComplete =
-                unit.topics.every(
-                    topic =>
-                        completed.includes(
-                            topic.id
-                        )
-                );
-
-
-            if(unitComplete){
-
-                if(unit.id < course.length){
-
-                    alert(
-                        "🎉 " +
-                        unit.title +
-                        " completed!\n\n" +
-                        "🔓 " +
-                        course[unit.id].title +
-                        " is now unlocked."
-                    );
-
-                }else{
-
-                    alert(
-                        "🏆 Congratulations!\n\n" +
-                        "You have completed the entire course!"
-                    );
-
-                }
-
-            }
-            else if(next){
+            else{
 
                 alert(
-                    "✓ Topic completed!\n\n" +
-                    "🔓 Next topic is now unlocked."
+                    "🏆 CONGRATULATIONS!\n\n" +
+
+                    "You have completed the entire " +
+                    "6-month Web Development program!"
                 );
 
             }
 
         }
-    );
+        else{
+
+            alert(
+                "✓ Topic completed!\n\n" +
+                "🔓 The next topic is now unlocked."
+            );
+
+        }
+
+    }
+);
 
 
 /* =========================================================
@@ -2553,7 +3655,7 @@ function updateCompleteButton(){
 
 
     if(
-        isCompleted(
+        isComplete(
             currentTopic
         )
     ){
@@ -2564,19 +3666,14 @@ function updateCompleteButton(){
         button.disabled =
             true;
 
-        button.style.opacity =
-            ".75";
-
-    }else{
+    }
+    else{
 
         button.textContent =
             "✓ Mark as Complete";
 
         button.disabled =
             false;
-
-        button.style.opacity =
-            "1";
 
     }
 
@@ -2588,68 +3685,59 @@ function updateCompleteButton(){
 ========================================================= */
 
 document
-    .getElementById(
-        "nextBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.getElementById(
+    "nextBtn"
+)
+.addEventListener(
+    "click",
+    () => {
 
-            /*
-                User must complete
-                current topic first.
-            */
+        if(
+            !isComplete(
+                currentTopic
+            )
+        ){
 
-            if(
-                !isCompleted(
-                    currentTopic
-                )
-            ){
-
-                alert(
-                    "⚠️ Please read this topic and click 'Mark as Complete' before continuing."
-                );
-
-                return;
-            }
-
-
-            const nextId =
-                currentTopic + 1;
-
-
-            if(
-                nextId > 28
-            ){
-
-                alert(
-                    "🏆 Course completed!"
-                );
-
-                return;
-            }
-
-
-            if(
-                !isTopicUnlocked(
-                    nextId
-                )
-            ){
-
-                alert(
-                    "🔒 Complete the current unit first."
-                );
-
-                return;
-            }
-
-
-            openTopic(
-                nextId
+            alert(
+                "⚠️ Please complete this topic first."
             );
 
+            return;
         }
-    );
+
+
+        const next =
+            currentTopic + 1;
+
+
+        if(next > 48){
+
+            alert(
+                "🏆 You have completed the 6-month course!"
+            );
+
+            return;
+        }
+
+
+        if(
+            !isTopicUnlocked(
+                next
+            )
+        ){
+
+            alert(
+                "🔒 Complete the current topic first."
+            );
+
+            return;
+        }
+
+
+        openTopic(next);
+
+    }
+);
 
 
 /* =========================================================
@@ -2657,25 +3745,25 @@ document
 ========================================================= */
 
 document
-    .getElementById(
-        "previousBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.getElementById(
+    "previousBtn"
+)
+.addEventListener(
+    "click",
+    () => {
 
-            if(
-                currentTopic > 1
-            ){
+        if(
+            currentTopic > 1
+        ){
 
-                openTopic(
-                    currentTopic - 1
-                );
-
-            }
+            openTopic(
+                currentTopic - 1
+            );
 
         }
-    );
+
+    }
+);
 
 
 /* =========================================================
@@ -2684,24 +3772,15 @@ document
 
 function updateProgress(){
 
-    const total =
-        28;
+    const total = 48;
 
-
-    const count =
+    const done =
         completed.length;
-
 
     const percent =
         Math.round(
-            count / total * 100
+            done / total * 100
         );
-
-
-    document.getElementById(
-        "completedLessons"
-    ).textContent =
-        count;
 
 
     document.getElementById(
@@ -2728,37 +3807,40 @@ function updateProgress(){
         `conic-gradient(
             var(--green)
             ${percent * 3.6}deg,
-            #e6dfdb
+            #e7dfdb
             ${percent * 3.6}deg
         )`;
 
 
-    updateUnitProgress();
+    updateMonthProgress();
 
 }
 
 
 /* =========================================================
-   UNIT PROGRESS
+   MONTH PROGRESS
 ========================================================= */
 
-function updateUnitProgress(){
+function updateMonthProgress(){
 
     const container =
         document.getElementById(
-            "unitProgress"
+            "monthProgress"
         );
-
 
     container.innerHTML = "";
 
 
-    course.forEach(unit => {
+    course.forEach(month => {
 
-        const completedCount =
-            unit.topics.filter(
+        const total =
+            month.topics.length;
+
+
+        const done =
+            month.topics.filter(
                 topic =>
-                    completed.includes(
+                    isComplete(
                         topic.id
                     )
             ).length;
@@ -2771,25 +3853,17 @@ function updateUnitProgress(){
 
 
         item.className =
-            "unit-progress-item";
+            "month-progress-item";
 
 
         item.innerHTML = `
 
             <strong>
-                ${
-                    unit.id
-                }. ${
-                    unit.title
-                }
+                ${month.month}
             </strong>
 
             <span>
-                ${
-                    completedCount
-                } / ${
-                    unit.topics.length
-                } topics
+                ${done} / ${total} topics completed
             </span>
 
         `;
@@ -2808,29 +3882,62 @@ function updateUnitProgress(){
    MOBILE MENU
 ========================================================= */
 
-document
-    .getElementById(
+const menu =
+    document.getElementById(
         "menuBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
+    );
 
-            document
-                .getElementById(
-                    "sidebar"
-                )
-                .classList.toggle(
-                    "show"
-                );
+const sidebar =
+    document.getElementById(
+        "sidebar"
+    );
 
-        }
+const overlay =
+    document.getElementById(
+        "overlay"
     );
 
 
+menu.addEventListener(
+    "click",
+    () => {
+
+        sidebar.classList.toggle(
+            "show"
+        );
+
+        overlay.classList.toggle(
+            "show"
+        );
+
+    }
+);
+
+
+overlay.addEventListener(
+    "click",
+    () => {
+
+        sidebar.classList.remove(
+            "show"
+        );
+
+        overlay.classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
 /* =========================================================
-   START COURSE
+   INITIALIZE
 ========================================================= */
+
+document.getElementById(
+    "totalTopics"
+).textContent = "48";
+
 
 buildNavigation();
 
