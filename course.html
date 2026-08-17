@@ -1049,6 +1049,22 @@ body{
     color:#3d8059;
 }
 
+
+.certificate-price{
+    margin:10px 0 12px;
+    padding:9px;
+    border-radius:9px;
+    background:#fff;
+    color:#827a75;
+    font-size:12px;
+}
+
+.certificate-price strong{
+    display:inline;
+    color:var(--peach);
+    font-size:14px;
+}
+
 /* ================= CERTIFICATE MODAL ================= */
 
 .certificate-modal{
@@ -1097,6 +1113,18 @@ body{
     font-size:13px;
     font-weight:900;
     letter-spacing:3px;
+}
+
+
+.certificate-paid-note{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border-radius:20px;
+    background:#f0f8f3;
+    color:#3d8059;
+    font-size:11px;
+    font-weight:800;
 }
 
 .certificate-line{
@@ -1192,6 +1220,10 @@ body{
     font-size:14px;
     font-weight:900;
     cursor:pointer;
+}
+
+.certificate-paid-note{
+    font-size:10px;
 }
 
 @media(max-width:600px){
@@ -1516,6 +1548,208 @@ body{
     }
 }
 
+
+/* ================= GOOGLE ACCOUNT ================= */
+
+.account-area{
+    margin-left:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.account-user{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    min-width:0;
+}
+
+.account-avatar{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#eee8e4;
+    display:none;
+}
+
+.account-info{
+    min-width:0;
+}
+
+.account-name{
+    display:block;
+    max-width:150px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    color:var(--navy);
+    font-size:12px;
+    font-weight:800;
+}
+
+.account-status{
+    display:block;
+    color:#918781;
+    font-size:10px;
+}
+
+.google-login-btn,
+.logout-btn{
+    border:1px solid var(--border);
+    border-radius:9px;
+    padding:9px 12px;
+    background:#fff;
+    color:var(--navy);
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.google-login-btn:hover,
+.logout-btn:hover{
+    background:#faf6f3;
+}
+
+.sync-status{
+    margin-top:10px;
+    padding:8px 10px;
+    border-radius:9px;
+    background:#f8f3ef;
+    color:#817a76;
+    font-size:11px;
+    text-align:center;
+}
+
+.sync-status.online{
+    background:#f0f8f3;
+    color:#3d8059;
+}
+
+.sync-status.error{
+    background:#fff1ef;
+    color:#a34d43;
+}
+
+.user-required{
+    display:none;
+    margin-top:15px;
+    padding:16px;
+    border-radius:14px;
+    background:#fff8f3;
+    border:1px solid #ead8cd;
+    color:#756d69;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.user-required.show{
+    display:block;
+}
+
+@media(max-width:800px){
+    .account-area{
+        margin-left:auto;
+    }
+
+    .account-name{
+        max-width:90px;
+    }
+
+    .account-status{
+        display:none;
+    }
+
+    .google-login-btn,
+    .logout-btn{
+        padding:8px 9px;
+        font-size:11px;
+    }
+}
+
+@media(max-width:500px){
+    .account-info{
+        display:none;
+    }
+
+    .account-avatar{
+        width:32px;
+        height:32px;
+    }
+}
+
+
+/* ================= 5 MINUTE LESSON TIMER ================= */
+
+.lesson-timer{
+    margin-top:18px;
+    padding:13px 15px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#faf7f5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.lesson-timer-left{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.timer-icon{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    background:#eee8e4;
+    font-size:16px;
+}
+
+.timer-label{
+    color:var(--navy);
+    font-size:13px;
+    font-weight:800;
+}
+
+.timer-sub{
+    display:block;
+    margin-top:2px;
+    color:#8d8580;
+    font-size:11px;
+}
+
+.timer-value{
+    min-width:65px;
+    text-align:center;
+    padding:7px 9px;
+    border-radius:8px;
+    background:#eee8e4;
+    color:var(--navy);
+    font-size:14px;
+    font-weight:900;
+}
+
+.timer-value.ready{
+    background:#dff0e5;
+    color:#3d8059;
+}
+
+#completeBtn.waiting{
+    background:#bdb6b2;
+    cursor:not-allowed;
+}
+
+@media(max-width:500px){
+    .lesson-timer{
+        align-items:flex-start;
+    }
+}
+
 </style>
 </head>
 
@@ -1564,6 +1798,49 @@ body{
 
     </div>
 
+    <!-- Google Account -->
+    <div class="account-area" id="accountArea">
+
+        <button
+            class="google-login-btn"
+            id="googleLoginBtn">
+            Continue with Google
+        </button>
+
+        <div
+            class="account-user"
+            id="accountUser"
+            style="display:none;">
+
+            <img
+                class="account-avatar"
+                id="accountAvatar"
+                alt="Profile">
+
+            <div class="account-info">
+
+                <span
+                    class="account-name"
+                    id="accountName">
+                    Learner
+                </span>
+
+                <span class="account-status">
+                    Progress synced
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                id="logoutBtn">
+                Sign out
+            </button>
+
+        </div>
+
+    </div>
+
 </header>
 
 
@@ -1602,6 +1879,20 @@ body{
 ====================================================== -->
 
 <main class="main">
+
+<div
+    class="sync-status"
+    id="syncStatus">
+    Sign in with Google to save your course progress to your account.
+</div>
+
+<div
+    class="user-required"
+    id="userRequired">
+    <strong>Account required for cloud progress</strong><br>
+    Sign in with Google so your course progress, completed topics,
+    certificate status and current lesson can follow you on any device.
+</div>
 
 
 <!-- HERO -->
@@ -1714,11 +2005,40 @@ body{
 
     </div>
 
+    <div class="lesson-timer">
+
+        <div class="lesson-timer-left">
+
+            <div class="timer-icon">⏱</div>
+
+            <div>
+                <span class="timer-label">
+                    Lesson learning time
+                </span>
+
+                <span
+                    class="timer-sub"
+                    id="timerSub">
+                    Spend 5 minutes on this topic to unlock completion.
+                </span>
+            </div>
+
+        </div>
+
+        <div
+            class="timer-value"
+            id="timerValue">
+            5:00
+        </div>
+
+    </div>
+
     <div class="actions">
 
         <button
-            class="btn complete"
-            id="completeBtn">
+            class="btn complete waiting"
+            id="completeBtn"
+            disabled>
             ✓ Mark as Complete
         </button>
 
@@ -1891,14 +2211,18 @@ body{
     </strong>
 
     <p id="certificateText">
-        Complete all 48 topics to unlock your certificate.
+        Complete all 48 topics to become eligible for your certificate.
     </p>
+
+    <div class="certificate-price" id="certificatePrice">
+        Certificate Fee: <strong>₹49</strong>
+    </div>
 
     <button
         class="certificate-btn"
         id="certificateBtn"
         disabled>
-        🔒 Locked
+        🔒 Complete Course First
     </button>
 
 </div>
@@ -1923,6 +2247,10 @@ body{
 
         <div class="certificate-small">
             CERTIFICATE OF COMPLETION
+        </div>
+
+        <div class="certificate-paid-note" id="certificatePaidNote">
+            Official certificate • ₹49 certificate processing fee paid
         </div>
 
         <h1>
@@ -1991,6 +2319,554 @@ body{
 
 </div>
 
+
+
+<script type="module">
+
+/*
+=========================================================
+FIREBASE CONFIGURATION
+=========================================================
+
+1. Create a Firebase project.
+2. Enable Authentication → Google.
+3. Create a Firestore Database.
+4. Register this website as a Web App.
+5. Paste your Firebase Web App config below.
+
+Firebase config is safe to include in frontend code.
+Firestore Security Rules are what protect user data.
+*/
+
+import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+    onAuthStateChanged
+}
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+}
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* ================= PASTE YOUR FIREBASE CONFIG ================= */
+
+const firebaseConfig = {
+
+    apiKey: "YOUR_FIREBASE_API_KEY",
+
+    authDomain:
+        "YOUR_PROJECT.firebaseapp.com",
+
+    projectId:
+        "YOUR_PROJECT_ID",
+
+    storageBucket:
+        "YOUR_PROJECT.firebasestorage.app",
+
+    messagingSenderId:
+        "YOUR_MESSAGING_SENDER_ID",
+
+    appId:
+        "YOUR_FIREBASE_APP_ID"
+
+};
+
+
+/* ================= FIREBASE INITIALIZATION ================= */
+
+const firebaseApp =
+    initializeApp(firebaseConfig);
+
+const firebaseAuth =
+    getAuth(firebaseApp);
+
+const googleProvider =
+    new GoogleAuthProvider();
+
+const db =
+    getFirestore(firebaseApp);
+
+
+/* ================= ACCOUNT UI ================= */
+
+const googleLoginBtn =
+    document.getElementById(
+        "googleLoginBtn"
+    );
+
+const accountUser =
+    document.getElementById(
+        "accountUser"
+    );
+
+const accountName =
+    document.getElementById(
+        "accountName"
+    );
+
+const accountAvatar =
+    document.getElementById(
+        "accountAvatar"
+    );
+
+const logoutBtn =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+const syncStatus =
+    document.getElementById(
+        "syncStatus"
+    );
+
+const userRequired =
+    document.getElementById(
+        "userRequired"
+    );
+
+
+function setSyncStatus(
+    message,
+    type = ""
+){
+
+    syncStatus.textContent =
+        message;
+
+    syncStatus.className =
+        "sync-status " + type;
+
+}
+
+
+/* ================= GOOGLE LOGIN ================= */
+
+googleLoginBtn.addEventListener(
+    "click",
+    async () => {
+
+        try{
+
+            googleLoginBtn.disabled =
+                true;
+
+            googleLoginBtn.textContent =
+                "Signing in...";
+
+            await signInWithPopup(
+                firebaseAuth,
+                googleProvider
+            );
+
+        }
+        catch(error){
+
+            console.error(
+                "Google login error:",
+                error
+            );
+
+            setSyncStatus(
+                "Google sign-in failed. Please try again.",
+                "error"
+            );
+
+        }
+        finally{
+
+            googleLoginBtn.disabled =
+                false;
+
+            googleLoginBtn.textContent =
+                "Continue with Google";
+
+        }
+
+    }
+);
+
+
+/* ================= LOGOUT ================= */
+
+logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+        try{
+
+            await saveUserProgress();
+
+            await signOut(
+                firebaseAuth
+            );
+
+        }
+        catch(error){
+
+            console.error(
+                "Sign-out error:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* ================= CLOUD SAVE ================= */
+
+async function saveUserProgress(){
+
+    const user =
+        firebaseAuth.currentUser;
+
+    if(!user){
+        return;
+    }
+
+
+    try{
+
+        const progressRef =
+            doc(
+                db,
+                "users",
+                user.uid,
+                "courseProgress",
+                "webDevelopment"
+            );
+
+
+        await setDoc(
+            progressRef,
+            {
+
+                userId:
+                    user.uid,
+
+                email:
+                    user.email || "",
+
+                displayName:
+                    user.displayName || "",
+
+                photoURL:
+                    user.photoURL || "",
+
+                completed:
+                    completed,
+
+                currentTopic:
+                    currentTopic,
+
+                certificatePaid:
+                    typeof certificatePaid !== "undefined"
+                    ? certificatePaid
+                    : false,
+
+                updatedAt:
+                    serverTimestamp()
+
+            },
+            {
+                merge:true
+            }
+        );
+
+
+        setSyncStatus(
+            "✓ Progress saved to your Google account.",
+            "online"
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Progress save error:",
+            error
+        );
+
+        setSyncStatus(
+            "Could not save progress. Check Firebase setup.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* ================= CLOUD LOAD ================= */
+
+async function loadUserProgress(
+    user
+){
+
+    try{
+
+        const progressRef =
+            doc(
+                db,
+                "users",
+                user.uid,
+                "courseProgress",
+                "webDevelopment"
+            );
+
+
+        const snapshot =
+            await getDoc(
+                progressRef
+            );
+
+
+        if(
+            snapshot.exists()
+        ){
+
+            const data =
+                snapshot.data();
+
+
+            if(
+                Array.isArray(
+                    data.completed
+                )
+            ){
+
+                completed =
+                    data.completed
+                    .map(Number)
+                    .filter(
+                        Number.isFinite
+                    )
+                    .sort(
+                        (a,b) => a-b
+                    );
+
+            }
+
+
+            if(
+                Number.isInteger(
+                    Number(
+                        data.currentTopic
+                    )
+                )
+            ){
+
+                currentTopic =
+                    Number(
+                        data.currentTopic
+                    );
+
+            }
+
+
+            if(
+                typeof data.certificatePaid ===
+                "boolean"
+            ){
+
+                certificatePaid =
+                    data.certificatePaid;
+
+                localStorage.setItem(
+                    PAYMENT_KEY,
+                    certificatePaid
+                    ? "paid"
+                    : "unpaid"
+                );
+
+            }
+
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(
+                    completed
+                )
+            );
+
+        }
+
+
+        buildNavigation();
+
+        openTopic(
+            isTopicUnlocked(currentTopic)
+                ? currentTopic
+                : 1
+        );
+
+        updateProgress();
+
+        updateCertificate();
+
+        setSyncStatus(
+            "✓ Your progress is synced with your Google account.",
+            "online"
+        );
+
+    }
+    catch(error){
+
+        console.error(
+            "Progress load error:",
+            error
+        );
+
+        setSyncStatus(
+            "Signed in, but cloud progress could not be loaded.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* ================= AUTH STATE ================= */
+
+onAuthStateChanged(
+    firebaseAuth,
+    async (user) => {
+
+        if(user){
+
+            googleLoginBtn.style.display =
+                "none";
+
+            accountUser.style.display =
+                "flex";
+
+            accountName.textContent =
+                user.displayName ||
+                user.email ||
+                "Learner";
+
+            if(user.photoURL){
+
+                accountAvatar.src =
+                    user.photoURL;
+
+                accountAvatar.style.display =
+                    "block";
+
+            }
+            else{
+
+                accountAvatar.style.display =
+                    "none";
+
+            }
+
+            userRequired.classList.remove(
+                "show"
+            );
+
+            setSyncStatus(
+                "Loading your saved progress..."
+            );
+
+            await loadUserProgress(
+                user
+            );
+
+        }
+        else{
+
+            googleLoginBtn.style.display =
+                "block";
+
+            accountUser.style.display =
+                "none";
+
+            userRequired.classList.add(
+                "show"
+            );
+
+            setSyncStatus(
+                "Sign in with Google to save your progress."
+            );
+
+            /*
+             * Keep the local progress available,
+             * but cloud saving is disabled until login.
+             */
+
+            buildNavigation();
+
+            openTopic(
+                isTopicUnlocked(currentTopic)
+                    ? currentTopic
+                    : 1
+            );
+
+            updateProgress();
+
+            updateCertificate();
+
+        }
+
+    }
+);
+
+
+/* ================= IMMEDIATE PROGRESS SYNC ================= */
+
+document.addEventListener(
+    "courseProgressChanged",
+    async () => {
+
+        if(firebaseAuth.currentUser){
+
+            await saveUserProgress();
+
+        }
+
+    }
+);
+
+
+/* ================= OVERRIDE LOCAL COMPLETION SAVE ================= */
+
+/*
+ * The course already writes completed[] to localStorage.
+ * This small watcher is used to sync changes to Firestore
+ * after Mark as Complete / other course actions.
+ */
+
+setInterval(
+    async () => {
+
+        if(
+            firebaseAuth.currentUser
+        ){
+
+            await saveUserProgress();
+
+        }
+
+    },
+    5000
+);
+
+</script>
 
 <script>
 
@@ -4209,6 +5085,12 @@ function openTopic(id){
     currentTopic =
         id;
 
+    document.dispatchEvent(
+        new CustomEvent("courseProgressChanged")
+    );
+
+    startLessonTimer(id);
+
 
     const topic =
         result.topic;
@@ -4295,7 +5177,21 @@ document
         }
 
 
-        completed.push(
+                if(
+            !canCompleteCurrentTopic()
+        ){
+
+            updateLessonTimerUI();
+
+            alert(
+                "⏱ Please spend the full 5 minutes on this topic before marking it complete."
+            );
+
+            return;
+        }
+
+
+completed.push(
             currentTopic
         );
 
@@ -4310,6 +5206,10 @@ document
             JSON.stringify(
                 completed
             )
+        );
+
+        document.dispatchEvent(
+            new CustomEvent("courseProgressChanged")
         );
 
 
@@ -4363,16 +5263,17 @@ document
 
                 updateCertificate();
 
+                updateCertificate();
+
                 alert(
                     "🏆 CONGRATULATIONS!\n\n" +
 
                     "You have completed the entire " +
                     "6-month Web Development program!\n\n" +
 
-                    "🎓 Your certificate is now unlocked."
+                    "🎓 Your certificate is now ready. " +
+                    "Pay ₹49 to unlock the official certificate."
                 );
-
-                openCertificate();
 
             }
 
@@ -4401,7 +5302,6 @@ function updateCompleteButton(){
             "completeBtn"
         );
 
-
     if(
         isComplete(
             currentTopic
@@ -4414,16 +5314,14 @@ function updateCompleteButton(){
         button.disabled =
             true;
 
+        button.classList.remove(
+            "waiting"
+        );
+
+        return;
     }
-    else{
 
-        button.textContent =
-            "✓ Mark as Complete";
-
-        button.disabled =
-            false;
-
-    }
+    updateLessonTimerUI();
 
 }
 
@@ -4681,15 +5579,212 @@ overlay.addEventListener(
 
 
 
+
 /* =========================================================
-   CERTIFICATE SYSTEM
-   Certificate unlocks ONLY after all 48 topics are complete.
+   5 MINUTE LESSON TIMER
+   Learner must spend 300 seconds on each topic before
+   Mark as Complete becomes available.
 ========================================================= */
 
-function updateCertificate(){
+const LESSON_TIME_REQUIRED = 300;
+const LESSON_TIMER_KEY = "mamraj_nexus_lesson_timers";
 
-    const totalTopics = 48;
-    const completedTopics = completed.length;
+let lessonTimers = JSON.parse(
+    localStorage.getItem(LESSON_TIMER_KEY) || "{}"
+);
+
+let timerInterval = null;
+let timerStartedAt = null;
+let timerTopicId = null;
+let timerElapsed = 0;
+
+function saveLessonTimers(){
+    localStorage.setItem(
+        LESSON_TIMER_KEY,
+        JSON.stringify(lessonTimers)
+    );
+}
+
+function getStoredElapsed(id){
+    const value = Number(lessonTimers[id] || 0);
+    return Number.isFinite(value) ? value : 0;
+}
+
+function getCurrentElapsed(){
+    if(!timerTopicId || !timerStartedAt){
+        return getStoredElapsed(currentTopic);
+    }
+
+    return Math.min(
+        LESSON_TIME_REQUIRED,
+        timerElapsed +
+        Math.floor(
+            (Date.now() - timerStartedAt) / 1000
+        )
+    );
+}
+
+function startLessonTimer(id){
+
+    clearInterval(timerInterval);
+
+    timerTopicId = id;
+    timerElapsed = getStoredElapsed(id);
+    timerStartedAt = Date.now();
+
+    updateLessonTimerUI();
+
+    timerInterval = setInterval(
+        tickLessonTimer,
+        1000
+    );
+}
+
+function tickLessonTimer(){
+
+    if(!timerTopicId){
+        return;
+    }
+
+    const elapsed = getCurrentElapsed();
+
+    lessonTimers[timerTopicId] = elapsed;
+
+    saveLessonTimers();
+
+    updateLessonTimerUI();
+
+    if(elapsed >= LESSON_TIME_REQUIRED){
+
+        clearInterval(timerInterval);
+
+        timerElapsed =
+            LESSON_TIME_REQUIRED;
+
+        lessonTimers[timerTopicId] =
+            LESSON_TIME_REQUIRED;
+
+        saveLessonTimers();
+
+        updateLessonTimerUI();
+    }
+}
+
+function canCompleteCurrentTopic(){
+
+    return (
+        getCurrentElapsed() >=
+        LESSON_TIME_REQUIRED
+    );
+}
+
+function updateLessonTimerUI(){
+
+    const value =
+        document.getElementById("timerValue");
+
+    const sub =
+        document.getElementById("timerSub");
+
+    const button =
+        document.getElementById("completeBtn");
+
+    if(!value || !sub || !button){
+        return;
+    }
+
+    if(isComplete(currentTopic)){
+
+        value.textContent = "✓";
+        value.classList.add("ready");
+
+        sub.textContent =
+            "Topic completed.";
+
+        button.disabled = true;
+        button.classList.remove("waiting");
+        button.textContent =
+            "✓ Completed";
+
+        return;
+    }
+
+    const elapsed =
+        Math.min(
+            LESSON_TIME_REQUIRED,
+            getCurrentElapsed()
+        );
+
+    const remaining =
+        Math.max(
+            0,
+            LESSON_TIME_REQUIRED - elapsed
+        );
+
+    if(remaining <= 0){
+
+        value.textContent =
+            "✓ Ready";
+
+        value.classList.add("ready");
+
+        sub.textContent =
+            "5 minutes completed. You can now mark this topic complete.";
+
+        button.disabled = false;
+
+        button.classList.remove("waiting");
+
+        button.textContent =
+            "✓ Mark as Complete";
+
+        return;
+    }
+
+    value.classList.remove("ready");
+
+    const minutes =
+        Math.floor(remaining / 60);
+
+    const seconds =
+        remaining % 60;
+
+    value.textContent =
+        `${minutes}:${String(seconds).padStart(2,"0")}`;
+
+    sub.textContent =
+        `Spend 5 minutes on this topic. ${minutes}:${String(seconds).padStart(2,"0")} remaining.`;
+
+    button.disabled = true;
+
+    button.classList.add("waiting");
+
+    button.textContent =
+        "🔒 Complete after 5 minutes";
+}
+
+
+/* =========================================================
+   CERTIFICATE SYSTEM
+   Course completion -> Certificate preview eligibility.
+   ₹49 payment -> Official certificate unlock.
+========================================================= */
+
+const CERTIFICATE_FEE = 49;
+const PAYMENT_KEY = "mamraj_certificate_payment";
+
+let certificatePaid =
+    localStorage.getItem(PAYMENT_KEY) === "paid";
+
+
+function isCourseComplete(){
+
+    return completed.length >= 48;
+
+}
+
+
+function updateCertificate(){
 
     const certificateBox =
         document.getElementById("certificateBox");
@@ -4706,30 +5801,11 @@ function updateCertificate(){
     const certificateBtn =
         document.getElementById("certificateBtn");
 
-    if(
-        completedTopics >= totalTopics
-    ){
+    const certificatePrice =
+        document.getElementById("certificatePrice");
 
-        certificateBox.classList.add("unlocked");
 
-        certificateIcon.textContent = "🏆";
-
-        certificateTitle.textContent =
-            "Certificate Unlocked!";
-
-        certificateText.textContent =
-            "Congratulations! You completed all 48 topics of the 6-month course.";
-
-        certificateBtn.textContent =
-            "🏆 View Certificate";
-
-        certificateBtn.disabled = false;
-
-        certificateBtn.onclick =
-            openCertificate;
-
-    }
-    else{
+    if(!isCourseComplete()){
 
         certificateBox.classList.remove("unlocked");
 
@@ -4739,21 +5815,158 @@ function updateCertificate(){
             "Certificate Locked";
 
         certificateText.textContent =
-            `Complete all 48 topics to unlock your certificate. ${completedTopics}/48 completed.`;
+            `Complete all 48 topics first. ${completed.length}/48 completed.`;
+
+        certificatePrice.innerHTML =
+            `Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
 
         certificateBtn.textContent =
-            "🔒 Locked";
+            "🔒 Complete Course First";
 
         certificateBtn.disabled = true;
 
         certificateBtn.onclick = null;
 
+        return;
     }
+
+
+    /* Course is complete.
+       Candidate can now see the certificate status,
+       but cannot access the official certificate until payment.
+    */
+
+    if(!certificatePaid){
+
+        certificateBox.classList.add("unlocked");
+
+        certificateIcon.textContent = "🎓";
+
+        certificateTitle.textContent =
+            "Certificate Ready";
+
+        certificateText.textContent =
+            "You completed the course. Pay ₹49 to unlock your official certificate.";
+
+        certificatePrice.innerHTML =
+            `Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
+
+        certificateBtn.textContent =
+            "💳 Pay ₹49 & Unlock";
+
+        certificateBtn.disabled = false;
+
+        certificateBtn.onclick =
+            startCertificatePayment;
+
+        return;
+    }
+
+
+    /* Payment completed */
+
+    certificateBox.classList.add("unlocked");
+
+    certificateIcon.textContent = "🏆";
+
+    certificateTitle.textContent =
+        "Certificate Unlocked!";
+
+    certificateText.textContent =
+        "Your official certificate is ready to view and print.";
+
+    certificatePrice.innerHTML =
+        "✓ Certificate fee paid";
+
+    certificateBtn.textContent =
+        "🏆 View Certificate";
+
+    certificateBtn.disabled = false;
+
+    certificateBtn.onclick =
+        openCertificate;
+
 }
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+function startCertificatePayment(){
+
+    if(!isCourseComplete()){
+
+        alert(
+            "🔒 Complete all 48 topics before paying for the certificate."
+        );
+
+        return;
+    }
+
+
+    /*
+       DEMO PAYMENT FLOW
+
+       Replace this function with your Razorpay checkout
+       when you connect your real payment gateway.
+
+       The current version intentionally asks for confirmation
+       instead of pretending that a real ₹49 transaction occurred.
+    */
+
+    const confirmed =
+        confirm(
+            "Certificate Fee: ₹49\n\n" +
+            "Continue to payment?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    alert(
+        "Payment gateway is ready to be connected.\n\n" +
+        "Connect Razorpay/payment verification here before " +
+        "marking the certificate as paid."
+    );
+
+}
+
+
+/* =========================================================
+   CALL THIS ONLY AFTER VERIFIED PAYMENT
+========================================================= */
+
+function unlockCertificateAfterVerifiedPayment(){
+
+    if(!isCourseComplete()){
+        return;
+    }
+
+    certificatePaid = true;
+
+    localStorage.setItem(
+        PAYMENT_KEY,
+        "paid"
+    );
+
+    updateCertificate();
+
+    openCertificate();
+
+}
+
+
+/* =========================================================
+   OPEN CERTIFICATE
+========================================================= */
 
 function openCertificate(){
 
-    if(completed.length < 48){
+    if(!isCourseComplete()){
 
         alert(
             "🔒 Complete all 48 topics first."
@@ -4762,33 +5975,57 @@ function openCertificate(){
         return;
     }
 
+
+    if(!certificatePaid){
+
+        alert(
+            "🔒 Please pay the ₹49 certificate fee first."
+        );
+
+        return;
+    }
+
+
     document
         .getElementById("certificateModal")
         .classList.add("show");
+
 
     document.getElementById(
         "certificateDate"
     ).textContent =
         new Date().getFullYear();
+
 }
+
+
+/* =========================================================
+   CLOSE CERTIFICATE
+========================================================= */
 
 function closeCertificate(){
 
     document
         .getElementById("certificateModal")
         .classList.remove("show");
+
 }
 
+
 /* Close certificate when clicking outside it */
+
 document
     .getElementById("certificateModal")
-    .addEventListener("click", function(e){
+    .addEventListener(
+        "click",
+        function(e){
 
-        if(e.target === this){
-            closeCertificate();
+            if(e.target === this){
+                closeCertificate();
+            }
+
         }
-
-    });
+    );
 
 
 /* =========================================================
