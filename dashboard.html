@@ -787,7 +787,103 @@ body{
 <!-- ================= TOPBAR ================= -->
 
 <header class="topbar">
+<header class="topbar">
 
+    <button class="mobile-menu" id="menuBtn">
+        ☰
+    </button>
+
+    <div class="search-area">
+
+        <div class="search-box">
+
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="globalSearch"
+                placeholder="Search courses, internships, skills..."
+                autocomplete="off"
+            >
+
+            <button
+                class="clear-search"
+                id="clearSearch"
+                type="button">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="category-filters">
+
+            <button
+                class="category active"
+                data-category="all">
+                All
+            </button>
+
+            <button
+                class="category"
+                data-category="courses">
+                Courses
+            </button>
+
+            <button
+                class="category"
+                data-category="internships">
+                Internships
+            </button>
+
+            <button
+                class="category"
+                data-category="projects">
+                Projects
+            </button>
+
+            <button
+                class="category"
+                data-category="skills">
+                Skills
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <div class="notification">
+            🔔
+        </div>
+
+        <div class="profile">
+
+            <div
+                class="avatar"
+                id="userAvatar">
+                AS
+            </div>
+
+            <div>
+
+                <strong id="studentName">
+                    Aditya Singh
+                </strong>
+
+                <span id="studentRole">
+                    Student
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
     <button
         class="mobile-menu"
         id="menuBtn">
