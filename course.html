@@ -981,6 +981,378 @@ body{
         font-size:8px;
     }
 }
+
+/* ================= CERTIFICATE ================= */
+
+.certificate-box{
+    margin-top:22px;
+    padding:16px;
+    border-radius:14px;
+    background:#f8f3ef;
+    border:1px solid var(--border);
+    text-align:center;
+}
+
+.certificate-icon{
+    width:48px;
+    height:48px;
+    margin:0 auto 10px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:#ebe5e1;
+    font-size:22px;
+}
+
+.certificate-box strong{
+    display:block;
+    color:var(--navy);
+    font-size:9px;
+    margin-bottom:5px;
+}
+
+.certificate-box p{
+    color:#918781;
+    font-size:7px;
+    line-height:1.6;
+    margin-bottom:12px;
+}
+
+.certificate-btn{
+    width:100%;
+    border:0;
+    border-radius:8px;
+    padding:10px;
+    background:#ddd7d3;
+    color:#938b86;
+    font-size:8px;
+    font-weight:900;
+    cursor:not-allowed;
+}
+
+.certificate-box.unlocked{
+    background:#f0f8f3;
+    border-color:#b9dbc7;
+}
+
+.certificate-box.unlocked .certificate-icon{
+    background:#dcefe4;
+}
+
+.certificate-box.unlocked .certificate-btn{
+    background:var(--green);
+    color:#fff;
+    cursor:pointer;
+}
+
+.certificate-box.unlocked strong{
+    color:#3d8059;
+}
+
+/* ================= CERTIFICATE MODAL ================= */
+
+.certificate-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(18,25,55,.72);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:5000;
+    overflow:auto;
+}
+
+.certificate-modal.show{
+    display:flex;
+}
+
+.certificate{
+    width:min(850px,100%);
+    background:#fff;
+    border:10px solid #eee6df;
+    outline:2px solid var(--peach);
+    padding:55px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+}
+
+.certificate-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:32px;
+    height:32px;
+    border:0;
+    border-radius:50%;
+    background:#f2ece8;
+    color:var(--navy);
+    font-size:20px;
+    cursor:pointer;
+}
+
+.certificate-top{
+    color:var(--navy);
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:3px;
+}
+
+.certificate-line{
+    width:100px;
+    height:3px;
+    background:var(--peach);
+    margin:18px auto;
+}
+
+.certificate-small{
+    color:#9a6c58;
+    font-size:10px;
+    letter-spacing:3px;
+    font-weight:900;
+}
+
+.certificate h1{
+    color:var(--navy);
+    font-family:Georgia,serif;
+    font-size:34px;
+    margin:20px 0;
+}
+
+.certificate p{
+    color:#716b68;
+    font-size:11px;
+    line-height:1.8;
+    max-width:600px;
+    margin:8px auto;
+}
+
+.certificate h2{
+    color:var(--peach);
+    font-family:Georgia,serif;
+    font-size:30px;
+    margin:15px 0;
+}
+
+.certificate-details{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin:30px 0;
+}
+
+.certificate-details div{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.certificate-details strong{
+    color:var(--navy);
+    font-size:9px;
+}
+
+.certificate-details span{
+    color:#837a75;
+    font-size:9px;
+}
+
+.certificate-footer{
+    display:flex;
+    justify-content:space-between;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+}
+
+.certificate-footer div{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.certificate-footer strong{
+    color:var(--navy);
+    font-size:9px;
+}
+
+.certificate-footer span{
+    color:#938a85;
+    font-size:7px;
+}
+
+.print-certificate{
+    margin-top:30px;
+    padding:12px 20px;
+    border:0;
+    border-radius:9px;
+    background:var(--navy);
+    color:#fff;
+    font-size:9px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+    .certificate{
+        padding:35px 20px;
+    }
+
+    .certificate h1{
+        font-size:23px;
+    }
+
+    .certificate h2{
+        font-size:24px;
+    }
+
+    .certificate-details{
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .certificate-footer{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+
+@media print{
+    body *{
+        visibility:hidden !important;
+    }
+
+    .certificate-modal,
+    .certificate-modal *{
+        visibility:visible !important;
+    }
+
+    .certificate-modal{
+        position:static;
+        display:block !important;
+        background:#fff;
+        padding:0;
+    }
+
+    .certificate{
+        width:100%;
+        max-width:none;
+        box-shadow:none;
+        outline:none;
+        border:10px solid #eee6df;
+    }
+
+    .certificate-close,
+    .print-certificate{
+        display:none !important;
+    }
+}
+
+
+/* ================= FINAL ASSIGNMENT ================= */
+
+.assignment-card{
+    margin-top:18px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:24px;
+}
+
+.assignment-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.assignment-label{
+    color:#a47761;
+    font-size:7px;
+    letter-spacing:1.5px;
+    font-weight:900;
+}
+
+.assignment-card h3{
+    color:var(--navy);
+    font-size:20px;
+    margin:5px 0;
+}
+
+.assignment-badge{
+    flex-shrink:0;
+    padding:7px 10px;
+    border-radius:20px;
+    background:#fbf1ec;
+    color:#956650;
+    font-size:7px;
+    font-weight:900;
+}
+
+.assignment-description{
+    color:#716a66;
+    font-size:9px;
+    line-height:1.8;
+}
+
+.assignment-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:16px;
+}
+
+.assignment-item{
+    background:#faf7f5;
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:13px;
+}
+
+.assignment-item strong{
+    display:block;
+    color:var(--navy);
+    font-size:8px;
+    margin-bottom:5px;
+}
+
+.assignment-item span{
+    color:#837b77;
+    font-size:8px;
+    line-height:1.6;
+}
+
+.assignment-check{
+    margin-top:16px;
+    padding:14px;
+    border-radius:12px;
+    background:#f8f1f5;
+    color:#716a66;
+    font-size:8px;
+    line-height:1.7;
+}
+
+.assignment-check strong{
+    color:var(--navy);
+}
+
+@media(max-width:500px){
+    .assignment-card{
+        padding:17px;
+    }
+
+    .assignment-header{
+        flex-direction:column;
+    }
+
+    .assignment-grid{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 </head>
 
@@ -1203,6 +1575,105 @@ body{
 
 </section>
 
+
+<!-- ================= FINAL ASSIGNMENT ================= -->
+
+<section class="assignment-card">
+
+    <div class="assignment-header">
+
+        <div>
+            <div class="assignment-label">
+                FINAL COURSE ASSIGNMENT
+            </div>
+
+            <h3>
+                🏆 Build a Full-Stack Learning Platform
+            </h3>
+        </div>
+
+        <span class="assignment-badge">
+            CAPSTONE PROJECT
+        </span>
+
+    </div>
+
+    <p class="assignment-description">
+        Create a complete responsive Learning Management System
+        that demonstrates the skills you learned throughout the
+        6-month Full-Stack Web Development program.
+    </p>
+
+    <div class="assignment-grid">
+
+        <div class="assignment-item">
+            <strong>🎨 Frontend</strong>
+            <span>
+                HTML, CSS, JavaScript and React with a responsive
+                dashboard, course pages and learner interface.
+            </span>
+        </div>
+
+        <div class="assignment-item">
+            <strong>⚙️ Backend</strong>
+            <span>
+                Node.js and Express APIs for users, courses,
+                lessons and learner progress.
+            </span>
+        </div>
+
+        <div class="assignment-item">
+            <strong>🗄️ Database</strong>
+            <span>
+                Store users, courses, lessons and completion
+                progress using SQL or MongoDB.
+            </span>
+        </div>
+
+        <div class="assignment-item">
+            <strong>🔐 Authentication</strong>
+            <span>
+                Add registration, login and protected learner
+                dashboard functionality.
+            </span>
+        </div>
+
+        <div class="assignment-item">
+            <strong>🤖 AI Feature</strong>
+            <span>
+                Add an AI learning assistant that can explain
+                topics or generate practice questions.
+            </span>
+        </div>
+
+        <div class="assignment-item">
+            <strong>🌐 Deployment</strong>
+            <span>
+                Deploy the project and provide a live website
+                URL along with the GitHub repository.
+            </span>
+        </div>
+
+    </div>
+
+    <div class="assignment-check">
+
+        <strong>📋 Submission Checklist</strong><br>
+
+        ✓ Responsive working website<br>
+        ✓ GitHub repository<br>
+        ✓ Live deployed URL<br>
+        ✓ Working frontend and backend<br>
+        ✓ Database connected<br>
+        ✓ Authentication implemented<br>
+        ✓ AI feature implemented<br>
+        ✓ Project README with setup instructions
+
+    </div>
+
+</section>
+
+
 </main>
 
 
@@ -1244,6 +1715,114 @@ body{
         <div id="monthProgress"></div>
 
     </div>
+
+    
+<!-- ================= CERTIFICATE ================= -->
+
+<div class="certificate-box" id="certificateBox">
+
+    <div class="certificate-icon" id="certificateIcon">🔒</div>
+
+    <strong id="certificateTitle">
+        Certificate Locked
+    </strong>
+
+    <p id="certificateText">
+        Complete all 48 topics to unlock your certificate.
+    </p>
+
+    <button
+        class="certificate-btn"
+        id="certificateBtn"
+        disabled>
+        🔒 Locked
+    </button>
+
+</div>
+
+<!-- ================= CERTIFICATE MODAL ================= -->
+
+<div class="certificate-modal" id="certificateModal">
+
+    <div class="certificate">
+
+        <button
+            class="certificate-close"
+            onclick="closeCertificate()">
+            ×
+        </button>
+
+        <div class="certificate-top">
+            MAMRAJ NEXUS ACADEMY
+        </div>
+
+        <div class="certificate-line"></div>
+
+        <div class="certificate-small">
+            CERTIFICATE OF COMPLETION
+        </div>
+
+        <h1>
+            Full-Stack Web Development
+        </h1>
+
+        <p>
+            This certificate is proudly presented to
+        </p>
+
+        <h2 id="certificateStudentName">
+            Aditya Singh
+        </h2>
+
+        <p>
+            for successfully completing the
+            6-month Full-Stack Web Development
+            program at MamRaj Nexus Academy.
+        </p>
+
+        <div class="certificate-details">
+
+            <div>
+                <strong>Duration</strong>
+                <span>6 Months</span>
+            </div>
+
+            <div>
+                <strong>Topics</strong>
+                <span>48 / 48</span>
+            </div>
+
+            <div>
+                <strong>Projects</strong>
+                <span>10+</span>
+            </div>
+
+        </div>
+
+        <div class="certificate-footer">
+
+            <div>
+                <strong>MamRaj Nexus Academy</strong>
+                <span>Academy</span>
+            </div>
+
+            <div>
+                <strong id="certificateDate"></strong>
+                <span>Completion Year</span>
+            </div>
+
+        </div>
+
+        <button
+            class="print-certificate"
+            onclick="window.print()">
+            🖨 Print / Save Certificate
+        </button>
+
+    </div>
+
+</div>
+
 
 </aside>
 
@@ -3619,12 +4198,18 @@ document
             }
             else{
 
+                updateCertificate();
+
                 alert(
                     "🏆 CONGRATULATIONS!\n\n" +
 
                     "You have completed the entire " +
-                    "6-month Web Development program!"
+                    "6-month Web Development program!\n\n" +
+
+                    "🎓 Your certificate is now unlocked."
                 );
+
+                openCertificate();
 
             }
 
@@ -3814,6 +4399,8 @@ function updateProgress(){
 
     updateMonthProgress();
 
+    updateCertificate();
+
 }
 
 
@@ -3928,6 +4515,117 @@ overlay.addEventListener(
 
     }
 );
+
+
+
+/* =========================================================
+   CERTIFICATE SYSTEM
+   Certificate unlocks ONLY after all 48 topics are complete.
+========================================================= */
+
+function updateCertificate(){
+
+    const totalTopics = 48;
+    const completedTopics = completed.length;
+
+    const certificateBox =
+        document.getElementById("certificateBox");
+
+    const certificateIcon =
+        document.getElementById("certificateIcon");
+
+    const certificateTitle =
+        document.getElementById("certificateTitle");
+
+    const certificateText =
+        document.getElementById("certificateText");
+
+    const certificateBtn =
+        document.getElementById("certificateBtn");
+
+    if(
+        completedTopics >= totalTopics
+    ){
+
+        certificateBox.classList.add("unlocked");
+
+        certificateIcon.textContent = "🏆";
+
+        certificateTitle.textContent =
+            "Certificate Unlocked!";
+
+        certificateText.textContent =
+            "Congratulations! You completed all 48 topics of the 6-month course.";
+
+        certificateBtn.textContent =
+            "🏆 View Certificate";
+
+        certificateBtn.disabled = false;
+
+        certificateBtn.onclick =
+            openCertificate;
+
+    }
+    else{
+
+        certificateBox.classList.remove("unlocked");
+
+        certificateIcon.textContent = "🔒";
+
+        certificateTitle.textContent =
+            "Certificate Locked";
+
+        certificateText.textContent =
+            `Complete all 48 topics to unlock your certificate. ${completedTopics}/48 completed.`;
+
+        certificateBtn.textContent =
+            "🔒 Locked";
+
+        certificateBtn.disabled = true;
+
+        certificateBtn.onclick = null;
+
+    }
+}
+
+function openCertificate(){
+
+    if(completed.length < 48){
+
+        alert(
+            "🔒 Complete all 48 topics first."
+        );
+
+        return;
+    }
+
+    document
+        .getElementById("certificateModal")
+        .classList.add("show");
+
+    document.getElementById(
+        "certificateDate"
+    ).textContent =
+        new Date().getFullYear();
+}
+
+function closeCertificate(){
+
+    document
+        .getElementById("certificateModal")
+        .classList.remove("show");
+}
+
+/* Close certificate when clicking outside it */
+document
+    .getElementById("certificateModal")
+    .addEventListener("click", function(e){
+
+        if(e.target === this){
+            closeCertificate();
+        }
+
+    });
 
 
 /* =========================================================
