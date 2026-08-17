@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MamRaj Nexus Academy | Human Resource Management with AI</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --navy:#263873;--navy2:#1b2a61;--peach:#ca8f73;--green:#58a276;
+ --cream:#f7f1ec;--white:#fff;--text:#28304a;--muted:#817a76;
+ --border:#e7ddd7;--light:#faf7f5;--ai:#7657c8;
+}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+.topbar{height:70px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 22px;position:sticky;top:0;z-index:1000}
+.menu-btn{display:none;border:0;background:#f1ebe7;color:var(--navy);width:38px;height:38px;border-radius:9px;cursor:pointer}
+.logo{width:40px;height:40px;border-radius:11px;background:#7657c8;color:#fff;display:grid;place-items:center;font-weight:900}
+.brand{font-size:16px;font-weight:900;color:var(--navy)} .brand small{display:block;font-size:10px;letter-spacing:2px;color:#9a8e88}
+.back-btn{border:1px solid var(--border);padding:8px 12px;border-radius:9px;color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.course-name{font-size:13px;font-weight:900;color:var(--navy)}
+.header-progress{margin-left:auto;display:flex;align-items:center;gap:8px}
+.progress-line{width:150px;height:5px;background:#eee8e4;border-radius:20px;overflow:hidden}.progress-line span{display:block;width:0;height:100%;background:var(--green);transition:.4s}
+.header-percent{font-size:12px;color:#777}
+.account-area{margin-left:10px;display:flex;align-items:center;gap:8px}.account-user{display:flex;align-items:center;gap:7px}.account-avatar{width:31px;height:31px;border-radius:50%;object-fit:cover;display:none;background:#eee8e4}.account-info{min-width:0}.account-name{display:block;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:800;color:var(--navy)}.account-status{display:block;font-size:10px;color:#918781}
+.google-login-btn,.logout-btn{border:1px solid var(--border);border-radius:9px;padding:9px 11px;background:#fff;color:var(--navy);font-size:12px;font-weight:800;cursor:pointer}
+
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr) 245px;min-height:calc(100vh - 70px)}
+.sidebar{background:#fff;border-right:1px solid var(--border);height:calc(100vh - 70px);position:sticky;top:70px;overflow-y:auto;padding:18px 12px}
+.sidebar-title,.hero-label,.assignment-label{font-size:11px;letter-spacing:1.4px;font-weight:900;color:#a47761}
+.sidebar-title{margin:4px 10px 15px}
+.month{margin-bottom:5px}.month-header{width:100%;display:flex;align-items:center;gap:8px;padding:10px;background:#fff;border:0;border-radius:10px;cursor:pointer;text-align:left}.month-header:hover{background:#faf5f1}
+.month-number{width:30px;height:30px;display:grid;place-items:center;background:#eee9e5;border-radius:8px;font-size:12px;font-weight:900;color:var(--navy)}.month-name{flex:1;font-size:13px;font-weight:900;color:var(--text)}.month-lock{font-size:12px}
+.topics{display:none;padding-left:40px}.month.open .topics{display:block}
+.topic{width:100%;display:flex;align-items:center;gap:7px;padding:9px 7px;border:0;border-left:2px solid transparent;background:transparent;text-align:left;color:#817a76;font-size:12px;line-height:1.5;cursor:pointer}.topic:hover{background:#faf6f3}.topic.active{background:#fbf1ec;border-left-color:var(--peach);color:var(--navy);font-weight:900}.topic.completed{color:var(--green)}.topic.locked{color:#aaa39f;cursor:not-allowed;opacity:.55}
+
+.main{min-width:0;padding:24px 35px 70px}.sync-status{margin-bottom:12px;padding:8px 10px;border-radius:9px;background:#f8f3ef;color:#817a76;font-size:11px;text-align:center}.sync-status.online{background:#f0f8f3;color:#3d8059}.sync-status.error{background:#fff1ef;color:#a34d43}
+.user-required{display:none;margin-bottom:15px;padding:14px;border-radius:13px;background:#fff8f3;border:1px solid #ead8cd;color:#756d69;font-size:13px}.user-required.show{display:block}
+
+.hero{background:linear-gradient(135deg,#293a79,#7259b8);color:#fff;border-radius:20px;padding:30px;margin-bottom:15px;position:relative;overflow:hidden}.hero::after{content:"AI";position:absolute;right:30px;top:5px;font-size:150px;font-weight:900;color:rgba(255,255,255,.04)}.hero h1{font-size:30px;margin:8px 0}.hero p{max-width:760px;color:rgba(255,255,255,.82);font-size:14px;line-height:1.75}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:15px}.tag{background:rgba(255,255,255,.13);padding:6px 10px;border-radius:20px;font-size:11px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:15px}.stat{background:#fff;border:1px solid var(--border);border-radius:13px;padding:15px}.stat small{display:block;color:#928984;font-size:11px}.stat strong{display:block;margin-top:4px;color:var(--navy);font-size:15px}
+
+.lesson-card,.assignment-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px}.lesson-card{min-height:500px}.lesson-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}.lesson-badge{background:var(--peach);color:#fff;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:900}.lesson-time{color:#928984;font-size:12px}.lesson-card h2{color:var(--navy);font-size:26px;margin-bottom:10px}.lesson-intro{color:#706966;font-size:14px;line-height:1.75}.lesson-content{margin-top:25px}.lesson-content h3{color:var(--navy);font-size:18px;margin:22px 0 8px}.lesson-content p{color:#716a66;font-size:14px;line-height:1.75;margin-bottom:10px}.lesson-content ul{padding-left:20px}.lesson-content li{color:#716a66;font-size:13px;margin-bottom:7px}.code-label{color:var(--navy);font-size:13px;font-weight:900;margin:24px 0 7px}.code{background:#1d2644;color:#e9edff;border-radius:12px;padding:18px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.65;white-space:pre}
+.practice{background:#fbf3ed;border:1px solid #ead8cd;border-radius:13px;padding:16px;margin-top:20px}.practice strong{display:block;color:#956650;font-size:13px;margin-bottom:6px}.practice p{color:#756d69;font-size:13px}
+.ai-box{margin-top:18px;padding:16px;border-radius:13px;background:#f4f0fb;border:1px solid #ddd3f0}.ai-box strong{color:#6746a6;font-size:13px}.ai-box p{margin-top:5px;color:#756d69;font-size:13px}.ai-pill{display:inline-block;margin-bottom:7px;background:#7657c8;color:#fff;border-radius:20px;padding:5px 9px;font-size:10px;font-weight:900}
+
+.lesson-timer{margin-top:18px;padding:13px 15px;border:1px solid var(--border);border-radius:12px;background:#faf7f5;display:flex;align-items:center;justify-content:space-between;gap:12px}.lesson-timer-left{display:flex;align-items:center;gap:9px}.timer-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#eee8e4;font-size:16px}.timer-label{color:var(--navy);font-size:13px;font-weight:800}.timer-sub{display:block;margin-top:2px;color:#8d8580;font-size:11px}.timer-value{min-width:65px;text-align:center;padding:7px 9px;border-radius:8px;background:#eee8e4;color:var(--navy);font-size:14px;font-weight:900}.timer-value.ready{background:#dff0e5;color:#3d8059}
+.actions{display:flex;gap:8px;margin-top:22px}.btn{border:0;border-radius:9px;padding:11px 16px;font-size:13px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}.btn.secondary{background:#fff;border:1px solid var(--border);color:var(--navy)}.btn.complete{background:var(--green)}.btn.waiting,#completeBtn.waiting{background:#bdb6b2;cursor:not-allowed}.btn:disabled{opacity:.7;cursor:not-allowed}
+
+.assignment-card{margin-top:18px}.assignment-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:15px}.assignment-card h3{color:var(--navy);font-size:22px;margin:5px 0}.assignment-badge{padding:7px 10px;border-radius:20px;background:#fbf1ec;color:#956650;font-size:11px;font-weight:900}.assignment-description{color:#716a66;font-size:14px;line-height:1.75}.assignment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.assignment-item{background:#faf7f5;border:1px solid var(--border);border-radius:11px;padding:13px}.assignment-item strong{display:block;color:var(--navy);font-size:13px;margin-bottom:5px}.assignment-item span{color:#837b77;font-size:13px;line-height:1.6}.assignment-check{margin-top:16px;padding:14px;border-radius:12px;background:#f8f1f5;color:#716a66;font-size:13px;line-height:1.7}.assignment-check strong{color:var(--navy)}
+
+.right-panel{background:#fff;border-left:1px solid var(--border);padding:20px 15px;position:sticky;top:70px;height:calc(100vh - 70px);overflow-y:auto}.panel-title{color:var(--navy);font-size:13px;font-weight:900;margin-bottom:12px}.progress-card{background:#f8f1f5;border-radius:14px;padding:18px;text-align:center}.progress-circle{width:100px;height:100px;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0deg,#e7dfdb 0deg);position:relative}.progress-circle::after{content:"";position:absolute;width:74px;height:74px;background:#fff;border-radius:50%}.progress-circle span{position:relative;z-index:2;color:var(--navy);font-size:16px;font-weight:900}.progress-card p{color:#8c827d;font-size:12px;line-height:1.6;margin-top:12px}.month-progress{margin-top:22px}.month-progress-item{padding:10px 0;border-bottom:1px solid #eee6e1}.month-progress-item strong{display:block;color:var(--navy);font-size:13px}.month-progress-item span{color:#928a85;font-size:12px}
+
+.certificate-box{margin-top:22px;padding:16px;border-radius:14px;background:#f8f3ef;border:1px solid var(--border);text-align:center}.certificate-icon{width:48px;height:48px;margin:0 auto 10px;display:grid;place-items:center;border-radius:12px;background:#ebe5e1;font-size:22px}.certificate-box strong{display:block;color:var(--navy);font-size:13px;margin-bottom:5px}.certificate-box p{color:#918781;font-size:12px;line-height:1.6;margin-bottom:12px}.certificate-price{margin:10px 0 12px;padding:9px;border-radius:9px;background:#fff;color:#827a75;font-size:12px}.certificate-price strong{display:inline;color:var(--peach);font-size:14px}.certificate-btn{width:100%;border:0;border-radius:8px;padding:10px;background:#ddd7d3;color:#938b86;font-size:13px;font-weight:900;cursor:not-allowed}.certificate-box.unlocked{background:#f0f8f3;border-color:#b9dbc7}.certificate-box.unlocked .certificate-icon{background:#dcefe4}.certificate-box.unlocked .certificate-btn{background:var(--green);color:#fff;cursor:pointer}.certificate-box.unlocked strong{color:#3d8059}
+
+.certificate-modal{position:fixed;inset:0;background:rgba(18,25,55,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:5000;overflow:auto}.certificate-modal.show{display:flex}.certificate{width:min(850px,100%);background:#fff;border:10px solid #eee6df;outline:2px solid var(--peach);padding:55px;text-align:center;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}.certificate-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:0;border-radius:50%;background:#f2ece8;color:var(--navy);font-size:20px;cursor:pointer}.certificate-top{color:var(--navy);font-size:14px;font-weight:900;letter-spacing:3px}.certificate-line{width:100px;height:3px;background:var(--peach);margin:18px auto}.certificate-small{color:#9a6c58;font-size:11px;letter-spacing:3px;font-weight:900}.certificate-paid-note{display:inline-block;margin-top:10px;padding:6px 10px;border-radius:20px;background:#f0f8f3;color:#3d8059;font-size:11px;font-weight:800}.certificate h1{color:var(--navy);font-family:Georgia,serif;font-size:32px;margin:20px 0}.certificate p{color:#716b68;font-size:13px;line-height:1.8;max-width:600px;margin:8px auto}.certificate h2{color:var(--peach);font-family:Georgia,serif;font-size:29px;margin:15px 0}.certificate-details{display:flex;justify-content:center;gap:60px;margin:30px 0}.certificate-details div{display:flex;flex-direction:column;gap:5px}.certificate-details strong{color:var(--navy);font-size:12px}.certificate-details span{color:#837a75;font-size:12px}.certificate-footer{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}.certificate-footer div{display:flex;flex-direction:column;gap:4px}.certificate-footer strong{color:var(--navy);font-size:12px}.certificate-footer span{color:#938a85;font-size:11px}.print-certificate{margin-top:30px;padding:12px 20px;border:0;border-radius:9px;background:var(--navy);color:#fff;font-size:13px;font-weight:900;cursor:pointer}
+
+@media(max-width:1150px){.layout{grid-template-columns:245px minmax(0,1fr)}.right-panel{display:none}.main{padding:22px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.topbar{height:62px;padding:0 12px}.menu-btn{display:block}.course-name,.back-btn{display:none}.layout{display:block}.sidebar{position:fixed;left:-290px;top:62px;width:280px;height:calc(100vh - 62px);z-index:2000;transition:left .3s;box-shadow:10px 0 35px rgba(0,0,0,.18)}.sidebar.show{left:0}.overlay{position:fixed;inset:62px 0 0;background:rgba(20,25,50,.35);z-index:1500;display:none}.overlay.show{display:block}.main{padding:14px 12px 40px}.hero{padding:22px;border-radius:16px}.hero h1{font-size:24px}.lesson-card{padding:20px}.lesson-card h2{font-size:23px}}
+@media(max-width:500px){.account-info{display:none}.stats{grid-template-columns:1fr 1fr;gap:7px}.hero{padding:18px}.hero h1{font-size:22px}.lesson-card{padding:16px}.lesson-card h2{font-size:21px}.lesson-timer{align-items:flex-start}.actions{display:grid;grid-template-columns:1fr 1fr}.btn.complete{grid-column:1/-1}.assignment-grid{grid-template-columns:1fr}.assignment-header{flex-direction:column}.certificate{padding:35px 20px}.certificate h1{font-size:23px}.certificate h2{font-size:24px}.certificate-details{gap:20px;flex-wrap:wrap}.certificate-footer{gap:20px;flex-wrap:wrap;justify-content:center}}
+@media print{body *{visibility:hidden!important}.certificate-modal,.certificate-modal *{visibility:visible!important}.certificate-modal{position:static;display:block!important;background:#fff;padding:0}.certificate{width:100%;max-width:none;box-shadow:none;outline:none}.certificate-close,.print-certificate{display:none!important}}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<button class="menu-btn" id="menuBtn">☰</button>
+<div class="logo">M</div>
+<div class="brand">MamRaj<small>NEXUS ACADEMY</small></div>
+<a href="dashboard.html" class="back-btn">← Dashboard</a>
+<div class="course-name">Human Resource Management with AI</div>
+
+<div class="header-progress">
+<div class="progress-line"><span id="headerProgress"></span></div>
+<span class="header-percent" id="headerPercent">0%</span>
+</div>
+
+<div class="account-area">
+<button class="google-login-btn" id="googleLoginBtn">Continue with Google</button>
+<div class="account-user" id="accountUser" style="display:none">
+<img class="account-avatar" id="accountAvatar" alt="Profile">
+<div class="account-info">
+<span class="account-name" id="accountName">Learner</span>
+<span class="account-status">Progress synced</span>
+</div>
+<button class="logout-btn" id="logoutBtn">Sign out</button>
+</div>
+</div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-title">6 MONTH PROFESSIONAL PROGRAM</div>
+<div id="courseNavigation"></div>
+</aside>
+
+<main class="main">
+
+<div class="sync-status" id="syncStatus">Sign in with Google to save your progress to your account.</div>
+
+<div class="user-required" id="userRequired">
+<strong>Account recommended for cloud progress</strong><br>
+Sign in with Google so your completed topics, current lesson and certificate status can follow you across devices.
+</div>
+
+<section class="hero">
+<div class="hero-label">MAMRAJ NEXUS ACADEMY • 6 MONTH PROFESSIONAL PROGRAM</div>
+<h1>Human Resource Management with AI</h1>
+<p>
+Build practical HR capability from foundations to modern people operations.
+Learn recruitment, job analysis, onboarding, performance, compensation,
+employee relations, HR analytics, workforce planning, learning and development,
+and responsible AI-assisted HR workflows through structured projects.
+</p>
+<div class="tags">
+<span class="tag">HR Foundations</span><span class="tag">Recruitment</span><span class="tag">Job Analysis</span>
+<span class="tag">Performance</span><span class="tag">Compensation</span><span class="tag">HR Analytics</span>
+<span class="tag">People Operations</span><span class="tag">AI for HR</span>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat"><small>DURATION</small><strong>6 Months</strong></div>
+<div class="stat"><small>WEEKS</small><strong>24</strong></div>
+<div class="stat"><small>TOPICS</small><strong>48</strong></div>
+<div class="stat"><small>PROJECTS</small><strong>10+</strong></div>
+</section>
+
+<section class="lesson-card">
+<div class="lesson-meta">
+<span class="lesson-badge" id="lessonBadge">MONTH 01 • WEEK 01</span>
+<span class="lesson-time">⏱ 5 min minimum</span>
+</div>
+
+<h2 id="lessonTitle">Introduction to Human Resource Management</h2>
+<p class="lesson-intro" id="lessonIntro"></p>
+
+<div class="lesson-content" id="lessonContent"></div>
+
+<div class="code-label">Practical Template / Example</div>
+<pre class="code"><code id="lessonCode"></code></pre>
+
+<div class="practice">
+<strong>🎯 Practice Task</strong>
+<p id="practiceText"></p>
+</div>
+
+<div class="ai-box">
+<span class="ai-pill">AI PRACTICE</span>
+<strong>Use AI as an HR assistant — not as the final decision-maker.</strong>
+<p id="aiText"></p>
+</div>
+
+<div class="lesson-timer">
+<div class="lesson-timer-left">
+<div class="timer-icon">⏱</div>
+<div>
+<span class="timer-label">Lesson learning time</span>
+<span class="timer-sub" id="timerSub">Spend 5 minutes on this topic to unlock completion.</span>
+</div>
+</div>
+<div class="timer-value" id="timerValue">5:00</div>
+</div>
+
+<div class="actions">
+<button class="btn complete waiting" id="completeBtn" disabled>🔒 Complete after 5 minutes</button>
+<button class="btn secondary" id="previousBtn">← Previous</button>
+<button class="btn" id="nextBtn">Next Topic →</button>
+</div>
+</section>
+
+<section class="assignment-card">
+<div class="assignment-header">
+<div>
+<div class="assignment-label">FINAL COURSE ASSIGNMENT</div>
+<h3>🏆 Build an AI-Assisted HR Operations Portfolio</h3>
+</div>
+<span class="assignment-badge">CAPSTONE PROJECT</span>
+</div>
+
+<p class="assignment-description">
+Design a complete people-operations case study for a fictional organization.
+Analyze workforce needs, create a job profile, design a recruitment process,
+build an onboarding plan, create HR metrics and dashboards, and demonstrate
+responsible AI-assisted workflows with human review.
+</p>
+
+<div class="assignment-grid">
+<div class="assignment-item"><strong>👥 Workforce Planning</strong><span>Identify roles, skills, headcount needs and workforce priorities.</span></div>
+<div class="assignment-item"><strong>📄 Job Analysis</strong><span>Create job descriptions, competency frameworks and structured requirements.</span></div>
+<div class="assignment-item"><strong>🎯 Recruitment</strong><span>Design sourcing, screening, interview and candidate communication workflows.</span></div>
+<div class="assignment-item"><strong>🤖 AI for HR</strong><span>Demonstrate prompts for drafting, summarization and analysis with privacy and bias controls.</span></div>
+<div class="assignment-item"><strong>📊 HR Analytics</strong><span>Build KPIs for hiring, retention, attendance, performance and workforce trends.</span></div>
+<div class="assignment-item"><strong>🌱 Employee Experience</strong><span>Create onboarding, learning, engagement and development recommendations.</span></div>
+</div>
+
+<div class="assignment-check">
+<strong>📋 Submission Checklist</strong><br>
+✓ Workforce plan<br>
+✓ Job description + competency model<br>
+✓ Recruitment workflow<br>
+✓ Structured interview scorecard<br>
+✓ Onboarding plan<br>
+✓ HR KPI dashboard/report<br>
+✓ AI prompt library with review rules<br>
+✓ Ethics, privacy and bias checklist<br>
+✓ Executive HR presentation
+</div>
+</section>
+
+</main>
+
+<aside class="right-panel">
+<div class="panel-title">YOUR PROGRESS</div>
+<div class="progress-card">
+<div class="progress-circle" id="progressCircle"><span id="progressPercent">0%</span></div>
+<p>Complete each topic sequentially. Every topic requires 5 minutes before completion is enabled.</p>
+</div>
+
+<div class="month-progress">
+<div class="panel-title">6 MONTH JOURNEY</div>
+<div id="monthProgress"></div>
+</div>
+
+<div class="certificate-box" id="certificateBox">
+<div class="certificate-icon" id="certificateIcon">🔒</div>
+<strong id="certificateTitle">Certificate Locked</strong>
+<p id="certificateText">Complete all 48 topics to become eligible for your certificate.</p>
+<div class="certificate-price" id="certificatePrice">Certificate Fee: <strong>₹49</strong></div>
+<button class="certificate-btn" id="certificateBtn" disabled>🔒 Complete Course First</button>
+</div>
+</aside>
+</div>
+
+<div class="certificate-modal" id="certificateModal">
+<div class="certificate">
+<button class="certificate-close" onclick="closeCertificate()">×</button>
+<div class="certificate-top">MAMRAJ NEXUS ACADEMY</div>
+<div class="certificate-line"></div>
+<div class="certificate-small">CERTIFICATE OF COMPLETION</div>
+<div class="certificate-paid-note">Official certificate • ₹49 certificate processing fee paid</div>
+<h1>Human Resource Management with AI</h1>
+<p>This certificate is proudly presented to</p>
+<h2 id="certificateStudentName">Learner</h2>
+<p>for successfully completing the 6-month Human Resource Management with AI program at MamRaj Nexus Academy.</p>
+<div class="certificate-details">
+<div><strong>Duration</strong><span>6 Months</span></div>
+<div><strong>Topics</strong><span>48 / 48</span></div>
+<div><strong>Projects</strong><span>10+</span></div>
+</div>
+<div class="certificate-footer">
+<div><strong>MamRaj Nexus Academy</strong><span>Academy</span></div>
+<div><strong id="certificateDate"></strong><span>Completion Year</span></div>
+</div>
+<button class="print-certificate" onclick="window.print()">🖨 Print / Save Certificate</button>
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {getFirestore,doc,getDoc,setDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig={
+ apiKey:"YOUR_FIREBASE_API_KEY",
+ authDomain:"YOUR_PROJECT.firebaseapp.com",
+ projectId:"YOUR_PROJECT_ID",
+ storageBucket:"YOUR_PROJECT.firebasestorage.app",
+ messagingSenderId:"YOUR_MESSAGING_SENDER_ID",
+ appId:"YOUR_FIREBASE_APP_ID"
+};
+
+const firebaseApp=initializeApp(firebaseConfig);
+const firebaseAuth=getAuth(firebaseApp);
+const googleProvider=new GoogleAuthProvider();
+const db=getFirestore(firebaseApp);
+
+const googleLoginBtn=document.getElementById("googleLoginBtn");
+const accountUser=document.getElementById("accountUser");
+const accountName=document.getElementById("accountName");
+const accountAvatar=document.getElementById("accountAvatar");
+const logoutBtn=document.getElementById("logoutBtn");
+const syncStatus=document.getElementById("syncStatus");
+const userRequired=document.getElementById("userRequired");
+
+function setSyncStatus(message,type=""){
+ syncStatus.textContent=message;
+ syncStatus.className="sync-status "+type;
+}
+
+googleLoginBtn.addEventListener("click",async()=>{
+ try{
+  googleLoginBtn.disabled=true;
+  googleLoginBtn.textContent="Signing in...";
+  await signInWithPopup(firebaseAuth,googleProvider);
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Google sign-in failed. Please try again.","error");
+ }finally{
+  googleLoginBtn.disabled=false;
+  googleLoginBtn.textContent="Continue with Google";
+ }
+});
+
+logoutBtn.addEventListener("click",async()=>{
+ try{await saveUserProgress();await signOut(firebaseAuth)}catch(e){console.error(e)}
+});
+
+async function saveUserProgress(){
+ const user=firebaseAuth.currentUser;
+ if(!user)return;
+ try{
+  const ref=doc(db,"users",user.uid,"courseProgress","humanResourceManagementAI");
+  await setDoc(ref,{
+   userId:user.uid,email:user.email||"",displayName:user.displayName||"",
+   photoURL:user.photoURL||"",completed:completed,currentTopic:currentTopic,
+   certificatePaid:certificatePaid,updatedAt:serverTimestamp()
+  },{merge:true});
+  setSyncStatus("✓ HR course progress saved to your Google account.","online");
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Could not save cloud progress. Check Firebase setup.","error");
+ }
+}
+
+async function loadUserProgress(user){
+ try{
+  const ref=doc(db,"users",user.uid,"courseProgress","humanResourceManagementAI");
+  const snapshot=await getDoc(ref);
+  if(snapshot.exists()){
+   const data=snapshot.data();
+   if(Array.isArray(data.completed))completed=data.completed.map(Number).filter(Number.isFinite).sort((a,b)=>a-b);
+   if(Number.isInteger(Number(data.currentTopic)))currentTopic=Number(data.currentTopic);
+   if(typeof data.certificatePaid==="boolean"){
+    certificatePaid=data.certificatePaid;
+    localStorage.setItem(PAYMENT_KEY,certificatePaid?"paid":"unpaid");
+   }
+   localStorage.setItem(STORAGE_KEY,JSON.stringify(completed));
+  }
+  buildNavigation();openTopic(isTopicUnlocked(currentTopic)?currentTopic:1);updateProgress();updateCertificate();
+  setSyncStatus("✓ Your HR course progress is synced with your Google account.","online");
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Signed in, but cloud progress could not be loaded.","error");
+ }
+}
+
+onAuthStateChanged(firebaseAuth,async(user)=>{
+ if(user){
+  googleLoginBtn.style.display="none";accountUser.style.display="flex";
+  accountName.textContent=user.displayName||user.email||"Learner";
+  if(user.photoURL){accountAvatar.src=user.photoURL;accountAvatar.style.display="block"}else accountAvatar.style.display="none";
+  userRequired.classList.remove("show");setSyncStatus("Loading your saved HR progress...");
+  await loadUserProgress(user);
+ }else{
+  googleLoginBtn.style.display="block";accountUser.style.display="none";userRequired.classList.add("show");
+  setSyncStatus("Sign in with Google to save your HR course progress.");
+  buildNavigation();openTopic(isTopicUnlocked(currentTopic)?currentTopic:1);updateProgress();updateCertificate();
+ }
+});
+
+document.addEventListener("courseProgressChanged",async()=>{if(firebaseAuth.currentUser)await saveUserProgress()});
+setInterval(async()=>{if(firebaseAuth.currentUser)await saveUserProgress()},5000);
+</script>
+
+<script>
+/* =========================================================
+   6-MONTH HUMAN RESOURCE MANAGEMENT + AI COURSE
+   24 WEEKS / 48 TOPICS
+========================================================= */
+
+const course=[
+{ id:1,month:"Month 1",title:"HR Foundations & People Operations",topics:[
+{id:1,week:1,title:"Introduction to Human Resource Management",intro:"Understand the purpose of HR, the employee lifecycle and how people practices support organizational goals.",content:`<h3>What HR Does</h3><p>HR helps organizations attract, develop, support and retain people while building fair, effective and legally aware workplace processes.</p><h3>Employee Lifecycle</h3><ul><li>Workforce planning</li><li>Recruitment</li><li>Onboarding</li><li>Performance</li><li>Development</li><li>Retention and exit</li></ul>`,code:`Business Strategy\n      ↓\nPeople Strategy\n      ↓\nHR Processes\n      ↓\nEmployee Experience`,practice:"Map the employee lifecycle for a fictional organization.",ai:"Ask AI to turn your lifecycle map into a checklist. Review every item before using it."},
+{id:2,week:1,title:"HR Roles, Responsibilities & Structure",intro:"Explore HR business partnering, talent acquisition, people operations, learning and employee relations.",content:`<h3>Common HR Areas</h3><ul><li>Talent acquisition</li><li>People operations</li><li>Learning and development</li><li>Compensation and benefits</li><li>Employee relations</li><li>HR analytics</li></ul>`,code:`HR Team\n├─ Talent\n├─ People Ops\n├─ L&D\n├─ Rewards\n└─ Analytics`,practice:"Design an HR team structure for a 250-person company.",ai:"Use AI to compare two possible HR structures and ask it to state assumptions."},
+{id:3,week:2,title:"HR Policies & Employee Handbook",intro:"Learn how policies create consistent expectations and how HR communicates workplace rules.",content:`<h3>Policy Principles</h3><p>Policies should be clear, accessible, consistently applied and reviewed against the organization's applicable requirements.</p>`,code:`Policy\n→ Purpose\n→ Scope\n→ Rules\n→ Responsibilities\n→ Procedure\n→ Review`,practice:"Draft an outline for an employee handbook.",ai:"Ask AI to simplify policy language without changing the approved meaning."},
+{id:4,week:2,title:"Employee Lifecycle & People Processes",intro:"Design repeatable HR processes from joining through separation.",content:`<h3>Process Thinking</h3><p>Document owners, inputs, steps, approvals, systems and outputs so processes are measurable and repeatable.</p>`,code:`Trigger → Owner → Steps → Approval → Record → Outcome`,practice:"Create a process map for employee joining.",ai:"Use AI to identify missing steps in your process map, then verify manually."},
+{id:5,week:3,title:"Workplace Communication",intro:"Build clear, professional HR communication for employees, candidates and managers.",content:`<h3>HR Communication</h3><ul><li>Be clear</li><li>Use neutral language</li><li>Protect confidentiality</li><li>State next steps</li><li>Keep records when appropriate</li></ul>`,code:`Context\n→ Key message\n→ Action\n→ Deadline\n→ Contact`,practice:"Write an employee announcement for a new HR process.",ai:"Ask AI for three tone variations, then select and edit one yourself."},
+{id:6,week:3,title:"Employee Records & HR Documentation",intro:"Understand structured employee records, document control, access and confidentiality.",content:`<h3>Documentation</h3><p>HR records should be accurate, appropriately accessible and handled according to organizational policy and applicable requirements.</p>`,code:`Employee ID\nRole\nDepartment\nJoin Date\nStatus\nDocuments`,practice:"Design a simple employee master-data structure.",ai:"Ask AI to suggest data fields, but do not expose real employee personal data."},
+{id:7,week:4,title:"HR Compliance Mindset",intro:"Develop a practical approach to identifying HR compliance risks and escalating questions.",content:`<h3>Risk Mindset</h3><p>HR professionals should distinguish policy, contractual, statutory and ethical considerations and seek qualified advice when required.</p>`,code:`Question\n→ Identify requirement\n→ Check policy\n→ Document\n→ Escalate when needed`,practice:"Create an HR compliance-risk checklist for a fictional company.",ai:"Use AI to generate possible questions, not to replace legal or professional advice."},
+{id:8,week:4,title:"HR Foundations Project",intro:"Build a mini HR operations handbook covering lifecycle, roles, policies and records.",content:`<h3>Project Deliverables</h3><ul><li>HR structure</li><li>Lifecycle map</li><li>Policy index</li><li>Employee record fields</li><li>Communication templates</li></ul>`,code:`People Strategy\n ↓\nProcesses\n ↓\nPolicies\n ↓\nEmployee Experience`,practice:"Submit a 5–8 page HR operations foundation document.",ai:"Use AI to review structure and clarity while keeping human ownership of final content."}
+]},
+{ id:2,month:"Month 2",title:"Recruitment, Job Analysis & Talent Acquisition",topics:[
+{id:9,week:5,title:"Job Analysis",intro:"Learn how to identify tasks, responsibilities, competencies and outcomes for a role.",content:`<h3>Job Analysis</h3><p>Start with work: what the person does, what outcomes they own, which skills are required and what context they operate in.</p>`,code:`Tasks → Responsibilities → Skills → Outcomes`,practice:"Analyze a junior HR executive role and list ten core responsibilities.",ai:"Ask AI to identify duplicate or vague responsibilities in your draft."},
+{id:10,week:5,title:"Job Description Design",intro:"Create clear job descriptions that communicate role purpose, responsibilities and requirements.",content:`<h3>JD Structure</h3><ul><li>Role title</li><li>Purpose</li><li>Responsibilities</li><li>Qualifications</li><li>Skills</li><li>Success measures</li></ul>`,code:`Role Purpose\nResponsibilities\nRequirements\nSuccess Metrics`,practice:"Write a complete job description for a data analyst.",ai:"Use AI to improve clarity while checking that requirements are genuinely job-related."},
+{id:11,week:6,title:"Competency Frameworks",intro:"Build behavioral and functional competencies that support consistent assessment.",content:`<h3>Competency Levels</h3><p>Define observable behaviors rather than vague labels such as 'excellent attitude'.</p>`,code:`Competency\n→ Definition\n→ Observable Behavior\n→ Level`,practice:"Create a three-level competency model for communication.",ai:"Ask AI for observable behavior examples and remove anything subjective or irrelevant."},
+{id:12,week:6,title:"Sourcing Strategy",intro:"Design sourcing channels and outreach approaches for different talent segments.",content:`<h3>Sourcing Mix</h3><ul><li>Employee referrals</li><li>Professional platforms</li><li>Campus hiring</li><li>Communities</li><li>Talent pools</li></ul>`,code:`Role → Talent Market → Channel → Message → Measure`,practice:"Create a sourcing plan for five difficult-to-fill roles.",ai:"Ask AI to create outreach variants and review them for accuracy and inclusiveness."},
+{id:13,week:7,title:"Screening & Shortlisting",intro:"Create structured screening criteria that improve consistency and reduce arbitrary decisions.",content:`<h3>Structured Screening</h3><p>Define job-related criteria before reviewing candidates and document the reason for advancing or rejecting an application.</p>`,code:`Requirement\n→ Evidence\n→ Score\n→ Decision`,practice:"Create a screening scorecard with five job-related criteria.",ai:"AI may summarize application information, but human reviewers should verify evidence and make decisions."},
+{id:14,week:7,title:"Interview Design",intro:"Build structured interviews using consistent questions and anchored scoring.",content:`<h3>Structured Interviews</h3><ul><li>Same core questions</li><li>Behavioral evidence</li><li>Defined scoring</li><li>Panel calibration</li></ul>`,code:`Question → Evidence → Rating → Notes`,practice:"Design an interview guide for a team-lead role.",ai:"Ask AI for STAR-style questions, then validate them against the actual competencies."},
+{id:15,week:8,title:"Candidate Experience",intro:"Design candidate communication from application through decision while protecting professionalism and privacy.",content:`<h3>Candidate Journey</h3><p>Clear expectations, timely communication and respectful interactions influence employer reputation.</p>`,code:`Apply → Screen → Interview → Decision → Offer / Close`,practice:"Design email templates for interview scheduling and rejection.",ai:"Use AI to make communication empathetic without making promises you cannot keep."},
+{id:16,week:8,title:"Recruitment Analytics Project",intro:"Build a talent acquisition dashboard and process review using realistic recruitment data.",content:`<h3>Metrics</h3><ul><li>Time to hire</li><li>Source mix</li><li>Funnel conversion</li><li>Offer acceptance</li><li>Candidate experience</li></ul>`,code:`Applicants\n ↓\nScreened\n ↓\nInterviewed\n ↓\nOffers\n ↓\nHires`,practice:"Create a recruitment funnel report and recommend three process improvements.",ai:"Ask AI to identify patterns in anonymized metrics and challenge its conclusions."}
+]},
+{ id:3,month:"Month 3",title:"Onboarding, Performance & Employee Development",topics:[
+{id:17,week:9,title:"Onboarding Design",intro:"Build a structured onboarding experience that helps new employees become productive and connected.",content:`<h3>Onboarding Layers</h3><ul><li>Pre-boarding</li><li>Day one</li><li>First week</li><li>First 30/60/90 days</li><li>Manager check-ins</li></ul>`,code:`Offer → Preboard → Day 1 → 30 → 60 → 90`,practice:"Create a 30-60-90 day onboarding plan.",ai:"Use AI to find missing onboarding touchpoints and rewrite them for different roles."},
+{id:18,week:9,title:"Performance Management",intro:"Understand goal setting, check-ins, feedback, documentation and development planning.",content:`<h3>Continuous Performance</h3><p>Performance management works best as an ongoing process rather than a single annual event.</p>`,code:`Goals → Check-ins → Feedback → Review → Development`,practice:"Create a quarterly performance cycle for a 100-person company.",ai:"Ask AI to suggest check-in questions while keeping manager judgment central."},
+{id:19,week:10,title:"SMART Goals & OKRs",intro:"Write measurable goals that connect individual work to team and organizational outcomes.",content:`<h3>Goal Quality</h3><ul><li>Specific</li><li>Measurable</li><li>Relevant</li><li>Time-bound</li><li>Outcome-focused</li></ul>`,code:`Objective\n +\nKey Results\n =\nMeasurable Direction`,practice:"Convert five vague employee goals into measurable goals.",ai:"Ask AI to flag goals that are not measurable or outcome-focused."},
+{id:20,week:10,title:"Feedback & Coaching",intro:"Practice evidence-based feedback and coaching conversations.",content:`<h3>Feedback Model</h3><p>Describe observable behavior, impact and next steps rather than making personal judgments.</p>`,code:`Situation → Behavior → Impact → Next Step`,practice:"Write a coaching conversation for a missed deadline.",ai:"Role-play a manager conversation with AI, then review whether the language is fair and constructive."},
+{id:21,week:11,title:"Learning Needs Analysis",intro:"Identify capability gaps and connect learning interventions to business needs.",content:`<h3>L&D Questions</h3><ul><li>What capability is missing?</li><li>Who needs it?</li><li>What behavior should change?</li><li>How will impact be measured?</li></ul>`,code:`Business Need\n→ Skill Gap\n→ Intervention\n→ Measure`,practice:"Conduct a learning-needs analysis for a growing customer-support team.",ai:"Ask AI for possible interventions, then select only those that fit the actual gap."},
+{id:22,week:11,title:"Career Development",intro:"Build career paths, development plans and internal mobility approaches.",content:`<h3>Development Plan</h3>`,code:`Current Role\n→ Skills Gap\n→ Experience\n→ Learning\n→ Next Role`,practice:"Create a development plan for an HR coordinator moving toward HRBP.",ai:"Use AI to suggest development activities, but validate feasibility with role requirements."},
+{id:23,week:12,title:"Employee Engagement",intro:"Understand engagement drivers and design practical listening and action mechanisms.",content:`<h3>Listening Cycle</h3><p>Collect feedback, identify themes, prioritize actions, communicate decisions and measure progress.</p>`,code:`Listen → Analyze → Prioritize → Act → Re-measure`,practice:"Design a quarterly employee listening program.",ai:"Use AI to cluster anonymized survey comments and require human review of themes."},
+{id:24,week:12,title:"Performance & Development Project",intro:"Create a complete employee development and performance framework for a fictional organization.",content:`<h3>Project</h3><ul><li>Goal framework</li><li>Check-in cadence</li><li>Feedback guide</li><li>Learning plan</li><li>Career framework</li></ul>`,code:`Goals + Feedback + Learning\n            ↓\n       Development`,practice:"Submit a complete performance and development playbook.",ai:"Use AI to review consistency and readability, not to decide employee performance."}
+]},
+{ id:4,month:"Month 4",title:"Compensation, Employee Relations & Workplace Practices",topics:[
+{id:25,week:13,title:"Compensation Fundamentals",intro:"Understand fixed pay, variable pay, total rewards and internal consistency.",content:`<h3>Total Rewards</h3><ul><li>Base pay</li><li>Variable pay</li><li>Benefits</li><li>Recognition</li><li>Growth opportunities</li></ul>`,code:`Total Rewards\n= Pay + Benefits + Growth + Recognition`,practice:"Design a total-rewards overview for three job levels.",ai:"Ask AI to explain compensation concepts in employee-friendly language; verify all figures independently."},
+{id:26,week:13,title:"Job Evaluation & Pay Structure",intro:"Explore how organizations group roles and create structured compensation ranges.",content:`<h3>Job Evaluation</h3><p>Evaluate roles using consistent job-related factors rather than individual preferences.</p>`,code:`Role Factors\n→ Level\n→ Grade\n→ Range\n→ Review`,practice:"Create a simple five-level job architecture.",ai:"Use AI to compare possible factors and check for inconsistent definitions."},
+{id:27,week:14,title:"Benefits & Total Rewards Communication",intro:"Communicate benefits and reward programs clearly while distinguishing facts from estimates.",content:`<h3>Communication</h3><p>Employees need understandable explanations of eligibility, value, timing and where to get official information.</p>`,code:`Benefit → Eligibility → Value → Process → Support`,practice:"Create a one-page total rewards communication sheet.",ai:"Ask AI to simplify language while keeping official policy wording intact."},
+{id:28,week:14,title:"Employee Relations",intro:"Learn a structured approach to workplace concerns, documentation, investigation and escalation.",content:`<h3>ER Process</h3><ul><li>Receive concern</li><li>Document</li><li>Assess</li><li>Investigate appropriately</li><li>Decide/escalate</li><li>Follow up</li></ul>`,code:`Concern\n→ Record\n→ Assess\n→ Investigate\n→ Action\n→ Follow-up`,practice:"Create an employee-relations case workflow.",ai:"Use AI only with anonymized scenarios and never upload sensitive employee information."},
+{id:29,week:15,title:"Conflict Resolution",intro:"Develop practical approaches for workplace conflict, mediation and respectful communication.",content:`<h3>Conflict Approach</h3><p>Separate people from the issue, understand perspectives, focus on evidence and agree on next steps.</p>`,code:`Issue → Perspectives → Evidence → Options → Agreement`,practice:"Role-play a team conflict and document a resolution plan.",ai:"Use AI as a role-play partner, then assess whether its proposed solution is fair and practical."},
+{id:30,week:15,title:"Attendance & Leave Administration",intro:"Design reliable processes for attendance, leave requests, approvals and records.",content:`<h3>Process Controls</h3>`,code:`Request → Eligibility → Approval → Record → Reporting`,practice:"Create a leave-management workflow and escalation matrix.",ai:"Ask AI to identify process gaps without sharing employee-specific data."},
+{id:31,week:16,title:"HR Risk & Workplace Investigations",intro:"Understand investigation planning, neutrality, evidence handling and appropriate escalation.",content:`<h3>Investigation Principles</h3><ul><li>Define scope</li><li>Preserve relevant information</li><li>Interview appropriately</li><li>Document evidence</li><li>Maintain confidentiality</li></ul>`,code:`Concern → Scope → Evidence → Interviews → Findings → Action`,practice:"Create an investigation plan for a fictional workplace complaint.",ai:"AI can help structure questions, but should not determine guilt or replace qualified investigation processes."},
+{id:32,week:16,title:"Employee Relations Project",intro:"Build a complete HR case-management framework for common workplace concerns.",content:`<h3>Deliverables</h3><ul><li>Case intake form</li><li>Investigation workflow</li><li>Documentation checklist</li><li>Escalation matrix</li><li>Communication templates</li></ul>`,code:`Case Intake\n ↓\nAssessment\n ↓\nAction\n ↓\nClosure\n ↓\nLearning`,practice:"Submit an anonymized employee-relations process manual.",ai:"Use AI for process review only; keep confidential facts out of AI tools."}
+]},
+{ id:5,month:"Month 5",title:"HR Analytics, Workforce Planning & AI Workflows",topics:[
+{id:33,week:17,title:"HR Metrics & KPIs",intro:"Learn how to define useful HR metrics and avoid measuring activity without business meaning.",content:`<h3>Useful HR Metrics</h3><ul><li>Turnover</li><li>Time to hire</li><li>Offer acceptance</li><li>Absence</li><li>Internal mobility</li><li>Learning participation</li></ul>`,code:`Metric = Definition + Formula + Period + Owner`,practice:"Define ten HR KPIs with formulas and business purpose.",ai:"Ask AI to challenge whether each KPI supports a decision."},
+{id:34,week:17,title:"HR Dashboard Design",intro:"Design dashboards that help HR and managers understand workforce trends.",content:`<h3>Dashboard Layers</h3><ul><li>Headline KPIs</li><li>Trends</li><li>Segments</li><li>Drivers</li><li>Actions</li></ul>`,code:`Workforce KPIs\n ↓\nTrend\n ↓\nSegment\n ↓\nAction`,practice:"Sketch an HR dashboard for a 500-person organization.",ai:"Use AI to propose dashboard questions, then remove irrelevant metrics."},
+{id:35,week:18,title:"Turnover & Retention Analytics",intro:"Analyze employee exits, retention patterns and potential workforce risks.",content:`<h3>Retention Questions</h3><p>Look at rates over time and across meaningful job, tenure or organizational segments while avoiding unsupported conclusions.</p>`,code:`Leavers / Average Headcount × 100\n= Turnover Rate`,practice:"Build a simple turnover analysis by department and tenure.",ai:"Ask AI to identify possible patterns, but do not treat correlation as proof of cause."},
+{id:36,week:18,title:"Workforce Planning",intro:"Translate business plans into headcount, skills and hiring requirements.",content:`<h3>Planning Model</h3>`,code:`Business Plan\n→ Workload\n→ Capacity\n→ Gap\n→ Hiring / Build / Buy`,practice:"Create a 12-month workforce plan for a growing business.",ai:"Use AI for scenario brainstorming, then validate assumptions with business owners."},
+{id:37,week:19,title:"AI-Assisted Recruitment Workflows",intro:"Design safe AI-assisted workflows for drafting, summarization and structured recruiting support.",content:`<h3>Human-in-the-Loop</h3><p>AI can support repetitive work, but hiring decisions should remain governed by appropriate human review, job-related criteria and organizational controls.</p>`,code:`Candidate Data\n ↓\nAI Assistance\n ↓\nHuman Review\n ↓\nDocumented Decision`,practice:"Design an AI-assisted candidate-screening support workflow with review checkpoints.",ai:"Create a prompt that summarizes job-related evidence while explicitly avoiding protected or irrelevant attributes."},
+{id:38,week:19,title:"AI-Assisted HR Communication",intro:"Use AI to draft employee communications while protecting accuracy, confidentiality and tone.",content:`<h3>Drafting Workflow</h3>`,code:`Approved Facts\n ↓\nAI Draft\n ↓\nHR Review\n ↓\nPolicy Check\n ↓\nSend`,practice:"Create templates for onboarding, policy updates and learning announcements.",ai:"Ask AI to produce plain-language versions, then verify every factual statement."},
+{id:39,week:20,title:"People Analytics Ethics & Privacy",intro:"Understand responsible use of employee data, privacy, fairness, transparency and human oversight.",content:`<h3>Responsible Analytics</h3><ul><li>Purpose limitation</li><li>Data minimization</li><li>Access controls</li><li>Transparency</li><li>Bias monitoring</li><li>Human oversight</li></ul>`,code:`Collect only what is needed\n ↓\nProtect it\n ↓\nUse responsibly\n ↓\nReview impact`,practice:"Create an HR analytics ethics checklist.",ai:"Ask AI to red-team your workflow for privacy and bias risks without using real employee data."},
+{id:40,week:20,title:"HR Analytics + AI Project",intro:"Build a people analytics report with workforce metrics, insights and responsible AI support.",content:`<h3>Project</h3><ul><li>HR dataset</li><li>KPI definitions</li><li>Dashboard/report</li><li>Workforce insight</li><li>AI workflow</li><li>Ethics review</li></ul>`,code:`HR Data\n ↓\nKPIs\n ↓\nAnalysis\n ↓\nAI Support\n ↓\nHuman Review\n ↓\nAction`,practice:"Create a portfolio-ready people analytics report and responsible AI workflow.",ai:"Document exactly where AI was used and where human review was required."}
+]},
+{ id:6,month:"Month 6",title:"Strategic HR, Leadership, Portfolio & Capstone",topics:[
+{id:41,week:21,title:"Strategic HR Management",intro:"Connect people strategy with organizational strategy, capability and measurable outcomes.",content:`<h3>Strategic Alignment</h3>`,code:`Business Strategy\n ↓\nPeople Priorities\n ↓\nCapabilities\n ↓\nHR Initiatives\n ↓\nOutcomes`,practice:"Create a one-page people strategy for a fictional organization.",ai:"Ask AI to challenge alignment gaps, then validate recommendations with business logic."},
+{id:42,week:21,title:"Talent Management",intro:"Understand succession, high-potential development, critical roles and internal mobility.",content:`<h3>Talent System</h3><ul><li>Critical roles</li><li>Talent pools</li><li>Development</li><li>Succession</li><li>Mobility</li></ul>`,code:`Critical Role\n→ Talent Pool\n→ Development\n→ Succession`,practice:"Design a basic succession framework for five critical roles.",ai:"Use AI to generate scenario questions, not to label real employees as high potential."},
+{id:43,week:22,title:"Leadership Development",intro:"Build practical leadership development experiences using capability models and applied learning.",content:`<h3>Leadership Development</h3><p>Combine learning, coaching, feedback and real work assignments rather than relying on training alone.</p>`,code:`Learn → Practice → Coach → Apply → Reflect`,practice:"Create a six-month leadership development plan.",ai:"Ask AI for learning activity ideas and evaluate them for relevance and accessibility."},
+{id:44,week:22,title:"Change Management",intro:"Plan people-side change through stakeholder analysis, communication, adoption and reinforcement.",content:`<h3>Change Cycle</h3>`,code:`Why → Stakeholders → Communication → Adoption → Reinforcement`,practice:"Create a change plan for implementing a new HR system.",ai:"Use AI to role-play stakeholder objections and prepare response options."},
+{id:45,week:23,title:"HR Business Partnering",intro:"Practice turning business problems into people questions, metrics and practical interventions.",content:`<h3>HRBP Approach</h3><p>Start with the business outcome, diagnose the people dimension, use evidence and recommend an actionable intervention.</p>`,code:`Business Problem\n→ People Diagnosis\n→ Evidence\n→ Intervention\n→ Measure`,practice:"Solve a fictional productivity problem using an HRBP framework.",ai:"Ask AI to act as a skeptical business leader and challenge your recommendation."},
+{id:46,week:23,title:"HR Interview & Career Readiness",intro:"Prepare for HR roles by communicating examples, metrics, process knowledge and responsible AI awareness.",content:`<h3>Interview Framework</h3><ul><li>Situation</li><li>Task</li><li>Action</li><li>Result</li><li>Learning</li></ul>`,code:`Situation → Action → Result → Learning`,practice:"Prepare ten HR interview answers using measurable outcomes.",ai:"Use AI as a mock interviewer, then rewrite answers in your own voice."},
+{id:47,week:24,title:"Capstone Planning & HR Audit",intro:"Plan the final HR portfolio project, audit the people processes and define measurable outcomes.",content:`<h3>Capstone Plan</h3><ul><li>Business context</li><li>People problem</li><li>Data and evidence</li><li>Process design</li><li>AI opportunities</li><li>Risk controls</li><li>Success metrics</li></ul>`,code:`Business Context\n ↓\nHR Diagnosis\n ↓\nSolution\n ↓\nAI Support\n ↓\nRisk Review\n ↓\nMetrics`,practice:"Prepare a complete capstone blueprint and HR process audit.",ai:"Ask AI to identify blind spots, but make the final audit judgment yourself."},
+{id:48,week:24,title:"Final HR + AI Capstone",intro:"Present a complete people-management solution combining HR practice, analytics, AI-assisted workflows and responsible governance.",content:`<h3>Final Deliverables</h3><ul><li>Workforce plan</li><li>Job analysis and recruitment system</li><li>Onboarding framework</li><li>Performance and development system</li><li>HR analytics dashboard</li><li>AI workflow library</li><li>Privacy, bias and human-review controls</li><li>Executive presentation</li></ul><h3>🎓 Completion</h3><p>After all 48 topics are completed, the learner becomes eligible for the certificate process. The official certificate is released after the required ₹49 certificate fee is successfully verified.</p>`,code:`Business Need\n      ↓\nPeople Strategy\n      ↓\nHR Processes\n      ↓\nAnalytics + AI\n      ↓\nHuman Review\n      ↓\nRecommendations\n      ↓\nExecutive Portfolio`,practice:"Submit and present the complete HR + AI capstone portfolio.",ai:"Document every AI-assisted step, the input type used, the human review step and the final owner of the decision."}
+]}
+];
+
+/* ================= STORAGE ================= */
+const STORAGE_KEY="mamraj_hr_ai_course_progress";
+const TIMER_KEY="mamraj_hr_ai_lesson_timers";
+const PAYMENT_KEY="mamraj_hr_ai_certificate_payment";
+
+let completed=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+let currentTopic=1;
+let lessonTimers=JSON.parse(localStorage.getItem(TIMER_KEY)||"{}");
+let certificatePaid=localStorage.getItem(PAYMENT_KEY)==="paid";
+
+function saveLocal(){
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(completed));
+ localStorage.setItem(TIMER_KEY,JSON.stringify(lessonTimers));
+}
+function findTopic(id){
+ for(const month of course){
+  const topic=month.topics.find(t=>t.id===id);
+  if(topic)return {month,topic};
+ }
+ return null;
+}
+function isComplete(id){return completed.includes(id)}
+function isTopicUnlocked(id){return id===1||completed.includes(id-1)}
+function isMonthUnlocked(monthId){
+ if(monthId===1)return true;
+ const previous=course.find(m=>m.id===monthId-1);
+ return previous?previous.topics.every(t=>completed.includes(t.id)):false;
+}
+
+/* ================= NAVIGATION ================= */
+function buildNavigation(){
+ const container=document.getElementById("courseNavigation");
+ container.innerHTML="";
+ course.forEach(month=>{
+  const unlocked=isMonthUnlocked(month.id);
+  const wrapper=document.createElement("div");
+  wrapper.className="month";
+  if(unlocked&&month.topics.some(t=>t.id===currentTopic))wrapper.classList.add("open");
+
+  const header=document.createElement("button");
+  header.className="month-header";
+  header.innerHTML=`<span class="month-number">${String(month.id).padStart(2,"0")}</span><span class="month-name">${month.title}</span><span class="month-lock">${unlocked?"↓":"🔒"}</span>`;
+  header.onclick=()=>{
+   if(!unlocked){alert("🔒 Complete the previous month before unlocking "+month.month+".");return}
+   wrapper.classList.toggle("open");
+  };
+
+  const topics=document.createElement("div");
+  topics.className="topics";
+  month.topics.forEach(topic=>{
+   const unlockedTopic=isTopicUnlocked(topic.id);
+   const button=document.createElement("button");
+   button.className="topic";
+   if(topic.id===currentTopic)button.classList.add("active");
+   if(isComplete(topic.id))button.classList.add("completed");
+   if(!unlockedTopic)button.classList.add("locked");
+   button.innerHTML=`<span>${isComplete(topic.id)?"✓":unlockedTopic?"○":"🔒"}</span><span>W${String(topic.week).padStart(2,"0")} • ${topic.title}</span>`;
+   button.onclick=()=>{
+    if(!isTopicUnlocked(topic.id)){alert("🔒 Complete the previous topic first.");return}
+    openTopic(topic.id);
+   };
+   topics.appendChild(button);
+  });
+  wrapper.appendChild(header);wrapper.appendChild(topics);container.appendChild(wrapper);
+ });
+}
+
+/* ================= TIMER ================= */
+const LESSON_TIME_REQUIRED=300;
+let timerInterval=null,timerStartedAt=null,timerTopicId=null,timerElapsed=0;
+
+function getStoredElapsed(id){
+ const value=Number(lessonTimers[id]||0);
+ return Number.isFinite(value)?value:0;
+}
+function getCurrentElapsed(){
+ if(!timerTopicId||!timerStartedAt)return getStoredElapsed(currentTopic);
+ return Math.min(LESSON_TIME_REQUIRED,timerElapsed+Math.floor((Date.now()-timerStartedAt)/1000));
+}
+function startLessonTimer(id){
+ clearInterval(timerInterval);
+ timerTopicId=id;timerElapsed=getStoredElapsed(id);timerStartedAt=Date.now();
+ updateLessonTimerUI();timerInterval=setInterval(tickLessonTimer,1000);
+}
+function tickLessonTimer(){
+ if(!timerTopicId)return;
+ const elapsed=getCurrentElapsed();
+ lessonTimers[timerTopicId]=elapsed;
+ saveLocal();updateLessonTimerUI();
+ if(elapsed>=LESSON_TIME_REQUIRED){
+  clearInterval(timerInterval);
+  lessonTimers[timerTopicId]=LESSON_TIME_REQUIRED;
+  timerElapsed=LESSON_TIME_REQUIRED;
+  saveLocal();updateLessonTimerUI();
+ }
+}
+function canCompleteCurrentTopic(){return getCurrentElapsed()>=LESSON_TIME_REQUIRED}
+function updateLessonTimerUI(){
+ const value=document.getElementById("timerValue"),sub=document.getElementById("timerSub"),button=document.getElementById("completeBtn");
+ if(!value||!sub||!button)return;
+ if(isComplete(currentTopic)){
+  value.textContent="✓";value.classList.add("ready");sub.textContent="Topic completed.";
+  button.disabled=true;button.classList.remove("waiting");button.textContent="✓ Completed";return;
+ }
+ const remaining=Math.max(0,LESSON_TIME_REQUIRED-getCurrentElapsed());
+ if(remaining<=0){
+  value.textContent="✓ Ready";value.classList.add("ready");
+  sub.textContent="5 minutes completed. You can now mark this topic complete.";
+  button.disabled=false;button.classList.remove("waiting");button.textContent="✓ Mark as Complete";return;
+ }
+ value.classList.remove("ready");
+ const minutes=Math.floor(remaining/60),seconds=remaining%60;
+ value.textContent=`${minutes}:${String(seconds).padStart(2,"0")}`;
+ sub.textContent=`Spend 5 minutes on this topic. ${minutes}:${String(seconds).padStart(2,"0")} remaining.`;
+ button.disabled=true;button.classList.add("waiting");button.textContent="🔒 Complete after 5 minutes";
+}
+
+/* ================= LESSON ================= */
+function openTopic(id){
+ if(!isTopicUnlocked(id)){alert("🔒 Complete the previous topic first.");return}
+ const result=findTopic(id);if(!result)return;
+ currentTopic=id;
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));
+ startLessonTimer(id);
+
+ const {month,topic}=result;
+ document.getElementById("lessonBadge").textContent=month.month.toUpperCase()+" • WEEK "+String(topic.week).padStart(2,"0");
+ document.getElementById("lessonTitle").textContent=topic.title;
+ document.getElementById("lessonIntro").textContent=topic.intro;
+ document.getElementById("lessonContent").innerHTML=topic.content;
+ document.getElementById("lessonCode").textContent=topic.code;
+ document.getElementById("practiceText").textContent=topic.practice;
+ document.getElementById("aiText").textContent=topic.ai;
+
+ updateCompleteButton();updateProgress();buildNavigation();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function updateCompleteButton(){
+ const button=document.getElementById("completeBtn");
+ if(isComplete(currentTopic)){
+  button.textContent="✓ Completed";button.disabled=true;button.classList.remove("waiting");
+ }else updateLessonTimerUI();
+}
+
+/* ================= COMPLETE ================= */
+document.getElementById("completeBtn").addEventListener("click",()=>{
+ if(isComplete(currentTopic))return;
+ if(!canCompleteCurrentTopic()){
+  updateLessonTimerUI();
+  alert("⏱ Please spend the full 5 minutes on this topic before marking it complete.");
+  return;
+ }
+ completed.push(currentTopic);completed=[...new Set(completed)].sort((a,b)=>a-b);saveLocal();
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));
+ updateCompleteButton();updateProgress();buildNavigation();
+
+ const current=findTopic(currentTopic);
+ const month=current.month;
+ if(month.topics.every(t=>isComplete(t.id))){
+  if(month.id<course.length){
+   alert("🎉 "+month.month+" completed!\n\n🔓 "+course[month.id].month+" is now unlocked.");
+  }else{
+   updateCertificate();
+   alert("🏆 Congratulations!\n\nYou completed the entire 6-month Human Resource Management with AI program.\n\n🎓 Your certificate is now ready. Pay ₹49 to unlock the official certificate.");
+  }
+ }else alert("✓ Topic completed!\n\n🔓 The next topic is now unlocked.");
+});
+
+/* ================= NEXT / PREVIOUS ================= */
+document.getElementById("nextBtn").addEventListener("click",()=>{
+ if(!isComplete(currentTopic)){alert("⚠️ Complete this topic first.");return}
+ if(currentTopic>=48){alert("🏆 You have completed the 6-month course!");return}
+ if(isTopicUnlocked(currentTopic+1))openTopic(currentTopic+1);
+});
+document.getElementById("previousBtn").addEventListener("click",()=>{
+ if(currentTopic>1)openTopic(currentTopic-1);
+});
+
+/* ================= PROGRESS ================= */
+function updateProgress(){
+ const percent=Math.round(completed.length/48*100);
+ document.getElementById("headerProgress").style.width=percent+"%";
+ document.getElementById("headerPercent").textContent=percent+"%";
+ document.getElementById("progressPercent").textContent=percent+"%";
+ document.getElementById("progressCircle").style.background=`conic-gradient(var(--green) ${percent*3.6}deg,#e7dfdb ${percent*3.6}deg)`;
+ updateMonthProgress();updateCertificate();
+}
+function updateMonthProgress(){
+ const container=document.getElementById("monthProgress");container.innerHTML="";
+ course.forEach(month=>{
+  const done=month.topics.filter(t=>isComplete(t.id)).length;
+  const item=document.createElement("div");item.className="month-progress-item";
+  item.innerHTML=`<strong>${month.month}</strong><span>${done} / ${month.topics.length} topics completed</span>`;
+  container.appendChild(item);
+ });
+}
+
+/* ================= CERTIFICATE ================= */
+const CERTIFICATE_FEE=49;
+function isCourseComplete(){return completed.length>=48}
+function updateCertificate(){
+ const box=document.getElementById("certificateBox"),icon=document.getElementById("certificateIcon"),title=document.getElementById("certificateTitle"),text=document.getElementById("certificateText"),price=document.getElementById("certificatePrice"),button=document.getElementById("certificateBtn");
+
+ if(!isCourseComplete()){
+  box.classList.remove("unlocked");icon.textContent="🔒";title.textContent="Certificate Locked";
+  text.textContent=`Complete all 48 topics first. ${completed.length}/48 completed.`;
+  price.innerHTML=`Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
+  button.textContent="🔒 Complete Course First";button.disabled=true;button.onclick=null;return;
+ }
+ if(!certificatePaid){
+  box.classList.add("unlocked");icon.textContent="🎓";title.textContent="Certificate Ready";
+  text.textContent="You completed the course. Pay ₹49 to unlock your official certificate.";
+  price.innerHTML=`Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
+  button.textContent="💳 Pay ₹49 & Unlock";button.disabled=false;button.onclick=startCertificatePayment;return;
+ }
+ box.classList.add("unlocked");icon.textContent="🏆";title.textContent="Certificate Unlocked!";
+ text.textContent="Your official certificate is ready to view and print.";
+ price.innerHTML="✓ Certificate fee paid";button.textContent="🏆 View Certificate";button.disabled=false;button.onclick=openCertificate;
+}
+function startCertificatePayment(){
+ alert("₹49 certificate payment is ready to be connected to your payment gateway.\n\nFor production, verify the successful transaction on your server before calling unlockCertificateAfterVerifiedPayment().");
+}
+function unlockCertificateAfterVerifiedPayment(){
+ if(!isCourseComplete())return;
+ certificatePaid=true;localStorage.setItem(PAYMENT_KEY,"paid");
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));updateCertificate();openCertificate();
+}
+function openCertificate(){
+ if(!isCourseComplete()){alert("🔒 Complete all 48 topics first.");return}
+ if(!certificatePaid){alert("🔒 Please pay the ₹49 certificate fee first.");return}
+ document.getElementById("certificateModal").classList.add("show");
+ const userName=document.getElementById("accountName").textContent;
+ document.getElementById("certificateStudentName").textContent=userName&&userName!=="Learner"?userName:"Learner";
+ document.getElementById("certificateDate").textContent=new Date().getFullYear();
+}
+function closeCertificate(){document.getElementById("certificateModal").classList.remove("show")}
+document.getElementById("certificateModal").addEventListener("click",e=>{if(e.target===e.currentTarget)closeCertificate()});
+
+/* ================= MOBILE MENU ================= */
+const menu=document.getElementById("menuBtn"),sidebar=document.getElementById("sidebar"),overlay=document.getElementById("overlay");
+menu.addEventListener("click",()=>{sidebar.classList.toggle("show");overlay.classList.toggle("show")});
+overlay.addEventListener("click",()=>{sidebar.classList.remove("show");overlay.classList.remove("show")});
+
+/* ================= INITIALIZE ================= */
+buildNavigation();openTopic(1);updateProgress();updateCertificate();
+</script>
+</body>
+</html>
