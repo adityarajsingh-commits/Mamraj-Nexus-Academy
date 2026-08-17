@@ -2164,6 +2164,248 @@ document
 
     }
 );
+    /* =========================================================
+   SEARCH + CATEGORY FILTER
+========================================================= */
+
+const searchInput =
+    document.getElementById(
+        "globalSearch"
+    );
+
+const clearSearch =
+    document.getElementById(
+        "clearSearch"
+    );
+
+const categoryButtons =
+    document.querySelectorAll(
+        ".category"
+    );
+
+
+let selectedCategory = "all";
+
+
+/* Search */
+
+searchInput.addEventListener(
+    "input",
+    filterDashboard
+);
+
+
+/* Categories */
+
+categoryButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                categoryButtons
+                    .forEach(
+                        item =>
+                            item.classList
+                                .remove("active")
+                    );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                selectedCategory =
+                    button.dataset.category;
+
+
+                filterDashboard();
+
+            }
+        );
+
+    }
+);
+
+
+/* Clear */
+
+clearSearch.addEventListener(
+    "click",
+    () => {
+
+        searchInput.value = "";
+
+        clearSearch.classList.remove(
+            "show"
+        );
+
+        selectedCategory = "all";
+
+        categoryButtons
+            .forEach(
+                button =>
+                    button.classList
+                        .remove("active")
+            );
+
+        categoryButtons[0]
+            .classList
+            .add("active");
+
+        filterDashboard();
+
+        searchInput.focus();
+
+    }
+);
+
+
+/* Main filter */
+
+function filterDashboard() {
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    if(search.length > 0){
+
+        clearSearch.classList.add(
+            "show"
+        );
+
+    }else{
+
+        clearSearch.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    const courses =
+        document.querySelectorAll(
+            ".course"
+        );
+
+
+    let visible = 0;
+
+
+    courses.forEach(
+        course => {
+
+            const text =
+                course
+                    .textContent
+                    .toLowerCase();
+
+
+            const matchesSearch =
+                search === "" ||
+                text.includes(search);
+
+
+            /*
+             * Courses are already displayed
+             * in Continue Learning.
+             *
+             * Category matching can also use
+             * course data-category if added.
+             */
+
+            const courseCategory =
+                (
+                    course.dataset.category ||
+                    "courses"
+                ).toLowerCase();
+
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                courseCategory ===
+                    selectedCategory;
+
+
+            if(
+                matchesSearch &&
+                matchesCategory
+            ){
+
+                course.style.display = "";
+
+                visible++;
+
+            }else{
+
+                course.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    /*
+     * No results message
+     */
+
+    let noResults =
+        document.querySelector(
+            ".no-results"
+        );
+
+
+    if(
+        visible === 0 &&
+        courses.length > 0
+    ){
+
+        if(!noResults){
+
+            noResults =
+                document.createElement(
+                    "div"
+                );
+
+            noResults.className =
+                "no-results";
+
+            noResults.innerHTML = `
+                <div class="no-results-icon">
+                    🔍
+                </div>
+
+                No matching results found.
+            `;
+
+            document
+                .getElementById(
+                    "courseList"
+                )
+                .appendChild(
+                    noResults
+                );
+
+        }
+
+        noResults.style.display =
+            "block";
+
+    }else if(noResults){
+
+        noResults.style.display =
+            "none";
+
+    }
+
+}
 
 </script>
 
