@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MamRaj Nexus Academy | Courses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+:root{--navy:#1d2c63;--dark:#111b42;--peach:#c98b70;--cream:#fbf6f1;--white:#fff;--text:#202a4d;--muted:#747b8c;--border:#e8e3df;--green:#36a96b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.navbar{height:82px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;position:sticky;top:0;z-index:1000}
+.nav-inner{width:min(1250px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{font-size:20px;font-weight:800;color:var(--navy);position:relative}
+.logo span{color:var(--peach)}
+.logo small{display:block;font-size:7px;letter-spacing:3px;color:#89909d}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:12px;color:#555d72;font-weight:600}
+.nav-links a.active,.nav-links a:hover{color:var(--navy)}
+.nav-btn{background:var(--navy);color:#fff;border-radius:10px;padding:10px 16px;font-size:11px;font-weight:800}
+.menu{display:none;border:0;background:var(--navy);color:#fff;width:40px;height:40px;border-radius:10px}
+
+.hero{background:linear-gradient(135deg,#fbf6f1,#f4ece8);padding:72px 20px 55px;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:1150px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:55px;align-items:center}
+.kicker{font-size:9px;letter-spacing:2px;color:var(--peach);font-weight:800}
+.hero h1{font-size:48px;line-height:1.12;color:var(--navy);letter-spacing:-1.5px;margin:10px 0 15px}
+.hero h1 span{color:var(--peach)}
+.hero p{font-size:13px;color:var(--muted);max-width:620px;line-height:1.9}
+.hero-actions{display:flex;gap:10px;margin-top:23px}
+.hero-actions a{padding:12px 17px;border-radius:10px;font-size:11px;font-weight:800}
+.primary{background:var(--navy);color:#fff}.secondary{background:#fff;color:var(--navy);border:1px solid var(--border)}
+.hero-card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 25px 60px rgba(29,44,99,.08)}
+.hero-card-top{display:flex;justify-content:space-between;align-items:center}
+.hero-card small{font-size:8px;color:#9298a5;letter-spacing:1px}
+.hero-card h3{font-size:17px;color:var(--navy);margin-top:4px}
+.pill{background:#fff0e9;color:var(--peach);padding:5px 8px;border-radius:15px;font-size:8px;font-weight:900}
+.hero-progress{height:6px;background:#eeeef2;border-radius:10px;margin:20px 0}
+.hero-progress span{display:block;width:72%;height:100%;background:linear-gradient(90deg,var(--navy),var(--peach));border-radius:10px}
+.hero-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #f0ece9}
+.hero-row:last-child{border:0}
+.hero-row i{width:32px;height:32px;border-radius:9px;background:#eef7f1;color:var(--green);display:grid;place-items:center;font-size:11px}
+.hero-row strong{font-size:10px;color:var(--navy);display:block}.hero-row span{font-size:8px;color:#9298a5}
+
+.main{padding:65px 20px}
+.wrap{max-width:1150px;margin:auto}
+.heading{text-align:center;margin-bottom:30px}
+.heading .kicker{margin-bottom:7px}
+.heading h2{font-size:31px;color:var(--navy)}
+.heading p{font-size:12px;color:var(--muted);max-width:650px;margin:8px auto 0}
+.filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filter{border:1px solid var(--border);background:#fff;color:#6d7280;padding:8px 13px;border-radius:20px;font-size:10px;font-weight:800}
+.filter.active,.filter:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.course{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.25s}
+.course:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(29,44,99,.10)}
+.course.hidden{display:none}
+.cover{height:170px;padding:18px;color:#fff;position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.cover:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-55px;bottom:-85px;background:rgba(255,255,255,.1)}
+.web{background:linear-gradient(135deg,#24366f,#6d5880)}
+.data{background:linear-gradient(135deg,#205d66,#4d908c)}
+.hr{background:linear-gradient(135deg,#28396f,#7559b8)}
+.ui{background:linear-gradient(135deg,#765064,#c28776)}
+.marketing{background:linear-gradient(135deg,#8b5d42,#c4995c)}
+.ai{background:linear-gradient(135deg,#403b70,#8a75b9)}
+.badge{position:absolute;right:14px;top:14px;background:#fff;color:var(--peach);padding:5px 8px;border-radius:20px;font-size:8px;font-weight:900;z-index:2}
+.icon{width:40px;height:40px;background:rgba(255,255,255,.16);border-radius:11px;display:grid;place-items:center;position:relative;z-index:2}
+.cover h3{font-size:20px;line-height:1.18;position:relative;z-index:2;max-width:290px}
+.body{padding:18px}
+.category{font-size:8px;color:var(--peach);letter-spacing:1.3px;font-weight:900}
+.body p{font-size:11px;color:#777d8d;line-height:1.75;margin:8px 0 14px;min-height:58px}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:15px}
+.meta span{font-size:8px;font-weight:800;color:#6e6d72;background:#f7f2ef;border-radius:7px;padding:5px 7px}
+.bottom{border-top:1px solid #eee8e4;padding-top:12px;display:flex;align-items:center;justify-content:space-between}
+.bottom strong{font-size:9px;color:var(--navy)}
+.view{font-size:9px;font-weight:800;color:#fff;background:var(--navy);padding:8px 11px;border-radius:8px}
+.view.soon{background:#eee9e6;color:#8b837e}
+
+.compare{padding:70px 20px;background:#fff;border-top:1px solid var(--border)}
+.compare-grid{max-width:1150px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.compare-box{border:1px solid var(--border);border-radius:14px;padding:17px;text-align:center}
+.compare-box i{font-size:19px;color:var(--peach);margin-bottom:8px}.compare-box strong{display:block;font-size:11px;color:var(--navy)}.compare-box span{font-size:9px;color:#858b98}
+
+.cta{padding:70px 20px;background:var(--cream)}
+.cta-box{max-width:950px;margin:auto;text-align:center;padding:48px 25px;border-radius:23px;background:linear-gradient(135deg,var(--navy),#4d4082);color:#fff}
+.cta-box h2{font-size:31px}.cta-box h2 span{color:#e6b19a}.cta-box p{font-size:11px;color:rgba(255,255,255,.74);max-width:600px;margin:9px auto 20px}
+.cta-box a{display:inline-block;background:#fff;color:var(--navy);padding:11px 18px;border-radius:9px;font-size:10px;font-weight:900}
+footer{background:#fff;border-top:1px solid var(--border);padding:24px;text-align:center;color:#8b8f99;font-size:9px}
+
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.compare-grid{grid-template-columns:1fr 1fr}.nav-links{display:none}.menu{display:block}}
+@media(max-width:600px){.nav-inner{width:90%}.hero{padding:50px 18px}.hero h1{font-size:36px}.hero-actions{flex-direction:column}.hero-actions a{text-align:center}.main{padding:50px 18px}.grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr 1fr}.heading h2{font-size:26px}.nav-btn{display:none}}
+</style>
+</head>
+
+<body>
+<header class="navbar">
+<div class="nav-inner">
+<a href="index.html" class="logo">MamRaj <span>Nexus</span><small>ACADEMY</small></a>
+<nav class="nav-links">
+<a href="index.html">Home</a>
+<a href="courses.html" class="active">Courses</a>
+<a href="internships.html">Internships</a>
+<a href="index.html#placements">Placements</a>
+<a href="index.html#about">About</a>
+<a href="index.html#contact">Contact</a>
+</nav>
+<a href="dashboard.html" class="nav-btn">Student Dashboard →</a>
+<button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('show')"><i class="fa-solid fa-bars"></i></button>
+</div>
+</header>
+
+<section class="hero">
+<div class="hero-inner">
+<div>
+<div class="kicker">MAMRAJ NEXUS PREMIUM ACADEMY</div>
+<h1>Learn skills that <span>open doors.</span></h1>
+<p>Explore professional 6-month learning paths designed around practical topics, assignments, projects and career outcomes. Choose your path and start building.</p>
+<div class="hero-actions">
+<a href="#all-courses" class="primary">Explore All Courses <i class="fa-solid fa-arrow-down"></i></a>
+<a href="dashboard.html" class="secondary">My Learning <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+
+<div class="hero-card">
+<div class="hero-card-top">
+<div><small>FEATURED LEARNING PATH</small><h3>Professional Career Courses</h3></div>
+<div class="pill">PREMIUM</div>
+</div>
+<div class="hero-progress"><span></span></div>
+<div class="hero-row"><i class="fa-solid fa-book-open"></i><div><strong>Structured Topics</strong><span>Learn step-by-step</span></div></div>
+<div class="hero-row"><i class="fa-solid fa-laptop-code"></i><div><strong>Practical Projects</strong><span>Build portfolio work</span></div></div>
+<div class="hero-row"><i class="fa-solid fa-chart-line"></i><div><strong>Progress Tracking</strong><span>Continue from where you stopped</span></div></div>
+<div class="hero-row"><i class="fa-solid fa-certificate"></i><div><strong>Certificate Pathway</strong><span>Earn after completion</span></div></div>
+</div>
+</div>
+</section>
+
+<main class="main" id="all-courses">
+<div class="wrap">
+<div class="heading">
+<div class="kicker">COURSE LIBRARY</div>
+<h2>Choose your professional path</h2>
+<p>Premium courses built for students, freshers and career-focused learners.</p>
+</div>
+
+<div class="filters">
+<button class="filter active" data-filter="all">All Courses</button>
+<button class="filter" data-filter="technology">Technology</button>
+<button class="filter" data-filter="analytics">Analytics</button>
+<button class="filter" data-filter="business">Business & Management</button>
+</div>
+
+<div class="grid">
+
+<article class="course" data-category="technology">
+<div class="cover web"><span class="badge">PREMIUM</span><div class="icon"><i class="fa-solid fa-code"></i></div><h3>Full-Stack Web Development</h3></div>
+<div class="body"><span class="category">TECHNOLOGY</span><p>Master frontend, JavaScript, backend, databases, APIs, deployment and full-stack projects.</p><div class="meta"><span>6 Months</span><span>48 Topics</span><span>10+ Projects</span></div><div class="bottom"><strong>Professional Path</strong><a class="view" href="course.html">View Course →</a></div></div>
+</article>
+
+<article class="course" data-category="analytics">
+<div class="cover data"><span class="badge">PREMIUM</span><div class="icon"><i class="fa-solid fa-chart-column"></i></div><h3>Data Analytics</h3></div>
+<div class="body"><span class="category">DATA & ANALYTICS</span><p>Learn spreadsheets, SQL, statistics, Python, visualization, dashboards and real analytics projects.</p><div class="meta"><span>6 Months</span><span>48 Topics</span><span>Portfolio</span></div><div class="bottom"><strong>Professional Path</strong><a class="view" href="data-analytics-course.html">View Course →</a></div></div>
+</article>
+
+<article class="course" data-category="business">
+<div class="cover hr"><span class="badge">PREMIUM</span><div class="icon"><i class="fa-solid fa-users"></i></div><h3>Human Resource Management with AI</h3></div>
+<div class="body"><span class="category">BUSINESS & MANAGEMENT</span><p>Recruitment, onboarding, performance, employee relations, HR analytics and responsible AI workflows.</p><div class="meta"><span>6 Months</span><span>48 Topics</span><span>AI Practice</span></div><div class="bottom"><strong>Professional Path</strong><a class="view" href="human-resource-management-ai-course.html">View Course →</a></div></div>
+</article>
+
+<article class="course" data-category="technology">
+<div class="cover ui"><span class="badge">COMING SOON</span><div class="icon"><i class="fa-solid fa-pen-ruler"></i></div><h3>UI/UX & Product Design</h3></div>
+<div class="body"><span class="category">DESIGN</span><p>Learn design thinking, user research, wireframes, prototypes, visual systems and product case studies.</p><div class="meta"><span>6 Months</span><span>Projects</span><span>Portfolio</span></div><div class="bottom"><strong>Launching Soon</strong><a href="#" class="view soon" onclick="soon(event)">Coming Soon</a></div></div>
+</article>
+
+<article class="course" data-category="business">
+<div class="cover marketing"><span class="badge">COMING SOON</span><div class="icon"><i class="fa-solid fa-bullhorn"></i></div><h3>Digital Marketing & AI</h3></div>
+<div class="body"><span class="category">MARKETING</span><p>Build skills in SEO, content, social media, campaign strategy, analytics and AI-assisted marketing.</p><div class="meta"><span>6 Months</span><span>SEO</span><span>AI Tools</span></div><div class="bottom"><strong>Launching Soon</strong><a href="#" class="view soon" onclick="soon(event)">Coming Soon</a></div></div>
+</article>
+
+<article class="course" data-category="technology">
+<div class="cover ai"><span class="badge">COMING SOON</span><div class="icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>AI & Professional Productivity</h3></div>
+<div class="body"><span class="category">AI & CAREER</span><p>Prompting, research, workflow design, automation concepts and responsible AI use at work.</p><div class="meta"><span>6 Months</span><span>AI Skills</span><span>Projects</span></div><div class="bottom"><strong>Launching Soon</strong><a href="#" class="view soon" onclick="soon(event)">Coming Soon</a></div></div>
+</article>
+
+</div>
+</div>
+</main>
+
+<section class="compare">
+<div class="heading">
+<div class="kicker">WHY OUR COURSES</div>
+<h2>More than just course videos.</h2>
+<p>A complete learning journey designed around consistency, practice and career readiness.</p>
+</div>
+<div class="compare-grid">
+<div class="compare-box"><i class="fa-solid fa-road"></i><strong>Structured Path</strong><span>Clear progression from beginner to advanced.</span></div>
+<div class="compare-box"><i class="fa-solid fa-briefcase"></i><strong>Real Projects</strong><span>Build work you can showcase.</span></div>
+<div class="compare-box"><i class="fa-solid fa-lock-open"></i><strong>Progress Unlocks</strong><span>Move topic-by-topic as you complete learning.</span></div>
+<div class="compare-box"><i class="fa-solid fa-robot"></i><strong>AI Guidance</strong><span>Learn modern AI-assisted workflows.</span></div>
+</div>
+</section>
+
+<section class="cta">
+<div class="cta-box">
+<div class="kicker" style="color:#e6b19a">START YOUR JOURNEY</div>
+<h2>Pick a path. <span>Build your future.</span></h2>
+<p>Choose your course and begin a structured learning journey with MamRaj Nexus Academy.</p>
+<a href="dashboard.html">Go to Student Dashboard →</a>
+</div>
+</section>
+
+<footer>© 2026 MamRaj Nexus Academy • A MamRaj Web Studio Initiative</footer>
+
+<script>
+document.querySelectorAll(".filter").forEach(btn=>{
+btn.addEventListener("click",()=>{
+document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+const filter=btn.dataset.filter;
+document.querySelectorAll(".course").forEach(card=>{
+card.style.display=filter==="all"||card.dataset.category===filter?"block":"none";
+});
+});
+});
+function soon(e){e.preventDefault();alert("🚀 This premium course is coming soon. Stay tuned for the launch!")}
+</script>
+</body>
+</html>
