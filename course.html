@@ -2898,8 +2898,920 @@ loadLesson(
 );
 
 updateProgress();
+/* =====================================================
+   COURSE PROGRESSIVE UNLOCK SYSTEM
+===================================================== */
 
+const lessons = {
+    1:  { level:1, title:"How the Web Works" },
+    2:  { level:1, title:"Browser & Server" },
+
+    3:  { level:2, title:"HTML Basics" },
+    4:  { level:2, title:"Semantic HTML" },
+    5:  { level:2, title:"Forms & Tables" },
+
+    6:  { level:3, title:"CSS Fundamentals" },
+    7:  { level:3, title:"Flexbox & Grid" },
+    8:  { level:3, title:"Responsive Design" },
+
+    9:  { level:4, title:"JavaScript Basics" },
+    10: { level:4, title:"Functions & Arrays" },
+    11: { level:4, title:"DOM Manipulation" },
+    12: { level:4, title:"APIs & Async JavaScript" },
+
+    13: { level:5, title:"Git Basics" },
+    14: { level:5, title:"GitHub Workflow" },
+
+    15: { level:6, title:"React Components" },
+    16: { level:6, title:"React Hooks & State" },
+
+    17: { level:7, title:"Node.js" },
+    18: { level:7, title:"Express.js" },
+
+    19: { level:8, title:"SQL" },
+    20: { level:8, title:"MongoDB" },
+
+    21: { level:9, title:"Firebase Authentication" },
+    22: { level:9, title:"Protected Routes" },
+
+    23: { level:10, title:"Frontend + Backend" },
+    24: { level:10, title:"Full Stack Project" },
+
+    25: { level:11, title:"AI APIs" },
+    26: { level:11, title:"AI Web Application" },
+
+    27: { level:12, title:"Hosting" },
+    28: { level:12, title:"Domain & SSL" }
+};
+
+
+/* =====================================================
+   LEVEL STRUCTURE
+===================================================== */
+
+const levelLessons = {
+
+    1:[1,2],
+
+    2:[3,4,5],
+
+    3:[6,7,8],
+
+    4:[9,10,11,12],
+
+    5:[13,14],
+
+    6:[15,16],
+
+    7:[17,18],
+
+    8:[19,20],
+
+    9:[21,22],
+
+    10:[23,24],
+
+    11:[25,26],
+
+    12:[27,28]
+
+};
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const STORAGE_KEY =
+    "mamraj_completed_lessons";
+
+
+let completed =
+    JSON.parse(
+        localStorage.getItem(
+            STORAGE_KEY
+        ) || "[]"
+    );
+
+
+let currentLesson = 1;
+
+
+/* =====================================================
+   CHECK LESSON COMPLETION
+===================================================== */
+
+function isLessonComplete(id){
+
+    return completed.includes(id);
+
+}
+
+
+/* =====================================================
+   CHECK LEVEL COMPLETION
+===================================================== */
+
+function isLevelComplete(level){
+
+    const required =
+        levelLessons[level];
+
+    if(!required){
+        return false;
+    }
+
+    return required.every(
+        lessonId =>
+            completed.includes(
+                lessonId
+            )
+    );
+
+}
+
+
+/* =====================================================
+   CHECK LEVEL UNLOCK
+===================================================== */
+
+function isLevelUnlocked(level){
+
+    // Level 1 is always unlocked
+    if(level === 1){
+        return true;
+    }
+
+    // Previous level must be completed
+    return isLevelComplete(
+        level - 1
+    );
+
+}
+
+
+/* =====================================================
+   CHECK LESSON UNLOCK
+===================================================== */
+
+function isLessonUnlocked(id){
+
+    const lesson =
+        lessons[id];
+
+    if(!lesson){
+        return false;
+    }
+
+    return isLevelUnlocked(
+        lesson.level
+    );
+
+}
+
+
+/* =====================================================
+   LOCKED MESSAGE
+===================================================== */
+
+function showLockedMessage(level){
+
+    alert(
+        "🔒 This section is locked.\n\n" +
+
+        "Complete Level " +
+        (level - 1) +
+
+        " before starting Level " +
+        level +
+        "."
+    );
+
+}
+
+
+/* =====================================================
+   LOAD LESSON
+===================================================== */
+
+function loadLesson(id){
+
+    if(!lessons[id]){
+        return;
+    }
+
+
+    const lesson =
+        lessons[id];
+
+
+    /*
+       Prevent opening locked lessons
+    */
+
+    if(
+        !isLessonUnlocked(id)
+    ){
+
+        showLockedMessage(
+            lesson.level
+        );
+
+        return;
+
+    }
+
+
+    currentLesson =
+        id;
+
+
+    /*
+       Your existing lesson
+       content database
+       continues here.
+    */
+
+    const data =
+        lessonContent[id];
+
+    if(data){
+
+        document.getElementById(
+            "lessonBadge"
+        ).textContent =
+            "LESSON " +
+            String(id).padStart(2,"0");
+
+
+        document.getElementById(
+            "lessonTime"
+        ).textContent =
+            "⏱ " +
+            data.time;
+
+
+        document.getElementById(
+            "lessonTitle"
+        ).textContent =
+            data.title;
+
+
+        document.getElementById(
+            "lessonIntro"
+        ).textContent =
+            data.intro;
+
+
+        document.getElementById(
+            "lessonContent"
+        ).innerHTML =
+            data.content;
+
+
+        document.getElementById(
+            "lessonCode"
+        ).textContent =
+            data.code;
+
+
+        document.getElementById(
+            "practiceText"
+        ).textContent =
+            data.practice;
+
+    }
+
+
+    /*
+       Active lesson
+    */
+
+    document
+        .querySelectorAll(".lesson")
+        .forEach(button => {
+
+            button.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    const active =
+        document.querySelector(
+            `.lesson[data-id="${id}"]`
+        );
+
+
+    if(active){
+
+        active.classList.add(
+            "active"
+        );
+
+
+        const module =
+            active.closest(
+                ".module"
+            );
+
+
+        if(module){
+
+            document
+                .querySelectorAll(
+                    ".module"
+                )
+                .forEach(m =>
+                    m.classList.remove(
+                        "open"
+                    )
+                );
+
+
+            module.classList.add(
+                "open"
+            );
+
+        }
+
+    }
+
+
+    updateCompleteButton();
+
+}
+
+
+/* =====================================================
+   COMPLETE LESSON
+===================================================== */
+
+document
+    .getElementById(
+        "completeBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            if(
+                !completed.includes(
+                    currentLesson
+                )
+            ){
+
+                completed.push(
+                    currentLesson
+                );
+
+                completed.sort(
+                    (a,b) => a-b
+                );
+
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify(
+                        completed
+                    )
+                );
+
+            }
+
+
+            updateCompleteButton();
+
+            updateCourseLocks();
+
+            updateProgress();
+
+
+            /*
+               Check if current level
+               has just been completed
+            */
+
+            const currentLevel =
+                lessons[
+                    currentLesson
+                ].level;
+
+
+            if(
+                isLevelComplete(
+                    currentLevel
+                )
+            ){
+
+                const nextLevel =
+                    currentLevel + 1;
+
+
+                if(
+                    nextLevel <= 12
+                ){
+
+                    setTimeout(() => {
+
+                        alert(
+                            "🎉 Level " +
+                            currentLevel +
+                            " completed!\n\n" +
+
+                            "🔓 Level " +
+                            nextLevel +
+                            " is now unlocked."
+                        );
+
+                    },150);
+
+                }else{
+
+                    setTimeout(() => {
+
+                        alert(
+                            "🏆 Congratulations!\n\n" +
+                            "You have completed the entire Web Development course!"
+                        );
+
+                    },150);
+
+                }
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   COMPLETE BUTTON STATE
+===================================================== */
+
+function updateCompleteButton(){
+
+    const button =
+        document.getElementById(
+            "completeBtn"
+        );
+
+
+    if(
+        completed.includes(
+            currentLesson
+        )
+    ){
+
+        button.textContent =
+            "✓ Completed";
+
+        button.classList.add(
+            "green"
+        );
+
+    }else{
+
+        button.textContent =
+            "✓ Mark Complete";
+
+        button.classList.remove(
+            "green"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE LOCKED SECTIONS
+===================================================== */
+
+function updateCourseLocks(){
+
+    /*
+       Determine each module's level.
+    */
+
+    document
+        .querySelectorAll(
+            ".module"
+        )
+        .forEach((module,index) => {
+
+            const level =
+                index + 1;
+
+
+            const unlocked =
+                isLevelUnlocked(
+                    level
+                );
+
+
+            /*
+               Module head
+            */
+
+            const head =
+                module.querySelector(
+                    ".module-head"
+                );
+
+
+            const arrow =
+                module.querySelector(
+                    ".module-arrow"
+                );
+
+
+            if(!unlocked){
+
+                module.classList.add(
+                    "locked"
+                );
+
+
+                head.classList.add(
+                    "locked-module"
+                );
+
+
+                if(arrow){
+
+                    arrow.textContent =
+                        "🔒";
+
+                }
+
+            }else{
+
+                module.classList.remove(
+                    "locked"
+                );
+
+
+                head.classList.remove(
+                    "locked-module"
+                );
+
+
+                if(arrow){
+
+                    arrow.textContent =
+                        "↓";
+
+                }
+
+            }
+
+
+            /*
+               Individual lessons
+            */
+
+            module
+                .querySelectorAll(
+                    ".lesson"
+                )
+                .forEach(button => {
+
+                    const id =
+                        Number(
+                            button.dataset.id
+                        );
+
+
+                    const lessonUnlocked =
+                        isLessonUnlocked(
+                            id
+                        );
+
+
+                    const check =
+                        button.querySelector(
+                            ".lesson-check"
+                        );
+
+
+                    if(
+                        !lessonUnlocked
+                    ){
+
+                        button.classList.add(
+                            "locked-lesson"
+                        );
+
+
+                        button.dataset.locked =
+                            "true";
+
+
+                        if(check){
+
+                            check.textContent =
+                                "🔒";
+
+                        }
+
+                    }else{
+
+                        button.classList.remove(
+                            "locked-lesson"
+                        );
+
+
+                        button.dataset.locked =
+                            "false";
+
+
+                        if(
+                            completed.includes(
+                                id
+                            )
+                        ){
+
+                            if(check){
+
+                                check.textContent =
+                                    "✓";
+
+                            }
+
+                        }else{
+
+                            if(check){
+
+                                check.textContent =
+                                    "○";
+
+                            }
+
+                        }
+
+                    }
+
+                });
+
+        });
+
+}
+
+
+/* =====================================================
+   LESSON CLICK
+===================================================== */
+
+document
+    .querySelectorAll(
+        ".lesson"
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const id =
+                    Number(
+                        this.dataset.id
+                    );
+
+
+                if(
+                    !isLessonUnlocked(id)
+                ){
+
+                    showLockedMessage(
+                        lessons[id].level
+                    );
+
+                    return;
+
+                }
+
+
+                loadLesson(id);
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   MODULE CLICK
+===================================================== */
+
+document
+    .querySelectorAll(
+        ".module-head"
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const module =
+                    this.closest(
+                        ".module"
+                    );
+
+
+                const modules =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".module"
+                        )
+                    );
+
+
+                const level =
+                    modules.indexOf(
+                        module
+                    ) + 1;
+
+
+                /*
+                   Prevent opening locked
+                   module.
+                */
+
+                if(
+                    !isLevelUnlocked(
+                        level
+                    )
+                ){
+
+                    showLockedMessage(
+                        level
+                    );
+
+                    return;
+
+                }
+
+
+                module.classList.toggle(
+                    "open"
+                );
+
+            }
+        );
+
+    });
+
+
+/* =====================================================
+   NEXT LESSON
+===================================================== */
+
+document
+    .getElementById(
+        "nextBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            const next =
+                currentLesson + 1;
+
+
+            if(next > 28){
+
+                alert(
+                    "🏆 You completed the course!"
+                );
+
+                return;
+
+            }
+
+
+            /*
+               Do not allow jumping
+               into locked section.
+            */
+
+            if(
+                !isLessonUnlocked(
+                    next
+                )
+            ){
+
+                const nextLevel =
+                    lessons[next].level;
+
+
+                alert(
+                    "🔒 Complete Level " +
+                    (nextLevel - 1) +
+                    " first."
+                );
+
+                return;
+
+            }
+
+
+            loadLesson(next);
+
+        }
+    );
+
+
+/* =====================================================
+   PREVIOUS LESSON
+===================================================== */
+
+document
+    .getElementById(
+        "prevBtn"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            const previous =
+                currentLesson - 1;
+
+
+            if(previous >= 1){
+
+                loadLesson(
+                    previous
+                );
+
+            }
+
+        }
+    );
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+    const total =
+        Object.keys(
+            lessons
+        ).length;
+
+
+    const percent =
+        Math.round(
+            completed.length /
+            total *
+            100
+        );
+
+
+    document.getElementById(
+        "topProgress"
+    ).style.width =
+        percent + "%";
+
+
+    document.getElementById(
+        "topPercent"
+    ).textContent =
+        percent + "%";
+
+
+    document.getElementById(
+        "circleText"
+    ).textContent =
+        percent + "%";
+
+
+    document.getElementById(
+        "progressCircle"
+    ).style.background =
+        `conic-gradient(
+            var(--peach)
+            ${percent * 3.6}deg,
+            #e9e0dc
+            ${percent * 3.6}deg
+        )`;
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+updateCourseLocks();
+
+updateProgress();
+
+updateCompleteButton();
 </script>
-
 </body>
+    <
 </html>
