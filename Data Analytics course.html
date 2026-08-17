@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MamRaj Nexus Academy | Professional Data Analytics</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --navy:#263873;--navy2:#1b2a61;--peach:#ca8f73;--green:#58a276;
+ --cream:#f7f1ec;--white:#fff;--text:#28304a;--muted:#817a76;
+ --border:#e7ddd7;--light:#faf7f5;
+}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+.topbar{height:70px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;padding:0 22px;position:sticky;top:0;z-index:1000}
+.menu-btn{display:none;border:0;background:#f1ebe7;color:var(--navy);width:38px;height:38px;border-radius:9px;cursor:pointer}
+.logo{width:40px;height:40px;border-radius:11px;background:#5c46d7;color:#fff;display:grid;place-items:center;font-weight:900}
+.brand{font-size:16px;font-weight:900;color:var(--navy)} .brand small{display:block;font-size:10px;letter-spacing:2px;color:#9a8e88}
+.back-btn{border:1px solid var(--border);padding:8px 12px;border-radius:9px;color:var(--navy);text-decoration:none;font-size:12px;font-weight:800}
+.course-name{font-size:13px;font-weight:900;color:var(--navy)}
+.header-progress{margin-left:auto;display:flex;align-items:center;gap:8px}
+.progress-line{width:150px;height:5px;background:#eee8e4;border-radius:20px;overflow:hidden}.progress-line span{display:block;width:0;height:100%;background:var(--green);transition:.4s}
+.header-percent{font-size:12px;color:#777}
+.account-area{margin-left:10px;display:flex;align-items:center;gap:8px}.account-user{display:flex;align-items:center;gap:7px}.account-avatar{width:31px;height:31px;border-radius:50%;object-fit:cover;display:none;background:#eee8e4}.account-info{min-width:0}.account-name{display:block;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;font-weight:800;color:var(--navy)}.account-status{display:block;font-size:10px;color:#918781}
+.google-login-btn,.logout-btn{border:1px solid var(--border);border-radius:9px;padding:9px 11px;background:#fff;color:var(--navy);font-size:12px;font-weight:800;cursor:pointer}
+
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr) 245px;min-height:calc(100vh - 70px)}
+.sidebar{background:#fff;border-right:1px solid var(--border);height:calc(100vh - 70px);position:sticky;top:70px;overflow-y:auto;padding:18px 12px}
+.sidebar-title,.hero-label,.assignment-label{font-size:11px;letter-spacing:1.4px;font-weight:900;color:#a47761}
+.sidebar-title{margin:4px 10px 15px}
+.month{margin-bottom:5px}.month-header{width:100%;display:flex;align-items:center;gap:8px;padding:10px;background:#fff;border:0;border-radius:10px;cursor:pointer;text-align:left}.month-header:hover{background:#faf5f1}
+.month-number{width:30px;height:30px;display:grid;place-items:center;background:#eee9e5;border-radius:8px;font-size:12px;font-weight:900;color:var(--navy)}.month-name{flex:1;font-size:13px;font-weight:900;color:var(--text)}.month-lock{font-size:12px}
+.topics{display:none;padding-left:40px}.month.open .topics{display:block}
+.topic{width:100%;display:flex;align-items:center;gap:7px;padding:9px 7px;border:0;border-left:2px solid transparent;background:transparent;text-align:left;color:#817a76;font-size:12px;line-height:1.5;cursor:pointer}.topic:hover{background:#faf6f3}.topic.active{background:#fbf1ec;border-left-color:var(--peach);color:var(--navy);font-weight:900}.topic.completed{color:var(--green)}.topic.locked{color:#aaa39f;cursor:not-allowed;opacity:.55}
+
+.main{min-width:0;padding:24px 35px 70px}.sync-status{margin-bottom:12px;padding:8px 10px;border-radius:9px;background:#f8f3ef;color:#817a76;font-size:11px;text-align:center}.sync-status.online{background:#f0f8f3;color:#3d8059}.sync-status.error{background:#fff1ef;color:#a34d43}
+.user-required{display:none;margin-bottom:15px;padding:14px;border-radius:13px;background:#fff8f3;border:1px solid #ead8cd;color:#756d69;font-size:13px}.user-required.show{display:block}
+
+.hero{background:linear-gradient(135deg,#273873,#584a96);color:#fff;border-radius:20px;padding:30px;margin-bottom:15px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;width:300px;height:300px;right:-100px;top:-130px;border-radius:50%;background:rgba(255,255,255,.05)}.hero h1{font-size:30px;margin:8px 0}.hero p{max-width:760px;color:rgba(255,255,255,.8);font-size:14px;line-height:1.75}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:15px}.tag{background:rgba(255,255,255,.13);padding:6px 10px;border-radius:20px;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:15px}.stat{background:#fff;border:1px solid var(--border);border-radius:13px;padding:15px}.stat small{display:block;color:#928984;font-size:11px}.stat strong{display:block;margin-top:4px;color:var(--navy);font-size:15px}
+
+.lesson-card,.assignment-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:28px}.lesson-card{min-height:500px}.lesson-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}.lesson-badge{background:var(--peach);color:#fff;padding:5px 10px;border-radius:20px;font-size:11px;font-weight:900}.lesson-time{color:#928984;font-size:12px}.lesson-card h2{color:var(--navy);font-size:26px;margin-bottom:10px}.lesson-intro{color:#706966;font-size:14px;line-height:1.75}.lesson-content{margin-top:25px}.lesson-content h3{color:var(--navy);font-size:18px;margin:22px 0 8px}.lesson-content p{color:#716a66;font-size:14px;line-height:1.75;margin-bottom:10px}.lesson-content ul{padding-left:20px}.lesson-content li{color:#716a66;font-size:13px;margin-bottom:7px}.code-label{color:var(--navy);font-size:13px;font-weight:900;margin:24px 0 7px}.code{background:#1d2644;color:#e9edff;border-radius:12px;padding:18px;overflow-x:auto;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.65;white-space:pre}
+.practice{background:#fbf3ed;border:1px solid #ead8cd;border-radius:13px;padding:16px;margin-top:20px}.practice strong{display:block;color:#956650;font-size:13px;margin-bottom:6px}.practice p{color:#756d69;font-size:13px}
+.lesson-timer{margin-top:18px;padding:13px 15px;border:1px solid var(--border);border-radius:12px;background:#faf7f5;display:flex;align-items:center;justify-content:space-between;gap:12px}.lesson-timer-left{display:flex;align-items:center;gap:9px}.timer-icon{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:#eee8e4;font-size:16px}.timer-label{color:var(--navy);font-size:13px;font-weight:800}.timer-sub{display:block;margin-top:2px;color:#8d8580;font-size:11px}.timer-value{min-width:65px;text-align:center;padding:7px 9px;border-radius:8px;background:#eee8e4;color:var(--navy);font-size:14px;font-weight:900}.timer-value.ready{background:#dff0e5;color:#3d8059}
+.actions{display:flex;gap:8px;margin-top:22px}.btn{border:0;border-radius:9px;padding:11px 16px;font-size:13px;font-weight:900;cursor:pointer;background:var(--navy);color:#fff}.btn.secondary{background:#fff;border:1px solid var(--border);color:var(--navy)}.btn.complete{background:var(--green)}.btn.waiting,#completeBtn.waiting{background:#bdb6b2;cursor:not-allowed}.btn:disabled{opacity:.7;cursor:not-allowed}
+
+.assignment-card{margin-top:18px}.assignment-header{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:15px}.assignment-card h3{color:var(--navy);font-size:22px;margin:5px 0}.assignment-badge{padding:7px 10px;border-radius:20px;background:#fbf1ec;color:#956650;font-size:11px;font-weight:900}.assignment-description{color:#716a66;font-size:14px;line-height:1.75}.assignment-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.assignment-item{background:#faf7f5;border:1px solid var(--border);border-radius:11px;padding:13px}.assignment-item strong{display:block;color:var(--navy);font-size:13px;margin-bottom:5px}.assignment-item span{color:#837b77;font-size:13px;line-height:1.6}.assignment-check{margin-top:16px;padding:14px;border-radius:12px;background:#f8f1f5;color:#716a66;font-size:13px;line-height:1.7}.assignment-check strong{color:var(--navy)}
+
+.right-panel{background:#fff;border-left:1px solid var(--border);padding:20px 15px;position:sticky;top:70px;height:calc(100vh - 70px);overflow-y:auto}.panel-title{color:var(--navy);font-size:13px;font-weight:900;margin-bottom:12px}.progress-card{background:#f8f1f5;border-radius:14px;padding:18px;text-align:center}.progress-circle{width:100px;height:100px;margin:auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0deg,#e7dfdb 0deg);position:relative}.progress-circle::after{content:"";position:absolute;width:74px;height:74px;background:#fff;border-radius:50%}.progress-circle span{position:relative;z-index:2;color:var(--navy);font-size:16px;font-weight:900}.progress-card p{color:#8c827d;font-size:12px;line-height:1.6;margin-top:12px}.month-progress{margin-top:22px}.month-progress-item{padding:10px 0;border-bottom:1px solid #eee6e1}.month-progress-item strong{display:block;color:var(--navy);font-size:13px}.month-progress-item span{color:#928a85;font-size:12px}
+
+.certificate-box{margin-top:22px;padding:16px;border-radius:14px;background:#f8f3ef;border:1px solid var(--border);text-align:center}.certificate-icon{width:48px;height:48px;margin:0 auto 10px;display:grid;place-items:center;border-radius:12px;background:#ebe5e1;font-size:22px}.certificate-box strong{display:block;color:var(--navy);font-size:13px;margin-bottom:5px}.certificate-box p{color:#918781;font-size:12px;line-height:1.6;margin-bottom:12px}.certificate-price{margin:10px 0 12px;padding:9px;border-radius:9px;background:#fff;color:#827a75;font-size:12px}.certificate-price strong{display:inline;color:var(--peach);font-size:14px}.certificate-btn{width:100%;border:0;border-radius:8px;padding:10px;background:#ddd7d3;color:#938b86;font-size:13px;font-weight:900;cursor:not-allowed}.certificate-box.unlocked{background:#f0f8f3;border-color:#b9dbc7}.certificate-box.unlocked .certificate-icon{background:#dcefe4}.certificate-box.unlocked .certificate-btn{background:var(--green);color:#fff;cursor:pointer}.certificate-box.unlocked strong{color:#3d8059}
+
+.certificate-modal{position:fixed;inset:0;background:rgba(18,25,55,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:5000;overflow:auto}.certificate-modal.show{display:flex}.certificate{width:min(850px,100%);background:#fff;border:10px solid #eee6df;outline:2px solid var(--peach);padding:55px;text-align:center;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.3)}.certificate-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:0;border-radius:50%;background:#f2ece8;color:var(--navy);font-size:20px;cursor:pointer}.certificate-top{color:var(--navy);font-size:14px;font-weight:900;letter-spacing:3px}.certificate-line{width:100px;height:3px;background:var(--peach);margin:18px auto}.certificate-small{color:#9a6c58;font-size:11px;letter-spacing:3px;font-weight:900}.certificate-paid-note{display:inline-block;margin-top:10px;padding:6px 10px;border-radius:20px;background:#f0f8f3;color:#3d8059;font-size:11px;font-weight:800}.certificate h1{color:var(--navy);font-family:Georgia,serif;font-size:32px;margin:20px 0}.certificate p{color:#716b68;font-size:13px;line-height:1.8;max-width:600px;margin:8px auto}.certificate h2{color:var(--peach);font-family:Georgia,serif;font-size:29px;margin:15px 0}.certificate-details{display:flex;justify-content:center;gap:60px;margin:30px 0}.certificate-details div{display:flex;flex-direction:column;gap:5px}.certificate-details strong{color:var(--navy);font-size:12px}.certificate-details span{color:#837a75;font-size:12px}.certificate-footer{display:flex;justify-content:space-between;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}.certificate-footer div{display:flex;flex-direction:column;gap:4px}.certificate-footer strong{color:var(--navy);font-size:12px}.certificate-footer span{color:#938a85;font-size:11px}.print-certificate{margin-top:30px;padding:12px 20px;border:0;border-radius:9px;background:var(--navy);color:#fff;font-size:13px;font-weight:900;cursor:pointer}
+
+@media(max-width:1150px){.layout{grid-template-columns:245px minmax(0,1fr)}.right-panel{display:none}.main{padding:22px}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){.topbar{height:62px;padding:0 12px}.menu-btn{display:block}.course-name,.back-btn{display:none}.layout{display:block}.sidebar{position:fixed;left:-290px;top:62px;width:280px;height:calc(100vh - 62px);z-index:2000;transition:left .3s;box-shadow:10px 0 35px rgba(0,0,0,.18)}.sidebar.show{left:0}.overlay{position:fixed;inset:62px 0 0;background:rgba(20,25,50,.35);z-index:1500;display:none}.overlay.show{display:block}.main{padding:14px 12px 40px}.hero{padding:22px;border-radius:16px}.hero h1{font-size:24px}.lesson-card{padding:20px}.lesson-card h2{font-size:23px}}
+@media(max-width:500px){.account-info{display:none}.stats{grid-template-columns:1fr 1fr;gap:7px}.hero{padding:18px}.hero h1{font-size:22px}.lesson-card{padding:16px}.lesson-card h2{font-size:21px}.lesson-timer{align-items:flex-start}.actions{display:grid;grid-template-columns:1fr 1fr}.btn.complete{grid-column:1/-1}.assignment-grid{grid-template-columns:1fr}.assignment-header{flex-direction:column}.certificate{padding:35px 20px}.certificate h1{font-size:23px}.certificate h2{font-size:24px}.certificate-details{gap:20px;flex-wrap:wrap}.certificate-footer{gap:20px;flex-wrap:wrap;justify-content:center}}
+@media print{body *{visibility:hidden!important}.certificate-modal,.certificate-modal *{visibility:visible!important}.certificate-modal{position:static;display:block!important;background:#fff;padding:0}.certificate{width:100%;max-width:none;box-shadow:none;outline:none}.certificate-close,.print-certificate{display:none!important}}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<button class="menu-btn" id="menuBtn">☰</button>
+<div class="logo">M</div>
+<div class="brand">MamRaj<small>NEXUS ACADEMY</small></div>
+<a href="dashboard.html" class="back-btn">← Dashboard</a>
+<div class="course-name">Professional Data Analytics</div>
+
+<div class="header-progress">
+<div class="progress-line"><span id="headerProgress"></span></div>
+<span class="header-percent" id="headerPercent">0%</span>
+</div>
+
+<div class="account-area">
+<button class="google-login-btn" id="googleLoginBtn">Continue with Google</button>
+
+<div class="account-user" id="accountUser" style="display:none">
+<img class="account-avatar" id="accountAvatar" alt="Profile">
+<div class="account-info">
+<span class="account-name" id="accountName">Learner</span>
+<span class="account-status">Progress synced</span>
+</div>
+<button class="logout-btn" id="logoutBtn">Sign out</button>
+</div>
+</div>
+</header>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="layout">
+
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-title">6 MONTH PROFESSIONAL PROGRAM</div>
+<div id="courseNavigation"></div>
+</aside>
+
+<main class="main">
+
+<div class="sync-status" id="syncStatus">Sign in with Google to save your progress to your account.</div>
+
+<div class="user-required" id="userRequired">
+<strong>Account recommended for cloud progress</strong><br>
+Sign in with Google so your completed topics, current lesson and certificate status can follow you across devices.
+</div>
+
+<section class="hero">
+<div class="hero-label">MAMRAJ NEXUS ACADEMY • 6 MONTH PROFESSIONAL PROGRAM</div>
+<h1>Professional Data Analytics</h1>
+<p>
+Build practical analytics skills from foundations to portfolio-ready projects.
+Learn data preparation, spreadsheets, SQL, statistics, visualization, Python,
+business analysis, dashboards, automation and applied machine learning through
+a structured progression.
+</p>
+<div class="tags">
+<span class="tag">Spreadsheets</span>
+<span class="tag">SQL</span>
+<span class="tag">Python</span>
+<span class="tag">Statistics</span>
+<span class="tag">Visualization</span>
+<span class="tag">Dashboards</span>
+<span class="tag">Business Analytics</span>
+<span class="tag">Portfolio</span>
+</div>
+</section>
+
+<section class="stats">
+<div class="stat"><small>DURATION</small><strong>6 Months</strong></div>
+<div class="stat"><small>WEEKS</small><strong>24</strong></div>
+<div class="stat"><small>TOPICS</small><strong>48</strong></div>
+<div class="stat"><small>PROJECTS</small><strong>10+</strong></div>
+</section>
+
+<section class="lesson-card">
+
+<div class="lesson-meta">
+<span class="lesson-badge" id="lessonBadge">MONTH 01 • WEEK 01</span>
+<span class="lesson-time" id="lessonTime">⏱ 5 min minimum</span>
+</div>
+
+<h2 id="lessonTitle">Welcome to Data Analytics</h2>
+<p class="lesson-intro" id="lessonIntro"></p>
+
+<div class="lesson-content" id="lessonContent"></div>
+
+<div class="code-label">Example</div>
+<pre class="code"><code id="lessonCode"></code></pre>
+
+<div class="practice">
+<strong>🎯 Practice Task</strong>
+<p id="practiceText"></p>
+</div>
+
+<div class="lesson-timer">
+<div class="lesson-timer-left">
+<div class="timer-icon">⏱</div>
+<div>
+<span class="timer-label">Lesson learning time</span>
+<span class="timer-sub" id="timerSub">Spend 5 minutes on this topic to unlock completion.</span>
+</div>
+</div>
+<div class="timer-value" id="timerValue">5:00</div>
+</div>
+
+<div class="actions">
+<button class="btn complete waiting" id="completeBtn" disabled>🔒 Complete after 5 minutes</button>
+<button class="btn secondary" id="previousBtn">← Previous</button>
+<button class="btn" id="nextBtn">Next Topic →</button>
+</div>
+
+</section>
+
+<section class="assignment-card">
+<div class="assignment-header">
+<div>
+<div class="assignment-label">FINAL COURSE ASSIGNMENT</div>
+<h3>🏆 Build an End-to-End Analytics Portfolio</h3>
+</div>
+<span class="assignment-badge">CAPSTONE PROJECT</span>
+</div>
+
+<p class="assignment-description">
+Analyze a realistic business dataset, clean and validate the data, write SQL queries,
+perform exploratory analysis, create a dashboard, communicate business insights and
+present recommendations supported by evidence.
+</p>
+
+<div class="assignment-grid">
+<div class="assignment-item"><strong>📊 Data Preparation</strong><span>Import, inspect, clean, transform and validate a raw dataset.</span></div>
+<div class="assignment-item"><strong>🗄️ SQL Analysis</strong><span>Build queries using filtering, joins, aggregation, subqueries and window functions.</span></div>
+<div class="assignment-item"><strong>🐍 Python Analysis</strong><span>Use Python for exploration, transformation, statistical analysis and reproducible workflows.</span></div>
+<div class="assignment-item"><strong>📈 Dashboard</strong><span>Create a clear interactive dashboard with KPIs, trends, segments and filters.</span></div>
+<div class="assignment-item"><strong>💼 Business Story</strong><span>Turn analysis into concise findings, recommendations and measurable actions.</span></div>
+<div class="assignment-item"><strong>🌐 Portfolio</strong><span>Publish the project with documentation, screenshots, methodology and conclusions.</span></div>
+</div>
+
+<div class="assignment-check">
+<strong>📋 Submission Checklist</strong><br>
+✓ Cleaned dataset or reproducible data-preparation workflow<br>
+✓ SQL analysis file<br>
+✓ Python notebook or analysis script<br>
+✓ Interactive/static dashboard<br>
+✓ Executive summary<br>
+✓ Business recommendations<br>
+✓ Project documentation<br>
+✓ Portfolio-ready presentation
+</div>
+</section>
+
+</main>
+
+<aside class="right-panel">
+
+<div class="panel-title">YOUR PROGRESS</div>
+
+<div class="progress-card">
+<div class="progress-circle" id="progressCircle"><span id="progressPercent">0%</span></div>
+<p>Complete each topic sequentially. Every topic requires 5 minutes before completion is enabled.</p>
+</div>
+
+<div class="month-progress">
+<div class="panel-title">6 MONTH JOURNEY</div>
+<div id="monthProgress"></div>
+</div>
+
+<div class="certificate-box" id="certificateBox">
+<div class="certificate-icon" id="certificateIcon">🔒</div>
+<strong id="certificateTitle">Certificate Locked</strong>
+<p id="certificateText">Complete all 48 topics to become eligible for your certificate.</p>
+<div class="certificate-price" id="certificatePrice">Certificate Fee: <strong>₹49</strong></div>
+<button class="certificate-btn" id="certificateBtn" disabled>🔒 Complete Course First</button>
+</div>
+
+</aside>
+</div>
+
+<!-- CERTIFICATE MODAL -->
+<div class="certificate-modal" id="certificateModal">
+<div class="certificate">
+<button class="certificate-close" onclick="closeCertificate()">×</button>
+<div class="certificate-top">MAMRAJ NEXUS ACADEMY</div>
+<div class="certificate-line"></div>
+<div class="certificate-small">CERTIFICATE OF COMPLETION</div>
+<div class="certificate-paid-note">Official certificate • ₹49 certificate processing fee paid</div>
+<h1>Professional Data Analytics</h1>
+<p>This certificate is proudly presented to</p>
+<h2 id="certificateStudentName">Learner</h2>
+<p>for successfully completing the 6-month Professional Data Analytics program at MamRaj Nexus Academy.</p>
+
+<div class="certificate-details">
+<div><strong>Duration</strong><span>6 Months</span></div>
+<div><strong>Topics</strong><span>48 / 48</span></div>
+<div><strong>Projects</strong><span>10+</span></div>
+</div>
+
+<div class="certificate-footer">
+<div><strong>MamRaj Nexus Academy</strong><span>Academy</span></div>
+<div><strong id="certificateDate"></strong><span>Completion Year</span></div>
+</div>
+
+<button class="print-certificate" onclick="window.print()">🖨 Print / Save Certificate</button>
+</div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+ getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+ getFirestore, doc, getDoc, setDoc, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+/* ================= FIREBASE CONFIG =================
+Paste your own Firebase Web App configuration here.
+Enable Google Authentication and Firestore in Firebase.
+====================================================== */
+
+const firebaseConfig = {
+ apiKey:"YOUR_FIREBASE_API_KEY",
+ authDomain:"YOUR_PROJECT.firebaseapp.com",
+ projectId:"YOUR_PROJECT_ID",
+ storageBucket:"YOUR_PROJECT.firebasestorage.app",
+ messagingSenderId:"YOUR_MESSAGING_SENDER_ID",
+ appId:"YOUR_FIREBASE_APP_ID"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(firebaseApp);
+const googleProvider = new GoogleAuthProvider();
+const db = getFirestore(firebaseApp);
+
+const googleLoginBtn=document.getElementById("googleLoginBtn");
+const accountUser=document.getElementById("accountUser");
+const accountName=document.getElementById("accountName");
+const accountAvatar=document.getElementById("accountAvatar");
+const logoutBtn=document.getElementById("logoutBtn");
+const syncStatus=document.getElementById("syncStatus");
+const userRequired=document.getElementById("userRequired");
+
+function setSyncStatus(message,type=""){
+ syncStatus.textContent=message;
+ syncStatus.className="sync-status "+type;
+}
+
+googleLoginBtn.addEventListener("click",async()=>{
+ try{
+  googleLoginBtn.disabled=true;
+  googleLoginBtn.textContent="Signing in...";
+  await signInWithPopup(firebaseAuth,googleProvider);
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Google sign-in failed. Please try again.","error");
+ }finally{
+  googleLoginBtn.disabled=false;
+  googleLoginBtn.textContent="Continue with Google";
+ }
+});
+
+logoutBtn.addEventListener("click",async()=>{
+ try{
+  await saveUserProgress();
+  await signOut(firebaseAuth);
+ }catch(error){console.error(error);}
+});
+
+async function saveUserProgress(){
+ const user=firebaseAuth.currentUser;
+ if(!user)return;
+
+ try{
+  const ref=doc(db,"users",user.uid,"courseProgress","dataAnalytics");
+  await setDoc(ref,{
+   userId:user.uid,
+   email:user.email||"",
+   displayName:user.displayName||"",
+   photoURL:user.photoURL||"",
+   completed:completed,
+   currentTopic:currentTopic,
+   certificatePaid:certificatePaid,
+   updatedAt:serverTimestamp()
+  },{merge:true});
+
+  setSyncStatus("✓ Progress saved to your Google account.","online");
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Could not save cloud progress. Check Firebase setup.","error");
+ }
+}
+
+async function loadUserProgress(user){
+ try{
+  const ref=doc(db,"users",user.uid,"courseProgress","dataAnalytics");
+  const snapshot=await getDoc(ref);
+
+  if(snapshot.exists()){
+   const data=snapshot.data();
+
+   if(Array.isArray(data.completed)){
+    completed=data.completed.map(Number).filter(Number.isFinite).sort((a,b)=>a-b);
+   }
+
+   if(Number.isInteger(Number(data.currentTopic))){
+    currentTopic=Number(data.currentTopic);
+   }
+
+   if(typeof data.certificatePaid==="boolean"){
+    certificatePaid=data.certificatePaid;
+    localStorage.setItem(PAYMENT_KEY,certificatePaid?"paid":"unpaid");
+   }
+
+   localStorage.setItem(STORAGE_KEY,JSON.stringify(completed));
+  }
+
+  buildNavigation();
+  openTopic(isTopicUnlocked(currentTopic)?currentTopic:1);
+  updateProgress();
+  updateCertificate();
+
+  setSyncStatus("✓ Your analytics-course progress is synced with your Google account.","online");
+ }catch(error){
+  console.error(error);
+  setSyncStatus("Signed in, but cloud progress could not be loaded.","error");
+ }
+}
+
+onAuthStateChanged(firebaseAuth,async(user)=>{
+ if(user){
+  googleLoginBtn.style.display="none";
+  accountUser.style.display="flex";
+  accountName.textContent=user.displayName||user.email||"Learner";
+
+  if(user.photoURL){
+   accountAvatar.src=user.photoURL;
+   accountAvatar.style.display="block";
+  }else{
+   accountAvatar.style.display="none";
+  }
+
+  userRequired.classList.remove("show");
+  setSyncStatus("Loading your saved analytics progress...");
+  await loadUserProgress(user);
+ }else{
+  googleLoginBtn.style.display="block";
+  accountUser.style.display="none";
+  userRequired.classList.add("show");
+  setSyncStatus("Sign in with Google to save your progress.");
+
+  buildNavigation();
+  openTopic(isTopicUnlocked(currentTopic)?currentTopic:1);
+  updateProgress();
+  updateCertificate();
+ }
+});
+
+document.addEventListener("courseProgressChanged",async()=>{
+ if(firebaseAuth.currentUser) await saveUserProgress();
+});
+
+setInterval(async()=>{
+ if(firebaseAuth.currentUser) await saveUserProgress();
+},5000);
+</script>
+
+<script>
+/* =========================================================
+   6-MONTH DATA ANALYTICS COURSE
+   24 WEEKS / 48 TOPICS
+========================================================= */
+
+const course=[
+{ id:1,month:"Month 1",title:"Analytics Foundations & Spreadsheets",topics:[
+{id:1,week:1,title:"What Data Analytics Is",time:"5 min",intro:"Understand the analytics workflow, the role of an analyst, common business questions and how raw data becomes a decision.",content:`<h3>The Analytics Workflow</h3><p>Professional analysis normally moves through a repeatable cycle: define the problem, collect data, prepare it, analyze it, communicate findings and support action.</p><h3>Core Questions</h3><ul><li>What happened?</li><li>Why did it happen?</li><li>What is likely to happen?</li><li>What should we do next?</li></ul>`,code:`Business question\n      ↓\nData collection\n      ↓\nCleaning\n      ↓\nAnalysis\n      ↓\nVisualization\n      ↓\nDecision`,practice:"Write five business questions that could be answered using customer, sales or operations data."},
+{id:2,week:1,title:"Data Types & Structures",time:"5 min",intro:"Learn categorical, numerical, date/time and text data and understand how structure affects analysis.",content:`<h3>Common Data Types</h3><ul><li>Numerical: revenue, quantity, age</li><li>Categorical: region, product, segment</li><li>Date/time: order date, signup date</li><li>Text: feedback, comments, descriptions</li></ul>`,code:`Revenue     → Numerical\nRegion      → Categorical\nOrder Date  → Date\nFeedback    → Text`,practice:"Create a small table with 10 fields and label the data type of every field."},
+{id:3,week:2,title:"Spreadsheet Fundamentals",time:"5 min",intro:"Build a strong spreadsheet foundation for calculations, organization, filtering and repeatable analysis.",content:`<h3>Core Skills</h3><ul><li>Rows and columns</li><li>Relative and absolute references</li><li>Sorting and filtering</li><li>Basic formulas</li><li>Tables and named ranges</li></ul>`,code:`=SUM(B2:B20)\n=AVERAGE(C2:C20)\n=MAX(D2:D20)`,practice:"Create a sales table and calculate total, average, minimum and maximum values."},
+{id:4,week:2,title:"Cleaning Data in Spreadsheets",time:"5 min",intro:"Identify duplicates, blanks, inconsistent labels and formatting problems before analysis.",content:`<h3>Cleaning Checklist</h3><ul><li>Remove duplicate records</li><li>Standardize labels</li><li>Handle missing values</li><li>Check dates and numbers</li><li>Validate totals</li></ul>`,code:`Before:\n"Delhi"\n"delhi"\n" DELHI "\n\nAfter:\n"Delhi"`,practice:"Take a messy table and produce a clean standardized version with documented changes."},
+{id:5,week:3,title:"Formulas for Analysis",time:"5 min",intro:"Use conditional and lookup formulas to answer common analytical questions.",content:`<h3>Useful Formula Families</h3><ul><li>IF / IFS</li><li>COUNTIF / COUNTIFS</li><li>SUMIF / SUMIFS</li><li>Lookup functions</li><li>Text functions</li></ul>`,code:`=SUMIFS(Sales,Region,"North",Status,"Paid")\n=COUNTIFS(Region,"West",Status,"Open")`,practice:"Calculate revenue by region and count customers by status."},
+{id:6,week:3,title:"Pivot Tables",time:"5 min",intro:"Summarize large tables quickly using dimensions, measures, filters and calculated views.",content:`<h3>Pivot Thinking</h3><p>Choose a dimension such as Region or Product and a measure such as Revenue or Quantity. Then summarize the measure by the dimension.</p>`,code:`Rows: Region\nColumns: Month\nValues: SUM(Revenue)\nFilter: Product`,practice:"Build a pivot table showing monthly revenue by region."},
+{id:7,week:4,title:"Data Quality & Validation",time:"5 min",intro:"Develop a habit of validating data before trusting an analysis.",content:`<h3>Quality Checks</h3><ul><li>Row counts</li><li>Duplicate checks</li><li>Missing-value rates</li><li>Range checks</li><li>Totals and reconciliation</li></ul>`,code:`Expected rows = 10,000\nActual rows   = 9,842\n\n→ Investigate before analysis`,practice:"Create a validation checklist for a sales dataset."},
+{id:8,week:4,title:"Spreadsheet Analytics Project",time:"5 min",intro:"Complete a small end-to-end spreadsheet analysis using a realistic business dataset.",content:`<h3>Project</h3><p>Prepare a sales dataset, clean it, calculate KPIs, create pivot summaries and write three findings.</p>`,code:`Raw Data\n   ↓\nClean Table\n   ↓\nKPIs + Pivot Tables\n   ↓\nInsights`,practice:"Produce a one-page spreadsheet report with revenue, orders, average order value and top products."}
+]},
+{ id:2,month:"Month 2",title:"SQL & Relational Data",topics:[
+{id:9,week:5,title:"Databases & Tables",time:"5 min",intro:"Understand relational databases, tables, rows, columns, keys and relationships.",content:`<h3>Relational Model</h3><p>Data is organized into related tables. A primary key identifies a row and foreign keys connect related entities.</p>`,code:`customers\norders\nproducts\n\ncustomers.id → orders.customer_id`,practice:"Design three related tables for a small online store."},
+{id:10,week:5,title:"SELECT, WHERE & ORDER BY",time:"5 min",intro:"Retrieve, filter and sort records using foundational SQL.",content:`<h3>Basic Query</h3>`,code:`SELECT customer, revenue\nFROM sales\nWHERE revenue > 10000\nORDER BY revenue DESC;`,practice:"Write queries that return high-value orders and sort them from largest to smallest."},
+{id:11,week:6,title:"GROUP BY & Aggregations",time:"5 min",intro:"Summarize data with COUNT, SUM, AVG, MIN and MAX.",content:`<h3>Aggregation</h3><p>Grouping converts row-level records into useful business summaries.</p>`,code:`SELECT region,\n       SUM(revenue) AS revenue,\n       COUNT(*) AS orders\nFROM sales\nGROUP BY region;`,practice:"Calculate revenue and order count by region."},
+{id:12,week:6,title:"CASE & Conditional Logic",time:"5 min",intro:"Create analytical categories directly inside SQL.",content:`<h3>CASE</h3>`,code:`CASE\n WHEN revenue >= 50000 THEN 'High'\n WHEN revenue >= 10000 THEN 'Medium'\n ELSE 'Low'\nEND AS segment`,practice:"Create customer value bands using CASE."},
+{id:13,week:7,title:"Joins",time:"5 min",intro:"Combine related tables using inner, left and other join patterns.",content:`<h3>Why Joins Matter</h3><p>Most real analytical questions require fields from more than one table.</p>`,code:`SELECT o.order_id,\n       c.customer_name,\n       o.revenue\nFROM orders o\nJOIN customers c\n  ON o.customer_id = c.customer_id;`,practice:"Join customers and orders and return customer-level revenue."},
+{id:14,week:7,title:"Subqueries & CTEs",time:"5 min",intro:"Structure multi-step SQL analysis with subqueries and common table expressions.",content:`<h3>CTE</h3>`,code:`WITH regional_sales AS (\n SELECT region, SUM(revenue) revenue\n FROM sales\n GROUP BY region\n)\nSELECT *\nFROM regional_sales;`,practice:"Create a CTE that calculates monthly revenue before ranking months."},
+{id:15,week:8,title:"Window Functions",time:"5 min",intro:"Compare rows, calculate rankings, running totals and period-over-period metrics.",content:`<h3>Analytical SQL</h3>`,code:`SELECT month,\n       revenue,\n       LAG(revenue) OVER(\n         ORDER BY month\n       ) AS previous_month\nFROM monthly_sales;`,practice:"Calculate previous-month revenue and monthly growth."},
+{id:16,week:8,title:"SQL Business Analysis Project",time:"5 min",intro:"Answer a set of business questions using joins, aggregation, CTEs and window functions.",content:`<h3>Project Questions</h3><ul><li>Who are the highest-value customers?</li><li>Which products drive revenue?</li><li>Which regions are growing?</li><li>Where are conversion opportunities?</li></ul>`,code:`Raw Tables\n   ↓\nSQL Analysis\n   ↓\nBusiness Findings`,practice:"Submit a clean SQL script containing at least 10 analytical queries and a written insight summary."}
+]},
+{ id:3,month:"Month 3",title:"Statistics & Exploratory Analysis",topics:[
+{id:17,week:9,title:"Descriptive Statistics",time:"5 min",intro:"Understand mean, median, mode, range, variance and standard deviation.",content:`<h3>Descriptive Statistics</h3><p>Use summary statistics to understand the center and spread of a dataset.</p>`,code:`Mean = sum(values) / count(values)\nMedian = middle value\nStd Dev = measure of spread`,practice:"Calculate descriptive statistics for a small customer-spend dataset."},
+{id:18,week:9,title:"Distributions & Percentiles",time:"5 min",intro:"Read distributions and use percentiles to understand customer or operational behavior.",content:`<h3>Percentiles</h3><p>Percentiles help answer questions such as: what value is higher than 90% of observations?</p>`,code:`P50 → median\nP75 → upper quartile\nP90 → high-value threshold`,practice:"Find P50, P75 and P90 for an order-value dataset."},
+{id:19,week:10,title:"Sampling & Bias",time:"5 min",intro:"Learn why samples are used and how selection bias can distort conclusions.",content:`<h3>Good Sampling</h3><ul><li>Define the population</li><li>Choose a representative sample</li><li>Document selection</li><li>Watch for missing groups</li></ul>`,code:`Population\n   ↓\nSample\n   ↓\nEstimate\n   ↓\nDecision`,practice:"Identify three possible sources of bias in a customer survey."},
+{id:20,week:10,title:"Correlation",time:"5 min",intro:"Measure relationships between numerical variables and understand why correlation is not causation.",content:`<h3>Correlation</h3><p>A strong association can be useful for exploration, but it does not by itself prove that one variable causes another.</p>`,code:`Correlation → association\nCausation  → cause/effect\n\nDo not treat them as identical.`,practice:"Find two variables that might correlate in a business dataset and explain why."},
+{id:21,week:11,title:"Hypothesis Testing",time:"5 min",intro:"Understand null hypotheses, alternative hypotheses, significance and practical interpretation.",content:`<h3>Testing Framework</h3><ul><li>Define the question</li><li>State hypotheses</li><li>Select a test</li><li>Calculate evidence</li><li>Interpret in context</li></ul>`,code:`H0: no meaningful difference\nH1: meaningful difference`,practice:"Write a hypothesis for whether a new campaign changes average order value."},
+{id:22,week:11,title:"Confidence & Uncertainty",time:"5 min",intro:"Communicate estimates with uncertainty instead of presenting every number as exact.",content:`<h3>Uncertainty</h3><p>Analytical communication should distinguish a point estimate from the uncertainty around that estimate.</p>`,code:`Estimate\n  ±\nUncertainty\n  ↓\nMore honest conclusion`,practice:"Rewrite three overly certain business claims into evidence-based statements."},
+{id:23,week:12,title:"Exploratory Data Analysis",time:"5 min",intro:"Systematically inspect a dataset for patterns, anomalies, relationships and useful questions.",content:`<h3>EDA Checklist</h3><ul><li>Shape and columns</li><li>Missing values</li><li>Duplicates</li><li>Distributions</li><li>Outliers</li><li>Relationships</li></ul>`,code:`Inspect → Clean → Summarize\n      ↓\nVisualize → Question → Investigate`,practice:"Perform an EDA checklist on a public or academy-provided dataset."},
+{id:24,week:12,title:"Statistical Analysis Project",time:"5 min",intro:"Combine descriptive statistics, distributions and exploratory analysis into a concise analytical report.",content:`<h3>Project</h3><p>Analyze a dataset, document quality issues, summarize distributions and explain the most important relationships.</p>`,code:`Dataset\n ↓\nEDA\n ↓\nStatistics\n ↓\nFindings`,practice:"Create a short analytical report with at least five evidence-backed findings."}
+]},
+{ id:4,month:"Month 4",title:"Python for Data Analysis",topics:[
+{id:25,week:13,title:"Python Foundations for Analysts",time:"5 min",intro:"Learn Python syntax needed for practical data work: variables, collections, conditions and functions.",content:`<h3>Analyst Mindset</h3><p>Use code to make analysis repeatable, auditable and easier to scale.</p>`,code:`sales = [120, 250, 180]\n\ntotal = sum(sales)\nprint(total)`,practice:"Create variables for revenue, orders and customers and calculate average order value."},
+{id:26,week:13,title:"Lists, Dictionaries & Functions",time:"5 min",intro:"Use core Python structures to organize and transform analytical data.",content:`<h3>Functions</h3>`,code:`def average(values):\n    return sum(values) / len(values)\n\nprint(average([10,20,30]))`,practice:"Write reusable functions for total, average and percentage change."},
+{id:27,week:14,title:"Working with DataFrames",time:"5 min",intro:"Use a dataframe-oriented workflow to inspect, filter, transform and summarize tabular data.",content:`<h3>DataFrame Workflow</h3>`,code:`df.head()\ndf.info()\ndf.describe()\ndf["revenue"].sum()`,practice:"Load a dataset and produce a first-pass profile of its columns and metrics."},
+{id:28,week:14,title:"Cleaning with Python",time:"5 min",intro:"Handle missing values, duplicates, types and inconsistent categories programmatically.",content:`<h3>Cleaning Pattern</h3>`,code:`df = df.drop_duplicates()\ndf["date"] = to_datetime(df["date"])\ndf["region"] = df["region"].str.strip()`,practice:"Build a repeatable cleaning script and document each transformation."},
+{id:29,week:15,title:"Grouping & Aggregation in Python",time:"5 min",intro:"Create grouped summaries and business metrics with a reproducible code workflow.",content:`<h3>Grouped Analysis</h3>`,code:`summary = (\n df.groupby("region")\n   ["revenue"].sum()\n   .sort_values(ascending=False)\n)`,practice:"Calculate revenue, order count and average order value by region."},
+{id:30,week:15,title:"Visualization with Python",time:"5 min",intro:"Choose charts that communicate trends, comparisons, distributions and relationships clearly.",content:`<h3>Chart Selection</h3><ul><li>Line → trend</li><li>Bar → comparison</li><li>Histogram → distribution</li><li>Scatter → relationship</li></ul>`,code:`plot(data)\n\n# Choose the chart\n# based on the question.`,practice:"Create four charts for the same dataset and explain why each chart was selected."},
+{id:31,week:16,title:"Reusable Analysis Notebooks",time:"5 min",intro:"Structure notebooks so another analyst can understand, reproduce and review your work.",content:`<h3>Notebook Structure</h3><ul><li>Objective</li><li>Data source</li><li>Cleaning</li><li>Analysis</li><li>Visuals</li><li>Findings</li><li>Next steps</li></ul>`,code:`# Objective\n# Load\n# Clean\n# Analyze\n# Visualize\n# Conclude`,practice:"Refactor one analysis into a clean, readable notebook."},
+{id:32,week:16,title:"Python Analytics Project",time:"5 min",intro:"Complete an end-to-end Python analysis with cleaning, exploration, visualization and recommendations.",content:`<h3>Deliverables</h3><ul><li>Notebook</li><li>Cleaned dataset</li><li>Visualizations</li><li>Findings</li><li>Recommendations</li></ul>`,code:`Raw CSV\n ↓\nPython\n ↓\nClean Data\n ↓\nEDA + Charts\n ↓\nInsights`,practice:"Submit a portfolio-ready Python notebook with clear narrative and reproducible steps."}
+]},
+{ id:5,month:"Month 5",title:"Visualization, Dashboards & Business Intelligence",topics:[
+{id:33,week:17,title:"Data Storytelling",time:"5 min",intro:"Turn analytical results into a narrative that answers the business question clearly.",content:`<h3>Story Structure</h3><p>Start with the decision, present the evidence, explain the driver and finish with an action.</p>`,code:`Question\n ↓\nEvidence\n ↓\nInsight\n ↓\nAction`,practice:"Turn three raw statistics into a short executive story."},
+{id:34,week:17,title:"Chart Design Principles",time:"5 min",intro:"Use hierarchy, labels, scales and annotations to make charts easier to understand.",content:`<h3>Clean Visuals</h3><ul><li>Clear title</li><li>Meaningful labels</li><li>Consistent scales</li><li>Minimal clutter</li><li>Highlight the key point</li></ul>`,code:`Bad chart → decoration\nGood chart → communication`,practice:"Redesign a cluttered chart and explain the decisions you made."},
+{id:35,week:18,title:"KPI Design",time:"5 min",intro:"Choose meaningful key performance indicators and define them precisely.",content:`<h3>KPI Definition</h3><p>A KPI needs a clear name, formula, time period, owner and business purpose.</p>`,code:`Revenue Growth %\n= (Current - Previous)\n  / Previous × 100`,practice:"Define five KPIs for an online business including formulas and business meaning."},
+{id:36,week:18,title:"Dashboard Architecture",time:"5 min",intro:"Design a dashboard hierarchy from executive summary to detailed exploration.",content:`<h3>Dashboard Layers</h3><ul><li>Top: headline KPIs</li><li>Middle: trends and drivers</li><li>Bottom: detailed breakdown</li><li>Filters: controlled exploration</li></ul>`,code:`KPIs\n ↓\nTrends + Drivers\n ↓\nSegments + Detail`,practice:"Sketch a dashboard layout before building it."},
+{id:37,week:19,title:"Interactive Filters & Drilldowns",time:"5 min",intro:"Design interactions that help users answer follow-up questions without creating confusion.",content:`<h3>Good Interaction</h3><p>Every filter should have a purpose and should update relevant visuals consistently.</p>`,code:`Region filter\n    ↓\nKPIs + Charts\n    ↓\nUpdated insight`,practice:"Plan filters for region, product, month and customer segment."},
+{id:38,week:19,title:"Dashboard Performance & QA",time:"5 min",intro:"Validate calculations, filters, labels, edge cases and dashboard performance before publishing.",content:`<h3>QA Checklist</h3><ul><li>Metric definitions</li><li>Totals reconcile</li><li>Filters work</li><li>Dates behave correctly</li><li>No broken visuals</li></ul>`,code:`Build\n ↓\nTest\n ↓\nReconcile\n ↓\nPublish`,practice:"Create a dashboard QA checklist and test it against your own project."},
+{id:39,week:20,title:"Executive Reporting",time:"5 min",intro:"Write concise reporting for decision-makers with context, evidence and recommended action.",content:`<h3>Executive Summary</h3><p>Lead with what changed, quantify impact, explain likely drivers and recommend the next action.</p>`,code:`What changed?\nWhy?\nSo what?\nNow what?`,practice:"Write a five-sentence executive summary from an analytics report."},
+{id:40,week:20,title:"Dashboard Project",time:"5 min",intro:"Build and present a professional dashboard from a cleaned analytical dataset.",content:`<h3>Project</h3><ul><li>5+ KPIs</li><li>Trend analysis</li><li>Category comparison</li><li>Filters</li><li>Executive summary</li></ul>`,code:`Dataset\n ↓\nMetrics\n ↓\nDashboard\n ↓\nStory`,practice:"Create a portfolio-ready dashboard and record the business questions it answers."}
+]},
+{ id:6,month:"Month 6",title:"Advanced Analytics, Portfolio & Capstone",topics:[
+{id:41,week:21,title:"Advanced SQL Analytics",time:"5 min",intro:"Combine complex joins, windows, cohorts and period comparisons to answer deeper business questions.",content:`<h3>Advanced Patterns</h3><ul><li>Running totals</li><li>Rankings</li><li>Retention</li><li>Cohorts</li><li>Period comparisons</li></ul>`,code:`Customer\n ↓\nFirst Purchase\n ↓\nRepeat Purchase\n ↓\nRetention`,practice:"Design a cohort analysis for customer retention."},
+{id:42,week:21,title:"Time Series & Forecasting Concepts",time:"5 min",intro:"Understand trend, seasonality, moving averages and the basics of forecasting without overclaiming certainty.",content:`<h3>Time-Based Patterns</h3><ul><li>Trend</li><li>Seasonality</li><li>Noise</li><li>Moving average</li></ul>`,code:`Observed data\n ↓\nPattern\n ↓\nModel\n ↓\nForecast + uncertainty`,practice:"Identify trend and seasonality in a monthly business metric."},
+{id:43,week:22,title:"Intro to Predictive Analytics",time:"5 min",intro:"Understand how predictive models support decisions and how analysts evaluate model usefulness.",content:`<h3>Predictive Workflow</h3><p>Define target, prepare features, split data, train, evaluate and interpret in business context.</p>`,code:`Features → Model → Prediction\n              ↓\n          Evaluation`,practice:"Define a prediction problem for churn, demand or lead conversion."},
+{id:44,week:22,title:"Model Evaluation & Responsible Analysis",time:"5 min",intro:"Learn why evaluation metrics, leakage, bias and business costs matter when using predictive models.",content:`<h3>Evaluation</h3><ul><li>Choose metrics for the problem</li><li>Use appropriate validation</li><li>Check leakage</li><li>Consider fairness and business impact</li></ul>`,code:`Model\n ↓\nValidation\n ↓\nMetrics\n ↓\nBusiness impact`,practice:"Choose evaluation metrics for a classification problem and explain why."},
+{id:45,week:23,title:"Portfolio & Case Study Writing",time:"5 min",intro:"Turn projects into professional case studies that demonstrate problem-solving rather than just tool usage.",content:`<h3>Case Study Structure</h3><ul><li>Business problem</li><li>Data</li><li>Method</li><li>Key findings</li><li>Impact</li><li>Recommendation</li></ul>`,code:`Problem → Method → Evidence → Insight → Action`,practice:"Rewrite one project as a one-page case study."},
+{id:46,week:23,title:"Interview & Analytical Communication",time:"5 min",intro:"Practice explaining analytical decisions, assumptions, trade-offs and recommendations clearly.",content:`<h3>Strong Explanation</h3><p>Explain the question, method, result, uncertainty and action in plain business language.</p>`,code:`Question\n→ Method\n→ Result\n→ Meaning\n→ Recommendation`,practice:"Record a two-minute explanation of one project without reading from notes."},
+{id:47,week:24,title:"Capstone Planning & Data Audit",time:"5 min",intro:"Define the final capstone question, dataset, metrics, analysis plan and quality checks before implementation.",content:`<h3>Capstone Plan</h3><ul><li>Business question</li><li>Success metrics</li><li>Dataset</li><li>Cleaning plan</li><li>SQL plan</li><li>Python plan</li><li>Dashboard plan</li></ul>`,code:`Question\n ↓\nData Audit\n ↓\nAnalysis Plan\n ↓\nDeliverables`,practice:"Create a complete capstone project plan and data dictionary."},
+{id:48,week:24,title:"Final Analytics Capstone",time:"5 min",intro:"Complete and present an end-to-end analytics portfolio project that demonstrates the full program.",content:`<h3>Final Deliverables</h3><ul><li>Cleaned data workflow</li><li>SQL analysis</li><li>Python analysis</li><li>Dashboard</li><li>Executive summary</li><li>Recommendations</li><li>Portfolio documentation</li></ul><h3>🎓 Completion</h3><p>After all 48 topics are completed, the learner becomes eligible for the certificate process. The official certificate is released after the required ₹49 certificate fee is successfully verified.</p>`,code:`Business Question\n      ↓\nData Preparation\n      ↓\nSQL + Python\n      ↓\nDashboard\n      ↓\nInsights\n      ↓\nRecommendations\n      ↓\nPortfolio`,practice:"Submit the complete capstone, publish the project documentation and prepare a professional presentation."}
+]}
+];
+
+/* ================= STORAGE ================= */
+const STORAGE_KEY="mamraj_data_analytics_course_progress";
+const TIMER_KEY="mamraj_data_analytics_lesson_timers";
+const PAYMENT_KEY="mamraj_data_analytics_certificate_payment";
+
+let completed=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+let currentTopic=1;
+let lessonTimers=JSON.parse(localStorage.getItem(TIMER_KEY)||"{}");
+let certificatePaid=localStorage.getItem(PAYMENT_KEY)==="paid";
+
+function saveLocal(){
+ localStorage.setItem(STORAGE_KEY,JSON.stringify(completed));
+ localStorage.setItem(TIMER_KEY,JSON.stringify(lessonTimers));
+}
+
+function findTopic(id){
+ for(const month of course){
+  const topic=month.topics.find(t=>t.id===id);
+  if(topic)return {month,topic};
+ }
+ return null;
+}
+
+function isComplete(id){return completed.includes(id)}
+function isTopicUnlocked(id){return id===1||completed.includes(id-1)}
+function isMonthUnlocked(monthId){
+ if(monthId===1)return true;
+ const previous=course.find(m=>m.id===monthId-1);
+ return previous ? previous.topics.every(t=>completed.includes(t.id)) : false;
+}
+
+/* ================= NAVIGATION ================= */
+function buildNavigation(){
+ const container=document.getElementById("courseNavigation");
+ container.innerHTML="";
+
+ course.forEach(month=>{
+  const unlocked=isMonthUnlocked(month.id);
+  const wrapper=document.createElement("div");
+  wrapper.className="month";
+
+  if(unlocked && month.topics.some(t=>t.id===currentTopic))wrapper.classList.add("open");
+
+  const header=document.createElement("button");
+  header.className="month-header";
+  header.innerHTML=`
+   <span class="month-number">${String(month.id).padStart(2,"0")}</span>
+   <span class="month-name">${month.title}</span>
+   <span class="month-lock">${unlocked?"↓":"🔒"}</span>`;
+
+  header.onclick=()=>{
+   if(!unlocked){
+    alert("🔒 Complete the previous month before unlocking "+month.month+".");
+    return;
+   }
+   wrapper.classList.toggle("open");
+  };
+
+  const topics=document.createElement("div");
+  topics.className="topics";
+
+  month.topics.forEach(topic=>{
+   const unlockedTopic=isTopicUnlocked(topic.id);
+   const button=document.createElement("button");
+   button.className="topic";
+   if(topic.id===currentTopic)button.classList.add("active");
+   if(isComplete(topic.id))button.classList.add("completed");
+   if(!unlockedTopic)button.classList.add("locked");
+
+   button.innerHTML=`
+    <span>${isComplete(topic.id)?"✓":unlockedTopic?"○":"🔒"}</span>
+    <span>W${String(topic.week).padStart(2,"0")} • ${topic.title}</span>`;
+
+   button.onclick=()=>{
+    if(!isTopicUnlocked(topic.id)){
+     alert("🔒 Complete the previous topic first.");
+     return;
+    }
+    openTopic(topic.id);
+   };
+
+   topics.appendChild(button);
+  });
+
+  wrapper.appendChild(header);
+  wrapper.appendChild(topics);
+  container.appendChild(wrapper);
+ });
+}
+
+/* ================= 5 MINUTE TIMER ================= */
+const LESSON_TIME_REQUIRED=300;
+let timerInterval=null;
+let timerStartedAt=null;
+let timerTopicId=null;
+let timerElapsed=0;
+
+function getStoredElapsed(id){
+ const value=Number(lessonTimers[id]||0);
+ return Number.isFinite(value)?value:0;
+}
+
+function getCurrentElapsed(){
+ if(!timerTopicId||!timerStartedAt)return getStoredElapsed(currentTopic);
+ return Math.min(LESSON_TIME_REQUIRED,timerElapsed+Math.floor((Date.now()-timerStartedAt)/1000));
+}
+
+function saveLessonTimers(){
+ localStorage.setItem(TIMER_KEY,JSON.stringify(lessonTimers));
+}
+
+function startLessonTimer(id){
+ clearInterval(timerInterval);
+ timerTopicId=id;
+ timerElapsed=getStoredElapsed(id);
+ timerStartedAt=Date.now();
+ updateLessonTimerUI();
+ timerInterval=setInterval(tickLessonTimer,1000);
+}
+
+function tickLessonTimer(){
+ if(!timerTopicId)return;
+ const elapsed=getCurrentElapsed();
+ lessonTimers[timerTopicId]=elapsed;
+ saveLessonTimers();
+ updateLessonTimerUI();
+ if(elapsed>=LESSON_TIME_REQUIRED){
+  clearInterval(timerInterval);
+  lessonTimers[timerTopicId]=LESSON_TIME_REQUIRED;
+  timerElapsed=LESSON_TIME_REQUIRED;
+  saveLessonTimers();
+  updateLessonTimerUI();
+ }
+}
+
+function canCompleteCurrentTopic(){
+ return getCurrentElapsed()>=LESSON_TIME_REQUIRED;
+}
+
+function updateLessonTimerUI(){
+ const value=document.getElementById("timerValue");
+ const sub=document.getElementById("timerSub");
+ const button=document.getElementById("completeBtn");
+ if(!value||!sub||!button)return;
+
+ if(isComplete(currentTopic)){
+  value.textContent="✓";
+  value.classList.add("ready");
+  sub.textContent="Topic completed.";
+  button.disabled=true;
+  button.classList.remove("waiting");
+  button.textContent="✓ Completed";
+  return;
+ }
+
+ const remaining=Math.max(0,LESSON_TIME_REQUIRED-getCurrentElapsed());
+
+ if(remaining<=0){
+  value.textContent="✓ Ready";
+  value.classList.add("ready");
+  sub.textContent="5 minutes completed. You can now mark this topic complete.";
+  button.disabled=false;
+  button.classList.remove("waiting");
+  button.textContent="✓ Mark as Complete";
+  return;
+ }
+
+ value.classList.remove("ready");
+ const minutes=Math.floor(remaining/60);
+ const seconds=remaining%60;
+ value.textContent=`${minutes}:${String(seconds).padStart(2,"0")}`;
+ sub.textContent=`Spend 5 minutes on this topic. ${minutes}:${String(seconds).padStart(2,"0")} remaining.`;
+ button.disabled=true;
+ button.classList.add("waiting");
+ button.textContent="🔒 Complete after 5 minutes";
+}
+
+/* ================= LESSON ================= */
+function openTopic(id){
+ if(!isTopicUnlocked(id)){
+  alert("🔒 Complete the previous topic first.");
+  return;
+ }
+
+ const result=findTopic(id);
+ if(!result)return;
+
+ currentTopic=id;
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));
+ startLessonTimer(id);
+
+ const topic=result.topic;
+
+ document.getElementById("lessonBadge").textContent=result.month.month.toUpperCase()+" • WEEK "+String(topic.week).padStart(2,"0");
+ document.getElementById("lessonTime").textContent="⏱ "+topic.time+" minimum";
+ document.getElementById("lessonTitle").textContent=topic.title;
+ document.getElementById("lessonIntro").textContent=topic.intro;
+ document.getElementById("lessonContent").innerHTML=topic.content;
+ document.getElementById("lessonCode").textContent=topic.code;
+ document.getElementById("practiceText").textContent=topic.practice;
+
+ updateCompleteButton();
+ updateProgress();
+ buildNavigation();
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function updateCompleteButton(){
+ const button=document.getElementById("completeBtn");
+ if(isComplete(currentTopic)){
+  button.textContent="✓ Completed";
+  button.disabled=true;
+  button.classList.remove("waiting");
+ }else{
+  updateLessonTimerUI();
+ }
+}
+
+/* ================= COMPLETE ================= */
+document.getElementById("completeBtn").addEventListener("click",()=>{
+ if(isComplete(currentTopic))return;
+
+ if(!canCompleteCurrentTopic()){
+  updateLessonTimerUI();
+  alert("⏱ Please spend the full 5 minutes on this topic before marking it complete.");
+  return;
+ }
+
+ completed.push(currentTopic);
+ completed=[...new Set(completed)].sort((a,b)=>a-b);
+ saveLocal();
+
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));
+
+ updateCompleteButton();
+ updateProgress();
+ buildNavigation();
+
+ const current=findTopic(currentTopic);
+ const month=current.month;
+ const monthComplete=month.topics.every(t=>isComplete(t.id));
+
+ if(monthComplete){
+  if(month.id<course.length){
+   alert("🎉 "+month.month+" completed!\n\n🔓 "+course[month.id].month+" is now unlocked.");
+  }else{
+   updateCertificate();
+   alert("🏆 Congratulations!\n\nYou completed the entire 6-month Data Analytics program.\n\n🎓 Your certificate is now ready. Pay ₹49 to unlock the official certificate.");
+  }
+ }else{
+  alert("✓ Topic completed!\n\n🔓 The next topic is now unlocked.");
+ }
+});
+
+/* ================= NEXT/PREVIOUS ================= */
+document.getElementById("nextBtn").addEventListener("click",()=>{
+ if(!isComplete(currentTopic)){
+  alert("⚠️ Complete this topic first.");
+  return;
+ }
+ if(currentTopic>=48){
+  alert("🏆 You have completed the 6-month course!");
+  return;
+ }
+ if(isTopicUnlocked(currentTopic+1))openTopic(currentTopic+1);
+});
+
+document.getElementById("previousBtn").addEventListener("click",()=>{
+ if(currentTopic>1)openTopic(currentTopic-1);
+});
+
+/* ================= PROGRESS ================= */
+function updateProgress(){
+ const done=completed.length;
+ const percent=Math.round(done/48*100);
+
+ document.getElementById("headerProgress").style.width=percent+"%";
+ document.getElementById("headerPercent").textContent=percent+"%";
+ document.getElementById("progressPercent").textContent=percent+"%";
+
+ document.getElementById("progressCircle").style.background=
+  `conic-gradient(var(--green) ${percent*3.6}deg,#e7dfdb ${percent*3.6}deg)`;
+
+ updateMonthProgress();
+ updateCertificate();
+}
+
+function updateMonthProgress(){
+ const container=document.getElementById("monthProgress");
+ container.innerHTML="";
+
+ course.forEach(month=>{
+  const done=month.topics.filter(t=>isComplete(t.id)).length;
+  const item=document.createElement("div");
+  item.className="month-progress-item";
+  item.innerHTML=`<strong>${month.month}</strong><span>${done} / ${month.topics.length} topics completed</span>`;
+  container.appendChild(item);
+ });
+}
+
+/* ================= CERTIFICATE ================= */
+const CERTIFICATE_FEE=49;
+
+function isCourseComplete(){
+ return completed.length>=48;
+}
+
+function updateCertificate(){
+ const box=document.getElementById("certificateBox");
+ const icon=document.getElementById("certificateIcon");
+ const title=document.getElementById("certificateTitle");
+ const text=document.getElementById("certificateText");
+ const price=document.getElementById("certificatePrice");
+ const button=document.getElementById("certificateBtn");
+
+ if(!isCourseComplete()){
+  box.classList.remove("unlocked");
+  icon.textContent="🔒";
+  title.textContent="Certificate Locked";
+  text.textContent=`Complete all 48 topics first. ${completed.length}/48 completed.`;
+  price.innerHTML=`Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
+  button.textContent="🔒 Complete Course First";
+  button.disabled=true;
+  button.onclick=null;
+  return;
+ }
+
+ if(!certificatePaid){
+  box.classList.add("unlocked");
+  icon.textContent="🎓";
+  title.textContent="Certificate Ready";
+  text.textContent="You completed the course. Pay ₹49 to unlock your official certificate.";
+  price.innerHTML=`Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
+  button.textContent="💳 Pay ₹49 & Unlock";
+  button.disabled=false;
+  button.onclick=startCertificatePayment;
+  return;
+ }
+
+ box.classList.add("unlocked");
+ icon.textContent="🏆";
+ title.textContent="Certificate Unlocked!";
+ text.textContent="Your official certificate is ready to view and print.";
+ price.innerHTML="✓ Certificate fee paid";
+ button.textContent="🏆 View Certificate";
+ button.disabled=false;
+ button.onclick=openCertificate;
+}
+
+function startCertificatePayment(){
+ if(!isCourseComplete()){
+  alert("🔒 Complete all 48 topics before paying.");
+  return;
+ }
+ alert("₹49 certificate payment is ready to be connected to your payment gateway.\n\nFor production, verify the successful transaction on your server before calling unlockCertificateAfterVerifiedPayment().");
+}
+
+function unlockCertificateAfterVerifiedPayment(){
+ if(!isCourseComplete())return;
+
+ certificatePaid=true;
+ localStorage.setItem(PAYMENT_KEY,"paid");
+ document.dispatchEvent(new CustomEvent("courseProgressChanged"));
+ updateCertificate();
+ openCertificate();
+}
+
+function openCertificate(){
+ if(!isCourseComplete()){
+  alert("🔒 Complete all 48 topics first.");
+  return;
+ }
+ if(!certificatePaid){
+  alert("🔒 Please pay the ₹49 certificate fee first.");
+  return;
+ }
+
+ document.getElementById("certificateModal").classList.add("show");
+
+ const userName=
+  document.getElementById("accountName").textContent;
+
+ document.getElementById("certificateStudentName").textContent=
+  userName && userName!=="Learner"
+   ? userName
+   : "Learner";
+
+ document.getElementById("certificateDate").textContent=
+  new Date().getFullYear();
+}
+
+function closeCertificate(){
+ document.getElementById("certificateModal").classList.remove("show");
+}
+
+document.getElementById("certificateModal").addEventListener("click",e=>{
+ if(e.target===e.currentTarget)closeCertificate();
+});
+
+/* ================= MOBILE MENU ================= */
+const menu=document.getElementById("menuBtn");
+const sidebar=document.getElementById("sidebar");
+const overlay=document.getElementById("overlay");
+
+menu.addEventListener("click",()=>{
+ sidebar.classList.toggle("show");
+ overlay.classList.toggle("show");
+});
+
+overlay.addEventListener("click",()=>{
+ sidebar.classList.remove("show");
+ overlay.classList.remove("show");
+});
+
+/* ================= INITIALIZE ================= */
+buildNavigation();
+openTopic(1);
+updateProgress();
+updateCertificate();
+</script>
+
+</body>
+</html>
