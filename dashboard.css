@@ -2122,3 +2122,335 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #a87860;
 }
+/* =========================================================
+   GLOBAL SEARCH + CATEGORY FILTERS
+========================================================= */
+
+.search-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 780px;
+}
+
+
+/* Search box */
+
+.search-box {
+    width: 100%;
+    max-width: 470px;
+
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 13px;
+
+    background: #f7f4f1;
+
+    border: 1px solid transparent;
+
+    border-radius: 13px;
+
+    transition:
+        border .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.search-box:focus-within {
+
+    background: #ffffff;
+
+    border-color:
+        #d6b4a2;
+
+    box-shadow:
+        0 6px 18px
+        rgba(71,54,45,.07);
+}
+
+
+/* Search icon */
+
+.search-icon {
+
+    width: 25px;
+
+    color:
+        #7c8498;
+
+    font-size: 21px;
+
+    display: grid;
+    place-items: center;
+}
+
+
+/* Search input */
+
+.search-box input {
+
+    flex: 1;
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color:
+        #27335d;
+
+    font-size: 11px;
+}
+
+
+.search-box input::placeholder {
+
+    color:
+        #92939c;
+}
+
+
+/* Clear button */
+
+.clear-search {
+
+    display: none;
+
+    width: 25px;
+    height: 25px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #e8dfda;
+
+    color:
+        #725c50;
+
+    font-size: 15px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+.clear-search.show {
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+/* =========================================================
+   CATEGORY BUTTONS
+========================================================= */
+
+.category-filters {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+
+.category {
+
+    height: 34px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        #e6dfda;
+
+    border-radius: 9px;
+
+    background:
+        #ffffff;
+
+    color:
+        #77727a;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        all .2s ease;
+}
+
+
+.category:hover {
+
+    border-color:
+        #c99173;
+
+    color:
+        #8f6855;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.category.active {
+
+    border-color:
+        #263873;
+
+    background:
+        #263873;
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 5px 12px
+        rgba(38,56,115,.15);
+}
+
+
+/* =========================================================
+   SEARCH RESULT STATE
+========================================================= */
+
+.course.hidden {
+
+    display: none;
+}
+
+
+.no-results {
+
+    padding:
+        35px 20px;
+
+    text-align: center;
+
+    color:
+        #8c8580;
+
+    font-size: 11px;
+}
+
+
+.no-results-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   MOBILE SEARCH
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .search-area {
+
+        max-width: 600px;
+    }
+
+    .category:nth-child(5) {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .search-area {
+
+        position: absolute;
+
+        left: 65px;
+        right: 150px;
+
+        max-width: none;
+    }
+
+    .category-filters {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .search-area {
+
+        position: static;
+
+        flex: 1;
+
+        margin-left: 8px;
+    }
+
+    .search-box {
+
+        height: 40px;
+    }
+
+    .search-box input {
+
+        font-size: 10px;
+    }
+
+    .top-right {
+
+        gap: 5px;
+    }
+
+    .profile > div:last-child {
+
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .search-area {
+
+        max-width: 190px;
+    }
+
+    .search-box {
+
+        padding: 0 9px;
+    }
+
+    .search-box input {
+
+        min-width: 0;
+    }
+
+}
