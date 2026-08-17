@@ -53,7 +53,44 @@ button{
     border-bottom:1px solid var(--border);
     backdrop-filter:blur(12px);
 }
+/* =====================================================
+   LOCKED COURSE SECTIONS
+===================================================== */
 
+.module.locked{
+    opacity:.72;
+}
+
+.locked-module{
+    cursor:not-allowed !important;
+    background:#f8f6f4 !important;
+    color:#aaa !important;
+}
+
+.locked-module .module-number{
+    background:#eeeae7;
+    color:#aaa;
+}
+
+.locked-lesson{
+    cursor:not-allowed !important;
+
+    color:#b2aaa5 !important;
+
+    background:#faf9f8 !important;
+
+    border-left-color:
+        transparent !important;
+}
+
+.locked-lesson:hover{
+    color:#aaa !important;
+    background:#faf9f8 !important;
+}
+
+.locked-lesson .lesson-check{
+    opacity:.8;
+}
 .logo{
     width:40px;
     height:40px;
