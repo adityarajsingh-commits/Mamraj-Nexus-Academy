@@ -2245,3 +2245,715 @@ a:focus-visible {
 
         margin: 0;
     }
+/* =========================================================
+   RESPONSIVE FIX - MAMRAJ NEXUS COURSE
+========================================================= */
+
+/* Prevent horizontal overflow */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   DESKTOP - LARGE SCREENS
+========================================================= */
+
+.layout {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        280px
+        minmax(0, 1fr)
+        240px;
+}
+
+.main {
+    min-width: 0;
+    width: 100%;
+}
+
+.lesson-container,
+.hero,
+.stats {
+    max-width: 100%;
+}
+
+
+/* Code should never create horizontal page scroll */
+.code {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+
+/* =========================================================
+   TABLET
+   1100px and below
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .layout {
+        grid-template-columns:
+            235px
+            minmax(0, 1fr);
+    }
+
+    .right {
+        display: none;
+    }
+
+    .sidebar {
+        width: 235px;
+    }
+
+    .main {
+        padding: 25px 22px 50px;
+    }
+
+    .hero {
+        padding: 27px;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .course-name {
+        font-size: 10px;
+    }
+
+    .top-progress {
+        width: 110px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   850px and below
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .topbar {
+        height: 68px;
+
+        padding:
+            0 15px;
+
+        gap: 10px;
+    }
+
+    .layout {
+        display: block;
+
+        width: 100%;
+    }
+
+
+    /* Sidebar becomes drawer */
+
+    .sidebar {
+        position: fixed;
+
+        top: 68px;
+        left: -290px;
+
+        width: 280px;
+        height: calc(100vh - 68px);
+
+        z-index: 2000;
+
+        transition:
+            left .3s ease;
+
+        box-shadow:
+            10px 0 30px
+            rgba(0,0,0,.15);
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+
+    /* Dark overlay */
+
+    body.sidebar-open::before {
+
+        content: "";
+
+        position: fixed;
+
+        inset: 68px 0 0 0;
+
+        z-index: 1500;
+
+        background:
+            rgba(20,25,50,.35);
+
+        backdrop-filter:
+            blur(2px);
+    }
+
+
+    .menu {
+        display: grid;
+
+        place-items: center;
+    }
+
+
+    .course-name {
+        display: none;
+    }
+
+
+    .main {
+        width: 100%;
+
+        padding:
+            20px 16px 45px;
+    }
+
+
+    .hero {
+        width: 100%;
+
+        padding: 25px;
+
+        border-radius: 18px;
+    }
+
+
+    .hero h1 {
+        font-size: 26px;
+
+        line-height: 1.2;
+    }
+
+
+    .hero p {
+        font-size: 10px;
+    }
+
+
+    .stats {
+        width: 100%;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    .lesson-container {
+        width: 100%;
+
+        padding: 20px;
+
+        border-radius: 16px;
+    }
+
+
+    .lesson-container h2 {
+        font-size: 22px;
+    }
+
+
+    .lesson-intro,
+    .content-section p,
+    .content-list li {
+        font-size: 10px;
+    }
+
+
+    .code {
+        width: 100%;
+
+        font-size: 8px;
+
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   600px and below
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .topbar {
+
+        height: 62px;
+
+        padding:
+            0 12px;
+
+    }
+
+
+    .sidebar {
+
+        top: 62px;
+
+        height:
+            calc(100vh - 62px);
+
+    }
+
+
+    body.sidebar-open::before {
+
+        inset: 62px 0 0 0;
+
+    }
+
+
+    .logo {
+
+        width: 35px;
+        height: 35px;
+
+        border-radius: 9px;
+
+        font-size: 16px;
+
+    }
+
+
+    .brand {
+
+        font-size: 14px;
+
+    }
+
+
+    .brand small {
+
+        font-size: 5px;
+
+    }
+
+
+    .back {
+
+        display: none;
+
+    }
+
+
+    .top-progress {
+
+        width: 65px;
+
+        margin-left: auto;
+
+    }
+
+
+    .top-percent {
+
+        font-size: 7px;
+
+    }
+
+
+    .main {
+
+        padding:
+            14px 10px 35px;
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        padding: 21px 18px;
+
+        border-radius: 15px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 22px;
+
+        line-height: 1.25;
+
+    }
+
+
+    .hero p {
+
+        font-size: 9px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .tags {
+
+        gap: 5px;
+
+    }
+
+
+    .tag {
+
+        padding:
+            5px 7px;
+
+        font-size: 6px;
+
+    }
+
+
+    /* STATS */
+
+    .stats {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 7px;
+
+        margin: 10px 0;
+
+    }
+
+
+    .stat {
+
+        padding: 12px;
+
+        border-radius: 11px;
+
+    }
+
+
+    .stat span {
+
+        font-size: 6px;
+
+    }
+
+
+    .stat strong {
+
+        font-size: 12px;
+
+    }
+
+
+    /* LESSON */
+
+    .lesson-container {
+
+        padding: 17px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .lesson-container h2 {
+
+        font-size: 20px;
+
+        line-height: 1.3;
+
+    }
+
+
+    .lesson-intro {
+
+        font-size: 9px;
+
+    }
+
+
+    .content-section {
+
+        margin-top: 18px;
+
+    }
+
+
+    .content-section h3 {
+
+        font-size: 13px;
+
+    }
+
+
+    .content-section p {
+
+        font-size: 9px;
+
+    }
+
+
+    .content-list {
+
+        padding-left: 17px;
+
+    }
+
+
+    .content-list li {
+
+        font-size: 9px;
+
+    }
+
+
+    /* CODE */
+
+    .code-title {
+
+        font-size: 9px;
+
+    }
+
+
+    .code {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 13px;
+
+        font-size: 7px;
+
+        line-height: 1.6;
+
+        border-radius: 9px;
+
+    }
+
+
+    /* PRACTICE */
+
+    .practice {
+
+        padding: 14px;
+
+        margin-top: 16px;
+
+    }
+
+
+    .practice strong {
+
+        font-size: 8px;
+
+    }
+
+
+    .practice p {
+
+        font-size: 8px;
+
+    }
+
+
+    /* BUTTONS */
+
+    .lesson-actions {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 7px;
+
+    }
+
+
+    .lesson-actions
+    .btn:first-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .btn {
+
+        width: 100%;
+
+        padding:
+            11px 8px;
+
+        font-size: 8px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   400px and below
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .topbar {
+
+        gap: 6px;
+
+    }
+
+
+    .brand {
+
+        font-size: 13px;
+
+    }
+
+
+    .top-progress {
+
+        width: 45px;
+
+    }
+
+
+    .main {
+
+        padding:
+            10px 7px 30px;
+
+    }
+
+
+    .hero {
+
+        padding: 18px 15px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 20px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .lesson-container {
+
+        padding: 15px;
+
+    }
+
+
+    .lesson-container h2 {
+
+        font-size: 18px;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (
+    max-width: 850px
+) and (
+    orientation: landscape
+) {
+
+    .sidebar {
+
+        width: 250px;
+
+    }
+
+    .main {
+
+        padding:
+            15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover:none) {
+
+    .lesson:hover {
+
+        background: transparent;
+
+    }
+
+    .module-head:hover {
+
+        background: transparent;
+
+    }
+
+}
+
+
+/* =========================================================
+   NO HORIZONTAL OVERFLOW
+========================================================= */
+
+img,
+video,
+iframe,
+table,
+pre {
+
+    max-width: 100%;
+
+}
+
+
+* {
+
+    scrollbar-width: thin;
+
+}
