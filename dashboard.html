@@ -7,614 +7,1828 @@
 <title>MamRaj Nexus Academy | Dashboard</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-:root{
-    --bg:#f7f1eb;
-    --card:#fffdfb;
-    --brown:#8f6855;
-    --brown-light:#b98b73;
-    --dark:#30251f;
-    --muted:#81756d;
-    --border:#eadfd6;
-    --green:#63856d;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
-    color:var(--dark);
+    font-family:
+        Inter,
+        Poppins,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#f5f3f1;
+    color:#202a4d;
+    overflow-x:hidden;
 }
 
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root{
+
+    --navy:#263873;
+    --navy-dark:#1e2d63;
+    --navy-light:#344985;
+
+    --cream:#f7f1eb;
+    --white:#ffffff;
+
+    --peach:#c99173;
+    --peach-dark:#b77d62;
+    --peach-light:#ead2c4;
+
+    --text:#202a4d;
+    --muted:#81756d;
+
+    --border:#e7e0da;
+
+    --green:#5f9a78;
+
+    --shadow:
+        0 10px 30px rgba(34,43,78,.06);
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
 .app{
-    display:flex;
     min-height:100vh;
 }
 
-/* ================= SIDEBAR ================= */
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
 .sidebar{
-    width:250px;
-    background:linear-gradient(180deg,#faf5f0,#f0e4da);
-    border-right:1px solid var(--border);
-    padding:24px 16px;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    width:270px;
+
+    padding:24px 16px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #263873 0%,
+            #293b7a 100%
+        );
+
     display:flex;
     flex-direction:column;
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    z-index:100;
+
+    z-index:1000;
+
+    overflow-y:auto;
+
+    transition:left .3s ease;
+
+    scrollbar-width:thin;
+    scrollbar-color:
+        rgba(255,255,255,.2)
+        transparent;
 }
+
+
+.sidebar::-webkit-scrollbar{
+    width:5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.18);
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
 
 .brand{
+
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:5px 10px 30px;
+
+    padding:
+        0 5px;
+
+    margin-bottom:28px;
+
+    min-height:58px;
 }
+
 
 .logo{
+
     width:42px;
     height:42px;
+
     border-radius:13px;
-    background:linear-gradient(135deg,var(--brown),var(--brown-light));
-    color:white;
+
     display:grid;
     place-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7350ee,
+            #5c3de1
+        );
+
+    color:white;
+
     font-size:20px;
-    font-weight:bold;
+    font-weight:800;
+
+    flex-shrink:0;
 }
+
 
 .brand h2{
-    font-size:18px;
+
+    color:#ffffff;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    letter-spacing:-1px;
 }
+
 
 .brand span{
-    font-size:9px;
-    letter-spacing:1.5px;
-    color:#9b7661;
+
+    display:block;
+
+    margin-top:7px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:7px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
 }
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title{
+
+    margin:
+        17px 10px 8px;
+
+    color:
+        rgba(255,255,255,.45);
+
     font-size:9px;
+
+    font-weight:700;
+
     letter-spacing:1.5px;
-    color:#a58c7d;
-    margin:20px 10px 8px;
 }
+
+
+/* =========================================================
+   NAV
+========================================================= */
 
 .nav-item{
+
+    width:100%;
+
+    min-height:52px;
+
+    padding:
+        0 18px;
+
+    margin:4px 0;
+
     display:flex;
+
     align-items:center;
-    gap:12px;
-    padding:11px 12px;
-    margin:3px 0;
-    color:#67584f;
-    text-decoration:none;
-    border-radius:10px;
-    font-size:12px;
-    cursor:pointer;
+
+    gap:17px;
+
+    border-radius:15px;
+
+    color:
+        rgba(255,255,255,.88);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:
+        .2s ease;
 }
+
+
+.nav-item > span{
+
+    width:22px;
+
+    min-width:22px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#f2f4ff;
+
+    font-size:16px;
+}
+
 
 .nav-item:hover{
-    background:#eee1d6;
+
+    background:
+        rgba(255,255,255,.09);
+
+    color:white;
+
+    transform:
+        translateX(2px);
 }
 
+
 .nav-item.active{
-    background:linear-gradient(135deg,var(--brown),#b8876d);
+
+    background:
+        var(--peach);
+
+    color:white;
+
+    box-shadow:
+        0 9px 22px
+        rgba(0,0,0,.14);
+}
+
+
+.nav-item.resume-active{
+
+    background:
+        var(--peach);
+
     color:white;
 }
 
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
 .sidebar-bottom{
+
     margin-top:auto;
+
+    padding-top:18px;
 }
 
-/* ================= MAIN ================= */
+
+/* HELP */
+
+.help-card{
+
+    margin:
+        12px 4px 0;
+
+    min-height:60px;
+
+    padding:
+        13px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border-radius:16px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    color:white;
+}
+
+
+.help-card-icon{
+
+    width:28px;
+    height:28px;
+
+    min-width:28px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#e6c8b5;
+
+    color:#5e5049;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+.help-card strong{
+
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+
+.help-card small{
+
+    display:block;
+
+    color:
+        rgba(255,255,255,.62);
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
 
 .main{
-    margin-left:250px;
-    width:calc(100% - 250px);
+
+    width:
+        calc(100% - 270px);
+
+    margin-left:270px;
+
+    min-height:100vh;
+
+    background:#f5f3f1;
 }
 
-/* ================= TOPBAR ================= */
+
+/* =========================================================
+   TOPBAR
+========================================================= */
 
 .topbar{
-    height:78px;
-    background:#fffaf5;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 34px;
+
     position:sticky;
+
     top:0;
-    z-index:50;
-}
 
-.page-title span{
-    font-size:9px;
-    color:#9a7b69;
-    letter-spacing:1px;
-}
+    z-index:500;
 
-.page-title h1{
-    margin-top:5px;
-    font-size:20px;
-}
+    min-height:82px;
 
-.top-right{
+    padding:
+        16px 34px;
+
     display:flex;
+
     align-items:center;
+
     gap:20px;
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(12px);
 }
 
-.notification{
-    font-size:18px;
-    cursor:pointer;
-}
 
-.profile{
+/* =========================================================
+   SEARCH AREA
+========================================================= */
+
+.search-area{
+
+    flex:1;
+
+    max-width:800px;
+
     display:flex;
+
     align-items:center;
+
     gap:10px;
 }
 
-.avatar{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    background:#eadbd0;
-    color:#6f4f40;
-    display:grid;
-    place-items:center;
-    font-weight:bold;
-    font-size:11px;
-}
 
-.profile strong{
-    display:block;
-    font-size:11px;
-}
+.search-box{
 
-.profile span{
-    display:block;
-    font-size:9px;
-    color:var(--muted);
-}
+    width:100%;
 
-.mobile-menu{
-    display:none;
-    border:0;
-    background:none;
-    font-size:22px;
-}
+    max-width:450px;
 
-/* ================= CONTENT ================= */
+    height:46px;
 
-.content{
-    padding:30px 34px;
-}
+    padding:
+        0 13px;
 
-/* ================= WELCOME ================= */
-
-.welcome{
-    min-height:220px;
-    padding:32px;
-    border-radius:22px;
-    color:white;
-    background:
-        linear-gradient(
-            120deg,
-            #8d6755,
-            #b98b73,
-            #cda58e
-        );
-    box-shadow:0 20px 45px rgba(117,78,60,.15);
     display:flex;
-    justify-content:space-between;
-    overflow:hidden;
-}
 
-.welcome-text{
-    max-width:600px;
-}
-
-.welcome-label{
-    font-size:9px;
-    letter-spacing:1.5px;
-}
-
-.welcome h2{
-    margin:12px 0 8px;
-    font-size:30px;
-}
-
-.welcome h2 span{
-    color:#f8d9c5;
-}
-
-.welcome p{
-    max-width:500px;
-    font-size:12px;
-    line-height:1.7;
-    opacity:.9;
-}
-
-.primary-btn{
-    margin-top:15px;
-    border:none;
-    background:#fffaf6;
-    color:#765342;
-    padding:11px 16px;
-    border-radius:9px;
-    font-size:10px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.welcome-art{
-    width:300px;
-    position:relative;
-}
-
-.big-letter{
-    position:absolute;
-    right:20px;
-    top:10px;
-    font-size:170px;
-    font-weight:bold;
-    color:rgba(255,255,255,.12);
-}
-
-/* ================= STATS ================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-    margin:20px 0;
-}
-
-.stat{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:17px;
-    display:flex;
     align-items:center;
-    gap:12px;
-    transition:.2s;
+
+    background:#f7f4f1;
+
+    border:
+        1px solid transparent;
+
+    border-radius:13px;
+
+    transition:.2s ease;
 }
 
-.stat:hover{
-    transform:translateY(-3px);
+
+.search-box:focus-within{
+
+    background:white;
+
+    border-color:
+        #d7b7a6;
+
+    box-shadow:
+        0 7px 20px
+        rgba(60,45,38,.07);
 }
 
-.stat-icon{
-    width:40px;
-    height:40px;
-    border-radius:11px;
-    background:#eee1d6;
-    color:#916a57;
+
+.search-icon{
+
+    width:26px;
+
+    color:#69748d;
+
+    font-size:21px;
+
     display:grid;
+
     place-items:center;
 }
 
-.stat span{
-    display:block;
-    font-size:9px;
-    color:var(--muted);
+
+.search-box input{
+
+    flex:1;
+
+    width:100%;
+
+    border:0;
+
+    outline:0;
+
+    background:transparent;
+
+    color:#26335d;
+
+    font-size:11px;
 }
 
-.stat strong{
-    display:block;
-    font-size:20px;
-    margin-top:4px;
+
+.search-box input::placeholder{
+
+    color:#92939c;
 }
 
-.stat small{
-    margin-left:auto;
-    font-size:8px;
+
+/* CLEAR */
+
+.clear-search{
+
+    display:none;
+
+    width:24px;
+    height:24px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#e7ded8;
+
+    color:#6f5d52;
+
+    font-size:15px;
+
+    line-height:1;
 }
 
-.green{
-    color:var(--green);
-}
 
-/* ================= GRID ================= */
+.clear-search.show{
 
-.dashboard-grid{
     display:grid;
-    grid-template-columns:1.7fr 1fr;
+
+    place-items:center;
+}
+
+
+/* =========================================================
+   CATEGORY FILTERS
+========================================================= */
+
+.category-filters{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    flex-shrink:0;
+}
+
+
+.category{
+
+    height:34px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        #e5ded9;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#77727a;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    transition:.2s ease;
+}
+
+
+.category:hover{
+
+    border-color:
+        var(--peach);
+
+    color:
+        #8f6855;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.category.active{
+
+    background:
+        var(--navy);
+
+    border-color:
+        var(--navy);
+
+    color:white;
+
+    box-shadow:
+        0 5px 12px
+        rgba(38,56,115,.15);
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.page-title{
+
+    min-width:125px;
+}
+
+
+.page-title span{
+
+    display:block;
+
+    color:#9b8b80;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1.2px;
+}
+
+
+.page-title h1{
+
+    margin-top:4px;
+
+    color:#252c40;
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   TOP RIGHT
+========================================================= */
+
+.top-right{
+
+    margin-left:auto;
+
+    display:flex;
+
+    align-items:center;
+
     gap:18px;
 }
 
-.panel{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:22px;
-    box-shadow:0 12px 30px rgba(100,75,60,.05);
-}
 
-.panel-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:18px;
-}
+.notification{
 
-.panel-label{
-    display:block;
-    font-size:8px;
-    letter-spacing:1.4px;
-    color:#a17a66;
-    font-weight:bold;
-    margin-bottom:5px;
-}
+    position:relative;
 
-.panel h2{
+    width:40px;
+    height:40px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#faf7f4;
+
+    color:#35436e;
+
     font-size:17px;
 }
 
-.panel-header a{
-    color:#946b57;
-    font-size:10px;
-    text-decoration:none;
-}
 
-/* ================= COURSES ================= */
+.notification::after{
 
-.course-list{
-    display:flex;
-    flex-direction:column;
-    gap:13px;
-}
+    content:"";
 
-.course{
-    display:grid;
-    grid-template-columns:52px 1fr auto;
-    gap:14px;
-    align-items:center;
-    padding:13px;
-    border:1px solid #eee3db;
-    border-radius:14px;
-    background:#fffdfb;
-    transition:.2s;
-}
+    position:absolute;
 
-.course:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(100,75,60,.07);
-}
-
-.course-icon{
-    width:52px;
-    height:52px;
-    border-radius:13px;
-    background:linear-gradient(135deg,#eee0d6,#f7eee8);
-    display:grid;
-    place-items:center;
-    font-weight:bold;
-    color:#8f6855;
-}
-
-.course-title{
-    font-size:11px;
-    font-weight:bold;
-}
-
-.course-description{
-    margin:5px 0 8px;
-    font-size:9px;
-    color:var(--muted);
-}
-
-.progress{
+    width:6px;
     height:6px;
-    background:#eee5de;
-    border-radius:20px;
-    overflow:hidden;
+
+    top:7px;
+    right:8px;
+
+    border-radius:50%;
+
+    background:#e63946;
+
+    border:2px solid white;
 }
 
-.progress-bar{
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        #9b705b,
-        #c99b83
-    );
-    border-radius:20px;
-    transition:width 1s ease;
-}
 
-.course-meta{
+.profile{
+
     display:flex;
-    justify-content:space-between;
-    margin-top:5px;
-    font-size:8px;
-    color:#97877d;
-}
 
-.resume{
-    border:none;
-    background:#8f6855;
-    color:white;
-    padding:9px 12px;
-    border-radius:8px;
-    font-size:9px;
-    cursor:pointer;
-}
-
-/* ================= SHIVAAY ================= */
-
-.shivaay{
-    background:linear-gradient(135deg,#765546,#a87960);
-    color:white;
-}
-
-.shivaay-top{
-    display:flex;
     align-items:center;
+
     gap:10px;
 }
 
-.shivaay-icon{
+
+.avatar{
+
     width:40px;
     height:40px;
-    border-radius:12px;
-    background:rgba(255,255,255,.15);
+
+    border-radius:50%;
+
     display:grid;
+
     place-items:center;
+
+    background:#f0e3db;
+
+    border:
+        2px solid
+        var(--peach);
+
+    color:#4b4050;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+.profile strong{
+
+    display:block;
+
+    color:#222b49;
+
+    font-size:11px;
+}
+
+
+.profile span{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#8b8991;
+
+    font-size:9px;
+}
+
+
+/* MOBILE BUTTON */
+
+.mobile-menu{
+
+    display:none;
+
+    width:40px;
+    height:40px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#f3ebe5;
+
+    color:#35436e;
+
     font-size:20px;
 }
 
-.shivaay-top span{
-    font-size:8px;
-    letter-spacing:1px;
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
+
+    padding:
+        30px 34px 45px;
 }
 
-.shivaay-top h2{
-    color:white;
-    margin-top:4px;
-}
 
-.shivaay p{
-    margin:18px 0;
-    font-size:10px;
-    line-height:1.7;
-    opacity:.9;
-}
+/* =========================================================
+   WELCOME
+========================================================= */
 
-.ai-feature{
-    font-size:9px;
-    margin:11px 0;
-}
+.welcome{
 
-.ai-btn{
-    margin-top:12px;
-    border:none;
-    background:#fffaf6;
-    color:#765342;
-    border-radius:9px;
-    padding:11px 14px;
-    font-size:9px;
-    font-weight:bold;
-    cursor:pointer;
-}
+    min-height:220px;
 
-/* ================= BOTTOM ================= */
+    padding:
+        32px 42px;
 
-.bottom-grid{
-    display:grid;
-    grid-template-columns:1.25fr 1fr;
-    gap:18px;
-    margin-top:18px;
-}
+    position:relative;
 
-.bars{
-    height:160px;
     display:flex;
-    align-items:flex-end;
-    justify-content:space-around;
-    gap:10px;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            115deg,
+            #4d3b86,
+            #6e5abd
+        );
+
+    box-shadow:
+        0 18px 40px
+        rgba(72,55,125,.16);
 }
 
-.bar{
-    width:30px;
-    background:linear-gradient(
-        180deg,
-        #c99b83,
-        #8f6855
-    );
-    border-radius:6px 6px 2px 2px;
+
+.welcome::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    right:-100px;
+    top:-170px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+
+.welcome-text{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:650px;
+}
+
+
+.welcome-label{
+
+    color:#e6dfff;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+}
+
+
+.welcome h2{
+
+    margin:
+        12px 0 8px;
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    letter-spacing:-.7px;
+}
+
+
+.welcome h2 span{
+
+    color:#d3c6ff;
+}
+
+
+.welcome p{
+
+    max-width:550px;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+
+.primary-btn{
+
+    margin-top:17px;
+
+    padding:
+        11px 17px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#493d83;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+
+.primary-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,0,0,.15);
+}
+
+
+.welcome-art{
+
+    width:300px;
+
+    height:190px;
+
     position:relative;
 }
 
-.bar span{
+
+.big-letter{
+
     position:absolute;
-    top:-18px;
-    font-size:7px;
-    color:#8d7d72;
-    left:50%;
-    transform:translateX(-50%);
+
+    right:20px;
+
+    top:-20px;
+
+    color:
+        rgba(255,255,255,.12);
+
+    font-size:170px;
+
+    font-weight:900;
 }
 
-.days{
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin:
+        20px 0;
+}
+
+
+.stat{
+
+    min-height:105px;
+
+    padding:17px;
+
     display:flex;
-    justify-content:space-around;
-    margin-top:10px;
+
+    align-items:center;
+
+    gap:12px;
+
+    position:relative;
+
+    background:white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:15px;
+
+    box-shadow:
+        0 7px 22px
+        rgba(34,43,78,.04);
+
+    transition:.2s ease;
 }
 
-.days span{
-    font-size:8px;
-    color:#8d8178;
+
+.stat:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(34,43,78,.08);
 }
 
-.badges{
-    display:flex;
-    gap:10px;
-}
 
-.badge{
-    flex:1;
-    text-align:center;
-    padding:15px 7px;
-    background:#fffaf6;
-    border:1px solid var(--border);
+.stat-icon{
+
+    width:42px;
+    height:42px;
+
+    min-width:42px;
+
     border-radius:12px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#f0e7e0;
+
+    color:#986f5a;
+
+    font-size:17px;
 }
 
-.badge div{
-    font-size:24px;
-}
 
-.badge strong{
+.stat span{
+
     display:block;
-    margin-top:6px;
+
+    color:#898994;
+
     font-size:9px;
 }
 
-.badge small{
-    font-size:8px;
-    color:#97877d;
+
+.stat strong{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#1f294b;
+
+    font-size:20px;
+
+    font-weight:800;
 }
 
-/* ================= LOADING ================= */
+
+.stat small{
+
+    position:absolute;
+
+    right:14px;
+
+    top:15px;
+
+    color:#9a979d;
+
+    font-size:8px;
+}
+
+
+.green{
+
+    color:var(--green)!important;
+}
+
+
+/* =========================================================
+   DASHBOARD GRID
+========================================================= */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.7fr)
+        minmax(280px,1fr);
+
+    gap:18px;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+
+    min-width:0;
+
+    padding:22px;
+
+    background:white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:18px;
+
+    box-shadow:
+        0 10px 28px
+        rgba(34,43,78,.04);
+}
+
+
+.panel-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+}
+
+
+.panel-label{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#a17d6a;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+
+.panel h2{
+
+    color:#1f294b;
+
+    font-size:17px;
+
+    font-weight:800;
+}
+
+
+.panel-header a{
+
+    color:#765be2;
+
+    font-size:10px;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   COURSES
+========================================================= */
+
+.course-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+
+.course{
+
+    width:100%;
+
+    padding:13px;
+
+    display:grid;
+
+    grid-template-columns:
+        52px minmax(0,1fr) auto;
+
+    align-items:center;
+
+    gap:14px;
+
+    background:#fffdfb;
+
+    border:
+        1px solid
+        #eee5df;
+
+    border-radius:14px;
+
+    transition:.2s ease;
+}
+
+
+.course:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(100,75,60,.07);
+}
+
+
+.course.hidden{
+
+    display:none;
+}
+
+
+.course-icon{
+
+    width:52px;
+    height:52px;
+
+    border-radius:13px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee1d7,
+            #f7eee8
+        );
+
+    color:#8d6755;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+.course-title{
+
+    color:#24305b;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+.course-description{
+
+    margin:
+        5px 0 8px;
+
+    color:#918c8b;
+
+    font-size:9px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.progress{
+
+    height:6px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#eee8e3;
+}
+
+
+.progress-bar{
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #96705c,
+            #c99578
+        );
+
+    transition:
+        width 1s ease;
+}
+
+
+.course-meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:5px;
+
+    color:#a09893;
+
+    font-size:8px;
+}
+
+
+.resume{
+
+    padding:
+        9px 13px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:
+        var(--navy);
+
+    color:white;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+
+.resume:hover{
+
+    background:
+        var(--navy-dark);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-results{
+
+    padding:
+        35px 20px;
+
+    text-align:center;
+
+    color:#8c8580;
+
+    font-size:11px;
+}
+
+
+.no-results-icon{
+
+    margin-bottom:8px;
+
+    font-size:30px;
+}
+
+
+/* =========================================================
+   SHIVAAY
+========================================================= */
+
+.shivaay{
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #30245f,
+            #55409d
+        );
+
+    border:0;
+
+    box-shadow:
+        0 15px 35px
+        rgba(65,48,126,.16);
+}
+
+
+.shivaay::after{
+
+    content:"✦";
+
+    position:absolute;
+
+    right:-15px;
+
+    bottom:-30px;
+
+    color:
+        rgba(255,255,255,.06);
+
+    font-size:150px;
+}
+
+
+.shivaay-top{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.shivaay-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        rgba(255,255,255,.13);
+
+    font-size:20px;
+}
+
+
+.shivaay-top span{
+
+    display:block;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:1.2px;
+}
+
+
+.shivaay-top h2{
+
+    margin-top:4px;
+
+    color:white;
+
+    font-size:18px;
+}
+
+
+.shivaay p{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:
+        18px 0;
+
+    color:
+        rgba(255,255,255,.78);
+
+    font-size:10px;
+
+    line-height:1.7;
+}
+
+
+.ai-feature{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:
+        11px 0;
+
+    color:
+        rgba(255,255,255,.9);
+
+    font-size:9px;
+}
+
+
+.ai-btn{
+
+    position:relative;
+
+    z-index:3;
+
+    margin-top:13px;
+
+    padding:
+        11px 15px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#493d83;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   BOTTOM GRID
+========================================================= */
+
+.bottom-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.25fr)
+        minmax(280px,1fr);
+
+    gap:18px;
+
+    margin-top:18px;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.bars{
+
+    height:160px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-around;
+
+    gap:10px;
+
+    padding:
+        0 8px;
+}
+
+
+.bar{
+
+    width:30px;
+
+    position:relative;
+
+    border-radius:
+        7px 7px 2px 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #c99578,
+            #8f6855
+        );
+}
+
+
+.bar span{
+
+    position:absolute;
+
+    top:-18px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    color:#8d8178;
+
+    font-size:7px;
+
+    white-space:nowrap;
+}
+
+
+.days{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    margin-top:10px;
+}
+
+
+.days span{
+
+    color:#918b87;
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badges{
+
+    display:flex;
+
+    gap:10px;
+}
+
+
+.badge{
+
+    flex:1;
+
+    padding:
+        15px 7px;
+
+    text-align:center;
+
+    background:#fffaf7;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:12px;
+
+    transition:.2s ease;
+}
+
+
+.badge:hover{
+
+    transform:
+        translateY(-3px);
+}
+
+
+.badge div{
+
+    font-size:24px;
+}
+
+
+.badge strong{
+
+    display:block;
+
+    margin-top:6px;
+
+    color:#29345c;
+
+    font-size:9px;
+}
+
+
+.badge small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#9b918b;
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
 
 .loading{
+
+    padding:35px 10px;
+
     text-align:center;
-    padding:35px;
-    color:#8d8178;
+
+    color:#918983;
+
     font-size:10px;
 }
 
+
 .spinner{
-    width:25px;
-    height:25px;
-    border:3px solid #eadfd6;
-    border-top-color:#99705b;
+
+    width:26px;
+    height:26px;
+
+    margin:
+        0 auto 10px;
+
+    border:
+        3px solid
+        #eadfd7;
+
+    border-top-color:
+        #98705c;
+
     border-radius:50%;
-    animation:spin .8s linear infinite;
-    margin:auto auto 10px;
+
+    animation:
+        spin .8s linear infinite;
 }
 
+
 @keyframes spin{
+
     to{
         transform:rotate(360deg);
     }
+
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:1000px){
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1150px){
+
+    .sidebar{
+        width:250px;
+    }
+
+    .main{
+        width:calc(100% - 250px);
+        margin-left:250px;
+    }
+
+    .topbar{
+        padding:
+            14px 22px;
+    }
+
+    .category:nth-child(5){
+        display:none;
+    }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .dashboard-grid,
@@ -624,180 +1838,564 @@ body{
 
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media(max-width:750px){
 
     .sidebar{
-        left:-260px;
-        transition:.25s;
+
+        width:270px;
+
+        left:-280px;
+
+        box-shadow:
+            10px 0 30px
+            rgba(0,0,0,.18);
     }
+
 
     .sidebar.open{
         left:0;
     }
 
+
     .main{
-        margin-left:0;
+
         width:100%;
+
+        margin-left:0;
     }
 
-    .mobile-menu{
-        display:block;
-    }
 
     .topbar{
-        padding:0 18px;
+
+        min-height:70px;
+
+        padding:
+            12px 14px;
+
+        gap:8px;
     }
 
-    .profile span{
+
+    .mobile-menu{
+
+        display:grid;
+
+        place-items:center;
+    }
+
+
+    .page-title{
+
         display:none;
     }
+
+
+    .search-area{
+
+        width:100%;
+
+        max-width:none;
+    }
+
+
+    .search-box{
+
+        max-width:none;
+
+        height:42px;
+    }
+
+
+    .category-filters{
+
+        display:none;
+    }
+
+
+    .top-right{
+
+        gap:7px;
+    }
+
+
+    .notification{
+
+        width:36px;
+        height:36px;
+    }
+
+
+    .profile > div:last-child{
+
+        display:none;
+    }
+
+
+    .avatar{
+
+        width:36px;
+        height:36px;
+    }
+
 
     .content{
-        padding:20px 15px;
+
+        padding:
+            18px 14px 35px;
     }
+
 
     .welcome{
+
+        min-height:220px;
+
         padding:25px;
+
+        border-radius:18px;
     }
+
 
     .welcome h2{
-        font-size:24px;
+
+        font-size:25px;
+
+        line-height:1.2;
     }
 
+
+    .welcome p{
+
+        font-size:11px;
+    }
+
+
     .welcome-art{
+
         display:none;
     }
 
+
     .stats{
-        grid-template-columns:1fr 1fr;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:10px;
     }
+
+
+    .stat{
+
+        min-height:90px;
+
+        padding:13px;
+
+        gap:9px;
+    }
+
+
+    .stat-icon{
+
+        width:35px;
+        height:35px;
+
+        min-width:35px;
+    }
+
+
+    .stat strong{
+
+        font-size:17px;
+    }
+
 
     .course{
-        grid-template-columns:48px 1fr;
+
+        grid-template-columns:
+            45px minmax(0,1fr);
+
+        padding:11px;
+
+        gap:10px;
     }
 
+
+    .course-icon{
+
+        width:45px;
+        height:45px;
+    }
+
+
     .course .resume{
+
         grid-column:2;
+
         justify-self:start;
     }
 
+
+    .badges{
+
+        flex-direction:column;
+    }
+
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:450px){
+
+    .stats{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .welcome h2{
+
+        font-size:23px;
+    }
+
+
+    .welcome{
+
+        padding:22px;
+    }
+
+
+    .notification{
+
+        display:none;
+    }
+
+
+    .search-box input{
+
+        font-size:10px;
+    }
+
+}
+
+
+/* =========================================================
+   SELECTION / SCROLLBAR
+========================================================= */
+
+::selection{
+
+    background:
+        var(--peach);
+
+    color:white;
+}
+
+
+::-webkit-scrollbar{
+
+    width:8px;
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#f4f0ed;
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#c7a28f;
+
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+
+    outline:
+        2px solid
+        var(--peach);
+
+    outline-offset:3px;
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
-<!-- ================= SIDEBAR ================= -->
 
-<aside class="sidebar" id="sidebar">
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
 
     <div class="brand">
-        <div class="logo">M</div>
+
+        <div class="logo">
+            M
+        </div>
 
         <div>
-            <h2>MamRaj</h2>
-            <span>NEXUS ACADEMY</span>
+
+            <h2>
+                MamRaj
+            </h2>
+
+            <span>
+                NEXUS ACADEMY
+            </span>
+
         </div>
+
     </div>
 
 
-    <p class="section-title">MAIN</p>
+    <p class="section-title">
+        MAIN
+    </p>
 
-    <a class="nav-item active">
+
+    <a
+        href="dashboard.html"
+        class="nav-item active">
+
         <span>⌂</span>
+
         Dashboard
+
     </a>
 
-    <a class="nav-item">
+
+    <a
+        href="courses.html"
+        class="nav-item">
+
         <span>▣</span>
+
         My Courses
+
     </a>
 
-    <a class="nav-item">
+
+    <a
+        href="learning-path.html"
+        class="nav-item">
+
         <span>◈</span>
+
         Learning Path
+
     </a>
 
-    <a class="nav-item">
+
+    <a
+        href="projects.html"
+        class="nav-item">
+
         <span>◆</span>
+
         Projects
+
     </a>
 
 
-    <p class="section-title">AI & CAREER</p>
+    <p class="section-title">
+        AI & CAREER
+    </p>
 
-    <a class="nav-item">
+
+    <a
+        href="shivaay.html"
+        class="nav-item">
+
         <span>✦</span>
+
         Shivaay AI
-    </a>
 
-    <a class="nav-item">
-        <span>⌕</span>
-        Resume / ATS
-    </a>
-
-    <a class="nav-item">
-        <span>◉</span>
-        Interview Prep
     </a>
 
 
-    <p class="section-title">ACHIEVEMENT</p>
+    <a
+        href="resume.html"
+        class="nav-item resume-active">
 
-    <a class="nav-item">
-        <span>🏆</span>
-        Certifications
-    </a>
-
-    <a class="nav-item">
         <span>▤</span>
-        Assessments
+
+        Resume Builder
+
     </a>
 
-    <a class="nav-item">
+
+    <a
+        href="ats.html"
+        class="nav-item">
+
+        <span>▥</span>
+
+        ATS Checker
+
+    </a>
+
+
+    <a
+        href="interview.html"
+        class="nav-item">
+
+        <span>◉</span>
+
+        Interview Prep
+
+    </a>
+
+
+    <p class="section-title">
+        ACHIEVEMENT
+    </p>
+
+
+    <a
+        href="certificates.html"
+        class="nav-item">
+
+        <span>🏆</span>
+
+        Certificates
+
+    </a>
+
+
+    <a
+        href="assessments.html"
+        class="nav-item">
+
+        <span>▤</span>
+
+        Assessments
+
+    </a>
+
+
+    <a
+        href="progress.html"
+        class="nav-item">
+
         <span>◔</span>
+
         Progress
+
     </a>
 
 
     <div class="sidebar-bottom">
 
-        <a class="nav-item">
+
+        <a
+            href="settings.html"
+            class="nav-item">
+
             <span>⚙</span>
+
             Settings
+
         </a>
 
-        <a class="nav-item" id="logoutBtn">
+
+        <a
+            href="#"
+            class="nav-item"
+            id="logoutBtn">
+
             <span>↪</span>
+
             Logout
+
         </a>
+
+
+        <div class="help-card">
+
+            <div class="help-card-icon">
+                ?
+            </div>
+
+            <div>
+
+                <strong>
+                    Need Help?
+                </strong>
+
+                <small>
+                    Ask Shivaay AI
+                </small>
+
+            </div>
+
+        </div>
+
 
     </div>
 
 </aside>
 
 
-<!-- ================= MAIN ================= -->
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="main">
 
 
-<!-- ================= TOPBAR ================= -->
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
 
 <header class="topbar">
-<header class="topbar">
 
-    <button class="mobile-menu" id="menuBtn">
+
+    <button
+        class="mobile-menu"
+        id="menuBtn">
+
         ☰
+
     </button>
+
+
+    <!-- SEARCH -->
 
     <div class="search-area">
 
+
         <div class="search-box">
 
-            <span class="search-icon">⌕</span>
+            <span class="search-icon">
+                ⌕
+            </span>
+
 
             <input
                 type="text"
@@ -806,66 +2404,97 @@ body{
                 autocomplete="off"
             >
 
+
             <button
+                type="button"
                 class="clear-search"
-                id="clearSearch"
-                type="button">
+                id="clearSearch">
+
                 ×
+
             </button>
 
         </div>
 
 
+        <!-- CATEGORIES -->
+
         <div class="category-filters">
+
 
             <button
                 class="category active"
                 data-category="all">
+
                 All
+
             </button>
+
 
             <button
                 class="category"
                 data-category="courses">
+
                 Courses
+
             </button>
+
 
             <button
                 class="category"
                 data-category="internships">
+
                 Internships
+
             </button>
+
 
             <button
                 class="category"
                 data-category="projects">
+
                 Projects
+
             </button>
+
 
             <button
                 class="category"
                 data-category="skills">
+
                 Skills
+
             </button>
 
+
         </div>
+
 
     </div>
 
 
+
+    <!-- RIGHT -->
+
     <div class="top-right">
+
 
         <div class="notification">
             🔔
         </div>
 
+
         <div class="profile">
+
 
             <div
                 class="avatar"
                 id="userAvatar">
+
                 AS
+
             </div>
+
 
             <div>
 
@@ -879,83 +2508,57 @@ body{
 
             </div>
 
-        </div>
-
-    </div>
-
-</header>
-    <button
-        class="mobile-menu"
-        id="menuBtn">
-        ☰
-    </button>
-
-    <div class="page-title">
-
-        <span>LEARNING PORTAL</span>
-
-        <h1>Dashboard</h1>
-
-    </div>
-
-
-    <div class="top-right">
-
-        <div class="notification">
-            🔔
-        </div>
-
-
-        <div class="profile">
-
-            <div
-                class="avatar"
-                id="userAvatar">
-                AS
-            </div>
-
-            <div>
-
-                <strong id="studentName">
-                    Aditya Singh
-                </strong>
-
-                <span id="studentRole">
-                    Student
-                </span>
-
-            </div>
 
         </div>
 
+
     </div>
+
 
 </header>
 
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
 
 <div class="content">
 
 
-<!-- ================= WELCOME ================= -->
+<!-- =====================================================
+     WELCOME
+===================================================== -->
 
 <section class="welcome">
 
+
     <div class="welcome-text">
+
 
         <span class="welcome-label">
             WELCOME BACK 👋
         </span>
 
+
         <h2>
+
             Keep building your
-            <span>future.</span>
+            <span>
+                future.
+            </span>
+
         </h2>
 
+
         <p>
-            Continue your learning journey and
-            turn your skills into real-world
-            opportunities.
+
+            Continue your learning journey
+            and turn your skills into
+            real-world opportunities.
+
         </p>
+
 
         <button
             class="primary-btn"
@@ -964,6 +2567,7 @@ body{
             Continue Learning →
 
         </button>
+
 
     </div>
 
@@ -976,19 +2580,25 @@ body{
 
     </div>
 
+
 </section>
 
 
-<!-- ================= STATS ================= -->
+
+<!-- =====================================================
+     STATS
+===================================================== -->
 
 <section class="stats">
 
 
     <div class="stat">
 
+
         <div class="stat-icon">
             ◫
         </div>
+
 
         <div>
 
@@ -1002,18 +2612,23 @@ body{
 
         </div>
 
+
         <small class="green">
             Live
         </small>
 
+
     </div>
+
 
 
     <div class="stat">
 
+
         <div class="stat-icon">
             ◔
         </div>
+
 
         <div>
 
@@ -1027,18 +2642,23 @@ body{
 
         </div>
 
+
         <small class="green">
             Live
         </small>
 
+
     </div>
+
 
 
     <div class="stat">
 
+
         <div class="stat-icon">
             ✓
         </div>
+
 
         <div>
 
@@ -1052,18 +2672,23 @@ body{
 
         </div>
 
+
         <small>
             Lessons
         </small>
 
+
     </div>
+
 
 
     <div class="stat">
 
+
         <div class="stat-icon">
             🏆
         </div>
+
 
         <div>
 
@@ -1077,9 +2702,11 @@ body{
 
         </div>
 
+
         <small class="green">
             Earned
         </small>
+
 
     </div>
 
@@ -1087,18 +2714,25 @@ body{
 </section>
 
 
-<!-- ================= DASHBOARD GRID ================= -->
+
+<!-- =====================================================
+     MAIN GRID
+===================================================== -->
 
 <section class="dashboard-grid">
 
 
-<!-- COURSES -->
+<!-- =====================================================
+     COURSES
+===================================================== -->
 
 <div
     class="panel"
     id="learningPanel">
 
+
     <div class="panel-header">
+
 
         <div>
 
@@ -1112,9 +2746,11 @@ body{
 
         </div>
 
-        <a href="#">
+
+        <a href="courses.html">
             View all →
         </a>
+
 
     </div>
 
@@ -1122,6 +2758,7 @@ body{
     <div
         class="course-list"
         id="courseList">
+
 
         <div class="loading">
 
@@ -1131,20 +2768,28 @@ body{
 
         </div>
 
+
     </div>
+
 
 </div>
 
 
-<!-- SHIVAAY -->
+
+<!-- =====================================================
+     SHIVAAY AI
+===================================================== -->
 
 <div class="panel shivaay">
 
+
     <div class="shivaay-top">
+
 
         <div class="shivaay-icon">
             ✦
         </div>
+
 
         <div>
 
@@ -1158,12 +2803,15 @@ body{
 
         </div>
 
+
     </div>
 
 
     <p>
+
         Your personal AI mentor is ready
         to help you learn, build and grow.
+
     </p>
 
 
@@ -1171,9 +2819,11 @@ body{
         ✦ Ask anything
     </div>
 
+
     <div class="ai-feature">
         ✓ Get instant explanations
     </div>
+
 
     <div class="ai-feature">
         ⚡ Build projects faster
@@ -1188,22 +2838,28 @@ body{
 
     </button>
 
+
 </div>
 
 
 </section>
 
 
-<!-- ================= BOTTOM ================= -->
+
+<!-- =====================================================
+     BOTTOM GRID
+===================================================== -->
 
 <section class="bottom-grid">
 
 
-<!-- WEEKLY LEARNING -->
+<!-- WEEKLY ACTIVITY -->
 
 <div class="panel">
 
+
     <div class="panel-header">
+
 
         <div>
 
@@ -1217,59 +2873,99 @@ body{
 
         </div>
 
+
         <span style="
             font-size:9px;
             color:#8d8178;
         ">
+
             This Week
+
         </span>
+
 
     </div>
 
 
     <div class="bars">
 
+
         <div
             class="bar"
             style="height:45%">
-            <span>1.8h</span>
+
+            <span>
+                1.8h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:70%">
-            <span>2.8h</span>
+
+            <span>
+                2.8h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:55%">
-            <span>2.2h</span>
+
+            <span>
+                2.2h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:85%">
-            <span>3.4h</span>
+
+            <span>
+                3.4h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:65%">
-            <span>2.6h</span>
+
+            <span>
+                2.6h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:92%">
-            <span>3.7h</span>
+
+            <span>
+                3.7h
+            </span>
+
         </div>
+
 
         <div
             class="bar"
             style="height:35%">
-            <span>1.4h</span>
+
+            <span>
+                1.4h
+            </span>
+
         </div>
+
 
     </div>
 
@@ -1286,14 +2982,18 @@ body{
 
     </div>
 
+
 </div>
+
 
 
 <!-- BADGES -->
 
 <div class="panel">
 
+
     <div class="panel-header">
+
 
         <div>
 
@@ -1307,14 +3007,17 @@ body{
 
         </div>
 
-        <a href="#">
+
+        <a href="certificates.html">
             View all →
         </a>
+
 
     </div>
 
 
     <div class="badges">
+
 
         <div class="badge">
 
@@ -1366,7 +3069,9 @@ body{
 
         </div>
 
+
     </div>
+
 
 </div>
 
@@ -1381,8 +3086,9 @@ body{
 </div>
 
 
+
 <!-- =====================================================
-     FIREBASE + DYNAMIC DASHBOARD
+     FIREBASE
 ===================================================== -->
 
 <script type="module">
@@ -1412,20 +3118,10 @@ import {
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/*
-=========================================================
-PASTE YOUR FIREBASE CONFIG HERE
-=========================================================
 
-Firebase Console
-→ Project Settings
-→ Your apps
-→ Web app
-→ SDK setup and configuration
-
-Replace these values.
-=========================================================
-*/
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig = {
 
@@ -1450,16 +3146,19 @@ const firebaseConfig = {
 };
 
 
+
 /* =====================================================
-   INITIALIZE FIREBASE
+   FIREBASE INITIALIZATION
 ===================================================== */
 
-let app;
-let auth;
-let db;
+let app = null;
+let auth = null;
+let db = null;
+
 
 const firebaseConfigured =
-    firebaseConfig.apiKey !== "YOUR_API_KEY";
+    firebaseConfig.apiKey !==
+    "YOUR_API_KEY";
 
 
 if(firebaseConfigured){
@@ -1478,14 +3177,17 @@ if(firebaseConfigured){
 }
 
 
+
 /* =====================================================
-   DEMO COURSES
+   DEMO DATA
 ===================================================== */
 
 const demoCourses = [
 
     {
-        id:"web-development",
+
+        id:
+            "web-development",
 
         title:
             "Full Stack Web Development",
@@ -1493,18 +3195,28 @@ const demoCourses = [
         description:
             "HTML, CSS, JavaScript, React & Node.js",
 
-        progress:82,
+        progress:
+            82,
 
-        completedLessons:18,
+        completedLessons:
+            18,
 
-        totalLessons:22,
+        totalLessons:
+            22,
 
-        icon:"</>"
+        icon:
+            "</>",
+
+        category:
+            "courses"
+
     },
 
 
     {
-        id:"python",
+
+        id:
+            "python",
 
         title:
             "Python Programming",
@@ -1512,18 +3224,28 @@ const demoCourses = [
         description:
             "Python, OOPs, DSA & Projects",
 
-        progress:64,
+        progress:
+            64,
 
-        completedLessons:16,
+        completedLessons:
+            16,
 
-        totalLessons:25,
+        totalLessons:
+            25,
 
-        icon:"Py"
+        icon:
+            "Py",
+
+        category:
+            "courses"
+
     },
 
 
     {
-        id:"data-science",
+
+        id:
+            "data-science",
 
         title:
             "Data Science & AI",
@@ -1531,20 +3253,29 @@ const demoCourses = [
         description:
             "Python, ML, Data Analysis & AI",
 
-        progress:41,
+        progress:
+            41,
 
-        completedLessons:10,
+        completedLessons:
+            10,
 
-        totalLessons:24,
+        totalLessons:
+            24,
 
-        icon:"AI"
+        icon:
+            "AI",
+
+        category:
+            "courses"
+
     }
 
 ];
 
 
+
 /* =====================================================
-   HELPER
+   SET TEXT
 ===================================================== */
 
 function setText(
@@ -1553,9 +3284,8 @@ function setText(
 ){
 
     const element =
-        document.getElementById(
-            id
-        );
+        document.getElementById(id);
+
 
     if(
         element &&
@@ -1571,6 +3301,7 @@ function setText(
 }
 
 
+
 /* =====================================================
    INITIALS
 ===================================================== */
@@ -1579,25 +3310,28 @@ function getInitials(
     name
 ){
 
-    return String(name || "Student")
+    return String(
+        name || "Student"
+    )
 
-        .split(" ")
+    .split(" ")
 
-        .map(
-            word =>
-                word.charAt(0)
-        )
+    .map(
+        word =>
+            word.charAt(0)
+    )
 
-        .join("")
+    .join("")
 
-        .substring(
-            0,
-            2
-        )
+    .substring(
+        0,
+        2
+    )
 
-        .toUpperCase();
+    .toUpperCase();
 
 }
+
 
 
 /* =====================================================
@@ -1638,6 +3372,7 @@ function escapeHTML(
 }
 
 
+
 /* =====================================================
    RENDER COURSES
 ===================================================== */
@@ -1658,11 +3393,17 @@ function renderCourses(
     ){
 
         list.innerHTML = `
+
             <div class="loading">
+
                 📚
+
                 <br><br>
+
                 No courses found.
+
             </div>
+
         `;
 
         return;
@@ -1672,7 +3413,6 @@ function renderCourses(
 
     list.innerHTML =
         courses
-        .slice(0,3)
         .map(
             course => {
 
@@ -1690,30 +3430,54 @@ function renderCourses(
 
                 return `
 
-                <div class="course">
+                <div
+                    class="course"
+                    data-category="${
+                        escapeHTML(
+                            course.category ||
+                            "courses"
+                        )
+                    }"
+                    data-search="${
+                        escapeHTML(
+                            (
+                                course.title +
+                                " " +
+                                course.description
+                            ).toLowerCase()
+                        )
+                    }"
+                >
 
                     <div class="course-icon">
+
                         ${escapeHTML(
-                            course.icon || "📚"
+                            course.icon ||
+                            "📚"
                         )}
+
                     </div>
 
 
                     <div>
 
                         <div class="course-title">
+
                             ${escapeHTML(
                                 course.title ||
                                 "Course"
                             )}
+
                         </div>
 
 
                         <div class="course-description">
+
                             ${escapeHTML(
                                 course.description ||
                                 "Continue learning"
                             )}
+
                         </div>
 
 
@@ -1723,8 +3487,8 @@ function renderCourses(
                                 class="progress-bar"
                                 style="
                                     width:${progress}%
-                                ">
-                            </div>
+                                "
+                            ></div>
 
                         </div>
 
@@ -1732,20 +3496,28 @@ function renderCourses(
                         <div class="course-meta">
 
                             <span>
+
                                 ${
                                     course.completedLessons ||
                                     0
                                 }
+
                                 /
+
                                 ${
                                     course.totalLessons ||
                                     0
                                 }
+
                                 lessons
+
                             </span>
 
+
                             <span>
+
                                 ${progress}%
+
                             </span>
 
                         </div>
@@ -1755,13 +3527,11 @@ function renderCourses(
 
                     <button
                         class="resume"
-                        onclick="
-                            resumeCourse(
-                                '${escapeHTML(
-                                    course.id || ""
-                                )}'
+                        data-course-id="${
+                            escapeHTML(
+                                course.id || ""
                             )
-                        ">
+                        }">
 
                         Resume
 
@@ -1776,50 +3546,55 @@ function renderCourses(
         .join("");
 
 
-    /*
-       Update hero percentage
-    */
+    /* Resume buttons */
 
-    setText(
-        "mainProgress",
-        courses[0].progress + "%"
-    );
+    document
+        .querySelectorAll(
+            ".resume"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        const id =
+                            this.dataset.courseId;
+
+
+                        window.location.href =
+                            "course.html?id=" +
+                            encodeURIComponent(
+                                id
+                            );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* Apply current search */
+
+    filterDashboard();
 
 }
 
 
-/* =====================================================
-   RESUME COURSE
-===================================================== */
-
-window.resumeCourse =
-function(courseId){
-
-    window.location.href =
-        "course.html?id=" +
-        encodeURIComponent(
-            courseId
-        );
-
-};
-
 
 /* =====================================================
-   FIREBASE USER
+   FIREBASE USER DATA
 ===================================================== */
 
 function loadUserData(
     user
 ){
 
-    /*
-       Gmail / Google account name
-    */
-
     const googleName =
         user.displayName ||
-        user.email
-            ?.split("@")[0] ||
+        user.email?.split("@")[0] ||
         "Student";
 
 
@@ -1837,14 +3612,14 @@ function loadUserData(
     );
 
 
-    /*
-       Firestore profile
-    */
-
     if(!db){
+
         return;
+
     }
 
+
+    /* USER PROFILE */
 
     const userRef =
         doc(
@@ -1856,6 +3631,7 @@ function loadUserData(
 
     onSnapshot(
         userRef,
+
         snapshot => {
 
             if(
@@ -1871,10 +3647,14 @@ function loadUserData(
                 snapshot.data();
 
 
+            const name =
+                data.name ||
+                googleName;
+
+
             setText(
                 "studentName",
-                data.name ||
-                googleName
+                name
             );
 
 
@@ -1888,8 +3668,7 @@ function loadUserData(
             setText(
                 "userAvatar",
                 getInitials(
-                    data.name ||
-                    googleName
+                    name
                 )
             );
 
@@ -1921,13 +3700,22 @@ function loadUserData(
                 0
             );
 
+        },
+
+        error => {
+
+            console.error(
+                "Profile error:",
+                error
+            );
+
         }
+
     );
 
 
-    /*
-       Real-time courses
-    */
+
+    /* REAL TIME COURSES */
 
     const coursesRef =
         collection(
@@ -1951,7 +3739,9 @@ function loadUserData(
 
 
         onSnapshot(
+
             coursesQuery,
+
             snapshot => {
 
                 const courses = [];
@@ -1973,9 +3763,21 @@ function loadUserData(
                 );
 
 
-                renderCourses(
-                    courses
-                );
+                if(
+                    courses.length
+                ){
+
+                    renderCourses(
+                        courses
+                    );
+
+                }else{
+
+                    renderCourses(
+                        demoCourses
+                    );
+
+                }
 
             },
 
@@ -1986,16 +3788,23 @@ function loadUserData(
                     error
                 );
 
+
                 renderCourses(
                     demoCourses
                 );
 
             }
+
         );
 
     }
 
     catch(error){
+
+        console.error(
+            error
+        );
+
 
         renderCourses(
             demoCourses
@@ -2006,8 +3815,9 @@ function loadUserData(
 }
 
 
+
 /* =====================================================
-   AUTHENTICATION
+   AUTH
 ===================================================== */
 
 if(
@@ -2016,31 +3826,26 @@ if(
 ){
 
     onAuthStateChanged(
+
         auth,
+
         user => {
 
             if(user){
-
-                /*
-                   User is signed in
-                */
 
                 loadUserData(
                     user
                 );
 
-            }
-
-            else{
+            }else{
 
                 /*
-                   If dashboard is protected,
-                   redirect to login.
-                */
-
-                console.log(
-                    "No authenticated user."
-                );
+                 * Firebase configured but
+                 * user is not logged in.
+                 *
+                 * Change this to login.html
+                 * when authentication is ready.
+                 */
 
                 renderCourses(
                     demoCourses
@@ -2049,16 +3854,10 @@ if(
             }
 
         }
+
     );
 
-}
-
-else{
-
-    /*
-       Firebase config not entered yet.
-       Dashboard still works with demo data.
-    */
+}else{
 
     renderCourses(
         demoCourses
@@ -2067,73 +3866,80 @@ else{
 }
 
 
+
 /* =====================================================
    LOGOUT
 ===================================================== */
 
 document
-.getElementById(
-    "logoutBtn"
-)
-.addEventListener(
-    "click",
-    async function(event){
+    .getElementById(
+        "logoutBtn"
+    )
+    .addEventListener(
+        "click",
 
-        event.preventDefault();
+        async function(event){
+
+            event.preventDefault();
 
 
-        if(
-            auth &&
-            firebaseConfigured
-        ){
+            if(
+                auth &&
+                firebaseConfigured
+            ){
 
-            try{
+                try{
 
-                await signOut(
-                    auth
-                );
+                    await signOut(
+                        auth
+                    );
+
+                }
+
+                catch(error){
+
+                    console.error(
+                        error
+                    );
+
+                }
 
             }
 
-            catch(error){
 
-                console.error(
-                    error
-                );
-
-            }
+            window.location.href =
+                "login.html";
 
         }
+    );
 
-
-        window.location.href =
-            "login.html";
-
-    }
-);
 
 
 /* =====================================================
-   MOBILE MENU
+   MOBILE SIDEBAR
 ===================================================== */
 
 document
-.getElementById(
-    "menuBtn"
-)
-.addEventListener(
-    "click",
-    function(){
+    .getElementById(
+        "menuBtn"
+    )
+    .addEventListener(
+        "click",
 
-        document
-        .getElementById(
-            "sidebar"
-        )
-        .classList
-        .toggle("open");
+        function(){
 
-    }
-);
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList
+                .toggle(
+                    "open"
+                );
+
+        }
+    );
+
 
 
 /* =====================================================
@@ -2141,42 +3947,48 @@ document
 ===================================================== */
 
 document
-.getElementById(
-    "continueBtn"
-)
-.addEventListener(
-    "click",
-    function(){
+    .getElementById(
+        "continueBtn"
+    )
+    .addEventListener(
+        "click",
 
-        document
-        .getElementById(
-            "learningPanel"
-        )
-        .scrollIntoView({
+        function(){
 
-            behavior:
-                "smooth",
+            document
+                .getElementById(
+                    "learningPanel"
+                )
+                .scrollIntoView({
 
-            block:
-                "center"
+                    behavior:
+                        "smooth",
 
-        });
+                    block:
+                        "center"
 
-    }
-);
-    /* =========================================================
-   SEARCH + CATEGORY FILTER
-========================================================= */
+                });
+
+        }
+    );
+
+
+
+/* =====================================================
+   SEARCH SYSTEM
+===================================================== */
 
 const searchInput =
     document.getElementById(
         "globalSearch"
     );
 
+
 const clearSearch =
     document.getElementById(
         "clearSearch"
     );
+
 
 const categoryButtons =
     document.querySelectorAll(
@@ -2184,10 +3996,12 @@ const categoryButtons =
     );
 
 
-let selectedCategory = "all";
+let selectedCategory =
+    "all";
 
 
-/* Search */
+
+/* SEARCH INPUT */
 
 searchInput.addEventListener(
     "input",
@@ -2195,30 +4009,40 @@ searchInput.addEventListener(
 );
 
 
-/* Categories */
+
+/* CATEGORY BUTTONS */
 
 categoryButtons.forEach(
     button => {
 
         button.addEventListener(
             "click",
-            () => {
+
+            function(){
 
                 categoryButtons
                     .forEach(
-                        item =>
-                            item.classList
-                                .remove("active")
+                        item => {
+
+                            item
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                        }
                     );
 
 
-                button.classList.add(
-                    "active"
-                );
+                this
+                    .classList
+                    .add(
+                        "active"
+                    );
 
 
                 selectedCategory =
-                    button.dataset.category;
+                    this.dataset.category;
 
 
                 filterDashboard();
@@ -2230,32 +4054,25 @@ categoryButtons.forEach(
 );
 
 
-/* Clear */
+
+/* CLEAR SEARCH */
 
 clearSearch.addEventListener(
     "click",
-    () => {
+
+    function(){
 
         searchInput.value = "";
 
-        clearSearch.classList.remove(
-            "show"
-        );
-
-        selectedCategory = "all";
-
-        categoryButtons
-            .forEach(
-                button =>
-                    button.classList
-                        .remove("active")
+        clearSearch
+            .classList
+            .remove(
+                "show"
             );
 
-        categoryButtons[0]
-            .classList
-            .add("active");
 
         filterDashboard();
+
 
         searchInput.focus();
 
@@ -2263,9 +4080,19 @@ clearSearch.addEventListener(
 );
 
 
-/* Main filter */
 
-function filterDashboard() {
+/* =====================================================
+   FILTER DASHBOARD
+===================================================== */
+
+function filterDashboard(){
+
+    if(!searchInput){
+
+        return;
+
+    }
+
 
     const search =
         searchInput.value
@@ -2273,17 +4100,21 @@ function filterDashboard() {
             .toLowerCase();
 
 
-    if(search.length > 0){
+    if(search){
 
-        clearSearch.classList.add(
-            "show"
-        );
+        clearSearch
+            .classList
+            .add(
+                "show"
+            );
 
     }else{
 
-        clearSearch.classList.remove(
-            "show"
-        );
+        clearSearch
+            .classList
+            .remove(
+                "show"
+            );
 
     }
 
@@ -2294,41 +4125,56 @@ function filterDashboard() {
         );
 
 
-    let visible = 0;
+    let visible =
+        0;
 
 
     courses.forEach(
         course => {
 
-            const text =
+            const title =
                 course
-                    .textContent
-                    .toLowerCase();
+                    .querySelector(
+                        ".course-title"
+                    )
+                    ?.textContent
+                    .toLowerCase() ||
+                    "";
+
+
+            const description =
+                course
+                    .querySelector(
+                        ".course-description"
+                    )
+                    ?.textContent
+                    .toLowerCase() ||
+                    "";
+
+
+            const category =
+                course.dataset.category ||
+                "courses";
+
+
+            const searchableText =
+                title +
+                " " +
+                description;
 
 
             const matchesSearch =
-                search === "" ||
-                text.includes(search);
-
-
-            /*
-             * Courses are already displayed
-             * in Continue Learning.
-             *
-             * Category matching can also use
-             * course data-category if added.
-             */
-
-            const courseCategory =
-                (
-                    course.dataset.category ||
-                    "courses"
-                ).toLowerCase();
+                !search ||
+                searchableText.includes(
+                    search
+                );
 
 
             const matchesCategory =
-                selectedCategory === "all" ||
-                courseCategory ===
+                selectedCategory ===
+                    "all" ||
+
+                category ===
                     selectedCategory;
 
 
@@ -2337,24 +4183,25 @@ function filterDashboard() {
                 matchesCategory
             ){
 
-                course.style.display = "";
+                course.classList
+                    .remove(
+                        "hidden"
+                    );
 
                 visible++;
 
             }else{
 
-                course.style.display =
-                    "none";
+                course.classList
+                    .add(
+                        "hidden"
+                    );
 
             }
 
         }
     );
 
-
-    /*
-     * No results message
-     */
 
     let noResults =
         document.querySelector(
@@ -2363,8 +4210,8 @@ function filterDashboard() {
 
 
     if(
-        visible === 0 &&
-        courses.length > 0
+        courses.length > 0 &&
+        visible === 0
     ){
 
         if(!noResults){
@@ -2374,16 +4221,21 @@ function filterDashboard() {
                     "div"
                 );
 
+
             noResults.className =
                 "no-results";
 
+
             noResults.innerHTML = `
+
                 <div class="no-results-icon">
                     🔍
                 </div>
 
                 No matching results found.
+
             `;
+
 
             document
                 .getElementById(
@@ -2395,13 +4247,18 @@ function filterDashboard() {
 
         }
 
+
         noResults.style.display =
             "block";
 
-    }else if(noResults){
+    }else{
 
-        noResults.style.display =
-            "none";
+        if(noResults){
+
+            noResults.style.display =
+                "none";
+
+        }
 
     }
 
