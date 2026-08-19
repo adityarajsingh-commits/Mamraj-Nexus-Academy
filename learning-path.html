@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MamRaj Nexus Academy | Learning Path</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --navy:#1d2c63;
+    --navy2:#121c43;
+    --peach:#c98b70;
+    --cream:#f8f3ee;
+    --white:#fff;
+    --text:#202a4d;
+    --muted:#777d8d;
+    --border:#e7dfd9;
+    --green:#4e9a70;
+    --purple:#7657bd;
+}
+
+body{
+    font-family:Poppins,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    padding:0 6%;
+    gap:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:var(--navy);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:17px;
+    font-weight:800;
+}
+
+.brand{
+    font-size:15px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.1;
+}
+
+.brand small{
+    display:block;
+    font-size:6px;
+    letter-spacing:3px;
+    color:#999;
+    margin-top:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    margin-left:auto;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#555d70;
+    font-size:11px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--peach);
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:var(--navy);
+    color:#fff;
+    width:38px;
+    height:38px;
+    border-radius:9px;
+    font-size:18px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:65px 7% 50px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(201,139,112,.16),transparent 30%),
+        linear-gradient(135deg,#f8f3ee,#fff);
+}
+
+.hero-inner{
+    max-width:1150px;
+    margin:auto;
+}
+
+.badge{
+    display:inline-flex;
+    padding:7px 12px;
+    background:#f1e5df;
+    color:var(--peach);
+    border-radius:30px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.hero h1{
+    max-width:850px;
+    font-size:48px;
+    line-height:1.15;
+    color:var(--navy);
+    margin:18px 0 15px;
+}
+
+.hero h1 span{
+    color:var(--peach);
+}
+
+.hero p{
+    max-width:720px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.9;
+}
+
+.hero-stats{
+    display:flex;
+    gap:45px;
+    margin-top:28px;
+}
+
+.hero-stat strong{
+    display:block;
+    color:var(--navy);
+    font-size:21px;
+}
+
+.hero-stat span{
+    font-size:8px;
+    color:#858a98;
+}
+
+/* ================= FILTER ================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.filter-section{
+    margin-top:-22px;
+    position:relative;
+    z-index:5;
+}
+
+.filter-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    box-shadow:0 10px 30px rgba(30,42,90,.06);
+}
+
+.filter-btn{
+    border:1px solid var(--border);
+    background:#fff;
+    color:#656b7a;
+    border-radius:9px;
+    padding:9px 15px;
+    font-family:inherit;
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fff;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:55px 0;
+}
+
+.section-heading{
+    margin-bottom:25px;
+}
+
+.section-heading small{
+    color:var(--peach);
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    color:var(--navy);
+    font-size:27px;
+    margin-top:5px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:5px;
+}
+
+/* ================= COURSE CARDS ================= */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.course-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:19px;
+    padding:22px;
+    transition:.25s;
+}
+
+.course-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(30,42,90,.08);
+}
+
+.course-top{
+    display:flex;
+    gap:15px;
+}
+
+.course-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    background:#f4e8e1;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    flex:none;
+}
+
+.course-card h3{
+    color:var(--navy);
+    font-size:16px;
+}
+
+.course-card .description{
+    font-size:9px;
+    line-height:1.7;
+    color:var(--muted);
+    margin-top:4px;
+}
+
+.course-meta{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.meta{
+    padding:5px 8px;
+    border-radius:20px;
+    background:#f7f3f0;
+    color:#777;
+    font-size:7px;
+    font-weight:700;
+}
+
+.progress-wrap{
+    margin-top:18px;
+}
+
+.progress-head{
+    display:flex;
+    justify-content:space-between;
+    font-size:7px;
+    color:#888;
+    margin-bottom:5px;
+}
+
+.progress{
+    height:5px;
+    background:#eee8e3;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    background:var(--peach);
+    border-radius:10px;
+}
+
+.course-action{
+    margin-top:17px;
+    display:flex;
+    gap:8px;
+}
+
+.course-action a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    padding:10px;
+    border-radius:9px;
+    font-size:8px;
+    font-weight:800;
+}
+
+.view-roadmap{
+    border:1px solid var(--border);
+    color:var(--navy);
+}
+
+.start-learning{
+    background:var(--navy);
+    color:#fff;
+}
+
+/* ================= ROADMAP ================= */
+
+.roadmap-section{
+    background:#fff;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:65px 0;
+}
+
+.roadmap{
+    position:relative;
+    margin-top:35px;
+}
+
+.roadmap-line{
+    position:absolute;
+    top:34px;
+    left:4%;
+    right:4%;
+    height:2px;
+    background:#e7dfd9;
+}
+
+.roadmap-items{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+}
+
+.roadmap-item{
+    text-align:center;
+}
+
+.roadmap-number{
+    width:48px;
+    height:48px;
+    margin:auto;
+    border-radius:50%;
+    background:var(--cream);
+    border:3px solid #fff;
+    box-shadow:0 0 0 2px var(--peach);
+    display:grid;
+    place-items:center;
+    color:var(--navy);
+    font-size:11px;
+    font-weight:900;
+    position:relative;
+    z-index:2;
+}
+
+.roadmap-item h4{
+    font-size:9px;
+    color:var(--navy);
+    margin-top:13px;
+}
+
+.roadmap-item p{
+    font-size:7px;
+    color:#8b8f9c;
+    line-height:1.5;
+    margin-top:4px;
+}
+
+/* ================= DETAILED ROADMAP ================= */
+
+.path-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.path-header{
+    padding:19px 22px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    cursor:pointer;
+}
+
+.path-icon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    background:#f5e9e3;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+}
+
+.path-title{
+    flex:1;
+}
+
+.path-title h3{
+    color:var(--navy);
+    font-size:14px;
+}
+
+.path-title span{
+    font-size:8px;
+    color:#8b8f9c;
+}
+
+.path-arrow{
+    color:var(--peach);
+    font-weight:900;
+}
+
+.path-body{
+    display:none;
+    padding:0 22px 25px;
+}
+
+.path-card.open .path-body{
+    display:block;
+}
+
+.modules{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.module{
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:13px;
+    background:#fcfaf8;
+}
+
+.module-number{
+    color:var(--peach);
+    font-size:7px;
+    font-weight:900;
+}
+
+.module h4{
+    color:var(--navy);
+    font-size:9px;
+    margin-top:4px;
+}
+
+.module p{
+    color:#858a98;
+    font-size:7px;
+    line-height:1.6;
+    margin-top:3px;
+}
+
+.module-project{
+    margin-top:8px;
+    font-size:7px;
+    color:var(--green);
+    font-weight:800;
+}
+
+/* ================= CAREER PATH ================= */
+
+.career{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.career-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:20px;
+}
+
+.career-card .icon{
+    font-size:22px;
+}
+
+.career-card h3{
+    font-size:11px;
+    color:var(--navy);
+    margin-top:9px;
+}
+
+.career-card p{
+    font-size:8px;
+    color:#858a98;
+    line-height:1.7;
+    margin-top:5px;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    margin:30px 0 70px;
+    padding:40px;
+    border-radius:22px;
+    background:linear-gradient(135deg,var(--navy),#6753a7);
+    color:#fff;
+    text-align:center;
+}
+
+.cta h2{
+    font-size:25px;
+}
+
+.cta p{
+    max-width:600px;
+    margin:8px auto 20px;
+    font-size:9px;
+    line-height:1.7;
+    color:rgba(255,255,255,.72);
+}
+
+.cta a{
+    display:inline-block;
+    padding:11px 20px;
+    background:#fff;
+    color:var(--navy);
+    border-radius:9px;
+    font-size:9px;
+    font-weight:800;
+    text-decoration:none;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:var(--navy2);
+    color:#fff;
+    padding:30px 7%;
+    text-align:center;
+}
+
+footer strong{
+    font-size:12px;
+}
+
+footer p{
+    font-size:7px;
+    color:#aab0c4;
+    margin-top:5px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:0 12px;
+        height:62px;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:62px;
+        left:0;
+        width:100%;
+        background:#fff;
+        border-bottom:1px solid var(--border);
+        padding:15px;
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .mobile-menu{
+        display:block;
+        margin-left:auto;
+    }
+
+    .hero{
+        padding:45px 20px 45px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:10px;
+    }
+
+    .hero-stats{
+        gap:25px;
+        flex-wrap:wrap;
+    }
+
+    .filter-section{
+        margin-top:-15px;
+        padding:0 10px;
+    }
+
+    .filter-box{
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .course-grid{
+        grid-template-columns:1fr;
+    }
+
+    .roadmap-items{
+        grid-template-columns:repeat(2,1fr);
+        gap:25px;
+    }
+
+    .roadmap-line{
+        display:none;
+    }
+
+    .modules{
+        grid-template-columns:1fr;
+    }
+
+    .career{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .hero-stats{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+    .course-card{
+        padding:16px;
+    }
+
+    .course-top{
+        gap:10px;
+    }
+
+    .course-icon{
+        width:44px;
+        height:44px;
+        font-size:18px;
+    }
+
+    .course-card h3{
+        font-size:13px;
+    }
+
+    .career{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        padding:30px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">M</a>
+
+    <div class="brand">
+        MamRaj Nexus
+        <small>ACADEMY</small>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="learning-path.html" class="active">Learning Path</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <span class="badge">🎯 CAREER-FOCUSED LEARNING</span>
+
+        <h1>
+            Your Learning Path to
+            <span>Career Success.</span>
+        </h1>
+
+        <p>
+            Follow structured roadmaps designed to take you from
+            beginner fundamentals to practical skills, real-world
+            projects, portfolio development and career readiness.
+        </p>
+
+        <div class="hero-stats">
+
+            <div class="hero-stat">
+                <strong>6+</strong>
+                <span>Career Paths</span>
+            </div>
+
+            <div class="hero-stat">
+                <strong>100+</strong>
+                <span>Learning Topics</span>
+            </div>
+
+            <div class="hero-stat">
+                <strong>25+</strong>
+                <span>Projects</span>
+            </div>
+
+            <div class="hero-stat">
+                <strong>Beginner → Pro</strong>
+                <span>Learning Journey</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FILTER -->
+
+<div class="container filter-section">
+
+    <div class="filter-box">
+
+        <button class="filter-btn active" onclick="filterCourses('all',this)">
+            All Paths
+        </button>
+
+        <button class="filter-btn" onclick="filterCourses('tech',this)">
+            Technology
+        </button>
+
+        <button class="filter-btn" onclick="filterCourses('design',this)">
+            Design
+        </button>
+
+        <button class="filter-btn" onclick="filterCourses('business',this)">
+            Business
+        </button>
+
+        <button class="filter-btn" onclick="filterCourses('management',this)">
+            Management
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- COURSES -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-heading">
+    <small>CHOOSE YOUR PATH</small>
+    <h2>Explore Learning Paths</h2>
+    <p>Select a career path and follow the roadmap step by step.</p>
+</div>
+
+
+<div class="course-grid" id="courseGrid">
+
+
+<!-- UI UX -->
+
+<div class="course-card" data-category="design">
+
+<div class="course-top">
+
+<div class="course-icon">🎨</div>
+
+<div>
+<h3>UI/UX & Product Design</h3>
+
+<p class="description">
+Learn research, wireframing, visual design, Figma,
+prototyping, design systems and product thinking.
+</p>
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">6 Months</span>
+<span class="meta">48 Lessons</span>
+<span class="meta">8+ Projects</span>
+<span class="meta">Beginner → Pro</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#uiux-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="ui-ux-product-design-course-mobile.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- DATA ANALYTICS -->
+
+<div class="course-card" data-category="tech">
+
+<div class="course-top">
+
+<div class="course-icon">📊</div>
+
+<div>
+
+<h3>Data Analytics</h3>
+
+<p class="description">
+Build analytical thinking through spreadsheets,
+SQL, Python, visualization, dashboards and projects.
+</p>
+
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">6 Months</span>
+<span class="meta">40+ Lessons</span>
+<span class="meta">6+ Projects</span>
+<span class="meta">Beginner → Pro</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#analytics-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="data-analytics-course.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- HR -->
+
+<div class="course-card" data-category="management">
+
+<div class="course-top">
+
+<div class="course-icon">👥</div>
+
+<div>
+
+<h3>Human Resource Management using AI</h3>
+
+<p class="description">
+Learn HR fundamentals, recruitment, talent management,
+HR analytics, AI tools and workplace automation.
+</p>
+
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">5 Months</span>
+<span class="meta">40+ Lessons</span>
+<span class="meta">5+ Projects</span>
+<span class="meta">Beginner → Advanced</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#hr-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="human-resource-management-ai-course.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- FULL STACK -->
+
+<div class="course-card" data-category="tech">
+
+<div class="course-top">
+
+<div class="course-icon">💻</div>
+
+<div>
+
+<h3>Full Stack Web Development</h3>
+
+<p class="description">
+Learn frontend, backend, databases, APIs,
+authentication, deployment and full-stack projects.
+</p>
+
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">6 Months</span>
+<span class="meta">50+ Lessons</span>
+<span class="meta">8+ Projects</span>
+<span class="meta">Beginner → Pro</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#fullstack-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="full-stack-course.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- DIGITAL MARKETING -->
+
+<div class="course-card" data-category="business">
+
+<div class="course-top">
+
+<div class="course-icon">📣</div>
+
+<div>
+
+<h3>Digital Marketing</h3>
+
+<p class="description">
+Learn SEO, social media, content marketing,
+paid campaigns, analytics and digital strategy.
+</p>
+
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">4 Months</span>
+<span class="meta">35+ Lessons</span>
+<span class="meta">5+ Projects</span>
+<span class="meta">Career Ready</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#marketing-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="digital-marketing-course.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- BUSINESS -->
+
+<div class="course-card" data-category="business">
+
+<div class="course-top">
+
+<div class="course-icon">💼</div>
+
+<div>
+
+<h3>Business & Entrepreneurship</h3>
+
+<p class="description">
+Understand business fundamentals, startup planning,
+marketing, finance, operations and growth strategy.
+</p>
+
+</div>
+
+</div>
+
+<div class="course-meta">
+<span class="meta">4 Months</span>
+<span class="meta">30+ Lessons</span>
+<span class="meta">4+ Projects</span>
+<span class="meta">Beginner</span>
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-head">
+<span>Learning Path</span>
+<span>0%</span>
+</div>
+
+<div class="progress">
+<span style="width:0%"></span>
+</div>
+
+</div>
+
+<div class="course-action">
+
+<a href="#business-roadmap" class="view-roadmap">
+View Roadmap
+</a>
+
+<a href="business-entrepreneurship-course.html"
+class="start-learning">
+Start Learning →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GENERAL ROADMAP -->
+
+<section class="roadmap-section">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>THE ACADEMY ROADMAP</small>
+
+<h2>How Your Learning Journey Works</h2>
+
+<p>
+Every course follows a practical progression from fundamentals
+to career-ready skills.
+</p>
+
+</div>
+
+
+<div class="roadmap">
+
+<div class="roadmap-line"></div>
+
+<div class="roadmap-items">
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">01</div>
+
+<h4>Foundation</h4>
+
+<p>
+Understand core concepts and terminology.
+</p>
+
+</div>
+
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">02</div>
+
+<h4>Core Skills</h4>
+
+<p>
+Build the essential skills required for the field.
+</p>
+
+</div>
+
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">03</div>
+
+<h4>Tools</h4>
+
+<p>
+Learn professional tools and workflows.
+</p>
+
+</div>
+
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">04</div>
+
+<h4>Projects</h4>
+
+<p>
+Apply concepts through practical projects.
+</p>
+
+</div>
+
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">05</div>
+
+<h4>Portfolio</h4>
+
+<p>
+Convert your work into portfolio-ready projects.
+</p>
+
+</div>
+
+
+<div class="roadmap-item">
+
+<div class="roadmap-number">06</div>
+
+<h4>Career</h4>
+
+<p>
+Prepare for internships, jobs and interviews.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DETAILED PATHS -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>DETAILED ROADMAPS</small>
+
+<h2>Course-by-Course Learning Roadmap</h2>
+
+<p>
+Expand a course to see its complete learning progression.
+</p>
+
+</div>
+
+
+<!-- UI UX ROADMAP -->
+
+<div class="path-card open" id="uiux-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">🎨</div>
+
+<div class="path-title">
+
+<h3>UI/UX & Product Design</h3>
+
+<span>
+Foundation → Research → Design → Prototype → Product → Portfolio
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>Design Foundations</h4>
+<p>UI/UX fundamentals, principles and visual hierarchy.</p>
+<div class="module-project">🎯 Project: Interface Audit</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>User Research</h4>
+<p>Interviews, surveys, research and personas.</p>
+<div class="module-project">🎯 Project: User Persona</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>Information Architecture</h4>
+<p>User flows, sitemaps, navigation and card sorting.</p>
+<div class="module-project">🎯 Project: App User Flow</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>Wireframing</h4>
+<p>Low fidelity layouts and responsive structures.</p>
+<div class="module-project">🎯 Project: Website Wireframe</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>Visual Design</h4>
+<p>Color, typography, grids and accessibility.</p>
+<div class="module-project">🎯 Project: UI Style Guide</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>Figma</h4>
+<p>Frames, components, Auto Layout and assets.</p>
+<div class="module-project">🎯 Project: Figma Design</div>
+</div>
+
+<div class="module">
+<span class="module-number">07</span>
+<h4>High-Fidelity UI</h4>
+<p>Mobile UI, web UI, forms and states.</p>
+<div class="module-project">🎯 Project: Product UI</div>
+</div>
+
+<div class="module">
+<span class="module-number">08</span>
+<h4>Prototyping</h4>
+<p>Interactive flows, animations and handoff.</p>
+<div class="module-project">🎯 Project: Interactive Prototype</div>
+</div>
+
+<div class="module">
+<span class="module-number">09</span>
+<h4>Design Systems</h4>
+<p>Tokens, components, variants and documentation.</p>
+<div class="module-project">🎯 Project: Mini Design System</div>
+</div>
+
+<div class="module">
+<span class="module-number">10</span>
+<h4>Usability Testing</h4>
+<p>Testing plans, sessions, findings and iteration.</p>
+<div class="module-project">🎯 Project: Usability Test</div>
+</div>
+
+<div class="module">
+<span class="module-number">11</span>
+<h4>Product Design</h4>
+<p>Product thinking, MVP, metrics and case studies.</p>
+<div class="module-project">🎯 Project: Product Case Study</div>
+</div>
+
+<div class="module">
+<span class="module-number">12</span>
+<h4>Career & Capstone</h4>
+<p>Portfolio, final assignment and capstone.</p>
+<div class="module-project">🏆 Final: Product Design Capstone</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DATA ANALYTICS -->
+
+<div class="path-card" id="analytics-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">📊</div>
+
+<div class="path-title">
+
+<h3>Data Analytics</h3>
+
+<span>
+Data Fundamentals → Analysis → Visualization → Dashboard → Portfolio
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>Analytics Foundations</h4>
+<p>Data concepts, types and analytical thinking.</p>
+<div class="module-project">🎯 Project: Data Exploration</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>Excel</h4>
+<p>Formulas, functions, cleaning and analysis.</p>
+<div class="module-project">🎯 Project: Excel Dashboard</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>Statistics</h4>
+<p>Descriptive statistics and analytical reasoning.</p>
+<div class="module-project">🎯 Project: Statistical Analysis</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>SQL</h4>
+<p>Queries, joins, aggregation and databases.</p>
+<div class="module-project">🎯 Project: SQL Analysis</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>Python</h4>
+<p>Python fundamentals for data analysis.</p>
+<div class="module-project">🎯 Project: Python Analysis</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>Pandas & NumPy</h4>
+<p>Data manipulation and analytical workflows.</p>
+<div class="module-project">🎯 Project: Dataset Analysis</div>
+</div>
+
+<div class="module">
+<span class="module-number">07</span>
+<h4>Visualization</h4>
+<p>Charts, storytelling and analytical presentation.</p>
+<div class="module-project">🎯 Project: Data Story</div>
+</div>
+
+<div class="module">
+<span class="module-number">08</span>
+<h4>Power BI</h4>
+<p>Dashboards, reports and interactive analytics.</p>
+<div class="module-project">🎯 Project: Business Dashboard</div>
+</div>
+
+<div class="module">
+<span class="module-number">09</span>
+<h4>Portfolio</h4>
+<p>Real-world analytics projects and case studies.</p>
+<div class="module-project">🏆 Final: Analytics Portfolio</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- HR ROADMAP -->
+
+<div class="path-card" id="hr-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">👥</div>
+
+<div class="path-title">
+
+<h3>Human Resource Management using AI</h3>
+
+<span>
+HR Fundamentals → Recruitment → Analytics → AI → Career
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>HR Fundamentals</h4>
+<p>HR functions, roles and organizational structure.</p>
+<div class="module-project">🎯 Project: HR Process Map</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>Recruitment</h4>
+<p>Job analysis, sourcing and candidate selection.</p>
+<div class="module-project">🎯 Project: Recruitment Plan</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>Talent Management</h4>
+<p>Onboarding, development and retention.</p>
+<div class="module-project">🎯 Project: Talent Strategy</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>Performance Management</h4>
+<p>Goals, reviews and employee performance.</p>
+<div class="module-project">🎯 Project: Performance Framework</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>HR Analytics</h4>
+<p>Metrics, dashboards and people insights.</p>
+<div class="module-project">🎯 Project: HR Dashboard</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>AI for HR</h4>
+<p>AI-assisted recruitment, content and workflows.</p>
+<div class="module-project">🎯 Project: AI HR Workflow</div>
+</div>
+
+<div class="module">
+<span class="module-number">07</span>
+<h4>HR Automation</h4>
+<p>Automate repetitive HR processes.</p>
+<div class="module-project">🎯 Project: Automated Workflow</div>
+</div>
+
+<div class="module">
+<span class="module-number">08</span>
+<h4>Career Readiness</h4>
+<p>Resume, interviews and HR career preparation.</p>
+<div class="module-project">🏆 Final: HR Portfolio</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FULL STACK -->
+
+<div class="path-card" id="fullstack-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">💻</div>
+
+<div class="path-title">
+
+<h3>Full Stack Web Development</h3>
+
+<span>
+Frontend → Backend → Database → APIs → Deployment
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>HTML & Web</h4>
+<p>Web fundamentals and semantic HTML.</p>
+<div class="module-project">🎯 Project: Portfolio Page</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>CSS</h4>
+<p>Layouts, responsive design and styling.</p>
+<div class="module-project">🎯 Project: Responsive Website</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>JavaScript</h4>
+<p>Programming fundamentals and DOM.</p>
+<div class="module-project">🎯 Project: Interactive App</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>Frontend</h4>
+<p>Modern frontend development.</p>
+<div class="module-project">🎯 Project: Web Application</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>Backend</h4>
+<p>Server-side development and application logic.</p>
+<div class="module-project">🎯 Project: REST API</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>Database</h4>
+<p>SQL, data modeling and database operations.</p>
+<div class="module-project">🎯 Project: Database Application</div>
+</div>
+
+<div class="module">
+<span class="module-number">07</span>
+<h4>Authentication</h4>
+<p>Users, authentication and authorization.</p>
+<div class="module-project">🎯 Project: Auth System</div>
+</div>
+
+<div class="module">
+<span class="module-number">08</span>
+<h4>Deployment</h4>
+<p>Production deployment and application hosting.</p>
+<div class="module-project">🏆 Final: Full Stack Application</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- DIGITAL MARKETING -->
+
+<div class="path-card" id="marketing-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">📣</div>
+
+<div class="path-title">
+
+<h3>Digital Marketing</h3>
+
+<span>
+Marketing Basics → Content → SEO → Social → Ads → Analytics
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>Marketing Fundamentals</h4>
+<p>Digital marketing concepts and strategy.</p>
+<div class="module-project">🎯 Project: Marketing Strategy</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>Content Marketing</h4>
+<p>Content planning and audience targeting.</p>
+<div class="module-project">🎯 Project: Content Calendar</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>SEO</h4>
+<p>Search optimization and content strategy.</p>
+<div class="module-project">🎯 Project: SEO Audit</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>Social Media</h4>
+<p>Social strategy, content and engagement.</p>
+<div class="module-project">🎯 Project: Social Campaign</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>Paid Advertising</h4>
+<p>Campaign planning and performance tracking.</p>
+<div class="module-project">🎯 Project: Ad Campaign</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>Analytics</h4>
+<p>Marketing metrics and performance analysis.</p>
+<div class="module-project">🏆 Final: Digital Campaign</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BUSINESS -->
+
+<div class="path-card" id="business-roadmap">
+
+<div class="path-header" onclick="togglePath(this)">
+
+<div class="path-icon">💼</div>
+
+<div class="path-title">
+
+<h3>Business & Entrepreneurship</h3>
+
+<span>
+Idea → Validation → Business Model → Marketing → Growth
+</span>
+
+</div>
+
+<div class="path-arrow">⌄</div>
+
+</div>
+
+<div class="path-body">
+
+<div class="modules">
+
+<div class="module">
+<span class="module-number">01</span>
+<h4>Business Fundamentals</h4>
+<p>Understand how businesses create value.</p>
+<div class="module-project">🎯 Project: Business Idea</div>
+</div>
+
+<div class="module">
+<span class="module-number">02</span>
+<h4>Market Research</h4>
+<p>Customers, competitors and market opportunities.</p>
+<div class="module-project">🎯 Project: Market Research</div>
+</div>
+
+<div class="module">
+<span class="module-number">03</span>
+<h4>Business Model</h4>
+<p>Revenue, pricing and business models.</p>
+<div class="module-project">🎯 Project: Business Model</div>
+</div>
+
+<div class="module">
+<span class="module-number">04</span>
+<h4>Marketing</h4>
+<p>Branding, positioning and customer acquisition.</p>
+<div class="module-project">🎯 Project: Marketing Plan</div>
+</div>
+
+<div class="module">
+<span class="module-number">05</span>
+<h4>Finance</h4>
+<p>Costs, revenue and basic financial planning.</p>
+<div class="module-project">🎯 Project: Financial Plan</div>
+</div>
+
+<div class="module">
+<span class="module-number">06</span>
+<h4>Growth Strategy</h4>
+<p>Operations, scaling and long-term growth.</p>
+<div class="module-project">🏆 Final: Startup Plan</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CAREER OUTCOMES -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>WHERE THIS PATH CAN TAKE YOU</small>
+
+<h2>Career Outcomes</h2>
+
+<p>
+Build skills that translate into practical career opportunities.
+</p>
+
+</div>
+
+<div class="career">
+
+<div class="career-card">
+<div class="icon">🎨</div>
+<h3>UI/UX Designer</h3>
+<p>Create user-centered digital products and interfaces.</p>
+</div>
+
+<div class="career-card">
+<div class="icon">📊</div>
+<h3>Data Analyst</h3>
+<p>Turn business data into insights and decisions.</p>
+</div>
+
+<div class="career-card">
+<div class="icon">👥</div>
+<h3>HR Professional</h3>
+<p>Build modern people and talent management skills.</p>
+</div>
+
+<div class="career-card">
+<div class="icon">💻</div>
+<h3>Full Stack Developer</h3>
+<p>Build and deploy complete web applications.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<div class="container">
+
+<div class="cta">
+
+<h2>Ready to Start Your Journey?</h2>
+
+<p>
+Choose a learning path, follow the roadmap and build
+real projects that move you closer to your career goal.
+</p>
+
+<a href="courses.html">
+Explore All Courses →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<strong>MamRaj Nexus Academy</strong>
+
+<p>
+Learn. Build. Grow. | Practical career-focused education.
+</p>
+
+</footer>
+
+
+<script>
+
+/* ================= MOBILE MENU ================= */
+
+function toggleMenu(){
+
+    const nav = document.getElementById("navLinks");
+
+    nav.classList.toggle("show");
+
+}
+
+
+/* ================= ROADMAP ACCORDION ================= */
+
+function togglePath(header){
+
+    const card = header.parentElement;
+
+    card.classList.toggle("open");
+
+}
+
+
+/* ================= COURSE FILTER ================= */
+
+function filterCourses(category,button){
+
+    document.querySelectorAll(".filter-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    const cards =
+        document.querySelectorAll(".course-card");
+
+    cards.forEach(card => {
+
+        const cardCategory =
+            card.getAttribute("data-category");
+
+        if(category === "all" || cardCategory === category){
+
+            card.style.display = "";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= CLOSE MOBILE MENU ================= */
+
+document.addEventListener("click",function(e){
+
+    const nav = document.getElementById("navLinks");
+    const menu = document.querySelector(".mobile-menu");
+
+    if(
+        window.innerWidth <= 800 &&
+        nav.classList.contains("show") &&
+        !nav.contains(e.target) &&
+        !menu.contains(e.target)
+    ){
+
+        nav.classList.remove("show");
+
+    }
+
+});
+
+
+/* ================= SCROLL TO ROADMAP ================= */
+
+document.querySelectorAll(".view-roadmap")
+.forEach(button => {
+
+    button.addEventListener("click",function(){
+
+        const target =
+            document.querySelector(
+                this.getAttribute("href")
+            );
+
+        if(target){
+
+            setTimeout(() => {
+
+                target.scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+
+                if(!target.classList.contains("open")){
+
+                    target.classList.add("open");
+
+                }
+
+            },50);
+
+        }
+
+    });
+
+});
+
+
+/* ================= LOCAL STORAGE PROGRESS ================= */
+
+const progressMap = {
+
+    "uiux": "mr_uiux_completed",
+    "analytics": "mr_analytics_completed",
+    "hr": "mr_hr_completed",
+    "fullstack": "mr_fullstack_completed",
+    "marketing": "mr_marketing_completed",
+    "business": "mr_business_completed"
+
+};
+
+
+/*
+    If course progress arrays exist in localStorage,
+    automatically update progress bars.
+*/
+
+function updateCourseProgress(){
+
+    const cards =
+        document.querySelectorAll(".course-card");
+
+    cards.forEach(card => {
+
+        const title =
+            card.querySelector("h3").textContent.toLowerCase();
+
+        let storageKey = null;
+        let totalLessons = 1;
+
+        if(title.includes("ui/ux")){
+
+            storageKey = progressMap.uiux;
+            totalLessons = 48;
+
+        }
+
+        else if(title.includes("data analytics")){
+
+            storageKey = progressMap.analytics;
+            totalLessons = 40;
+
+        }
+
+        else if(title.includes("human resource")){
+
+            storageKey = progressMap.hr;
+            totalLessons = 40;
+
+        }
+
+        else if(title.includes("full stack")){
+
+            storageKey = progressMap.fullstack;
+            totalLessons = 50;
+
+        }
+
+        else if(title.includes("digital marketing")){
+
+            storageKey = progressMap.marketing;
+            totalLessons = 35;
+
+        }
+
+        else if(title.includes("business")){
+
+            storageKey = progressMap.business;
+            totalLessons = 30;
+
+        }
+
+        if(storageKey){
+
+            try{
+
+                const completed =
+                    JSON.parse(
+                        localStorage.getItem(storageKey) || "[]"
+                    );
+
+                const percentage =
+                    Math.min(
+                        100,
+                        Math.round(
+                            (completed.length / totalLessons) * 100
+                        )
+                    );
+
+                const progress =
+                    card.querySelector(".progress span");
+
+                const percentText =
+                    card.querySelector(".progress-head span:last-child");
+
+                if(progress)
+                    progress.style.width = percentage + "%";
+
+                if(percentText)
+                    percentText.textContent = percentage + "%";
+
+            }catch(error){
+
+                console.log("Progress unavailable");
+
+            }
+
+        }
+
+    });
+
+}
+
+updateCourseProgress();
+
+</script>
+
+</body>
+</html>
