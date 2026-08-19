@@ -1,82 +1,84 @@
-<script type="module">
+// =====================================================
+// MamRaj Nexus Academy
+// Firebase Configuration
+// =====================================================
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
     getAuth,
-    onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    GoogleAuthProvider
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
-    getFirestore,
-    doc,
-    onSnapshot
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+    getFirestore
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+// =====================================================
+// FIREBASE CONFIG
+// =====================================================
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyA44Ou2bM7l7m-oay-pwv-4tdmn_S0f0BM",
+    apiKey: "PASTE_YOUR_API_KEY",
 
-    authDomain: "mamraj-web-studio-1d78b.firebaseapp.com",
+    authDomain:
+        "mamraj-web-studio-1d78b.firebaseapp.com",
 
-    projectId: "mamraj-web-studio-1d78b",
+    projectId:
+        "mamraj-web-studio-1d78b",
 
-    storageBucket: "mamraj-web-studio-1d78b",
+    storageBucket:
+        "mamraj-web-studio-1d78b.firebasestorage.app",
 
-    messagingSenderId: "229677264871",
+    messagingSenderId:
+        "PASTE_YOUR_MESSAGING_SENDER_ID",
 
-    appId: "1:229677264871:web:cc3937a5733868e31c5742"
-
+    appId:
+        "PASTE_YOUR_APP_ID"
 };
 
 
-const app =
-    initializeApp(firebaseConfig);
+// =====================================================
+// INITIALIZE FIREBASE
+// =====================================================
+
+const app = initializeApp(firebaseConfig);
 
 
-const auth =
-    getAuth(app);
+// =====================================================
+// AUTHENTICATION
+// =====================================================
+
+const auth = getAuth(app);
 
 
-const db =
-    getFirestore(app);
+// =====================================================
+// GOOGLE AUTH PROVIDER
+// =====================================================
+
+const googleProvider =
+    new GoogleAuthProvider();
 
 
-/* Make available to dashboard.js */
+// =====================================================
+// FIRESTORE
+// =====================================================
 
-window.firebaseAuth = auth;
-window.firebaseDB = db;
+const db = getFirestore(app);
 
-window.firebaseModules = {
 
-    doc,
-    onSnapshot
+// =====================================================
+// EXPORT
+// =====================================================
 
+export {
+    app,
+    auth,
+    db,
+    googleProvider
 };
-
-
-onAuthStateChanged(auth, user => {
-
-    if (!user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-
-    }
-
-    window.currentUser = user;
-
-    console.log(
-        "Logged in:",
-        user.email
-    );
-
-});
-
-</script>
