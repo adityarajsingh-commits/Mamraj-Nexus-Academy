@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | MamRaj Nexus Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --navy:#1d2c63;
+    --navy-dark:#121c43;
+    --peach:#c98b70;
+    --cream:#f8f3ee;
+    --white:#ffffff;
+    --text:#202a4d;
+    --muted:#777d8d;
+    --border:#e7dfd9;
+    --green:#4e9a70;
+    --danger:#c85b5b;
+}
+
+body{
+    font-family:"Poppins",Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    padding:0 6%;
+    gap:15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:var(--navy);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:17px;
+    font-weight:800;
+    text-decoration:none;
+}
+
+.brand{
+    font-size:16px;
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.1;
+}
+
+.brand small{
+    display:block;
+    font-size:8px;
+    letter-spacing:3px;
+    color:#999;
+    margin-top:3px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    margin-left:auto;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#555d70;
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--peach);
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:var(--navy);
+    color:#fff;
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:70px 7% 65px;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(201,139,112,.18),
+            transparent 30%
+        ),
+        linear-gradient(135deg,#f8f3ee,#fff);
+}
+
+.hero-inner{
+    max-width:1150px;
+    margin:auto;
+    text-align:center;
+}
+
+.badge{
+    display:inline-flex;
+    padding:7px 13px;
+    background:#f1e5df;
+    color:var(--peach);
+    border-radius:30px;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.7px;
+}
+
+.hero h1{
+    font-size:42px;
+    line-height:1.2;
+    color:var(--navy);
+    margin:18px 0 12px;
+}
+
+.hero h1 span{
+    color:var(--peach);
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:0 20px;
+}
+
+.contact-section{
+    padding:65px 0 80px;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns: .85fr 1.35fr;
+    gap:25px;
+}
+
+/* ================= INFO CARD ================= */
+
+.info-card{
+    background:var(--navy);
+    color:#fff;
+    border-radius:22px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+}
+
+.info-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:rgba(201,139,112,.14);
+    right:-80px;
+    top:-80px;
+}
+
+.info-card h2{
+    font-size:24px;
+    position:relative;
+    z-index:2;
+}
+
+.info-card > p{
+    color:rgba(255,255,255,.68);
+    font-size:11px;
+    line-height:1.8;
+    margin-top:8px;
+    position:relative;
+    z-index:2;
+}
+
+.info-list{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.info-item{
+    display:flex;
+    gap:13px;
+    align-items:flex-start;
+}
+
+.info-icon{
+    width:40px;
+    height:40px;
+    border-radius:11px;
+    background:rgba(255,255,255,.1);
+    display:grid;
+    place-items:center;
+    flex:none;
+    font-size:17px;
+}
+
+.info-item h4{
+    font-size:11px;
+    margin-bottom:3px;
+}
+
+.info-item p,
+.info-item a{
+    color:rgba(255,255,255,.68);
+    font-size:9px;
+    text-decoration:none;
+    line-height:1.6;
+}
+
+.info-item a:hover{
+    color:#fff;
+}
+
+/* ================= SOCIAL ================= */
+
+.socials{
+    margin-top:30px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.12);
+    display:flex;
+    gap:9px;
+}
+
+.socials a{
+    width:36px;
+    height:36px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.socials a:hover{
+    background:var(--peach);
+    transform:translateY(-2px);
+}
+
+/* ================= FORM ================= */
+
+.form-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:32px;
+    box-shadow:0 12px 35px rgba(30,42,90,.05);
+}
+
+.form-header{
+    margin-bottom:23px;
+}
+
+.form-header small{
+    color:var(--peach);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+.form-header h2{
+    color:var(--navy);
+    font-size:25px;
+    margin-top:5px;
+}
+
+.form-header p{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:5px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.field{
+    margin-bottom:15px;
+}
+
+.field label{
+    display:block;
+    color:var(--navy);
+    font-size:10px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px 13px;
+    font-family:inherit;
+    font-size:11px;
+    color:var(--text);
+    background:#fff;
+    outline:none;
+    transition:.2s;
+}
+
+.field input::placeholder,
+.field textarea::placeholder{
+    color:#aaa;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:var(--peach);
+    box-shadow:0 0 0 3px rgba(201,139,112,.1);
+}
+
+.field textarea{
+    min-height:135px;
+    resize:vertical;
+}
+
+.send-btn{
+    width:100%;
+    border:0;
+    border-radius:10px;
+    padding:13px 18px;
+    background:var(--navy);
+    color:#fff;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.send-btn:hover{
+    background:var(--navy-dark);
+    transform:translateY(-1px);
+}
+
+.send-btn:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.status{
+    display:none;
+    margin-top:13px;
+    padding:11px 13px;
+    border-radius:9px;
+    font-size:9px;
+    line-height:1.5;
+}
+
+.status.success{
+    display:block;
+    background:#edf7f1;
+    color:var(--green);
+    border:1px solid #cde9d8;
+}
+
+.status.error{
+    display:block;
+    background:#fff0f0;
+    color:var(--danger);
+    border:1px solid #f0cccc;
+}
+
+/* ================= PRIVACY ================= */
+
+.form-note{
+    margin-top:12px;
+    text-align:center;
+    color:#999;
+    font-size:8px;
+}
+
+/* ================= FAQ ================= */
+
+.faq-section{
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:65px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-heading small{
+    color:var(--peach);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    color:var(--navy);
+    font-size:30px;
+    margin-top:5px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+.faq-grid{
+    max-width:850px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.faq{
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fff;
+    overflow:hidden;
+}
+
+.faq-question{
+    padding:16px 18px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--navy);
+    font-size:11px;
+    font-weight:700;
+}
+
+.faq-question span{
+    color:var(--peach);
+    font-size:15px;
+}
+
+.faq-answer{
+    display:none;
+    padding:0 18px 17px;
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.8;
+}
+
+.faq.open .faq-answer{
+    display:block;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:var(--navy-dark);
+    color:#fff;
+    padding:30px 7%;
+    text-align:center;
+}
+
+footer strong{
+    font-size:13px;
+}
+
+footer p{
+    font-size:9px;
+    color:#aab0c4;
+    margin-top:5px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        height:64px;
+        padding:0 14px;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:64px;
+        left:0;
+        width:100%;
+        background:#fff;
+        padding:18px;
+        border-bottom:1px solid var(--border);
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .mobile-menu{
+        display:block;
+        margin-left:auto;
+    }
+
+    .hero{
+        padding:48px 20px;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:11px;
+    }
+
+    .contact-section{
+        padding:40px 0 55px;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-card,
+    .form-card{
+        padding:24px;
+        border-radius:18px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .section-heading h2{
+        font-size:25px;
+    }
+
+    .section-heading p{
+        font-size:10px;
+    }
+}
+
+@media(max-width:450px){
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .info-card h2{
+        font-size:21px;
+    }
+
+    .form-header h2{
+        font-size:22px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea{
+        font-size:10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">M</a>
+
+    <div class="brand">
+        MamRaj Nexus
+        <small>ACADEMY</small>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">Home</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="learning-path.html">Learning Path</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html" class="active">Contact</a>
+
+    </nav>
+
+    <button
+        class="mobile-menu"
+        onclick="toggleMenu()"
+        aria-label="Open Menu">
+        ☰
+    </button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <span class="badge">
+            💬 WE'D LOVE TO HEAR FROM YOU
+        </span>
+
+        <h1>
+            Let's Start a
+            <span>Conversation.</span>
+        </h1>
+
+        <p>
+            Have a question about our courses, learning paths,
+            internships or academy programs? Send us a message
+            and our team will get back to you.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section">
+
+<div class="container">
+
+<div class="contact-grid">
+
+
+<!-- INFORMATION -->
+
+<div class="info-card">
+
+    <h2>Get in Touch</h2>
+
+    <p>
+        Connect with MamRaj Nexus Academy for course
+        information, enrollment assistance and general queries.
+    </p>
+
+
+    <div class="info-list">
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                ✉
+            </div>
+
+            <div>
+
+                <h4>Email</h4>
+
+                <a href="mailto:adityaasingh5040@gmail.com">
+                    adityaasingh5040@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <h4>Academy</h4>
+
+                <p>
+                    MamRaj Nexus Academy
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                📚
+            </div>
+
+            <div>
+
+                <h4>Courses</h4>
+
+                <p>
+                    Technology, Design, Analytics,
+                    Management & Business
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="info-icon">
+                ⏱
+            </div>
+
+            <div>
+
+                <h4>Response Time</h4>
+
+                <p>
+                    Usually within 24–48 hours
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="socials">
+
+        <a href="#" aria-label="Instagram">
+            IG
+        </a>
+
+        <a href="#" aria-label="LinkedIn">
+            IN
+        </a>
+
+        <a href="#" aria-label="YouTube">
+            YT
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="form-card">
+
+    <div class="form-header">
+
+        <small>SEND A MESSAGE</small>
+
+        <h2>Contact Our Team</h2>
+
+        <p>
+            Fill in the form below and we'll get back to you.
+        </p>
+
+    </div>
+
+
+    <form id="contactForm">
+
+
+        <div class="form-row">
+
+            <div class="field">
+
+                <label for="name">
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="from_name"
+                    placeholder="Enter your name"
+                    required>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="email">
+                    Email Address *
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="from_email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="field">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number">
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="course">
+                    Interested Course
+                </label>
+
+                <select
+                    id="course"
+                    name="course">
+
+                    <option value="">
+                        Select a course
+                    </option>
+
+                    <option>
+                        UI/UX & Product Design
+                    </option>
+
+                    <option>
+                        Data Analytics
+                    </option>
+
+                    <option>
+                        Human Resource Management using AI
+                    </option>
+
+                    <option>
+                        Full Stack Web Development
+                    </option>
+
+                    <option>
+                        Digital Marketing
+                    </option>
+
+                    <option>
+                        Business & Entrepreneurship
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="subject">
+                Subject *
+            </label>
+
+            <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="What would you like to ask?"
+                required>
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="message">
+                Message *
+            </label>
+
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Write your message here..."
+                required></textarea>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="send-btn"
+            id="sendButton">
+
+            Send Message →
+
+        </button>
+
+
+        <div
+            id="statusMessage"
+            class="status">
+        </div>
+
+
+        <div class="form-note">
+            Your information will only be used to respond to your enquiry.
+        </div>
+
+
+    </form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section">
+
+<div class="container">
+
+<div class="section-heading">
+
+    <small>QUICK ANSWERS</small>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <p>
+        Find answers to common questions.
+    </p>
+
+</div>
+
+
+<div class="faq-grid">
+
+
+<div class="faq">
+
+    <div
+        class="faq-question"
+        onclick="toggleFaq(this)">
+
+        How can I enroll in a course?
+
+        <span>+</span>
+
+    </div>
+
+    <div class="faq-answer">
+
+        Visit our Courses page, select your preferred
+        course and use the Start Learning or enrollment
+        option available on the course page.
+
+    </div>
+
+</div>
+
+
+<div class="faq">
+
+    <div
+        class="faq-question"
+        onclick="toggleFaq(this)">
+
+        Can beginners join the courses?
+
+        <span>+</span>
+
+    </div>
+
+    <div class="faq-answer">
+
+        Yes. Our learning paths are structured to take
+        learners from fundamentals toward practical,
+        career-focused skills.
+
+    </div>
+
+</div>
+
+
+<div class="faq">
+
+    <div
+        class="faq-question"
+        onclick="toggleFaq(this)">
+
+        Can I ask about internships?
+
+        <span>+</span>
+
+    </div>
+
+    <div class="faq-answer">
+
+        Yes. Use the contact form and select the relevant
+        enquiry in your message. Our team can guide you
+        regarding available opportunities.
+
+    </div>
+
+</div>
+
+
+<div class="faq">
+
+    <div
+        class="faq-question"
+        onclick="toggleFaq(this)">
+
+        How quickly will I receive a response?
+
+        <span>+</span>
+
+    </div>
+
+    <div class="faq-answer">
+
+        We generally aim to respond within 24–48 hours.
+
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <strong>
+        MamRaj Nexus Academy
+    </strong>
+
+    <p>
+        Learn. Build. Grow. | Practical career-focused education.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   EMAILJS CONFIGURATION
+   ========================================= */
+
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
+
+/* Initialize EmailJS */
+
+emailjs.init({
+    publicKey: EMAILJS_PUBLIC_KEY
+});
+
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+
+function toggleMenu(){
+
+    const nav =
+        document.getElementById("navLinks");
+
+    nav.classList.toggle("show");
+
+}
+
+
+/* =========================================
+   CONTACT FORM
+   ========================================= */
+
+const contactForm =
+    document.getElementById("contactForm");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+const statusMessage =
+    document.getElementById("statusMessage");
+
+
+contactForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        sendButton.disabled = true;
+
+        sendButton.textContent =
+            "Sending...";
+
+        statusMessage.className =
+            "status";
+
+        statusMessage.textContent = "";
+
+
+        try{
+
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                contactForm
+            );
+
+
+            statusMessage.className =
+                "status success";
+
+            statusMessage.textContent =
+                "✓ Your message has been sent successfully. We'll get back to you soon.";
+
+            contactForm.reset();
+
+
+        }catch(error){
+
+            console.error(
+                "EmailJS Error:",
+                error
+            );
+
+            statusMessage.className =
+                "status error";
+
+            statusMessage.textContent =
+                "✕ Something went wrong. Please try again or email us directly at adityaasingh5040@gmail.com.";
+
+        }
+
+
+        sendButton.disabled = false;
+
+        sendButton.textContent =
+            "Send Message →";
+
+    }
+);
+
+
+/* =========================================
+   FAQ
+   ========================================= */
+
+function toggleFaq(question){
+
+    const faq =
+        question.parentElement;
+
+    const wasOpen =
+        faq.classList.contains("open");
+
+
+    document
+        .querySelectorAll(".faq")
+        .forEach(item => {
+
+            item.classList.remove("open");
+
+            const icon =
+                item.querySelector(
+                    ".faq-question span"
+                );
+
+            if(icon){
+                icon.textContent = "+";
+            }
+
+        });
+
+
+    if(!wasOpen){
+
+        faq.classList.add("open");
+
+        const icon =
+            question.querySelector("span");
+
+        if(icon){
+            icon.textContent = "−";
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   CLOSE MOBILE MENU ON OUTSIDE CLICK
+   ========================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const nav =
+            document.getElementById("navLinks");
+
+        const menu =
+            document.querySelector(".mobile-menu");
+
+
+        if(
+            window.innerWidth <= 800 &&
+            nav.classList.contains("show") &&
+            !nav.contains(event.target) &&
+            !menu.contains(event.target)
+        ){
+
+            nav.classList.remove("show");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+
