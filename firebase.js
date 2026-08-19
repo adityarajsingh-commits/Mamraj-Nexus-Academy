@@ -23,7 +23,7 @@ const firebaseConfig = {
 
     authDomain: "mamraj-web-studio-1d78b.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId: "mamraj-web-studio-1d78b",
 
     storageBucket: "mamraj-web-studio-1d78b",
 
