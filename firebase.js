@@ -19,17 +19,17 @@ from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyA44Ou2bM7l7m-oay-pwv-4tdmn_S0f0BM",
 
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    authDomain: "mamraj-web-studio-1d78b.firebaseapp.com",
 
     projectId: "YOUR_PROJECT_ID",
 
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+    storageBucket: "mamraj-web-studio-1d78b",
 
-    messagingSenderId: "YOUR_SENDER_ID",
+    messagingSenderId: "229677264871",
 
-    appId: "YOUR_APP_ID"
+    appId: "1:229677264871:web:cc3937a5733868e31c5742"
 
 };
 
