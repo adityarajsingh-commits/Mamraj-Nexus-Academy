@@ -1,13 +1,32 @@
 await setDoc(
     doc(db, "users", user.uid),
     {
+
         uid: user.uid,
-        name: user.displayName || "Student",
-        email: user.email || "",
-        photoURL: user.photoURL || "",
+
+        name:
+            user.displayName ||
+            "Student",
+
+        email:
+            user.email ||
+            "",
+
+        photoURL:
+            user.photoURL ||
+            "",
+
+        phone:
+            user.phoneNumber ||
+            "",
+
         role: "student",
+
         provider: "google",
-        lastLoginAt: serverTimestamp()
+
+        lastLoginAt:
+            serverTimestamp()
+
     },
     {
         merge: true
