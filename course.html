@@ -1,2583 +1,2606 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MamRaj Nexus Academy | 6 Month Web Development</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <meta charset="UTF-8">
 
-:root{
-    --navy:#263873;
-    --navy-dark:#1b2a61;
-    --purple:#51459b;
-    --peach:#ca8f73;
-    --green:#58a276;
-    --cream:#f7f1ec;
-    --white:#ffffff;
-    --text:#28304a;
-    --muted:#837b77;
-    --border:#e7ddd7;
-    --light:#faf7f5;
-    --locked:#aaa39f;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-html{
-    scroll-behavior:smooth;
-}
+    <title>Course Learning | MamRaj Nexus Academy</title>
 
-body{
-    font-family:Inter,Segoe UI,Arial,sans-serif;
-    background:var(--cream);
-    color:var(--text);
-    overflow-x:hidden;
-}
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-/* ================= HEADER ================= */
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-.topbar{
-    height:70px;
-    background:#fff;
-    border-bottom:1px solid var(--border);
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-    display:flex;
-    align-items:center;
-    gap:14px;
 
-    padding:0 24px;
+    <style>
 
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
+        /* =====================================================
+           RESET
+        ===================================================== */
 
-.menu-btn{
-    display:none;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-    width:38px;
-    height:38px;
 
-    border:0;
-    border-radius:9px;
+        :root{
 
-    background:#f1ebe7;
+            --navy:#1e2a5a;
 
-    color:var(--navy);
+            --navy-dark:#151f49;
 
-    font-size:18px;
+            --rose:#c58b73;
 
-    cursor:pointer;
-}
+            --rose-light:#f5e8e1;
 
-.logo{
-    width:40px;
-    height:40px;
+            --cream:#f8f3ee;
 
-    display:grid;
-    place-items:center;
+            --white:#ffffff;
 
-    border-radius:11px;
+            --text:#26304f;
 
-    background:#5c46d7;
+            --muted:#747b91;
 
-    color:white;
+            --border:#e8e5e1;
 
-    font-size:18px;
-    font-weight:900;
-}
+            --success:#23845b;
 
-.brand{
-    font-size:16px;
-    font-weight:900;
-    color:var(--navy);
-}
+            --shadow:
+                0 15px 50px rgba(30,42,90,.08);
 
-.brand small{
-    display:block;
-    font-size:6px;
-    letter-spacing:2px;
-    color:#9a8e88;
-}
+        }
 
-.back-btn{
-    text-decoration:none;
 
-    border:1px solid var(--border);
+        body{
 
-    color:var(--navy);
+            font-family:
+                "Poppins",
+                sans-serif;
 
-    padding:8px 12px;
+            background:
+                var(--cream);
 
-    border-radius:9px;
+            color:
+                var(--text);
 
-    font-size:13px;
-    font-weight:800;
-}
+            min-height:
+                100vh;
 
-.course-name{
-    font-size:15px;
-    font-weight:900;
-    color:var(--navy);
-}
+        }
 
-.header-progress{
-    margin-left:auto;
 
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
+        button,
+        input{
 
-.progress-line{
-    width:150px;
-    height:5px;
+            font-family:
+                inherit;
 
-    background:#eee8e4;
+        }
 
-    border-radius:20px;
 
-    overflow:hidden;
-}
+        button{
 
-.progress-line span{
-    display:block;
+            cursor:pointer;
 
-    width:0%;
+        }
 
-    height:100%;
 
-    background:var(--green);
+        /* =====================================================
+           TOP BAR
+        ===================================================== */
 
-    transition:.4s;
-}
+        .topbar{
 
-.header-percent{
-    font-size:13px;
-    color:#777;
-}
+            height:72px;
 
-/* ================= MAIN LAYOUT ================= */
+            background:
+                var(--white);
 
-.layout{
-    display:grid;
+            border-bottom:
+                1px solid var(--border);
 
-    grid-template-columns:
-        280px
-        minmax(0,1fr)
-        245px;
+            display:flex;
 
-    min-height:
-        calc(100vh - 70px);
-}
+            align-items:center;
 
-/* ================= COURSE SIDEBAR ================= */
+            justify-content:space-between;
 
-.sidebar{
-    background:#fff;
+            padding:
+                0 30px;
 
-    border-right:1px solid var(--border);
+            position:
+                sticky;
 
-    height:
-        calc(100vh - 70px);
+            top:0;
 
-    position:sticky;
-    top:70px;
+            z-index:100;
 
-    overflow-y:auto;
+        }
 
-    padding:18px 12px;
-}
 
-.sidebar-title{
-    color:#a47761;
+        .brand{
 
-    font-size:15px;
+            display:flex;
 
-    letter-spacing:1.6px;
+            align-items:center;
 
-    font-weight:900;
+            gap:12px;
 
-    margin:
-        4px 10px 15px;
-}
+            text-decoration:none;
 
-.month{
-    margin-bottom:5px;
-}
+            color:
+                var(--navy);
 
-.month-header{
-    width:100%;
+            font-weight:800;
 
-    display:flex;
-    align-items:center;
+            font-size:18px;
 
-    gap:8px;
+        }
 
-    padding:10px;
 
-    background:#fff;
+        .brand-mark{
 
-    border:0;
+            width:40px;
 
-    border-radius:10px;
+            height:40px;
 
-    cursor:pointer;
+            border-radius:12px;
 
-    text-align:left;
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--navy),
+                    var(--rose)
+                );
 
-.month-header:hover{
-    background:#faf5f1;
-}
+            color:white;
 
-.month-number{
-    width:28px;
-    height:28px;
+            display:flex;
 
-    display:grid;
-    place-items:center;
+            align-items:center;
 
-    background:#eee9e5;
+            justify-content:center;
 
-    border-radius:8px;
+            font-weight:800;
 
-    font-size:15px;
-    font-weight:900;
+        }
 
-    color:var(--navy);
-}
 
-.month-name{
-    flex:1;
+        .top-actions{
 
-    font-size:14px;
+            display:flex;
 
-    font-weight:900;
+            align-items:center;
 
-    color:var(--text);
-}
+            gap:10px;
 
-.month-lock{
-    font-size:14px;
-}
+        }
 
-.month.open .topics{
-    display:block;
-}
 
-.topics{
-    display:none;
+        .back-btn{
 
-    padding-left:40px;
-}
+            border:1px solid var(--border);
 
-.topic{
-    width:100%;
+            background:white;
 
-    display:flex;
-    align-items:center;
+            color:var(--navy);
 
-    gap:7px;
+            padding:
+                9px 15px;
 
-    padding:9px 7px;
+            border-radius:10px;
 
-    border:0;
+            font-weight:600;
 
-    border-left:2px solid transparent;
+        }
 
-    background:transparent;
 
-    text-align:left;
+        .back-btn:hover{
 
-    color:#817a76;
+            background:
+                var(--rose-light);
 
-    font-size:13px;
+        }
 
-    cursor:pointer;
-}
 
-.topic:hover{
-    background:#faf6f3;
-}
+        /* =====================================================
+           PAGE
+        ===================================================== */
 
-.topic.active{
-    background:#fbf1ec;
+        .page{
 
-    border-left-color:
-        var(--peach);
+            display:grid;
 
-    color:var(--navy);
+            grid-template-columns:
+                310px minmax(0,1fr);
 
-    font-weight:900;
-}
+            min-height:
+                calc(100vh - 72px);
 
-.topic.completed{
-    color:var(--green);
-}
+        }
 
-.topic.locked{
-    color:var(--locked);
 
-    cursor:not-allowed;
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
 
-    opacity:.55;
-}
+        .sidebar{
 
-/* ================= MAIN ================= */
+            background:
+                var(--white);
 
-.main{
-    min-width:0;
+            border-right:
+                1px solid var(--border);
 
-    padding:
-        24px 35px 70px;
-}
+            padding:25px 18px;
 
-/* ================= HERO ================= */
+            position:
+                sticky;
 
-.hero{
-    background:
-        linear-gradient(
-            135deg,
-            #273873,
-            #584a96
-        );
+            top:72px;
 
-    color:#fff;
+            height:
+                calc(100vh - 72px);
 
-    border-radius:20px;
+            overflow-y:auto;
 
-    padding:30px;
+        }
 
-    margin-bottom:15px;
 
-    position:relative;
+        .course-mini{
 
-    overflow:hidden;
-}
+            padding:
+                10px 12px 20px;
 
-.hero::after{
-    content:"";
+            border-bottom:
+                1px solid var(--border);
 
-    position:absolute;
+            margin-bottom:15px;
 
-    width:300px;
-    height:300px;
+        }
 
-    right:-100px;
-    top:-130px;
 
-    border-radius:50%;
+        .course-mini small{
 
-    background:
-        rgba(255,255,255,.05);
-}
+            color:
+                var(--rose);
 
-.hero-label{
-    font-size:15px;
+            font-size:9px;
 
-    letter-spacing:1.6px;
+            font-weight:800;
 
-    font-weight:900;
+            letter-spacing:1.5px;
 
-    color:#dcd7ff;
-}
+        }
 
-.hero h1{
-    font-size:30px;
 
-    margin:8px 0;
-}
+        .course-mini h2{
 
-.hero p{
-    max-width:720px;
+            color:
+                var(--navy);
 
-    color:
-        rgba(255,255,255,.78);
+            font-size:18px;
 
-    font-size:15px;
+            line-height:1.35;
 
-    line-height:1.7;
-}
+            margin-top:5px;
 
-.tags{
-    display:flex;
+        }
 
-    gap:6px;
 
-    flex-wrap:wrap;
+        .progress-wrap{
 
-    margin-top:15px;
-}
+            margin-top:15px;
 
-.tag{
-    background:
-        rgba(255,255,255,.13);
+        }
 
-    padding:6px 9px;
 
-    border-radius:20px;
+        .progress-info{
 
-    font-size:15px;
-}
+            display:flex;
 
-/* ================= STATS ================= */
+            justify-content:space-between;
 
-.stats{
-    display:grid;
+            font-size:10px;
 
-    grid-template-columns:
-        repeat(4,1fr);
+            color:var(--muted);
 
-    gap:10px;
+            margin-bottom:7px;
 
-    margin-bottom:15px;
-}
+        }
 
-.stat{
-    background:#fff;
 
-    border:1px solid var(--border);
+        .progress-bar{
 
-    border-radius:13px;
+            width:100%;
 
-    padding:15px;
-}
+            height:7px;
 
-.stat small{
-    display:block;
+            background:#eeeae6;
 
-    color:#928984;
+            border-radius:20px;
 
-    font-size:15px;
-}
+            overflow:hidden;
 
-.stat strong{
-    display:block;
+        }
 
-    margin-top:4px;
 
-    color:var(--navy);
+        .progress-fill{
 
-    font-size:14px;
-}
+            height:100%;
 
-/* ================= LESSON CARD ================= */
+            width:0%;
 
-.lesson-card{
-    background:#fff;
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--navy),
+                    var(--rose)
+                );
 
-    border:1px solid var(--border);
+            border-radius:20px;
 
-    border-radius:18px;
+            transition:
+                width .3s ease;
 
-    padding:28px;
+        }
 
-    min-height:500px;
-}
 
-.lesson-meta{
-    display:flex;
+        .lesson-list{
 
-    align-items:center;
+            display:flex;
 
-    gap:8px;
+            flex-direction:column;
 
-    margin-bottom:10px;
-}
+            gap:6px;
 
-.lesson-badge{
-    background:var(--peach);
+        }
 
-    color:#fff;
 
-    padding:5px 10px;
+        .lesson{
 
-    border-radius:20px;
+            width:100%;
 
-    font-size:15px;
+            border:0;
 
-    font-weight:900;
-}
+            background:transparent;
 
-.lesson-time{
-    color:#928984;
+            text-align:left;
 
-    font-size:13px;
-}
+            padding:
+                12px;
 
-.lesson-card h2{
-    color:var(--navy);
+            border-radius:11px;
 
-    font-size:26px;
+            display:flex;
 
-    margin-bottom:10px;
-}
+            align-items:center;
 
-.lesson-intro{
-    color:#706966;
+            gap:11px;
 
-    font-size:15px;
+            color:
+                var(--text);
 
-    line-height:1.75;
-}
+            transition:.2s;
 
-.lesson-content{
-    margin-top:25px;
-}
+        }
 
-.lesson-content h3{
-    color:var(--navy);
 
-    font-size:15px;
+        .lesson:hover{
 
-    margin:
-        22px 0 8px;
-}
+            background:
+                var(--cream);
 
-.lesson-content p{
-    color:#716a66;
+        }
 
-    font-size:15px;
 
-    line-height:1.75;
+        .lesson.active{
 
-    margin-bottom:10px;
-}
+            background:
+                var(--rose-light);
 
-.lesson-content ul{
-    padding-left:20px;
-}
+            color:
+                var(--navy);
 
-.lesson-content li{
-    color:#716a66;
+        }
 
-    font-size:14px;
 
-    margin-bottom:7px;
-}
+        .lesson.completed{
 
-.code-label{
-    color:var(--navy);
+            color:
+                var(--success);
 
-    font-size:14px;
+        }
 
-    font-weight:900;
 
-    margin:
-        24px 0 7px;
-}
+        .lesson-number{
 
-.code{
-    background:#1d2644;
+            min-width:28px;
 
-    color:#e9edff;
+            height:28px;
 
-    border-radius:12px;
+            border-radius:8px;
 
-    padding:18px;
+            background:
+                #f0eeeb;
 
-    overflow-x:auto;
+            display:flex;
 
-    font-family:
-        Consolas,
-        Monaco,
-        monospace;
+            align-items:center;
 
-    font-size:14px;
+            justify-content:center;
 
-    line-height:1.7;
+            font-size:10px;
 
-    white-space:pre;
-}
+            font-weight:800;
 
-.practice{
-    background:#fbf3ed;
+        }
 
-    border:1px solid #ead8cd;
 
-    border-radius:13px;
+        .lesson.active
+        .lesson-number{
 
-    padding:16px;
+            background:
+                var(--navy);
 
-    margin-top:20px;
-}
+            color:white;
 
-.practice strong{
-    display:block;
+        }
 
-    color:#956650;
 
-    font-size:14px;
+        .lesson.completed
+        .lesson-number{
 
-    margin-bottom:6px;
-}
+            background:
+                #e3f3eb;
 
-.practice p{
-    color:#756d69;
+            color:
+                var(--success);
 
-    font-size:14px;
-}
+        }
 
-.actions{
-    display:flex;
 
-    gap:8px;
+        .lesson-title{
 
-    margin-top:22px;
-}
+            font-size:11px;
 
-.btn{
-    border:0;
+            font-weight:600;
 
-    border-radius:9px;
+            line-height:1.35;
 
-    padding:
-        11px 16px;
+        }
 
-    font-size:13px;
 
-    font-weight:900;
+        /* =====================================================
+           MAIN
+        ===================================================== */
 
-    cursor:pointer;
+        .main{
 
-    background:var(--navy);
+            padding:
+                35px;
 
-    color:#fff;
-}
+            max-width:
+                1100px;
 
-.btn:hover{
-    transform:translateY(-1px);
-}
+            width:100%;
 
-.btn.complete{
-    background:var(--green);
-}
+            margin:auto;
 
-.btn.secondary{
-    background:#fff;
+        }
 
-    border:1px solid var(--border);
 
-    color:var(--navy);
-}
+        .course-header{
 
-.btn:disabled{
-    cursor:not-allowed;
+            background:
+                var(--white);
 
-    opacity:.65;
+            border:
+                1px solid var(--border);
 
-    transform:none;
-}
+            border-radius:20px;
 
-/* ================= RIGHT PANEL ================= */
+            padding:
+                28px;
 
-.right-panel{
-    background:#fff;
+            box-shadow:
+                var(--shadow);
 
-    border-left:1px solid var(--border);
+            margin-bottom:22px;
 
-    padding:20px 15px;
+        }
 
-    position:sticky;
 
-    top:70px;
+        .eyebrow{
 
-    height:
-        calc(100vh - 70px);
+            color:
+                var(--rose);
 
-    overflow-y:auto;
-}
+            font-size:10px;
 
-.panel-title{
-    color:var(--navy);
+            letter-spacing:2px;
 
-    font-size:14px;
+            font-weight:800;
 
-    font-weight:900;
+        }
 
-    margin-bottom:12px;
-}
 
-.progress-card{
-    background:#f8f1f5;
+        .course-header h1{
 
-    border-radius:14px;
+            color:
+                var(--navy);
 
-    padding:18px;
+            font-size:
+                clamp(25px,4vw,38px);
 
-    text-align:center;
-}
+            line-height:1.2;
 
-.progress-circle{
-    width:100px;
-    height:100px;
+            margin:
+                7px 0 10px;
 
-    margin:auto;
+        }
 
-    border-radius:50%;
 
-    display:grid;
+        .course-description{
 
-    place-items:center;
+            color:
+                var(--muted);
 
-    background:
-        conic-gradient(
-            var(--green) 0deg,
-            #e7dfdb 0deg
-        );
+            font-size:13px;
 
-    position:relative;
-}
+            line-height:1.8;
 
-.progress-circle::after{
-    content:"";
+            max-width:800px;
 
-    position:absolute;
+        }
 
-    width:74px;
-    height:74px;
 
-    background:#fff;
+        .meta{
 
-    border-radius:50%;
-}
+            display:flex;
 
-.progress-circle span{
-    position:relative;
+            flex-wrap:wrap;
 
-    z-index:2;
+            gap:10px;
 
-    color:var(--navy);
+            margin-top:18px;
 
-    font-size:16px;
+        }
 
-    font-weight:900;
-}
 
-.progress-card p{
-    color:#8c827d;
+        .meta span{
 
-    font-size:15px;
+            padding:
+                7px 11px;
 
-    line-height:1.6;
+            background:
+                var(--cream);
 
-    margin-top:12px;
-}
+            border-radius:8px;
 
-.month-progress{
-    margin-top:22px;
-}
+            color:
+                var(--navy);
 
-.month-progress-item{
-    padding:10px 0;
+            font-size:10px;
 
-    border-bottom:1px solid #eee6e1;
-}
+            font-weight:600;
 
-.month-progress-item strong{
-    display:block;
+        }
 
-    color:var(--navy);
 
-    font-size:13px;
-}
+        /* =====================================================
+           LESSON AREA
+        ===================================================== */
 
-.month-progress-item span{
-    color:#928a85;
+        .lesson-card{
 
-    font-size:15px;
-}
+            background:
+                var(--white);
 
-/* ================= OVERLAY ================= */
+            border:
+                1px solid var(--border);
 
-.overlay{
-    display:none;
-}
+            border-radius:20px;
 
-/* ================= TABLET ================= */
+            box-shadow:
+                var(--shadow);
 
-@media(max-width:1150px){
+            overflow:hidden;
 
-    .layout{
-        grid-template-columns:
-            245px
-            minmax(0,1fr);
-    }
+        }
 
-    .right-panel{
-        display:none;
-    }
 
-    .main{
-        padding:22px;
-    }
+        .lesson-top{
 
-    .stats{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-}
+            padding:
+                25px 28px;
 
-/* ================= MOBILE ================= */
+            border-bottom:
+                1px solid var(--border);
 
-@media(max-width:800px){
+        }
 
-    .topbar{
-        height:62px;
 
-        padding:
-            0 12px;
-    }
+        .lesson-top small{
 
-    .menu-btn{
-        display:block;
-    }
+            color:
+                var(--rose);
 
-    .course-name,
-    .back-btn{
-        display:none;
-    }
+            font-size:9px;
 
-    .layout{
-        display:block;
-    }
+            font-weight:800;
 
-    .sidebar{
-        position:fixed;
+            letter-spacing:1.5px;
 
-        left:-290px;
+        }
 
-        top:62px;
 
-        width:280px;
+        .lesson-top h2{
 
-        height:
-            calc(100vh - 62px);
+            color:
+                var(--navy);
 
-        z-index:2000;
+            font-size:
+                clamp(20px,3vw,28px);
 
-        transition:
-            left .3s ease;
+            margin-top:5px;
 
-        box-shadow:
-            10px 0 35px
-            rgba(0,0,0,.18);
-    }
+        }
 
-    .sidebar.show{
-        left:0;
-    }
 
-    .overlay{
-        position:fixed;
+        .lesson-content{
 
-        inset:62px 0 0 0;
+            padding:
+                28px;
 
-        background:
-            rgba(20,25,50,.35);
+            min-height:400px;
 
-        z-index:1500;
+        }
 
-        display:none;
-    }
 
-    .overlay.show{
-        display:block;
-    }
+        .lesson-content h3{
 
-    .main{
-        padding:
-            14px 12px 40px;
-    }
+            color:
+                var(--navy);
 
-    .hero{
-        padding:22px;
+            margin:
+                22px 0 10px;
 
-        border-radius:16px;
-    }
+            font-size:19px;
 
-    .hero h1{
-        font-size:23px;
-    }
+        }
 
-    .lesson-card{
-        padding:20px;
-    }
 
-    .lesson-card h2{
-        font-size:22px;
-    }
-}
+        .lesson-content h3:first-child{
 
-/* ================= SMALL MOBILE ================= */
+            margin-top:0;
 
-@media(max-width:500px){
+        }
 
-    .logo{
-        width:35px;
-        height:35px;
 
-        font-size:16px;
-    }
+        .lesson-content p{
 
-    .brand{
-        font-size:14px;
-    }
+            color:
+                #596078;
 
-    .progress-line{
-        width:65px;
-    }
+            font-size:13px;
 
-    .stats{
-        grid-template-columns:
-            1fr 1fr;
+            line-height:1.9;
 
-        gap:7px;
-    }
+            margin-bottom:13px;
 
-    .stat{
-        padding:12px;
-    }
+        }
 
-    .stat strong{
-        font-size:15px;
-    }
 
-    .hero{
-        padding:18px;
-    }
+        .lesson-content ul{
 
-    .hero h1{
-        font-size:20px;
-    }
+            padding-left:20px;
 
-    .lesson-card{
-        padding:16px;
-    }
+            color:#596078;
 
-    .lesson-card h2{
-        font-size:19px;
-    }
+            font-size:13px;
 
-    .actions{
-        display:grid;
+            line-height:2;
 
-        grid-template-columns:
-            1fr 1fr;
-    }
+        }
 
-    .btn.complete{
-        grid-column:
-            1 / -1;
-    }
 
-    .code{
-        font-size:13px;
-    }
-}
+        .code-box{
 
-/* ================= CERTIFICATE ================= */
+            background:
+                #151b32;
 
-.certificate-box{
-    margin-top:22px;
-    padding:16px;
-    border-radius:14px;
-    background:#f8f3ef;
-    border:1px solid var(--border);
-    text-align:center;
-}
+            color:#f4f6ff;
 
-.certificate-icon{
-    width:48px;
-    height:48px;
-    margin:0 auto 10px;
-    display:grid;
-    place-items:center;
-    border-radius:12px;
-    background:#ebe5e1;
-    font-size:22px;
-}
+            padding:20px;
 
-.certificate-box strong{
-    display:block;
-    color:var(--navy);
-    font-size:14px;
-    margin-bottom:5px;
-}
+            border-radius:12px;
 
-.certificate-box p{
-    color:#918781;
-    font-size:15px;
-    line-height:1.6;
-    margin-bottom:12px;
-}
+            margin:20px 0;
 
-.certificate-btn{
-    width:100%;
-    border:0;
-    border-radius:8px;
-    padding:10px;
-    background:#ddd7d3;
-    color:#938b86;
-    font-size:13px;
-    font-weight:900;
-    cursor:not-allowed;
-}
+            overflow-x:auto;
 
-.certificate-box.unlocked{
-    background:#f0f8f3;
-    border-color:#b9dbc7;
-}
+            font-family:
+                Consolas,
+                monospace;
 
-.certificate-box.unlocked .certificate-icon{
-    background:#dcefe4;
-}
+            font-size:12px;
 
-.certificate-box.unlocked .certificate-btn{
-    background:var(--green);
-    color:#fff;
-    cursor:pointer;
-}
+            line-height:1.7;
 
-.certificate-box.unlocked strong{
-    color:#3d8059;
-}
+        }
 
 
-.certificate-price{
-    margin:10px 0 12px;
-    padding:9px;
-    border-radius:9px;
-    background:#fff;
-    color:#827a75;
-    font-size:12px;
-}
+        .tip{
 
-.certificate-price strong{
-    display:inline;
-    color:var(--peach);
-    font-size:14px;
-}
+            padding:16px;
 
-/* ================= CERTIFICATE MODAL ================= */
+            border-left:
+                4px solid var(--rose);
 
-.certificate-modal{
-    position:fixed;
-    inset:0;
-    background:rgba(18,25,55,.72);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:5000;
-    overflow:auto;
-}
+            background:
+                var(--rose-light);
 
-.certificate-modal.show{
-    display:flex;
-}
+            border-radius:8px;
 
-.certificate{
-    width:min(850px,100%);
-    background:#fff;
-    border:10px solid #eee6df;
-    outline:2px solid var(--peach);
-    padding:55px;
-    text-align:center;
-    position:relative;
-    box-shadow:0 30px 80px rgba(0,0,0,.3);
-}
+            margin-top:20px;
 
-.certificate-close{
-    position:absolute;
-    top:12px;
-    right:12px;
-    width:32px;
-    height:32px;
-    border:0;
-    border-radius:50%;
-    background:#f2ece8;
-    color:var(--navy);
-    font-size:20px;
-    cursor:pointer;
-}
+            color:
+                var(--navy);
 
-.certificate-top{
-    color:var(--navy);
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:3px;
-}
+            font-size:12px;
 
+            line-height:1.7;
 
-.certificate-paid-note{
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 10px;
-    border-radius:20px;
-    background:#f0f8f3;
-    color:#3d8059;
-    font-size:11px;
-    font-weight:800;
-}
+        }
 
-.certificate-line{
-    width:100px;
-    height:3px;
-    background:var(--peach);
-    margin:18px auto;
-}
 
-.certificate-small{
-    color:#9a6c58;
-    font-size:15px;
-    letter-spacing:3px;
-    font-weight:900;
-}
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
 
-.certificate h1{
-    color:var(--navy);
-    font-family:Georgia,serif;
-    font-size:34px;
-    margin:20px 0;
-}
+        .lesson-actions{
 
-.certificate p{
-    color:#716b68;
-    font-size:15px;
-    line-height:1.7;
-    max-width:600px;
-    margin:8px auto;
-}
+            display:flex;
 
-.certificate h2{
-    color:var(--peach);
-    font-family:Georgia,serif;
-    font-size:30px;
-    margin:15px 0;
-}
+            justify-content:space-between;
 
-.certificate-details{
-    display:flex;
-    justify-content:center;
-    gap:60px;
-    margin:30px 0;
-}
+            gap:12px;
 
-.certificate-details div{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-}
+            padding:
+                20px 28px;
 
-.certificate-details strong{
-    color:var(--navy);
-    font-size:14px;
-}
+            border-top:
+                1px solid var(--border);
 
-.certificate-details span{
-    color:#837a75;
-    font-size:14px;
-}
+            background:
+                #fcfbfa;
 
-.certificate-footer{
-    display:flex;
-    justify-content:space-between;
-    margin-top:40px;
-    padding-top:20px;
-    border-top:1px solid var(--border);
-}
+        }
 
-.certificate-footer div{
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-}
 
-.certificate-footer strong{
-    color:var(--navy);
-    font-size:14px;
-}
+        .action-btn{
 
-.certificate-footer span{
-    color:#938a85;
-    font-size:15px;
-}
+            border:1px solid var(--border);
 
-.print-certificate{
-    margin-top:30px;
-    padding:12px 20px;
-    border:0;
-    border-radius:9px;
-    background:var(--navy);
-    color:#fff;
-    font-size:14px;
-    font-weight:900;
-    cursor:pointer;
-}
+            background:white;
 
-.certificate-paid-note{
-    font-size:10px;
-}
+            color:
+                var(--navy);
 
-@media(max-width:600px){
-    .certificate{
-        padding:35px 20px;
-    }
+            padding:
+                11px 17px;
 
-    .certificate h1{
-        font-size:23px;
-    }
+            border-radius:10px;
 
-    .certificate h2{
-        font-size:24px;
-    }
+            font-size:11px;
 
-    .certificate-details{
-        gap:20px;
-        flex-wrap:wrap;
-    }
+            font-weight:700;
 
-    .certificate-footer{
-        gap:20px;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-}
+        }
 
-@media print{
-    body *{
-        visibility:hidden !important;
-    }
 
-    .certificate-modal,
-    .certificate-modal *{
-        visibility:visible !important;
-    }
+        .action-btn.primary{
 
-    .certificate-modal{
-        position:static;
-        display:block !important;
-        background:#fff;
-        padding:0;
-    }
+            background:
+                var(--navy);
 
-    .certificate{
-        width:100%;
-        max-width:none;
-        box-shadow:none;
-        outline:none;
-        border:10px solid #eee6df;
-    }
+            color:white;
 
-    .certificate-close,
-    .print-certificate{
-        display:none !important;
-    }
-}
+            border-color:
+                var(--navy);
 
+        }
 
-/* ================= FINAL ASSIGNMENT ================= */
 
-.assignment-card{
-    margin-top:18px;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:24px;
-}
+        .action-btn.complete{
 
-.assignment-header{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:15px;
-    margin-bottom:15px;
-}
+            background:
+                var(--success);
 
-.assignment-label{
-    color:#a47761;
-    font-size:15px;
-    letter-spacing:1.5px;
-    font-weight:900;
-}
+            color:white;
 
-.assignment-card h3{
-    color:var(--navy);
-    font-size:20px;
-    margin:5px 0;
-}
+            border-color:
+                var(--success);
 
-.assignment-badge{
-    flex-shrink:0;
-    padding:7px 10px;
-    border-radius:20px;
-    background:#fbf1ec;
-    color:#956650;
-    font-size:15px;
-    font-weight:900;
-}
+        }
 
-.assignment-description{
-    color:#716a66;
-    font-size:14px;
-    line-height:1.7;
-}
 
-.assignment-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-    margin-top:16px;
-}
+        .action-btn:disabled{
 
-.assignment-item{
-    background:#faf7f5;
-    border:1px solid var(--border);
-    border-radius:11px;
-    padding:13px;
-}
+            opacity:.45;
 
-.assignment-item strong{
-    display:block;
-    color:var(--navy);
-    font-size:13px;
-    margin-bottom:5px;
-}
+            cursor:not-allowed;
 
-.assignment-item span{
-    color:#837b77;
-    font-size:13px;
-    line-height:1.6;
-}
+        }
 
-.assignment-check{
-    margin-top:16px;
-    padding:14px;
-    border-radius:12px;
-    background:#f8f1f5;
-    color:#716a66;
-    font-size:13px;
-    line-height:1.7;
-}
 
-.assignment-check strong{
-    color:var(--navy);
-}
+        /* =====================================================
+           LOADING
+        ===================================================== */
 
-@media(max-width:500px){
-    .assignment-card{
-        padding:17px;
-    }
+        .loading{
 
-    .assignment-header{
-        flex-direction:column;
-    }
+            position:fixed;
 
-    .assignment-grid{
-        grid-template-columns:1fr;
-    }
-}
+            inset:0;
 
+            background:
+                rgba(248,243,238,.96);
 
-/* ================= CLEAN MEDIUM TYPOGRAPHY ================= */
+            z-index:999;
 
-body{
-    font-size:15px;
-    line-height:1.6;
-}
+            display:flex;
 
-.brand{
-    font-size:16px;
-}
+            align-items:center;
 
-.brand small{
-    font-size:10px;
-}
+            justify-content:center;
 
-.back-btn,
-.course-name,
-.header-percent{
-    font-size:12px;
-}
+            flex-direction:column;
 
-.sidebar-title,
-.hero-label,
-.stat small,
-.lesson-badge,
-.panel-title,
-.assignment-label,
-.assignment-badge,
-.certificate-small{
-    font-size:11px;
-}
+            gap:12px;
 
-.month-name{
-    font-size:13px;
-}
+        }
 
-.topic{
-    font-size:12px;
-    line-height:1.5;
-}
 
-.hero p,
-.lesson-intro,
-.lesson-content p,
-.assignment-description,
-.certificate p{
-    font-size:14px;
-    line-height:1.75;
-}
+        .spinner{
 
-.lesson-content li,
-.assignment-item span,
-.assignment-check,
-.certificate-details span,
-.certificate-footer span{
-    font-size:13px;
-}
+            width:35px;
 
-.lesson-content h3{
-    font-size:18px;
-}
+            height:35px;
 
-.lesson-card h2{
-    font-size:26px;
-}
+            border:
+                3px solid #ddd;
 
-.code-label{
-    font-size:13px;
-}
+            border-top-color:
+                var(--navy);
 
-.code{
-    font-size:13px;
-    line-height:1.65;
-}
+            border-radius:50%;
 
-.practice strong{
-    font-size:13px;
-}
+            animation:
+                spin .7s linear infinite;
 
-.practice p{
-    font-size:13px;
-}
+        }
 
-.btn,
-.certificate-btn,
-.print-certificate{
-    font-size:13px;
-}
 
-.month-progress-item strong{
-    font-size:13px;
-}
+        @keyframes spin{
 
-.month-progress-item span{
-    font-size:12px;
-}
+            to{
+                transform:rotate(360deg);
+            }
 
-.progress-card p{
-    font-size:12px;
-}
+        }
 
-.assignment-card h3{
-    font-size:22px;
-}
 
-.assignment-item strong{
-    font-size:13px;
-}
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
-.certificate-top{
-    font-size:14px;
-}
+        @media(max-width:850px){
 
-.certificate h1{
-    font-size:32px;
-}
+            .page{
 
-.certificate h2{
-    font-size:29px;
-}
+                grid-template-columns:1fr;
 
-.certificate-details strong,
-.certificate-footer strong{
-    font-size:12px;
-}
+            }
 
-@media(max-width:800px){
-    .topic{
-        font-size:13px;
-    }
 
-    .hero h1{
-        font-size:24px;
-    }
+            .sidebar{
 
-    .lesson-card h2{
-        font-size:23px;
-    }
-}
+                position:relative;
 
-@media(max-width:500px){
-    .hero h1{
-        font-size:22px;
-    }
+                top:0;
 
-    .lesson-card h2{
-        font-size:21px;
-    }
+                height:auto;
 
-    .lesson-content p,
-    .lesson-intro,
-    .hero p,
-    .assignment-description,
-    .certificate p{
-        font-size:13px;
-    }
+                border-right:0;
 
-    .code{
-        font-size:12px;
-    }
-}
+                border-bottom:
+                    1px solid var(--border);
 
+            }
 
-/* ================= GOOGLE ACCOUNT ================= */
 
-.account-area{
-    margin-left:12px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
+            .lesson-list{
 
-.account-user{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    min-width:0;
-}
+                display:grid;
 
-.account-avatar{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    object-fit:cover;
-    background:#eee8e4;
-    display:none;
-}
+                grid-template-columns:
+                    repeat(2,1fr);
 
-.account-info{
-    min-width:0;
-}
+            }
 
-.account-name{
-    display:block;
-    max-width:150px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    color:var(--navy);
-    font-size:12px;
-    font-weight:800;
-}
 
-.account-status{
-    display:block;
-    color:#918781;
-    font-size:10px;
-}
+            .main{
 
-.google-login-btn,
-.logout-btn{
-    border:1px solid var(--border);
-    border-radius:9px;
-    padding:9px 12px;
-    background:#fff;
-    color:var(--navy);
-    font-size:12px;
-    font-weight:800;
-    cursor:pointer;
-}
+                padding:20px 15px;
 
-.google-login-btn:hover,
-.logout-btn:hover{
-    background:#faf6f3;
-}
+            }
 
-.sync-status{
-    margin-top:10px;
-    padding:8px 10px;
-    border-radius:9px;
-    background:#f8f3ef;
-    color:#817a76;
-    font-size:11px;
-    text-align:center;
-}
+        }
 
-.sync-status.online{
-    background:#f0f8f3;
-    color:#3d8059;
-}
 
-.sync-status.error{
-    background:#fff1ef;
-    color:#a34d43;
-}
+        @media(max-width:550px){
 
-.user-required{
-    display:none;
-    margin-top:15px;
-    padding:16px;
-    border-radius:14px;
-    background:#fff8f3;
-    border:1px solid #ead8cd;
-    color:#756d69;
-    font-size:13px;
-    line-height:1.7;
-}
+            .topbar{
 
-.user-required.show{
-    display:block;
-}
+                padding:
+                    0 15px;
 
-@media(max-width:800px){
-    .account-area{
-        margin-left:auto;
-    }
+            }
 
-    .account-name{
-        max-width:90px;
-    }
 
-    .account-status{
-        display:none;
-    }
+            .brand{
 
-    .google-login-btn,
-    .logout-btn{
-        padding:8px 9px;
-        font-size:11px;
-    }
-}
+                font-size:14px;
 
-@media(max-width:500px){
-    .account-info{
-        display:none;
-    }
+            }
 
-    .account-avatar{
-        width:32px;
-        height:32px;
-    }
-}
 
+            .brand-mark{
 
-/* ================= 5 MINUTE LESSON TIMER ================= */
+                width:34px;
 
-.lesson-timer{
-    margin-top:18px;
-    padding:13px 15px;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:#faf7f5;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-}
+                height:34px;
 
-.lesson-timer-left{
-    display:flex;
-    align-items:center;
-    gap:9px;
-}
+            }
 
-.timer-icon{
-    width:34px;
-    height:34px;
-    border-radius:9px;
-    display:grid;
-    place-items:center;
-    background:#eee8e4;
-    font-size:16px;
-}
 
-.timer-label{
-    color:var(--navy);
-    font-size:13px;
-    font-weight:800;
-}
+            .back-btn{
 
-.timer-sub{
-    display:block;
-    margin-top:2px;
-    color:#8d8580;
-    font-size:11px;
-}
+                font-size:10px;
 
-.timer-value{
-    min-width:65px;
-    text-align:center;
-    padding:7px 9px;
-    border-radius:8px;
-    background:#eee8e4;
-    color:var(--navy);
-    font-size:14px;
-    font-weight:900;
-}
+                padding:
+                    8px 10px;
 
-.timer-value.ready{
-    background:#dff0e5;
-    color:#3d8059;
-}
+            }
 
-#completeBtn.waiting{
-    background:#bdb6b2;
-    cursor:not-allowed;
-}
 
-@media(max-width:500px){
-    .lesson-timer{
-        align-items:flex-start;
-    }
-}
+            .course-header{
 
-</style>
+                padding:20px;
+
+            }
+
+
+            .lesson-content{
+
+                padding:20px;
+
+            }
+
+
+            .lesson-actions{
+
+                padding:
+                    15px;
+
+                flex-direction:column;
+
+            }
+
+
+            .action-btn{
+
+                width:100%;
+
+            }
+
+
+            .lesson-list{
+
+                grid-template-columns:1fr;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+    class="loading"
+    id="loadingScreen"
+>
+
+    <div class="spinner"></div>
+
+    <strong>
+        Loading your course...
+    </strong>
+
+</div>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
 
 <header class="topbar">
 
-    <button
-        class="menu-btn"
-        id="menuBtn">
-        ☰
-    </button>
-
-    <div class="logo">
-        M
-    </div>
-
-    <div class="brand">
-        MamRaj
-        <small>NEXUS ACADEMY</small>
-    </div>
-
     <a
         href="dashboard.html"
-        class="back-btn">
-        ← Dashboard
-    </a>
+        class="brand"
+    >
 
-    <div class="course-name">
-        Full-Stack Web Development
-    </div>
-
-    <div class="header-progress">
-
-        <div class="progress-line">
-            <span id="headerProgress"></span>
-        </div>
-
-        <span
-            class="header-percent"
-            id="headerPercent">
-            0%
+        <span class="brand-mark">
+            MN
         </span>
 
-    </div>
+        MamRaj Nexus Academy
 
-    <!-- Google Account -->
-    <div class="account-area" id="accountArea">
+    </a>
+
+
+    <div class="top-actions">
 
         <button
-            class="google-login-btn"
-            id="googleLoginBtn">
-            Continue with Google
+            class="back-btn"
+            onclick="location.href='dashboard.html'"
+        >
+
+            ← Dashboard
+
         </button>
-
-        <div
-            class="account-user"
-            id="accountUser"
-            style="display:none;">
-
-            <img
-                class="account-avatar"
-                id="accountAvatar"
-                alt="Profile">
-
-            <div class="account-info">
-
-                <span
-                    class="account-name"
-                    id="accountName">
-                    Learner
-                </span>
-
-                <span class="account-status">
-                    Progress synced
-                </span>
-
-            </div>
-
-            <button
-                class="logout-btn"
-                id="logoutBtn">
-                Sign out
-            </button>
-
-        </div>
 
     </div>
 
 </header>
 
 
-<!-- ================= OVERLAY ================= -->
+<!-- =====================================================
+     PAGE
+===================================================== -->
 
-<div
-    class="overlay"
-    id="overlay">
-</div>
-
-
-<!-- ================= LAYOUT ================= -->
-
-<div class="layout">
+<div class="page">
 
 
-<!-- ======================================================
-     COURSE SIDEBAR
-====================================================== -->
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
 
-<aside
-    class="sidebar"
-    id="sidebar">
-
-    <div class="sidebar-title">
-        6 MONTH COURSE CONTENT
-    </div>
-
-    <div id="courseNavigation"></div>
-
-</aside>
+    <aside class="sidebar">
 
 
-<!-- ======================================================
-     MAIN CONTENT
-====================================================== -->
+        <div class="course-mini">
 
-<main class="main">
+            <small>
+                YOUR COURSE
+            </small>
 
-<div
-    class="sync-status"
-    id="syncStatus">
-    Sign in with Google to save your course progress to your account.
-</div>
-
-<div
-    class="user-required"
-    id="userRequired">
-    <strong>Account required for cloud progress</strong><br>
-    Sign in with Google so your course progress, completed topics,
-    certificate status and current lesson can follow you on any device.
-</div>
+            <h2 id="sideCourseTitle">
+                Loading...
+            </h2>
 
 
-<!-- HERO -->
+            <div class="progress-wrap">
 
-<section class="hero">
+                <div class="progress-info">
 
-    <div class="hero-label">
-        MAMRAJ NEXUS ACADEMY • 6 MONTH PROGRAM
-    </div>
+                    <span>
+                        Course Progress
+                    </span>
 
-    <h1>
-        Full-Stack Web Development
-    </h1>
+                    <strong id="progressText">
+                        0%
+                    </strong>
 
-    <p>
-        A structured 6-month journey from
-        beginner to job-ready full-stack developer.
-        Learn, practice, build projects and complete
-        a professional capstone project.
-    </p>
-
-    <div class="tags">
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Git</span>
-        <span class="tag">React</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Database</span>
-        <span class="tag">AI</span>
-    </div>
-
-</section>
+                </div>
 
 
-<!-- STATS -->
+                <div class="progress-bar">
 
-<section class="stats">
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
 
-    <div class="stat">
-        <small>DURATION</small>
-        <strong>6 Months</strong>
-    </div>
+                </div>
 
-    <div class="stat">
-        <small>WEEKS</small>
-        <strong>24</strong>
-    </div>
-
-    <div class="stat">
-        <small>TOPICS</small>
-        <strong id="totalTopics">48</strong>
-    </div>
-
-    <div class="stat">
-        <small>PROJECTS</small>
-        <strong>10+</strong>
-    </div>
-
-</section>
-
-
-<!-- LESSON -->
-
-<section class="lesson-card">
-
-    <div class="lesson-meta">
-
-        <span
-            class="lesson-badge"
-            id="lessonBadge">
-            MONTH 01 • WEEK 01
-        </span>
-
-        <span
-            class="lesson-time"
-            id="lessonTime">
-            ⏱ 30 min
-        </span>
-
-    </div>
-
-    <h2 id="lessonTitle">
-        Welcome to Web Development
-    </h2>
-
-    <p
-        class="lesson-intro"
-        id="lessonIntro">
-    </p>
-
-    <div
-        class="lesson-content"
-        id="lessonContent">
-    </div>
-
-    <div class="code-label">
-        Example
-    </div>
-
-    <pre class="code"><code id="lessonCode"></code></pre>
-
-    <div class="practice">
-
-        <strong>
-            🎯 Practice Task
-        </strong>
-
-        <p id="practiceText"></p>
-
-    </div>
-
-    <div class="lesson-timer">
-
-        <div class="lesson-timer-left">
-
-            <div class="timer-icon">⏱</div>
-
-            <div>
-                <span class="timer-label">
-                    Lesson learning time
-                </span>
-
-                <span
-                    class="timer-sub"
-                    id="timerSub">
-                    Spend 5 minutes on this topic to unlock completion.
-                </span>
             </div>
 
         </div>
+
 
         <div
-            class="timer-value"
-            id="timerValue">
-            5:00
-        </div>
-
-    </div>
-
-    <div class="actions">
-
-        <button
-            class="btn complete waiting"
-            id="completeBtn"
-            disabled>
-            ✓ Mark as Complete
-        </button>
-
-        <button
-            class="btn secondary"
-            id="previousBtn">
-            ← Previous
-        </button>
-
-        <button
-            class="btn"
-            id="nextBtn">
-            Next Topic →
-        </button>
-
-    </div>
-
-</section>
+            class="lesson-list"
+            id="lessonList"
+        ></div>
 
 
-<!-- ================= FINAL ASSIGNMENT ================= -->
+    </aside>
 
-<section class="assignment-card">
 
-    <div class="assignment-header">
+    <!-- =================================================
+         MAIN
+    ================================================== -->
 
-        <div>
-            <div class="assignment-label">
-                FINAL COURSE ASSIGNMENT
+    <main class="main">
+
+
+        <!-- COURSE HEADER -->
+
+        <section class="course-header">
+
+            <div class="eyebrow">
+                MAMRAJ NEXUS ACADEMY
             </div>
 
-            <h3>
-                🏆 Build a Full-Stack Learning Platform
-            </h3>
-        </div>
+            <h1 id="courseTitle">
+                Loading course...
+            </h1>
 
-        <span class="assignment-badge">
-            CAPSTONE PROJECT
-        </span>
-
-    </div>
-
-    <p class="assignment-description">
-        Create a complete responsive Learning Management System
-        that demonstrates the skills you learned throughout the
-        6-month Full-Stack Web Development program.
-    </p>
-
-    <div class="assignment-grid">
-
-        <div class="assignment-item">
-            <strong>🎨 Frontend</strong>
-            <span>
-                HTML, CSS, JavaScript and React with a responsive
-                dashboard, course pages and learner interface.
-            </span>
-        </div>
-
-        <div class="assignment-item">
-            <strong>⚙️ Backend</strong>
-            <span>
-                Node.js and Express APIs for users, courses,
-                lessons and learner progress.
-            </span>
-        </div>
-
-        <div class="assignment-item">
-            <strong>🗄️ Database</strong>
-            <span>
-                Store users, courses, lessons and completion
-                progress using SQL or MongoDB.
-            </span>
-        </div>
-
-        <div class="assignment-item">
-            <strong>🔐 Authentication</strong>
-            <span>
-                Add registration, login and protected learner
-                dashboard functionality.
-            </span>
-        </div>
-
-        <div class="assignment-item">
-            <strong>🤖 AI Feature</strong>
-            <span>
-                Add an AI learning assistant that can explain
-                topics or generate practice questions.
-            </span>
-        </div>
-
-        <div class="assignment-item">
-            <strong>🌐 Deployment</strong>
-            <span>
-                Deploy the project and provide a live website
-                URL along with the GitHub repository.
-            </span>
-        </div>
-
-    </div>
-
-    <div class="assignment-check">
-
-        <strong>📋 Submission Checklist</strong><br>
-
-        ✓ Responsive working website<br>
-        ✓ GitHub repository<br>
-        ✓ Live deployed URL<br>
-        ✓ Working frontend and backend<br>
-        ✓ Database connected<br>
-        ✓ Authentication implemented<br>
-        ✓ AI feature implemented<br>
-        ✓ Project README with setup instructions
-
-    </div>
-
-</section>
+            <p
+                class="course-description"
+                id="courseDescription"
+            >
+                Please wait while we load your course.
+            </p>
 
 
-</main>
+            <div class="meta">
 
+                <span id="courseLevel">
+                    Beginner
+                </span>
 
-<!-- ======================================================
-     RIGHT PANEL
-====================================================== -->
+                <span id="courseLessons">
+                    0 Lessons
+                </span>
 
-<aside class="right-panel">
+                <span>
+                    Certificate
+                </span>
 
-    <div class="panel-title">
-        YOUR PROGRESS
-    </div>
-
-    <div class="progress-card">
-
-        <div
-            class="progress-circle"
-            id="progressCircle">
-
-            <span id="progressPercent">
-                0%
-            </span>
-
-        </div>
-
-        <p>
-            Complete topics sequentially
-            to unlock the next topic.
-        </p>
-
-    </div>
-
-    <div class="month-progress">
-
-        <div class="panel-title">
-            6 MONTH JOURNEY
-        </div>
-
-        <div id="monthProgress"></div>
-
-    </div>
-
-    
-<!-- ================= CERTIFICATE ================= -->
-
-<div class="certificate-box" id="certificateBox">
-
-    <div class="certificate-icon" id="certificateIcon">🔒</div>
-
-    <strong id="certificateTitle">
-        Certificate Locked
-    </strong>
-
-    <p id="certificateText">
-        Complete all 48 topics to become eligible for your certificate.
-    </p>
-
-    <div class="certificate-price" id="certificatePrice">
-        Certificate Fee: <strong>₹49</strong>
-    </div>
-
-    <button
-        class="certificate-btn"
-        id="certificateBtn"
-        disabled>
-        🔒 Complete Course First
-    </button>
-
-</div>
-
-<!-- ================= CERTIFICATE MODAL ================= -->
-
-<div class="certificate-modal" id="certificateModal">
-
-    <div class="certificate">
-
-        <button
-            class="certificate-close"
-            onclick="closeCertificate()">
-            ×
-        </button>
-
-        <div class="certificate-top">
-            MAMRAJ NEXUS ACADEMY
-        </div>
-
-        <div class="certificate-line"></div>
-
-        <div class="certificate-small">
-            CERTIFICATE OF COMPLETION
-        </div>
-
-        <div class="certificate-paid-note" id="certificatePaidNote">
-            Official certificate • ₹49 certificate processing fee paid
-        </div>
-
-        <h1>
-            Full-Stack Web Development
-        </h1>
-
-        <p>
-            This certificate is proudly presented to
-        </p>
-
-        <h2 id="certificateStudentName">
-            Aditya Singh
-        </h2>
-
-        <p>
-            for successfully completing the
-            6-month Full-Stack Web Development
-            program at MamRaj Nexus Academy.
-        </p>
-
-        <div class="certificate-details">
-
-            <div>
-                <strong>Duration</strong>
-                <span>6 Months</span>
             </div>
 
-            <div>
-                <strong>Topics</strong>
-                <span>48 / 48</span>
+        </section>
+
+
+        <!-- LESSON -->
+
+        <section class="lesson-card">
+
+
+            <div class="lesson-top">
+
+                <small id="lessonNumber">
+                    LESSON 01
+                </small>
+
+                <h2 id="lessonTitle">
+                    Loading lesson...
+                </h2>
+
             </div>
 
-            <div>
-                <strong>Projects</strong>
-                <span>10+</span>
+
+            <article
+                class="lesson-content"
+                id="lessonContent"
+            >
+
+                Loading...
+
+            </article>
+
+
+            <div class="lesson-actions">
+
+
+                <button
+                    class="action-btn"
+                    id="previousBtn"
+                >
+
+                    ← Previous
+
+                </button>
+
+
+                <button
+                    class="action-btn primary"
+                    id="completeBtn"
+                >
+
+                    Mark as Complete ✓
+
+                </button>
+
+
+                <button
+                    class="action-btn"
+                    id="nextBtn"
+                >
+
+                    Next →
+
+                </button>
+
+
             </div>
 
-        </div>
 
-        <div class="certificate-footer">
+        </section>
 
-            <div>
-                <strong>MamRaj Nexus Academy</strong>
-                <span>Academy</span>
-            </div>
 
-            <div>
-                <strong id="certificateDate"></strong>
-                <span>Completion Year</span>
-            </div>
-
-        </div>
-
-        <button
-            class="print-certificate"
-            onclick="window.print()">
-            🖨 Print / Save Certificate
-        </button>
-
-    </div>
+    </main>
 
 </div>
 
 
-</aside>
-
-</div>
-
-
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script type="module">
 
-/*
-=========================================================
-FIREBASE CONFIGURATION
-=========================================================
 
-1. Create a Firebase project.
-2. Enable Authentication → Google.
-3. Create a Firestore Database.
-4. Register this website as a Web App.
-5. Paste your Firebase Web App config below.
-
-Firebase config is safe to include in frontend code.
-Firestore Security Rules are what protect user data.
-*/
-
-import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+/* =====================================================
+   FIREBASE
+===================================================== */
 
 import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
+    auth,
+    db
+} from "./firebase.js";
+
+
+import {
     onAuthStateChanged
-}
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
 import {
-    getFirestore,
     doc,
     getDoc,
     setDoc,
     serverTimestamp
-}
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* ================= PASTE YOUR FIREBASE CONFIG ================= */
 
-const firebaseConfig = {
+/* =====================================================
+   COURSE DATA
+===================================================== */
 
-    apiKey: "YOUR_FIREBASE_API_KEY",
+const courses = {
 
-    authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
 
-    projectId:
-        "YOUR_PROJECT_ID",
+    "web-development": {
 
-    storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
+        title:
+            "Full-Stack Web Development",
 
-    messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
+        description:
+            "Learn modern web development from HTML and CSS to JavaScript, frontend, backend, databases and real-world applications.",
 
-    appId:
-        "YOUR_FIREBASE_APP_ID"
+        level:
+            "Beginner → Advanced",
+
+        lessons: [
+
+            {
+
+                id:"html-foundations",
+
+                title:
+                    "Web Development Foundations",
+
+                content: `
+
+                    <h3>
+                        Welcome to Web Development
+                    </h3>
+
+                    <p>
+                        In this lesson you will understand
+                        how modern websites work and how
+                        frontend and backend technologies
+                        connect together.
+                    </p>
+
+                    <h3>
+                        What You Will Learn
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            How websites work
+                        </li>
+
+                        <li>
+                            Frontend vs Backend
+                        </li>
+
+                        <li>
+                            HTML, CSS and JavaScript
+                        </li>
+
+                        <li>
+                            How browsers process webpages
+                        </li>
+
+                    </ul>
+
+                    <div class="tip">
+
+                        <strong>Tip:</strong>
+                        Don't try to memorize everything.
+                        Focus on understanding how the
+                        different parts connect.
+
+                    </div>
+
+                `
+
+            },
+
+
+            {
+
+                id:"html",
+
+                title:
+                    "HTML Fundamentals",
+
+                content: `
+
+                    <h3>
+                        Introduction to HTML
+                    </h3>
+
+                    <p>
+                        HTML provides the structure of a
+                        webpage. It tells the browser what
+                        content exists on the page.
+                    </p>
+
+                    <h3>
+                        Basic Structure
+                    </h3>
+
+                    <div class="code-box">
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+                    </div>
+
+                    <p>
+                        Learn headings, paragraphs, links,
+                        images, lists, forms and semantic
+                        HTML elements.
+                    </p>
+
+                `
+
+            },
+
+
+            {
+
+                id:"css",
+
+                title:
+                    "CSS & Responsive Design",
+
+                content: `
+
+                    <h3>
+                        Styling Websites
+                    </h3>
+
+                    <p>
+                        CSS controls the visual appearance
+                        of HTML elements.
+                    </p>
+
+                    <h3>
+                        Core Concepts
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Selectors
+                        </li>
+
+                        <li>
+                            Colors and typography
+                        </li>
+
+                        <li>
+                            Box model
+                        </li>
+
+                        <li>
+                            Flexbox
+                        </li>
+
+                        <li>
+                            CSS Grid
+                        </li>
+
+                        <li>
+                            Responsive design
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"javascript",
+
+                title:
+                    "JavaScript Fundamentals",
+
+                content: `
+
+                    <h3>
+                        Make Websites Interactive
+                    </h3>
+
+                    <p>
+                        JavaScript adds logic and
+                        interactivity to websites.
+                    </p>
+
+                    <h3>
+                        Important Concepts
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Variables
+                        </li>
+
+                        <li>
+                            Functions
+                        </li>
+
+                        <li>
+                            Arrays and objects
+                        </li>
+
+                        <li>
+                            Conditions
+                        </li>
+
+                        <li>
+                            Loops
+                        </li>
+
+                        <li>
+                            DOM manipulation
+                        </li>
+
+                        <li>
+                            Events
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"git",
+
+                title:
+                    "Git & GitHub",
+
+                content: `
+
+                    <h3>
+                        Version Control
+                    </h3>
+
+                    <p>
+                        Git helps developers track changes
+                        in their projects while GitHub
+                        provides cloud-based collaboration.
+                    </p>
+
+                    <div class="code-box">
+
+git init
+
+git add .
+
+git commit -m "Initial commit"
+
+git push
+
+                    </div>
+
+                `
+
+            },
+
+
+            {
+
+                id:"frontend",
+
+                title:
+                    "Modern Frontend Development",
+
+                content: `
+
+                    <h3>
+                        Building Modern Interfaces
+                    </h3>
+
+                    <p>
+                        Learn how reusable components,
+                        state management and API
+                        integration are used in modern
+                        frontend applications.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Components
+                        </li>
+
+                        <li>
+                            State
+                        </li>
+
+                        <li>
+                            Routing
+                        </li>
+
+                        <li>
+                            API integration
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"backend",
+
+                title:
+                    "Backend Development",
+
+                content: `
+
+                    <h3>
+                        Server-Side Development
+                    </h3>
+
+                    <p>
+                        Backend systems process requests,
+                        handle business logic and connect
+                        applications to databases.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Servers
+                        </li>
+
+                        <li>
+                            APIs
+                        </li>
+
+                        <li>
+                            Authentication
+                        </li>
+
+                        <li>
+                            Databases
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"database",
+
+                title:
+                    "Databases",
+
+                content: `
+
+                    <h3>
+                        Store Application Data
+                    </h3>
+
+                    <p>
+                        Learn how applications store,
+                        retrieve and update data.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            SQL databases
+                        </li>
+
+                        <li>
+                            NoSQL databases
+                        </li>
+
+                        <li>
+                            CRUD operations
+                        </li>
+
+                        <li>
+                            Data modelling
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"authentication",
+
+                title:
+                    "Authentication & Security",
+
+                content: `
+
+                    <h3>
+                        Protecting Applications
+                    </h3>
+
+                    <p>
+                        Learn how registration, login,
+                        authentication and authorization
+                        work in modern applications.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Firebase Authentication
+                        </li>
+
+                        <li>
+                            Email login
+                        </li>
+
+                        <li>
+                            Google login
+                        </li>
+
+                        <li>
+                            User roles
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"fullstack",
+
+                title:
+                    "Full-Stack Integration",
+
+                content: `
+
+                    <h3>
+                        Connect Everything
+                    </h3>
+
+                    <p>
+                        Bring frontend, backend,
+                        authentication, APIs and databases
+                        together into a complete application.
+                    </p>
+
+                `
+
+            }
+
+        ]
+
+    },
+
+
+    "ui-ux-product-design": {
+
+        title:
+            "UI/UX & Product Design",
+
+        description:
+            "Learn user research, wireframing, visual design, prototyping, usability and product thinking.",
+
+        level:
+            "Beginner → Professional",
+
+        lessons: [
+
+            {
+
+                id:"ux-foundations",
+
+                title:
+                    "UX Design Foundations",
+
+                content: `
+
+                    <h3>
+                        What is UX?
+                    </h3>
+
+                    <p>
+                        User Experience design focuses on
+                        making products useful, usable and
+                        enjoyable for people.
+                    </p>
+
+                    <h3>
+                        Core UX Principles
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            User needs
+                        </li>
+
+                        <li>
+                            Usability
+                        </li>
+
+                        <li>
+                            Accessibility
+                        </li>
+
+                        <li>
+                            Consistency
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"research",
+
+                title:
+                    "User Research",
+
+                content: `
+
+                    <h3>
+                        Understand Your Users
+                    </h3>
+
+                    <p>
+                        Research helps designers understand
+                        user problems before designing solutions.
+                    </p>
+
+                    <ul>
+
+                        <li>
+                            Interviews
+                        </li>
+
+                        <li>
+                            Surveys
+                        </li>
+
+                        <li>
+                            Personas
+                        </li>
+
+                        <li>
+                            User journeys
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"wireframes",
+
+                title:
+                    "Wireframing",
+
+                content: `
+
+                    <h3>
+                        Structure Before Visual Design
+                    </h3>
+
+                    <p>
+                        Wireframes help designers quickly
+                        explore layouts and user flows.
+                    </p>
+
+                `
+
+            },
+
+
+            {
+
+                id:"visual-design",
+
+                title:
+                    "Visual UI Design",
+
+                content: `
+
+                    <h3>
+                        Designing Interfaces
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Typography
+                        </li>
+
+                        <li>
+                            Color
+                        </li>
+
+                        <li>
+                            Spacing
+                        </li>
+
+                        <li>
+                            Layout
+                        </li>
+
+                        <li>
+                            Design systems
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"prototyping",
+
+                title:
+                    "Prototyping",
+
+                content: `
+
+                    <h3>
+                        Interactive Prototypes
+                    </h3>
+
+                    <p>
+                        Prototypes allow designers to test
+                        interactions before development.
+                    </p>
+
+                `
+
+            }
+
+        ]
+
+    },
+
+
+    "data-analytics": {
+
+        title:
+            "Data Analytics",
+
+        description:
+            "Build practical data analysis skills using spreadsheets, SQL, Python and visualization.",
+
+        level:
+            "Beginner → Advanced",
+
+        lessons: [
+
+            {
+
+                id:"analytics-foundations",
+
+                title:
+                    "Data Analytics Foundations",
+
+                content: `
+
+                    <h3>
+                        Introduction to Data Analytics
+                    </h3>
+
+                    <p>
+                        Learn how businesses use data to
+                        understand performance and make
+                        informed decisions.
+                    </p>
+
+                `
+
+            },
+
+
+            {
+
+                id:"excel",
+
+                title:
+                    "Spreadsheet Analytics",
+
+                content: `
+
+                    <h3>
+                        Working With Data
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Data cleaning
+                        </li>
+
+                        <li>
+                            Formulas
+                        </li>
+
+                        <li>
+                            Pivot tables
+                        </li>
+
+                        <li>
+                            Charts
+                        </li>
+
+                    </ul>
+
+                `
+
+            },
+
+
+            {
+
+                id:"sql",
+
+                title:
+                    "SQL for Analytics",
+
+                content: `
+
+                    <h3>
+                        Querying Data
+                    </h3>
+
+                    <div class="code-box">
+
+SELECT
+    name,
+    revenue
+FROM customers
+WHERE revenue > 50000;
+
+                    </div>
+
+                `
+
+            },
+
+
+            {
+
+                id:"python",
+
+                title:
+                    "Python for Data Analysis",
+
+                content: `
+
+                    <h3>
+                        Python Analytics
+                    </h3>
+
+                    <p>
+                        Learn Python tools commonly used
+                        for data analysis and manipulation.
+                    </p>
+
+                `
+
+            }
+
+        ]
+
+    },
+
+
+    "human-resource-management-ai": {
+
+        title:
+            "Human Resource Management with AI",
+
+        description:
+            "Learn modern HR practices and how AI can support recruitment, employee management and people analytics.",
+
+        level:
+            "Beginner → Professional",
+
+        lessons: [
+
+            {
+
+                id:"hr-foundations",
+
+                title:
+                    "HR Management Foundations",
+
+                content: `
+
+                    <h3>
+                        Introduction to HR
+                    </h3>
+
+                    <p>
+                        Understand recruitment, onboarding,
+                        performance management and employee
+                        development.
+                    </p>
+
+                `
+
+            },
+
+
+            {
+
+                id:"recruitment",
+
+                title:
+                    "AI-Powered Recruitment",
+
+                content: `
+
+                    <h3>
+                        Modern Recruitment
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Job descriptions
+                        </li>
+
+                        <li>
+                            Candidate screening
+                        </li>
+
+                        <li>
+                            Interview preparation
+                        </li>
+
+                        <li>
+                            AI-assisted workflows
+                        </li>
+
+                    </ul>
+
+                `
+
+            }
+
+        ]
+
+    }
 
 };
 
 
-/* ================= FIREBASE INITIALIZATION ================= */
 
-const firebaseApp =
-    initializeApp(firebaseConfig);
+/* =====================================================
+   URL COURSE ID
+===================================================== */
 
-const firebaseAuth =
-    getAuth(firebaseApp);
-
-const googleProvider =
-    new GoogleAuthProvider();
-
-const db =
-    getFirestore(firebaseApp);
-
-
-/* ================= ACCOUNT UI ================= */
-
-const googleLoginBtn =
-    document.getElementById(
-        "googleLoginBtn"
-    );
-
-const accountUser =
-    document.getElementById(
-        "accountUser"
-    );
-
-const accountName =
-    document.getElementById(
-        "accountName"
-    );
-
-const accountAvatar =
-    document.getElementById(
-        "accountAvatar"
-    );
-
-const logoutBtn =
-    document.getElementById(
-        "logoutBtn"
-    );
-
-const syncStatus =
-    document.getElementById(
-        "syncStatus"
-    );
-
-const userRequired =
-    document.getElementById(
-        "userRequired"
+const params =
+    new URLSearchParams(
+        window.location.search
     );
 
 
-function setSyncStatus(
-    message,
-    type = ""
-){
+const courseId =
+    params.get("id") ||
+    "web-development";
 
-    syncStatus.textContent =
-        message;
 
-    syncStatus.className =
-        "sync-status " + type;
+/* =====================================================
+   CURRENT COURSE
+===================================================== */
+
+const course =
+    courses[courseId] ||
+    courses["web-development"];
+
+
+let currentLesson = 0;
+
+let completedLessons = new Set();
+
+let currentUser = null;
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loadingScreen =
+    document.getElementById(
+        "loadingScreen"
+    );
+
+const courseTitle =
+    document.getElementById(
+        "courseTitle"
+    );
+
+const courseDescription =
+    document.getElementById(
+        "courseDescription"
+    );
+
+const courseLevel =
+    document.getElementById(
+        "courseLevel"
+    );
+
+const courseLessons =
+    document.getElementById(
+        "courseLessons"
+    );
+
+const sideCourseTitle =
+    document.getElementById(
+        "sideCourseTitle"
+    );
+
+const lessonList =
+    document.getElementById(
+        "lessonList"
+    );
+
+const lessonNumber =
+    document.getElementById(
+        "lessonNumber"
+    );
+
+const lessonTitle =
+    document.getElementById(
+        "lessonTitle"
+    );
+
+const lessonContent =
+    document.getElementById(
+        "lessonContent"
+    );
+
+const progressFill =
+    document.getElementById(
+        "progressFill"
+    );
+
+const progressText =
+    document.getElementById(
+        "progressText"
+    );
+
+const previousBtn =
+    document.getElementById(
+        "previousBtn"
+    );
+
+const nextBtn =
+    document.getElementById(
+        "nextBtn"
+    );
+
+const completeBtn =
+    document.getElementById(
+        "completeBtn"
+    );
+
+
+
+/* =====================================================
+   COURSE HEADER
+===================================================== */
+
+courseTitle.textContent =
+    course.title;
+
+sideCourseTitle.textContent =
+    course.title;
+
+courseDescription.textContent =
+    course.description;
+
+courseLevel.textContent =
+    course.level;
+
+courseLessons.textContent =
+    course.lessons.length +
+    " Lessons";
+
+
+
+/* =====================================================
+   RENDER LESSON LIST
+===================================================== */
+
+function renderLessonList(){
+
+    lessonList.innerHTML = "";
+
+
+    course.lessons.forEach(
+        (lesson,index) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "lesson";
+
+
+            if(index === currentLesson){
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            if(
+                completedLessons.has(
+                    index
+                )
+            ){
+
+                button.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            button.innerHTML = `
+
+                <span class="lesson-number">
+
+                    ${
+                        completedLessons.has(index)
+                        ? "✓"
+                        : String(index + 1).padStart(2,"0")
+                    }
+
+                </span>
+
+                <span class="lesson-title">
+
+                    ${lesson.title}
+
+                </span>
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentLesson =
+                        index;
+
+                    renderLesson();
+
+                }
+            );
+
+
+            lessonList.appendChild(
+                button
+            );
+
+        }
+    );
 
 }
 
 
-/* ================= GOOGLE LOGIN ================= */
 
-googleLoginBtn.addEventListener(
-    "click",
-    async () => {
+/* =====================================================
+   RENDER CURRENT LESSON
+===================================================== */
 
-        try{
+function renderLesson(){
 
-            googleLoginBtn.disabled =
-                true;
-
-            googleLoginBtn.textContent =
-                "Signing in...";
-
-            await signInWithPopup(
-                firebaseAuth,
-                googleProvider
-            );
-
-        }
-        catch(error){
-
-            console.error(
-                "Google login error:",
-                error
-            );
-
-            setSyncStatus(
-                "Google sign-in failed. Please try again.",
-                "error"
-            );
-
-        }
-        finally{
-
-            googleLoginBtn.disabled =
-                false;
-
-            googleLoginBtn.textContent =
-                "Continue with Google";
-
-        }
-
-    }
-);
+    const lesson =
+        course.lessons[
+            currentLesson
+        ];
 
 
-/* ================= LOGOUT ================= */
+    if(!lesson){
 
-logoutBtn.addEventListener(
-    "click",
-    async () => {
-
-        try{
-
-            await saveUserProgress();
-
-            await signOut(
-                firebaseAuth
-            );
-
-        }
-        catch(error){
-
-            console.error(
-                "Sign-out error:",
-                error
-            );
-
-        }
-
-    }
-);
-
-
-/* ================= CLOUD SAVE ================= */
-
-async function saveUserProgress(){
-
-    const user =
-        firebaseAuth.currentUser;
-
-    if(!user){
         return;
+
+    }
+
+
+    lessonNumber.textContent =
+        "LESSON " +
+        String(
+            currentLesson + 1
+        ).padStart(2,"0");
+
+
+    lessonTitle.textContent =
+        lesson.title;
+
+
+    lessonContent.innerHTML =
+        lesson.content;
+
+
+    previousBtn.disabled =
+        currentLesson === 0;
+
+
+    nextBtn.disabled =
+        currentLesson ===
+        course.lessons.length - 1;
+
+
+    if(
+        completedLessons.has(
+            currentLesson
+        )
+    ){
+
+        completeBtn.textContent =
+            "Completed ✓";
+
+        completeBtn.classList.add(
+            "complete"
+        );
+
+    }else{
+
+        completeBtn.textContent =
+            "Mark as Complete ✓";
+
+        completeBtn.classList.remove(
+            "complete"
+        );
+
+    }
+
+
+    renderLessonList();
+
+    updateProgress();
+
+}
+
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+    const total =
+        course.lessons.length;
+
+
+    const completed =
+        completedLessons.size;
+
+
+    const percent =
+        total
+        ? Math.round(
+            (completed / total) * 100
+        )
+        : 0;
+
+
+    progressFill.style.width =
+        percent + "%";
+
+
+    progressText.textContent =
+        percent + "%";
+
+}
+
+
+
+/* =====================================================
+   SAVE PROGRESS
+===================================================== */
+
+async function saveProgress(){
+
+    if(!currentUser){
+
+        return;
+
     }
 
 
     try{
 
-        const progressRef =
+        const completed =
+            Array.from(
+                completedLessons
+            );
+
+
+        const progress =
+            course.lessons.length
+            ? Math.round(
+                (
+                    completed.length /
+                    course.lessons.length
+                ) * 100
+            )
+            : 0;
+
+
+        const enrollmentRef =
             doc(
                 db,
                 "users",
-                user.uid,
-                "courseProgress",
-                "webDevelopment"
+                currentUser.uid,
+                "enrolledCourses",
+                courseId
             );
 
 
         await setDoc(
-            progressRef,
+            enrollmentRef,
             {
 
-                userId:
-                    user.uid,
+                courseId:
+                    courseId,
 
-                email:
-                    user.email || "",
+                courseTitle:
+                    course.title,
 
-                displayName:
-                    user.displayName || "",
+                progress:
+                    progress,
 
-                photoURL:
-                    user.photoURL || "",
+                currentLesson:
+                    currentLesson,
 
-                completed:
+                completedLessons:
                     completed,
 
-                currentTopic:
-                    currentTopic,
+                completed:
+                    progress >= 100,
 
-                certificatePaid:
-                    typeof certificatePaid !== "undefined"
-                    ? certificatePaid
-                    : false,
-
-                updatedAt:
+                lastAccessed:
                     serverTimestamp()
 
             },
@@ -2587,22 +2610,17 @@ async function saveUserProgress(){
         );
 
 
-        setSyncStatus(
-            "✓ Progress saved to your Google account.",
-            "online"
+        console.log(
+            "Progress saved:",
+            progress + "%"
         );
 
-    }
-    catch(error){
+
+    }catch(error){
 
         console.error(
             "Progress save error:",
             error
-        );
-
-        setSyncStatus(
-            "Could not save progress. Check Firebase setup.",
-            "error"
         );
 
     }
@@ -2610,27 +2628,35 @@ async function saveUserProgress(){
 }
 
 
-/* ================= CLOUD LOAD ================= */
 
-async function loadUserProgress(
-    user
-){
+/* =====================================================
+   LOAD PROGRESS
+===================================================== */
+
+async function loadProgress(){
+
+    if(!currentUser){
+
+        return;
+
+    }
+
 
     try{
 
-        const progressRef =
+        const enrollmentRef =
             doc(
                 db,
                 "users",
-                user.uid,
-                "courseProgress",
-                "webDevelopment"
+                currentUser.uid,
+                "enrolledCourses",
+                courseId
             );
 
 
         const snapshot =
             await getDoc(
-                progressRef
+                enrollmentRef
             );
 
 
@@ -2644,2645 +2670,84 @@ async function loadUserProgress(
 
             if(
                 Array.isArray(
-                    data.completed
+                    data.completedLessons
                 )
             ){
 
-                completed =
-                    data.completed
-                    .map(Number)
-                    .filter(
-                        Number.isFinite
-                    )
-                    .sort(
-                        (a,b) => a-b
+                completedLessons =
+                    new Set(
+                        data.completedLessons
                     );
 
             }
 
 
             if(
-                Number.isInteger(
-                    Number(
-                        data.currentTopic
-                    )
-                )
+                typeof data.currentLesson ===
+                "number"
             ){
 
-                currentTopic =
-                    Number(
-                        data.currentTopic
+                currentLesson =
+                    Math.min(
+                        data.currentLesson,
+                        course.lessons.length - 1
                     );
 
             }
-
-
-            if(
-                typeof data.certificatePaid ===
-                "boolean"
-            ){
-
-                certificatePaid =
-                    data.certificatePaid;
-
-                localStorage.setItem(
-                    PAYMENT_KEY,
-                    certificatePaid
-                    ? "paid"
-                    : "unpaid"
-                );
-
-            }
-
-
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(
-                    completed
-                )
-            );
 
         }
 
 
-        buildNavigation();
-
-        openTopic(
-            isTopicUnlocked(currentTopic)
-                ? currentTopic
-                : 1
-        );
-
-        updateProgress();
-
-        updateCertificate();
-
-        setSyncStatus(
-            "✓ Your progress is synced with your Google account.",
-            "online"
-        );
-
-    }
-    catch(error){
+    }catch(error){
 
         console.error(
-            "Progress load error:",
+            "Progress loading error:",
             error
         );
 
-        setSyncStatus(
-            "Signed in, but cloud progress could not be loaded.",
-            "error"
-        );
-
     }
 
 }
 
 
-/* ================= AUTH STATE ================= */
 
-onAuthStateChanged(
-    firebaseAuth,
-    async (user) => {
-
-        if(user){
-
-            googleLoginBtn.style.display =
-                "none";
-
-            accountUser.style.display =
-                "flex";
-
-            accountName.textContent =
-                user.displayName ||
-                user.email ||
-                "Learner";
-
-            if(user.photoURL){
-
-                accountAvatar.src =
-                    user.photoURL;
-
-                accountAvatar.style.display =
-                    "block";
-
-            }
-            else{
-
-                accountAvatar.style.display =
-                    "none";
-
-            }
-
-            userRequired.classList.remove(
-                "show"
-            );
-
-            setSyncStatus(
-                "Loading your saved progress..."
-            );
-
-            await loadUserProgress(
-                user
-            );
-
-        }
-        else{
-
-            googleLoginBtn.style.display =
-                "block";
-
-            accountUser.style.display =
-                "none";
-
-            userRequired.classList.add(
-                "show"
-            );
-
-            setSyncStatus(
-                "Sign in with Google to save your progress."
-            );
-
-            /*
-             * Keep the local progress available,
-             * but cloud saving is disabled until login.
-             */
-
-            buildNavigation();
-
-            openTopic(
-                isTopicUnlocked(currentTopic)
-                    ? currentTopic
-                    : 1
-            );
-
-            updateProgress();
-
-            updateCertificate();
-
-        }
-
-    }
-);
-
-
-/* ================= IMMEDIATE PROGRESS SYNC ================= */
-
-document.addEventListener(
-    "courseProgressChanged",
-    async () => {
-
-        if(firebaseAuth.currentUser){
-
-            await saveUserProgress();
-
-        }
-
-    }
-);
-
-
-/* ================= OVERRIDE LOCAL COMPLETION SAVE ================= */
-
-/*
- * The course already writes completed[] to localStorage.
- * This small watcher is used to sync changes to Firestore
- * after Mark as Complete / other course actions.
- */
-
-setInterval(
-    async () => {
-
-        if(
-            firebaseAuth.currentUser
-        ){
-
-            await saveUserProgress();
-
-        }
-
-    },
-    5000
-);
-
-</script>
-
-<script>
-
-/* =========================================================
-   6 MONTH COURSE DATA
-
-   24 WEEKS
-   48 TOPICS
-   2 TOPICS PER WEEK
-========================================================= */
-
-const course = [
-
-/* ================= MONTH 1 ================= */
-
-{
-    id:1,
-    month:"Month 1",
-    title:"Web Foundations & HTML",
-
-    weeks:[1,2,3,4],
-
-    topics:[
-
-    {
-        id:1,
-        week:1,
-        title:"How the Internet Works",
-        time:"30 min",
-
-        intro:
-        "Understand the basic journey of a website from a user's browser to a web server.",
-
-        content:`
-        <h3>What happens when you open a website?</h3>
-
-        <p>
-        When you type a website address into a browser,
-        the browser sends a request to a server.
-        The server processes the request and sends
-        a response back to your browser.
-        </p>
-
-        <h3>Basic Web Flow</h3>
-
-        <ul>
-            <li>User enters a URL.</li>
-            <li>Browser sends a request.</li>
-            <li>Server receives the request.</li>
-            <li>Server sends a response.</li>
-            <li>Browser renders the webpage.</li>
-        </ul>
-        `,
-
-        code:
-`User
-  ↓
-Browser
-  ↓
-HTTP Request
-  ↓
-Web Server
-  ↓
-HTTP Response
-  ↓
-Web Page`,
-
-        practice:
-        "Explain the complete journey of opening a website in your own words."
-    },
-
-
-    {
-        id:2,
-        week:1,
-        title:"Browser, Server & HTTP",
-        time:"35 min",
-
-        intro:
-        "Learn how browsers, servers and HTTP work together.",
-
-        content:`
-        <h3>Browser</h3>
-
-        <p>
-        Chrome, Edge, Firefox and Safari are browsers.
-        They interpret HTML, CSS and JavaScript.
-        </p>
-
-        <h3>HTTP</h3>
-
-        <p>
-        HTTP is used for communication between
-        clients and servers.
-        </p>
-        `,
-
-        code:
-`GET /index.html HTTP/1.1
-
-Host: example.com`,
-
-        practice:
-        "Open browser Developer Tools and inspect a website's Network tab."
-    },
-
-
-    {
-        id:3,
-        week:2,
-        title:"HTML Basics",
-        time:"40 min",
-
-        intro:
-        "Learn the structure of HTML documents and the most important HTML elements.",
-
-        content:`
-        <h3>HTML</h3>
-
-        <p>
-        HTML stands for HyperText Markup Language.
-        It creates the structure of webpages.
-        </p>
-
-        <ul>
-            <li>Headings</li>
-            <li>Paragraphs</li>
-            <li>Links</li>
-            <li>Images</li>
-            <li>Lists</li>
-            <li>Buttons</li>
-        </ul>
-        `,
-
-        code:
-`<!DOCTYPE html>
-
-<html>
-
-<head>
-    <title>My Website</title>
-</head>
-
-<body>
-
-    <h1>Hello World</h1>
-
-    <p>
-        My first website.
-    </p>
-
-</body>
-
-</html>`,
-
-        practice:
-        "Create a personal introduction page using HTML."
-    },
-
-
-    {
-        id:4,
-        week:2,
-        title:"HTML Semantic Structure",
-        time:"40 min",
-
-        intro:
-        "Build meaningful webpage structures using semantic HTML.",
-
-        content:`
-        <h3>Semantic HTML</h3>
-
-        <p>
-        Semantic elements describe what their
-        content represents.
-        </p>
-
-        <ul>
-            <li>header</li>
-            <li>nav</li>
-            <li>main</li>
-            <li>section</li>
-            <li>article</li>
-            <li>footer</li>
-        </ul>
-        `,
-
-        code:
-`<header>
-    <h1>MamRaj Academy</h1>
-</header>
-
-<nav>
-    <a href="#">Home</a>
-</nav>
-
-<main>
-
-    <section>
-        <h2>Courses</h2>
-    </section>
-
-</main>
-
-<footer>
-    © 2026 MamRaj
-</footer>`,
-
-        practice:
-        "Create a semantic homepage for MamRaj Nexus Academy."
-    },
-
-
-    {
-        id:5,
-        week:3,
-        title:"HTML Forms",
-        time:"40 min",
-
-        intro:
-        "Learn how websites collect user information using forms.",
-
-        content:`
-        <h3>Forms</h3>
-
-        <p>
-        HTML forms can contain inputs, labels,
-        buttons, selects and textareas.
-        </p>
-        `,
-
-        code:
-`<form>
-
-<label>Name</label>
-
-<input
-    type="text"
-    placeholder="Your name"
->
-
-<label>Email</label>
-
-<input
-    type="email"
-    placeholder="Email"
->
-
-<button>
-    Submit
-</button>
-
-</form>`,
-
-        practice:
-        "Create a student registration form."
-    },
-
-
-    {
-        id:6,
-        week:3,
-        title:"HTML Tables & Media",
-        time:"35 min",
-
-        intro:
-        "Learn how to display structured information and media.",
-
-        content:`
-        <h3>Tables</h3>
-
-        <p>
-        Tables display information in rows and columns.
-        </p>
-
-        <h3>Media</h3>
-
-        <p>
-        HTML supports images, audio and video.
-        </p>
-        `,
-
-        code:
-`<table>
-
-<tr>
-    <th>Name</th>
-    <th>Course</th>
-</tr>
-
-<tr>
-    <td>Aditya</td>
-    <td>Web Development</td>
-</tr>
-
-</table>`,
-
-        practice:
-        "Create a student table with name, course and progress."
-    },
-
-
-    {
-        id:7,
-        week:4,
-        title:"HTML Accessibility",
-        time:"30 min",
-
-        intro:
-        "Make webpages easier to understand and use for everyone.",
-
-        content:`
-        <h3>Accessibility</h3>
-
-        <p>
-        Accessible websites use meaningful HTML,
-        labels, alternative text and logical structures.
-        </p>
-        `,
-
-        code:
-`<img
-    src="student.jpg"
-    alt="Student learning web development"
->`,
-
-        practice:
-        "Add proper labels and alt text to your previous project."
-    },
-
-
-    {
-        id:8,
-        week:4,
-        title:"HTML Mini Project",
-        time:"60 min",
-
-        intro:
-        "Build your first complete multi-section webpage.",
-
-        content:`
-        <h3>Project</h3>
-
-        <p>
-        Build a personal portfolio homepage using
-        everything learned in Month 1.
-        </p>
-
-        <ul>
-            <li>Header</li>
-            <li>About section</li>
-            <li>Skills</li>
-            <li>Projects</li>
-            <li>Contact form</li>
-            <li>Footer</li>
-        </ul>
-        `,
-
-        code:
-`Portfolio
- ├── Header
- ├── About
- ├── Skills
- ├── Projects
- ├── Contact
- └── Footer`,
-
-        practice:
-        "Build and save your first HTML portfolio project."
-    }
-
-    ]
-},
-
-/* ================= MONTH 2 ================= */
-
-{
-    id:2,
-    month:"Month 2",
-    title:"CSS & Responsive Design",
-
-    weeks:[5,6,7,8],
-
-    topics:[
-
-    {
-        id:9,
-        week:5,
-        title:"CSS Fundamentals",
-        time:"40 min",
-
-        intro:
-        "Learn selectors, properties, colors, fonts and basic styling.",
-
-        content:`
-        <h3>CSS</h3>
-
-        <p>
-        CSS controls the visual presentation
-        of HTML content.
-        </p>
-
-        <ul>
-            <li>Selectors</li>
-            <li>Colors</li>
-            <li>Fonts</li>
-            <li>Spacing</li>
-            <li>Borders</li>
-        </ul>
-        `,
-
-        code:
-`body{
-    font-family:Arial;
-    color:#263873;
-}
-
-h1{
-    font-size:32px;
-}`,
-
-        practice:
-        "Style your Month 1 portfolio using an external CSS file."
-    },
-
-
-    {
-        id:10,
-        week:5,
-        title:"CSS Box Model",
-        time:"35 min",
-
-        intro:
-        "Understand content, padding, border and margin.",
-
-        content:`
-        <h3>Box Model</h3>
-
-        <p>
-        Every HTML element can be understood
-        as a rectangular box.
-        </p>
-        `,
-
-        code:
-`.card{
-
-    padding:20px;
-
-    border:1px solid #ddd;
-
-    margin:20px;
-
-}`,
-
-        practice:
-        "Create three cards using the CSS box model."
-    },
-
-
-    {
-        id:11,
-        week:6,
-        title:"Flexbox",
-        time:"45 min",
-
-        intro:
-        "Use Flexbox to create flexible one-dimensional layouts.",
-
-        content:`
-        <h3>Flexbox</h3>
-
-        <p>
-        Flexbox is useful for navigation bars,
-        rows, columns and alignment.
-        </p>
-        `,
-
-        code:
-`.container{
-
-    display:flex;
-
-    justify-content:
-        space-between;
-
-    align-items:center;
-
-    gap:20px;
-
-}`,
-
-        practice:
-        "Build a responsive navigation bar using Flexbox."
-    },
-
-
-    {
-        id:12,
-        week:6,
-        title:"CSS Grid",
-        time:"45 min",
-
-        intro:
-        "Learn CSS Grid for powerful two-dimensional layouts.",
-
-        content:`
-        <h3>Grid</h3>
-
-        <p>
-        Grid allows you to control rows and columns
-        at the same time.
-        </p>
-        `,
-
-        code:
-`.cards{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-
-}`,
-
-        practice:
-        "Create a three-column project card section."
-    },
-
-
-    {
-        id:13,
-        week:7,
-        title:"Responsive Design",
-        time:"45 min",
-
-        intro:
-        "Make websites work properly on phones, tablets and desktops.",
-
-        content:`
-        <h3>Responsive Websites</h3>
-
-        <p>
-        Responsive design changes layouts according
-        to the available screen size.
-        </p>
-        `,
-
-        code:
-`@media(max-width:768px){
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-}`,
-
-        practice:
-        "Make your portfolio responsive on mobile."
-    },
-
-
-    {
-        id:14,
-        week:7,
-        title:"CSS Animations",
-        time:"40 min",
-
-        intro:
-        "Add subtle animations and interactions to improve user experience.",
-
-        content:`
-        <h3>Transitions</h3>
-
-        <p>
-        CSS transitions make changes smooth.
-        </p>
-        `,
-
-        code:
-`.card{
-
-    transition:
-        transform .3s ease;
-
-}
-
-.card:hover{
-
-    transform:
-        translateY(-8px);
-
-}`,
-
-        practice:
-        "Add hover animations to your project cards."
-    },
-
-
-    {
-        id:15,
-        week:8,
-        title:"Modern UI Design",
-        time:"50 min",
-
-        intro:
-        "Learn practical principles for creating clean modern interfaces.",
-
-        content:`
-        <h3>UI Principles</h3>
-
-        <ul>
-            <li>Consistent spacing</li>
-            <li>Clear hierarchy</li>
-            <li>Readable typography</li>
-            <li>Good contrast</li>
-            <li>Consistent buttons</li>
-        </ul>
-        `,
-
-        code:
-`.button{
-
-    padding:12px 20px;
-
-    border-radius:10px;
-
-    font-weight:700;
-
-}`,
-
-        practice:
-        "Redesign your portfolio using a consistent design system."
-    },
-
-
-    {
-        id:16,
-        week:8,
-        title:"Responsive Website Project",
-        time:"90 min",
-
-        intro:
-        "Complete a responsive website project using HTML and CSS.",
-
-        content:`
-        <h3>Project Requirements</h3>
-
-        <ul>
-            <li>Responsive navbar</li>
-            <li>Hero section</li>
-            <li>Services</li>
-            <li>Projects</li>
-            <li>Testimonials</li>
-            <li>Contact section</li>
-        </ul>
-        `,
-
-        code:
-`Desktop
-Tablet
-Mobile
-
-        ↓
-
-Same website
-Different layout`,
-
-        practice:
-        "Build and publish a fully responsive business website."
-    }
-
-    ]
-},
-
-/* ================= MONTH 3 ================= */
-
-{
-    id:3,
-    month:"Month 3",
-    title:"JavaScript & Web Interactivity",
-
-    weeks:[9,10,11,12],
-
-    topics:[
-
-    {
-        id:17,
-        week:9,
-        title:"JavaScript Basics",
-        time:"45 min",
-
-        intro:
-        "Learn variables, data types, operators and basic JavaScript syntax.",
-
-        content:`
-        <h3>JavaScript</h3>
-
-        <p>
-        JavaScript adds logic and interaction
-        to websites.
-        </p>
-        `,
-
-        code:
-`let name = "Aditya";
-
-let age = 25;
-
-console.log(name);
-
-console.log(age);`,
-
-        practice:
-        "Create variables for your name, age, course and city."
-    },
-
-
-    {
-        id:18,
-        week:9,
-        title:"Conditions & Loops",
-        time:"45 min",
-
-        intro:
-        "Learn how programs make decisions and repeat tasks.",
-
-        content:`
-        <h3>Conditions</h3>
-
-        <p>
-        Conditions allow programs to make decisions.
-        </p>
-
-        <h3>Loops</h3>
-
-        <p>
-        Loops repeat code efficiently.
-        </p>
-        `,
-
-        code:
-`for(let i=1;i<=5;i++){
-
-    console.log(i);
-
-}`,
-
-        practice:
-        "Print the numbers 1 to 100 and identify even numbers."
-    },
-
-
-    {
-        id:19,
-        week:10,
-        title:"Functions",
-        time:"45 min",
-
-        intro:
-        "Create reusable blocks of JavaScript code.",
-
-        content:`
-        <h3>Functions</h3>
-
-        <p>
-        Functions help organize and reuse logic.
-        </p>
-        `,
-
-        code:
-`function greet(name){
-
-    return "Hello " + name;
-
-}
-
-console.log(
-    greet("Aditya")
-);`,
-
-        practice:
-        "Create functions for addition, subtraction and multiplication."
-    },
-
-
-    {
-        id:20,
-        week:10,
-        title:"Arrays & Objects",
-        time:"50 min",
-
-        intro:
-        "Store and organize collections of data using arrays and objects.",
-
-        content:`
-        <h3>Arrays</h3>
-
-        <p>
-        Arrays store multiple values.
-        </p>
-
-        <h3>Objects</h3>
-
-        <p>
-        Objects store related properties.
-        </p>
-        `,
-
-        code:
-`const student = {
-
-    name:"Aditya",
-
-    course:"Web Development",
-
-    progress:65
-
-};`,
-
-        practice:
-        "Create an array of five students represented as objects."
-    },
-
-
-    {
-        id:21,
-        week:11,
-        title:"DOM Manipulation",
-        time:"50 min",
-
-        intro:
-        "Use JavaScript to read and change HTML elements.",
-
-        content:`
-        <h3>The DOM</h3>
-
-        <p>
-        The Document Object Model represents
-        webpage elements as objects.
-        </p>
-        `,
-
-        code:
-`const title =
-document.getElementById(
-    "title"
-);
-
-title.textContent =
-"Welcome!";`,
-
-        practice:
-        "Create a button that changes the page heading."
-    },
-
-
-    {
-        id:22,
-        week:11,
-        title:"Events & Forms",
-        time:"50 min",
-
-        intro:
-        "Handle clicks, typing and form submissions using JavaScript.",
-
-        content:`
-        <h3>Events</h3>
-
-        <p>
-        Events allow JavaScript to respond
-        to user actions.
-        </p>
-        `,
-
-        code:
-`button.addEventListener(
-    "click",
-    function(){
-
-        alert("Hello!");
-
-    }
-);`,
-
-        practice:
-        "Create a form and display submitted information dynamically."
-    },
-
-
-    {
-        id:23,
-        week:12,
-        title:"Fetch API & JSON",
-        time:"50 min",
-
-        intro:
-        "Communicate with APIs and work with JSON data.",
-
-        content:`
-        <h3>API</h3>
-
-        <p>
-        APIs allow applications to communicate
-        and exchange data.
-        </p>
-        `,
-
-        code:
-`fetch("/api/courses")
-.then(response =>
-    response.json()
-)
-.then(data =>
-    console.log(data)
-);`,
-
-        practice:
-        "Fetch JSON data and display it as cards."
-    },
-
-
-    {
-        id:24,
-        week:12,
-        title:"JavaScript Project",
-        time:"90 min",
-
-        intro:
-        "Build an interactive application using JavaScript.",
-
-        content:`
-        <h3>Project Options</h3>
-
-        <ul>
-            <li>Todo Application</li>
-            <li>Quiz Application</li>
-            <li>Expense Tracker</li>
-            <li>Weather Application</li>
-        </ul>
-        `,
-
-        code:
-`User Action
-    ↓
-JavaScript
-    ↓
-DOM
-    ↓
-Updated UI`,
-
-        practice:
-        "Build and complete one JavaScript application."
-    }
-
-    ]
-},
-
-/* ================= MONTH 4 ================= */
-
-{
-    id:4,
-    month:"Month 4",
-    title:"Git, GitHub & React",
-
-    weeks:[13,14,15,16],
-
-    topics:[
-
-    {
-        id:25,
-        week:13,
-        title:"Git Fundamentals",
-        time:"35 min",
-
-        intro:
-        "Learn version control and track project changes.",
-
-        content:`
-        <h3>Why Git?</h3>
-
-        <p>
-        Git helps developers track versions
-        and collaborate.
-        </p>
-        `,
-
-        code:
-`git init
-
-git add .
-
-git commit -m "Initial commit"
-
-git status`,
-
-        practice:
-        "Create a Git repository for your previous project."
-    },
-
-
-    {
-        id:26,
-        week:13,
-        title:"GitHub Workflow",
-        time:"35 min",
-
-        intro:
-        "Learn how to store and share projects on GitHub.",
-
-        content:`
-        <h3>GitHub</h3>
-
-        <p>
-        GitHub provides online repositories
-        and collaboration tools.
-        </p>
-        `,
-
-        code:
-`git remote add origin URL
-
-git branch -M main
-
-git push -u origin main`,
-
-        practice:
-        "Upload your portfolio project to GitHub."
-    },
-
-
-    {
-        id:27,
-        week:14,
-        title:"React Fundamentals",
-        time:"50 min",
-
-        intro:
-        "Understand React components and the component-based approach.",
-
-        content:`
-        <h3>React</h3>
-
-        <p>
-        React is a JavaScript library used
-        to build interactive user interfaces.
-        </p>
-        `,
-
-        code:
-`function Welcome(){
-
-    return (
-        <h1>
-            Welcome
-        </h1>
-    );
-
-}`,
-
-        practice:
-        "Create your first React component."
-    },
-
-
-    {
-        id:28,
-        week:14,
-        title:"Components & Props",
-        time:"50 min",
-
-        intro:
-        "Create reusable components and pass information using props.",
-
-        content:`
-        <h3>Props</h3>
-
-        <p>
-        Props allow parent components to send
-        information to child components.
-        </p>
-        `,
-
-        code:
-`function CourseCard({
-    title
-}){
-
-    return (
-        <div>
-            {title}
-        </div>
-    );
-
-}`,
-
-        practice:
-        "Create a reusable CourseCard component."
-    },
-
-
-    {
-        id:29,
-        week:15,
-        title:"React State",
-        time:"50 min",
-
-        intro:
-        "Use state to store information that changes in a React application.",
-
-        content:`
-        <h3>State</h3>
-
-        <p>
-        State allows components to remember
-        and update information.
-        </p>
-        `,
-
-        code:
-`const [
-    count,
-    setCount
-] = useState(0);`,
-
-        practice:
-        "Build a counter using React state."
-    },
-
-
-    {
-        id:30,
-        week:15,
-        title:"React Hooks",
-        time:"55 min",
-
-        intro:
-        "Learn useState, useEffect and practical React hooks.",
-
-        content:`
-        <h3>useEffect</h3>
-
-        <p>
-        useEffect allows components to perform
-        side effects such as API calls.
-        </p>
-        `,
-
-        code:
-`useEffect(() => {
-
-    fetchCourses();
-
-}, []);`,
-
-        practice:
-        "Fetch API data inside a React component."
-    },
-
-
-    {
-        id:31,
-        week:16,
-        title:"React Routing",
-        time:"45 min",
-
-        intro:
-        "Create multiple pages in a React application.",
-
-        content:`
-        <h3>Routing</h3>
-
-        <p>
-        Routing allows users to navigate between
-        different views without reloading the entire app.
-        </p>
-        `,
-
-        code:
-`<Route
-    path="/courses"
-    element={
-        <Courses />
-    }
-/>`,
-
-        practice:
-        "Create Dashboard, Courses and Profile routes."
-    },
-
-
-    {
-        id:32,
-        week:16,
-        title:"React Project",
-        time:"100 min",
-
-        intro:
-        "Build a complete React application.",
-
-        content:`
-        <h3>Project</h3>
-
-        <ul>
-            <li>Dashboard</li>
-            <li>Navigation</li>
-            <li>Course cards</li>
-            <li>Progress</li>
-            <li>Profile</li>
-        </ul>
-        `,
-
-        code:
-`React App
- ├── Dashboard
- ├── Courses
- ├── Progress
- └── Profile`,
-
-        practice:
-        "Build a learning dashboard similar to MamRaj Nexus Academy."
-    }
-
-    ]
-},
-
-/* ================= MONTH 5 ================= */
-
-{
-    id:5,
-    month:"Month 5",
-    title:"Backend, APIs & Database",
-
-    weeks:[17,18,19,20],
-
-    topics:[
-
-    {
-        id:33,
-        week:17,
-        title:"Node.js Fundamentals",
-        time:"50 min",
-
-        intro:
-        "Run JavaScript on the server and understand backend development.",
-
-        content:`
-        <h3>Node.js</h3>
-
-        <p>
-        Node.js allows JavaScript to run outside
-        the browser.
-        </p>
-        `,
-
-        code:
-`const http =
-require("http");
-
-const server =
-http.createServer(
-(req,res) => {
-
-    res.end("Hello");
-
-});
-
-server.listen(3000);`,
-
-        practice:
-        "Create a Node.js server."
-    },
-
-
-    {
-        id:34,
-        week:17,
-        title:"Express.js",
-        time:"50 min",
-
-        intro:
-        "Build backend routes and APIs using Express.",
-
-        content:`
-        <h3>Express</h3>
-
-        <p>
-        Express simplifies Node.js web server development.
-        </p>
-        `,
-
-        code:
-`const express =
-require("express");
-
-const app =
-express();
-
-app.get(
-    "/",
-    (req,res) => {
-
-        res.json({
-            message:"Hello"
-        });
-
-    }
-);`,
-
-        practice:
-        "Create a basic Express API."
-    },
-
-
-    {
-        id:35,
-        week:18,
-        title:"REST APIs",
-        time:"50 min",
-
-        intro:
-        "Understand GET, POST, PUT and DELETE operations.",
-
-        content:`
-        <h3>REST</h3>
-
-        <ul>
-            <li>GET → Read</li>
-            <li>POST → Create</li>
-            <li>PUT → Update</li>
-            <li>DELETE → Remove</li>
-        </ul>
-        `,
-
-        code:
-`GET    /users
-
-POST   /users
-
-PUT    /users/1
-
-DELETE /users/1`,
-
-        practice:
-        "Design REST endpoints for a course platform."
-    },
-
-
-    {
-        id:36,
-        week:18,
-        title:"API Authentication",
-        time:"55 min",
-
-        intro:
-        "Understand login systems and protected backend resources.",
-
-        content:`
-        <h3>Authentication</h3>
-
-        <p>
-        Authentication verifies who a user is.
-        Authorization determines what that user
-        can access.
-        </p>
-        `,
-
-        code:
-`User
- ↓
-Login
- ↓
-Authentication
- ↓
-Token
- ↓
-Protected API`,
-
-        practice:
-        "Design a login and protected dashboard flow."
-    },
-
-
-    {
-        id:37,
-        week:19,
-        title:"SQL Database",
-        time:"50 min",
-
-        intro:
-        "Learn relational databases, tables and SQL queries.",
-
-        content:`
-        <h3>SQL</h3>
-
-        <p>
-        SQL databases organize structured data
-        into tables.
-        </p>
-        `,
-
-        code:
-`CREATE TABLE students(
-    id INT,
-    name VARCHAR(100),
-    course VARCHAR(100)
-);
-
-SELECT *
-FROM students;`,
-
-        practice:
-        "Create a database for students and courses."
-    },
-
-
-    {
-        id:38,
-        week:19,
-        title:"MongoDB",
-        time:"50 min",
-
-        intro:
-        "Learn document-based NoSQL database concepts.",
-
-        content:`
-        <h3>MongoDB</h3>
-
-        <p>
-        MongoDB stores flexible JSON-like documents
-        inside collections.
-        </p>
-        `,
-
-        code:
-`db.students.insertOne({
-
-    name:"Aditya",
-
-    course:"Web Development",
-
-    progress:75
-
-});`,
-
-        practice:
-        "Create a MongoDB collection for students."
-    },
-
-
-    {
-        id:39,
-        week:20,
-        title:"Backend + Database",
-        time:"60 min",
-
-        intro:
-        "Connect your Express backend with a database.",
-
-        content:`
-        <h3>Full Backend Flow</h3>
-
-        <p>
-        The API receives a request, processes it,
-        communicates with the database and returns
-        a response.
-        </p>
-        `,
-
-        code:
-`Frontend
-   ↓
-Express API
-   ↓
-Database
-   ↓
-JSON Response
-   ↓
-Frontend`,
-
-        practice:
-        "Build an API that reads course data from a database."
-    },
-
-
-    {
-        id:40,
-        week:20,
-        title:"Backend Project",
-        time:"120 min",
-
-        intro:
-        "Build the backend for a learning platform.",
-
-        content:`
-        <h3>Required APIs</h3>
-
-        <ul>
-            <li>Register</li>
-            <li>Login</li>
-            <li>Courses</li>
-            <li>Lessons</li>
-            <li>Progress</li>
-            <li>Profile</li>
-        </ul>
-        `,
-
-        code:
-`/api/auth
-
-/api/courses
-
-/api/lessons
-
-/api/progress
-
-/api/profile`,
-
-        practice:
-        "Build and test your learning platform backend."
-    }
-
-    ]
-},
-
-/* ================= MONTH 6 ================= */
-
-{
-    id:6,
-    month:"Month 6",
-    title:"Full Stack, AI & Deployment",
-
-    weeks:[21,22,23,24],
-
-    topics:[
-
-    {
-        id:41,
-        week:21,
-        title:"Connect Frontend & Backend",
-        time:"60 min",
-
-        intro:
-        "Connect your React frontend with your backend APIs.",
-
-        content:`
-        <h3>Full Stack Architecture</h3>
-
-        <p>
-        A full-stack application combines
-        frontend, backend and database systems.
-        </p>
-        `,
-
-        code:
-`React
-  ↓
-REST API
-  ↓
-Node.js
-  ↓
-Database`,
-
-        practice:
-        "Connect your React dashboard to your backend API."
-    },
-
-
-    {
-        id:42,
-        week:21,
-        title:"User Progress System",
-        time:"60 min",
-
-        intro:
-        "Create a real progress tracking system for learners.",
-
-        content:`
-        <h3>Progress</h3>
-
-        <p>
-        Store completed lessons and calculate
-        learner progress dynamically.
-        </p>
-        `,
-
-        code:
-`completed = 24
-
-total = 48
-
-progress =
-(completed / total) * 100`,
-
-        practice:
-        "Implement lesson completion and progress tracking."
-    },
-
-
-    {
-        id:43,
-        week:22,
-        title:"AI APIs",
-        time:"50 min",
-
-        intro:
-        "Understand how AI services can be integrated into web applications.",
-
-        content:`
-        <h3>AI Integration</h3>
-
-        <p>
-        A secure architecture normally sends
-        AI requests through a backend rather than
-        exposing private credentials in frontend code.
-        </p>
-        `,
-
-        code:
-`Student
-   ↓
-Web App
-   ↓
-Backend
-   ↓
-AI Service
-   ↓
-Response
-   ↓
-Student`,
-
-        practice:
-        "Design an AI assistant for students."
-    },
-
-
-    {
-        id:44,
-        week:22,
-        title:"AI Learning Assistant",
-        time:"75 min",
-
-        intro:
-        "Build the interface and architecture for an AI-powered learning assistant.",
-
-        content:`
-        <h3>Features</h3>
-
-        <ul>
-            <li>Ask questions</li>
-            <li>Explain concepts</li>
-            <li>Generate quizzes</li>
-            <li>Create practice tasks</li>
-            <li>Track learning</li>
-        </ul>
-        `,
-
-        code:
-`Question
-   ↓
-AI Assistant
-   ↓
-Explanation
-   ↓
-Practice Question`,
-
-        practice:
-        "Build an AI mentor interface for MamRaj Nexus Academy."
-    },
-
-
-    {
-        id:45,
-        week:23,
-        title:"Deployment",
-        time:"50 min",
-
-        intro:
-        "Learn the basic process of moving your application from local development to production.",
-
-        content:`
-        <h3>Deployment Flow</h3>
-
-        <ul>
-            <li>Test application</li>
-            <li>Create production build</li>
-            <li>Configure environment</li>
-            <li>Deploy frontend</li>
-            <li>Deploy backend</li>
-            <li>Connect database</li>
-        </ul>
-        `,
-
-        code:
-`Local
-  ↓
-GitHub
-  ↓
-Build
-  ↓
-Hosting
-  ↓
-Live Website`,
-
-        practice:
-        "Deploy one of your previous projects."
-    },
-
-
-    {
-        id:46,
-        week:23,
-        title:"Domain, SSL & Production",
-        time:"45 min",
-
-        intro:
-        "Learn domains, HTTPS, environment variables and production basics.",
-
-        content:`
-        <h3>Production Checklist</h3>
-
-        <ul>
-            <li>Custom domain</li>
-            <li>HTTPS / SSL</li>
-            <li>Environment variables</li>
-            <li>Error handling</li>
-            <li>Performance</li>
-            <li>Security</li>
-        </ul>
-        `,
-
-        code:
-`http://example.com
-
-        ↓
-
-https://example.com
-
-        🔒`,
-
-        practice:
-        "Prepare one project for production deployment."
-    },
-
-
-    {
-        id:47,
-        week:24,
-        title:"Final Capstone Planning",
-        time:"90 min",
-
-        intro:
-        "Plan your final professional full-stack project before development.",
-
-        content:`
-        <h3>Capstone Requirements</h3>
-
-        <ul>
-            <li>Authentication</li>
-            <li>Dashboard</li>
-            <li>Frontend</li>
-            <li>Backend API</li>
-            <li>Database</li>
-            <li>Progress tracking</li>
-            <li>Responsive design</li>
-            <li>AI feature</li>
-            <li>Deployment</li>
-        </ul>
-
-        <h3>Recommended Project</h3>
-
-        <p>
-        Build a complete Learning Management System
-        similar to MamRaj Nexus Academy.
-        </p>
-        `,
-
-        code:
-`LMS
-
- ├── Authentication
- ├── Dashboard
- ├── Courses
- ├── Lessons
- ├── Progress
- ├── Projects
- ├── AI Mentor
- └── Certificates`,
-
-        practice:
-        "Prepare the architecture, database structure and feature list for your capstone."
-    },
-
-
-    {
-        id:48,
-        week:24,
-        title:"Final Capstone Project",
-        time:"Multiple Sessions",
-
-        intro:
-        "Complete your final full-stack project and demonstrate everything learned during the six-month program.",
-
-        content:`
-        <h3>🏆 Final Project</h3>
-
-        <p>
-        Build, test and deploy a complete
-        production-style web application.
-        </p>
-
-        <h3>Final Evaluation</h3>
-
-        <ul>
-            <li>UI / UX quality</li>
-            <li>Responsive design</li>
-            <li>Frontend functionality</li>
-            <li>Backend APIs</li>
-            <li>Database</li>
-            <li>Authentication</li>
-            <li>AI integration</li>
-            <li>GitHub repository</li>
-            <li>Live deployment</li>
-            <li>Project presentation</li>
-        </ul>
-
-        <h3>🎓 Course Completion</h3>
-
-        <p>
-        After completing all topics and the final
-        capstone, the learner becomes eligible for
-        the MamRaj Nexus Academy course completion
-        certificate according to the academy's
-        completion criteria.
-        </p>
-        `,
-
-        code:
-`FINAL PROJECT
-
-Frontend
-    ↓
-React
-    ↓
-Backend API
-    ↓
-Node.js
-    ↓
-Database
-    ↓
-AI
-    ↓
-Deployment
-    ↓
-🌐 LIVE APPLICATION`,
-
-        practice:
-        "Deploy your final project, prepare your GitHub repository and present your application."
-    }
-
-    ]
-
-}
-
-];
-
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
-const STORAGE_KEY =
-    "mamraj_nexus_6_month_web_course";
-
-let completed =
-    JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-        || "[]"
-    );
-
-let currentTopic = 1;
-
-
-/* =========================================================
-   FIND TOPIC
-========================================================= */
-
-function findTopic(id){
-
-    for(const month of course){
-
-        const topic =
-            month.topics.find(
-                item => item.id === id
-            );
-
-        if(topic){
-
-            return {
-                month,
-                topic
-            };
-
-        }
-
-    }
-
-    return null;
-}
-
-
-/* =========================================================
-   COMPLETION
-========================================================= */
-
-function isComplete(id){
-
-    return completed.includes(id);
-}
-
-
-/* =========================================================
-   TOPIC UNLOCK
-========================================================= */
-
-function isTopicUnlocked(id){
-
-    if(id === 1){
-        return true;
-    }
-
-    return completed.includes(
-        id - 1
-    );
-}
-
-
-/* =========================================================
-   MONTH UNLOCK
-========================================================= */
-
-function isMonthUnlocked(monthId){
-
-    if(monthId === 1){
-        return true;
-    }
-
-    const previous =
-        course.find(
-            month =>
-                month.id === monthId - 1
-        );
-
-    if(!previous){
-        return false;
-    }
-
-    return previous.topics.every(
-        topic =>
-            completed.includes(
-                topic.id
-            )
-    );
-}
-
-
-/* =========================================================
-   BUILD SIDEBAR
-========================================================= */
-
-function buildNavigation(){
-
-    const container =
-        document.getElementById(
-            "courseNavigation"
-        );
-
-    container.innerHTML = "";
-
-
-    course.forEach(month => {
-
-        const unlocked =
-            isMonthUnlocked(
-                month.id
-            );
-
-
-        const wrapper =
-            document.createElement(
-                "div"
-            );
-
-        wrapper.className =
-            "month";
-
-
-        if(
-            unlocked &&
-            month.topics.some(
-                topic =>
-                    topic.id ===
-                    currentTopic
-            )
-        ){
-
-            wrapper.classList.add(
-                "open"
-            );
-
-        }
-
-
-        const header =
-            document.createElement(
-                "button"
-            );
-
-        header.className =
-            "month-header";
-
-
-        header.innerHTML = `
-
-            <span class="month-number">
-                ${String(month.id).padStart(2,"0")}
-            </span>
-
-            <span class="month-name">
-                ${month.title}
-            </span>
-
-            <span class="month-lock">
-                ${unlocked ? "↓" : "🔒"}
-            </span>
-
-        `;
-
-
-        header.onclick = () => {
-
-            if(!unlocked){
-
-                alert(
-                    "🔒 Complete Month " +
-                    (month.id - 1) +
-                    " before unlocking " +
-                    month.month + "."
-                );
-
-                return;
-            }
-
-            wrapper.classList.toggle(
-                "open"
-            );
-
-        };
-
-
-        const topics =
-            document.createElement(
-                "div"
-            );
-
-        topics.className =
-            "topics";
-
-
-        month.topics.forEach(topic => {
-
-            const unlockedTopic =
-                isTopicUnlocked(
-                    topic.id
-                );
-
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.className =
-                "topic";
-
-
-            if(
-                topic.id === currentTopic
-            ){
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            if(
-                isComplete(
-                    topic.id
-                )
-            ){
-
-                button.classList.add(
-                    "completed"
-                );
-
-            }
-
-
-            if(!unlockedTopic){
-
-                button.classList.add(
-                    "locked"
-                );
-
-            }
-
-
-            button.innerHTML = `
-
-                <span>
-                    ${
-                        isComplete(topic.id)
-                        ? "✓"
-                        : unlockedTopic
-                        ? "○"
-                        : "🔒"
-                    }
-                </span>
-
-                <span>
-                    W${String(topic.week).padStart(2,"0")}
-                    • ${topic.title}
-                </span>
-
-            `;
-
-
-            button.onclick = () => {
-
-                if(
-                    !isTopicUnlocked(
-                        topic.id
-                    )
-                ){
-
-                    alert(
-                        "🔒 Complete the previous topic first."
-                    );
-
-                    return;
-                }
-
-
-                openTopic(
-                    topic.id
-                );
-
-            };
-
-
-            topics.appendChild(
-                button
-            );
-
-        });
-
-
-        wrapper.appendChild(
-            header
-        );
-
-        wrapper.appendChild(
-            topics
-        );
-
-        container.appendChild(
-            wrapper
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   OPEN TOPIC
-========================================================= */
-
-function openTopic(id){
-
-    if(
-        !isTopicUnlocked(id)
-    ){
-
-        alert(
-            "🔒 Complete the previous topic first."
-        );
-
-        return;
-    }
-
-
-    const result =
-        findTopic(id);
-
-
-    if(!result){
-        return;
-    }
-
-
-    currentTopic =
-        id;
-
-    document.dispatchEvent(
-        new CustomEvent("courseProgressChanged")
-    );
-
-    startLessonTimer(id);
-
-
-    const topic =
-        result.topic;
-
-
-    document.getElementById(
-        "lessonBadge"
-    ).textContent =
-        result.month.month.toUpperCase() +
-        " • WEEK " +
-        String(topic.week).padStart(2,"0");
-
-
-    document.getElementById(
-        "lessonTime"
-    ).textContent =
-        "⏱ " +
-        topic.time;
-
-
-    document.getElementById(
-        "lessonTitle"
-    ).textContent =
-        topic.title;
-
-
-    document.getElementById(
-        "lessonIntro"
-    ).textContent =
-        topic.intro;
-
-
-    document.getElementById(
-        "lessonContent"
-    ).innerHTML =
-        topic.content;
-
-
-    document.getElementById(
-        "lessonCode"
-    ).textContent =
-        topic.code;
-
-
-    document.getElementById(
-        "practiceText"
-    ).textContent =
-        topic.practice;
-
-
-    updateCompleteButton();
-
-    updateProgress();
-
-    buildNavigation();
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================================================
+/* =====================================================
    MARK COMPLETE
-========================================================= */
+===================================================== */
 
-document
-.getElementById(
-    "completeBtn"
-)
-.addEventListener(
+completeBtn.addEventListener(
     "click",
-    () => {
+    async function(){
 
-        if(
-            isComplete(
-                currentTopic
-            )
-        ){
-            return;
-        }
-
-
-                if(
-            !canCompleteCurrentTopic()
-        ){
-
-            updateLessonTimerUI();
-
-            alert(
-                "⏱ Please spend the full 5 minutes on this topic before marking it complete."
-            );
-
-            return;
-        }
-
-
-completed.push(
-            currentTopic
+        completedLessons.add(
+            currentLesson
         );
 
-
-        completed.sort(
-            (a,b) => a-b
-        );
-
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(
-                completed
-            )
-        );
-
-        document.dispatchEvent(
-            new CustomEvent("courseProgressChanged")
-        );
-
-
-        updateCompleteButton();
 
         updateProgress();
 
-        buildNavigation();
+        renderLessonList();
 
 
-        const current =
-            findTopic(
-                currentTopic
-            );
+        await saveProgress();
 
 
-        const month =
-            current.month;
+        // Automatically move to next lesson
 
+        if(
+            currentLesson <
+            course.lessons.length - 1
+        ){
 
-        const monthComplete =
-            month.topics.every(
-                topic =>
-                    isComplete(
-                        topic.id
-                    )
-            );
+            setTimeout(
+                () => {
 
+                    currentLesson++;
 
-        if(monthComplete){
+                    renderLesson();
 
-            if(
-                month.id <
-                course.length
-            ){
-
-                alert(
-                    "🎉 " +
-                    month.month +
-                    " completed!\n\n" +
-
-                    "🔓 " +
-                    course[
-                        month.id
-                    ].month +
-                    " is now unlocked!"
-                );
-
-            }
-            else{
-
-                updateCertificate();
-
-                updateCertificate();
-
-                alert(
-                    "🏆 CONGRATULATIONS!\n\n" +
-
-                    "You have completed the entire " +
-                    "6-month Web Development program!\n\n" +
-
-                    "🎓 Your certificate is now ready. " +
-                    "Pay ₹49 to unlock the official certificate."
-                );
-
-            }
-
-        }
-        else{
-
-            alert(
-                "✓ Topic completed!\n\n" +
-                "🔓 The next topic is now unlocked."
+                },
+                350
             );
 
         }
@@ -5291,120 +2756,22 @@ completed.push(
 );
 
 
-/* =========================================================
-   COMPLETE BUTTON
-========================================================= */
 
-function updateCompleteButton(){
-
-    const button =
-        document.getElementById(
-            "completeBtn"
-        );
-
-    if(
-        isComplete(
-            currentTopic
-        )
-    ){
-
-        button.textContent =
-            "✓ Completed";
-
-        button.disabled =
-            true;
-
-        button.classList.remove(
-            "waiting"
-        );
-
-        return;
-    }
-
-    updateLessonTimerUI();
-
-}
-
-
-/* =========================================================
-   NEXT TOPIC
-========================================================= */
-
-document
-.getElementById(
-    "nextBtn"
-)
-.addEventListener(
-    "click",
-    () => {
-
-        if(
-            !isComplete(
-                currentTopic
-            )
-        ){
-
-            alert(
-                "⚠️ Please complete this topic first."
-            );
-
-            return;
-        }
-
-
-        const next =
-            currentTopic + 1;
-
-
-        if(next > 48){
-
-            alert(
-                "🏆 You have completed the 6-month course!"
-            );
-
-            return;
-        }
-
-
-        if(
-            !isTopicUnlocked(
-                next
-            )
-        ){
-
-            alert(
-                "🔒 Complete the current topic first."
-            );
-
-            return;
-        }
-
-
-        openTopic(next);
-
-    }
-);
-
-
-/* =========================================================
+/* =====================================================
    PREVIOUS
-========================================================= */
+===================================================== */
 
-document
-.getElementById(
-    "previousBtn"
-)
-.addEventListener(
+previousBtn.addEventListener(
     "click",
-    () => {
+    function(){
 
         if(
-            currentTopic > 1
+            currentLesson > 0
         ){
 
-            openTopic(
-                currentTopic - 1
-            );
+            currentLesson--;
+
+            renderLesson();
 
         }
 
@@ -5412,638 +2779,93 @@ document
 );
 
 
-/* =========================================================
-   PROGRESS
-========================================================= */
 
-function updateProgress(){
+/* =====================================================
+   NEXT
+===================================================== */
 
-    const total = 48;
-
-    const done =
-        completed.length;
-
-    const percent =
-        Math.round(
-            done / total * 100
-        );
-
-
-    document.getElementById(
-        "headerProgress"
-    ).style.width =
-        percent + "%";
-
-
-    document.getElementById(
-        "headerPercent"
-    ).textContent =
-        percent + "%";
-
-
-    document.getElementById(
-        "progressPercent"
-    ).textContent =
-        percent + "%";
-
-
-    document.getElementById(
-        "progressCircle"
-    ).style.background =
-        `conic-gradient(
-            var(--green)
-            ${percent * 3.6}deg,
-            #e7dfdb
-            ${percent * 3.6}deg
-        )`;
-
-
-    updateMonthProgress();
-
-    updateCertificate();
-
-}
-
-
-/* =========================================================
-   MONTH PROGRESS
-========================================================= */
-
-function updateMonthProgress(){
-
-    const container =
-        document.getElementById(
-            "monthProgress"
-        );
-
-    container.innerHTML = "";
-
-
-    course.forEach(month => {
-
-        const total =
-            month.topics.length;
-
-
-        const done =
-            month.topics.filter(
-                topic =>
-                    isComplete(
-                        topic.id
-                    )
-            ).length;
-
-
-        const item =
-            document.createElement(
-                "div"
-            );
-
-
-        item.className =
-            "month-progress-item";
-
-
-        item.innerHTML = `
-
-            <strong>
-                ${month.month}
-            </strong>
-
-            <span>
-                ${done} / ${total} topics completed
-            </span>
-
-        `;
-
-
-        container.appendChild(
-            item
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menu =
-    document.getElementById(
-        "menuBtn"
-    );
-
-const sidebar =
-    document.getElementById(
-        "sidebar"
-    );
-
-const overlay =
-    document.getElementById(
-        "overlay"
-    );
-
-
-menu.addEventListener(
+nextBtn.addEventListener(
     "click",
-    () => {
+    async function(){
 
-        sidebar.classList.toggle(
-            "show"
-        );
+        if(
+            currentLesson <
+            course.lessons.length - 1
+        ){
 
-        overlay.classList.toggle(
-            "show"
-        );
+            currentLesson++;
 
-    }
-);
+            renderLesson();
 
-
-overlay.addEventListener(
-    "click",
-    () => {
-
-        sidebar.classList.remove(
-            "show"
-        );
-
-        overlay.classList.remove(
-            "show"
-        );
-
-    }
-);
-
-
-
-
-/* =========================================================
-   5 MINUTE LESSON TIMER
-   Learner must spend 300 seconds on each topic before
-   Mark as Complete becomes available.
-========================================================= */
-
-const LESSON_TIME_REQUIRED = 300;
-const LESSON_TIMER_KEY = "mamraj_nexus_lesson_timers";
-
-let lessonTimers = JSON.parse(
-    localStorage.getItem(LESSON_TIMER_KEY) || "{}"
-);
-
-let timerInterval = null;
-let timerStartedAt = null;
-let timerTopicId = null;
-let timerElapsed = 0;
-
-function saveLessonTimers(){
-    localStorage.setItem(
-        LESSON_TIMER_KEY,
-        JSON.stringify(lessonTimers)
-    );
-}
-
-function getStoredElapsed(id){
-    const value = Number(lessonTimers[id] || 0);
-    return Number.isFinite(value) ? value : 0;
-}
-
-function getCurrentElapsed(){
-    if(!timerTopicId || !timerStartedAt){
-        return getStoredElapsed(currentTopic);
-    }
-
-    return Math.min(
-        LESSON_TIME_REQUIRED,
-        timerElapsed +
-        Math.floor(
-            (Date.now() - timerStartedAt) / 1000
-        )
-    );
-}
-
-function startLessonTimer(id){
-
-    clearInterval(timerInterval);
-
-    timerTopicId = id;
-    timerElapsed = getStoredElapsed(id);
-    timerStartedAt = Date.now();
-
-    updateLessonTimerUI();
-
-    timerInterval = setInterval(
-        tickLessonTimer,
-        1000
-    );
-}
-
-function tickLessonTimer(){
-
-    if(!timerTopicId){
-        return;
-    }
-
-    const elapsed = getCurrentElapsed();
-
-    lessonTimers[timerTopicId] = elapsed;
-
-    saveLessonTimers();
-
-    updateLessonTimerUI();
-
-    if(elapsed >= LESSON_TIME_REQUIRED){
-
-        clearInterval(timerInterval);
-
-        timerElapsed =
-            LESSON_TIME_REQUIRED;
-
-        lessonTimers[timerTopicId] =
-            LESSON_TIME_REQUIRED;
-
-        saveLessonTimers();
-
-        updateLessonTimerUI();
-    }
-}
-
-function canCompleteCurrentTopic(){
-
-    return (
-        getCurrentElapsed() >=
-        LESSON_TIME_REQUIRED
-    );
-}
-
-function updateLessonTimerUI(){
-
-    const value =
-        document.getElementById("timerValue");
-
-    const sub =
-        document.getElementById("timerSub");
-
-    const button =
-        document.getElementById("completeBtn");
-
-    if(!value || !sub || !button){
-        return;
-    }
-
-    if(isComplete(currentTopic)){
-
-        value.textContent = "✓";
-        value.classList.add("ready");
-
-        sub.textContent =
-            "Topic completed.";
-
-        button.disabled = true;
-        button.classList.remove("waiting");
-        button.textContent =
-            "✓ Completed";
-
-        return;
-    }
-
-    const elapsed =
-        Math.min(
-            LESSON_TIME_REQUIRED,
-            getCurrentElapsed()
-        );
-
-    const remaining =
-        Math.max(
-            0,
-            LESSON_TIME_REQUIRED - elapsed
-        );
-
-    if(remaining <= 0){
-
-        value.textContent =
-            "✓ Ready";
-
-        value.classList.add("ready");
-
-        sub.textContent =
-            "5 minutes completed. You can now mark this topic complete.";
-
-        button.disabled = false;
-
-        button.classList.remove("waiting");
-
-        button.textContent =
-            "✓ Mark as Complete";
-
-        return;
-    }
-
-    value.classList.remove("ready");
-
-    const minutes =
-        Math.floor(remaining / 60);
-
-    const seconds =
-        remaining % 60;
-
-    value.textContent =
-        `${minutes}:${String(seconds).padStart(2,"0")}`;
-
-    sub.textContent =
-        `Spend 5 minutes on this topic. ${minutes}:${String(seconds).padStart(2,"0")} remaining.`;
-
-    button.disabled = true;
-
-    button.classList.add("waiting");
-
-    button.textContent =
-        "🔒 Complete after 5 minutes";
-}
-
-
-/* =========================================================
-   CERTIFICATE SYSTEM
-   Course completion -> Certificate preview eligibility.
-   ₹49 payment -> Official certificate unlock.
-========================================================= */
-
-const CERTIFICATE_FEE = 49;
-const PAYMENT_KEY = "mamraj_certificate_payment";
-
-let certificatePaid =
-    localStorage.getItem(PAYMENT_KEY) === "paid";
-
-
-function isCourseComplete(){
-
-    return completed.length >= 48;
-
-}
-
-
-function updateCertificate(){
-
-    const certificateBox =
-        document.getElementById("certificateBox");
-
-    const certificateIcon =
-        document.getElementById("certificateIcon");
-
-    const certificateTitle =
-        document.getElementById("certificateTitle");
-
-    const certificateText =
-        document.getElementById("certificateText");
-
-    const certificateBtn =
-        document.getElementById("certificateBtn");
-
-    const certificatePrice =
-        document.getElementById("certificatePrice");
-
-
-    if(!isCourseComplete()){
-
-        certificateBox.classList.remove("unlocked");
-
-        certificateIcon.textContent = "🔒";
-
-        certificateTitle.textContent =
-            "Certificate Locked";
-
-        certificateText.textContent =
-            `Complete all 48 topics first. ${completed.length}/48 completed.`;
-
-        certificatePrice.innerHTML =
-            `Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
-
-        certificateBtn.textContent =
-            "🔒 Complete Course First";
-
-        certificateBtn.disabled = true;
-
-        certificateBtn.onclick = null;
-
-        return;
-    }
-
-
-    /* Course is complete.
-       Candidate can now see the certificate status,
-       but cannot access the official certificate until payment.
-    */
-
-    if(!certificatePaid){
-
-        certificateBox.classList.add("unlocked");
-
-        certificateIcon.textContent = "🎓";
-
-        certificateTitle.textContent =
-            "Certificate Ready";
-
-        certificateText.textContent =
-            "You completed the course. Pay ₹49 to unlock your official certificate.";
-
-        certificatePrice.innerHTML =
-            `Certificate Fee: <strong>₹${CERTIFICATE_FEE}</strong>`;
-
-        certificateBtn.textContent =
-            "💳 Pay ₹49 & Unlock";
-
-        certificateBtn.disabled = false;
-
-        certificateBtn.onclick =
-            startCertificatePayment;
-
-        return;
-    }
-
-
-    /* Payment completed */
-
-    certificateBox.classList.add("unlocked");
-
-    certificateIcon.textContent = "🏆";
-
-    certificateTitle.textContent =
-        "Certificate Unlocked!";
-
-    certificateText.textContent =
-        "Your official certificate is ready to view and print.";
-
-    certificatePrice.innerHTML =
-        "✓ Certificate fee paid";
-
-    certificateBtn.textContent =
-        "🏆 View Certificate";
-
-    certificateBtn.disabled = false;
-
-    certificateBtn.onclick =
-        openCertificate;
-
-}
-
-
-/* =========================================================
-   PAYMENT
-========================================================= */
-
-function startCertificatePayment(){
-
-    if(!isCourseComplete()){
-
-        alert(
-            "🔒 Complete all 48 topics before paying for the certificate."
-        );
-
-        return;
-    }
-
-
-    /*
-       DEMO PAYMENT FLOW
-
-       Replace this function with your Razorpay checkout
-       when you connect your real payment gateway.
-
-       The current version intentionally asks for confirmation
-       instead of pretending that a real ₹49 transaction occurred.
-    */
-
-    const confirmed =
-        confirm(
-            "Certificate Fee: ₹49\n\n" +
-            "Continue to payment?"
-        );
-
-
-    if(!confirmed){
-        return;
-    }
-
-
-    alert(
-        "Payment gateway is ready to be connected.\n\n" +
-        "Connect Razorpay/payment verification here before " +
-        "marking the certificate as paid."
-    );
-
-}
-
-
-/* =========================================================
-   CALL THIS ONLY AFTER VERIFIED PAYMENT
-========================================================= */
-
-function unlockCertificateAfterVerifiedPayment(){
-
-    if(!isCourseComplete()){
-        return;
-    }
-
-    certificatePaid = true;
-
-    localStorage.setItem(
-        PAYMENT_KEY,
-        "paid"
-    );
-
-    updateCertificate();
-
-    openCertificate();
-
-}
-
-
-/* =========================================================
-   OPEN CERTIFICATE
-========================================================= */
-
-function openCertificate(){
-
-    if(!isCourseComplete()){
-
-        alert(
-            "🔒 Complete all 48 topics first."
-        );
-
-        return;
-    }
-
-
-    if(!certificatePaid){
-
-        alert(
-            "🔒 Please pay the ₹49 certificate fee first."
-        );
-
-        return;
-    }
-
-
-    document
-        .getElementById("certificateModal")
-        .classList.add("show");
-
-
-    document.getElementById(
-        "certificateDate"
-    ).textContent =
-        new Date().getFullYear();
-
-}
-
-
-/* =========================================================
-   CLOSE CERTIFICATE
-========================================================= */
-
-function closeCertificate(){
-
-    document
-        .getElementById("certificateModal")
-        .classList.remove("show");
-
-}
-
-
-/* Close certificate when clicking outside it */
-
-document
-    .getElementById("certificateModal")
-    .addEventListener(
-        "click",
-        function(e){
-
-            if(e.target === this){
-                closeCertificate();
-            }
+            await saveProgress();
 
         }
-    );
+
+    }
+);
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
 
-document.getElementById(
-    "totalTopics"
-).textContent = "48";
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user){
+
+        if(!user){
+
+            window.location.replace(
+                "login.html"
+            );
+
+            return;
+
+        }
 
 
-buildNavigation();
+        currentUser =
+            user;
 
-openTopic(1);
 
-updateProgress();
+        try{
+
+            await loadProgress();
+
+            renderLesson();
+
+        }catch(error){
+
+            console.error(error);
+
+            renderLesson();
+
+        }
+
+
+        loadingScreen.style.display =
+            "none";
+
+    },
+
+    function(error){
+
+        console.error(
+            "Authentication error:",
+            error
+        );
+
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+);
 
 </script>
 
 </body>
+
 </html>
