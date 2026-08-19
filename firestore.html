@@ -1,0 +1,229 @@
+// =====================================================
+// MamRaj Nexus Academy
+// Firestore Student Data
+// =====================================================
+
+import {
+    db
+} from "./firebase.js";
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    updateDoc,
+    collection,
+    getDocs,
+    serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+// =====================================================
+// GET STUDENT PROFILE
+// =====================================================
+
+export async function getStudentProfile(uid){
+
+    const userRef =
+        doc(db, "users", uid);
+
+    const snapshot =
+        await getDoc(userRef);
+
+    if(!snapshot.exists()){
+
+        return null;
+
+    }
+
+    return {
+        id: snapshot.id,
+        ...snapshot.data()
+    };
+
+}
+
+
+// =====================================================
+// CREATE / UPDATE STUDENT PROFILE
+// =====================================================
+
+export async function saveStudentProfile(
+    uid,
+    profile
+){
+
+    const userRef =
+        doc(db, "users", uid);
+
+    await setDoc(
+        userRef,
+        {
+
+            uid: uid,
+
+            ...profile,
+
+            updatedAt:
+                serverTimestamp()
+
+        },
+        {
+            merge: true
+        }
+    );
+
+}
+
+
+// =====================================================
+// UPDATE SPECIFIC PROFILE FIELDS
+// =====================================================
+
+export async function updateStudentProfile(
+    uid,
+    data
+){
+
+    const userRef =
+        doc(db, "users", uid);
+
+    await updateDoc(
+        userRef,
+        {
+
+            ...data,
+
+            updatedAt:
+                serverTimestamp()
+
+        }
+    );
+
+}
+
+
+// =====================================================
+// GET ENROLLED COURSES
+// =====================================================
+
+export async function getStudentCourses(uid){
+
+    const coursesRef =
+        collection(
+            db,
+            "users",
+            uid,
+            "enrollments"
+        );
+
+    const snapshot =
+        await getDocs(coursesRef);
+
+    const courses = [];
+
+    snapshot.forEach(
+        item => {
+
+            courses.push({
+
+                id: item.id,
+
+                ...item.data()
+
+            });
+
+        }
+    );
+
+    return courses;
+
+}
+
+
+// =====================================================
+// SAVE COURSE ENROLLMENT
+// =====================================================
+
+export async function enrollStudent(
+    uid,
+    courseId,
+    courseData = {}
+){
+
+    const enrollmentRef =
+        doc(
+            db,
+            "users",
+            uid,
+            "enrollments",
+            courseId
+        );
+
+    await setDoc(
+        enrollmentRef,
+        {
+
+            courseId: courseId,
+
+            progress: 0,
+
+            completed: false,
+
+            enrolledAt:
+                serverTimestamp(),
+
+            ...courseData
+
+        },
+        {
+            merge: true
+        }
+    );
+
+}
+
+
+// =====================================================
+// UPDATE COURSE PROGRESS
+// =====================================================
+
+export async function updateCourseProgress(
+    uid,
+    courseId,
+    progress
+){
+
+    const enrollmentRef =
+        doc(
+            db,
+            "users",
+            uid,
+            "enrollments",
+            courseId
+        );
+
+    await setDoc(
+        enrollmentRef,
+        {
+
+            progress:
+                Math.min(
+                    100,
+                    Math.max(0, progress)
+                ),
+
+            completed:
+                progress >= 100,
+
+            updatedAt:
+                serverTimestamp()
+
+        },
+        {
+            merge: true
+        }
+    );
+
+}
