@@ -10,18 +10,58 @@
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Poppins,Arial,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}a{text-decoration:none;color:inherit}button,input{font:inherit}
 .app{min-height:100vh}.side{position:fixed;inset:0 auto 0 0;width:258px;background:linear-gradient(#293e7d,#24386f);color:#fff;padding:18px 14px;z-index:20;overflow:auto}
 .logo{height:92px;display:grid;place-items:center;margin-bottom:8px}.logo img{width:185px;height:82px;object-fit:contain;background:#fff;border-radius:12px;padding:5px}
-.st{font-size:8px;letter-spacing:1.6px;color:#ffffff80;font-weight:800;margin:18px 9px 8px;text-transform:uppercase}.nav{display:flex;align-items:center;gap:11px;min-height:48px;padding:0 12px;border-radius:12px;margin:4px 0;color:#ffffffd4;font-size:10px;font-weight:600}.nav:hover{background:#ffffff12}.nav.active{background:var(--p);color:#fff}.ico{width:19px;text-align:center;font-size:14px}.badge{margin-left:auto;background:#fff;color:var(--pu);font-size:6px;padding:3px 6px;border-radius:9px}.mini{display:flex;align-items:center;gap:9px;margin:22px 7px 8px;padding-top:14px;border-top:1px solid #ffffff1c}.ava{width:38px;height:38px;border-radius:50%;background:var(--pl);color:var(--n);display:grid;place-items:center;font-size:10px;font-weight:800}.mini b{font-size:9px;display:block}.mini small{font-size:7px;color:#ffffff80}.out{width:calc(100% - 14px);margin:5px 7px;background:transparent;border:1px solid #ffffff40;color:#fff;border-radius:9px;padding:9px;font-size:8px;font-weight:700}
-.main{margin-left:258px;min-height:100vh}.top{height:82px;background:#fff;border-bottom:1px solid var(--l);display:flex;align-items:center;gap:10px;padding:0 30px;position:sticky;top:0;z-index:10}.menu{display:none}.search{height:44px;max-width:450px;flex:1;background:#f7f5f3;border:1px solid #eee9e5;border-radius:12px;display:flex;align-items:center;padding:0 13px;gap:8px}.search input{border:0;outline:0;background:transparent;width:100%;font-size:9px;color:var(--t)}.filters{display:flex;gap:6px}.filter{background:#fff;border:1px solid var(--l);border-radius:9px;padding:9px 12px;font-size:7px;font-weight:700;color:#687085}.filter.active{background:var(--n);color:#fff;border-color:var(--n)}.topright{margin-left:auto;display:flex;align-items:center;gap:12px}.bell{width:39px;height:39px;border:0;border-radius:11px;background:#faf8f6;position:relative}.dot{position:absolute;width:6px;height:6px;border-radius:50%;background:#ee6d59;right:7px;top:6px}.tp{display:flex;align-items:center;gap:8px}.tp b{font-size:9px;display:block}.tp small{font-size:7px;color:var(--m)}
-.content{padding:30px;max-width:1500px;margin:auto}.hero{min-height:255px;border-radius:22px;padding:34px 42px;background:linear-gradient(110deg,#202f69,#5d48ae 75%,#7460c3);color:#fff;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:390px;height:390px;border:1px solid #ffffff1c;border-radius:50%;right:-90px;top:-230px}.hero:after{content:"N";position:absolute;right:65px;top:25px;font-size:180px;font-weight:800;color:#ffffff0b}.copy{position:relative;z-index:2;max-width:720px}.ey{font-size:8px;letter-spacing:1.7px;color:#f0c1ad;font-weight:800}.hero h1{font-size:36px;line-height:1.15;margin:9px 0}.hero h1 span{color:#dca48c}.hero p{font-size:10px;color:#ffffffc9;max-width:650px}.actions{display:flex;gap:9px;margin-top:20px}.btn{padding:11px 15px;border-radius:9px;font-size:8px;font-weight:800;border:0}.btn.w{background:#fff;color:var(--n)}.btn.g{background:#ffffff16;color:#fff;border:1px solid #ffffff30}.code{position:absolute;right:45px;bottom:28px;width:230px;height:125px;background:#101a40b8;border:1px solid #ffffff1c;border-radius:15px;padding:15px;z-index:2}.dots{display:flex;gap:4px}.dots i{width:5px;height:5px;background:var(--p);border-radius:50%}.line{height:5px;background:#ffffff26;border-radius:5px;margin-top:10px}.w1{width:60%}.w2{width:88%}.w3{width:45%}.w4{width:72%}.tags{display:flex;gap:5px;margin-top:12px}.tags span{font-size:6px;background:#ffffff18;padding:4px 6px;border-radius:5px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0}.stat,.panel{background:#fff;border:1px solid var(--l);border-radius:16px}.stat{padding:16px;display:flex;gap:11px;align-items:center}.si{width:42px;height:42px;border-radius:11px;background:var(--pl);display:grid;place-items:center;color:var(--p);font-size:16px}.stat:nth-child(2) .si{background:#eee9fa;color:#765cc1}.stat:nth-child(3) .si{background:#e8f5ed;color:var(--g)}.stat:nth-child(4) .si{background:#fff1d8;color:#b77b13}.stat small{display:block;color:#8c94a3;font-size:7px}.stat b{display:block;font-size:20px;line-height:1.2}.stat span{font-size:6px;color:#9ba1ad}
-.grid{display:grid;grid-template-columns:1.7fr .8fr;gap:17px}.panel{padding:20px}.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.ph small{display:block;color:var(--p);font-size:7px;letter-spacing:1.2px;font-weight:800}.ph h2{font-size:17px;margin-top:3px}.ph a{font-size:7px;color:#6049bd;font-weight:800}.learn{display:grid;grid-template-columns:190px 1fr;gap:17px;align-items:center}.preview{height:135px;border-radius:13px;padding:14px;background:linear-gradient(135deg,#20336e,#564b9f);color:#fff;position:relative;overflow:hidden}.preview:after{content:"</>";position:absolute;right:8px;bottom:-18px;font-size:70px;font-weight:800;color:#ffffff0b}.preview .tags{margin:0}.preview h3{font-size:14px;margin-top:38px;position:relative;z-index:2}.info h3{font-size:14px}.info p{font-size:8px;color:var(--m)}.pr{display:flex;align-items:center;gap:8px;margin-top:13px}.track{height:7px;background:#e9e8eb;border-radius:8px;flex:1;overflow:hidden}.track span{display:block;width:36%;height:100%;background:var(--p);border-radius:8px}.pr b{font-size:8px}.continue{display:inline-block;margin-top:12px;background:var(--p);color:#fff;border-radius:8px;padding:9px 12px;font-size:7px;font-weight:800}
-.ai{background:linear-gradient(140deg,#292061,#6148b6);color:#fff;border:0;position:relative;overflow:hidden}.ai:after{content:"✦";position:absolute;right:20px;top:-10px;font-size:100px;color:#ffffff0a}.ai .ph h2{color:#fff;font-size:19px}.ai .ph small{color:#e2b5a2}.aidesc{font-size:8px;color:#ffffffb8;margin:8px 0 15px}.ask{height:45px;background:#fff;border-radius:10px;display:flex;align-items:center;padding-left:11px}.ask input{border:0;outline:0;flex:1;min-width:0;font-size:8px}.ask button{width:34px;height:34px;margin-right:5px;border:0;border-radius:8px;background:var(--p);color:#fff}.popular{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.popular span{font-size:6px;background:#ffffff12;padding:6px 8px;border-radius:15px}
-.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:17px;margin-top:17px}.intern{background:linear-gradient(100deg,#fff8f2,#f8ece6);border:1px solid #eadbd3;border-radius:16px;padding:20px;display:flex;align-items:center;gap:12px}.brief{width:45px;height:45px;border-radius:12px;background:#f3ddd1;color:var(--p);display:grid;place-items:center;font-size:18px;flex:none}.intern h3{font-size:14px}.intern p{font-size:8px;color:var(--m);margin-top:2px}.intern a{margin-left:auto;background:var(--p);color:#fff;border-radius:8px;padding:10px 13px;font-size:7px;font-weight:800;white-space:nowrap}.task{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid #f0ece9}.task:last-child{border:0}.ti{width:29px;height:29px;border-radius:8px;background:#f6f0ec;display:grid;place-items:center;font-size:10px}.task b{display:block;font-size:7px}.task small{font-size:6px;color:#9298a5}.status{margin-left:auto;color:var(--g);font-size:6px;font-weight:800}
-.toast{position:fixed;right:20px;bottom:20px;background:var(--n);color:#fff;padding:11px 15px;border-radius:9px;font-size:8px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;z-index:99}.toast.show{opacity:1;transform:none}
+.st{font-size:12px;letter-spacing:1.6px;color:#ffffff80;font-weight:800;margin:18px 9px 8px;text-transform:uppercase}.nav{display:flex;align-items:center;gap:11px;min-height:48px;padding:0 12px;border-radius:12px;margin:4px 0;color:#ffffffd4;font-size:12px;font-weight:600}.nav:hover{background:#ffffff12}.nav.active{background:var(--p);color:#fff}.ico{width:19px;text-align:center;font-size:17px}.badge{margin-left:auto;background:#fff;color:var(--pu);font-size:12px;padding:3px 6px;border-radius:9px}.mini{display:flex;align-items:center;gap:9px;margin:22px 7px 8px;padding-top:14px;border-top:1px solid #ffffff1c}.ava{width:38px;height:38px;border-radius:50%;background:var(--pl);color:var(--n);display:grid;place-items:center;font-size:12px;font-weight:800}.mini b{font-size:11px;display:block}.mini small{font-size:11px;color:#ffffff80}.out{width:calc(100% - 14px);margin:5px 7px;background:transparent;border:1px solid #ffffff40;color:#fff;border-radius:9px;padding:9px;font-size:12px;font-weight:700}
+.main{margin-left:258px;min-height:100vh}.top{height:82px;background:#fff;border-bottom:1px solid var(--l);display:flex;align-items:center;gap:10px;padding:0 30px;position:sticky;top:0;z-index:10}.menu{display:none}.search{height:44px;max-width:450px;flex:1;background:#f7f5f3;border:1px solid #eee9e5;border-radius:12px;display:flex;align-items:center;padding:0 13px;gap:8px}.search input{border:0;outline:0;background:transparent;width:100%;font-size:11px;color:var(--t)}.filters{display:flex;gap:6px}.filter{background:#fff;border:1px solid var(--l);border-radius:9px;padding:9px 12px;font-size:11px;font-weight:700;color:#687085}.filter.active{background:var(--n);color:#fff;border-color:var(--n)}.topright{margin-left:auto;display:flex;align-items:center;gap:12px}.bell{width:39px;height:39px;border:0;border-radius:11px;background:#faf8f6;position:relative}.dot{position:absolute;width:6px;height:6px;border-radius:50%;background:#ee6d59;right:7px;top:6px}.tp{display:flex;align-items:center;gap:8px}.tp b{font-size:11px;display:block}.tp small{font-size:11px;color:var(--m)}
+.content{padding:30px;max-width:1500px;margin:auto}.hero{min-height:255px;border-radius:22px;padding:34px 42px;background:linear-gradient(110deg,#202f69,#5d48ae 75%,#7460c3);color:#fff;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:390px;height:390px;border:1px solid #ffffff1c;border-radius:50%;right:-90px;top:-230px}.hero:after{content:"N";position:absolute;right:65px;top:25px;font-size:180px;font-weight:800;color:#ffffff0b}.copy{position:relative;z-index:2;max-width:720px}.ey{font-size:12px;letter-spacing:1.7px;color:#f0c1ad;font-weight:800}.hero h1{font-size:36px;line-height:1.15;margin:9px 0}.hero h1 span{color:#dca48c}.hero p{font-size:12px;color:#ffffffc9;max-width:650px}.actions{display:flex;gap:9px;margin-top:20px}.btn{padding:11px 15px;border-radius:9px;font-size:12px;font-weight:800;border:0}.btn.w{background:#fff;color:var(--n)}.btn.g{background:#ffffff16;color:#fff;border:1px solid #ffffff30}.code{position:absolute;right:45px;bottom:28px;width:230px;height:125px;background:#101a40b8;border:1px solid #ffffff1c;border-radius:15px;padding:15px;z-index:2}.dots{display:flex;gap:4px}.dots i{width:5px;height:5px;background:var(--p);border-radius:50%}.line{height:5px;background:#ffffff26;border-radius:5px;margin-top:10px}.w1{width:60%}.w2{width:88%}.w3{width:45%}.w4{width:72%}.tags{display:flex;gap:5px;margin-top:12px}.tags span{font-size:12px;background:#ffffff18;padding:4px 6px;border-radius:5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:20px 0}.stat,.panel{background:#fff;border:1px solid var(--l);border-radius:16px}.stat{padding:16px;display:flex;gap:11px;align-items:center}.si{width:42px;height:42px;border-radius:11px;background:var(--pl);display:grid;place-items:center;color:var(--p);font-size:17px}.stat:nth-child(2) .si{background:#eee9fa;color:#765cc1}.stat:nth-child(3) .si{background:#e8f5ed;color:var(--g)}.stat:nth-child(4) .si{background:#fff1d8;color:#b77b13}.stat small{display:block;color:#8c94a3;font-size:11px}.stat b{display:block;font-size:20px;line-height:1.2}.stat span{font-size:12px;color:#9ba1ad}
+.grid{display:grid;grid-template-columns:1.7fr .8fr;gap:17px}.panel{padding:20px}.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.ph small{display:block;color:var(--p);font-size:11px;letter-spacing:1.2px;font-weight:800}.ph h2{font-size:17px;margin-top:3px}.ph a{font-size:11px;color:#6049bd;font-weight:800}.learn{display:grid;grid-template-columns:190px 1fr;gap:17px;align-items:center}.preview{height:135px;border-radius:13px;padding:14px;background:linear-gradient(135deg,#20336e,#564b9f);color:#fff;position:relative;overflow:hidden}.preview:after{content:"</>";position:absolute;right:8px;bottom:-18px;font-size:70px;font-weight:800;color:#ffffff0b}.preview .tags{margin:0}.preview h3{font-size:17px;margin-top:38px;position:relative;z-index:2}.info h3{font-size:17px}.info p{font-size:12px;color:var(--m)}.pr{display:flex;align-items:center;gap:8px;margin-top:13px}.track{height:7px;background:#e9e8eb;border-radius:8px;flex:1;overflow:hidden}.track span{display:block;width:36%;height:100%;background:var(--p);border-radius:8px}.pr b{font-size:12px}.continue{display:inline-block;margin-top:12px;background:var(--p);color:#fff;border-radius:8px;padding:9px 12px;font-size:11px;font-weight:800}
+.ai{background:linear-gradient(140deg,#292061,#6148b6);color:#fff;border:0;position:relative;overflow:hidden}.ai:after{content:"✦";position:absolute;right:20px;top:-10px;font-size:100px;color:#ffffff0a}.ai .ph h2{color:#fff;font-size:19px}.ai .ph small{color:#e2b5a2}.aidesc{font-size:12px;color:#ffffffb8;margin:8px 0 15px}.ask{height:45px;background:#fff;border-radius:10px;display:flex;align-items:center;padding-left:11px}.ask input{border:0;outline:0;flex:1;min-width:0;font-size:12px}.ask button{width:34px;height:34px;margin-right:5px;border:0;border-radius:8px;background:var(--p);color:#fff}.popular{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.popular span{font-size:12px;background:#ffffff12;padding:6px 8px;border-radius:15px}
+.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:17px;margin-top:17px}.intern{background:linear-gradient(100deg,#fff8f2,#f8ece6);border:1px solid #eadbd3;border-radius:16px;padding:20px;display:flex;align-items:center;gap:12px}.brief{width:45px;height:45px;border-radius:12px;background:#f3ddd1;color:var(--p);display:grid;place-items:center;font-size:18px;flex:none}.intern h3{font-size:17px}.intern p{font-size:12px;color:var(--m);margin-top:2px}.intern a{margin-left:auto;background:var(--p);color:#fff;border-radius:8px;padding:10px 13px;font-size:11px;font-weight:800;white-space:nowrap}.task{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid #f0ece9}.task:last-child{border:0}.ti{width:29px;height:29px;border-radius:8px;background:#f6f0ec;display:grid;place-items:center;font-size:12px}.task b{display:block;font-size:11px}.task small{font-size:12px;color:#9298a5}.status{margin-left:auto;color:var(--g);font-size:12px;font-weight:800}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--n);color:#fff;padding:11px 15px;border-radius:9px;font-size:12px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;z-index:99}.toast.show{opacity:1;transform:none}
 @media(max-width:1150px){.filters{display:none}.code{display:none}.copy{max-width:100%}}
 @media(max-width:900px){.side{width:230px}.main{margin-left:230px}.content{padding:20px}.stats{grid-template-columns:repeat(2,1fr)}.grid,.lower{grid-template-columns:1fr}}
-@media(max-width:700px){.side{width:285px;transform:translateX(-105%);transition:.25s;box-shadow:15px 0 40px #0002}.side.open{transform:none}.main{margin-left:0}.top{height:66px;padding:0 10px}.menu{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--l);background:#fff;border-radius:9px;color:var(--n)}.search{height:40px;max-width:none}.search input{font-size:8px}.topright{gap:6px}.bell{width:36px;height:36px}.tp div:not(.ava){display:none}.content{padding:11px}.hero{min-height:270px;padding:24px 20px;border-radius:17px}.hero h1{font-size:27px}.hero p{font-size:9px;line-height:1.7}.actions{flex-direction:column;align-items:flex-start}.stats{gap:8px;margin:12px 0}.stat{padding:11px;gap:7px}.si{width:34px;height:34px;font-size:12px}.stat b{font-size:15px}.stat span{display:none}.panel{padding:15px}.learn{grid-template-columns:1fr}.preview{height:125px}.lower{gap:11px}.intern{flex-wrap:wrap;padding:16px}.intern a{width:100%;text-align:center;margin-left:0}}
-@media(max-width:400px){.top{padding:0 7px}.topright .bell{display:none}.search{min-width:0}.content{padding:8px}.hero{padding:21px 16px}.hero h1{font-size:23px}.stats{gap:6px}.stat{padding:9px}.stat b{font-size:13px}.stat small{font-size:6px}.panel{padding:13px}}
+@media(max-width:700px){.side{width:285px;transform:translateX(-105%);transition:.25s;box-shadow:15px 0 40px #0002}.side.open{transform:none}.main{margin-left:0}.top{height:66px;padding:0 10px}.menu{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--l);background:#fff;border-radius:9px;color:var(--n)}.search{height:40px;max-width:none}.search input{font-size:12px}.topright{gap:6px}.bell{width:36px;height:36px}.tp div:not(.ava){display:none}.content{padding:11px}.hero{min-height:270px;padding:24px 20px;border-radius:17px}.hero h1{font-size:27px}.hero p{font-size:11px;line-height:1.7}.actions{flex-direction:column;align-items:flex-start}.stats{gap:8px;margin:12px 0}.stat{padding:11px;gap:7px}.si{width:34px;height:34px;font-size:12px}.stat b{font-size:17px}.stat span{display:none}.panel{padding:15px}.learn{grid-template-columns:1fr}.preview{height:125px}.lower{gap:11px}.intern{flex-wrap:wrap;padding:16px}.intern a{width:100%;text-align:center;margin-left:0}}
+@media(max-width:400px){.top{padding:0 7px}.topright .bell{display:none}.search{min-width:0}.content{padding:8px}.hero{padding:21px 16px}.hero h1{font-size:23px}.stats{gap:6px}.stat{padding:9px}.stat b{font-size:17px}.stat small{font-size:12px}.panel{padding:13px}}
+
+/* ===== MEDIUM, CLEAN TYPOGRAPHY ===== */
+body{font-size:14px}
+.nav{font-size:12px}
+.st{font-size:10px}
+.mini b{font-size:11px}.mini small{font-size:9px}
+.out{font-size:10px}
+.search input{font-size:11px}
+.filter{font-size:9px}
+.tp b{font-size:11px}.tp small{font-size:9px}
+.hero .ey{font-size:10px}
+.hero h1{font-size:38px}
+.hero p{font-size:12px}
+.btn{font-size:10px}
+.tags span{font-size:8px}
+.stat small{font-size:9px}.stat b{font-size:21px}.stat span{font-size:8px}
+.ph small{font-size:9px}.ph h2{font-size:19px}.ph a{font-size:9px}
+.preview h3{font-size:15px}
+.info h3{font-size:15px}.info p{font-size:10px}
+.pr b{font-size:10px}.continue{font-size:9px}
+.ai .ph h2{font-size:20px}.aidesc{font-size:10px}.ask input{font-size:10px}.popular span{font-size:8px}
+.intern h3{font-size:15px}.intern p{font-size:10px}.intern a{font-size:9px}
+.task b{font-size:9px}.task small{font-size:8px}.status{font-size:8px}
+.toast{font-size:10px}
+
+@media(max-width:700px){
+  .nav{font-size:12px}
+  .hero h1{font-size:29px}
+  .hero p{font-size:11px}
+  .hero .ey{font-size:9px}
+  .btn{font-size:9px}
+  .stat small{font-size:8px}.stat b{font-size:16px}
+  .ph h2{font-size:17px}
+  .info h3{font-size:14px}.info p{font-size:9px}
+  .continue{font-size:8px}
+  .ai .ph h2{font-size:18px}.aidesc{font-size:9px}
+  .intern h3{font-size:14px}.intern p{font-size:9px}.intern a{font-size:8px}
+  .task b{font-size:8px}.task small{font-size:7px}
+}
+
 </style>
 </head>
 <body>
@@ -41,8 +81,8 @@
   <a class="nav" href="#"><span class="ico">◉</span>Career Guidance</a>
   <div class="st">Account</div>
   <a class="nav" href="#"><span class="ico">⚙</span>Settings</a>
-  <div class="mini"><div class="ava">AS</div><div><b>Aditya Singh</b><small>Student</small></div></div>
-  <button class="out" onclick="toast('Sign out can be connected to Firebase Auth.')">↪ Sign Out</button>
+  <div class="mini"><div class="ava profile-avatar">AS</div><div><b class="profile-name">Student</b><small class="profile-email">Student</small></div></div>
+  <button class="out" onclick="logoutStudent()">↪ Sign Out</button>
 </aside>
 
 <main class="main">
@@ -53,7 +93,7 @@
     <button class="filter active" onclick="filter(this)">All</button><button class="filter" onclick="filter(this)">Courses</button>
     <button class="filter" onclick="filter(this)">Internships</button><button class="filter" onclick="filter(this)">Projects</button><button class="filter" onclick="filter(this)">Skills</button>
   </div>
-  <div class="topright"><button class="bell" onclick="toast('No new notifications.')">🔔<i class="dot"></i></button><div class="tp"><div class="ava">AS</div><div><b>Aditya Singh</b><small>Student</small></div></div></div>
+  <div class="topright"><button class="bell" onclick="toast('No new notifications.')">🔔<i class="dot"></i></button><div class="tp"><div class="ava profile-avatar">AS</div><div><b class="profile-name">Student</b><small class="profile-email">Student</small></div></div></div>
 </header>
 
 <div class="content">
@@ -90,63 +130,79 @@ function filter(b){document.querySelectorAll('.filter').forEach(x=>x.classList.r
 function ask(){let x=document.getElementById('ai');if(!x.value.trim()){toast('Ask Shivaay AI a question first.');return}toast('Shivaay AI received your question.');x.value=''}
 document.getElementById('search').addEventListener('keydown',e=>{if(e.key==='Enter')toast(e.target.value.trim()?'Searching for '+e.target.value:'Type something to search')})
 window.addEventListener('resize',()=>{if(innerWidth>700)document.getElementById('side').classList.remove('open')})
+</script>
+
 <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
-    initializeApp
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+  getAuth,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 import {
-    getAuth,
-    onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+  getFirestore,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-
-    apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
-
-    authDomain:
-        "mamraj-nexus-academy.firebaseapp.com",
-
-    projectId:
-        "mamraj-nexus-academy",
-
-    storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
-
-    messagingSenderId:
-       "548826957068",
-
-    appId:
-        "1:548826957068:web:29b02f77dc20feaf28f529"
-
+  apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+  authDomain: "mamraj-nexus-academy.firebaseapp.com",
+  projectId: "mamraj-nexus-academy",
+  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
+  messagingSenderId: "548826957068",
+  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
+  measurementId: "G-Z64L57P9XV"
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
+const db = getFirestore(app);
 
+window.firebaseAuth = auth;
 
-/* PROTECT DASHBOARD */
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.replace("login.html");
+    return;
+  }
 
-onAuthStateChanged(auth, (user) => {
+  const name = user.displayName || user.email?.split("@")[0] || "Student";
+  const initials = name.split(/\s+/).map(x => x[0]).slice(0,2).join("").toUpperCase();
 
-    if(!user){
-
-        window.location.replace("login.html");
-
-        return;
-
+  document.querySelectorAll(".profile-name").forEach(el => el.textContent = name);
+  document.querySelectorAll(".profile-email").forEach(el => el.textContent = user.email || "");
+  document.querySelectorAll(".profile-avatar").forEach(el => {
+    if (user.photoURL) {
+      el.innerHTML = `<img src="${user.photoURL}" alt="Profile" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+    } else {
+      el.textContent = initials;
     }
+  });
 
-    console.log(
-        "Logged in student:",
-        user.uid
-    );
-
+  try {
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      name,
+      email: user.email || "",
+      photoURL: user.photoURL || "",
+      lastLogin: serverTimestamp()
+    }, { merge: true });
+  } catch (e) {
+    console.warn("Profile save failed:", e);
+  }
 });
+
+window.logoutStudent = async function () {
+  try {
+    await signOut(auth);
+    window.location.replace("login.html");
+  } catch (e) {
+    console.error(e);
+    alert("Unable to sign out. Please try again.");
+  }
+};
 </script>
+
 </body></html>
