@@ -2,275 +2,151 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Sign In | MamRaj Nexus Academy</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#faf6f1;
-    font-family:Arial,sans-serif;
-    color:#1d2d67;
-}
-
-.login-box{
-    width:420px;
-    max-width:92%;
-    background:#fff;
-    border:1px solid #e8e2dc;
-    border-radius:20px;
-    padding:35px;
-    box-shadow:0 20px 50px rgba(20,30,70,.08);
-}
-
-.logo{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.logo img{
-    width:170px;
-    height:75px;
-    object-fit:contain;
-}
-
-h1{
-    text-align:center;
-    font-size:24px;
-    margin-bottom:7px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#7c8497;
-    font-size:13px;
-    margin-bottom:25px;
-}
-
-.input{
-    width:100%;
-    padding:13px;
-    border:1px solid #ddd7d2;
-    border-radius:9px;
-    margin-bottom:12px;
-    outline:none;
-}
-
-.input:focus{
-    border-color:#c98b70;
-}
-
-.login-btn{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:9px;
-    background:#1d2d67;
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.google-btn{
-    width:100%;
-    padding:13px;
-    border:1px solid #ddd7d2;
-    border-radius:9px;
-    background:#fff;
-    color:#1d2d67;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:12px;
-}
-
-.divider{
-    text-align:center;
-    color:#999;
-    font-size:11px;
-    margin:18px 0;
-}
-
-.message{
-    text-align:center;
-    font-size:12px;
-    margin-top:15px;
-    color:#d05c4b;
-}
-
+:root{--n:#20336e;--p:#c98b70;--bg:#faf6f1;--m:#7c8497;--l:#e7e1db}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:linear-gradient(135deg,#faf6f1,#f1e9e4);font-family:Poppins,Arial,sans-serif;color:#18264e;display:grid;place-items:center;padding:18px}
+.box{width:min(430px,100%);background:#fff;border:1px solid var(--l);border-radius:22px;padding:30px;box-shadow:0 20px 55px #20336e14}
+.logo{text-align:center;margin-bottom:16px}.logo img{width:180px;height:78px;object-fit:contain;border-radius:11px}
+h1{text-align:center;font-size:25px}.sub{text-align:center;color:var(--m);font-size:11px;margin:7px 0 23px}
+input{width:100%;height:46px;border:1px solid var(--l);border-radius:10px;padding:0 13px;outline:none;font-size:11px;margin-bottom:10px}
+input:focus{border-color:var(--p)}
+button{width:100%;height:46px;border-radius:10px;font-size:10px;font-weight:800;cursor:pointer}
+.primary{border:0;background:var(--n);color:#fff}.google{border:1px solid var(--l);background:#fff;color:var(--n);margin-top:11px}
+.divider{text-align:center;color:#a0a4ad;font-size:9px;margin:15px 0}
+.row{display:flex;gap:8px;margin-top:10px}.row button{height:40px}.signup{background:#fff;border:1px solid var(--l);color:var(--n)}
+.msg{text-align:center;min-height:18px;color:#c45545;font-size:9px;margin-top:12px}
+.note{text-align:center;color:#9a9eaa;font-size:8px;margin-top:18px;line-height:1.7}
 </style>
 </head>
-
 <body>
+<div class="box">
+  <div class="logo"><img src="mamraj-logo.png" alt="MamRaj Web Studio"></div>
+  <h1>Welcome Back</h1>
+  <p class="sub">Sign in to access your student dashboard.</p>
 
-<div class="login-box">
+  <input id="email" type="email" placeholder="Email address" autocomplete="email">
+  <input id="password" type="password" placeholder="Password" autocomplete="current-password">
 
-    <div class="logo">
-        <img src="mamraj-logo.png">
-    </div>
+  <button class="primary" id="loginBtn">Sign In</button>
 
-    <h1>Welcome Back</h1>
+  <div class="divider">OR</div>
 
-    <p class="subtitle">
-        Sign in to continue your learning journey.
-    </p>
+  <button class="google" id="googleBtn">Continue with Google</button>
 
-    <input
-        id="email"
-        class="input"
-        type="email"
-        placeholder="Email address"
-    >
+  <div class="row">
+    <button class="signup" id="signupBtn">Create Account</button>
+    <button class="signup" id="forgotBtn">Forgot Password</button>
+  </div>
 
-    <input
-        id="password"
-        class="input"
-        type="password"
-        placeholder="Password"
-    >
-
-    <button class="login-btn" onclick="emailLogin()">
-        Sign In
-    </button>
-
-    <div class="divider">
-        OR
-    </div>
-
-    <button class="google-btn" onclick="googleLogin()">
-        Continue with Google
-    </button>
-
-    <p id="message" class="message"></p>
-
+  <div class="msg" id="msg"></div>
+  <p class="note">Your course progress will be linked to your Firebase account.</p>
 </div>
 
-
 <script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
-    getAuth,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-
-    apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
-
-    authDomain:
-        "mamraj-nexus-academy.firebaseapp.com",
-
-    projectId:
-        "mamraj-nexus-academy",
-
-    storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
-
-    messagingSenderId:
-        "mamraj-nexus-academy.firebasestorage.app",
-
-    appId:
-        "1:548826957068:web:29b02f77dc20feaf28f529"
-
+  apiKey: "",
+  authDomain: "mamraj-nexus-academy.firebaseapp.com",
+  projectId: "mamraj-nexus-academy",
+  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
+  messagingSenderId: "548826957068",
+  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
+  measurementId: "G-Z64L57P9XV"
 };
 
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
+const db = getFirestore(app);
 
+const msg = document.getElementById("msg");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
-/* EMAIL LOGIN */
+function message(text){ msg.textContent = text; }
 
-window.emailLogin = async function(){
-
-    const email =
-        document.getElementById("email").value;
-
-    const password =
-        document.getElementById("password").value;
-
-    const message =
-        document.getElementById("message");
-
-
-    try{
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-        window.location.href =
-            "dashboard.html";
-
-    }
-
-    catch(error){
-
-        message.textContent =
-            "Invalid email or password.";
-
-        console.error(error);
-
-    }
-
+async function createProfile(user){
+  const name = user.displayName || user.email.split("@")[0];
+  await setDoc(doc(db,"users",user.uid),{
+    uid:user.uid,
+    name,
+    email:user.email || "",
+    photoURL:user.photoURL || "",
+    createdAt:serverTimestamp(),
+    lastLogin:serverTimestamp()
+  },{merge:true});
 }
 
+document.getElementById("loginBtn").onclick = async () => {
+  message("");
+  try{
+    const credential = await signInWithEmailAndPassword(auth,email.value.trim(),password.value);
+    await createProfile(credential.user);
+    location.replace("dashboard-protected.html");
+  }catch(e){ message(readableError(e)); }
+};
 
-/* GOOGLE LOGIN */
+document.getElementById("signupBtn").onclick = async () => {
+  message("");
+  if(!email.value.trim() || password.value.length < 6){
+    message("Enter an email and a password of at least 6 characters.");
+    return;
+  }
+  try{
+    const credential = await createUserWithEmailAndPassword(auth,email.value.trim(),password.value);
+    await createProfile(credential.user);
+    location.replace("dashboard-protected.html");
+  }catch(e){ message(readableError(e)); }
+};
 
-window.googleLogin = async function(){
+document.getElementById("googleBtn").onclick = async () => {
+  message("");
+  try{
+    const provider = new GoogleAuthProvider();
+    const credential = await signInWithPopup(auth,provider);
+    await createProfile(credential.user);
+    location.replace("dashboard-protected.html");
+  }catch(e){ message(readableError(e)); console.error(e); }
+};
 
-    const provider =
-        new GoogleAuthProvider();
+document.getElementById("forgotBtn").onclick = async () => {
+  message("");
+  if(!email.value.trim()){ message("Enter your email first."); return; }
+  try{
+    await sendPasswordResetEmail(auth,email.value.trim());
+    message("Password reset email sent.");
+  }catch(e){ message(readableError(e)); }
+};
 
-    const message =
-        document.getElementById("message");
-
-
-    try{
-
-        await signInWithPopup(
-            auth,
-            provider
-        );
-
-        window.location.href =
-            "dashboard.html";
-
-    }
-
-    catch(error){
-
-        message.textContent =
-            "Google sign-in failed. Please try again.";
-
-        console.error(error);
-
-    }
-
+function readableError(e){
+  const code=e?.code || "";
+  const map={
+    "auth/invalid-credential":"Invalid email or password.",
+    "auth/user-not-found":"No account found with this email.",
+    "auth/wrong-password":"Incorrect password.",
+    "auth/email-already-in-use":"This email already has an account.",
+    "auth/weak-password":"Password should be at least 6 characters.",
+    "auth/popup-closed-by-user":"Google sign-in was cancelled.",
+    "auth/popup-blocked":"Allow popups for this website and try again.",
+    "auth/unauthorized-domain":"Add this website domain in Firebase Authentication → Settings → Authorized domains."
+  };
+  return map[code] || e?.message || "Authentication failed. Please try again.";
 }
-
 </script>
-
 </body>
 </html>
