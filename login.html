@@ -2,150 +2,227 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sign In | MamRaj Nexus Academy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--n:#20336e;--p:#c98b70;--bg:#faf6f1;--m:#7c8497;--l:#e7e1db}
+:root{--navy:#20336e;--peach:#c98b70;--cream:#faf6f1;--text:#18264e;--muted:#7c8497;--border:#e7e1db}
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:linear-gradient(135deg,#faf6f1,#f1e9e4);font-family:Poppins,Arial,sans-serif;color:#18264e;display:grid;place-items:center;padding:18px}
-.box{width:min(430px,100%);background:#fff;border:1px solid var(--l);border-radius:22px;padding:30px;box-shadow:0 20px 55px #20336e14}
-.logo{text-align:center;margin-bottom:16px}.logo img{width:180px;height:78px;object-fit:contain;border-radius:11px}
-h1{text-align:center;font-size:25px}.sub{text-align:center;color:var(--m);font-size:11px;margin:7px 0 23px}
-input{width:100%;height:46px;border:1px solid var(--l);border-radius:10px;padding:0 13px;outline:none;font-size:11px;margin-bottom:10px}
-input:focus{border-color:var(--p)}
-button{width:100%;height:46px;border-radius:10px;font-size:10px;font-weight:800;cursor:pointer}
-.primary{border:0;background:var(--n);color:#fff}.google{border:1px solid var(--l);background:#fff;color:var(--n);margin-top:11px}
-.divider{text-align:center;color:#a0a4ad;font-size:9px;margin:15px 0}
-.row{display:flex;gap:8px;margin-top:10px}.row button{height:40px}.signup{background:#fff;border:1px solid var(--l);color:var(--n)}
-.msg{text-align:center;min-height:18px;color:#c45545;font-size:9px;margin-top:12px}
-.note{text-align:center;color:#9a9eaa;font-size:8px;margin-top:18px;line-height:1.7}
+body{min-height:100vh;font-family:Arial,sans-serif;background:var(--cream);color:var(--text);display:grid;place-items:center;padding:18px}
+.card{width:min(430px,100%);background:#fff;border:1px solid var(--border);border-radius:22px;padding:32px;box-shadow:0 20px 55px #20336e14}
+.logo{text-align:center;height:78px;margin-bottom:18px}.logo img{width:180px;height:78px;object-fit:contain;border-radius:10px}
+h1{text-align:center;font-size:30px}.sub{text-align:center;color:var(--muted);font-size:14px;margin:7px 0 23px}
+label{display:block;font-size:11px;font-weight:700;margin-bottom:6px}
+input{width:100%;height:46px;border:1px solid var(--border);border-radius:10px;padding:0 13px;outline:0;font-size:13px;margin-bottom:12px}
+input:focus{border-color:var(--peach)}
+button{width:100%;height:46px;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer}
+.primary{border:0;background:var(--navy);color:#fff}.google{margin-top:11px;border:1px solid var(--border);background:#fff;color:var(--text);display:flex;align-items:center;justify-content:center;gap:11px}
+.google-mark{font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#4285F4;line-height:1}
+.divider{text-align:center;color:#999;font-size:11px;margin:16px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}.secondary{border:1px solid var(--border);background:#fff;color:var(--navy);height:40px}
+.msg{text-align:center;min-height:20px;margin-top:12px;font-size:11px}.error{color:#c65343}.success{color:#3e9c6c}
+
+.modal-backdrop{
+display:none;position:fixed;inset:0;background:rgba(16,26,64,.48);
+z-index:1000;align-items:center;justify-content:center;padding:18px;
+}
+.modal-backdrop.show{display:flex}
+.modal{
+width:min(470px,100%);background:#fff;border:1px solid var(--border);
+border-radius:20px;padding:28px;box-shadow:0 25px 70px rgba(20,30,70,.18);
+position:relative;
+}
+.modal h2{font-size:24px;color:var(--navy);margin-bottom:6px}
+.modal p{font-size:12px;color:var(--muted);margin-bottom:20px}
+.close-modal{position:absolute;right:15px;top:13px;width:34px;height:34px;border:0;border-radius:8px;background:#f7f4f1;color:var(--navy);font-size:20px}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modal .field{margin-bottom:12px}
+.modal .field label{font-size:11px;display:block;font-weight:700;margin-bottom:6px}
+.modal .field input{margin:0}
+.full{grid-column:1/-1}
+.create-submit{width:100%;height:46px;border:0;border-radius:10px;background:var(--navy);color:#fff;font-size:13px;font-weight:800;margin-top:5px}
+@media(max-width:480px){.modal{padding:23px 17px}.modal-grid{grid-template-columns:1fr}.full{grid-column:auto}.modal h2{font-size:21px}}
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="logo"><img src="mamraj-logo.png" alt="MamRaj Web Studio"></div>
-  <h1>Welcome Back</h1>
-  <p class="sub">Sign in to access your student dashboard.</p>
+<div class="card">
+<div class="logo"><img src="mamraj-logo.png" alt="MamRaj Web Studio"></div>
+<h1>Welcome Back</h1>
+<p class="sub">Sign in to access your MamRaj Nexus Academy dashboard.</p>
 
-  <input id="email" type="email" placeholder="Email address" autocomplete="email">
-  <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+<label>Email Address</label>
+<input id="email" type="email" autocomplete="email" placeholder="Enter your email">
 
-  <button class="primary" id="loginBtn">Sign In</button>
+<label>Password</label>
+<input id="password" type="password" autocomplete="current-password" placeholder="Enter your password">
 
-  <div class="divider">OR</div>
+<button class="primary" id="loginBtn">Sign In</button>
+<div class="divider">OR</div>
+<button class="google" id="googleBtn">
+<span class="google-mark" aria-hidden="true">G</span>
+<span>Continue with Google</span>
+</button>
 
-  <button class="google" id="googleBtn">Continue with Google</button>
+<div class="row">
+<button class="secondary" id="signupBtn">Create Account</button>
+<button class="secondary" id="forgotBtn">Forgot Password</button>
+</div>
+<div id="message" class="msg"></div>
+</div>
 
-  <div class="row">
-    <button class="signup" id="signupBtn">Create Account</button>
-    <button class="signup" id="forgotBtn">Forgot Password</button>
+
+<div class="modal-backdrop" id="signupModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <button class="close-modal" id="closeSignup" aria-label="Close">×</button>
+    <h2 id="signupTitle">Create Your Account</h2>
+    <p>Join MamRaj Nexus Academy and start your learning journey.</p>
+
+    <div class="modal-grid">
+      <div class="field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" placeholder="First name">
+      </div>
+
+      <div class="field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" placeholder="Last name">
+      </div>
+
+      <div class="field full">
+        <label for="signupEmail">Email Address</label>
+        <input id="signupEmail" type="email" placeholder="Enter your email">
+      </div>
+
+      <div class="field">
+        <label for="signupPassword">Password</label>
+        <input id="signupPassword" type="password" placeholder="Minimum 6 characters">
+      </div>
+
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" placeholder="Confirm password">
+      </div>
+    </div>
+
+    <button class="create-submit" id="createAccountBtn">Create Account</button>
+    <div id="signupMessage" class="msg"></div>
   </div>
-
-  <div class="msg" id="msg"></div>
-  <p class="note">Your course progress will be linked to your Firebase account.</p>
 </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  sendPasswordResetEmail
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import{initializeApp}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import{getAuth,onAuthStateChanged,signInWithEmailAndPassword,createUserWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,sendPasswordResetEmail,updateProfile}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import{getFirestore,doc,setDoc,serverTimestamp}from"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
-  authDomain: "mamraj-nexus-academy.firebaseapp.com",
-  projectId: "mamraj-nexus-academy",
-  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
-  messagingSenderId: "548826957068",
-  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
-  measurementId: "G-Z64L57P9XV"
+const firebaseConfig={
+apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+authDomain:"mamraj-nexus-academy.firebaseapp.com",
+projectId:"mamraj-nexus-academy",
+storageBucket:"mamraj-nexus-academy.firebasestorage.app",
+messagingSenderId:"548826957068",
+appId:"1:548826957068:web:29b02f77dc20feaf28f529",
+measurementId:"G-Z64L57P9XV"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 
-const msg = document.getElementById("msg");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+const email=document.getElementById("email");
+const password=document.getElementById("password");
+const message=document.getElementById("message");
 
-function message(text){ msg.textContent = text; }
+function show(text,type="error"){message.textContent=text;message.className="msg "+type}
 
-async function createProfile(user){
-  const name = user.displayName || user.email.split("@")[0];
-  await setDoc(doc(db,"users",user.uid),{
-    uid:user.uid,
-    name,
-    email:user.email || "",
-    photoURL:user.photoURL || "",
-    createdAt:serverTimestamp(),
-    lastLogin:serverTimestamp()
-  },{merge:true});
+async function saveProfile(user){
+const name=user.displayName||user.email?.split("@")[0]||"Student";
+await setDoc(doc(db,"users",user.uid),{
+uid:user.uid,name,email:user.email||"",photoURL:user.photoURL||"",lastLogin:serverTimestamp()
+},{merge:true});
 }
 
-document.getElementById("loginBtn").onclick = async () => {
-  message("");
-  try{
-    const credential = await signInWithEmailAndPassword(auth,email.value.trim(),password.value);
-    await createProfile(credential.user);
-    location.replace("dashboard-protected.html");
-  }catch(e){ message(readableError(e)); }
+onAuthStateChanged(auth,user=>{
+if(user)location.replace("dashboard.html");
+});
+
+document.getElementById("loginBtn").onclick=async()=>{
+try{
+const c=await signInWithEmailAndPassword(auth,email.value.trim(),password.value);
+await saveProfile(c.user);show("Login successful.","success");location.replace("dashboard.html");
+}catch(e){show(errorText(e))}
 };
 
-document.getElementById("signupBtn").onclick = async () => {
-  message("");
-  if(!email.value.trim() || password.value.length < 6){
-    message("Enter an email and a password of at least 6 characters.");
-    return;
-  }
-  try{
-    const credential = await createUserWithEmailAndPassword(auth,email.value.trim(),password.value);
-    await createProfile(credential.user);
-    location.replace("dashboard-protected.html");
-  }catch(e){ message(readableError(e)); }
+document.getElementById("googleBtn").onclick=async()=>{
+try{
+const provider=new GoogleAuthProvider();
+provider.setCustomParameters({prompt:"select_account"});
+const c=await signInWithPopup(auth,provider);
+await saveProfile(c.user);show("Google login successful.","success");location.replace("dashboard.html");
+}catch(e){console.error(e);show(errorText(e))}
 };
 
-document.getElementById("googleBtn").onclick = async () => {
-  message("");
-  try{
-    const provider = new GoogleAuthProvider();
-    const credential = await signInWithPopup(auth,provider);
-    await createProfile(credential.user);
-    location.replace("dashboard-protected.html");
-  }catch(e){ message(readableError(e)); console.error(e); }
+const signupModal=document.getElementById("signupModal");
+const closeSignup=document.getElementById("closeSignup");
+
+document.getElementById("signupBtn").onclick=()=>{
+document.getElementById("signupMessage").textContent="";
+signupModal.classList.add("show");
+document.getElementById("firstName").focus();
 };
 
-document.getElementById("forgotBtn").onclick = async () => {
-  message("");
-  if(!email.value.trim()){ message("Enter your email first."); return; }
-  try{
-    await sendPasswordResetEmail(auth,email.value.trim());
-    message("Password reset email sent.");
-  }catch(e){ message(readableError(e)); }
+closeSignup.onclick=()=>signupModal.classList.remove("show");
+
+signupModal.addEventListener("click",e=>{
+if(e.target===signupModal)signupModal.classList.remove("show");
+});
+
+document.getElementById("createAccountBtn").onclick=async()=>{
+const first=document.getElementById("firstName").value.trim();
+const last=document.getElementById("lastName").value.trim();
+const signupEmail=document.getElementById("signupEmail").value.trim();
+const signupPassword=document.getElementById("signupPassword").value;
+const confirm=document.getElementById("confirmPassword").value;
+const sm=document.getElementById("signupMessage");
+
+if(!first||!last||!signupEmail||!signupPassword||!confirm){
+sm.textContent="Please complete all fields.";sm.className="msg error";return;
+}
+if(signupPassword.length<6){
+sm.textContent="Password must contain at least 6 characters.";sm.className="msg error";return;
+}
+if(signupPassword!==confirm){
+sm.textContent="Passwords do not match.";sm.className="msg error";return;
+}
+
+try{
+const c=await createUserWithEmailAndPassword(auth,signupEmail,signupPassword);
+await updateProfile(c.user,{displayName:`${first} ${last}`});
+await saveProfile(c.user);
+sm.textContent="Account created successfully.";sm.className="msg success";
+setTimeout(()=>location.replace("dashboard.html"),500);
+}catch(e){
+console.error(e);
+sm.textContent=errorText(e);sm.className="msg error";
+}
 };
 
-function readableError(e){
-  const code=e?.code || "";
-  const map={
-    "auth/invalid-credential":"Invalid email or password.",
-    "auth/user-not-found":"No account found with this email.",
-    "auth/wrong-password":"Incorrect password.",
-    "auth/email-already-in-use":"This email already has an account.",
-    "auth/weak-password":"Password should be at least 6 characters.",
-    "auth/popup-closed-by-user":"Google sign-in was cancelled.",
-    "auth/popup-blocked":"Allow popups for this website and try again.",
-    "auth/unauthorized-domain":"Add this website domain in Firebase Authentication → Settings → Authorized domains."
-  };
-  return map[code] || e?.message || "Authentication failed. Please try again.";
+document.getElementById("forgotBtn").onclick=async()=>{
+if(!email.value.trim()){show("Enter your email first.");return}
+try{await sendPasswordResetEmail(auth,email.value.trim());show("Password reset email sent.","success")}
+catch(e){show(errorText(e))}
+};
+
+function errorText(e){
+const m={
+"auth/invalid-credential":"Invalid email or password.",
+"auth/email-already-in-use":"This email already has an account.",
+"auth/weak-password":"Password must contain at least 6 characters.",
+"auth/invalid-email":"Please enter a valid email.",
+"auth/popup-closed-by-user":"Google sign-in was cancelled.",
+"auth/popup-blocked":"Google sign-in popup was blocked.",
+"auth/unauthorized-domain":"Add this domain in Firebase Authorized Domains.",
+"auth/operation-not-allowed":"Enable this sign-in method in Firebase."
+};
+return m[e.code]||"Authentication failed. Please try again.";
 }
 </script>
 </body>
