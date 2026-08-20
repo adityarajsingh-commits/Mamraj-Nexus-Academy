@@ -2,503 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Student Login | MamRaj Nexus Academy</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-rel="stylesheet">
+<title>Sign In | MamRaj Nexus Academy</title>
 
 <style>
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --navy:#1d2d68;
-    --navy-dark:#111b43;
-    --peach:#ca8b6e;
-    --cream:#faf6f1;
-    --text:#202b5d;
-    --muted:#7b8298;
-    --border:#e5e1de;
 }
 
 body{
     min-height:100vh;
-    font-family:Poppins,sans-serif;
-    background:
-        radial-gradient(
-            circle at 80% 10%,
-            rgba(202,139,110,.18),
-            transparent 30%
-        ),
-        var(--cream);
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:25px;
+    background:#faf6f1;
+    font-family:Arial,sans-serif;
+    color:#1d2d67;
 }
 
-.login-wrapper{
-    width:100%;
-    max-width:1000px;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
+.login-box{
+    width:420px;
+    max-width:92%;
     background:#fff;
-
-    border:1px solid var(--border);
-
-    border-radius:25px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 30px 80px rgba(29,45,104,.12);
-}
-
-
-/* LEFT */
-
-.login-brand{
-    background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(202,139,110,.2),
-            transparent 30%
-        ),
-        linear-gradient(
-            145deg,
-            var(--navy),
-            #354884
-        );
-
-    color:#fff;
-
-    padding:50px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    min-height:600px;
+    border:1px solid #e8e2dc;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 50px rgba(20,30,70,.08);
 }
 
 .logo{
-    width:55px;
-    height:55px;
-
-    border-radius:15px;
-
-    background:#fff;
-
-    color:var(--navy);
-
-    display:grid;
-    place-items:center;
-
-    font-size:20px;
-    font-weight:800;
+    text-align:center;
+    margin-bottom:20px;
 }
 
-.login-brand h1{
-    font-size:36px;
-    line-height:1.2;
-
-    margin-top:25px;
+.logo img{
+    width:170px;
+    height:75px;
+    object-fit:contain;
 }
 
-.login-brand h1 span{
-    color:#e0a58c;
-}
-
-.login-brand p{
-    color:rgba(255,255,255,.7);
-
-    font-size:12px;
-    line-height:1.9;
-
-    margin-top:15px;
-
-    max-width:400px;
-}
-
-.features{
-    margin-top:30px;
-
-    display:grid;
-    gap:13px;
-}
-
-.feature{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    color:rgba(255,255,255,.85);
-
-    font-size:10px;
-}
-
-.feature-icon{
-    width:30px;
-    height:30px;
-
-    border-radius:8px;
-
-    background:rgba(255,255,255,.1);
-
-    display:grid;
-    place-items:center;
-}
-
-
-/* RIGHT */
-
-.login-form{
-    padding:50px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.login-form small{
-    color:var(--peach);
-
-    font-size:9px;
-
-    font-weight:800;
-
-    letter-spacing:2px;
-}
-
-.login-form h2{
-    color:var(--navy);
-
-    font-size:28px;
-
-    margin-top:7px;
+h1{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:7px;
 }
 
 .subtitle{
-    color:var(--muted);
-
-    font-size:10px;
-
-    margin-top:5px;
-
+    text-align:center;
+    color:#7c8497;
+    font-size:13px;
     margin-bottom:25px;
 }
 
-.field{
-    margin-bottom:14px;
-}
-
-.field label{
-    display:block;
-
-    color:var(--navy);
-
-    font-size:10px;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-}
-
-.field input{
+.input{
     width:100%;
-
-    padding:12px 13px;
-
-    border:1px solid var(--border);
-
-    border-radius:10px;
-
+    padding:13px;
+    border:1px solid #ddd7d2;
+    border-radius:9px;
+    margin-bottom:12px;
     outline:none;
-
-    font-family:inherit;
-
-    font-size:11px;
-
-    transition:.2s;
 }
 
-.field input:focus{
-    border-color:var(--peach);
-
-    box-shadow:
-        0 0 0 3px rgba(202,139,110,.1);
-}
-
-.password-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:6px;
-}
-
-.forgot{
-    border:0;
-    background:none;
-
-    color:var(--peach);
-
-    font-family:inherit;
-
-    font-size:8px;
-
-    cursor:pointer;
+.input:focus{
+    border-color:#c98b70;
 }
 
 .login-btn{
     width:100%;
-
     padding:13px;
-
     border:0;
-
-    border-radius:10px;
-
-    background:var(--navy);
-
+    border-radius:9px;
+    background:#1d2d67;
     color:#fff;
-
-    font-family:inherit;
-
-    font-size:11px;
-
-    font-weight:800;
-
+    font-weight:bold;
     cursor:pointer;
-
-    margin-top:5px;
-
-    transition:.25s;
 }
-
-.login-btn:hover{
-    background:var(--navy-dark);
-
-    transform:translateY(-1px);
-}
-
-
-/* DIVIDER */
-
-.divider{
-    display:flex;
-    align-items:center;
-
-    gap:10px;
-
-    margin:20px 0;
-
-    color:#a0a5b2;
-
-    font-size:8px;
-}
-
-.divider::before,
-.divider::after{
-    content:"";
-
-    height:1px;
-
-    background:#ebe7e4;
-
-    flex:1;
-}
-
-
-/* GOOGLE */
 
 .google-btn{
     width:100%;
-
-    padding:12px;
-
-    border-radius:10px;
-
-    border:1px solid var(--border);
-
-    background:#fff;
-
-    color:var(--navy);
-
-    font-family:inherit;
-
-    font-size:10px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    transition:.25s;
-}
-
-.google-btn:hover{
-    background:#fafafa;
-
-    border-color:#cfd2da;
-}
-
-.google-icon{
-    width:18px;
-    height:18px;
-
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
-    font-weight:800;
-
-    font-size:14px;
-}
-
-
-/* REGISTER */
-
-.register{
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:9px;
-
-    margin-top:20px;
-}
-
-.register button{
-    border:0;
-    background:none;
-
-    color:var(--peach);
-
-    font-family:inherit;
-
-    font-weight:800;
-
-    cursor:pointer;
-}
-
-
-/* STATUS */
-
-.status{
-    display:none;
-
-    padding:10px;
-
+    padding:13px;
+    border:1px solid #ddd7d2;
     border-radius:9px;
-
-    font-size:9px;
-
-    margin-top:13px;
-
-    line-height:1.5;
+    background:#fff;
+    color:#1d2d67;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:12px;
 }
 
-.status.success{
-    display:block;
-
-    color:#2d8c61;
-
-    background:#edf8f2;
-
-    border:1px solid #cdebdc;
+.divider{
+    text-align:center;
+    color:#999;
+    font-size:11px;
+    margin:18px 0;
 }
 
-.status.error{
-    display:block;
-
-    color:#bb5353;
-
-    background:#fff0f0;
-
-    border:1px solid #f0cece;
-}
-
-
-/* MOBILE */
-
-@media(max-width:750px){
-
-    .login-wrapper{
-        grid-template-columns:1fr;
-
-        max-width:480px;
-    }
-
-    .login-brand{
-        min-height:auto;
-
-        padding:30px;
-
-        text-align:center;
-
-        align-items:center;
-    }
-
-    .login-brand h1{
-        font-size:28px;
-    }
-
-    .login-brand p{
-        font-size:10px;
-    }
-
-    .features{
-        grid-template-columns:1fr 1fr;
-
-        text-align:left;
-    }
-
-    .login-form{
-        padding:30px;
-    }
-
-}
-
-@media(max-width:450px){
-
-    body{
-        padding:12px;
-    }
-
-    .login-brand{
-        padding:25px 20px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .login-form{
-        padding:25px 20px;
-    }
-
+.message{
+    text-align:center;
+    font-size:12px;
+    margin-top:15px;
+    color:#d05c4b;
 }
 
 </style>
@@ -506,192 +113,66 @@ body{
 
 <body>
 
-<div class="login-wrapper">
-
-
-<!-- BRAND PANEL -->
-
-<div class="login-brand">
+<div class="login-box">
 
     <div class="logo">
-        MN
+        <img src="mamraj-logo.png">
     </div>
 
-    <h1>
-        Welcome back to
-        <span>Nexus.</span>
-    </h1>
-
-    <p>
-        Continue your learning journey, track your progress,
-        access courses, internships and build your career
-        with MamRaj Nexus Academy.
-    </p>
-
-    <div class="features">
-
-        <div class="feature">
-            <div class="feature-icon">✓</div>
-            Secure Student Account
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">📚</div>
-            Access Your Courses
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">📈</div>
-            Track Your Progress
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🚀</div>
-            Manage Internships
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- LOGIN -->
-
-<div class="login-form">
-
-    <small>STUDENT PORTAL</small>
-
-    <h2>Sign in</h2>
+    <h1>Welcome Back</h1>
 
     <p class="subtitle">
-        Access your personalized student dashboard.
+        Sign in to continue your learning journey.
     </p>
 
+    <input
+        id="email"
+        class="input"
+        type="email"
+        placeholder="Email address"
+    >
 
-    <form id="loginForm">
+    <input
+        id="password"
+        class="input"
+        type="password"
+        placeholder="Password"
+    >
 
-        <div class="field">
-
-            <label>Email Address</label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="student@example.com"
-                required>
-
-        </div>
-
-
-        <div class="field">
-
-            <div class="password-row">
-
-                <label>Password</label>
-
-                <button
-                    type="button"
-                    class="forgot"
-                    id="forgotPassword">
-
-                    Forgot password?
-
-                </button>
-
-            </div>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                required>
-
-        </div>
-
-
-        <button
-            type="submit"
-            class="login-btn"
-            id="loginBtn">
-
-            Sign In →
-
-        </button>
-
-    </form>
-
-
-    <div class="divider">
-        OR CONTINUE WITH
-    </div>
-
-
-    <button
-        class="google-btn"
-        id="googleBtn">
-
-        <span class="google-icon">
-            G
-        </span>
-
-        Continue with Google
-
+    <button class="login-btn" onclick="emailLogin()">
+        Sign In
     </button>
 
-
-    <div
-        id="status"
-        class="status">
+    <div class="divider">
+        OR
     </div>
 
+    <button class="google-btn" onclick="googleLogin()">
+        Continue with Google
+    </button>
 
-    <div class="register">
-
-        Don't have an account?
-
-        <button id="registerBtn">
-            Create Student Account
-        </button>
-
-    </div>
+    <p id="message" class="message"></p>
 
 </div>
 
-</div>
-
-
-<!-- FIREBASE -->
 
 <script type="module">
 
-import {
-    initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
     getAuth,
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signInWithPopup,
     GoogleAuthProvider,
-    sendPasswordResetEmail,
-    onAuthStateChanged
-} from
-"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    signInWithPopup
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-
-/* =====================================================
-   FIREBASE CONFIG
-   GET THIS FROM:
-   Firebase Console → Project Settings → Your Apps
-===================================================== */
 
 const firebaseConfig = {
 
-    apiKey:
-        "YOUR_FIREBASE_API_KEY",
+    apiKey: "YOUR_API_KEY",
 
     authDomain:
         "YOUR_PROJECT.firebaseapp.com",
@@ -703,370 +184,87 @@ const firebaseConfig = {
         "YOUR_PROJECT.firebasestorage.app",
 
     messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
+        "YOUR_SENDER_ID",
 
     appId:
-        "YOUR_FIREBASE_APP_ID"
+        "YOUR_APP_ID"
 
 };
 
 
-const app =
-    initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const auth =
-    getAuth(app);
-
-const googleProvider =
-    new GoogleAuthProvider();
+const auth = getAuth(app);
 
 
-/* =====================================================
-   ELEMENTS
-===================================================== */
+/* EMAIL LOGIN */
 
-const loginForm =
-    document.getElementById("loginForm");
+window.emailLogin = async function(){
 
-const emailInput =
-    document.getElementById("email");
+    const email =
+        document.getElementById("email").value;
 
-const passwordInput =
-    document.getElementById("password");
+    const password =
+        document.getElementById("password").value;
 
-const loginBtn =
-    document.getElementById("loginBtn");
-
-const googleBtn =
-    document.getElementById("googleBtn");
-
-const registerBtn =
-    document.getElementById("registerBtn");
-
-const forgotPassword =
-    document.getElementById("forgotPassword");
-
-const statusBox =
-    document.getElementById("status");
+    const message =
+        document.getElementById("message");
 
 
-/* =====================================================
-   STATUS
-===================================================== */
+    try{
 
-function showStatus(message,type){
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-    statusBox.className =
-        "status " + type;
+        window.location.href =
+            "dashboard.html";
 
-    statusBox.textContent =
-        message;
+    }
+
+    catch(error){
+
+        message.textContent =
+            "Invalid email or password.";
+
+        console.error(error);
+
+    }
 
 }
 
 
-/* =====================================================
-   EMAIL / PASSWORD LOGIN
-===================================================== */
+/* GOOGLE LOGIN */
 
-loginForm.addEventListener(
-    "submit",
-    async function(event){
+window.googleLogin = async function(){
 
-        event.preventDefault();
+    const provider =
+        new GoogleAuthProvider();
 
-        const email =
-            emailInput.value.trim();
-
-        const password =
-            passwordInput.value;
+    const message =
+        document.getElementById("message");
 
 
-        loginBtn.disabled = true;
+    try{
 
-        loginBtn.textContent =
-            "Signing in...";
+        await signInWithPopup(
+            auth,
+            provider
+        );
 
-
-        try{
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-            showStatus(
-                "Login successful. Opening dashboard...",
-                "success"
-            );
-
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "student-dashboard.html";
-
-            },700);
-
-
-        }catch(error){
-
-            showStatus(
-                getFirebaseError(error),
-                "error"
-            );
-
-            loginBtn.disabled = false;
-
-            loginBtn.textContent =
-                "Sign In →";
-
-        }
+        window.location.href =
+            "dashboard.html";
 
     }
-);
 
+    catch(error){
 
-/* =====================================================
-   GOOGLE LOGIN
-===================================================== */
+        message.textContent =
+            "Google sign-in failed. Please try again.";
 
-googleBtn.addEventListener(
-    "click",
-    async function(){
-
-        googleBtn.disabled = true;
-
-        googleBtn.textContent =
-            "Connecting...";
-
-
-        try{
-
-            await signInWithPopup(
-                auth,
-                googleProvider
-            );
-
-
-            showStatus(
-                "Google login successful.",
-                "success"
-            );
-
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "student-dashboard.html";
-
-            },700);
-
-
-        }catch(error){
-
-            console.error(error);
-
-            showStatus(
-                getFirebaseError(error),
-                "error"
-            );
-
-            googleBtn.disabled = false;
-
-            googleBtn.innerHTML =
-                '<span class="google-icon">G</span> Continue with Google';
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CREATE ACCOUNT
-===================================================== */
-
-registerBtn.addEventListener(
-    "click",
-    async function(){
-
-        const email =
-            emailInput.value.trim();
-
-        const password =
-            passwordInput.value;
-
-
-        if(!email || !password){
-
-            showStatus(
-                "Enter an email and password first.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(password.length < 6){
-
-            showStatus(
-                "Password must contain at least 6 characters.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        try{
-
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-
-            showStatus(
-                "Account created successfully. Opening dashboard...",
-                "success"
-            );
-
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "student-dashboard.html";
-
-            },700);
-
-
-        }catch(error){
-
-            showStatus(
-                getFirebaseError(error),
-                "error"
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
-
-forgotPassword.addEventListener(
-    "click",
-    async function(){
-
-        const email =
-            emailInput.value.trim();
-
-
-        if(!email){
-
-            showStatus(
-                "Enter your email address first.",
-                "error"
-            );
-
-            emailInput.focus();
-
-            return;
-        }
-
-
-        try{
-
-            await sendPasswordResetEmail(
-                auth,
-                email
-            );
-
-
-            showStatus(
-                "Password reset email sent. Check your inbox.",
-                "success"
-            );
-
-
-        }catch(error){
-
-            showStatus(
-                getFirebaseError(error),
-                "error"
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-onAuthStateChanged(
-    auth,
-    function(user){
-
-        if(user){
-
-            /*
-              User is already logged in.
-              You can uncomment this if you want
-              automatic dashboard redirect.
-            */
-
-            // window.location.href =
-            //     "student-dashboard.html";
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   FIREBASE ERROR MESSAGES
-===================================================== */
-
-function getFirebaseError(error){
-
-    switch(error.code){
-
-        case "auth/invalid-credential":
-            return "Invalid email or password.";
-
-        case "auth/user-not-found":
-            return "No student account found with this email.";
-
-        case "auth/wrong-password":
-            return "Incorrect password.";
-
-        case "auth/email-already-in-use":
-            return "An account already exists with this email.";
-
-        case "auth/weak-password":
-            return "Please use a stronger password.";
-
-        case "auth/invalid-email":
-            return "Please enter a valid email address.";
-
-        case "auth/popup-closed-by-user":
-            return "Google sign-in was cancelled.";
-
-        default:
-            return error.message ||
-                   "Something went wrong. Please try again.";
+        console.error(error);
 
     }
 
