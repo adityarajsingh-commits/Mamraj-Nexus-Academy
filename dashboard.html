@@ -2486,24 +2486,27 @@ input:focus-visible{
 
         <div class="profile">
 
-
-            <div
-                class="avatar"
-                id="userAvatar">
-
-                AS
-
-            </div>
+<div class="ava profile-avatar">AS</div>
 
 
             <div>
 
-                <strong id="studentName">
-                    Aditya Singh
-                </strong>
+                <span class="profile-name">Student</span>
 
                 <span id="studentRole">
                     Student
+                </span>
+
+                <span
+                    class="profile-email"
+                    style="
+                        display:block;
+                        margin-top:3px;
+                        color:#8b8991;
+                        font-size:9px;
+                    "
+                >
+                    student@email.com
                 </span>
 
             </div>
@@ -4258,35 +4261,32 @@ function filterDashboard(){
         }
 
     }
+<!-- =====================================================
+     FIREBASE AUTHENTICATION & STUDENT PROFILE
+===================================================== -->
 
+<script type="module">
 
-
-
-/* =========================================
-   FIREBASE IMPORTS
-========================================= */
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
     getAuth,
     onAuthStateChanged,
     signOut
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
     getFirestore,
     doc,
     getDoc
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================
+/* =====================================================
    FIREBASE CONFIG
-========================================= */
+===================================================== */
 
 const firebaseConfig = {
 
@@ -4314,9 +4314,9 @@ const firebaseConfig = {
 };
 
 
-/* =========================================
+/* =====================================================
    INITIALIZE FIREBASE
-========================================= */
+===================================================== */
 
 const app = initializeApp(firebaseConfig);
 
@@ -4325,9 +4325,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-/* =========================================
-   DASHBOARD ELEMENTS
-========================================= */
+/* =====================================================
+   DASHBOARD PROFILE ELEMENTS
+===================================================== */
 
 const profileNames =
     document.querySelectorAll(".profile-name");
@@ -4339,63 +4339,32 @@ const profileAvatars =
     document.querySelectorAll(".profile-avatar");
 
 
-/* =========================================
-   AUTH STATE
-========================================= */
+/* =====================================================
+   UPDATE STUDENT PROFILE
+===================================================== */
 
-onAuthStateChanged(auth, async (user) => {
-
-    /*
-        No logged-in user
-        → Send to login page
-    */
-
-    if (!user) {
-
-        window.location.replace("login.html");
-
-        return;
-
-    }
-
-
-    console.log("Logged in user:", user.uid);
-
-
-    /*
-        Student name
-    */
+function updateStudentProfile(user) {
 
     const studentName =
         user.displayName ||
         user.email?.split("@")[0] ||
         "Student";
 
-
-    /*
-        Student email
-    */
-
     const studentEmail =
         user.email || "";
 
-
-    /*
-        Student initials
-    */
-
     const initials =
         studentName
-            .split(" ")
+            .split(/\s+/)
             .map(name => name.charAt(0))
             .slice(0, 2)
             .join("")
             .toUpperCase();
 
 
-    /* =====================================
-       UPDATE NAME
-    ===================================== */
+    /* ---------------------------------------------
+       NAME
+    --------------------------------------------- */
 
     profileNames.forEach(element => {
 
@@ -4405,9 +4374,9 @@ onAuthStateChanged(auth, async (user) => {
     });
 
 
-    /* =====================================
-       UPDATE EMAIL
-    ===================================== */
+    /* ---------------------------------------------
+       EMAIL
+    --------------------------------------------- */
 
     profileEmails.forEach(element => {
 
@@ -4417,9 +4386,9 @@ onAuthStateChanged(auth, async (user) => {
     });
 
 
-    /* =====================================
-       UPDATE PROFILE PHOTO
-    ===================================== */
+    /* ---------------------------------------------
+       PROFILE PHOTO / INITIALS
+    --------------------------------------------- */
 
     profileAvatars.forEach(element => {
 
@@ -4434,6 +4403,7 @@ onAuthStateChanged(auth, async (user) => {
                         height:100%;
                         object-fit:cover;
                         border-radius:50%;
+                        display:block;
                     "
                 >
             `;
@@ -4447,15 +4417,54 @@ onAuthStateChanged(auth, async (user) => {
 
     });
 
+}
 
-    /* =====================================
+
+/* =====================================================
+   AUTHENTICATION STATE
+===================================================== */
+
+onAuthStateChanged(auth, async (user) => {
+
+    /*
+       Student is not logged in.
+       Protect the dashboard.
+    */
+
+    if (!user) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "Logged-in student UID:",
+        user.uid
+    );
+
+
+    /* Update profile from Firebase Auth */
+
+    updateStudentProfile(user);
+
+
+    /* ---------------------------------------------
        LOAD FIRESTORE PROFILE
-    ===================================== */
+    --------------------------------------------- */
 
     try {
 
         const userRef =
-            doc(db, "users", user.uid);
+            doc(
+                db,
+                "users",
+                user.uid
+            );
 
         const userSnapshot =
             await getDoc(userRef);
@@ -4467,8 +4476,22 @@ onAuthStateChanged(auth, async (user) => {
                 userSnapshot.data();
 
 
+            const profileName =
+                profile.name ||
+                user.displayName ||
+                "Student";
+
+
+            profileNames.forEach(element => {
+
+                element.textContent =
+                    profileName;
+
+            });
+
+
             console.log(
-                "Student profile:",
+                "Firestore student profile:",
                 profile
             );
 
@@ -4486,9 +4509,9 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 
-/* =========================================
+/* =====================================================
    LOGOUT
-========================================= */
+===================================================== */
 
 window.logoutStudent = async function () {
 
@@ -4515,6 +4538,33 @@ window.logoutStudent = async function () {
 
 };
 
+
+/* =====================================================
+   CONNECT LOGOUT BUTTON
+===================================================== */
+
+const logoutButton =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            logoutStudent();
+
+        }
+    );
+
+}
+
 </script>
+
 </body>
 </html>
