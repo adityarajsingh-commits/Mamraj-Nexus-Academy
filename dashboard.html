@@ -4259,9 +4259,262 @@ function filterDashboard(){
 
     }
 
+
+
+
+/* =========================================
+   FIREBASE IMPORTS
+========================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
 }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =========================================
+   FIREBASE CONFIG
+========================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+
+    authDomain:
+        "mamraj-nexus-academy.firebaseapp.com",
+
+    projectId:
+        "mamraj-nexus-academy",
+
+    storageBucket:
+        "mamraj-nexus-academy.firebasestorage.app",
+
+    messagingSenderId:
+        "548826957068",
+
+    appId:
+        "1:548826957068:web:29b02f77dc20feaf28f529",
+
+    measurementId:
+        "G-Z64L57P9XV"
+
+};
+
+
+/* =========================================
+   INITIALIZE FIREBASE
+========================================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* =========================================
+   DASHBOARD ELEMENTS
+========================================= */
+
+const profileNames =
+    document.querySelectorAll(".profile-name");
+
+const profileEmails =
+    document.querySelectorAll(".profile-email");
+
+const profileAvatars =
+    document.querySelectorAll(".profile-avatar");
+
+
+/* =========================================
+   AUTH STATE
+========================================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+    /*
+        No logged-in user
+        → Send to login page
+    */
+
+    if (!user) {
+
+        window.location.replace("login.html");
+
+        return;
+
+    }
+
+
+    console.log("Logged in user:", user.uid);
+
+
+    /*
+        Student name
+    */
+
+    const studentName =
+        user.displayName ||
+        user.email?.split("@")[0] ||
+        "Student";
+
+
+    /*
+        Student email
+    */
+
+    const studentEmail =
+        user.email || "";
+
+
+    /*
+        Student initials
+    */
+
+    const initials =
+        studentName
+            .split(" ")
+            .map(name => name.charAt(0))
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+
+
+    /* =====================================
+       UPDATE NAME
+    ===================================== */
+
+    profileNames.forEach(element => {
+
+        element.textContent =
+            studentName;
+
+    });
+
+
+    /* =====================================
+       UPDATE EMAIL
+    ===================================== */
+
+    profileEmails.forEach(element => {
+
+        element.textContent =
+            studentEmail;
+
+    });
+
+
+    /* =====================================
+       UPDATE PROFILE PHOTO
+    ===================================== */
+
+    profileAvatars.forEach(element => {
+
+        if (user.photoURL) {
+
+            element.innerHTML = `
+                <img
+                    src="${user.photoURL}"
+                    alt="Student Profile"
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                        border-radius:50%;
+                    "
+                >
+            `;
+
+        } else {
+
+            element.textContent =
+                initials;
+
+        }
+
+    });
+
+
+    /* =====================================
+       LOAD FIRESTORE PROFILE
+    ===================================== */
+
+    try {
+
+        const userRef =
+            doc(db, "users", user.uid);
+
+        const userSnapshot =
+            await getDoc(userRef);
+
+
+        if (userSnapshot.exists()) {
+
+            const profile =
+                userSnapshot.data();
+
+
+            console.log(
+                "Student profile:",
+                profile
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load student profile:",
+            error
+        );
+
+    }
+
+});
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+window.logoutStudent = async function () {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.replace(
+            "login.html"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Logout failed:",
+            error
+        );
+
+        alert(
+            "Unable to sign out. Please try again."
+        );
+
+    }
+
+};
 
 </script>
-
 </body>
 </html>
