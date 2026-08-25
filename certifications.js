@@ -1,8 +1,8 @@
 from pathlib import Path
 import re
 
-src = Path("/mnt/data/certifications_connected.html")
-out = Path("/mnt/data/certifications_updated.js")
+src = Path("/certifications.html")
+out = Path("/certifications.js")
 
 if not src.exists():
     raise FileNotFoundError("certifications_connected.html not found")
