@@ -1013,6 +1013,494 @@
 </div>
 
 
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+    authDomain: "mamraj-nexus-academy.firebaseapp.com",
+    projectId: "mamraj-nexus-academy",
+    storageBucket: "mamraj-nexus-academy.firebasestorage.app",
+    messagingSenderId: "548826957068",
+    appId: "1:548826957068:web:29b02f77dc20feaf28f529",
+    measurementId: "G-Z64L57P9XV"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const COURSE_CATALOG = [
+    {
+        id: "web-development",
+        name: "Full Stack Web Development",
+        category: "development",
+        description: "HTML, CSS, JavaScript, APIs and modern web development.",
+        lessons: 60,
+        duration: "6 Months",
+        level: "Beginner → Pro",
+        icon: "fa-code"
+    },
+    {
+        id: "data-analytics",
+        name: "Data Analytics",
+        category: "data",
+        description: "Data analysis, spreadsheets, SQL, Python, dashboards and practical projects.",
+        lessons: 48,
+        duration: "6 Months",
+        level: "Beginner → Pro",
+        icon: "fa-chart-column"
+    },
+    {
+        id: "human-resource-management-ai",
+        name: "Human Resource Management Using AI",
+        category: "business",
+        description: "Modern HR workflows, talent management and practical AI applications.",
+        lessons: 48,
+        duration: "6 Months",
+        level: "Beginner → Pro",
+        icon: "fa-users"
+    },
+    {
+        id: "ui-ux-design",
+        name: "UI/UX Design",
+        category: "design",
+        description: "User research, wireframes, prototypes and visual design.",
+        lessons: 42,
+        duration: "8 Weeks",
+        level: "Beginner",
+        icon: "fa-pen-ruler"
+    },
+    {
+        id: "react-development",
+        name: "React Development",
+        category: "development",
+        description: "Components, hooks, state management and modern React applications.",
+        lessons: 36,
+        duration: "6 Weeks",
+        level: "Intermediate",
+        icon: "fa-brands fa-react"
+    },
+    {
+        id: "professional-communication",
+        name: "Professional Communication",
+        category: "business",
+        description: "Communication, presentations, teamwork and workplace skills.",
+        lessons: 36,
+        duration: "6 Weeks",
+        level: "Beginner",
+        icon: "fa-comments"
+    }
+];
+
+const COURSE_ALIASES = {
+    "web-development": ["web-development", "full-stack-web-development"],
+    "data-analytics": ["data-analytics", "data-analytics-course"],
+    "human-resource-management-ai": [
+        "human-resource-management-ai",
+        "hr-management-ai",
+        "human-resource-management"
+    ],
+    "ui-ux-design": ["ui-ux-design"],
+    "react-development": ["react-development", "react"],
+    "professional-communication": ["professional-communication"]
+};
+
+let currentUser = null;
+let certificateState = new Map();
+
+const qs = (selector, root = document) => root.querySelector(selector);
+
+function getCourse(id) {
+    return COURSE_CATALOG.find(course => course.id === id);
+}
+
+function getProgressPercent(data, course) {
+    const completed = Array.isArray(data?.completedTopics)
+        ? data.completedTopics.length
+        : 0;
+
+    if (!course?.lessons) return 0;
+
+    return Math.min(
+        100,
+        Math.round((completed / course.lessons) * 100)
+    );
+}
+
+async function readCourseProgress(uid, course) {
+    for (const alias of (COURSE_ALIASES[course.id] || [course.id])) {
+        try {
+            const snap = await getDoc(
+                doc(db, "users", uid, "courseProgress", alias)
+            );
+
+            if (snap.exists()) {
+                return snap.data();
+            }
+        } catch (error) {
+            console.warn("Progress read failed:", course.id, error);
+        }
+    }
+
+    return {};
+}
+
+async function readCertificate(uid, course) {
+    for (const alias of (COURSE_ALIASES[course.id] || [course.id])) {
+        try {
+            const snap = await getDoc(
+                doc(db, "users", uid, "certificates", alias)
+            );
+
+            if (snap.exists()) {
+                return {
+                    exists: true,
+                    ...snap.data()
+                };
+            }
+        } catch (error) {
+            console.warn("Certificate read failed:", course.id, error);
+        }
+    }
+
+    return {
+        exists: false,
+        paid: false
+    };
+}
+
+function updateProfile(user) {
+    const name = user.displayName || "Student";
+    const initials = name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(part => part[0])
+        .join("")
+        .toUpperCase() || "ST";
+
+    const avatar = qs(".profile-avatar");
+    const profileName = qs(".profile-info strong");
+
+    if (avatar) avatar.textContent = initials;
+    if (profileName) profileName.textContent = name;
+}
+
+function updateStats() {
+    let earned = 0;
+    let progress = 0;
+
+    certificateState.forEach(item => {
+        if (item.earned) earned++;
+        else if (item.percent > 0) progress++;
+    });
+
+    const available = Math.max(
+        0,
+        COURSE_CATALOG.length - earned - progress
+    );
+
+    const statCards = document.querySelectorAll(".stat-card");
+
+    if (statCards[0]) {
+        const value = statCards[0].querySelector("strong");
+        if (value) value.textContent = String(earned).padStart(2, "0");
+    }
+
+    if (statCards[1]) {
+        const value = statCards[1].querySelector("strong");
+        if (value) value.textContent = String(progress).padStart(2, "0");
+    }
+
+    if (statCards[2]) {
+        const value = statCards[2].querySelector("strong");
+        if (value) value.textContent = String(available).padStart(2, "0");
+    }
+
+    const completionValues = [...certificateState.values()]
+        .map(item => item.percent);
+
+    const average = completionValues.length
+        ? Math.round(
+            completionValues.reduce((a, b) => a + b, 0) /
+            completionValues.length
+        )
+        : 0;
+
+    if (statCards[3]) {
+        const value = statCards[3].querySelector("strong");
+        if (value) value.textContent = `${average}%`;
+    }
+
+    const heroCount = qs(".hero-badge strong");
+    if (heroCount) heroCount.textContent = earned;
+}
+
+function buildCertificateCard(course, state) {
+    const card = document.createElement("article");
+    card.className = "certificate-card";
+    card.dataset.status = state.earned
+        ? "earned"
+        : state.percent > 0
+            ? "progress"
+            : "available";
+    card.dataset.category = course.category;
+    card.dataset.name = course.name;
+
+    const statusHTML = state.earned
+        ? `<span class="verified"><i class="fa-solid fa-circle-check"></i> VERIFIED</span>`
+        : state.percent > 0
+            ? `<span class="progress-label">IN PROGRESS</span>`
+            : `<span class="available-label">AVAILABLE</span>`;
+
+    const iconClass = course.icon.startsWith("fa-brands")
+        ? course.icon
+        : `fa-solid ${course.icon}`;
+
+    const earnedDate = state.certificate?.issuedAt
+        ? new Date(state.certificate.issuedAt).toLocaleDateString(
+            "en-IN",
+            { month: "short", year: "numeric" }
+        )
+        : "";
+
+    const actionHTML = state.earned
+        ? `
+            <div class="certificate-id">
+                <span>Certificate ID</span>
+                <strong>${state.certificate.certificateId || "Verified"}</strong>
+            </div>
+            <div class="card-actions">
+                <button class="view-btn" onclick="viewCertificate(this)">
+                    <i class="fa-regular fa-eye"></i> View
+                </button>
+                <button class="download-btn"
+                        onclick="downloadCertificate(this)">
+                    <i class="fa-solid fa-download"></i> Download
+                </button>
+            </div>
+        `
+        : state.percent > 0
+            ? `
+                <div class="course-progress">
+                    <div>
+                        <span>Course Progress</span>
+                        <strong>${state.percent}%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <span style="width:${state.percent}%"></span>
+                    </div>
+                </div>
+                <button class="continue-btn"
+                        onclick="openCourse('${course.id}')">
+                    Continue Learning
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `
+            : `
+                <div class="course-info">
+                    <span><i class="fa-solid fa-book"></i> ${course.lessons} Lessons</span>
+                    <span><i class="fa-solid fa-signal"></i> ${course.level}</span>
+                </div>
+                <button class="start-btn"
+                        onclick="openCourse('${course.id}')">
+                    Start Certification
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            `;
+
+    card.innerHTML = `
+        <div class="certificate-cover ${course.category}">
+            <div class="cover-top">
+                ${statusHTML}
+                <i class="${iconClass}"></i>
+            </div>
+            <div class="certificate-symbol">N</div>
+            <span class="cover-title">MamRaj Nexus Academy</span>
+            <strong>${course.name}</strong>
+        </div>
+
+        <div class="certificate-body">
+            <div class="card-meta">
+                <span class="category">${course.category}</span>
+                <span class="earned-date">
+                    <i class="fa-regular fa-calendar"></i>
+                    ${state.earned ? earnedDate : course.duration}
+                </span>
+            </div>
+
+            <h3>${course.name}</h3>
+            <p>${course.description}</p>
+            ${actionHTML}
+        </div>
+    `;
+
+    return card;
+}
+
+function renderCertificates() {
+    const grid = qs("#certificateGrid");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    COURSE_CATALOG.forEach(course => {
+        const state = certificateState.get(course.id) || {
+            percent: 0,
+            earned: false,
+            certificate: null
+        };
+
+        grid.appendChild(
+            buildCertificateCard(course, state)
+        );
+    });
+
+    updateStats();
+
+    // Re-run the existing filters from certifications.js.
+    const input = qs("#searchInput");
+    if (input) input.dispatchEvent(new Event("input"));
+}
+
+async function loadStudentCertificates() {
+    if (!currentUser) return;
+
+    certificateState.clear();
+
+    // Firebase reads are parallel so the certifications page loads faster.
+    await Promise.all(
+        COURSE_CATALOG.map(async course => {
+            const [progress, certificate] = await Promise.all([
+                readCourseProgress(currentUser.uid, course),
+                readCertificate(currentUser.uid, course)
+            ]);
+
+            const percent = getProgressPercent(progress, course);
+            const earned =
+                certificate.exists === true &&
+                certificate.paid === true;
+
+            certificateState.set(course.id, {
+                percent,
+                earned,
+                certificate
+            });
+        })
+    );
+
+    renderCertificates();
+}
+
+window.openCourse = function(courseId) {
+    window.location.href =
+        `course.html?course=${encodeURIComponent(courseId)}`;
+};
+
+window.viewCertificate = function(button) {
+    const card = button.closest(".certificate-card");
+    const courseName = card?.dataset.name || "Certificate";
+    const course = COURSE_CATALOG.find(
+        item => item.name.toLowerCase() === courseName.toLowerCase()
+    );
+
+    if (!course) return;
+
+    const state = certificateState.get(course.id);
+
+    if (!state?.earned) return;
+
+    const cert = state.certificate || {};
+
+    qs("#modalCertificateName").textContent =
+        course.name;
+
+    qs("#modalCertificateId").textContent =
+        cert.certificateId || "Verified";
+
+    const modal = qs("#certificateModal");
+    if (modal) modal.classList.add("show");
+
+    // Store current certificate for the modal's download action.
+    window.__activeCertificate = {
+        course,
+        certificate: cert
+    };
+};
+
+window.downloadCertificate = function(button) {
+    const card = button?.closest(".certificate-card");
+    const courseName =
+        card?.dataset.name ||
+        window.__activeCertificate?.course?.name;
+
+    const course = COURSE_CATALOG.find(
+        item => item.name === courseName
+    );
+
+    if (!course) return;
+
+    const state = certificateState.get(course.id);
+
+    if (!state?.earned) return;
+
+    const certId =
+        state.certificate?.certificateId || "";
+
+    window.location.href =
+        `certificate.html?course=${encodeURIComponent(course.id)}&certificateId=${encodeURIComponent(certId)}`;
+};
+
+const originalCloseCertificate =
+    window.closeCertificate;
+
+window.closeCertificate = function() {
+    if (typeof originalCloseCertificate === "function") {
+        originalCloseCertificate();
+        return;
+    }
+
+    const modal = qs("#certificateModal");
+    if (modal) modal.classList.remove("show");
+};
+
+onAuthStateChanged(auth, async user => {
+    if (!user) {
+        const profileName = qs(".profile-info strong");
+        const profileRole = qs(".profile-info span");
+        const avatar = qs(".profile-avatar");
+
+        if (profileName) profileName.textContent = "Please sign in";
+        if (profileRole) profileRole.textContent = "Student";
+        if (avatar) avatar.textContent = "ST";
+
+        return;
+    }
+
+    currentUser = user;
+    updateProfile(user);
+
+    try {
+        await loadStudentCertificates();
+    } catch (error) {
+        console.error("Certification system error:", error);
+    }
+});
+</script>
+
 <script src="certifications.js"></script>
 
 </body>
