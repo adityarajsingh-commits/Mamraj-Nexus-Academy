@@ -7,124 +7,98 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Manrope,sans-serif;background:#f7f3ef;color:#162962;overflow-x:hidden}a{text-decoration:none;color:inherit}button,input,select{font:inherit}
-:root{--navy:#263a7a;--purple:#5b45a5;--peach:#cf9878;--peachbg:#f5e9e1;--muted:#7c8298;--border:#e9e1db}
-.side{position:fixed;inset:0 auto 0 0;width:258px;background:linear-gradient(180deg,#2d4383,#263a7a);color:#fff;padding:22px 12px;z-index:20}.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 28px}.mark{width:44px;height:44px;border-radius:13px;background:#6549df;display:grid;place-items:center;font-weight:800;font-size:22px}.brand b{font-size:23px;letter-spacing:-1px}.brand b span{color:#d19a7a}.brand small{display:block;font-size:7px;letter-spacing:3px;margin-top:4px;opacity:.8}.label{font-size:9px;font-weight:800;letter-spacing:1.7px;color:#9eadd6;margin:10px 14px 8px}.nav{display:grid;gap:4px}.nav a{height:52px;border-radius:16px;display:flex;align-items:center;gap:16px;padding:0 18px;font-size:14px;font-weight:700;color:#f3f5fc}.nav a i{width:20px;text-align:center}.nav a:hover{background:#ffffff12}.nav a.active{background:var(--peach)}.help{margin:18px 8px;padding:13px;border-radius:15px;background:#ffffff12;display:flex;gap:10px;align-items:center}.help i{width:30px;height:30px;border-radius:50%;background:#efb58e;color:#30447d;display:grid;place-items:center}.help b{font-size:10px}.help small{display:block;color:#c7cde2;font-size:8px}
+*{box-sizing:border-box;margin:0;padding:0}:root{--navy:#263a7a;--purple:#5b45a5;--peach:#cf9878;--peachbg:#f5e9e1;--bg:#f7f3ef;--text:#162962;--muted:#7c8298;--border:#e9e1db;--green:#63a37c}body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}a{text-decoration:none;color:inherit}
+.side{position:fixed;inset:0 auto 0 0;width:258px;background:linear-gradient(180deg,#2d4383,#263a7a);color:#fff;padding:22px 12px;z-index:20}.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 28px}.mark{width:44px;height:44px;border-radius:13px;background:#6549df;display:grid;place-items:center;font-size:22px;font-weight:800}.brand b{font-size:23px;letter-spacing:-1px}.brand b span{color:#d19a7a}.brand small{display:block;font-size:7px;letter-spacing:3px;margin-top:4px;opacity:.8}.label{font-size:9px;font-weight:800;letter-spacing:1.7px;color:#9eadd6;margin:10px 14px 8px}.nav{display:grid;gap:4px}.nav a{height:52px;border-radius:16px;display:flex;align-items:center;gap:16px;padding:0 18px;font-size:14px;font-weight:700;color:#f3f5fc}.nav a i{width:20px;text-align:center}.nav a:hover{background:#ffffff12}.nav a.active{background:var(--peach)}.help{margin:18px 8px;padding:13px;border-radius:15px;background:#ffffff12;display:flex;gap:10px;align-items:center}.help i{width:30px;height:30px;border-radius:50%;background:#efb58e;color:#30447d;display:grid;place-items:center}.help b{font-size:10px}.help small{display:block;color:#c7cde2;font-size:8px}
 .main{margin-left:258px;min-height:100vh}.top{height:84px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 34px;position:sticky;top:0;z-index:10}.search{height:50px;max-width:450px;flex:1;background:#f7f4f1;border-radius:15px;display:flex;align-items:center;gap:12px;padding:0 18px;color:#9296a5}.search input{border:0;outline:0;background:none;width:100%;font-size:12px}.filters{display:flex;gap:6px}.filter{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;font-size:10px;font-weight:700;color:#6d7283}.filter.active{background:var(--navy);color:#fff}.actions{margin-left:auto;display:flex;align-items:center;gap:9px}.icon{width:40px;height:40px;border:0;border-radius:12px;background:#faf8f6;color:var(--navy)}.profile{display:flex;align-items:center;gap:9px}.avatar{width:43px;height:43px;border:2px solid var(--peach);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}.profile b{display:block;font-size:12px}.profile small{color:var(--muted);font-size:9px}
-.content{padding:34px;max-width:1500px;margin:auto}.crumb{font-size:9px;color:var(--peach);font-weight:800;letter-spacing:1.5px}.heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:7px}.heading h1{font-size:31px;letter-spacing:-1.5px}.heading p{color:var(--muted);font-size:11px;margin-top:5px}.new-btn{border:0;background:var(--navy);color:#fff;border-radius:10px;padding:11px 16px;font-size:9px;font-weight:800}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:23px}.stat{background:#fff;border:1px solid var(--border);border-radius:17px;padding:17px;display:flex;gap:12px;align-items:center}.stat i{width:42px;height:42px;border-radius:12px;background:var(--peachbg);color:var(--peach);display:grid;place-items:center}.stat small{display:block;color:var(--muted);font-size:8px}.stat strong{font-size:20px}
-.toolbar{margin-top:23px;display:flex;justify-content:space-between;align-items:center;gap:12px}.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 15px;color:#73788a;font-size:9px;font-weight:800}.tab.active{background:var(--navy);border-color:var(--navy);color:#fff}.sort{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 12px;color:#6f7484;font-size:9px;outline:0}
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:17px}.project{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 5px 18px #1e284608}.project-cover{height:145px;padding:17px;color:#fff;position:relative;overflow:hidden;background:linear-gradient(135deg,#293e7c,#5b459d)}.project-cover:nth-child(2){background:linear-gradient(135deg,#4c397e,#bd856d)}.project-cover:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #ffffff18;border-radius:50%;right:-70px;top:-100px}.project-icon{width:42px;height:42px;border-radius:12px;background:#ffffff20;display:grid;place-items:center;position:relative;z-index:2}.project-cover h3{position:absolute;left:17px;bottom:17px;font-size:15px;right:17px;z-index:2}.project-body{padding:16px}.project-body p{font-size:9px;color:var(--muted);line-height:1.65;min-height:42px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin:11px 0}.tag{background:#f5f2ef;color:#6f7484;border-radius:6px;padding:5px 7px;font-size:7px;font-weight:700}.project-progress{display:flex;justify-content:space-between;font-size:8px;margin:10px 0 5px}.project-progress strong{color:var(--peach)}.bar{height:6px;background:#eee9e5;border-radius:20px;overflow:hidden}.bar span{display:block;height:100%;background:var(--peach)}.project-foot{display:flex;justify-content:space-between;align-items:center;margin-top:13px}.status{font-size:8px;font-weight:800;color:#679877}.status.review{color:#9b7eeb}.status.todo{color:#8b8f9d}.open{border:0;background:var(--navy);color:#fff;border-radius:9px;padding:9px 12px;font-size:8px;font-weight:800}.open.light{background:#eef0fa;color:var(--navy)}
-.empty{display:none;text-align:center;padding:70px;color:var(--muted)}
-@media(max-width:1100px){.side{width:225px}.main{margin-left:225px}.filters{display:none}.stats{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:16px 12px 35px}.heading{align-items:flex-start;flex-direction:column}.heading h1{font-size:27px}.new-btn{width:100%}.stats{gap:9px}.stat{padding:13px}.stat i{width:36px;height:36px}.stat strong{font-size:17px}.toolbar{align-items:stretch;flex-direction:column}.sort{width:100%}.projects{grid-template-columns:1fr}}
-@media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:11px 8px 30px}.heading h1{font-size:24px}.stats{grid-template-columns:1fr 1fr}.stat{padding:10px;gap:8px}.stat i{width:31px;height:31px}.stat strong{font-size:15px}.project-cover{height:155px}}
+.content{padding:30px 34px;max-width:1500px;margin:auto}.crumb{font-size:9px;color:var(--peach);font-weight:800;letter-spacing:1.5px}.heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:7px}.heading h1{font-size:31px;letter-spacing:-1.5px}.heading p{color:var(--muted);font-size:11px;margin-top:5px}.new-btn{background:var(--navy);color:#fff;border-radius:10px;padding:11px 15px;font-size:9px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.stat{background:#fff;border:1px solid var(--border);border-radius:17px;padding:16px;display:flex;align-items:center;gap:11px}.stat i{width:40px;height:40px;border-radius:11px;background:var(--peachbg);color:var(--peach);display:grid;place-items:center}.stat small{display:block;font-size:8px;color:var(--muted)}.stat strong{font-size:19px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:19px}.tabs{display:flex;gap:6px;overflow:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;color:#73788a;font-size:8px;font-weight:800}.tab.active{background:var(--navy);border-color:var(--navy);color:#fff}.sort{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 12px;font-size:8px;color:#6d7283;outline:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:16px}.card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden}.cover{height:128px;padding:16px;color:#fff;background:linear-gradient(135deg,#293e7c,#5b459d);position:relative}.cover.alt{background:linear-gradient(135deg,#4d3b80,#bd856d)}.cover.green{background:linear-gradient(135deg,#356d68,#4d8e78)}.cover.orange{background:linear-gradient(135deg,#8b5d47,#c18a66)}.cover i{width:40px;height:40px;border-radius:11px;background:#ffffff1d;display:grid;place-items:center}.status{position:absolute;right:12px;top:12px;background:#ffffff22;border-radius:7px;padding:5px 7px;font-size:7px;font-weight:800}.cover h3{position:absolute;left:16px;bottom:14px;font-size:14px;right:12px}.body{padding:15px}.body p{font-size:8px;color:var(--muted);line-height:1.65;min-height:40px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin:10px 0}.tags span{font-size:7px;background:#f5f2ef;border-radius:6px;padding:6px 7px;color:#6c7180}.foot{border-top:1px solid var(--border);padding-top:10px;display:flex;justify-content:space-between;align-items:center}.foot small{font-size:7px;color:var(--muted)}.open{background:var(--navy);color:#fff;border-radius:8px;padding:9px 12px;font-size:8px;font-weight:800}.empty{text-align:center;padding:70px;color:var(--muted);display:none}
+.modal{position:fixed;inset:0;background:#111a3b99;display:none;place-items:center;padding:20px;z-index:100}.modal.show{display:grid}.box{background:#fff;border-radius:19px;width:min(620px,100%);max-height:90vh;overflow:auto}.head{display:flex;justify-content:space-between;padding:18px;border-bottom:1px solid var(--border)}.head h2{font-size:16px}.close{width:30px;height:30px;border-radius:8px;background:#f3f0ed}.form{padding:19px}.form label{display:block;font-size:8px;font-weight:800;margin-bottom:5px;color:#707587}.form input,.form textarea,.form select{width:100%;border:1px solid #ddd7d2;border-radius:9px;padding:10px;outline:0;font-size:9px;margin-bottom:11px}.form textarea{min-height:85px;resize:vertical}.form-actions{display:flex;justify-content:flex-end;gap:7px}.form-actions button{padding:10px 14px;border-radius:9px;font-size:8px;font-weight:800}.cancel{background:#f1eeeb;color:var(--navy)}.create{background:var(--navy);color:#fff}
+@media(max-width:1050px){.side{width:225px}.main{margin-left:225px}.filters{display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:16px 12px 35px}.heading{align-items:flex-start;flex-direction:column}.heading h1{font-size:27px}.new-btn{width:100%}.toolbar{align-items:stretch;flex-direction:column}.sort{width:100%}.grid{grid-template-columns:1fr}}
+@media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:11px 8px 30px}.heading h1{font-size:24px}.stats{gap:8px}.stat{padding:10px}.stat strong{font-size:16px}}
 </style>
 </head>
 <body>
 <aside class="side">
 <div class="brand"><div class="mark">M</div><div><b>MamRaj <span>Nexus</span></b><small>NEXUS ACADEMY</small></div></div>
 <div class="label">MAIN</div><nav class="nav">
-<a href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
-<a href="courses.html"><i class="fa-solid fa-book-open"></i><span>My Courses</span></a>
-<a href="learning-path.html"><i class="fa-solid fa-route"></i><span>Learning Path</span></a>
-<a class="active" href="projects.html"><i class="fa-solid fa-folder"></i><span>Projects</span></a></nav>
+<a href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a href="courses.html"><i class="fa-solid fa-book-open"></i><span>My Courses</span></a><a href="learning-path.html"><i class="fa-solid fa-route"></i><span>Learning Path</span></a><a class="active" href="projects.html"><i class="fa-solid fa-folder"></i><span>Projects</span></a></nav>
 <div class="label">AI & CAREER</div><nav class="nav">
-<a href="certifications.html"><i class="fa-solid fa-certificate"></i><span>Certificates</span></a>
-<a href="shivay-ai.html"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Shivay AI</span></a>
-<a href="resume.html"><i class="fa-solid fa-file-lines"></i><span>Resume Builder</span></a>
-<a href="ats-checker.html"><i class="fa-solid fa-chart-column"></i><span>ATS Checker</span></a>
-<a href="interview.html"><i class="fa-solid fa-comments"></i><span>Interview Prep</span></a>
-<a href="internships.html"><i class="fa-solid fa-briefcase"></i><span>Internships</span></a></nav>
+<a href="certifications.html"><i class="fa-solid fa-certificate"></i><span>Certificates</span></a><a href="shivay-ai.html"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Shivay AI</span></a><a href="resume.html"><i class="fa-solid fa-file-lines"></i><span>Resume Builder</span></a><a href="ats-checker.html"><i class="fa-solid fa-chart-column"></i><span>ATS Checker</span></a><a href="interview.html"><i class="fa-solid fa-comments"></i><span>Interview Prep</span></a><a href="internships.html"><i class="fa-solid fa-briefcase"></i><span>Internships</span></a></nav>
 <div class="help"><i class="fa-solid fa-question"></i><div><b>Need Help?</b><small>Talk to Shivay AI</small></div></div>
 </aside>
-
 <main class="main">
-<header class="top">
-<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" placeholder="Search courses, internships, skills..."></div>
-<div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div>
-<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small>Student</small></div></div></div>
-</header>
-
+<header class="top"><div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" placeholder="Search projects, skills, technologies..."></div><div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div><div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small>Student</small></div></div></div></header>
 <div class="content">
-<div class="crumb">BUILD YOUR PORTFOLIO</div>
-<div class="heading"><div><h1>My Projects</h1><p>Turn your learning into real work you can showcase to employers.</p></div><button class="new-btn" onclick="location.href='courses.html'"><i class="fa-solid fa-plus"></i> Start New Project</button></div>
-
-<section class="stats">
-<div class="stat"><i class="fa-solid fa-folder-open"></i><div><small>Total Projects</small><strong>08</strong></div></div>
-<div class="stat"><i class="fa-solid fa-spinner"></i><div><small>In Progress</small><strong>03</strong></div></div>
-<div class="stat"><i class="fa-solid fa-circle-check"></i><div><small>Completed</small><strong>05</strong></div></div>
-<div class="stat"><i class="fa-solid fa-star"></i><div><small>Portfolio Score</small><strong>86%</strong></div></div>
-</section>
-
-<div class="toolbar">
-<div class="tabs"><button class="tab active" data-filter="all">All Projects</button><button class="tab" data-filter="progress">In Progress</button><button class="tab" data-filter="review">Under Review</button><button class="tab" data-filter="completed">Completed</button></div>
-<select class="sort" id="sort"><option>Recently Updated</option><option>Progress: High to Low</option><option>Progress: Low to High</option></select>
-</div>
-
-<section class="projects" id="projects">
-<article class="project" data-status="progress" data-name="Personal Portfolio Website" data-progress="72">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-code"></i></div><h3>Personal Portfolio Website</h3></div>
-<div class="project-body"><p>Create a responsive portfolio website that presents your skills, projects and professional profile.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><div class="project-progress"><span>Progress</span><strong>72%</strong></div><div class="bar"><span style="width:72%"></span></div><div class="project-foot"><span class="status">● In Progress</span><button class="open" onclick="location.href='project.html?id=portfolio'">Open Project →</button></div></div>
-</article>
-
-<article class="project" data-status="progress" data-name="Sales Dashboard" data-progress="54">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-chart-column"></i></div><h3>Interactive Sales Dashboard</h3></div>
-<div class="project-body"><p>Analyse business sales data and create an interactive dashboard with useful performance insights.</p><div class="tags"><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Analytics</span></div><div class="project-progress"><span>Progress</span><strong>54%</strong></div><div class="bar"><span style="width:54%"></span></div><div class="project-foot"><span class="status">● In Progress</span><button class="open" onclick="location.href='project.html?id=sales-dashboard'">Open Project →</button></div></div>
-</article>
-
-<article class="project" data-status="review" data-name="AI HR Recruitment Workflow" data-progress="92">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-robot"></i></div><h3>AI HR Recruitment Workflow</h3></div>
-<div class="project-body"><p>Design an AI-assisted recruitment workflow for screening, interview preparation and candidate evaluation.</p><div class="tags"><span class="tag">HR</span><span class="tag">AI</span><span class="tag">Workflow</span></div><div class="project-progress"><span>Progress</span><strong>92%</strong></div><div class="bar"><span style="width:92%"></span></div><div class="project-foot"><span class="status review">● Under Review</span><button class="open" onclick="location.href='project.html?id=ai-hr'">View →</button></div></div>
-</article>
-
-<article class="project" data-status="completed" data-name="UI UX Mobile App Prototype" data-progress="100">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-pen-ruler"></i></div><h3>UI/UX Mobile App Prototype</h3></div>
-<div class="project-body"><p>Research a user problem and turn it into a complete mobile app prototype with a clear user journey.</p><div class="tags"><span class="tag">Figma</span><span class="tag">UX</span><span class="tag">Prototype</span></div><div class="project-progress"><span>Progress</span><strong>100%</strong></div><div class="bar"><span style="width:100%"></span></div><div class="project-foot"><span class="status">✓ Completed</span><button class="open light" onclick="location.href='project.html?id=uiux'">View →</button></div></div>
-</article>
-
-<article class="project" data-status="completed" data-name="Marketing Campaign Plan" data-progress="100">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-bullhorn"></i></div><h3>Digital Marketing Campaign</h3></div>
-<div class="project-body"><p>Create a complete digital campaign plan covering audience, content, channels, budget and measurement.</p><div class="tags"><span class="tag">Marketing</span><span class="tag">SEO</span><span class="tag">Social</span></div><div class="project-progress"><span>Progress</span><strong>100%</strong></div><div class="bar"><span style="width:100%"></span></div><div class="project-foot"><span class="status">✓ Completed</span><button class="open light" onclick="location.href='project.html?id=marketing'">View →</button></div></div>
-</article>
-
-<article class="project" data-status="completed" data-name="Business Launch Plan" data-progress="100">
-<div class="project-cover"><div class="project-icon"><i class="fa-solid fa-lightbulb"></i></div><h3>Business Launch Plan</h3></div>
-<div class="project-body"><p>Validate a business idea and prepare a practical launch plan covering market, pricing and growth.</p><div class="tags"><span class="tag">Business</span><span class="tag">Strategy</span></div><div class="project-progress"><span>Progress</span><strong>100%</strong></div><div class="bar"><span style="width:100%"></span></div><div class="project-foot"><span class="status">✓ Completed</span><button class="open light" onclick="location.href='project.html?id=business'">View →</button></div></div>
-</article>
-</section>
-<div class="empty" id="empty">No projects found.</div>
-</div>
-</main>
-
+<div class="crumb">PORTFOLIO BUILDER</div>
+<div class="heading"><div><h1>Projects</h1><p>Build, document and showcase projects that prove your skills to recruiters.</p></div><button class="new-btn" id="newProject"><i class="fa-solid fa-plus"></i> New Project</button></div>
+<section class="stats"><div class="stat"><i class="fa-solid fa-folder-open"></i><div><small>Total Projects</small><strong id="total">04</strong></div></div><div class="stat"><i class="fa-solid fa-circle-check"></i><div><small>Completed</small><strong id="completed">02</strong></div></div><div class="stat"><i class="fa-solid fa-rocket"></i><div><small>Published</small><strong id="published">01</strong></div></div><div class="stat"><i class="fa-solid fa-code-branch"></i><div><small>In Progress</small><strong id="progress">02</strong></div></div></section>
+<div class="toolbar"><div class="tabs"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="development">Development</button><button class="tab" data-filter="analytics">Analytics</button><button class="tab" data-filter="design">Design</button><button class="tab" data-filter="hr">HR</button></div><select class="sort" id="sort"><option value="recent">Recently Updated</option><option value="completed">Completed First</option><option value="az">A — Z</option></select></div>
+<section class="grid" id="grid"></section><div class="empty" id="empty">No projects match your search.</div>
+</div></main>
+<div class="modal" id="modal"><div class="box"><div class="head"><h2 id="modalHeading">New Project</h2><button class="close" id="close">×</button></div><div class="form">
+<label>PROJECT TITLE</label><input id="pTitle" placeholder="e.g. Student Dashboard">
+<label>CATEGORY</label><select id="pCat"><option value="development">Development</option><option value="analytics">Analytics</option><option value="design">Design</option><option value="hr">HR</option></select>
+<label>DESCRIPTION</label><textarea id="pDesc" placeholder="What did you build and what problem does it solve?"></textarea>
+<label>TECHNOLOGIES / SKILLS</label><input id="pTags" placeholder="React, Firebase, CSS">
+<label>PROJECT LINK</label><input id="pLink" placeholder="https://...">
+<label>STATUS</label><select id="pStatus"><option value="progress">In Progress</option><option value="completed">Completed</option><option value="published">Published</option></select>
+<div class="form-actions"><button class="cancel" id="cancel">Cancel</button><button class="create" id="save">Save Project</button></div>
+</div></div></div>
 <script>
-const tabs=document.querySelectorAll(".tab"), cards=()=>[...document.querySelectorAll(".project")];
-tabs.forEach(tab=>tab.addEventListener("click",()=>{
-tabs.forEach(x=>x.classList.remove("active"));tab.classList.add("active");
-const f=tab.dataset.filter;let n=0;
-cards().forEach(c=>{const ok=f==="all"||c.dataset.status===f;c.style.display=ok?"":"none";if(ok)n++});
-document.getElementById("empty").style.display=n?"none":"block";
-}));
-document.getElementById("search").addEventListener("input",e=>{
-const q=e.target.value.toLowerCase().trim();let n=0;
-cards().forEach(c=>{const ok=c.dataset.name.toLowerCase().includes(q);c.style.display=ok?"":"none";if(ok)n++});
-document.getElementById("empty").style.display=n?"none":"block";
-});
-document.getElementById("sort").addEventListener("change",e=>{
-const box=document.getElementById("projects"),a=cards();
-if(e.target.value==="Progress: High to Low")a.sort((x,y)=>+y.dataset.progress-+x.dataset.progress);
-if(e.target.value==="Progress: Low to High")a.sort((x,y)=>+x.dataset.progress-+y.dataset.progress);
-a.forEach(x=>box.appendChild(x));
-});
-document.getElementById("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
-(async()=>{
-try{
-const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");
-const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");
-const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:29b02f77dc20feaf28f529"});
-onAuthStateChanged(getAuth(app),u=>{if(!u)return;const n=u.displayName||"Student";document.getElementById("name").textContent=n;document.getElementById("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST"});
-}catch(e){console.warn("Firebase:",e)}
-})();
+const KEY="mamrajProjects";
+const defaults=[
+{id:"1",title:"Student Dashboard",cat:"development",desc:"Responsive student dashboard with Firebase authentication, courses and career tools.",tags:["HTML","CSS","JavaScript","Firebase"],link:"",status:"completed",updated:"2026-08-24"},
+{id:"2",title:"ATS Resume Checker",cat:"development",desc:"Resume relevance checker that compares a resume with a target job description.",tags:["JavaScript","ATS","NLP"],link:"",status:"completed",updated:"2026-08-25"},
+{id:"3",title:"Sales Analytics Dashboard",cat:"analytics",desc:"Business dashboard for tracking sales performance and finding actionable trends.",tags:["SQL","Excel","Power BI"],link:"",status:"published",updated:"2026-08-22"},
+{id:"4",title:"Internship Landing Page",cat:"design",desc:"Conversion-focused internship landing page with mobile-first UI and clear CTAs.",tags:["Figma","UI/UX","Responsive"],link:"",status:"progress",updated:"2026-08-20"}];
+let projects=JSON.parse(localStorage.getItem(KEY)||"null")||defaults;
+let editId=null;
+const $=id=>document.getElementById(id);
+function saveData(){localStorage.setItem(KEY,JSON.stringify(projects))}
+function statusText(s){return s==="published"?"PUBLISHED":s==="completed"?"COMPLETED":"IN PROGRESS"}
+function render(){
+ const q=$("search").value.toLowerCase().trim(),f=document.querySelector(".tab.active").dataset.filter;
+ let arr=projects.filter(p=>(f==="all"||p.cat===f)&&(!q||`${p.title} ${p.desc} ${p.tags.join(" ")}`.toLowerCase().includes(q)));
+ const sort=$("sort").value;
+ if(sort==="az")arr.sort((a,b)=>a.title.localeCompare(b.title));
+ if(sort==="completed")arr.sort((a,b)=>(b.status==="completed")-(a.status==="completed"));
+ if(sort==="recent")arr.sort((a,b)=>String(b.updated).localeCompare(String(a.updated)));
+ $("grid").innerHTML="";
+ arr.forEach((p,i)=>{
+  const card=document.createElement("article");card.className="card";
+  const cls=p.cat==="analytics"?"alt":p.cat==="design"?"green":p.cat==="hr"?"orange":"";
+  card.innerHTML=`<div class="cover ${cls}"><span class="status">${statusText(p.status)}</span><i class="fa-solid ${p.cat==="design"?"fa-pen-ruler":p.cat==="analytics"?"fa-chart-column":p.cat==="hr"?"fa-users":"fa-code"}"></i><h3>${escapeHTML(p.title)}</h3></div><div class="body"><p>${escapeHTML(p.desc)}</p><div class="tags">${p.tags.slice(0,5).map(t=>`<span>${escapeHTML(t)}</span>`).join("")}</div><div class="foot"><small>Updated ${escapeHTML(p.updated)}</small><button class="open">Open Project</button></div></div>`;
+  card.querySelector(".open").onclick=()=>openProject(p.id);$("grid").appendChild(card);
+ });
+ $("empty").style.display=arr.length?"none":"block";
+ $("total").textContent=String(projects.length).padStart(2,"0");
+ $("completed").textContent=String(projects.filter(p=>p.status==="completed").length).padStart(2,"0");
+ $("published").textContent=String(projects.filter(p=>p.status==="published").length).padStart(2,"0");
+ $("progress").textContent=String(projects.filter(p=>p.status==="progress").length).padStart(2,"0");
+}
+function escapeHTML(x){return String(x).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function openProject(id){
+ const p=projects.find(x=>x.id===id);if(!p)return;
+ editId=id;$("modalHeading").textContent="Edit Project";$("pTitle").value=p.title;$("pCat").value=p.cat;$("pDesc").value=p.desc;$("pTags").value=p.tags.join(", ");$("pLink").value=p.link||"";$("pStatus").value=p.status;$("modal").classList.add("show");
+}
+function openNew(){editId=null;$("modalHeading").textContent="New Project";["pTitle","pDesc","pTags","pLink"].forEach(id=>$(id).value="");$("pCat").value="development";$("pStatus").value="progress";$("modal").classList.add("show")}
+function closeModal(){$("modal").classList.remove("show")}
+$("newProject").onclick=openNew;$("close").onclick=closeModal;$("cancel").onclick=closeModal;
+$("modal").onclick=e=>{if(e.target.id==="modal")closeModal()};
+$("save").onclick=()=>{
+ const title=$("pTitle").value.trim(),desc=$("pDesc").value.trim();
+ if(!title||!desc){alert("Project title and description are required.");return}
+ const item={id:editId||Date.now().toString(),title,cat:$("pCat").value,desc,tags:$("pTags").value.split(",").map(x=>x.trim()).filter(Boolean).slice(0,8),link:$("pLink").value.trim(),status:$("pStatus").value,updated:new Date().toISOString().slice(0,10)};
+ if(editId)projects=projects.map(p=>p.id===editId?item:p);else projects.unshift(item);
+ saveData();closeModal();render();
+};
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));t.classList.add("active");render()});
+$("search").oninput=render;$("sort").onchange=render;$("theme").onclick=()=>document.body.classList.toggle("dark-preview");
+render();
+(async()=>{try{const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:29b02f77dc20feaf28f529"});onAuthStateChanged(getAuth(app),u=>{if(!u)return;const n=u.displayName||"Student";$("name").textContent=n;$("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST"})}catch(e){console.warn(e)}})();
 </script>
 </body>
 </html>
