@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MamRaj Nexus — Profile & Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}:root{--navy:#263a7a;--purple:#5b45a5;--peach:#cf9878;--peachbg:#f5e9e1;--bg:#f7f3ef;--text:#162962;--muted:#7c8298;--border:#e9e1db;--green:#63a37c;--danger:#b86d67}body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer;border:0}a{text-decoration:none;color:inherit}
+.side{position:fixed;inset:0 auto 0 0;width:258px;background:linear-gradient(180deg,#2d4383,#263a7a);color:#fff;padding:22px 12px;z-index:20}.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 28px}.mark{width:44px;height:44px;border-radius:13px;background:#6549df;display:grid;place-items:center;font-size:22px;font-weight:800}.brand b{font-size:23px;letter-spacing:-1px}.brand b span{color:#d19a7a}.brand small{display:block;font-size:7px;letter-spacing:3px;margin-top:4px;opacity:.8}.label{font-size:9px;font-weight:800;letter-spacing:1.7px;color:#9eadd6;margin:10px 14px 8px}.nav{display:grid;gap:4px}.nav a{height:52px;border-radius:16px;display:flex;align-items:center;gap:16px;padding:0 18px;font-size:14px;font-weight:700;color:#f3f5fc}.nav a i{width:20px;text-align:center}.nav a:hover{background:#ffffff12}.nav a.active{background:var(--peach)}.help{margin:18px 8px;padding:13px;border-radius:15px;background:#ffffff12;display:flex;gap:10px;align-items:center}.help i{width:30px;height:30px;border-radius:50%;background:#efb58e;color:#30447d;display:grid;place-items:center}.help b{font-size:10px}.help small{display:block;color:#c7cde2;font-size:8px}
+.main{margin-left:258px;min-height:100vh}.top{height:84px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 34px;position:sticky;top:0;z-index:10}.search{height:50px;max-width:450px;flex:1;background:#f7f4f1;border-radius:15px;display:flex;align-items:center;gap:12px;padding:0 18px;color:#9296a5}.search input{border:0;outline:0;background:none;width:100%;font-size:12px}.filters{display:flex;gap:6px}.filter{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;font-size:10px;font-weight:700;color:#6d7283}.filter.active{background:var(--navy);color:#fff}.actions{margin-left:auto;display:flex;align-items:center;gap:9px}.icon{width:40px;height:40px;border:0;border-radius:12px;background:#faf8f6;color:var(--navy)}.avatar{width:43px;height:43px;border:2px solid var(--peach);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}.profile{display:flex;align-items:center;gap:9px}.profile b{display:block;font-size:12px}.profile small{color:var(--muted);font-size:9px}
+.content{padding:30px 34px;max-width:1400px;margin:auto}.crumb{font-size:9px;color:var(--peach);font-weight:800;letter-spacing:1.5px}.heading{margin-top:7px}.heading h1{font-size:31px;letter-spacing:-1.5px}.heading p{color:var(--muted);font-size:11px;margin-top:5px}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;margin-top:22px}.menu,.panel{background:#fff;border:1px solid var(--border);border-radius:18px}.menu{padding:10px;height:max-content}.menu button{width:100%;background:transparent;text-align:left;padding:12px;border-radius:10px;color:#697083;font-size:9px;font-weight:800}.menu button i{width:23px}.menu button.active{background:var(--peachbg);color:var(--navy)}.panel{padding:21px}.panel+.panel{margin-top:15px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:16px}.panel-head h2{font-size:16px}.panel-head p{font-size:8px;color:var(--muted);margin-top:3px}.save{background:var(--navy);color:#fff;border-radius:9px;padding:9px 13px;font-size:8px;font-weight:800}.profile-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}.big-avatar{width:76px;height:76px;border-radius:50%;border:3px solid var(--peach);background:#f1e8e2;display:grid;place-items:center;font-size:20px;font-weight:800;color:var(--navy)}.profile-head h3{font-size:14px}.profile-head p{font-size:8px;color:var(--muted);margin-top:3px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{margin-bottom:12px}.field label{display:block;font-size:8px;font-weight:800;color:#74798a;margin-bottom:5px}.field input,.field select{width:100%;height:40px;border:1px solid #ddd7d2;border-radius:9px;padding:0 10px;outline:0;font-size:9px;color:var(--text);background:#fff}.field input:disabled{background:#f7f4f1;color:#9297a5}.toggle-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}.toggle-row:last-child{border:0}.toggle-row b{font-size:9px}.toggle-row small{display:block;color:var(--muted);font-size:7px;margin-top:3px}.toggle{width:38px;height:21px;background:#d8d5d1;border-radius:20px;padding:2px}.toggle span{display:block;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}.toggle.on{background:var(--green)}.toggle.on span{transform:translateX(17px)}.danger{border:1px solid #ead3d0;background:#fff8f7;color:var(--danger);border-radius:9px;padding:10px 13px;font-size:8px;font-weight:800}.status{font-size:8px;color:var(--green);font-weight:800;display:none}.status.show{display:block}
+@media(max-width:900px){.side{width:225px}.main{margin-left:225px}.filters{display:none}.layout{grid-template-columns:210px minmax(0,1fr)}}
+@media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:16px 12px 35px}.heading h1{font-size:27px}.layout{grid-template-columns:1fr}.menu{display:flex;overflow:auto;gap:4px}.menu button{min-width:max-content}.grid2{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:11px 8px 30px}.heading h1{font-size:24px}.panel{padding:15px}.grid2{grid-template-columns:1fr}.profile-head{align-items:flex-start}}
+</style>
+</head>
+<body>
+<aside class="side">
+<div class="brand"><div class="mark">M</div><div><b>MamRaj <span>Nexus</span></b><small>NEXUS ACADEMY</small></div></div>
+<div class="label">MAIN</div><nav class="nav">
+<a href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a href="courses.html"><i class="fa-solid fa-book-open"></i><span>My Courses</span></a><a href="learning-path.html"><i class="fa-solid fa-route"></i><span>Learning Path</span></a><a href="projects.html"><i class="fa-solid fa-folder"></i><span>Projects</span></a></nav>
+<div class="label">AI & CAREER</div><nav class="nav">
+<a href="certifications.html"><i class="fa-solid fa-certificate"></i><span>Certificates</span></a><a href="shivay-ai.html"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Shivay AI</span></a><a href="resume.html"><i class="fa-solid fa-file-lines"></i><span>Resume Builder</span></a><a href="ats-checker.html"><i class="fa-solid fa-chart-column"></i><span>ATS Checker</span></a><a href="interview.html"><i class="fa-solid fa-comments"></i><span>Interview Prep</span></a><a href="internships.html"><i class="fa-solid fa-briefcase"></i><span>Internships</span></a></nav>
+<div class="help"><i class="fa-solid fa-question"></i><div><b>Need Help?</b><small>Talk to Shivay AI</small></div></div>
+</aside>
+<main class="main">
+<header class="top"><div class="search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="Search courses, internships, skills..."></div><div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div><div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="topAvatar">ST</div><div><b id="topName">Student</b><small>Student</small></div></div></div></header>
+<div class="content">
+<div class="crumb">ACCOUNT</div><div class="heading"><h1>Profile & Settings</h1><p>Manage your student profile, preferences and account settings.</p></div>
+<section class="layout">
+<nav class="menu"><button class="active" data-section="profile"><i class="fa-solid fa-user"></i> Profile</button><button data-section="preferences"><i class="fa-solid fa-sliders"></i> Preferences</button><button data-section="notifications"><i class="fa-regular fa-bell"></i> Notifications</button><button data-section="security"><i class="fa-solid fa-shield-halved"></i> Security</button></nav>
+<div>
+<section class="panel section" id="profile">
+<div class="panel-head"><div><h2>Personal Profile</h2><p>Keep your career information up to date.</p></div><button class="save" id="saveProfile">Save Changes</button></div>
+<div class="profile-head"><div class="big-avatar" id="bigAvatar">ST</div><div><h3 id="displayName">Student</h3><p id="displayEmail">student@email.com</p></div></div>
+<div class="grid2"><div class="field"><label>FULL NAME</label><input id="fullName" placeholder="Your full name"></div><div class="field"><label>EMAIL</label><input id="email" disabled></div><div class="field"><label>PHONE</label><input id="phone" placeholder="+91 XXXXX XXXXX"></div><div class="field"><label>LOCATION</label><input id="location" placeholder="City, India"></div><div class="field"><label>EDUCATION</label><input id="education" placeholder="B.Tech / BCA / BBA..."></div><div class="field"><label>GRADUATION YEAR</label><input id="gradYear" placeholder="2026"></div></div>
+<div class="field"><label>CAREER INTEREST</label><select id="interest"><option>Web Development</option><option>Data Analytics</option><option>UI/UX Design</option><option>Human Resources</option><option>Artificial Intelligence</option><option>Business & Management</option></select></div>
+<div><span class="status" id="saved">✓ Profile saved on this device</span></div>
+</section>
+<section class="panel section" id="preferences" style="display:none"><div class="panel-head"><div><h2>Preferences</h2><p>Customize your learning and career experience.</p></div></div>
+<div class="toggle-row"><div><b>Personalized recommendations</b><small>Use your interests to suggest courses and internships.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+<div class="toggle-row"><div><b>Show beginner-friendly opportunities</b><small>Include internships suitable for students with limited experience.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+<div class="toggle-row"><div><b>Dark mode preview</b><small>Switch the dashboard appearance.</small></div><button class="toggle" id="prefTheme" data-toggle><span></span></button></div>
+</section>
+<section class="panel section" id="notifications" style="display:none"><div class="panel-head"><div><h2>Notifications</h2><p>Choose what MamRaj Nexus should notify you about.</p></div></div>
+<div class="toggle-row"><div><b>Course updates</b><small>New lessons, assignments and completion reminders.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+<div class="toggle-row"><div><b>Internship alerts</b><small>New opportunities matching your interests.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+<div class="toggle-row"><div><b>Certificate updates</b><small>Certificate issuance and verification updates.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+<div class="toggle-row"><div><b>Shivay AI tips</b><small>Learning, resume and interview suggestions.</small></div><button class="toggle on" data-toggle><span></span></button></div>
+</section>
+<section class="panel section" id="security" style="display:none"><div class="panel-head"><div><h2>Security</h2><p>Your account is authenticated through your Google/Firebase login.</p></div></div>
+<div class="toggle-row"><div><b>Google authentication</b><small>Password management is handled by your Google account.</small></div><strong style="font-size:8px;color:var(--green)">CONNECTED</strong></div>
+<div class="toggle-row"><div><b>Unique student identity</b><small>Your Firebase UID should be used to separate student data.</small></div><strong style="font-size:8px;color:var(--green)">ACTIVE</strong></div>
+<div style="margin-top:15px"><button class="danger" id="signout"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</button></div>
+</section>
+</div>
+</section>
+</div></main>
+<script>
+/* =========================================================
+   MAMRAJ PROFILE & SETTINGS — LIVE / PERSISTENT VERSION
+   ========================================================= */
+
+const PROFILE_KEY="mamrajProfile";
+const SETTINGS_KEY="mamrajSettings";
+
+const $=id=>document.getElementById(id);
+
+function initials(name){
+  return (name||"Student").trim().split(/\s+/).slice(0,2)
+    .map(x=>x[0]).join("").toUpperCase()||"ST";
+}
+
+function getJSON(key,fallback={}){
+  try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}
+  catch{return fallback}
+}
+
+function setJSON(key,value){
+  localStorage.setItem(key,JSON.stringify(value));
+}
+
+function showSaved(message="✓ Saved successfully"){
+  const el=$("saved");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(window.saveTimer);
+  window.saveTimer=setTimeout(()=>el.classList.remove("show"),2500);
+}
+
+/* ---------- Navigation ---------- */
+const sections=[...document.querySelectorAll(".section")];
+
+document.querySelectorAll(".menu button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".menu button")
+      .forEach(x=>x.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    sections.forEach(section=>{
+      section.style.display=
+        section.id===btn.dataset.section ? "block":"none";
+    });
+
+    localStorage.setItem("mamrajSettingsTab",btn.dataset.section);
+  });
+});
+
+/* ---------- Profile ---------- */
+const profileFields=[
+  "fullName","phone","location","education","gradYear","interest"
+];
+
+function readProfile(){
+  const profile={};
+  profileFields.forEach(id=>{
+    const el=$(id);
+    if(el) profile[id]=el.value.trim();
+  });
+  return profile;
+}
+
+function applyProfile(profile){
+  profileFields.forEach(id=>{
+    if(profile[id]!==undefined && $(id))
+      $(id).value=profile[id];
+  });
+
+  const name=profile.fullName||"Student";
+  $("displayName").textContent=name;
+  $("bigAvatar").textContent=initials(name);
+}
+
+function saveProfile(){
+  const profile=readProfile();
+  setJSON(PROFILE_KEY,profile);
+  applyProfile(profile);
+  showSaved("✓ Profile saved successfully");
+}
+
+$("saveProfile").addEventListener("click",saveProfile);
+
+/* Autosave profile while typing, but don't spam storage. */
+let autosaveTimer;
+profileFields.forEach(id=>{
+  $(id)?.addEventListener("input",()=>{
+    clearTimeout(autosaveTimer);
+    autosaveTimer=setTimeout(()=>{
+      setJSON(PROFILE_KEY,readProfile());
+      applyProfile(readProfile());
+    },500);
+  });
+});
+
+/* ---------- Settings ---------- */
+const defaultSettings={
+  recommendations:true,
+  beginner:true,
+  dark:false,
+  courseUpdates:true,
+  internshipAlerts:true,
+  certificateUpdates:true,
+  shivayTips:true
+};
+
+const settings={...defaultSettings,...getJSON(SETTINGS_KEY,{})};
+
+function saveSettings(){
+  setJSON(SETTINGS_KEY,settings);
+}
+
+function updateToggle(button,key){
+  const value=!!settings[key];
+  button.classList.toggle("on",value);
+}
+
+const toggleKeys=[
+  ["recommendations","preferences"],
+  ["beginner","preferences"],
+  ["dark","preferences"],
+  ["courseUpdates","notifications"],
+  ["internshipAlerts","notifications"],
+  ["certificateUpdates","notifications"],
+  ["shivayTips","notifications"]
+];
+
+/* Existing toggle buttons are ordered exactly as above. */
+const toggles=[...document.querySelectorAll("[data-toggle]")];
+
+toggles.forEach((button,index)=>{
+  const key=toggleKeys[index]?.[0];
+  if(!key)return;
+
+  updateToggle(button,key);
+
+  button.addEventListener("click",()=>{
+    settings[key]=!settings[key];
+    updateToggle(button,key);
+    saveSettings();
+
+    if(key==="dark"){
+      document.body.classList.toggle("dark-preview",settings.dark);
+    }
+  });
+});
+
+function applySettings(){
+  document.body.classList.toggle("dark-preview",!!settings.dark);
+  toggles.forEach((button,index)=>{
+    const key=toggleKeys[index]?.[0];
+    if(key)updateToggle(button,key);
+  });
+}
+
+applySettings();
+
+/* Header theme button controls the same saved preference. */
+$("theme")?.addEventListener("click",()=>{
+  settings.dark=!settings.dark;
+  saveSettings();
+  applySettings();
+});
+
+/* ---------- Firebase ---------- */
+let firebaseAuth=null;
+let firebaseUser=null;
+
+(async()=>{
+  try{
+    const {initializeApp}=await import(
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js"
+    );
+
+    const {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    }=await import(
+      "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"
+    );
+
+    const app=initializeApp({
+      apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+      authDomain:"mamraj-nexus-academy.firebaseapp.com",
+      projectId:"mamraj-nexus-academy",
+      storageBucket:"mamraj-nexus-academy.firebasestorage.app",
+      messagingSenderId:"548826957068",
+      appId:"1:29b02f77dc20feaf28f529"
+    });
+
+    firebaseAuth=getAuth(app);
+
+    window.firebaseSignOut=()=>signOut(firebaseAuth);
+
+    onAuthStateChanged(firebaseAuth,user=>{
+      firebaseUser=user;
+
+      if(!user){
+        $("topName").textContent="Student";
+        $("topAvatar").textContent="ST";
+        $("displayName").textContent=
+          $("fullName").value||"Student";
+        $("displayEmail").textContent=
+          $("email").value||"student@email.com";
+        return;
+      }
+
+      const googleName=user.displayName||"Student";
+      const googleEmail=user.email||"";
+
+      $("topName").textContent=googleName;
+      $("topAvatar").textContent=initials(googleName);
+      $("displayEmail").textContent=googleEmail;
+      $("email").value=googleEmail;
+
+      const stored=getJSON(PROFILE_KEY,{});
+
+      /* Google identity is the default, while the student's
+         saved profile remains editable. */
+      if(!stored.fullName){
+        stored.fullName=googleName;
+        setJSON(PROFILE_KEY,stored);
+      }
+
+      applyProfile(stored);
+    });
+
+  }catch(error){
+    console.error("Firebase initialization failed:",error);
+  }
+})();
+
+/* ---------- Sign out ---------- */
+$("signout").addEventListener("click",async()=>{
+  if(!firebaseAuth){
+    alert("Authentication is still loading. Please try again.");
+    return;
+  }
+
+  try{
+    await window.firebaseSignOut();
+    window.location.href="index.html";
+  }catch(error){
+    console.error(error);
+    alert("Unable to sign out. Please try again.");
+  }
+});
+
+/* ---------- Restore saved data ---------- */
+applyProfile(getJSON(PROFILE_KEY,{}));
+
+/* Restore selected settings tab. */
+const savedTab=localStorage.getItem("mamrajSettingsTab");
+if(savedTab){
+  const btn=document.querySelector(
+    `.menu button[data-section="${savedTab}"]`
+  );
+  if(btn)btn.click();
+}
+
+/* Warn before leaving with unsaved-looking changes is unnecessary
+   because profile fields are autosaved. */
+</script>
+</body>
+</html>
