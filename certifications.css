@@ -1672,3 +1672,633 @@ a {
     }
 
 }
+
+/* =========================================================
+   FIREBASE CONNECTED CERTIFICATIONS — FINAL RESPONSIVE LAYER
+   Keep this block at the END of certifications.css
+========================================================= */
+
+/* Prevent accidental horizontal overflow */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+/* Better interaction states */
+.sidebar-nav a,
+.icon-btn,
+.tab,
+.view-btn,
+.download-btn,
+.continue-btn,
+.start-btn,
+.explore-btn,
+.modal-actions button,
+.modal-close {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.view-btn:hover,
+.download-btn:hover,
+.continue-btn:hover,
+.start-btn:hover,
+.explore-btn:hover,
+.modal-actions button:hover {
+    transform: translateY(-1px);
+}
+
+/* Firebase-connected cards */
+.certificate-card {
+    min-width: 0;
+}
+
+.certificate-body h3,
+.certificate-body p,
+.certificate-cover strong {
+    overflow-wrap: anywhere;
+}
+
+.certificate-id strong {
+    word-break: break-word;
+}
+
+/* Long Firebase course names should never stretch the grid */
+.card-meta {
+    min-width: 0;
+    gap: 8px;
+}
+
+.card-meta > * {
+    min-width: 0;
+}
+
+.course-info {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.course-info span {
+    min-width: 0;
+}
+
+/* Loading/empty state */
+#certificateGrid:empty + .empty-state {
+    display: block;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1100px) {
+
+    .main-content {
+        padding: 20px 22px 45px;
+    }
+
+    .certificate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cert-hero {
+        padding: 34px 35px;
+    }
+
+    .hero-content {
+        max-width: 65%;
+    }
+
+    .toolbar {
+        max-width: 100%;
+    }
+
+}
+
+/* =========================================================
+   MOBILE — REAL MOBILE SIDEBAR
+========================================================= */
+@media (max-width: 850px) {
+
+    .sidebar {
+        width: 68px;
+        padding: 18px 9px;
+    }
+
+    .brand {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        padding: 0;
+        border-radius: 14px;
+        background: rgba(255,255,255,.10);
+        font-size: 0;
+        letter-spacing: 0;
+    }
+
+    .brand::before {
+        content: "M";
+        font-family: "Manrope", sans-serif;
+        font-size: 25px;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    .sidebar-nav {
+        gap: 8px;
+    }
+
+    .sidebar-nav a {
+        width: 50px;
+        min-height: 48px;
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+        border-radius: 13px;
+    }
+
+    .sidebar-nav a i {
+        width: auto;
+        font-size: 15px;
+    }
+
+    .sidebar-nav a span,
+    .sidebar-help {
+        display: none;
+    }
+
+    .main-content {
+        width: calc(100% - 68px);
+        margin-left: 68px;
+        padding: 14px 14px 40px;
+    }
+
+    .topbar {
+        min-height: 66px;
+        padding: 10px 13px;
+        border-radius: 16px;
+    }
+
+    .page-title {
+        gap: 9px;
+        min-width: 0;
+    }
+
+    .title-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        border-radius: 11px;
+    }
+
+    .page-title h2 {
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .page-title span {
+        display: none;
+    }
+
+    .top-actions {
+        gap: 6px;
+    }
+
+    .top-actions .icon-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .top-actions .icon-btn:nth-child(1),
+    .top-actions .icon-btn:nth-child(2) {
+        display: none;
+    }
+
+    .profile {
+        margin-left: 2px;
+        gap: 7px;
+    }
+
+    .profile-avatar {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+        font-size: 11px;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .cert-hero {
+        min-height: 245px;
+        margin-top: 14px;
+        padding: 28px 24px;
+        border-radius: 19px;
+    }
+
+    .cert-hero::after {
+        right: -100px;
+        top: -140px;
+        opacity: .65;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(27px, 6vw, 35px);
+        line-height: 1.08;
+    }
+
+    .hero-content p {
+        max-width: 100%;
+        font-size: 11px;
+    }
+
+    .explore-btn {
+        min-height: 42px;
+        padding: 11px 15px;
+    }
+
+    .hero-badge {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .stat-card {
+        min-height: 90px;
+        padding: 14px;
+        border-radius: 14px;
+        gap: 9px;
+    }
+
+    .stat-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+    }
+
+    .stat-card strong {
+        font-size: 19px;
+    }
+
+    .stat-card span {
+        font-size: 8px;
+    }
+
+    .stat-trend {
+        top: 10px;
+        right: 10px;
+        font-size: 7px;
+    }
+
+    .cert-section {
+        margin-top: 25px;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    .toolbar {
+        width: 100%;
+        flex-direction: row;
+    }
+
+    .search-box {
+        flex: 1;
+        width: auto;
+        min-width: 0;
+    }
+
+    .toolbar select {
+        max-width: 145px;
+    }
+
+    .tabs {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .certificate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .certificate-cover {
+        height: 145px;
+    }
+
+    .certificate-body {
+        padding: 13px;
+    }
+
+    .certificate-body h3 {
+        font-size: 12px;
+    }
+
+    .certificate-body p {
+        font-size: 8px;
+        min-height: 42px;
+    }
+
+    .card-actions {
+        gap: 6px;
+    }
+
+    .view-btn,
+    .download-btn,
+    .continue-btn,
+    .start-btn {
+        min-height: 34px;
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 58px;
+        padding: 14px 6px;
+    }
+
+    .brand {
+        width: 43px;
+        height: 43px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    .brand::before {
+        font-size: 22px;
+    }
+
+    .sidebar-nav a {
+        width: 43px;
+        min-height: 43px;
+        border-radius: 11px;
+    }
+
+    .sidebar-nav a i {
+        font-size: 14px;
+    }
+
+    .main-content {
+        width: calc(100% - 58px);
+        margin-left: 58px;
+        padding: 9px;
+    }
+
+    .topbar {
+        min-height: 58px;
+        padding: 8px 10px;
+        border-radius: 13px;
+    }
+
+    .title-icon {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        border-radius: 9px;
+    }
+
+    .page-title h2 {
+        font-size: 12px;
+    }
+
+    .top-actions .icon-btn {
+        width: 33px;
+        height: 33px;
+    }
+
+    .profile-avatar {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+        font-size: 9px;
+    }
+
+    .cert-hero {
+        min-height: 260px;
+        padding: 25px 18px;
+        border-radius: 16px;
+    }
+
+    .hero-label {
+        font-size: 8px;
+    }
+
+    .hero-content h1 {
+        font-size: 27px;
+    }
+
+    .hero-content p {
+        font-size: 10px;
+        line-height: 1.65;
+    }
+
+    .explore-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        gap: 8px;
+    }
+
+    .stat-card {
+        min-height: 82px;
+        padding: 11px;
+    }
+
+    .stat-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .stat-card strong {
+        font-size: 17px;
+    }
+
+    .stat-trend {
+        display: none;
+    }
+
+    .section-header {
+        gap: 12px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-box,
+    .toolbar select {
+        width: 100%;
+        max-width: none;
+    }
+
+    .certificate-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .certificate-cover {
+        height: 165px;
+    }
+
+    .certificate-cover strong {
+        font-size: 13px;
+    }
+
+    .certificate-body {
+        padding: 15px;
+    }
+
+    .certificate-body h3 {
+        font-size: 14px;
+    }
+
+    .certificate-body p {
+        font-size: 9px;
+        min-height: auto;
+    }
+
+    .card-actions {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .course-info {
+        font-size: 8px;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .certificate-modal {
+        width: 100%;
+        max-height: calc(100vh - 20px);
+        overflow-y: auto;
+        padding: 14px;
+        border-radius: 15px;
+    }
+
+    .modal-certificate {
+        padding: 22px 12px;
+        border-width: 5px;
+    }
+
+    .modal-certificate h4 {
+        margin-top: 20px;
+        font-size: 9px;
+        letter-spacing: 1.3px;
+    }
+
+    .modal-certificate h2 {
+        font-size: 23px;
+    }
+
+    .modal-certificate h3 {
+        font-size: 14px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-actions button {
+        width: 100%;
+        min-height: 42px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+@media (max-width: 380px) {
+
+    .main-content {
+        padding: 7px;
+    }
+
+    .page-title h2 {
+        font-size: 11px;
+    }
+
+    .top-actions .icon-btn {
+        display: none;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-card {
+        gap: 6px;
+        padding: 9px;
+    }
+
+    .stat-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .stat-card strong {
+        font-size: 15px;
+    }
+
+    .stat-card span {
+        font-size: 7px;
+    }
+
+    .certificate-cover {
+        height: 150px;
+    }
+}
