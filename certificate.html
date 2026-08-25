@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate | MamRaj Nexus Academy</title>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#f7f3ef;color:#17265d}
+button{font:inherit}
+.header{height:72px;background:#fff;border-bottom:1px solid #eee4dc;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:20}
+.brand{font-weight:800;font-size:21px}.brand span{color:#c98768}.brand small{display:block;font-size:7px;letter-spacing:3px;color:#777;margin-top:3px}
+.user{display:flex;align-items:center;gap:10px;font-size:12px}.avatar{width:38px;height:38px;border-radius:50%;background:#d09170;color:#fff;display:grid;place-items:center;font-weight:800}
+.container{max-width:1180px;margin:auto;padding:34px 20px 60px}
+.back{display:inline-block;text-decoration:none;color:#243b7b;font-size:13px;font-weight:700;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:370px 1fr;gap:24px;align-items:start}
+.panel,.certificate-shell{background:#fff;border:1px solid #eadfd6;border-radius:22px;box-shadow:0 12px 35px rgba(25,35,80,.07)}
+.panel{padding:25px}
+.panel h1{font-size:25px;margin:0 0 8px}.muted{color:#777;font-size:13px;line-height:1.6}
+.course{border:1px solid #ece3dc;border-radius:14px;padding:15px;margin:18px 0 10px}
+.course strong{display:block;font-size:14px}.status{margin-top:7px;font-size:11px}
+.progress{height:8px;background:#eee8e3;border-radius:20px;overflow:hidden;margin-top:10px}.fill{height:100%;width:0;background:#c88768;transition:.3s}
+.pay{width:100%;border:0;border-radius:12px;background:#203674;color:#fff;padding:14px;font-weight:800;cursor:pointer;margin-top:16px}
+.pay:disabled{opacity:.5;cursor:not-allowed}
+.note{background:#fff7f2;border:1px solid #efd9ca;padding:12px;border-radius:12px;font-size:11px;line-height:1.6;margin-top:15px}
+.message{margin-top:12px;font-size:12px;min-height:18px}
+.certificate-shell{padding:16px;overflow:auto}
+.certificate{min-width:680px;aspect-ratio:1.414/1;border:10px solid #eee3d9;padding:28px;background:linear-gradient(135deg,#fffdfb,#f8f1ea);position:relative;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.cert-brand{font-size:22px;font-weight:900;letter-spacing:.5px}.cert-brand span{color:#c98768}
+.cert-kicker{font-size:10px;letter-spacing:4px;color:#9a705d;font-weight:800;margin-top:15px}
+.certificate h2{font-family:Georgia,serif;font-size:40px;margin:13px 0 8px;color:#1d2d66}
+.cert-name{font-size:30px;font-weight:800;color:#bd7d5e;margin:8px 0}
+.cert-text{max-width:580px;font-size:12px;line-height:1.7;color:#555}
+.cert-course{font-size:22px;font-weight:900;color:#1d2d66;margin:10px}
+.cert-meta{display:flex;gap:50px;margin-top:24px;font-size:10px;color:#666}.cert-meta strong{display:block;color:#1d2d66;font-size:12px;margin-top:4px}
+.seal{width:65px;height:65px;border:2px solid #c88768;border-radius:50%;display:grid;place-items:center;font-size:9px;font-weight:900;color:#a76549;margin-top:16px}
+.cert-id{position:absolute;bottom:10px;right:18px;font-size:8px;color:#777}
+.preview-badge{position:absolute;top:20px;right:20px;background:#203674;color:#fff;padding:7px 10px;border-radius:8px;font-size:9px;font-weight:800}
+.locked .certificate{filter:none}.locked .certificate>*:not(.preview-badge){opacity:.42}
+.actions{display:flex;gap:10px;margin-top:14px}.secondary{border:1px solid #ddd0c7;background:#fff;color:#203674;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}
+@media(max-width:850px){.header{padding:0 15px}.container{padding:24px 13px 45px}.grid{grid-template-columns:1fr}.panel{order:1}.certificate-shell{order:2}.certificate{min-width:620px}.user>div:not(.avatar){display:none}}
+@media(max-width:480px){.brand{font-size:18px}.panel{padding:20px}.certificate-shell{padding:8px}.certificate{min-width:560px}.actions{flex-direction:column}.secondary{width:100%}}
+@media print{body{background:#fff}.header,.back,.panel,.actions,.preview-badge{display:none!important}.container{padding:0}.grid{display:block}.certificate-shell{box-shadow:none;border:0;padding:0}.certificate{min-width:0;width:100%;border:10px solid #eee3d9}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="brand">MamRaj <span>Nexus</span><small>ACADEMY</small></div>
+  <div class="user" id="userBox">Sign in required</div>
+</header>
+
+<main class="container">
+<a class="back" href="dashboard.html">← Back to Dashboard</a>
+<div class="grid">
+<section class="panel">
+  <h1>Your Certificate</h1>
+  <p class="muted">Complete the course first. Your certificate preview becomes eligible at 100%. A one-time ₹49 certificate processing fee unlocks the final certificate.</p>
+
+  <div class="course">
+    <strong id="courseName">Full-Stack Web Development</strong>
+    <div class="status" id="courseStatus">Checking progress…</div>
+    <div class="progress"><div class="fill" id="progressFill"></div></div>
+    <div class="status" id="progressText">0%</div>
+  </div>
+
+  <button class="pay" id="payBtn" disabled>Pay ₹49 & Unlock Certificate</button>
+  <div class="message" id="message"></div>
+
+  <div class="note">
+    <strong>Secure payment:</strong> payment is verified on the server before the certificate is unlocked. Never put your Razorpay secret in this HTML.
+  </div>
+
+  <div class="actions">
+    <button class="secondary" id="refreshBtn">Refresh Status</button>
+    <button class="secondary" id="printBtn" disabled>Print / Save PDF</button>
+  </div>
+</section>
+
+<section class="certificate-shell locked" id="certificateShell">
+  <div class="certificate">
+    <div class="preview-badge" id="previewBadge">LOCKED PREVIEW</div>
+    <div class="cert-brand">MamRaj <span>Nexus</span> Academy</div>
+    <div class="cert-kicker">CERTIFICATE OF COMPLETION</div>
+    <h2>Certificate</h2>
+    <div class="cert-name" id="certName">Student Name</div>
+    <div class="cert-text">has successfully completed the professional learning program</div>
+    <div class="cert-course" id="certCourse">Full-Stack Web Development</div>
+    <div class="cert-text" id="certDescription">Demonstrating completion of the required learning journey, practical work and course requirements.</div>
+    <div class="seal">VERIFIED<br>CERTIFICATE</div>
+    <div class="cert-meta">
+      <div>ISSUED ON<strong id="issuedDate">—</strong></div>
+      <div>CERTIFICATE ID<strong id="certId">—</strong></div>
+    </div>
+    <div class="cert-id">Verify at mamrajnexusacademy.online/verify.html</div>
+  </div>
+</section>
+</div>
+</main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-functions.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+  authDomain: "mamraj-nexus-academy.firebaseapp.com",
+  projectId: "mamraj-nexus-academy",
+  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
+  messagingSenderId: "548826957068",
+  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
+  measurementId: "G-Z64L57P9XV"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+const functions=getFunctions(app,"asia-south1");
+
+const COURSE_ID="web-development";
+const COURSE_NAME="Full-Stack Web Development";
+const TOTAL_TOPICS=60;
+
+const $=id=>document.getElementById(id);
+let currentUser=null;
+let eligible=false;
+let unlocked=false;
+
+function setMessage(text,error=false){
+  $("message").textContent=text;
+  $("message").style.color=error?"#b34f45":"#2f6d51";
+}
+
+function renderCertificate(user, cert){
+  $("certName").textContent=user.displayName||"Student";
+  $("certCourse").textContent=COURSE_NAME;
+  $("issuedDate").textContent=cert?.issuedAt
+    ? new Date(cert.issuedAt).toLocaleDateString("en-IN")
+    : "—";
+  $("certId").textContent=cert?.certificateId||"—";
+}
+
+async function loadCertificateState(){
+  if(!currentUser)return;
+
+  const progressRef=doc(db,"users",currentUser.uid,"courseProgress",COURSE_ID);
+  const progressSnap=await getDoc(progressRef);
+  const progress=progressSnap.exists()?progressSnap.data():{};
+  const completed=Array.isArray(progress.completedTopics)?progress.completedTopics.length:0;
+  const percent=Math.min(100,Math.round(completed/TOTAL_TOPICS*100));
+
+  $("progressFill").style.width=percent+"%";
+  $("progressText").textContent=percent+"%";
+
+  eligible=percent>=100;
+  $("courseStatus").textContent=eligible
+    ?"Course completed — certificate eligible."
+    :`${completed} of ${TOTAL_TOPICS} topics completed.`;
+
+  const certRef=doc(db,"users",currentUser.uid,"certificates",COURSE_ID);
+  const certSnap=await getDoc(certRef);
+
+  if(certSnap.exists() && certSnap.data().paid===true){
+    unlocked=true;
+    const cert=certSnap.data();
+    $("certificateShell").classList.remove("locked");
+    $("previewBadge").textContent="VERIFIED";
+    $("payBtn").textContent="Certificate Unlocked";
+    $("payBtn").disabled=true;
+    $("printBtn").disabled=false;
+    renderCertificate(currentUser,cert);
+    setMessage("Certificate unlocked successfully.");
+  }else{
+    unlocked=false;
+    $("certificateShell").classList.add("locked");
+    $("previewBadge").textContent=eligible?"READY TO UNLOCK":"LOCKED PREVIEW";
+    $("payBtn").disabled=!eligible;
+    $("payBtn").textContent=eligible
+      ?"Pay ₹49 & Unlock Certificate"
+      :"Complete 100% of the course first";
+    $("printBtn").disabled=true;
+    renderCertificate(currentUser,null);
+    setMessage(eligible
+      ?"Your certificate is ready. Complete the ₹49 payment to unlock it."
+      :"Finish all course topics to unlock certificate payment.");
+  }
+}
+
+async function startPayment(){
+  if(!currentUser || !eligible || unlocked)return;
+
+  $("payBtn").disabled=true;
+  setMessage("Creating secure payment order…");
+
+  try{
+    const createOrder=httpsCallable(functions,"createCertificateOrder");
+    const result=await createOrder({courseId:COURSE_ID});
+    const order=result.data;
+
+    const options={
+      key:order.keyId,
+      amount:order.amount,
+      currency:"INR",
+      name:"MamRaj Nexus Academy",
+      description:"Certificate processing fee",
+      order_id:order.orderId,
+      prefill:{
+        name:currentUser.displayName||"",
+        email:currentUser.email||""
+      },
+      theme:{color:"#203674"},
+      handler:async function(response){
+        setMessage("Verifying payment securely…");
+
+        const verify=httpsCallable(functions,"verifyCertificatePayment");
+        await verify({
+          courseId:COURSE_ID,
+          orderId:response.razorpay_order_id,
+          paymentId:response.razorpay_payment_id,
+          signature:response.razorpay_signature
+        });
+
+        await loadCertificateState();
+      },
+      modal:{
+        ondismiss:function(){
+          $("payBtn").disabled=!eligible;
+          setMessage("Payment window closed.");
+        }
+      }
+    };
+
+    const rzp=new Razorpay(options);
+    rzp.on("payment.failed",function(){
+      $("payBtn").disabled=false;
+      setMessage("Payment failed. Please try again.",true);
+    });
+    rzp.open();
+
+  }catch(error){
+    console.error(error);
+    $("payBtn").disabled=!eligible;
+    setMessage(error?.message||"Unable to start payment.",true);
+  }
+}
+
+$("payBtn").addEventListener("click",startPayment);
+$("refreshBtn").addEventListener("click",async()=>{
+  setMessage("Refreshing…");
+  try{await loadCertificateState()}catch(e){setMessage("Unable to load status.",true)}
+});
+$("printBtn").addEventListener("click",()=>window.print());
+
+onAuthStateChanged(auth,async user=>{
+  if(!user){
+    $("userBox").textContent="Please sign in";
+    $("payBtn").disabled=true;
+    setMessage("Please sign in with Google to access your certificate.");
+    return;
+  }
+
+  currentUser=user;
+  $("userBox").innerHTML=`<div class="avatar">${(user.displayName||"S").slice(0,2).toUpperCase()}</div><div>${user.displayName||"Student"}<br><small>${user.email||""}</small></div>`;
+  $("certName").textContent=user.displayName||"Student";
+
+  try{
+    await loadCertificateState();
+  }catch(error){
+    console.error(error);
+    setMessage("Could not load your certificate status.",true);
+  }
+});
+</script>
+</body>
+</html>
