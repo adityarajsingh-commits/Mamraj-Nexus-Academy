@@ -221,6 +221,493 @@ window.mamrajAuth = {
 .auth-note{text-align:center;margin-top:13px;color:#9a9fac;font-size:8px;line-height:1.6}
 @media(max-width:800px){.auth-area{display:none}.auth-modal{padding:27px}}
 </style>
+
+/* =========================================================
+   MAMRAJ NEXUS — MOBILE RESPONSIVE
+========================================================= */
+@media (max-width: 800px){
+
+    body{
+        width:100%;
+        overflow-x:hidden;
+    }
+
+    .navbar{
+        height:72px;
+    }
+
+    .nav-container{
+        padding:0 16px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo small{
+        font-size:6px;
+        letter-spacing:3px;
+        bottom:-11px;
+    }
+
+    .mobile-menu{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:42px;
+        height:42px;
+        flex:0 0 42px;
+    }
+
+    /* Mobile navigation */
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:82px;
+        left:12px;
+        right:12px;
+        padding:18px;
+        flex-direction:column;
+        align-items:stretch;
+        gap:4px;
+        background:#fff;
+        border:1px solid #ececf0;
+        border-radius:18px;
+        box-shadow:0 20px 50px rgba(20,30,70,.15);
+    }
+
+    .nav-links.mobile-open{
+        display:flex;
+    }
+
+    .nav-links a{
+        width:100%;
+        padding:13px 12px;
+        border-radius:10px;
+        font-size:13px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+        background:#f7f4f1;
+    }
+
+    .nav-links a.active:after{
+        display:none;
+    }
+
+    /* Keep sign-in accessible on mobile */
+    .auth-area{
+        display:flex;
+        margin-left:auto;
+    }
+
+    .auth-btn{
+        display:inline-flex;
+        padding:9px 12px;
+        font-size:10px;
+        min-height:38px;
+    }
+
+    .auth-user{
+        max-width:125px;
+    }
+
+    .auth-user-name{
+        max-width:75px;
+    }
+
+    .dashboard-btn{
+        display:none!important;
+    }
+
+    /* Hero */
+    .hero{
+        min-height:auto;
+        padding:112px 16px 35px;
+    }
+
+    .hero-container{
+        min-height:auto;
+        grid-template-columns:1fr;
+        gap:25px;
+        text-align:center;
+    }
+
+    .hero-content{
+        align-items:center;
+    }
+
+    .eyebrow{
+        margin-bottom:17px;
+        font-size:9px;
+    }
+
+    .hero-content h1{
+        font-size:clamp(38px,11vw,52px);
+        line-height:1.04;
+        letter-spacing:-2px;
+    }
+
+    .hero-description{
+        margin-top:19px;
+        font-size:13px;
+        line-height:1.75;
+        max-width:520px;
+    }
+
+    .hero-buttons{
+        width:100%;
+        flex-direction:column;
+        gap:10px;
+        margin-top:25px;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        width:100%;
+        min-height:50px;
+    }
+
+    .hero-trust{
+        justify-content:center;
+        margin-top:23px;
+    }
+
+    /* Hero visual */
+    .hero-visual{
+        height:330px;
+        width:100%;
+        margin-top:5px;
+        transform:none;
+    }
+
+    .hero-dashboard{
+        width:min(100%,390px);
+        min-height:300px;
+        padding:20px;
+        border-radius:20px;
+        transform:none;
+    }
+
+    .dashboard-top h3{
+        font-size:13px;
+    }
+
+    .progress-circle{
+        width:48px;
+        height:48px;
+    }
+
+    .journey{
+        margin-top:18px;
+    }
+
+    .journey-item{
+        padding:9px 0;
+        gap:10px;
+    }
+
+    .journey-icon{
+        width:34px;
+        height:34px;
+        min-width:34px;
+        border-radius:10px;
+    }
+
+    .journey-item strong{
+        font-size:10px;
+    }
+
+    .journey-item small{
+        font-size:8px;
+    }
+
+    .floating-card{
+        padding:9px 11px;
+        border-radius:12px;
+    }
+
+    .floating-top{
+        top:2px;
+        right:0;
+    }
+
+    .floating-bottom{
+        bottom:0;
+        left:0;
+    }
+
+    .floating-icon,
+    .ai-avatar{
+        width:32px;
+        height:32px;
+    }
+
+    /* Hero stats */
+    .hero-stats{
+        margin-top:20px;
+        padding:17px 10px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:16px 8px;
+    }
+
+    .stat-divider{
+        display:none;
+    }
+
+    .hero-stat strong{
+        font-size:18px;
+    }
+
+    .hero-stat span{
+        font-size:8px;
+    }
+
+    /* Sections */
+    .overview,
+    .courses{
+        padding:72px 16px;
+    }
+
+    .section-heading{
+        margin-bottom:32px;
+    }
+
+    .section-heading h2{
+        font-size:31px;
+        letter-spacing:-1px;
+    }
+
+    .section-heading p{
+        font-size:11px;
+        line-height:1.75;
+    }
+
+    /* Feature cards */
+    .feature-grid{
+        grid-template-columns:1fr;
+        gap:13px;
+    }
+
+    .feature-card{
+        padding:22px;
+    }
+
+    /* Courses */
+    .course-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+        max-width:none;
+    }
+
+    .course-image{
+        height:145px;
+        font-size:48px;
+    }
+
+    .course-content{
+        padding:19px;
+    }
+
+    /* Testimonials */
+    .testimonials{
+        padding:75px 16px;
+    }
+
+    .testimonial-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .testimonial-card,
+    .testimonial-card:last-child{
+        grid-column:auto;
+        min-height:auto;
+        padding:24px;
+    }
+
+    .testimonial-text{
+        font-size:11px;
+    }
+
+    .testimonial-trust{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:18px;
+        padding:20px;
+    }
+
+    .testimonial-trust .trust-item:last-child{
+        grid-column:1/-1;
+    }
+
+    .trust-line{
+        display:none;
+    }
+
+    /* CTA */
+    .career-cta{
+        margin:45px 16px;
+        padding:42px 24px;
+        min-height:auto;
+        border-radius:24px;
+    }
+
+    .career-cta h2{
+        font-size:35px;
+        letter-spacing:-1.5px;
+    }
+
+    .career-cta p{
+        font-size:11px;
+    }
+
+    .cta-button{
+        width:100%;
+        justify-content:center;
+    }
+
+    .cta-decoration{
+        right:-180px;
+        opacity:.55;
+    }
+
+    /* Footer */
+    footer{
+        padding:50px 20px 22px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        gap:35px;
+    }
+
+    .footer-links{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:25px;
+    }
+
+    .footer-bottom{
+        margin-top:35px;
+        flex-direction:column;
+        gap:8px;
+        line-height:1.5;
+    }
+
+    /* Auth modal */
+    .auth-overlay{
+        padding:12px;
+    }
+
+    .auth-modal{
+        width:100%;
+        max-height:calc(100vh - 24px);
+        overflow-y:auto;
+        padding:25px 20px;
+        border-radius:20px;
+    }
+}
+
+@media (max-width:500px){
+
+    .nav-container{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .auth-btn{
+        padding:8px 10px;
+    }
+
+    .hero{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .hero-content h1{
+        font-size:39px;
+    }
+
+    .hero-description{
+        font-size:12px;
+    }
+
+    .hero-visual{
+        height:305px;
+    }
+
+    .hero-dashboard{
+        padding:17px;
+    }
+
+    .floating-card strong{
+        font-size:8px;
+    }
+
+    .floating-card small{
+        font-size:7px;
+    }
+
+    .overview,
+    .courses,
+    .testimonials{
+        padding-left:13px;
+        padding-right:13px;
+    }
+
+    .section-heading h2{
+        font-size:28px;
+    }
+
+    .feature-card{
+        padding:20px;
+    }
+
+    .course-image{
+        height:135px;
+    }
+
+    .footer-links{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media (max-width:360px){
+
+    .logo{
+        font-size:15px;
+    }
+
+    .auth-btn{
+        font-size:9px;
+        padding:7px 8px;
+    }
+
+    .mobile-menu{
+        width:38px;
+        height:38px;
+        flex-basis:38px;
+    }
+
+    .hero-content h1{
+        font-size:34px;
+    }
+
+    .hero-visual{
+        height:280px;
+    }
+
+    .hero-dashboard{
+        padding:14px;
+    }
+}
+
 </head>
 
 <body>
@@ -609,66 +1096,59 @@ const mobileMenu = document.getElementById("mobileMenu");
 const navLinks = document.querySelector(".nav-links");
 const navbar = document.querySelector(".navbar");
 
-if (mobileMenu && navLinks) {
-    mobileMenu.addEventListener("click", () => {
+function closeMobileMenu(){
+    if(navLinks) navLinks.classList.remove("mobile-open");
+}
+
+if(mobileMenu && navLinks){
+    mobileMenu.addEventListener("click",()=>{
         navLinks.classList.toggle("mobile-open");
     });
 }
 
-window.addEventListener("scroll", () => {
-    if (navbar) {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
+window.addEventListener("scroll",()=>{
+    if(navbar){
+        navbar.classList.toggle("scrolled",window.scrollY>40);
     }
 });
 
-const links = document.querySelectorAll(".nav-links a");
-
-links.forEach(link => {
-    link.addEventListener("click", () => {
-        links.forEach(item => item.classList.remove("active"));
+document.querySelectorAll(".nav-links a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        document.querySelectorAll(".nav-links a")
+            .forEach(item=>item.classList.remove("active"));
         link.classList.add("active");
-        if (window.innerWidth <= 800) {
-            navLinks.classList.remove("mobile-open");
-        }
+        closeMobileMenu();
     });
 });
 
-const revealElements = document.querySelectorAll(
-    ".feature-card, .course-card, .testimonial-card, .section-heading"
+window.addEventListener("resize",()=>{
+    if(window.innerWidth>800) closeMobileMenu();
+});
+
+const revealElements=document.querySelectorAll(
+    ".feature-card,.course-card,.testimonial-card,.section-heading"
 );
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-        }
-    });
-}, { threshold: 0.12 });
+if("IntersectionObserver" in window){
+    const observer=new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("revealed");
+                observer.unobserve(entry.target);
+            }
+        });
+    },{threshold:.12});
 
-revealElements.forEach(element => {
-    element.classList.add("reveal");
-    observer.observe(element);
-});
+    revealElements.forEach(element=>{
+        element.classList.add("reveal");
+        observer.observe(element);
+    });
+}else{
+    revealElements.forEach(element=>element.classList.add("revealed"));
+}
 </script>
 
-<style>
-@media(max-width:800px){
-    .nav-links.mobile-open{
-        display:flex;
-        position:absolute;
-        top:88px;
-        left:15px;
-        right:15px;
-        padding:20px;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:18px;
-        background:#fff;
-        border-radius:16px;
-        box-shadow:0 20px 50px rgba(20,30,70,.12);
-    }
-}
-</style>
+
 
 
 <script type="module">
