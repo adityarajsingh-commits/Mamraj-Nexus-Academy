@@ -3,763 +3,5404 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MamRaj Nexus Academy</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<title>MamRaj Nexus Academy | Dashboard</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        Poppins,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#f5f3f1;
+    color:#202a4d;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
 :root{
-    --navy:#1d2c63;
-    --navy-dark:#101b42;
-    --orange:#c98b70;
-    --orange-light:#e6b19a;
-    --cream:#fbf6f1;
-    --white:#fff;
-    --text:#17234f;
-    --muted:#69728a;
-    --border:#e8e8ed;
-    --shadow:0 20px 60px rgba(24,37,85,.08);
+
+    --navy:#263873;
+    --navy-dark:#1e2d63;
+    --navy-light:#344985;
+
+    --cream:#f7f1eb;
+    --white:#ffffff;
+
+    --peach:#c99173;
+    --peach-dark:#b77d62;
+    --peach-light:#ead2c4;
+
+    --text:#202a4d;
+    --muted:#81756d;
+
+    --border:#e7e0da;
+
+    --green:#5f9a78;
+
+    --shadow:
+        0 10px 30px rgba(34,43,78,.06);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Poppins,sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-button{font-family:inherit;cursor:pointer}
 
-/* NAVBAR */
-.navbar{position:fixed;top:0;left:0;width:100%;height:88px;z-index:999;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(20,30,70,.05);transition:.25s}
-.navbar.scrolled{box-shadow:0 8px 30px rgba(20,30,70,.08)}
-.nav-container{max-width:1380px;height:100%;margin:auto;padding:0 35px;display:flex;align-items:center;justify-content:space-between}
-.logo{position:relative;display:flex;align-items:baseline;gap:5px;font-size:21px;font-weight:700;white-space:nowrap}
-.logo-mam{color:var(--navy)} .logo-nexus{color:var(--orange)}
-.logo small{position:absolute;left:2px;bottom:-13px;font-size:7px;letter-spacing:4px;color:#7b8291}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:13px;font-weight:500;color:#4e566d;transition:.25s;position:relative}
-.nav-links a:hover,.nav-links a.active{color:var(--navy)}
-.nav-links a.active:after{content:"";position:absolute;left:50%;bottom:-10px;width:5px;height:5px;border-radius:50%;background:var(--orange);transform:translateX(-50%)}
-.dashboard-btn{display:flex;align-items:center;gap:10px;padding:14px 25px;border-radius:50px;color:#fff;background:var(--navy);font-size:13px;font-weight:600;box-shadow:0 10px 25px rgba(29,44,99,.18);transition:.25s}
-.dashboard-btn:hover{transform:translateY(-2px)}
-.mobile-menu{display:none;width:44px;height:44px;border:0;border-radius:12px;background:var(--navy);color:#fff}
 
-/* HERO */
-.hero{min-height:850px;padding:150px 35px 45px;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 30%,rgba(207,150,120,.13),transparent 30%),radial-gradient(circle at 15% 75%,rgba(29,44,99,.06),transparent 28%),var(--cream)}
-.hero-glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
-.glow-one{width:300px;height:300px;background:rgba(207,150,120,.12);right:-100px;top:180px}
-.glow-two{width:220px;height:220px;background:rgba(29,44,99,.07);left:-100px;bottom:150px}
-.hero-grid{position:absolute;inset:0;opacity:.3;background-image:linear-gradient(rgba(29,44,99,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(29,44,99,.035) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
-.hero-container{max-width:1250px;margin:auto;min-height:590px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:80px;position:relative;z-index:2}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:50px;background:rgba(255,255,255,.8);border:1px solid rgba(29,44,99,.08);color:var(--navy);font-size:10px;font-weight:600;margin-bottom:24px}
-.eyebrow-dot{width:7px;height:7px;background:#43bd76;border-radius:50%;box-shadow:0 0 0 4px rgba(67,189,118,.12)}
-.hero-content h1{font-size:clamp(48px,5.4vw,78px);line-height:1.04;letter-spacing:-3.5px;color:var(--navy);font-weight:700}
-.hero-content h1 span,.hero-content h1 strong{color:var(--orange)}
-.hero-description{max-width:650px;margin-top:27px;font-size:16px;line-height:1.9;color:#5d667d}
-.hero-description strong{color:var(--navy)}
-.hero-buttons{display:flex;gap:14px;margin-top:34px}
-.primary-btn,.secondary-btn{min-height:52px;padding:0 22px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;gap:12px;font-size:12px;font-weight:600;transition:.25s}
-.primary-btn{color:#fff;background:var(--navy);box-shadow:0 12px 25px rgba(29,44,99,.2)}
-.primary-btn:hover,.secondary-btn:hover{transform:translateY(-3px)}
-.secondary-btn{color:var(--navy);border:1px solid #dfe2e9;background:rgba(255,255,255,.65)}
-.hero-trust{display:flex;align-items:center;gap:13px;margin-top:34px}
-.trust-avatars{display:flex}
-.trust-avatars span{width:31px;height:31px;margin-left:-6px;border-radius:50%;border:2px solid var(--cream);background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600}
-.trust-avatars span:first-child{margin-left:0;background:var(--orange)}
-.trust-avatars span:nth-child(2){background:#536aa5}.trust-avatars span:nth-child(3){background:#6e7eaf}.trust-avatars span:last-child{background:#fff;color:var(--navy)}
-.stars{color:#e9a91c;font-size:11px;letter-spacing:2px}.hero-trust p{color:#7b8291;font-size:9px;margin-top:2px}
+/* =========================================================
+   APP
+========================================================= */
 
-/* HERO VISUAL */
-.hero-visual{position:relative;height:500px;display:flex;align-items:center;justify-content:center}
-.hero-dashboard{width:480px;min-height:400px;padding:27px;border-radius:25px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.9);box-shadow:0 35px 80px rgba(25,39,86,.13);transform:perspective(1000px) rotateY(-5deg) rotateX(2deg);position:relative;z-index:2}
-.dashboard-top{display:flex;align-items:center;justify-content:space-between}.dashboard-top small{color:#9aa0ad;font-size:8px;letter-spacing:1.5px;font-weight:600}.dashboard-top h3{color:var(--navy);font-size:16px;margin-top:6px}
-.progress-circle{width:57px;height:57px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);background:conic-gradient(var(--orange) 78%,#ececf1 78%);position:relative}
-.progress-circle:after{content:"";position:absolute;inset:6px;background:#fff;border-radius:50%}
-.progress-circle:before{content:"78%";position:absolute;z-index:2;font-size:11px}
-.progress-line{height:5px;margin-top:23px;background:#edf0f4;border-radius:20px}.progress-line span{display:block;width:78%;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--navy),var(--orange))}
-.journey{margin-top:27px}.journey-item{display:flex;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid #f0f1f4}.journey-item:last-child{border-bottom:0}
-.journey-icon{width:40px;height:40px;min-width:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#f1f3f7;color:#9ca3b0;font-size:13px}
-.journey-item.completed .journey-icon{background:#e7f7ee;color:#2ba363}.journey-item.active .journey-icon{background:#fff0e9;color:var(--orange)}
-.journey-item strong{display:block;color:var(--navy);font-size:11px}.journey-item small{display:block;color:#969cab;font-size:9px;margin-top:3px}
-.floating-card{position:absolute;z-index:5;padding:13px 17px;display:flex;align-items:center;gap:11px;border-radius:15px;background:#fff;box-shadow:0 18px 40px rgba(20,30,70,.12);border:1px solid rgba(30,40,80,.06)}
-.floating-top{top:25px;right:-5px;animation:floatCard 4s ease-in-out infinite}.floating-bottom{bottom:28px;left:-5px;animation:floatCard 5s ease-in-out infinite reverse}
-.floating-card strong{display:block;font-size:10px;color:var(--navy)}.floating-card small{display:block;font-size:8px;color:#9298a6;margin-top:2px}
-.floating-icon,.ai-avatar{width:37px;height:37px;border-radius:11px;display:flex;align-items:center;justify-content:center}
-.floating-icon.purple{background:#f0e9ff;color:#7751d5}.ai-avatar{background:var(--navy);color:#fff}.online-dot{width:7px;height:7px;border-radius:50%;background:#38c877;margin-left:4px;box-shadow:0 0 0 4px rgba(56,200,119,.12)}
-@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hero-stats{max-width:1000px;margin:30px auto 0;padding:20px 35px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(29,44,99,.07);display:flex;align-items:center;justify-content:space-around;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:4}
-.hero-stat{text-align:center}.hero-stat strong{display:block;font-size:22px;color:var(--navy)}.hero-stat span{font-size:9px;color:#858b99}.stat-divider{width:1px;height:35px;background:#e5e6eb}
-
-/* COMMON SECTIONS */
-.overview,.courses{padding:110px 35px;background:#fff}
-.section-heading{max-width:800px;margin:0 auto 45px}.section-heading.center{text-align:center}
-.section-tag{color:var(--orange);font-size:9px;letter-spacing:2px;font-weight:700;margin-bottom:13px}
-.section-heading h2{font-size:clamp(32px,4vw,48px);line-height:1.15;color:var(--navy);letter-spacing:-1.5px}.section-heading h2 span{color:var(--orange)}
-.section-heading p{margin-top:15px;color:var(--muted);font-size:13px;line-height:1.8}
-
-/* FEATURES */
-.feature-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.feature-card{padding:27px;border:1px solid var(--border);border-radius:18px;transition:.3s}
-.feature-card:hover,.course-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
-.feature-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:20px}
-.feature-icon.blue{background:#e9f1ff;color:#3976db}.feature-icon.orange{background:#fff0e8;color:var(--orange)}.feature-icon.green{background:#e6f8ed;color:#2caa64}.feature-icon.purple{background:#f0eaff;color:#7953d4}
-.feature-card h3{color:var(--navy);font-size:15px}.feature-card p{color:#777f91;font-size:10px;line-height:1.8;margin-top:10px}.feature-card a{display:inline-flex;align-items:center;gap:7px;color:var(--navy);font-size:10px;font-weight:600;margin-top:20px}
-
-/* COURSES */
-.courses{background:var(--cream)}
-.course-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.course-card{overflow:hidden;background:#fff;border-radius:20px;border:1px solid var(--border);transition:.3s}
-.course-image{height:170px;display:flex;align-items:center;justify-content:center;font-size:55px}.course-image.web{background:linear-gradient(135deg,#e8f0ff,#d9e5ff);color:var(--navy)}.course-image.data{background:linear-gradient(135deg,#fff0e8,#ffe1d2);color:var(--orange)}.course-image.design{background:linear-gradient(135deg,#eee8ff,#e0d7ff);color:#7353cf}
-.course-content{padding:22px}.course-content>span{color:var(--orange);font-size:8px;letter-spacing:1.5px;font-weight:700}.course-content h3{color:var(--navy);font-size:16px;margin-top:7px}.course-content p{color:#7b8291;font-size:10px;line-height:1.7;margin-top:8px}.course-bottom{margin-top:20px;display:flex;justify-content:space-between;align-items:center;color:var(--navy);font-size:10px}
-
-/* TESTIMONIALS */
-.testimonials{padding:115px 35px;background:linear-gradient(180deg,#fff 0%,#fbf6f1 100%);position:relative;overflow:hidden}
-.testimonials:before,.testimonials:after{content:"";position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}.testimonials:before{width:350px;height:350px;background:rgba(201,139,112,.08);left:-180px;top:100px}.testimonials:after{width:300px;height:300px;background:rgba(29,44,99,.06);right:-150px;bottom:80px}
-.testimonial-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2}
-.testimonial-card{position:relative;padding:32px;min-height:310px;display:flex;flex-direction:column;background:rgba(255,255,255,.9);border:1px solid #e9e7e5;border-radius:22px;box-shadow:0 15px 45px rgba(28,40,80,.06);transition:.35s}
-.testimonial-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(28,40,80,.12);border-color:rgba(201,139,112,.35)}
-.testimonial-card.featured{background:linear-gradient(145deg,#fff,#fff8f4);border-color:rgba(201,139,112,.3)}
-.quote-icon{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:#fff0e8;color:var(--orange);font-size:16px;margin-bottom:18px}
-.testimonial-stars{color:#e7a72b;font-size:12px;letter-spacing:3px;margin-bottom:15px}.testimonial-text{color:#60697c;font-size:12px;line-height:1.9;flex:1}
-.testimonial-user{display:flex;align-items:center;gap:12px;margin-top:25px;padding-top:18px;border-top:1px solid #eeeeef}
-.testimonial-avatar{width:43px;height:43px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;font-size:10px;font-weight:700;border:3px solid #eef1fa}
-.testimonial-avatar.peach{background:var(--orange);border-color:#fff0e8}.testimonial-avatar.purple{background:#7254c8;border-color:#eeeaff}
-.testimonial-user strong{display:block;color:var(--navy);font-size:11px}.testimonial-user span{display:block;color:#969cab;font-size:8px;margin-top:3px}
-.testimonial-trust{max-width:850px;margin:55px auto 0;padding:22px 30px;display:flex;align-items:center;justify-content:space-around;background:rgba(255,255,255,.8);border:1px solid #e7e6e5;border-radius:18px;box-shadow:0 15px 40px rgba(20,30,70,.04);position:relative;z-index:2}
-.trust-item{text-align:center}.trust-item strong{display:block;color:var(--navy);font-size:20px}.trust-item span{display:block;color:#888f9d;font-size:8px;margin-top:3px}.trust-line{width:1px;height:35px;background:#e2e3e7}
-
-/* CTA */
-.career-cta{max-width:1200px;min-height:390px;margin:100px auto;padding:70px;border-radius:30px;position:relative;overflow:hidden;background:linear-gradient(120deg,#17275c,#263c7b);color:#fff}
-.career-cta .section-tag{color:var(--orange-light)}.cta-content{max-width:600px;position:relative;z-index:3}.career-cta h2{font-size:clamp(35px,4vw,54px);line-height:1.12;letter-spacing:-2px}.career-cta h2 span{color:var(--orange-light)}.career-cta p{max-width:570px;margin-top:18px;color:#c8cee0;font-size:12px;line-height:1.9}
-.cta-button{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:15px 23px;border-radius:12px;background:#fff;color:var(--navy);font-size:11px;font-weight:700}
-.cta-decoration{position:absolute;right:-80px;top:-100px;width:500px;height:500px}.circle{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12)}.circle-one{inset:30px}.circle-two{inset:100px}.circle-three{inset:170px}
-
-/* FOOTER */
-footer{background:var(--navy-dark);color:#fff;padding:65px 35px 25px}.footer-container{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:50px}.footer-logo{font-size:21px;font-weight:700}.footer-logo span{color:var(--orange)}.footer-brand p{max-width:280px;margin-top:12px;color:#aeb6cc;font-size:10px;line-height:1.8}.footer-links{display:flex;gap:80px}.footer-links div{display:flex;flex-direction:column;gap:9px}.footer-links h4{font-size:11px;margin-bottom:6px}.footer-links a{color:#aeb6cc;font-size:9px}.footer-links a:hover{color:#fff}.footer-bottom{max-width:1200px;margin:50px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;color:#8992ac;font-size:8px}
-
-/* ANIMATION */
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.revealed{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:1050px){
-.nav-links{gap:18px}.hero-container{gap:35px}.hero-content h1{font-size:55px}.hero-visual{transform:scale(.9)}.feature-grid{grid-template-columns:repeat(2,1fr)}
+.app{
+    min-height:100vh;
 }
-@media(max-width:900px){
-.testimonial-grid{grid-template-columns:1fr 1fr}.testimonial-card:last-child{grid-column:1/-1}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+    bottom:0;
+
+    width:270px;
+
+    padding:24px 16px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #263873 0%,
+            #293b7a 100%
+        );
+
+    display:flex;
+    flex-direction:column;
+
+    z-index:1000;
+
+    overflow-y:auto;
+
+    transition:left .3s ease;
+
+    scrollbar-width:thin;
+    scrollbar-color:
+        rgba(255,255,255,.2)
+        transparent;
 }
-@media(max-width:800px){
-.nav-links,.dashboard-btn{display:none}.mobile-menu{display:block}
-.hero{padding-top:125px}.hero-container{grid-template-columns:1fr;text-align:center}.hero-content{display:flex;flex-direction:column;align-items:center}.hero-description{max-width:600px}.hero-visual{margin-top:20px;transform:scale(.8)}
-.hero-stats{flex-wrap:wrap;gap:20px}.stat-divider{display:none}.course-grid{grid-template-columns:1fr;max-width:500px}
-.career-cta{margin:60px 20px;padding:45px 30px}.footer-container{flex-direction:column}
+
+
+.sidebar::-webkit-scrollbar{
+    width:5px;
 }
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.18);
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand{
+
+    display:flex;
+    align-items:center;
+
+    padding:
+        0 5px;
+
+    margin-bottom:28px;
+
+    min-height:58px;
+}
+
+
+.logo{
+
+    width:42px;
+    height:42px;
+
+    border-radius:13px;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7350ee,
+            #5c3de1
+        );
+
+    color:white;
+
+    font-size:20px;
+    font-weight:800;
+
+    flex-shrink:0;
+}
+
+
+.brand h2{
+
+    color:#ffffff;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    letter-spacing:-1px;
+}
+
+
+.brand span{
+
+    display:block;
+
+    margin-top:7px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:7px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+
+    margin:
+        17px 10px 8px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.nav-item{
+
+    width:100%;
+
+    min-height:52px;
+
+    padding:
+        0 18px;
+
+    margin:4px 0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:17px;
+
+    border-radius:15px;
+
+    color:
+        rgba(255,255,255,.88);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:
+        .2s ease;
+}
+
+
+.nav-item > span{
+
+    width:22px;
+
+    min-width:22px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#f2f4ff;
+
+    font-size:16px;
+}
+
+
+.nav-item:hover{
+
+    background:
+        rgba(255,255,255,.09);
+
+    color:white;
+
+    transform:
+        translateX(2px);
+}
+
+
+.nav-item.active{
+
+    background:
+        var(--peach);
+
+    color:white;
+
+    box-shadow:
+        0 9px 22px
+        rgba(0,0,0,.14);
+}
+
+
+.nav-item.resume-active{
+
+    background:
+        var(--peach);
+
+    color:white;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom{
+
+    margin-top:auto;
+
+    padding-top:18px;
+}
+
+
+/* HELP */
+
+.help-card{
+
+    margin:
+        12px 4px 0;
+
+    min-height:60px;
+
+    padding:
+        13px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border-radius:16px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    color:white;
+}
+
+
+.help-card-icon{
+
+    width:28px;
+    height:28px;
+
+    min-width:28px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#e6c8b5;
+
+    color:#5e5049;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+.help-card strong{
+
+    display:block;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+
+.help-card small{
+
+    display:block;
+
+    color:
+        rgba(255,255,255,.62);
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+
+    width:
+        calc(100% - 270px);
+
+    margin-left:270px;
+
+    min-height:100vh;
+
+    background:#f5f3f1;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:500;
+
+    min-height:82px;
+
+    padding:
+        16px 34px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-bottom:
+        1px solid
+        var(--border);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+/* =========================================================
+   SEARCH AREA
+========================================================= */
+
+.search-area{
+
+    flex:1;
+
+    max-width:800px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.search-box{
+
+    width:100%;
+
+    max-width:450px;
+
+    height:46px;
+
+    padding:
+        0 13px;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#f7f4f1;
+
+    border:
+        1px solid transparent;
+
+    border-radius:13px;
+
+    transition:.2s ease;
+}
+
+
+.search-box:focus-within{
+
+    background:white;
+
+    border-color:
+        #d7b7a6;
+
+    box-shadow:
+        0 7px 20px
+        rgba(60,45,38,.07);
+}
+
+
+.search-icon{
+
+    width:26px;
+
+    color:#69748d;
+
+    font-size:21px;
+
+    display:grid;
+
+    place-items:center;
+}
+
+
+.search-box input{
+
+    flex:1;
+
+    width:100%;
+
+    border:0;
+
+    outline:0;
+
+    background:transparent;
+
+    color:#26335d;
+
+    font-size:11px;
+}
+
+
+.search-box input::placeholder{
+
+    color:#92939c;
+}
+
+
+/* CLEAR */
+
+.clear-search{
+
+    display:none;
+
+    width:24px;
+    height:24px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#e7ded8;
+
+    color:#6f5d52;
+
+    font-size:15px;
+
+    line-height:1;
+}
+
+
+.clear-search.show{
+
+    display:grid;
+
+    place-items:center;
+}
+
+
+/* =========================================================
+   CATEGORY FILTERS
+========================================================= */
+
+.category-filters{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    flex-shrink:0;
+}
+
+
+.category{
+
+    height:34px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        #e5ded9;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#77727a;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    transition:.2s ease;
+}
+
+
+.category:hover{
+
+    border-color:
+        var(--peach);
+
+    color:
+        #8f6855;
+
+    transform:
+        translateY(-1px);
+}
+
+
+.category.active{
+
+    background:
+        var(--navy);
+
+    border-color:
+        var(--navy);
+
+    color:white;
+
+    box-shadow:
+        0 5px 12px
+        rgba(38,56,115,.15);
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.page-title{
+
+    min-width:125px;
+}
+
+
+.page-title span{
+
+    display:block;
+
+    color:#9b8b80;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1.2px;
+}
+
+
+.page-title h1{
+
+    margin-top:4px;
+
+    color:#252c40;
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   TOP RIGHT
+========================================================= */
+
+.top-right{
+
+    margin-left:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+
+.notification{
+
+    position:relative;
+
+    width:40px;
+    height:40px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#faf7f4;
+
+    color:#35436e;
+
+    font-size:17px;
+}
+
+
+.notification::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    top:7px;
+    right:8px;
+
+    border-radius:50%;
+
+    background:#e63946;
+
+    border:2px solid white;
+}
+
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.avatar{
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#f0e3db;
+
+    border:
+        2px solid
+        var(--peach);
+
+    color:#4b4050;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+.profile strong{
+
+    display:block;
+
+    color:#222b49;
+
+    font-size:11px;
+}
+
+
+.profile span{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#8b8991;
+
+    font-size:9px;
+}
+
+
+/* MOBILE BUTTON */
+
+.mobile-menu{
+
+    display:none;
+
+    width:40px;
+    height:40px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#f3ebe5;
+
+    color:#35436e;
+
+    font-size:20px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content{
+
+    padding:
+        30px 34px 45px;
+}
+
+
+/* =========================================================
+   WELCOME
+========================================================= */
+
+.welcome{
+
+    min-height:220px;
+
+    padding:
+        32px 42px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            115deg,
+            #4d3b86,
+            #6e5abd
+        );
+
+    box-shadow:
+        0 18px 40px
+        rgba(72,55,125,.16);
+}
+
+
+.welcome::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    right:-100px;
+    top:-170px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+
+.welcome-text{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:650px;
+}
+
+
+.welcome-label{
+
+    color:#e6dfff;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+}
+
+
+.welcome h2{
+
+    margin:
+        12px 0 8px;
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    letter-spacing:-.7px;
+}
+
+
+.welcome h2 span{
+
+    color:#d3c6ff;
+}
+
+
+.welcome p{
+
+    max-width:550px;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size:12px;
+
+    line-height:1.7;
+}
+
+
+.primary-btn{
+
+    margin-top:17px;
+
+    padding:
+        11px 17px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#493d83;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+
+.primary-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(0,0,0,.15);
+}
+
+
+.welcome-art{
+
+    width:300px;
+
+    height:190px;
+
+    position:relative;
+}
+
+
+.big-letter{
+
+    position:absolute;
+
+    right:20px;
+
+    top:-20px;
+
+    color:
+        rgba(255,255,255,.12);
+
+    font-size:170px;
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:14px;
+
+    margin:
+        20px 0;
+}
+
+
+.stat{
+
+    min-height:105px;
+
+    padding:17px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    position:relative;
+
+    background:white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:15px;
+
+    box-shadow:
+        0 7px 22px
+        rgba(34,43,78,.04);
+
+    transition:.2s ease;
+}
+
+
+.stat:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(34,43,78,.08);
+}
+
+
+.stat-icon{
+
+    width:42px;
+    height:42px;
+
+    min-width:42px;
+
+    border-radius:12px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:#f0e7e0;
+
+    color:#986f5a;
+
+    font-size:17px;
+}
+
+
+.stat span{
+
+    display:block;
+
+    color:#898994;
+
+    font-size:9px;
+}
+
+
+.stat strong{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:#1f294b;
+
+    font-size:20px;
+
+    font-weight:800;
+}
+
+
+.stat small{
+
+    position:absolute;
+
+    right:14px;
+
+    top:15px;
+
+    color:#9a979d;
+
+    font-size:8px;
+}
+
+
+.green{
+
+    color:var(--green)!important;
+}
+
+
+/* =========================================================
+   DASHBOARD GRID
+========================================================= */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.7fr)
+        minmax(280px,1fr);
+
+    gap:18px;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+
+    min-width:0;
+
+    padding:22px;
+
+    background:white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:18px;
+
+    box-shadow:
+        0 10px 28px
+        rgba(34,43,78,.04);
+}
+
+
+.panel-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+}
+
+
+.panel-label{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#a17d6a;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+}
+
+
+.panel h2{
+
+    color:#1f294b;
+
+    font-size:17px;
+
+    font-weight:800;
+}
+
+
+.panel-header a{
+
+    color:#765be2;
+
+    font-size:10px;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   COURSES
+========================================================= */
+
+.course-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+
+.course{
+
+    width:100%;
+
+    padding:13px;
+
+    display:grid;
+
+    grid-template-columns:
+        52px minmax(0,1fr) auto;
+
+    align-items:center;
+
+    gap:14px;
+
+    background:#fffdfb;
+
+    border:
+        1px solid
+        #eee5df;
+
+    border-radius:14px;
+
+    transition:.2s ease;
+}
+
+
+.course:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(100,75,60,.07);
+}
+
+
+.course.hidden{
+
+    display:none;
+}
+
+
+.course-icon{
+
+    width:52px;
+    height:52px;
+
+    border-radius:13px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee1d7,
+            #f7eee8
+        );
+
+    color:#8d6755;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+.course-title{
+
+    color:#24305b;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+.course-description{
+
+    margin:
+        5px 0 8px;
+
+    color:#918c8b;
+
+    font-size:9px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.progress{
+
+    height:6px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#eee8e3;
+}
+
+
+.progress-bar{
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #96705c,
+            #c99578
+        );
+
+    transition:
+        width 1s ease;
+}
+
+
+.course-meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:5px;
+
+    color:#a09893;
+
+    font-size:8px;
+}
+
+
+.resume{
+
+    padding:
+        9px 13px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:
+        var(--navy);
+
+    color:white;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    transition:.2s ease;
+}
+
+
+.resume:hover{
+
+    background:
+        var(--navy-dark);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-results{
+
+    padding:
+        35px 20px;
+
+    text-align:center;
+
+    color:#8c8580;
+
+    font-size:11px;
+}
+
+
+.no-results-icon{
+
+    margin-bottom:8px;
+
+    font-size:30px;
+}
+
+
+/* =========================================================
+   SHIVAAY
+========================================================= */
+
+.shivaay{
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #30245f,
+            #55409d
+        );
+
+    border:0;
+
+    box-shadow:
+        0 15px 35px
+        rgba(65,48,126,.16);
+}
+
+
+.shivaay::after{
+
+    content:"✦";
+
+    position:absolute;
+
+    right:-15px;
+
+    bottom:-30px;
+
+    color:
+        rgba(255,255,255,.06);
+
+    font-size:150px;
+}
+
+
+.shivaay-top{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.shivaay-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+        rgba(255,255,255,.13);
+
+    font-size:20px;
+}
+
+
+.shivaay-top span{
+
+    display:block;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:1.2px;
+}
+
+
+.shivaay-top h2{
+
+    margin-top:4px;
+
+    color:white;
+
+    font-size:18px;
+}
+
+
+.shivaay p{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:
+        18px 0;
+
+    color:
+        rgba(255,255,255,.78);
+
+    font-size:10px;
+
+    line-height:1.7;
+}
+
+
+.ai-feature{
+
+    position:relative;
+
+    z-index:2;
+
+    margin:
+        11px 0;
+
+    color:
+        rgba(255,255,255,.9);
+
+    font-size:9px;
+}
+
+
+.ai-btn{
+
+    position:relative;
+
+    z-index:3;
+
+    margin-top:13px;
+
+    padding:
+        11px 15px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:white;
+
+    color:#493d83;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
+   BOTTOM GRID
+========================================================= */
+
+.bottom-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.25fr)
+        minmax(280px,1fr);
+
+    gap:18px;
+
+    margin-top:18px;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.bars{
+
+    height:160px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-around;
+
+    gap:10px;
+
+    padding:
+        0 8px;
+}
+
+
+.bar{
+
+    width:30px;
+
+    position:relative;
+
+    border-radius:
+        7px 7px 2px 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #c99578,
+            #8f6855
+        );
+}
+
+
+.bar span{
+
+    position:absolute;
+
+    top:-18px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    color:#8d8178;
+
+    font-size:7px;
+
+    white-space:nowrap;
+}
+
+
+.days{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    margin-top:10px;
+}
+
+
+.days span{
+
+    color:#918b87;
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badges{
+
+    display:flex;
+
+    gap:10px;
+}
+
+
+.badge{
+
+    flex:1;
+
+    padding:
+        15px 7px;
+
+    text-align:center;
+
+    background:#fffaf7;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:12px;
+
+    transition:.2s ease;
+}
+
+
+.badge:hover{
+
+    transform:
+        translateY(-3px);
+}
+
+
+.badge div{
+
+    font-size:24px;
+}
+
+
+.badge strong{
+
+    display:block;
+
+    margin-top:6px;
+
+    color:#29345c;
+
+    font-size:9px;
+}
+
+
+.badge small{
+
+    display:block;
+
+    margin-top:3px;
+
+    color:#9b918b;
+
+    font-size:8px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading{
+
+    padding:35px 10px;
+
+    text-align:center;
+
+    color:#918983;
+
+    font-size:10px;
+}
+
+
+.spinner{
+
+    width:26px;
+    height:26px;
+
+    margin:
+        0 auto 10px;
+
+    border:
+        3px solid
+        #eadfd7;
+
+    border-top-color:
+        #98705c;
+
+    border-radius:50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1150px){
+
+    .sidebar{
+        width:250px;
+    }
+
+    .main{
+        width:calc(100% - 250px);
+        margin-left:250px;
+    }
+
+    .topbar{
+        padding:
+            14px 22px;
+    }
+
+    .category:nth-child(5){
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .dashboard-grid,
+    .bottom-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:750px){
+
+    .sidebar{
+
+        width:270px;
+
+        left:-280px;
+
+        box-shadow:
+            10px 0 30px
+            rgba(0,0,0,.18);
+    }
+
+
+    .sidebar.open{
+        left:0;
+    }
+
+
+    .main{
+
+        width:100%;
+
+        margin-left:0;
+    }
+
+
+    .topbar{
+
+        min-height:70px;
+
+        padding:
+            12px 14px;
+
+        gap:8px;
+    }
+
+
+    .mobile-menu{
+
+        display:grid;
+
+        place-items:center;
+    }
+
+
+    .page-title{
+
+        display:none;
+    }
+
+
+    .search-area{
+
+        width:100%;
+
+        max-width:none;
+    }
+
+
+    .search-box{
+
+        max-width:none;
+
+        height:42px;
+    }
+
+
+    .category-filters{
+
+        display:none;
+    }
+
+
+    .top-right{
+
+        gap:7px;
+    }
+
+
+    .notification{
+
+        width:36px;
+        height:36px;
+    }
+
+
+    .profile > div:last-child{
+
+        display:none;
+    }
+
+
+    .avatar{
+
+        width:36px;
+        height:36px;
+    }
+
+
+    .content{
+
+        padding:
+            18px 14px 35px;
+    }
+
+
+    .welcome{
+
+        min-height:220px;
+
+        padding:25px;
+
+        border-radius:18px;
+    }
+
+
+    .welcome h2{
+
+        font-size:25px;
+
+        line-height:1.2;
+    }
+
+
+    .welcome p{
+
+        font-size:11px;
+    }
+
+
+    .welcome-art{
+
+        display:none;
+    }
+
+
+    .stats{
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:10px;
+    }
+
+
+    .stat{
+
+        min-height:90px;
+
+        padding:13px;
+
+        gap:9px;
+    }
+
+
+    .stat-icon{
+
+        width:35px;
+        height:35px;
+
+        min-width:35px;
+    }
+
+
+    .stat strong{
+
+        font-size:17px;
+    }
+
+
+    .course{
+
+        grid-template-columns:
+            45px minmax(0,1fr);
+
+        padding:11px;
+
+        gap:10px;
+    }
+
+
+    .course-icon{
+
+        width:45px;
+        height:45px;
+    }
+
+
+    .course .resume{
+
+        grid-column:2;
+
+        justify-self:start;
+    }
+
+
+    .badges{
+
+        flex-direction:column;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:450px){
+
+    .stats{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .welcome h2{
+
+        font-size:23px;
+    }
+
+
+    .welcome{
+
+        padding:22px;
+    }
+
+
+    .notification{
+
+        display:none;
+    }
+
+
+    .search-box input{
+
+        font-size:10px;
+    }
+
+}
+
+
+/* =========================================================
+   SELECTION / SCROLLBAR
+========================================================= */
+
+::selection{
+
+    background:
+        var(--peach);
+
+    color:white;
+}
+
+
+::-webkit-scrollbar{
+
+    width:8px;
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#f4f0ed;
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:#c7a28f;
+
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+
+    outline:
+        2px solid
+        var(--peach);
+
+    outline-offset:3px;
+}
+
+</style>
+
+<style id="step3-progress-css">
+/* ===== STEP 3: COURSE PROGRESS ===== */
+.progress-panel{
+    margin:24px 0;
+    padding:22px;
+    border:1px solid #e7e1db;
+    border-radius:18px;
+    background:#fff;
+}
+.progress-panel h3{
+    margin:0 0 6px;
+    font-size:18px;
+    color:#20336e;
+}
+.progress-panel .progress-sub{
+    margin:0 0 16px;
+    color:#7c8497;
+    font-size:11px;
+}
+.progress-course{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:14px;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #eee9e4;
+}
+.progress-course:last-child{border-bottom:0}
+.progress-course-name{
+    font-size:12px;
+    font-weight:700;
+    color:#18264e;
+}
+.progress-course-meta{
+    margin-top:4px;
+    font-size:10px;
+    color:#7c8497;
+}
+.progress-track{
+    height:8px;
+    width:100%;
+    background:#eee9e4;
+    border-radius:99px;
+    overflow:hidden;
+    margin-top:9px;
+}
+.progress-fill{
+    height:100%;
+    width:0;
+    background:#c98b70;
+    border-radius:99px;
+    transition:width .35s ease;
+}
+.progress-percent{
+    min-width:48px;
+    text-align:right;
+    font-size:12px;
+    font-weight:800;
+    color:#20336e;
+}
+.progress-topic-card{
+    margin-top:18px;
+    padding:18px;
+    border:1px solid #e7e1db;
+    border-radius:15px;
+    background:#faf6f1;
+}
+.progress-topic-card h4{
+    margin:0 0 5px;
+    font-size:14px;
+    color:#20336e;
+}
+.progress-topic-card p{
+    margin:0 0 12px;
+    color:#7c8497;
+    font-size:10px;
+}
+.progress-topic-btn{
+    border:0;
+    background:#20336e;
+    color:#fff;
+    border-radius:9px;
+    padding:10px 14px;
+    font-size:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+.progress-topic-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+.progress-message{
+    margin-top:9px;
+    font-size:9px;
+    color:#3e9c6c;
+    min-height:14px;
+}
+@media(max-width:650px){
+    .progress-panel{padding:17px}
+    .progress-course{grid-template-columns:1fr}
+    .progress-percent{text-align:left}
+}
+</style>
+
+
+<style id="instant-render-css">
+html{background:#faf6f1}
+body{font-family:Arial,sans-serif}
+</style>
+
+
+<style id="mamraj-mobile-responsive">
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,video,canvas{max-width:100%}
+.mobile-menu-btn{display:none}
+.mobile-overlay{display:none}
+
+@media(max-width:850px){
+  .sidebar{
+    position:fixed!important;left:0;top:0;bottom:0;
+    width:min(285px,86vw)!important;max-width:86vw;
+    z-index:1000;transform:translateX(-105%);
+    transition:transform .25s ease;overflow-y:auto!important;
+    box-shadow:12px 0 35px rgba(0,0,0,.16);
+  }
+  .sidebar.mobile-open{transform:translateX(0)}
+  .mobile-menu-btn{
+    display:inline-flex!important;align-items:center;justify-content:center;
+    width:42px;height:42px;flex:0 0 42px;border:1px solid #e7e1db;
+    border-radius:11px;background:#fff;color:#20336e;font-size:20px;cursor:pointer;
+  }
+  .mobile-overlay{
+    position:fixed;inset:0;z-index:999;
+    background:rgba(15,25,55,.38);backdrop-filter:blur(2px);
+  }
+  .mobile-overlay.show{display:block}
+  .app,.layout,.dashboard-layout,.main-wrapper{
+    display:block!important;width:100%!important;min-width:0!important;
+  }
+  .main,.content,.dashboard-content,.main-content{
+    width:100%!important;max-width:100%!important;margin-left:0!important;min-width:0!important;
+  }
+  .topbar,.top-bar,.header,header{width:100%!important;min-width:0!important}
+  .topbar-inner,.top-bar-inner,.header-inner{
+    width:100%!important;min-width:0!important;gap:10px!important;
+  }
+  .search,.search-box,.search-wrap{
+    min-width:0!important;width:auto!important;flex:1 1 auto!important;
+  }
+  .search input,.search-box input,.search-wrap input{
+    min-width:0!important;width:100%!important;
+  }
+  .stats,.stat-grid,.stats-grid,.card-grid,.dashboard-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .content-grid,.two-column,.dashboard-columns{
+    grid-template-columns:1fr!important;
+  }
+  .progress-panel{width:100%!important;max-width:100%!important;overflow:hidden}
+  .progress-course{grid-template-columns:minmax(0,1fr) auto!important}
+  table{display:block;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .modal{
+    width:calc(100vw - 28px)!important;
+    max-height:calc(100vh - 28px);overflow-y:auto;
+  }
+}
+
 @media(max-width:600px){
-.testimonials{padding:80px 20px}.testimonial-grid{grid-template-columns:1fr}.testimonial-card:last-child{grid-column:auto}.testimonial-trust{display:grid;grid-template-columns:1fr 1fr;gap:20px}.trust-line{display:none}
+  body{font-size:14px}
+  .topbar,.top-bar,header{
+    padding-left:12px!important;padding-right:12px!important;
+  }
+  .topbar-inner,.top-bar-inner,.header-inner{padding:9px 0!important}
+  .stats,.stat-grid,.stats-grid,.card-grid,.dashboard-grid{
+    grid-template-columns:1fr!important;
+  }
+  .card,.panel,.section-card{
+    width:100%!important;min-width:0!important;
+  }
+  .progress-course{
+    grid-template-columns:1fr!important;gap:8px!important;
+  }
+  .progress-percent{text-align:left!important}
+  .progress-topic-btn{width:100%;min-height:44px}
+  .container,.content,.main-content,.dashboard-content{
+    padding-left:12px!important;padding-right:12px!important;
+  }
+  button,.btn,a.btn{min-height:42px}
+  h1,h2,h3,h4,h5,h6,p,span,a{overflow-wrap:anywhere}
+  .profile-name,.profile-email{
+    max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
 }
-@media(max-width:500px){
-.nav-container{padding:0 20px}.hero{padding-left:20px;padding-right:20px}.hero-content h1{font-size:43px;letter-spacing:-2px}.hero-description{font-size:13px}
-.hero-buttons{flex-direction:column;width:100%}.primary-btn,.secondary-btn{width:100%}.hero-visual{transform:scale(.62);width:160%;margin-left:-30%}
-.hero-stats{padding:20px;display:grid;grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}.overview,.courses{padding:75px 20px}
-.footer-links{gap:30px;flex-wrap:wrap}.footer-bottom{flex-direction:column;gap:8px}
+
+@media(max-width:430px){
+  .mobile-menu-btn{width:40px;height:40px;flex-basis:40px}
+  .topbar-inner,.top-bar-inner,.header-inner{gap:7px!important}
+  .profile-name{font-size:11px!important}
+  .profile-email{font-size:9px!important}
+  .progress-panel{border-radius:14px}
+  .progress-panel h3{font-size:16px}
 }
 </style>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import {
-  getAuth, GoogleAuthProvider, signInWithPopup,
-  signInWithEmailAndPassword, createUserWithEmailAndPassword,
-  signOut, onAuthStateChanged, updateProfile
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
-  authDomain: "mamraj-nexus-academy.firebaseapp.com",
-  projectId: "mamraj-nexus-academy",
-  storageBucket: "mamraj-nexus-academy.firebasestorage.app",
-  messagingSenderId: "548826957068",
-  appId: "1:548826957068:web:29b02f77dc20feaf28f529",
-  measurementId: "G-Z64L57P9XV"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
-window.mamrajAuth = {
-  auth, googleProvider, signInWithPopup, signInWithEmailAndPassword,
-  createUserWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile
-};
-</script>
-
-<style>
-.auth-area{display:flex;align-items:center;gap:10px}
-.auth-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border:1px solid #e0e3ea;border-radius:12px;background:#fff;color:var(--navy);font-size:11px;font-weight:700;cursor:pointer}
-.auth-user{display:none;align-items:center;gap:8px}.auth-user.show{display:flex}
-.auth-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)}
-.auth-user-name{font-size:10px;font-weight:700;color:var(--navy);max-width:100px;overflow:hidden;text-overflow:ellipsis}
-.logout-btn{border:0;background:none;color:#858b99;font-size:8px;cursor:pointer;padding:2px 0}
-.auth-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(10,18,45,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
-.auth-overlay.open{display:flex}
-.auth-modal{position:relative;width:min(430px,100%);background:#fff;border-radius:24px;padding:32px;box-shadow:0 35px 100px rgba(0,0,0,.25)}
-.auth-close{position:absolute;right:16px;top:16px;border:0;width:34px;height:34px;border-radius:50%;background:#f3f4f7;color:var(--navy);cursor:pointer}
-.auth-brand{font-size:19px;font-weight:700;color:var(--navy)}.auth-brand span{color:var(--orange)}
-.auth-modal h2{margin-top:20px;font-size:25px;color:var(--navy)}
-.auth-modal>p{margin-top:6px;font-size:10px;line-height:1.7;color:#7c8495}
-.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#f4f5f8;padding:4px;border-radius:10px;margin-top:22px}
-.auth-tab{border:0;background:transparent;padding:10px;border-radius:7px;color:#818797;font-size:10px;font-weight:700;cursor:pointer}
-.auth-tab.active{background:#fff;color:var(--navy);box-shadow:0 4px 12px rgba(20,30,70,.07)}
-.auth-form{margin-top:18px}.auth-form label{display:block;margin:11px 0 6px;font-size:9px;font-weight:600;color:#555d70}
-.auth-form input{width:100%;height:44px;border:1px solid #e0e3e9;border-radius:10px;padding:0 12px;font-family:inherit;font-size:11px;outline:none}
-.auth-form input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(201,139,112,.1)}
-.auth-submit,.google-btn{width:100%;height:45px;border-radius:10px;font-family:inherit;font-size:10px;font-weight:700;cursor:pointer}
-.auth-submit{border:0;background:var(--navy);color:#fff;margin-top:16px}.auth-submit:disabled{opacity:.6}
-.auth-divider{display:flex;align-items:center;gap:10px;margin:17px 0;color:#9ca2ad;font-size:8px}.auth-divider:before,.auth-divider:after{content:"";height:1px;background:#e8e9ed;flex:1}
-.google-btn{border:1px solid #e0e3e9;background:#fff;color:#303746}
-.auth-message{text-align:center;min-height:16px;margin-top:9px;font-size:9px;color:#c35e46}.auth-message.success{color:#26955c}
-.auth-note{text-align:center;margin-top:13px;color:#9a9fac;font-size:8px;line-height:1.6}
-@media(max-width:800px){.auth-area{display:none}.auth-modal{padding:27px}}
-</style>
 </head>
+
 
 <body>
 
-<header class="navbar">
-<div class="nav-container">
+<button id="mobileMenuBtn" class="mobile-menu-btn" type="button"
+        aria-label="Open navigation" aria-expanded="false">☰</button>
+<div id="mobileOverlay" class="mobile-overlay"></div>
 
-<a href="#home" class="logo">
-<span class="logo-mam">MamRaj</span>
-<span class="logo-nexus">Nexus</span>
-<small>ACADEMY</small>
-</a>
 
-<nav class="nav-links">
-<a href="#home" class="active">Home</a>
-<a href="courses.html">Courses</a>
-<a href="internship.html">Internships</a>
-<a href="aboutus.html">About</a>
-<a href="contact.html">Contact</a>
-</nav>
+<div class="app">
 
-<div class="auth-area">
-<button class="auth-btn" id="openLoginBtn"><i class="fa-regular fa-user"></i> Sign In</button>
-<div class="auth-user" id="authUser">
-<img class="auth-avatar" id="authAvatar" alt="Profile">
-<div><div class="auth-user-name" id="authUserName">Student</div><button class="logout-btn" id="logoutBtn">Sign out</button></div>
-</div>
-<a href="dashboard.html" class="dashboard-btn" id="dashboardLink">Dashboard <i class="fa-solid fa-arrow-right"></i></a>
-</div>
 
-<button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
-<i class="fa-solid fa-bars"></i>
-</button>
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
-</div>
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="brand">
+
+        <div class="logo">
+            M
+        </div>
+
+        <div>
+
+            <h2>
+                MamRaj
+            </h2>
+
+            <span>
+                NEXUS ACADEMY
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <p class="section-title">
+        MAIN
+    </p>
+
+
+    <a
+        href="dashboard.html"
+        class="nav-item active">
+
+        <span>⌂</span>
+
+        Dashboard
+
+    </a>
+
+
+    <a
+        href="courses.html"
+        class="nav-item">
+
+        <span>▣</span>
+
+        My Courses
+
+    </a>
+
+
+    <a
+        href="learning-path.html"
+        class="nav-item">
+
+        <span>◈</span>
+
+        Learning Path
+
+    </a>
+
+
+    <a
+        href="projects.html"
+        class="nav-item">
+
+        <span>◆</span>
+
+        Projects
+
+    </a>
+
+
+    <p class="section-title">
+        AI & CAREER
+    </p>
+
+
+    <a
+        href="shivaay-ai.html"
+        class="nav-item">
+
+        <span>✦</span>
+
+        Shivaay AI
+
+    </a>
+
+
+    <a
+        href="resume-builder.html"
+        class="nav-item resume-active">
+
+        <span>▤</span>
+
+        Resume Builder
+
+    </a>
+
+
+    <a
+        href="ats-checker.html"
+        class="nav-item">
+
+        <span>▥</span>
+
+        ATS Checker
+
+    </a>
+
+
+    <a
+        href="interview.html"
+        class="nav-item">
+
+        <span>◉</span>
+
+        Interview Prep
+
+    </a>
+
+
+    <p class="section-title">
+        ACHIEVEMENT
+    </p>
+
+
+    <a
+        href="certifications.html"
+        class="nav-item">
+
+        <span>🏆</span>
+
+        Certificates
+
+    </a>
+
+
+    <a
+        href="assessments.html"
+        class="nav-item">
+
+        <span>▤</span>
+
+        Assessments
+
+    </a>
+
+
+    <a
+        href="progress.html"
+        class="nav-item">
+
+        <span>◔</span>
+
+        Progress
+
+    </a>
+
+
+    <div class="sidebar-bottom">
+
+
+        <a
+            href="settings.html"
+            class="nav-item">
+
+            <span>⚙</span>
+
+            Settings
+
+        </a>
+
+
+        <a
+            href="#"
+            class="nav-item"
+            id="logoutBtn">
+
+            <span>↪</span>
+
+            Logout
+
+        </a>
+
+
+        <div class="help-card">
+
+            <div class="help-card-icon">
+                ?
+            </div>
+
+            <div>
+
+                <strong>
+                    Need Help?
+                </strong>
+
+                <small>
+                    Ask Shivaay AI
+                </small>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+
+    <button
+        class="mobile-menu"
+        id="menuBtn">
+
+        ☰
+
+    </button>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-area">
+
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+
+            <input
+                type="text"
+                id="globalSearch"
+                placeholder="Search courses, internships, skills..."
+                autocomplete="off"
+            >
+
+
+            <button
+                type="button"
+                class="clear-search"
+                id="clearSearch">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORIES -->
+
+        <div class="category-filters">
+
+
+            <button
+                class="category active"
+                data-category="all">
+
+                All
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="courses">
+
+                Courses
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="internships">
+
+                Internships
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="projects">
+
+                Projects
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="skills">
+
+                Skills
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- RIGHT -->
+
+    <div class="top-right">
+
+
+        <div class="notification">
+            🔔
+        </div>
+
+
+        <div class="profile">
+
+<div class="ava profile-avatar">AS</div>
+
+
+            <div>
+
+                <span class="profile-name">Student</span>
+
+                <span id="studentRole">
+                    Student
+                </span>
+
+                <span
+                    class="profile-email"
+                    style="
+                        display:block;
+                        margin-top:3px;
+                        color:#8b8991;
+                        font-size:9px;
+                    "
+                >
+                    student@email.com
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
 </header>
 
 
-<div class="auth-overlay" id="authOverlay">
-  <div class="auth-modal">
-    <button class="auth-close" id="authClose"><i class="fa-solid fa-xmark"></i></button>
-    <div class="auth-brand">MamRaj <span>Nexus</span></div>
-    <h2 id="authTitle">Welcome back 👋</h2>
-    <p id="authSubtitle">Sign in to access your student dashboard and career journey.</p>
 
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="loginTab">Sign In</button>
-      <button class="auth-tab" id="signupTab">Create Account</button>
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<div class="content">
+
+
+<!-- =====================================================
+     WELCOME
+===================================================== -->
+
+<section class="welcome">
+
+
+    <div class="welcome-text">
+
+
+        <span class="welcome-label">
+            WELCOME BACK 👋
+        </span>
+
+
+        <h2>
+
+            Keep building your
+            <span>
+                future.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Continue your learning journey
+            and turn your skills into
+            real-world opportunities.
+
+        </p>
+
+
+        <button
+            class="primary-btn"
+            id="continueBtn">
+
+            Continue Learning →
+
+        </button>
+
+
     </div>
 
-    <form class="auth-form" id="authForm">
-      <div id="nameBox" style="display:none">
-        <label>Full Name</label>
-        <input id="authName" type="text" placeholder="Enter your full name">
-      </div>
-      <label>Email Address</label>
-      <input id="authEmail" type="email" placeholder="you@example.com" required>
-      <label>Password</label>
-      <input id="authPassword" type="password" placeholder="Minimum 6 characters" minlength="6" required>
-      <button class="auth-submit" id="authSubmit" type="submit">Sign In</button>
-      <div class="auth-message" id="authMessage"></div>
-    </form>
 
-    <div class="auth-divider">OR</div>
+    <div class="welcome-art">
 
-    <button class="google-btn" id="googleBtn">
-      <b style="color:#4285f4;font-size:15px">G</b> Continue with Google
+        <div class="big-letter">
+            N
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+
+    <div class="stat">
+
+
+        <div class="stat-icon">
+            ◫
+        </div>
+
+
+        <div>
+
+            <span>
+                Courses
+            </span>
+
+            <strong id="courseCount">
+                06
+            </strong>
+
+        </div>
+
+
+        <small class="green">
+            Live
+        </small>
+
+
+    </div>
+
+
+
+    <div class="stat">
+
+
+        <div class="stat-icon">
+            ◔
+        </div>
+
+
+        <div>
+
+            <span>
+                Learning Hours
+            </span>
+
+            <strong id="learningHours">
+                42.5
+            </strong>
+
+        </div>
+
+
+        <small class="green">
+            Live
+        </small>
+
+
+    </div>
+
+
+
+    <div class="stat">
+
+
+        <div class="stat-icon">
+            ✓
+        </div>
+
+
+        <div>
+
+            <span>
+                Completed
+            </span>
+
+            <strong id="completedLessons">
+                18
+            </strong>
+
+        </div>
+
+
+        <small>
+            Lessons
+        </small>
+
+
+    </div>
+
+
+
+    <div class="stat">
+
+
+        <div class="stat-icon">
+            🏆
+        </div>
+
+
+        <div>
+
+            <span>
+                Certificates
+            </span>
+
+            <strong id="certificateCount">
+                04
+            </strong>
+
+        </div>
+
+
+        <small class="green">
+            Earned
+        </small>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN GRID
+===================================================== -->
+
+<section class="dashboard-grid">
+
+
+<!-- =====================================================
+     COURSES
+===================================================== -->
+
+<div
+    class="panel"
+    id="learningPanel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+            <span class="panel-label">
+                YOUR LEARNING
+            </span>
+
+            <h2>
+                Continue Learning
+            </h2>
+
+        </div>
+
+
+        <a href="courses.html">
+            View all →
+        </a>
+
+
+    </div>
+
+
+    <div
+        class="course-list"
+        id="courseList">
+
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Loading your courses...
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     SHIVAAY AI
+===================================================== -->
+
+<div class="panel shivaay">
+
+
+    <div class="shivaay-top">
+
+
+        <div class="shivaay-icon">
+            ✦
+        </div>
+
+
+        <div>
+
+            <span>
+                YOUR AI MENTOR
+            </span>
+
+            <h2>
+                Shivaay AI
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+    <p>
+
+        Your personal AI mentor is ready
+        to help you learn, build and grow.
+
+    </p>
+
+
+    <div class="ai-feature">
+        ✦ Ask anything
+    </div>
+
+
+    <div class="ai-feature">
+        ✓ Get instant explanations
+    </div>
+
+
+    <div class="ai-feature">
+        ⚡ Build projects faster
+    </div>
+
+
+    <button
+        class="ai-btn"
+        onclick="location.href='shivaay.html'">
+
+        Open Shivaay AI →
+
     </button>
-    <div class="auth-note">Your account is used to securely access your MamRaj Nexus student dashboard.</div>
-  </div>
-</div>
-<main>
 
-<section class="hero" id="home">
-<div class="hero-glow glow-one"></div>
-<div class="hero-glow glow-two"></div>
-<div class="hero-grid"></div>
-
-<div class="hero-container">
-
-<div class="hero-content">
-
-<div class="eyebrow">
-<span class="eyebrow-dot"></span>
-India's Student Career Platform
-</div>
-
-<h1>
-Learn.
-<span>Build.</span><br>
-<strong>Intern.</strong> Get Hired.
-</h1>
-
-<p class="hero-description">
-An AI-powered academy that helps students master industry-ready skills,
-complete internships, earn verified certificates, and secure placements
-with the guidance of <strong>Shivaay AI.</strong>
-</p>
-
-<div class="hero-buttons">
-<a href="#courses" class="primary-btn">
-Start Learning <i class="fa-solid fa-arrow-right"></i>
-</a>
-<a href="internships.html" class="secondary-btn">
-<i class="fa-solid fa-briefcase"></i> Explore Internships
-</a>
-</div>
-
-<div class="hero-trust">
-<div class="trust-avatars">
-<span>AS</span><span>MR</span><span>PS</span><span>+</span>
-</div>
-<div>
-<div class="stars">★★★★★</div>
-<p>Trusted by ambitious students</p>
-</div>
-</div>
 
 </div>
 
-<div class="hero-visual">
-
-<div class="floating-card floating-top">
-<div class="floating-icon purple"><i class="fa-solid fa-rocket"></i></div>
-<div><strong>Internship Ready</strong><small>Build your career</small></div>
-</div>
-
-<div class="hero-dashboard">
-
-<div class="dashboard-top">
-<div>
-<small>YOUR CAREER JOURNEY</small>
-<h3>You're making progress!</h3>
-</div>
-<div class="progress-circle"></div>
-</div>
-
-<div class="progress-line"><span></span></div>
-
-<div class="journey">
-
-<div class="journey-item completed">
-<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
-<div><strong>Learn Skills</strong><small>Completed</small></div>
-</div>
-
-<div class="journey-item completed">
-<div class="journey-icon"><i class="fa-solid fa-check"></i></div>
-<div><strong>Build Projects</strong><small>Completed</small></div>
-</div>
-
-<div class="journey-item active">
-<div class="journey-icon"><i class="fa-solid fa-briefcase"></i></div>
-<div><strong>Get Internship</strong><small>12 opportunities available</small></div>
-</div>
-
-<div class="journey-item">
-<div class="journey-icon"><i class="fa-solid fa-user-tie"></i></div>
-<div><strong>Get Hired</strong><small>Your next milestone</small></div>
-</div>
-
-</div>
-</div>
-
-<div class="floating-card floating-bottom">
-<div class="ai-avatar"><i class="fa-solid fa-robot"></i></div>
-<div><strong>Shivaay AI</strong><small>Your AI career mentor</small></div>
-<span class="online-dot"></span>
-</div>
-
-</div>
-</div>
-
-<div class="hero-stats">
-<div class="hero-stat"><strong>100+</strong><span>Courses</span></div>
-<div class="stat-divider"></div>
-<div class="hero-stat"><strong>500+</strong><span>Internship Opportunities</span></div>
-<div class="stat-divider"></div>
-<div class="hero-stat"><strong>50+</strong><span>Hiring Partners</span></div>
-<div class="stat-divider"></div>
-<div class="hero-stat"><strong>10K+</strong><span>Students</span></div>
-</div>
 
 </section>
 
-<section class="overview" id="about">
-<div class="section-heading">
-<div class="section-tag">WHY MAMRAJ NEXUS</div>
-<h2>Everything you need <span>to move forward.</span></h2>
-<p>Learn practical skills, gain real-world experience, and build a career that actually goes somewhere.</p>
+
+
+<!-- =====================================================
+     BOTTOM GRID
+===================================================== -->
+
+<section class="bottom-grid">
+
+
+<!-- WEEKLY ACTIVITY -->
+
+<div class="panel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+            <span class="panel-label">
+                ACTIVITY
+            </span>
+
+            <h2>
+                Weekly Learning
+            </h2>
+
+        </div>
+
+
+        <span style="
+            font-size:9px;
+            color:#8d8178;
+        ">
+
+            This Week
+
+        </span>
+
+
+    </div>
+
+
+    <div class="bars">
+
+
+        <div
+            class="bar"
+            style="height:45%">
+
+            <span>
+                1.8h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:70%">
+
+            <span>
+                2.8h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:55%">
+
+            <span>
+                2.2h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:85%">
+
+            <span>
+                3.4h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:65%">
+
+            <span>
+                2.6h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:92%">
+
+            <span>
+                3.7h
+            </span>
+
+        </div>
+
+
+        <div
+            class="bar"
+            style="height:35%">
+
+            <span>
+                1.4h
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="days">
+
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+        <span>Sun</span>
+
+    </div>
+
+
 </div>
 
-<div class="feature-grid">
 
-<div class="feature-card">
-<div class="feature-icon blue"><i class="fa-solid fa-graduation-cap"></i></div>
-<h3>Industry-Ready Courses</h3>
-<p>Learn skills that companies actually look for with practical and structured learning paths.</p>
-<a href="#courses">Explore Courses <i class="fa-solid fa-arrow-right"></i></a>
+
+<!-- BADGES -->
+
+<div class="panel">
+
+
+    <div class="panel-header">
+
+
+        <div>
+
+            <span class="panel-label">
+                ACHIEVEMENTS
+            </span>
+
+            <h2>
+                Recent Badges
+            </h2>
+
+        </div>
+
+
+        <a href="certificates.html">
+            View all →
+        </a>
+
+
+    </div>
+
+
+    <div class="badges">
+
+
+        <div class="badge">
+
+            <div>
+                🔥
+            </div>
+
+            <strong>
+                7 Day Streak
+            </strong>
+
+            <small>
+                Recent
+            </small>
+
+        </div>
+
+
+        <div class="badge">
+
+            <div>
+                🚀
+            </div>
+
+            <strong>
+                Project Builder
+            </strong>
+
+            <small>
+                Recent
+            </small>
+
+        </div>
+
+
+        <div class="badge">
+
+            <div>
+                ⚡
+            </div>
+
+            <strong>
+                Fast Learner
+            </strong>
+
+            <small>
+                Recent
+            </small>
+
+        </div>
+
+
+    </div>
+
+
 </div>
 
-<div class="feature-card">
-<div class="feature-icon orange"><i class="fa-solid fa-briefcase"></i></div>
-<h3>Real Internships</h3>
-<p>Discover internships from startups, growing companies and established organizations.</p>
-<a href="internships.html">Find Internships <i class="fa-solid fa-arrow-right"></i></a>
-</div>
 
-<div class="feature-card">
-<div class="feature-icon green"><i class="fa-solid fa-certificate"></i></div>
-<h3>Verified Certificates</h3>
-<p>Showcase your learning journey with professional certificates you can add to your resume.</p>
-<a href="#">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-</div>
-
-<div class="feature-card">
-<div class="feature-icon purple"><i class="fa-solid fa-robot"></i></div>
-<h3>Shivaay AI</h3>
-<p>Get personalized guidance for skills, projects, resumes, interviews and your career journey.</p>
-<a href="#">Meet Shivaay <i class="fa-solid fa-arrow-right"></i></a>
-</div>
-
-</div>
 </section>
 
-<section class="courses" id="courses">
-<div class="section-heading center">
-<div class="section-tag">LEARN & GROW</div>
-<h2>Build skills that <span>open doors.</span></h2>
-<p>Choose a learning path and start building your future today.</p>
-</div>
-
-<div class="course-grid">
-
-<div class="course-card">
-<div class="course-image web"><i class="fa-solid fa-code"></i></div>
-<div class="course-content">
-<span>DEVELOPMENT</span>
-<h3>Full Stack Web Development</h3>
-<p>HTML, CSS, JavaScript, React, Node.js and real-world projects.</p>
-<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
-</div>
-</div>
-
-<div class="course-card">
-<div class="course-image data"><i class="fa-solid fa-chart-line"></i></div>
-<div class="course-content">
-<span>DATA & AI</span>
-<h3>Data Science & AI</h3>
-<p>Python, data analytics, machine learning and AI fundamentals.</p>
-<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
-</div>
-</div>
-
-<div class="course-card">
-<div class="course-image design"><i class="fa-solid fa-pen-ruler"></i></div>
-<div class="course-content">
-<span>DESIGN</span>
-<h3>UI/UX Design</h3>
-<p>Learn design thinking, Figma, wireframes and product design.</p>
-<div class="course-bottom"><strong>Start Learning</strong><i class="fa-solid fa-arrow-right"></i></div>
-</div>
-</div>
 
 </div>
-</section>
-
-<section class="testimonials" id="testimonials">
-
-<div class="section-heading center">
-<div class="section-tag">STUDENT STORIES</div>
-<h2>Loved by students. <span>Built for their future.</span></h2>
-<p>Real journeys from students who are learning, building and taking their next career step with MamRaj Nexus Academy.</p>
-</div>
-
-<div class="testimonial-grid">
-
-<article class="testimonial-card featured">
-<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-<div class="testimonial-stars">★★★★★</div>
-<p class="testimonial-text">
-MamRaj Nexus Academy gave me a clear direction when I was confused about what to learn next.
-The learning path and internship opportunities made my career journey much more structured.
-</p>
-<div class="testimonial-user">
-<div class="testimonial-avatar">AS</div>
-<div><strong>Aditya Sharma</strong><span>B.Tech Student</span></div>
-</div>
-</article>
-
-<article class="testimonial-card">
-<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-<div class="testimonial-stars">★★★★★</div>
-<p class="testimonial-text">
-I really liked the way courses and internships are brought together in one platform.
-It feels less like just another learning website and more like a complete career ecosystem.
-</p>
-<div class="testimonial-user">
-<div class="testimonial-avatar peach">PR</div>
-<div><strong>Priya Raj</strong><span>Computer Science Student</span></div>
-</div>
-</article>
-
-<article class="testimonial-card">
-<div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-<div class="testimonial-stars">★★★★★</div>
-<p class="testimonial-text">
-The idea of having AI guidance along with practical projects and internships is what attracted me.
-Shivaay AI makes the experience feel much more personal.
-</p>
-<div class="testimonial-user">
-<div class="testimonial-avatar purple">RK</div>
-<div><strong> Piyush Vidyarthi</stron></strong><span>Engineering Student</span></div>
-</div>
-</article>
-
-</div>
-
-<div class="testimonial-trust">
-<div class="trust-item"><strong>4.9/5</strong><span>Student Experience</span></div>
-<div class="trust-line"></div>
-<div class="trust-item"><strong>10K+</strong><span>Students Reached</span></div>
-<div class="trust-line"></div>
-<div class="trust-item"><strong>500+</strong><span>Opportunities</span></div>
-</div>
-
-</section>
-
-<section class="career-cta" id="placements">
-<div class="cta-content">
-<div class="section-tag">YOUR NEXT CHAPTER</div>
-<h2>Don't just learn.<br><span>Build your career.</span></h2>
-<p>From your first course to your first internship and eventually your first job — MamRaj Nexus Academy is built to walk with you.</p>
-<a href="dashboard.html" class="cta-button">Start Your Journey <i class="fa-solid fa-arrow-right"></i></a>
-</div>
-<div class="cta-decoration">
-<div class="circle circle-one"></div>
-<div class="circle circle-two"></div>
-<div class="circle circle-three"></div>
-</div>
-</section>
 
 </main>
 
-<footer id="contact">
-<div class="footer-container">
-
-<div class="footer-brand">
-<div class="footer-logo">MamRaj <span>Nexus</span></div>
-<p>Empowering students to learn, build and get hired.</p>
 </div>
 
-<div class="footer-links">
-<div>
-<h4>Academy</h4>
-<a href="#courses">Courses</a>
-<a href="internship.html">Internships</a>
-<a href="#">Certificates</a>
-</div>
-<div>
-<h4>Company</h4>
-<a href="#about">About</a>
-<a href="#placements">Placements</a>
-<a href="#contact">Contact</a>
-</div>
-<div>
-<h4>Connect</h4>
-<a href="#">Instagram</a>
-<a href="#">LinkedIn</a>
-<a href="#">Email Us</a>
-</div>
-</div>
 
-</div>
 
-<div class="footer-bottom">
-<span>© 2026 MamRaj Nexus Academy</span>
-<span>A MamRaj Web Studio Initiative</span>
-</div>
-</footer>
-
-<script>
-"use strict";
-
-const mobileMenu = document.getElementById("mobileMenu");
-const navLinks = document.querySelector(".nav-links");
-const navbar = document.querySelector(".navbar");
-
-if (mobileMenu && navLinks) {
-    mobileMenu.addEventListener("click", () => {
-        navLinks.classList.toggle("mobile-open");
-    });
-}
-
-window.addEventListener("scroll", () => {
-    if (navbar) {
-        navbar.classList.toggle("scrolled", window.scrollY > 40);
-    }
-});
-
-const links = document.querySelectorAll(".nav-links a");
-
-links.forEach(link => {
-    link.addEventListener("click", () => {
-        links.forEach(item => item.classList.remove("active"));
-        link.classList.add("active");
-        if (window.innerWidth <= 800) {
-            navLinks.classList.remove("mobile-open");
-        }
-    });
-});
-
-const revealElements = document.querySelectorAll(
-    ".feature-card, .course-card, .testimonial-card, .section-heading"
-);
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-        }
-    });
-}, { threshold: 0.12 });
-
-revealElements.forEach(element => {
-    element.classList.add("reveal");
-    observer.observe(element);
-});
-</script>
-
-<style>
-@media(max-width:800px){
-    .nav-links.mobile-open{
-        display:flex;
-        position:absolute;
-        top:88px;
-        left:15px;
-        right:15px;
-        padding:20px;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:18px;
-        background:#fff;
-        border-radius:16px;
-        box-shadow:0 20px 50px rgba(20,30,70,.12);
-    }
-}
-</style>
-
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
 
 <script type="module">
-const $ = id => document.getElementById(id);
-let mode = "login";
 
-function openAuth(){ $("authOverlay").classList.add("open"); }
-function closeAuth(){ $("authOverlay").classList.remove("open"); $("authMessage").textContent=""; }
-function msg(text, ok=false){ $("authMessage").textContent=text; $("authMessage").className="auth-message"+(ok?" success":""); }
+import {
+    initializeApp
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-function setMode(value){
-  mode=value;
-  const signup=value==="signup";
-  $("loginTab").classList.toggle("active",!signup);
-  $("signupTab").classList.toggle("active",signup);
-  $("nameBox").style.display=signup?"block":"none";
-  $("authName").required=signup;
-  $("authSubmit").textContent=signup?"Create Account":"Sign In";
-  $("authTitle").textContent=signup?"Create your account 🚀":"Welcome back 👋";
-  $("authSubtitle").textContent=signup
-    ?"Create your student account and start your career journey."
-    :"Sign in to access your student dashboard and career journey.";
-  msg("");
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    doc,
+    collection,
+    onSnapshot,
+    query,
+    orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+
+    authDomain:
+        "mamraj-nexus-academy.firebaseapp.com",
+
+    projectId:
+        "mamraj-nexus-academy",
+
+    storageBucket:
+        "mamraj-nexus-acade
+    messagingSenderId:  "548826957068",
+
+    appId: "1:548826957068:web:29b02f77dc20feaf28f529"
+
+};
+
+
+
+/* =====================================================
+   FIREBASE INITIALIZATION
+===================================================== */
+
+let app = null;
+let auth = null;
+let db = null;
+
+
+const firebaseConfigured =
+    firebaseConfig.apiKey !==
+    "YOUR_API_KEY";
+
+
+if(firebaseConfigured){
+
+    app =
+        initializeApp(
+            firebaseConfig
+        );
+
+    auth =
+        getAuth(app);
+
+    db =
+        getFirestore(app);
+
 }
 
-$("openLoginBtn")?.addEventListener("click",openAuth);
-$("authClose")?.addEventListener("click",closeAuth);
-$("loginTab")?.addEventListener("click",()=>setMode("login"));
-$("signupTab")?.addEventListener("click",()=>setMode("signup"));
-$("authOverlay")?.addEventListener("click",e=>{if(e.target===$("authOverlay"))closeAuth();});
 
-$("authForm")?.addEventListener("submit",async e=>{
-  e.preventDefault();
-  if(!window.mamrajAuth){msg("Add your Firebase configuration first.");return;}
-  $("authSubmit").disabled=true;
-  try{
-    const a=window.mamrajAuth;
-    if(mode==="signup"){
-      const c=await a.createUserWithEmailAndPassword(a.auth,$("authEmail").value.trim(),$("authPassword").value);
-      if($("authName").value.trim()) await a.updateProfile(c.user,{displayName:$("authName").value.trim()});
-      msg("Account created successfully.",true);
-    }else{
-      await a.signInWithEmailAndPassword(a.auth,$("authEmail").value.trim(),$("authPassword").value);
-      msg("Signed in successfully.",true);
+
+/* =====================================================
+   DEMO DATA
+===================================================== */
+
+const demoCourses = [
+
+    {
+
+        id:
+            "web-development",
+
+        title:
+            "Full Stack Web Development",
+
+        description:
+            "HTML, CSS, JavaScript, React & Node.js",
+
+        progress:
+            82,
+
+        completedLessons:
+            18,
+
+        totalLessons:
+            22,
+
+        icon:
+            "</>",
+
+        category:
+            "courses"
+
+    },
+
+
+    {
+
+        id:
+            "python",
+
+        title:
+            "Python Programming",
+
+        description:
+            "Python, OOPs, DSA & Projects",
+
+        progress:
+            64,
+
+        completedLessons:
+            16,
+
+        totalLessons:
+            25,
+
+        icon:
+            "Py",
+
+        category:
+            "courses"
+
+    },
+
+
+    {
+
+        id:
+            "data-science",
+
+        title:
+            "Data Science & AI",
+
+        description:
+            "Python, ML, Data Analysis & AI",
+
+        progress:
+            41,
+
+        completedLessons:
+            10,
+
+        totalLessons:
+            24,
+
+        icon:
+            "AI",
+
+        category:
+            "courses"
+
     }
-    setTimeout(closeAuth,600);
-  }catch(error){
-    const map={
-      "auth/invalid-credential":"Invalid email or password.",
-      "auth/user-not-found":"No account found with this email.",
-      "auth/wrong-password":"Incorrect password.",
-      "auth/email-already-in-use":"This email is already registered.",
-      "auth/weak-password":"Password must be at least 6 characters.",
-      "auth/invalid-email":"Enter a valid email address."
-    };
-    msg(map[error.code]||error.message);
-  }finally{$("authSubmit").disabled=false;}
-});
 
-$("googleBtn")?.addEventListener("click",async()=>{
-  if(!window.mamrajAuth){msg("Add your Firebase configuration first.");return;}
-  try{
-    const a=window.mamrajAuth;
-    await a.signInWithPopup(a.auth,a.googleProvider);
-    msg("Google sign-in successful.",true);
-    setTimeout(closeAuth,600);
-  }catch(error){
-    msg(error.code==="auth/popup-closed-by-user"?"Google sign-in was cancelled.":error.message);
-  }
-});
+];
 
-$("logoutBtn")?.addEventListener("click",()=>{
-  if(window.mamrajAuth) window.mamrajAuth.signOut(window.mamrajAuth.auth);
-});
 
-if(window.mamrajAuth){
-  window.mamrajAuth.onAuthStateChanged(window.mamrajAuth.auth,user=>{
-    const login=$("openLoginBtn"), userBox=$("authUser"), dash=$("dashboardLink");
-    if(user){
-      login.style.display="none";
-      userBox.classList.add("show");
-      dash.style.display="inline-flex";
-      $("authUserName").textContent=user.displayName||user.email.split("@")[0];
-      $("authAvatar").src=user.photoURL||"https://ui-avatars.com/api/?name="+encodeURIComponent(user.displayName||"Student")+"&background=1d2c63&color=fff";
-    }else{
-      login.style.display="inline-flex";
-      userBox.classList.remove("show");
-      dash.style.display="none";
+
+/* =====================================================
+   SET TEXT
+===================================================== */
+
+function setText(
+    id,
+    value
+){
+
+    const element =
+        document.getElementById(id);
+
+
+    if(
+        element &&
+        value !== undefined &&
+        value !== null
+    ){
+
+        element.textContent =
+            value;
+
     }
-  });
+
 }
+
+
+
+/* =====================================================
+   INITIALS
+===================================================== */
+
+function getInitials(
+    name
+){
+
+    return String(
+        name || "Student"
+    )
+
+    .split(" ")
+
+    .map(
+        word =>
+            word.charAt(0)
+    )
+
+    .join("")
+
+    .substring(
+        0,
+        2
+    )
+
+    .toUpperCase();
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+    value
+){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+
+/* =====================================================
+   RENDER COURSES
+===================================================== */
+
+function renderCourses(
+    courses
+){
+
+    const list =
+        document.getElementById(
+            "courseList"
+        );
+
+
+    if(
+        !courses ||
+        courses.length === 0
+    ){
+
+        list.innerHTML = `
+
+            <div class="loading">
+
+                📚
+
+                <br><br>
+
+                No courses found.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        courses
+        .map(
+            course => {
+
+                const progress =
+                    Math.min(
+                        100,
+                        Math.max(
+                            0,
+                            Number(
+                                course.progress || 0
+                            )
+                        )
+                    );
+
+
+                return `
+
+                <div
+                    class="course"
+                    data-category="${
+                        escapeHTML(
+                            course.category ||
+                            "courses"
+                        )
+                    }"
+                    data-search="${
+                        escapeHTML(
+                            (
+                                course.title +
+                                " " +
+                                course.description
+                            ).toLowerCase()
+                        )
+                    }"
+                >
+
+                    <div class="course-icon">
+
+                        ${escapeHTML(
+                            course.icon ||
+                            "📚"
+                        )}
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="course-title">
+
+                            ${escapeHTML(
+                                course.title ||
+                                "Course"
+                            )}
+
+                        </div>
+
+
+                        <div class="course-description">
+
+                            ${escapeHTML(
+                                course.description ||
+                                "Continue learning"
+                            )}
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar"
+                                style="
+                                    width:${progress}%
+                                "
+                            ></div>
+
+                        </div>
+
+
+                        <div class="course-meta">
+
+                            <span>
+
+                                ${
+                                    course.completedLessons ||
+                                    0
+                                }
+
+                                /
+
+                                ${
+                                    course.totalLessons ||
+                                    0
+                                }
+
+                                lessons
+
+                            </span>
+
+
+                            <span>
+
+                                ${progress}%
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="resume"
+                        data-course-id="${
+                            escapeHTML(
+                                course.id || ""
+                            )
+                        }">
+
+                        Resume
+
+                    </button>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+
+    /* Resume buttons */
+
+    document
+        .querySelectorAll(
+            ".resume"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        const id =
+                            this.dataset.courseId;
+
+
+                        window.location.href =
+                            "course.html?id=" +
+                            encodeURIComponent(
+                                id
+                            );
+
+                    }
+                );
+
+            }
+        );
+
+
+    /* Apply current search */
+
+    filterDashboard();
+
+}
+
+
+
+/* =====================================================
+   FIREBASE USER DATA
+===================================================== */
+
+function loadUserData(
+    user
+){
+
+    const googleName =
+        user.displayName ||
+        user.email?.split("@")[0] ||
+        "Student";
+
+
+    setText(
+        "studentName",
+        googleName
+    );
+
+
+    setText(
+        "userAvatar",
+        getInitials(
+            googleName
+        )
+    );
+
+
+    if(!db){
+
+        return;
+
+    }
+
+
+    /* USER PROFILE */
+
+    const userRef =
+        doc(
+            db,
+            "users",
+            user.uid
+        );
+
+
+    onSnapshot(
+        userRef,
+
+        snapshot => {
+
+            if(
+                !snapshot.exists()
+            ){
+
+                return;
+
+            }
+
+
+            const data =
+                snapshot.data();
+
+
+            const name =
+                data.name ||
+                googleName;
+
+
+            setText(
+                "studentName",
+                name
+            );
+
+
+            setText(
+                "studentRole",
+                data.role ||
+                "Student"
+            );
+
+
+            setText(
+                "userAvatar",
+                getInitials(
+                    name
+                )
+            );
+
+
+            setText(
+                "courseCount",
+                data.courseCount ??
+                0
+            );
+
+
+            setText(
+                "learningHours",
+                data.learningHours ??
+                0
+            );
+
+
+            setText(
+                "completedLessons",
+                data.completedLessons ??
+                0
+            );
+
+
+            setText(
+                "certificateCount",
+                data.certificates ??
+                0
+            );
+
+        },
+
+        error => {
+
+            console.error(
+                "Profile error:",
+                error
+            );
+
+        }
+
+    );
+
+
+
+    /* REAL TIME COURSES */
+
+    const coursesRef =
+        collection(
+            db,
+            "users",
+            user.uid,
+            "enrolledCourses"
+        );
+
+
+    try{
+
+        const coursesQuery =
+            query(
+                coursesRef,
+                orderBy(
+                    "lastAccessed",
+                    "desc"
+                )
+            );
+
+
+        onSnapshot(
+
+            coursesQuery,
+
+            snapshot => {
+
+                const courses = [];
+
+
+                snapshot.forEach(
+                    item => {
+
+                        courses.push({
+
+                            id:
+                                item.id,
+
+                            ...item.data()
+
+                        });
+
+                    }
+                );
+
+
+                if(
+                    courses.length
+                ){
+
+                    renderCourses(
+                        courses
+                    );
+
+                }else{
+
+                    renderCourses(
+                        demoCourses
+                    );
+
+                }
+
+            },
+
+            error => {
+
+                console.log(
+                    "Course listener:",
+                    error
+                );
+
+
+                renderCourses(
+                    demoCourses
+                );
+
+            }
+
+        );
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        renderCourses(
+            demoCourses
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+if(
+    firebaseConfigured &&
+    auth
+){
+
+    onAuthStateChanged(
+
+        auth,
+
+        user => {
+
+            if(user){
+
+                loadUserData(
+                    user
+                );
+
+            }else{
+
+                /*
+                 * Firebase configured but
+                 * user is not logged in.
+                 *
+                 * Change this to login.html
+                 * when authentication is ready.
+                 */
+
+                renderCourses(
+                    demoCourses
+                );
+
+            }
+
+        }
+
+    );
+
+}else{
+
+    renderCourses(
+        demoCourses
+    );
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+    .getElementById(
+        "logoutBtn"
+    )
+    .addEventListener(
+        "click",
+
+        async function(event){
+
+            event.preventDefault();
+
+
+            if(
+                auth &&
+                firebaseConfigured
+            ){
+
+                try{
+
+                    await signOut(
+                        auth
+                    );
+
+                }
+
+                catch(error){
+
+                    console.error(
+                        error
+                    );
+
+                }
+
+            }
+
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+document
+    .getElementById(
+        "menuBtn"
+    )
+    .addEventListener(
+        "click",
+
+        function(){
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList
+                .toggle(
+                    "open"
+                );
+
+        }
+    );
+
+
+
+/* =====================================================
+   CONTINUE LEARNING
+===================================================== */
+
+document
+    .getElementById(
+        "continueBtn"
+    )
+    .addEventListener(
+        "click",
+
+        function(){
+
+            document
+                .getElementById(
+                    "learningPanel"
+                )
+                .scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "center"
+
+                });
+
+        }
+    );
+
+
+
+/* =====================================================
+   SEARCH SYSTEM
+===================================================== */
+
+const searchInput =
+    document.getElementById(
+        "globalSearch"
+    );
+
+
+const clearSearch =
+    document.getElementById(
+        "clearSearch"
+    );
+
+
+const categoryButtons =
+    document.querySelectorAll(
+        ".category"
+    );
+
+
+let selectedCategory =
+    "all";
+
+
+
+/* SEARCH INPUT */
+
+searchInput.addEventListener(
+    "input",
+    filterDashboard
+);
+
+
+
+/* CATEGORY BUTTONS */
+
+categoryButtons.forEach(
+    button => {
+
+        button.addEventListener(
+            "click",
+
+            function(){
+
+                categoryButtons
+                    .forEach(
+                        item => {
+
+                            item
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                        }
+                    );
+
+
+                this
+                    .classList
+                    .add(
+                        "active"
+                    );
+
+
+                selectedCategory =
+                    this.dataset.category;
+
+
+                filterDashboard();
+
+            }
+        );
+
+    }
+);
+
+
+
+/* CLEAR SEARCH */
+
+clearSearch.addEventListener(
+    "click",
+
+    function(){
+
+        searchInput.value = "";
+
+        clearSearch
+            .classList
+            .remove(
+                "show"
+            );
+
+
+        filterDashboard();
+
+
+        searchInput.focus();
+
+    }
+);
+
+
+
+/* =====================================================
+   FILTER DASHBOARD
+===================================================== */
+
+function filterDashboard(){
+
+    if(!searchInput){
+
+        return;
+
+    }
+
+
+    const search =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    if(search){
+
+        clearSearch
+            .classList
+            .add(
+                "show"
+            );
+
+    }else{
+
+        clearSearch
+            .classList
+            .remove(
+                "show"
+            );
+
+    }
+
+
+    const courses =
+        document.querySelectorAll(
+            ".course"
+        );
+
+
+    let visible =
+        0;
+
+
+    courses.forEach(
+        course => {
+
+            const title =
+                course
+                    .querySelector(
+                        ".course-title"
+                    )
+                    ?.textContent
+                    .toLowerCase() ||
+                    "";
+
+
+            const description =
+                course
+                    .querySelector(
+                        ".course-description"
+                    )
+                    ?.textContent
+                    .toLowerCase() ||
+                    "";
+
+
+            const category =
+                course.dataset.category ||
+                "courses";
+
+
+            const searchableText =
+                title +
+                " " +
+                description;
+
+
+            const matchesSearch =
+                !search ||
+                searchableText.includes(
+                    search
+                );
+
+
+            const matchesCategory =
+                selectedCategory ===
+                    "all" ||
+
+                category ===
+                    selectedCategory;
+
+
+            if(
+                matchesSearch &&
+                matchesCategory
+            ){
+
+                course.classList
+                    .remove(
+                        "hidden"
+                    );
+
+                visible++;
+
+            }else{
+
+                course.classList
+                    .add(
+                        "hidden"
+                    );
+
+            }
+
+        }
+    );
+
+
+    let noResults =
+        document.querySelector(
+            ".no-results"
+        );
+
+
+    if(
+        courses.length > 0 &&
+        visible === 0
+    ){
+
+        if(!noResults){
+
+            noResults =
+                document.createElement(
+                    "div"
+                );
+
+
+            noResults.className =
+                "no-results";
+
+
+            noResults.innerHTML = `
+
+                <div class="no-results-icon">
+                    🔍
+                </div>
+
+                No matching results found.
+
+            `;
+
+
+            document
+                .getElementById(
+                    "courseList"
+                )
+                .appendChild(
+                    noResults
+                );
+
+        }
+
+
+        noResults.style.display =
+            "block";
+
+    }else{
+
+        if(noResults){
+
+            noResults.style.display =
+                "none";
+
+        }
+
+    }
+<!-- =====================================================
+     FIREBASE AUTHENTICATION & STUDENT PROFILE
+===================================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+
+    authDomain:
+        "mamraj-nexus-academy.firebaseapp.com",
+
+    projectId:
+        "mamraj-nexus-academy",
+
+    storageBucket:
+        "mamraj-nexus-academy.firebasestorage.app",
+
+    messagingSenderId:
+        "548826957068",
+
+    appId:
+        "1:548826957068:web:29b02f77dc20feaf28f529",
+
+    measurementId:
+        "G-Z64L57P9XV"
+
+};
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* =====================================================
+   DASHBOARD PROFILE ELEMENTS
+===================================================== */
+
+const profileNames =
+    document.querySelectorAll(".profile-name");
+
+const profileEmails =
+    document.querySelectorAll(".profile-email");
+
+const profileAvatars =
+    document.querySelectorAll(".profile-avatar");
+
+
+/* =====================================================
+   UPDATE STUDENT PROFILE
+===================================================== */
+
+function updateStudentProfile(user) {
+
+    const studentName =
+        user.displayName ||
+        user.email?.split("@")[0] ||
+        "Student";
+
+    const studentEmail =
+        user.email || "";
+
+    const initials =
+        studentName
+            .split(/\s+/)
+            .map(name => name.charAt(0))
+            .slice(0, 2)
+            .join("")
+            .toUpperCase();
+
+
+    /* ---------------------------------------------
+       NAME
+    --------------------------------------------- */
+
+    profileNames.forEach(element => {
+
+        element.textContent =
+            studentName;
+
+    });
+
+
+    /* ---------------------------------------------
+       EMAIL
+    --------------------------------------------- */
+
+    profileEmails.forEach(element => {
+
+        element.textContent =
+            studentEmail;
+
+    });
+
+
+    /* ---------------------------------------------
+       PROFILE PHOTO / INITIALS
+    --------------------------------------------- */
+
+    profileAvatars.forEach(element => {
+
+        if (user.photoURL) {
+
+            element.innerHTML = `
+                <img
+                    src="${user.photoURL}"
+                    alt="Student Profile"
+                    style="
+                        width:100%;
+                        height:100%;
+                        object-fit:cover;
+                        border-radius:50%;
+                        display:block;
+                    "
+                >
+            `;
+
+        } else {
+
+            element.textContent =
+                initials;
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   AUTHENTICATION STATE
+===================================================== */
+
+onAuthStateChanged(auth, (user) => {
+        /*
+           Do not perform Firestore reads during the initial dashboard paint.
+           Firebase auth state is handled first; profile work is deferred.
+        */
+        if (!user) {
+            window.location.replace("login.html");
+            return;
+        }
+
+        requestAnimationFrame(() => {
+            setTimeout(async () => {
+
+    /*
+       Student is not logged in.
+       Protect the dashboard.
+    */
+
+    if (!user) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+        return;
+
+    }
+
+
+    console.log(
+        "Logged-in student UID:",
+        user.uid
+    );
+
+
+    /* Update profile from Firebase Auth */
+
+    updateStudentProfile(user);
+
+
+    /* ---------------------------------------------
+       LOAD FIRESTORE PROFILE
+    --------------------------------------------- */
+
+    try {
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                user.uid
+            );
+
+        const userSnapshot =
+            await getDoc(userRef);
+
+
+        if (userSnapshot.exists()) {
+
+            const profile =
+                userSnapshot.data();
+
+
+            const profileName =
+                profile.name ||
+                user.displayName ||
+                "Student";
+
+
+            profileNames.forEach(element => {
+
+                element.textContent =
+                    profileName;
+
+            });
+
+
+            console.log(
+                "Firestore student profile:",
+                profile
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load student profile:",
+            error
+        );
+
+        }
+            }, 0);
+        });
+    });
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+window.logoutStudent = async function () {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.replace(
+            "login.html"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Logout failed:",
+            error
+        );
+
+        alert(
+            "Unable to sign out. Please try again."
+        );
+
+    }
+
+};
+
+
+/* =====================================================
+   CONNECT LOGOUT BUTTON
+===================================================== */
+
+const logoutButton =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            logoutStudent();
+
+        }
+    );
+
+}
+
 </script>
+
+
+<!-- =====================================================
+     STEP 3 — COURSE PROGRESS
+===================================================== -->
+<section class="progress-panel" id="courseProgressPanel">
+    <h3>My Learning Progress</h3>
+    <p class="progress-sub">
+        Your progress is automatically saved to your Firebase account.
+    </p>
+
+    <div id="courseProgressList">
+
+        <div class="progress-course" data-course="web-development">
+            <div>
+                <div class="progress-course-name">Web Development</div>
+                <div class="progress-course-meta">
+                    <span class="completed-count">0</span> topics completed
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            <div class="progress-percent">0%</div>
+        </div>
+
+        <div class="progress-course" data-course="data-analytics">
+            <div>
+                <div class="progress-course-name">Data Analytics</div>
+                <div class="progress-course-meta">
+                    <span class="completed-count">0</span> topics completed
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            <div class="progress-percent">0%</div>
+        </div>
+
+        <div class="progress-course" data-course="human-resource-management-ai">
+            <div>
+                <div class="progress-course-name">Human Resource Management Using AI</div>
+                <div class="progress-course-meta">
+                    <span class="completed-count">0</span> topics completed
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            <div class="progress-percent">0%</div>
+        </div>
+
+        <div class="progress-course" data-course="ui-ux-design">
+            <div>
+                <div class="progress-course-name">UI/UX Design</div>
+                <div class="progress-course-meta">
+                    <span class="completed-count">0</span> topics completed
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            <div class="progress-percent">0%</div>
+        </div>
+
+    </div>
+
+    <div class="progress-topic-card">
+        <h4 id="currentCourseTitle">Current Learning Topic</h4>
+        <p id="currentTopicText">No course activity yet.</p>
+
+        <button
+            class="progress-topic-btn"
+            id="completeTopicBtn"
+            type="button"
+        >
+            Mark Topic Complete
+        </button>
+
+        <div class="progress-message" id="progressMessage">Your dashboard is ready.</div>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     STEP 3 — FIRESTORE COURSE PROGRESS
+===================================================== -->
+
+<script type="module" id="step3-progress-js">
+
+import {
+    doc,
+    getDoc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   STEP 3 — INSTANT DASHBOARD PROGRESS
+   Dashboard uses local cache on first paint.
+   Firebase is contacted only when needed.
+===================================================== */
+
+const COURSE_SETTINGS = {
+    "web-development": {
+        name: "Web Development",
+        totalTopics: 60
+    },
+    "data-analytics": {
+        name: "Data Analytics",
+        totalTopics: 48
+    },
+    "human-resource-management-ai": {
+        name: "Human Resource Management Using AI",
+        totalTopics: 48
+    },
+    "ui-ux-design": {
+        name: "UI/UX Design",
+        totalTopics: 48
+    }
+};
+
+let currentStudent = null;
+
+function cacheKey(courseId) {
+    return `mamraj_progress_${courseId}`;
+}
+
+function defaultProgress() {
+    return {
+        completedTopics: [],
+        currentTopic: 1,
+        progress: 0
+    };
+}
+
+function readCachedProgress(courseId) {
+    try {
+        const raw =
+            localStorage.getItem(
+                cacheKey(courseId)
+            );
+
+        return raw
+            ? { ...defaultProgress(), ...JSON.parse(raw) }
+            : defaultProgress();
+
+    } catch {
+        return defaultProgress();
+    }
+}
+
+function writeCachedProgress(courseId, data) {
+    try {
+        localStorage.setItem(
+            cacheKey(courseId),
+            JSON.stringify(data)
+        );
+    } catch {}
+}
+
+function calculatePercentage(
+    completedCount,
+    totalTopics
+) {
+    if (!totalTopics) return 0;
+
+    return Math.min(
+        100,
+        Math.round(
+            completedCount / totalTopics * 100
+        )
+    );
+}
+
+function renderCourseCard(
+    courseId,
+    progress
+) {
+    const card =
+        document.querySelector(
+            `[data-course="${courseId}"]`
+        );
+
+    if (!card) return;
+
+    const settings =
+        COURSE_SETTINGS[courseId];
+
+    const completedCount =
+        Array.isArray(progress.completedTopics)
+            ? progress.completedTopics.length
+            : 0;
+
+    const percentage =
+        calculatePercentage(
+            completedCount,
+            settings.totalTopics
+        );
+
+    const count =
+        card.querySelector(
+            ".completed-count"
+        );
+
+    const fill =
+        card.querySelector(
+            ".progress-fill"
+        );
+
+    const percent =
+        card.querySelector(
+            ".progress-percent"
+        );
+
+    if (count)
+        count.textContent =
+            completedCount;
+
+    if (fill)
+        fill.style.width =
+            `${percentage}%`;
+
+    if (percent)
+        percent.textContent =
+            `${percentage}%`;
+}
+
+function renderCachedProgress() {
+
+    Object.keys(COURSE_SETTINGS)
+        .forEach(courseId => {
+
+            renderCourseCard(
+                courseId,
+                readCachedProgress(courseId)
+            );
+
+        });
+
+}
+
+function updateCurrentTopic(
+    courseId,
+    progress
+) {
+    const title =
+        document.getElementById(
+            "currentCourseTitle"
+        );
+
+    const text =
+        document.getElementById(
+            "currentTopicText"
+        );
+
+    if (title)
+        title.textContent =
+            COURSE_SETTINGS[courseId].name;
+
+    if (text)
+        text.textContent =
+            `Topic ${progress.currentTopic || 1}`;
+}
+
+function showProgressMessage(message) {
+
+    const element =
+        document.getElementById(
+            "progressMessage"
+        );
+
+    if (element)
+        element.textContent =
+            message;
+}
+
+
+/* =====================================================
+   RENDER IMMEDIATELY — NO FIREBASE
+===================================================== */
+
+renderCachedProgress();
+
+const cachedWebDevelopment =
+    readCachedProgress(
+        "web-development"
+    );
+
+updateCurrentTopic(
+    "web-development",
+    cachedWebDevelopment
+);
+
+showProgressMessage(
+    "Dashboard ready."
+);
+
+
+/* =====================================================
+   FIREBASE AUTH — ONLY TO IDENTIFY STUDENT
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        if (!user) return;
+
+        currentStudent = user;
+
+        /*
+           Do NOT read all courses here.
+           The dashboard remains instant.
+        */
+
+    }
+);
+
+
+/* =====================================================
+   COURSE PROGRESS READ
+   Call this from a course page when opened.
+===================================================== */
+
+window.loadCourseProgress =
+    async function(courseId) {
+
+        const cached =
+            readCachedProgress(
+                courseId
+            );
+
+        /*
+           Show cached data immediately.
+        */
+
+        renderCourseCard(
+            courseId,
+            cached
+        );
+
+        if (!currentStudent)
+            return cached;
+
+        try {
+
+            const ref =
+                doc(
+                    db,
+                    "users",
+                    currentStudent.uid,
+                    "courseProgress",
+                    courseId
+                );
+
+            const snapshot =
+                await getDoc(ref);
+
+            if (snapshot.exists()) {
+
+                const remote = {
+                    ...defaultProgress(),
+                    ...snapshot.data()
+                };
+
+                writeCachedProgress(
+                    courseId,
+                    remote
+                );
+
+                renderCourseCard(
+                    courseId,
+                    remote
+                );
+
+                return remote;
+            }
+
+        } catch (error) {
+
+            console.warn(
+                "Course progress sync failed:",
+                error
+            );
+
+        }
+
+        return cached;
+    };
+
+
+/* =====================================================
+   SAVE COURSE PROGRESS
+===================================================== */
+
+window.saveCourseProgress =
+    async function(courseId, progress) {
+
+        if (!currentStudent)
+            return;
+
+        /*
+           UI updates instantly.
+        */
+
+        writeCachedProgress(
+            courseId,
+            progress
+        );
+
+        renderCourseCard(
+            courseId,
+            progress
+        );
+
+        updateCurrentTopic(
+            courseId,
+            progress
+        );
+
+        /*
+           Firebase save happens after UI update.
+        */
+
+        try {
+
+            const ref =
+                doc(
+                    db,
+                    "users",
+                    currentStudent.uid,
+                    "courseProgress",
+                    courseId
+                );
+
+            await setDoc(
+                ref,
+                {
+                    ...progress,
+                    lastAccessed:
+                        serverTimestamp()
+                },
+                {
+                    merge: true
+                }
+            );
+
+            showProgressMessage(
+                "Progress saved."
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Progress save failed:",
+                error
+            );
+
+            showProgressMessage(
+                "Progress saved locally."
+            );
+
+        }
+    };
+
+
+/* =====================================================
+   MARK TOPIC COMPLETE
+===================================================== */
+
+window.completeCourseTopic =
+    async function(
+        courseId,
+        topicNumber
+    ) {
+
+        const settings =
+            COURSE_SETTINGS[courseId];
+
+        if (!settings) return;
+
+        const progress =
+            readCachedProgress(
+                courseId
+            );
+
+        if (
+            !progress.completedTopics
+                .includes(topicNumber)
+        ) {
+
+            progress.completedTopics.push(
+                topicNumber
+            );
+
+            progress.completedTopics.sort(
+                (a, b) => a - b
+            );
+
+        }
+
+        progress.currentTopic =
+            Math.min(
+                settings.totalTopics,
+                progress.completedTopics.length + 1
+            );
+
+        progress.progress =
+            calculatePercentage(
+                progress.completedTopics.length,
+                settings.totalTopics
+            );
+
+        await window.saveCourseProgress(
+            courseId,
+            progress
+        );
+    };
+
+
+/* =====================================================
+   DASHBOARD TEST BUTTON
+===================================================== */
+
+const completeButton =
+    document.getElementById(
+        "completeTopicBtn"
+    );
+
+if (completeButton) {
+
+    completeButton.addEventListener(
+        "click",
+        async () => {
+
+            if (!currentStudent) {
+
+                showProgressMessage(
+                    "Please sign in first."
+                );
+
+                return;
+            }
+
+            const courseId =
+                "web-development";
+
+            const progress =
+                readCachedProgress(
+                    courseId
+                );
+
+            const topic =
+                progress.currentTopic || 1;
+
+            completeButton.disabled =
+                true;
+
+            try {
+
+                await window.completeCourseTopic(
+                    courseId,
+                    topic
+                );
+
+            } finally {
+
+                completeButton.disabled =
+                    false;
+
+            }
+
+        }
+    );
+}
+
+</script>
+
+
+<script id="mamraj-mobile-js">
+(function(){
+  const button=document.getElementById("mobileMenuBtn");
+  const sidebar=document.querySelector(".sidebar");
+  const overlay=document.getElementById("mobileOverlay");
+  if(!button||!sidebar||!overlay)return;
+
+  function closeMenu(){
+    sidebar.classList.remove("mobile-open");
+    overlay.classList.remove("show");
+    button.setAttribute("aria-expanded","false");
+    document.body.style.overflow="";
+  }
+
+  button.addEventListener("click",function(){
+    const open=sidebar.classList.toggle("mobile-open");
+    overlay.classList.toggle("show",open);
+    button.setAttribute("aria-expanded",String(open));
+    document.body.style.overflow=open?"hidden":"";
+  });
+
+  overlay.addEventListener("click",closeMenu);
+
+  sidebar.addEventListener("click",function(e){
+    if(e.target.closest("a,button")) setTimeout(closeMenu,80);
+  });
+
+  window.addEventListener("resize",function(){
+    if(window.innerWidth>850) closeMenu();
+  });
+})();
+</script>
+
 </body>
 </html>
