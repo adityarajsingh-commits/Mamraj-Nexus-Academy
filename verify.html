@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verify Certificate | MamRaj Nexus Academy</title>
+<style>
+body{margin:0;background:#f7f3ef;font-family:Arial;color:#182961}
+.wrap{max-width:650px;margin:70px auto;padding:20px}
+.card{background:#fff;border:1px solid #eadfd6;border-radius:20px;padding:30px;box-shadow:0 15px 40px #1d2d6612}
+h1{margin-top:0}.muted{color:#777;line-height:1.6}input{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box}button{margin-top:12px;padding:13px 18px;border:0;border-radius:10px;background:#203674;color:#fff;font-weight:800;width:100%}.result{margin-top:20px;padding:16px;border-radius:12px;background:#f6fbf7;display:none}.ok{color:#28704d;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Certificate Verification</h1>
+<p class="muted">Enter the certificate ID printed on the certificate to verify its authenticity.</p>
+<input id="id" placeholder="Example: MNA-2026-ABC12345">
+<button id="verify">Verify Certificate</button>
+<div class="result" id="result"></div>
+</div></div>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {getFunctions,httpsCallable} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-functions.js";
+const firebaseConfig={apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:548826957068:web:29b02f77dc20feaf28f529",measurementId:"G-Z64L57P9XV"};
+const app=initializeApp(firebaseConfig),functions=getFunctions(app,"asia-south1");
+document.getElementById("verify").onclick=async()=>{
+ const id=document.getElementById("id").value.trim();
+ const box=document.getElementById("result");
+ box.style.display="block"; box.textContent="Checking…";
+ try{
+  const fn=httpsCallable(functions,"verifyCertificateId");
+  const r=await fn({certificateId:id});
+  const c=r.data;
+  box.innerHTML=`<div class="ok">✓ Verified Certificate</div><p><strong>${c.studentName}</strong></p><p>${c.courseName}</p><p>Issued: ${new Date(c.issuedAt).toLocaleDateString("en-IN")}</p><p>ID: ${c.certificateId}</p>`;
+ }catch(e){box.innerHTML="<strong>Certificate not found or invalid.</strong>";}
+};
+</script>
+</body>
+</html>
