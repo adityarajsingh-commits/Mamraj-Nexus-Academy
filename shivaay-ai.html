@@ -1,621 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MamRaj Nexus — Shivay AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#263a7a;--purple:#5b45a5;--purple2:#7058c5;--peach:#cf9878;--peachbg:#f5e9e1;--bg:#f7f3ef;--white:#fff;--text:#162962;--muted:#7c8298;--border:#e9e1db}
+body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overflow:hidden}button,input,textarea{font:inherit}button{cursor:pointer;border:0}a{text-decoration:none;color:inherit}
 
-    <title>Shivaay AI | MamRaj Nexus Academy</title>
+.side{position:fixed;inset:0 auto 0 0;width:258px;background:linear-gradient(180deg,#2d4383,#263a7a);color:#fff;padding:22px 12px;z-index:20;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 10px 28px}.mark{width:44px;height:44px;border-radius:13px;background:#6549df;display:grid;place-items:center;font-size:22px;font-weight:800}.brand b{font-size:23px;letter-spacing:-1px}.brand b span{color:#d19a7a}.brand small{display:block;font-size:7px;letter-spacing:3px;margin-top:4px;opacity:.8}.label{font-size:9px;font-weight:800;letter-spacing:1.7px;color:#9eadd6;margin:10px 14px 8px}.nav{display:grid;gap:4px}.nav a{height:52px;border-radius:16px;display:flex;align-items:center;gap:16px;padding:0 18px;font-size:14px;font-weight:700;color:#f3f5fc}.nav a i{width:20px;text-align:center}.nav a:hover{background:#ffffff12}.nav a.active{background:var(--peach)}.help{margin:18px 8px;padding:13px;border-radius:15px;background:#ffffff12;display:flex;gap:10px;align-items:center}.help i{width:30px;height:30px;border-radius:50%;background:#efb58e;color:#30447d;display:grid;place-items:center}.help b{font-size:10px}.help small{display:block;color:#c7cde2;font-size:8px}
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+.main{margin-left:258px;height:100vh;min-width:0}.top{height:84px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;padding:0 34px;position:relative;z-index:10}.search{height:50px;max-width:450px;flex:1;background:#f7f4f1;border-radius:15px;display:flex;align-items:center;gap:12px;padding:0 18px;color:#9296a5}.search input{border:0;outline:0;background:none;width:100%;font-size:12px}.filters{display:flex;gap:6px}.filter{border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 14px;font-size:10px;font-weight:700;color:#6d7283}.filter.active{background:var(--navy);color:#fff}.actions{margin-left:auto;display:flex;align-items:center;gap:9px}.icon{width:40px;height:40px;border:0;border-radius:12px;background:#faf8f6;color:var(--navy)}.profile{display:flex;align-items:center;gap:9px}.avatar{width:43px;height:43px;border:2px solid var(--peach);border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800}.profile b{display:block;font-size:12px}.profile small{color:var(--muted);font-size:9px}
 
-    <link rel="stylesheet" href="shivaay-ai.css">
+.workspace{height:calc(100vh - 84px);display:grid;grid-template-columns:290px minmax(0,1fr);gap:0;background:#fff}
+.ai-sidebar{background:#fbf9f7;border-right:1px solid var(--border);padding:24px 18px;overflow-y:auto}.ai-brand{display:flex;align-items:center;gap:12px}.ai-logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#5a429b,#7a5acb);color:#fff;display:grid;place-items:center;font-size:20px}.ai-brand h2{font-size:18px}.ai-brand p{font-size:8px;color:var(--muted);margin-top:2px}.new-chat{width:100%;margin-top:22px;background:var(--navy);color:#fff;padding:12px;border-radius:11px;font-size:10px;font-weight:800}.side-title{font-size:8px;letter-spacing:1.4px;color:#9a9eab;font-weight:800;margin:25px 5px 9px}.suggestions{display:grid;gap:7px}.suggestion{background:#fff;border:1px solid var(--border);border-radius:11px;text-align:left;padding:11px;color:#4e566e;font-size:9px;line-height:1.45}.suggestion i{color:var(--peach);margin-right:6px}.capability{display:flex;gap:9px;padding:10px 5px;border-bottom:1px solid var(--border)}.capability i{color:var(--peach);width:16px}.capability span{font-size:9px;color:#6f7484;line-height:1.4}
+
+.chat{display:flex;flex-direction:column;min-width:0;min-height:0;background:#fff}
+.chat-head{height:68px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 25px}.chat-head h1{font-size:16px}.chat-head p{font-size:8px;color:#7aa27e;margin-top:3px}.online{display:flex;align-items:center;gap:6px;font-size:8px;color:#6f7484}.online i{font-size:6px;color:#61a579}.chat-body{flex:1;overflow-y:auto;padding:28px 7%;scroll-behavior:smooth}.welcome{text-align:center;max-width:650px;margin:20px auto 35px}.welcome-logo{width:62px;height:62px;margin:auto;border-radius:19px;background:linear-gradient(135deg,#59429d,#7357c2);display:grid;place-items:center;color:#fff;font-size:27px;box-shadow:0 15px 30px #5b45a520}.welcome h2{font-size:25px;margin-top:15px;letter-spacing:-1px}.welcome p{font-size:10px;color:var(--muted);line-height:1.7;margin:7px auto 0;max-width:500px}.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:18px}.chip{border:1px solid var(--border);background:#faf8f6;border-radius:20px;padding:8px 11px;font-size:8px;color:#6b7182}
+.messages{max-width:820px;margin:auto}.message{display:flex;gap:10px;margin:0 0 19px;animation:up .2s ease}.message.user{justify-content:flex-end}.msg-avatar{width:31px;height:31px;flex:0 0 31px;border-radius:10px;background:#5b45a5;color:#fff;display:grid;place-items:center;font-size:11px}.user .msg-avatar{background:var(--peach);order:2}.bubble{max-width:min(75%,650px);padding:12px 14px;border-radius:14px;background:#f7f4f1;color:#343b50;font-size:10px;line-height:1.7;white-space:pre-wrap;word-break:break-word}.user .bubble{background:var(--navy);color:#fff;border-radius:14px 14px 4px 14px}.bot .bubble{border-radius:4px 14px 14px 14px}.typing{display:flex;gap:4px;align-items:center}.typing span{width:5px;height:5px;border-radius:50%;background:#9b7eeb;animation:blink 1s infinite}.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}@keyframes blink{50%{opacity:.25}}@keyframes up{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.composer-wrap{padding:14px 7% 18px;border-top:1px solid var(--border);background:#fff}.composer{max-width:820px;margin:auto;border:1px solid #dcd6d1;border-radius:16px;background:#fff;box-shadow:0 7px 25px #1e284609;display:flex;align-items:flex-end;padding:8px;gap:8px}.composer textarea{border:0;outline:0;resize:none;min-height:42px;max-height:130px;flex:1;padding:10px;font-size:10px;line-height:1.5;color:var(--text)}.send{width:42px;height:42px;border-radius:11px;background:var(--navy);color:#fff}.composer-tools{display:flex;gap:5px;padding:0 3px 3px}.tool{width:30px;height:30px;border-radius:8px;background:#f6f3f0;color:#777d8d}.disclaimer{text-align:center;font-size:7px;color:#a0a3ad;margin-top:7px}
+@media(max-width:1100px){.side{width:225px}.main{margin-left:225px}.filters{display:none}.workspace{grid-template-columns:250px 1fr}}
+@media(max-width:760px){body{overflow:hidden}.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.workspace{height:calc(100vh - 70px);grid-template-columns:1fr}.ai-sidebar{display:none}.chat-head{height:60px;padding:0 15px}.chat-body{padding:18px 12px}.welcome h2{font-size:21px}.welcome p{font-size:9px}.bubble{max-width:85%;font-size:9px}.composer-wrap{padding:10px 10px 13px}.composer-tools{display:none}}
+@media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.chat-head h1{font-size:14px}.online{font-size:7px}.chat-body{padding:12px 8px}.welcome{margin:15px auto 25px}.welcome-logo{width:52px;height:52px}.welcome h2{font-size:19px}.chips{gap:5px}.chip{font-size:7px;padding:7px 9px}.bubble{max-width:90%;font-size:9px}.composer textarea{font-size:9px}.send{width:39px;height:39px}}
+</style>
 </head>
-
 <body>
-
-<div class="dashboard-layout">
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar">
-
-        <div class="brand">
-            MamRaj <span>Nexus</span>
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <a href="internship.html">
-                <i class="fa-solid fa-house"></i>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="internship.html">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Internships</span>
-            </a>
-
-            <a href="projects.html">
-                <i class="fa-solid fa-folder-open"></i>
-                <span>Projects</span>
-            </a>
-
-            <a href="applications.html">
-                <i class="fa-solid fa-file-circle-check"></i>
-                <span>Applications</span>
-            </a>
-
-            <a href="certifications.html">
-                <i class="fa-solid fa-award"></i>
-                <span>Certificates</span>
-            </a>
-
-            <a href="shivaay-ai.html" class="active">
-                <i class="fa-solid fa-robot"></i>
-                <span>Shivay AI</span>
-            </a>
-
-            <a href="resume-builder.html">
-                <i class="fa-solid fa-file-lines"></i>
-                <span>Resume Builder</span>
-            </a>
-
-            <a href="ats-checker.html">
-                <i class="fa-solid fa-chart-column"></i>
-                <span>ATS Checker</span>
-            </a>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-help">
-
-                <i class="fa-solid fa-circle-question"></i>
-
-                <div>
-                    <strong>Need Help?</strong>
-                    <small>Ask Shivaay AI</small>
-                </div>
-
-            </div>
-
-        </div>
-
-    </aside>
-
-
-    <!-- ================= MAIN ================= -->
-
-    <main class="main-content">
-
-
-        <!-- TOP BAR -->
-
-        <header class="topbar">
-
-            <div class="top-title">
-
-                <div class="mini-ai-icon">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
-
-                <div>
-                    <strong>Shivaay AI</strong>
-                    <span>Your Career Assistant</span>
-                </div>
-
-            </div>
-
-
-            <div class="top-actions">
-
-                <button class="icon-btn">
-
-                    <i class="fa-regular fa-bell"></i>
-
-                    <span class="notification-dot"></span>
-
-                </button>
-
-
-                <button class="icon-btn">
-
-                    <i class="fa-regular fa-envelope"></i>
-
-                </button>
-
-
-                <button class="icon-btn"
-                        id="themeToggle">
-
-                    <i class="fa-solid fa-moon"></i>
-
-                </button>
-
-
-                <div class="profile">
-
-                    <div class="profile-avatar">
-                        ST
-                    </div>
-
-                    <div class="profile-info">
-
-                        <strong>Aditya Singh</strong>
-
-                        <span>Student</span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- ================= AI LAYOUT ================= -->
-
-        <section class="ai-layout">
-
-
-            <!-- CHAT HISTORY -->
-
-            <aside class="chat-history">
-
-                <button class="new-chat"
-                        id="newChat">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    New Conversation
-
-                </button>
-
-
-                <div class="history-title">
-
-                    <span>RECENT CHATS</span>
-
-                </div>
-
-
-                <div class="history-list">
-
-                    <button class="history-item active">
-
-                        <i class="fa-regular fa-message"></i>
-
-                        <span>Career roadmap</span>
-
-                    </button>
-
-
-                    <button class="history-item">
-
-                        <i class="fa-regular fa-message"></i>
-
-                        <span>Resume improvement</span>
-
-                    </button>
-
-
-                    <button class="history-item">
-
-                        <i class="fa-regular fa-message"></i>
-
-                        <span>Python project ideas</span>
-
-                    </button>
-
-
-                    <button class="history-item">
-
-                        <i class="fa-regular fa-message"></i>
-
-                        <span>Interview preparation</span>
-
-                    </button>
-
-
-                    <button class="history-item">
-
-                        <i class="fa-regular fa-message"></i>
-
-                        <span>Internship guidance</span>
-
-                    </button>
-
-                </div>
-
-
-                <div class="ai-capabilities">
-
-                    <span class="history-title">
-                        SHIVAAY CAN HELP
-                    </span>
-
-                    <div class="capability">
-
-                        <i class="fa-solid fa-route"></i>
-
-                        <span>Career Roadmap</span>
-
-                    </div>
-
-                    <div class="capability">
-
-                        <i class="fa-solid fa-file-lines"></i>
-
-                        <span>Resume Review</span>
-
-                    </div>
-
-                    <div class="capability">
-
-                        <i class="fa-solid fa-code"></i>
-
-                        <span>Project Guidance</span>
-
-                    </div>
-
-                    <div class="capability">
-
-                        <i class="fa-solid fa-user-tie"></i>
-
-                        <span>Interview Prep</span>
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-
-            <!-- ================= CHAT ================= -->
-
-            <div class="chat-container">
-
-
-                <!-- AI HEADER -->
-
-                <div class="chat-header">
-
-                    <div class="ai-profile">
-
-                        <div class="ai-avatar">
-
-                            <i class="fa-solid fa-sparkles"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h2>Shivaay AI</h2>
-
-                            <div class="online-status">
-
-                                <span></span>
-
-                                Online · Career Assistant
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <button class="chat-menu">
-
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-
-                    </button>
-
-                </div>
-
-
-                <!-- CHAT MESSAGES -->
-
-                <div class="chat-messages"
-                     id="chatMessages">
-
-
-                    <!-- WELCOME -->
-
-                    <div class="welcome-area">
-
-                        <div class="big-ai-avatar">
-
-                            <i class="fa-solid fa-robot"></i>
-
-                            <span></span>
-
-                        </div>
-
-                        <h1>
-                            Hello, Aditya 👋
-                        </h1>
-
-                        <p>
-                            I'm Shivaay, your personal AI career
-                            assistant. What would you like to
-                            work on today?
-                        </p>
-
-                    </div>
-
-
-                    <!-- AI MESSAGE -->
-
-                    <div class="message ai-message">
-
-                        <div class="message-avatar">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-
-                        <div class="message-content">
-
-                            <div class="message-name">
-                                Shivaay AI
-                            </div>
-
-                            <div class="message-bubble">
-
-                                I can help you build your career
-                                step-by-step — from learning skills
-                                and building projects to preparing
-                                for interviews and finding internships.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- QUICK PROMPTS -->
-
-                    <div class="quick-prompts">
-
-                        <button data-prompt="Create a career roadmap for me">
-
-                            <i class="fa-solid fa-route"></i>
-
-                            <span>
-                                Create my career roadmap
-                            </span>
-
-                        </button>
-
-
-                        <button data-prompt="Help me improve my resume">
-
-                            <i class="fa-solid fa-file-lines"></i>
-
-                            <span>
-                                Improve my resume
-                            </span>
-
-                        </button>
-
-
-                        <button data-prompt="Suggest projects for my skills">
-
-                            <i class="fa-solid fa-code"></i>
-
-                            <span>
-                                Suggest projects
-                            </span>
-
-                        </button>
-
-
-                        <button data-prompt="Prepare me for a technical interview">
-
-                            <i class="fa-solid fa-user-tie"></i>
-
-                            <span>
-                                Prepare for interview
-                            </span>
-
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- INPUT AREA -->
-
-                <div class="chat-input-area">
-
-                    <div class="input-wrapper">
-
-                        <button class="attach-btn">
-
-                            <i class="fa-solid fa-paperclip"></i>
-
-                        </button>
-
-
-                        <textarea
-                            id="messageInput"
-                            rows="1"
-                            placeholder="Ask Shivaay anything about your career..."
-                        ></textarea>
-
-
-                        <button class="voice-btn">
-
-                            <i class="fa-solid fa-microphone"></i>
-
-                        </button>
-
-
-                        <button class="send-btn"
-                                id="sendMessage">
-
-                            <i class="fa-solid fa-arrow-up"></i>
-
-                        </button>
-
-                    </div>
-
-                    <p class="ai-disclaimer">
-
-                        Shivaay AI can make mistakes.
-                        Verify important information.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= RIGHT PANEL ================= -->
-
-            <aside class="ai-right-panel">
-
-                <div class="career-card">
-
-                    <div class="career-card-header">
-
-                        <div>
-
-                            <span>
-                                YOUR CAREER
-                            </span>
-
-                            <h3>
-                                Progress
-                            </h3>
-
-                        </div>
-
-                        <i class="fa-solid fa-chart-line"></i>
-
-                    </div>
-
-
-                    <div class="career-score">
-
-                        <div class="score-circle">
-
-                            <strong>72%</strong>
-
-                            <span>Ready</span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="career-progress">
-
-                        <div>
-
-                            <span>Skills</span>
-
-                            <strong>78%</strong>
-
-                        </div>
-
-                        <div class="progress">
-                            <span style="width:78%"></span>
-                        </div>
-
-
-                        <div>
-
-                            <span>Projects</span>
-
-                            <strong>65%</strong>
-
-                        </div>
-
-                        <div class="progress">
-                            <span style="width:65%"></span>
-                        </div>
-
-
-                        <div>
-
-                            <span>Resume</span>
-
-                            <strong>84%</strong>
-
-                        </div>
-
-                        <div class="progress">
-                            <span style="width:84%"></span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="recommendation-card">
-
-                    <div class="recommendation-icon">
-
-                        <i class="fa-solid fa-lightbulb"></i>
-
-                    </div>
-
-                    <span>SHIVAAY RECOMMENDS</span>
-
-                    <h3>
-                        Build one more
-                        real-world project
-                    </h3>
-
-                    <p>
-                        Adding a strong full-stack project
-                        could improve your portfolio score.
-                    </p>
-
-                    <button>
-                        Explore Projects
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                </div>
-
-
-                <div class="daily-card">
-
-                    <i class="fa-solid fa-fire"></i>
-
-                    <div>
-
-                        <strong>
-                            7 Day Learning Streak
-                        </strong>
-
-                        <span>
-                            Keep going, Aditya!
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </aside>
-
-        </section>
-
-    </main>
-
+<aside class="side">
+<div class="brand"><div class="mark">M</div><div><b>MamRaj <span>Nexus</span></b><small>NEXUS ACADEMY</small></div></div>
+<div class="label">MAIN</div><nav class="nav">
+<a href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+<a href="courses.html"><i class="fa-solid fa-book-open"></i><span>My Courses</span></a>
+<a href="learning-path.html"><i class="fa-solid fa-route"></i><span>Learning Path</span></a>
+<a href="projects.html"><i class="fa-solid fa-folder"></i><span>Projects</span></a></nav>
+<div class="label">AI & CAREER</div><nav class="nav">
+<a href="certifications.html"><i class="fa-solid fa-certificate"></i><span>Certificates</span></a>
+<a class="active" href="shivay-ai.html"><i class="fa-solid fa-wand-magic-sparkles"></i><span>Shivay AI</span></a>
+<a href="resume.html"><i class="fa-solid fa-file-lines"></i><span>Resume Builder</span></a>
+<a href="ats-checker.html"><i class="fa-solid fa-chart-column"></i><span>ATS Checker</span></a>
+<a href="interview.html"><i class="fa-solid fa-comments"></i><span>Interview Prep</span></a>
+<a href="internships.html"><i class="fa-solid fa-briefcase"></i><span>Internships</span></a></nav>
+<div class="help"><i class="fa-solid fa-question"></i><div><b>Need Help?</b><small>Talk to Shivay AI</small></div></div>
+</aside>
+
+<main class="main">
+<header class="top">
+<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="globalSearch" placeholder="Search courses, internships, skills..."></div>
+<div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div>
+<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small>Student</small></div></div></div>
+</header>
+
+<div class="workspace">
+<aside class="ai-sidebar">
+<div class="ai-brand"><div class="ai-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div><div><h2>Shivay AI</h2><p>Your learning companion</p></div></div>
+<button class="new-chat" id="newChat"><i class="fa-solid fa-plus"></i> New Conversation</button>
+<div class="side-title">TRY ASKING</div>
+<div class="suggestions">
+<button class="suggestion" data-prompt="Explain JavaScript closures in simple language with an example."><i class="fa-solid fa-code"></i>Explain a difficult topic</button>
+<button class="suggestion" data-prompt="How should I prepare for a web development interview? Give me a practical plan."><i class="fa-solid fa-briefcase"></i>Prepare me for an interview</button>
+<button class="suggestion" data-prompt="Give me a project idea I can add to my portfolio and explain how to build it step by step."><i class="fa-solid fa-lightbulb"></i>Give me a project idea</button>
+<button class="suggestion" data-prompt="Review the concept of databases and explain SQL joins with examples."><i class="fa-solid fa-database"></i>Teach me a concept</button>
 </div>
+<div class="side-title">SHIVAY CAN HELP WITH</div>
+<div class="capability"><i class="fa-solid fa-graduation-cap"></i><span>Course concepts and explanations</span></div>
+<div class="capability"><i class="fa-solid fa-code"></i><span>Programming and technical questions</span></div>
+<div class="capability"><i class="fa-solid fa-diagram-project"></i><span>Projects and assignments</span></div>
+<div class="capability"><i class="fa-solid fa-file-lines"></i><span>Resume and career guidance</span></div>
+<div class="capability"><i class="fa-solid fa-comments"></i><span>Interview preparation</span></div>
+</aside>
 
+<section class="chat">
+<div class="chat-head"><div><h1>Shivay AI</h1><p><i class="fa-solid fa-circle"></i> Ready to help</p></div><div class="online"><i class="fa-solid fa-circle"></i> AI Learning Mentor</div></div>
+<div class="chat-body" id="chatBody">
+<div class="welcome" id="welcome">
+<div class="welcome-logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+<h2>Hi! I'm Shivay AI 👋</h2>
+<p>Ask me anything about your courses, coding, projects, career preparation or a concept you want explained. I'll break it down step by step.</p>
+<div class="chips">
+<button class="chip" data-prompt="Explain a concept to me like I'm a beginner.">Explain a concept</button>
+<button class="chip" data-prompt="Help me debug a JavaScript problem.">Debug my code</button>
+<button class="chip" data-prompt="Give me a portfolio project idea.">Project idea</button>
+<button class="chip" data-prompt="Create an interview preparation plan for me.">Interview prep</button>
+</div>
+</div>
+<div class="messages" id="messages"></div>
+</div>
+<div class="composer-wrap">
+<form class="composer" id="chatForm">
+<div class="composer-tools"><button type="button" class="tool" title="Attach" id="attach"><i class="fa-solid fa-paperclip"></i></button></div>
+<textarea id="message" rows="1" placeholder="Ask Shivay anything..."></textarea>
+<button class="send" type="submit"><i class="fa-solid fa-arrow-up"></i></button>
+</form>
+<div class="disclaimer">Shivay AI can make mistakes. Verify important information before relying on it.</div>
+</div>
+</section>
+</div>
+</main>
 
-<script src="shivaay-ai.js"></script>
+<script>
+const messages=document.getElementById("messages"),welcome=document.getElementById("welcome"),input=document.getElementById("message"),chatBody=document.getElementById("chatBody");
+let history=[];
 
+/* ---------------------------------------------------------
+   FRONTEND CHAT ENGINE
+   Set SHIVAY_API_URL to your secure backend endpoint.
+   The browser must NOT contain an OpenAI/LLM secret key.
+--------------------------------------------------------- */
+const SHIVAY_API_URL = ""; // Example: "/api/shivay"
+
+function addMessage(role,text){
+const wrap=document.createElement("div");wrap.className="message "+role;
+const av=document.createElement("div");av.className="msg-avatar";av.innerHTML=role==="user"?'<i class="fa-solid fa-user"></i>':'<i class="fa-solid fa-wand-magic-sparkles"></i>';
+const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;
+wrap.append(av,bubble);messages.appendChild(wrap);chatBody.scrollTop=chatBody.scrollHeight;return bubble;
+}
+
+function addTyping(){
+const wrap=document.createElement("div");wrap.className="message bot";wrap.id="typing";
+const av=document.createElement("div");av.className="msg-avatar";av.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i>';
+const b=document.createElement("div");b.className="bubble";b.innerHTML='<div class="typing"><span></span><span></span><span></span></div>';
+wrap.append(av,b);messages.appendChild(wrap);chatBody.scrollTop=chatBody.scrollHeight;
+}
+
+function removeTyping(){document.getElementById("typing")?.remove()}
+
+function fallbackAnswer(q){
+const s=q.toLowerCase();
+if(/^(hi|hello|hey|hii)\b/.test(s))return "Hi! 👋 I'm Shivay AI. Tell me what you're learning or ask me any question, and I'll explain it step by step.";
+if(s.includes("javascript")&&s.includes("closure"))return "A closure is when a function remembers variables from the place where it was created, even after that outer function has finished. Example: function counter(){ let n=0; return ()=>++n; } const next=counter(); next() gives 1 and next() gives 2. The inner function still remembers n.";
+if(s.includes("html"))return "HTML is the structure of a webpage. Think of it as the skeleton: headings, paragraphs, buttons, images and sections. CSS controls appearance, while JavaScript adds behaviour.";
+if(s.includes("css"))return "CSS controls how a webpage looks. You can use it for layout, spacing, colors, typography, responsive design and animations. A good approach is to build the desktop layout first and then add media queries for smaller screens.";
+if(s.includes("sql")||s.includes("database"))return "A database stores structured information. SQL lets you read and change that information. For example, SELECT name FROM students WHERE course='Web Development'; returns the names of students enrolled in that course. JOINs combine related tables.";
+if(s.includes("interview"))return "For an interview, prepare in four layers: 1) fundamentals, 2) questions based on your projects, 3) problem-solving/coding practice, and 4) behavioural answers. Be ready to explain what you built, why you chose the approach, and what you would improve.";
+if(s.includes("project"))return "A strong portfolio project should solve a real problem. Try a Student Learning Dashboard: authentication, course progress, projects, certificates and an AI mentor. Build it in stages and deploy it so an interviewer can actually use it.";
+if(s.includes("resume"))return "Keep your resume focused on outcomes. For each project write: what you built, the technologies used, what problem it solved and a measurable result. Avoid long paragraphs and tailor keywords to the role.";
+return "I can explain that. To give you the most useful answer, break the question into the exact concept, error, project requirement or career goal you are working on. If you share the code, question or topic, I'll walk through it step by step in simple language.";
+}
+
+async function askShivay(question){
+if(!SHIVAY_API_URL)return fallbackAnswer(question);
+const response=await fetch(SHIVAY_API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question,history})});
+if(!response.ok)throw new Error("AI service unavailable");
+const data=await response.json();
+return data.reply||data.message||"I couldn't generate a response.";
+}
+
+async function sendMessage(text){
+text=text.trim();if(!text)return;
+welcome.style.display="none";addMessage("user",text);history.push({role:"user",content:text});input.value="";input.style.height="42px";addTyping();
+try{
+const answer=await askShivay(text);removeTyping();addMessage("bot",answer);history.push({role:"assistant",content:answer});
+}catch(e){removeTyping();addMessage("bot","I'm having trouble connecting to the AI service right now. Please try again in a moment.");console.error(e)}
+}
+
+document.getElementById("chatForm").addEventListener("submit",e=>{e.preventDefault();sendMessage(input.value)});
+input.addEventListener("input",()=>{input.style.height="42px";input.style.height=Math.min(input.scrollHeight,130)+"px"});
+input.addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();document.getElementById("chatForm").requestSubmit()}});
+document.querySelectorAll("[data-prompt]").forEach(b=>b.addEventListener("click",()=>sendMessage(b.dataset.prompt)));
+document.getElementById("newChat").addEventListener("click",()=>{messages.innerHTML="";history=[];welcome.style.display="block";input.focus()});
+document.getElementById("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
+document.getElementById("attach").addEventListener("click",()=>alert("File upload can be connected to the Shivay AI backend in the next phase."));
+
+(async()=>{
+try{
+const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");
+const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");
+const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:29b02f77dc20feaf28f529"});
+onAuthStateChanged(getAuth(app),u=>{if(!u)return;const n=u.displayName||"Student";document.getElementById("name").textContent=n;document.getElementById("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST";});
+}catch(e){console.warn("Firebase:",e)}
+})();
+</script>
 </body>
 </html>
