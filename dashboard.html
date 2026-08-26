@@ -19,7 +19,17 @@
 @media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:15px 12px 35px}.hero{padding:28px 22px}.hero h1{font-size:28px}.hero p{font-size:10px;line-height:1.7}.stats{gap:9px}.stat{padding:13px;min-height:90px}.stat i{width:36px;height:36px}.stat strong{font-size:18px}.grid{grid-template-columns:1fr}}
 @media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:10px 8px 30px}.hero{padding:24px 18px}.hero h1{font-size:24px}.stats{grid-template-columns:1fr 1fr}.stat{padding:11px;gap:8px}.stat i{width:31px;height:31px}.stat strong{font-size:16px}.panel{padding:16px}.learning{flex-wrap:wrap;align-items:flex-start}.info{min-width:calc(100% - 93px)}.continue{width:100%}.quick{grid-template-columns:1fr}}
 </style>
-</head>
+
+<style>
+.dashboard-search-results{position:fixed;top:74px;left:292px;width:min(450px,calc(100vw - 320px));z-index:100;background:#fff;border:1px solid #e9e1db;border-radius:14px;box-shadow:0 15px 40px rgba(32,25,75,.12);overflow:hidden;display:none}
+.search-result{display:block;padding:12px 15px;border-bottom:1px solid #f0ece8}
+.search-result:hover{background:#faf7f4}
+.search-result small{display:block;color:#cf9878;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.8px}
+.search-result strong{display:block;margin-top:3px;color:#162962;font-size:11px}
+.search-empty{padding:14px;color:#7c8298;font-size:10px}
+@media(max-width:760px){.dashboard-search-results{left:78px;top:68px;width:calc(100vw - 90px)}}
+@media(max-width:480px){.dashboard-search-results{left:66px;width:calc(100vw - 76px)}}
+</style></head>
 <body>
 <div class="app">
 <aside class="side">
@@ -44,21 +54,29 @@
 </aside>
 <main class="main">
 <header class="top">
-<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input placeholder="Search courses, internships, skills..."></div>
+<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="dashboardSearch" autocomplete="off" placeholder="Search courses, internships, skills..."></div>
+<div id="dashboardSearchResults" class="dashboard-search-results"></div>
 <div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div>
-<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small>Student</small></div></div></div>
+<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small id="profileEmail">Loading...</small></div></div></div>
 </header>
 <div class="content">
 <section class="hero"><small>WELCOME BACK 👋</small><h1>Keep building your future.</h1><p>Continue your learning journey and turn your skills into real-world opportunities.</p><button onclick="location.href='courses.html'">Continue Learning →</button></section>
 <section class="stats">
-<div class="stat"><i class="fa-regular fa-bookmark"></i><div><small>Courses</small><strong>06</strong></div><em>Live</em></div>
-<div class="stat"><i class="fa-regular fa-clock"></i><div><small>Learning Hours</small><strong>42.5</strong></div><em>Live</em></div>
-<div class="stat"><i class="fa-solid fa-check"></i><div><small>Completed</small><strong>18</strong></div><em>Lessons</em></div>
-<div class="stat"><i class="fa-solid fa-trophy"></i><div><small>Certificates</small><strong>04</strong></div><em>Earned</em></div>
+<div class="stat"><i class="fa-regular fa-bookmark"></i><div><small>Courses</small><strong id="courseCount">0</strong></div><em>Live</em></div>
+<div class="stat"><i class="fa-regular fa-clock"></i><div><small>Learning Hours</small><strong id="learningHours">0</strong></div><em>Live</em></div>
+<div class="stat"><i class="fa-solid fa-check"></i><div><small>Completed</small><strong id="completedLessons">0</strong></div><em>Lessons</em></div>
+<div class="stat"><i class="fa-solid fa-trophy"></i><div><small>Certificates</small><strong id="certificateCount">0</strong></div><em>Earned</em></div>
 </section>
 <section class="grid">
 <div class="panel"><div class="head"><div><small>YOUR LEARNING</small><h2>Continue Learning</h2></div><a href="courses.html" style="font-size:9px;color:#7657ce;font-weight:800">View all →</a></div>
-<div class="learning"><div class="thumb"><i class="fa-solid fa-code"></i></div><div class="info"><h3>Full-Stack Web Development</h3><p>Continue from your last completed topic.</p><div class="bar"><span></span></div><div class="row"><span>68% completed</span><span>6 Months</span></div></div><button class="continue" onclick="location.href='course.html?course=web-development'">Continue</button></div>
+<div class="learning">
+<div class="thumb" id="continueCourseIcon"><i class="fa-solid fa-code"></i></div>
+<div class="info"><h3 id="continueCourseName">Loading your learning...</h3>
+<p id="continueCourseDescription">Syncing your course progress.</p>
+<div class="bar"><span id="continueProgress" style="width:0%"></span></div>
+<div class="row"><span id="continueProgressText">0% completed</span><span id="continueDuration">—</span></div></div>
+<button class="continue" id="continueCourseButton">Continue</button>
+</div>
 <div class="quick"><a href="projects.html"><i class="fa-solid fa-folder"></i>Projects</a><a href="certifications.html"><i class="fa-solid fa-certificate"></i>Certificates</a><a href="internships.html"><i class="fa-solid fa-briefcase"></i>Internships</a></div>
 </div>
 <div class="panel mentor"><div class="head"><div><small>YOUR AI MENTOR</small><h2>Shivay AI</h2></div><i class="fa-solid fa-wand-magic-sparkles"></i></div><p>Your personal AI mentor is ready to help you learn, build and grow.</p><div class="mentorbox"><div class="mentoricon"><i class="fa-solid fa-robot"></i></div><div><b>Ask Shivay AI</b><small>Get help with your learning journey</small></div></div><button style="margin-top:20px;border:0;border-radius:10px;padding:11px 15px;background:#fff;color:#514092;font-size:10px;font-weight:800" onclick="location.href='shivay-ai.html'">Open Shivay AI →</button></div>
@@ -66,16 +84,95 @@
 </div>
 </main>
 </div>
-<script>
-document.getElementById("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
-(async()=>{
-try{
-const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");
-const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");
-const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:548826957068:web:29b02f77dc20feaf28f529"});
-onAuthStateChanged(getAuth(app),u=>{if(!u)return;const n=u.displayName||"Student";document.getElementById("name").textContent=n;document.getElementById("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST"});
-}catch(e){console.warn(e)}
-})();
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, doc, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+authDomain:"mamraj-nexus-academy.firebaseapp.com",
+projectId:"mamraj-nexus-academy",
+storageBucket:"mamraj-nexus-academy.firebasestorage.app",
+messagingSenderId:"548826957068",
+appId:"1:548826957068:web:29b02f77dc20feaf28f529"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+const $=id=>document.getElementById(id);
+
+let user=null;
+const data={profile:{},courses:[],certificates:[],projects:[]};
+
+function set(id,value){const e=$(id);if(e)e.textContent=value;}
+function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+
+function profile(u,p={}){
+const name=p.name||u.displayName||"Student";
+set("name",name);set("profileEmail",p.email||u.email||"");
+const avatar=$("avatar");
+if(avatar)avatar.textContent=name.trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST";
+}
+
+function dashboard(){
+const p=data.profile,c=data.courses,cert=data.certificates;
+set("courseCount",c.length||p.courseCount||p.enrolledCourses||0);
+set("learningHours",c.reduce((s,x)=>s+Number(x.learningHours??x.hours??0),0)||Number(p.learningHours??p.totalLearningHours??0));
+set("completedLessons",c.reduce((s,x)=>s+Number(x.completedLessons??x.lessonsCompleted??0),0)||Number(p.completedLessons??p.lessonsCompleted??0));
+set("certificateCount",cert.filter(x=>x.paymentVerified===true||x.earned===true||x.status==="earned").length);
+continueLearning();
+}
+
+function continueLearning(){
+const c=data.courses;
+if(!c.length){
+set("continueCourseName","No course enrolled yet");
+set("continueCourseDescription","Explore courses and start building your skills.");
+set("continueProgressText","0% completed");set("continueDuration","—");
+if($("continueProgress"))$("continueProgress").style.width="0%";
+if($("continueCourseButton")){ $("continueCourseButton").textContent="Explore Courses";$("continueCourseButton").onclick=()=>location.href="courses.html";}
+return;
+}
+const x=c.find(v=>v.completed!==true&&v.status!=="completed")||c[0];
+const name=x.courseName||x.name||x.title||"Continue Learning";
+const topic=x.currentTopic||x.lastTopic||x.nextTopic||"Continue from your last completed topic.";
+const progress=Math.max(0,Math.min(100,Number(x.progress??x.progressPercent??0)));
+set("continueCourseName",name);set("continueCourseDescription",topic);set("continueProgressText",`${progress}% completed`);set("continueDuration",x.duration||x.durationText||"Self paced");
+if($("continueProgress"))$("continueProgress").style.width=progress+"%";
+if($("continueCourseButton"))$("continueCourseButton").onclick=()=>location.href=x.courseId||x.id?`course.html?course=${encodeURIComponent(x.courseId||x.id)}`:"courses.html";
+}
+
+function search(){
+const input=$("dashboardSearch"),results=$("dashboardSearchResults");if(!input||!results)return;
+const q=input.value.toLowerCase().trim();
+if(!q){results.innerHTML="";results.style.display="none";return;}
+const items=[
+...data.courses.map(x=>({type:"Course",name:x.courseName||x.name||x.title||"Course",url:"courses.html"})),
+...data.certificates.map(x=>({type:"Certificate",name:x.courseName||x.name||"Certificate",url:"certifications.html"})),
+...data.projects.map(x=>({type:"Project",name:x.name||x.title||"Project",url:"projects.html"})),
+{type:"Internship",name:"Explore Internships",url:"internship.html"},
+{type:"AI",name:"Shivay AI",url:"shivay-ai.html"}
+].filter(x=>x.name.toLowerCase().includes(q));
+results.innerHTML=items.length?items.slice(0,6).map(x=>`<a href="${x.url}" class="search-result"><small>${esc(x.type)}</small><strong>${esc(x.name)}</strong></a>`).join(""):`<div class="search-empty">No matching results</div>`;
+results.style.display="block";
+}
+
+$("dashboardSearch")?.addEventListener("input",search);
+$("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
+
+window.logoutStudent=async()=>{await signOut(auth);location.href="login.html";};
+
+onAuthStateChanged(auth,u=>{
+if(!u){location.href="login.html";return;}
+user=u;window.__MAMRAJ_CURRENT_USER=u;profile(u);
+
+onSnapshot(doc(db,"users",u.uid),s=>{data.profile=s.exists()?s.data():{};profile(u,data.profile);dashboard();});
+onSnapshot(collection(db,"users",u.uid,"courses"),s=>{data.courses=s.docs.map(d=>({id:d.id,...d.data()}));dashboard();search();});
+onSnapshot(collection(db,"users",u.uid,"certificates"),s=>{data.certificates=s.docs.map(d=>({id:d.id,...d.data()}));dashboard();search();});
+onSnapshot(collection(db,"users",u.uid,"projects"),s=>{data.projects=s.docs.map(d=>({id:d.id,...d.data()}));search();});
+});
 </script>
 </body>
 </html>
