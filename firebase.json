@@ -1,0 +1,43 @@
+{
+  "functions": {
+    "source": "functions"
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/api/certificate",
+        "function": {
+          "functionId": "certificate",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "/api/certificate/order",
+        "function": {
+          "functionId": "certificateOrder",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "/api/certificate/verify",
+        "function": {
+          "functionId": "certificateVerify",
+          "region": "asia-south1"
+        }
+      },
+      {
+        "source": "/api/certificate/pdf",
+        "function": {
+          "functionId": "certificatePdf",
+          "region": "asia-south1"
+        }
+      }
+    ]
+  }
+}
