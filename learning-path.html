@@ -78,6 +78,130 @@ margin:0;
 .top{padding-left:60px!important}
 }
 
+
+.full-stage-header{
+    margin-top:22px;
+    padding:15px 14px;
+    background:#f8f4f1;
+    border:1px solid var(--border);
+    border-radius:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+.full-stage-header:first-child{margin-top:0}
+.full-stage-number{
+    display:inline-block;
+    color:var(--peach);
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:3px;
+}
+.full-stage-header h2{
+    font-size:14px;
+    color:var(--text);
+}
+.full-stage-header p{
+    font-size:8px;
+    color:var(--muted);
+    margin-top:3px;
+}
+.stage-done{
+    background:#e8f5ed!important;
+    color:var(--green)!important;
+}
+.content-card .milestones{
+    gap:0;
+}
+
+
+.all-stages-summary{
+    margin:0 0 18px;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#fff;
+}
+.all-stages-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+.all-stages-title span{
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    color:var(--peach);
+}
+.all-stages-title strong{
+    font-size:10px;
+    color:var(--text);
+}
+.all-stages-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+.all-stage-chip{
+    border:1px solid var(--border);
+    background:#f8f4f1;
+    color:var(--text);
+    border-radius:999px;
+    padding:7px 10px;
+    font-size:8px;
+    font-weight:800;
+    cursor:pointer;
+}
+.all-stage-chip span{
+    margin-right:4px;
+    color:var(--peach);
+}
+.all-stage-chip.selected{
+    border-color:var(--peach);
+    box-shadow:0 0 0 2px #cf987822;
+}
+.all-stage-chip.done{
+    background:#e8f5ed;
+    border-color:#b9dfc7;
+    color:#2d7650;
+}
+.full-stage-header{
+    margin-top:22px;
+    padding:15px 14px;
+    background:#f8f4f1;
+    border:1px solid var(--border);
+    border-radius:13px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+.full-stage-header:first-child{margin-top:0}
+.full-stage-number{
+    display:inline-block;
+    color:var(--peach);
+    font-size:7px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:3px;
+}
+.full-stage-header h2{
+    font-size:14px;
+    color:var(--text);
+}
+.full-stage-header p{
+    font-size:8px;
+    color:var(--muted);
+    margin-top:3px;
+}
+.stage-done{
+    background:#e8f5ed!important;
+    color:#2d7650!important;
+}
+
 </style>
 </head>
 <body>
@@ -101,7 +225,8 @@ margin:0;
 <section class="hero"><div><h2 id="heroTitle">Frontend Developer Roadmap</h2><p id="heroText">Build your foundation, create real projects, strengthen your portfolio and become internship-ready.</p></div><div class="progress"><div class="progress-top"><span>Overall Progress</span><strong id="percent">0%</strong></div><div class="bar"><span id="progressBar"></span></div><small id="progressText">0 of 6 milestones completed</small></div></section>
 <section class="layout">
 <aside class="panel"><h2>Roadmap</h2><p>Follow each stage in order.</p><div class="roadmap-list" id="roadmap"></div></aside>
-<section class="content-card"><div class="stage-head"><div><h2 id="stageTitle">Stage 1 — Foundation</h2><p id="stageDesc">Build the essential foundation for your selected career.</p></div><span class="stage-badge" id="stageBadge">CURRENT</span></div><div class="milestones" id="milestones"></div><div class="recommend"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Shivay AI Recommendation</h3><p id="recommend">Complete the current stage first, then use your projects to prove the skill rather than only listing it on your resume.</p></div></section>
+<section class="content-card"><div class="stage-head"><div><h2 id="stageTitle">Stage 1 — Foundation</h2><p id="stageDesc">Build the essential foundation for your selected career.</p></div><span class="stage-badge" id="stageBadge">CURRENT</span></div><div id="allStagesSummary" class="all-stages-summary"></div>
+<div class="milestones" id="milestones"></div><div class="recommend"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Shivay AI Recommendation</h3><p id="recommend">Complete the current stage first, then use your projects to prove the skill rather than only listing it on your resume.</p></div></section>
 </section>
 </div></main>
 <script type="module">
@@ -134,60 +259,459 @@ const db = getFirestore(app);
 const $ = id => document.getElementById(id);
 
 const CATALOG = {
+
     frontend: {
         title: "Frontend Developer Roadmap",
-        desc: "Build modern web interfaces, ship projects and become internship-ready.",
+        desc: "Build modern web interfaces, full-stack applications and become internship-ready.",
         courseIds: ["web-development"],
         stages: [
-            ["Foundation","HTML, CSS & responsive layouts",["Learn semantic HTML and accessibility","Build a responsive landing page","Practice Flexbox and Grid"]],
-            ["JavaScript","Core JavaScript & browser logic",["Learn functions, arrays and objects","Work with DOM events","Build an interactive mini app"]],
-            ["Modern Frontend","React and component-based development",["Learn React fundamentals","Build reusable components","Connect a public API"]],
-            ["Projects","Build proof of skill",["Build a student dashboard","Deploy a production-style project","Document projects on GitHub"]],
-            ["Career Ready","Resume, ATS & portfolio",["Create your ATS-friendly resume","Run your resume through ATS Checker","Prepare your portfolio"]],
-            ["Internship","Interview + applications",["Practice role-specific interviews","Apply to matching internships","Track applications and feedback"]]
+            ["Foundation","HTML, CSS & responsive layouts",[
+                "Learn semantic HTML and accessibility",
+                "Master CSS selectors, box model and positioning",
+                "Build responsive layouts with Flexbox",
+                "Build responsive layouts with CSS Grid",
+                "Create a responsive landing page"
+            ]],
+            ["JavaScript","Core JavaScript & browser logic",[
+                "Learn variables, data types and operators",
+                "Master functions, arrays and objects",
+                "Learn DOM manipulation",
+                "Work with events and forms",
+                "Build an interactive JavaScript application"
+            ]],
+            ["Modern Frontend","React and component-based development",[
+                "Learn React fundamentals",
+                "Understand props and state",
+                "Build reusable components",
+                "Work with React hooks",
+                "Connect a frontend to a public API"
+            ]],
+            ["Backend & APIs","Build applications that communicate with servers",[
+                "Understand REST APIs",
+                "Learn HTTP methods and status codes",
+                "Build a Node.js backend",
+                "Create Express routes",
+                "Connect frontend and backend"
+            ]],
+            ["Databases","Store and manage application data",[
+                "Understand SQL and NoSQL concepts",
+                "Create database collections/tables",
+                "Perform CRUD operations",
+                "Connect an application to a database",
+                "Secure database access"
+            ]],
+            ["Full-Stack Projects","Combine everything into real applications",[
+                "Build an authentication system",
+                "Build a dashboard",
+                "Build an e-commerce feature",
+                "Integrate payments or external APIs",
+                "Deploy a complete full-stack project"
+            ]],
+            ["Advanced React","Build production-quality React applications",[
+                "Advanced component architecture",
+                "Context and state management",
+                "Form validation",
+                "Performance optimization",
+                "Build a production-style React application"
+            ]],
+            ["Performance & Security","Make applications reliable and secure",[
+                "Optimize page loading",
+                "Understand browser caching",
+                "Learn frontend security basics",
+                "Protect API endpoints",
+                "Audit a project for performance"
+            ]],
+            ["Git & Deployment","Ship your work professionally",[
+                "Master Git fundamentals",
+                "Use GitHub professionally",
+                "Create branches and pull requests",
+                "Deploy frontend applications",
+                "Deploy backend applications"
+            ]],
+            ["Real-World Capstone","Build one serious portfolio project",[
+                "Select a real-world problem",
+                "Plan features and architecture",
+                "Build the MVP",
+                "Test and fix issues",
+                "Deploy and document the project"
+            ]],
+            ["Portfolio & GitHub","Turn projects into proof of skill",[
+                "Create a professional GitHub profile",
+                "Write strong project README files",
+                "Create a developer portfolio",
+                "Document your best projects",
+                "Prepare project explanations"
+            ]],
+            ["Resume + ATS","Prepare for applications",[
+                "Create an ATS-friendly resume",
+                "Add measurable project achievements",
+                "Tailor resume for frontend roles",
+                "Run the resume through ATS Checker",
+                "Create a professional LinkedIn profile"
+            ]],
+            ["Interview Preparation","Become interview-ready",[
+                "Practice HTML/CSS questions",
+                "Practice JavaScript questions",
+                "Practice React questions",
+                "Solve coding problems",
+                "Practice project-based interview answers"
+            ]],
+            ["Internship Applications","Start applying strategically",[
+                "Find relevant frontend internships",
+                "Create a targeted application list",
+                "Apply consistently",
+                "Track applications and responses",
+                "Improve applications using feedback"
+            ]],
+            ["Job Ready","Final professional readiness",[
+                "Complete final portfolio review",
+                "Practice a mock technical interview",
+                "Prepare salary and HR answers",
+                "Review GitHub and resume",
+                "Start applying to jobs"
+            ]]
         ]
     },
+
     data: {
         title: "Data Analyst Roadmap",
         desc: "Turn raw data into useful business insights and build an analytics portfolio.",
         courseIds: ["data-analytics"],
         stages: [
-            ["Foundation","Excel, data thinking & statistics",["Master spreadsheet basics","Learn descriptive statistics","Clean a sample dataset"]],
-            ["SQL","Query and transform data",["Learn SELECT, WHERE and GROUP BY","Practice JOINs","Solve 20 SQL problems"]],
-            ["Analytics","Python / BI / visualization",["Analyse a real dataset","Build a dashboard","Explain three business insights"]],
-            ["Projects","Create an analytics portfolio",["Complete an end-to-end analysis","Publish a dashboard","Write a case study"]],
-            ["Career Ready","Resume + ATS + interview",["Build an analyst resume","Run an ATS check","Practice SQL interviews"]],
-            ["Internship","Apply and improve",["Apply to analytics internships","Track applications","Review feedback with Shivay AI"]]
+            ["Foundation","Data thinking, spreadsheets and statistics",[
+                "Understand data types",
+                "Learn spreadsheet fundamentals",
+                "Use formulas and functions",
+                "Learn descriptive statistics",
+                "Clean a sample dataset"
+            ]],
+            ["Excel","Professional spreadsheet analytics",[
+                "Master sorting and filtering",
+                "Use lookup functions",
+                "Create pivot tables",
+                "Build charts",
+                "Create an Excel dashboard"
+            ]],
+            ["SQL","Query and transform data",[
+                "Learn SELECT and WHERE",
+                "Use GROUP BY and aggregate functions",
+                "Master JOINs",
+                "Use subqueries and CTEs",
+                "Solve 20 SQL problems"
+            ]],
+            ["Statistics","Make better analytical decisions",[
+                "Understand mean, median and variance",
+                "Learn probability basics",
+                "Understand distributions",
+                "Learn correlation",
+                "Interpret statistical results"
+            ]],
+            ["Python","Analyse data programmatically",[
+                "Learn Python fundamentals",
+                "Work with NumPy",
+                "Work with Pandas",
+                "Create visualizations",
+                "Analyse a real dataset"
+            ]],
+            ["Data Cleaning","Turn messy data into usable data",[
+                "Handle missing values",
+                "Remove duplicates",
+                "Standardize formats",
+                "Detect outliers",
+                "Create a repeatable cleaning workflow"
+            ]],
+            ["Power BI & Dashboards","Build professional business dashboards",[
+                "Import and model data",
+                "Create calculated fields",
+                "Build interactive charts",
+                "Use filters and drilldowns",
+                "Publish a professional dashboard"
+            ]],
+            ["Advanced Analytics","Go beyond basic reporting",[
+                "Learn cohort analysis",
+                "Perform trend analysis",
+                "Build KPI frameworks",
+                "Analyse customer behaviour",
+                "Present actionable recommendations"
+            ]],
+            ["Real-World Projects","Build an analytics portfolio",[
+                "Complete an end-to-end sales analysis",
+                "Analyse customer data",
+                "Build a business dashboard",
+                "Write an analytical case study",
+                "Publish your project"
+            ]],
+            ["Portfolio","Show evidence of your analytical ability",[
+                "Create a data portfolio",
+                "Document SQL projects",
+                "Document dashboard projects",
+                "Write strong case studies",
+                "Publish work on GitHub"
+            ]],
+            ["Resume + ATS","Prepare for analyst applications",[
+                "Create an ATS-friendly analyst resume",
+                "Add measurable project results",
+                "Tailor your resume to job descriptions",
+                "Run an ATS check",
+                "Optimize your LinkedIn profile"
+            ]],
+            ["Case Studies","Think like a business analyst",[
+                "Solve a business case",
+                "Identify useful KPIs",
+                "Explain findings clearly",
+                "Present recommendations",
+                "Practice timed case studies"
+            ]],
+            ["Interview Preparation","Become interview-ready",[
+                "Practice SQL questions",
+                "Practice statistics questions",
+                "Practice Excel questions",
+                "Practice dashboard questions",
+                "Explain portfolio projects"
+            ]],
+            ["Internship Applications","Start applying strategically",[
+                "Find data internships",
+                "Build an application tracker",
+                "Apply consistently",
+                "Customize applications",
+                "Review feedback"
+            ]],
+            ["Job Ready","Final professional readiness",[
+                "Complete portfolio review",
+                "Perform a mock analyst interview",
+                "Prepare HR answers",
+                "Review resume and LinkedIn",
+                "Start applying to analyst roles"
+            ]]
         ]
     },
+
     uiux: {
         title: "UI/UX Designer Roadmap",
-        desc: "Learn user-centred design, create strong case studies and build a portfolio.",
+        desc: "Learn user-centred design, create strong case studies and build a professional portfolio.",
         courseIds: ["ui-ux"],
         stages: [
-            ["Foundation","UX principles & visual basics",["Learn design fundamentals","Study accessibility","Recreate two good interfaces"]],
-            ["Research","Understand real users",["Create interview questions","Conduct user research","Write a problem statement"]],
-            ["Design","Wireframes and prototypes",["Create user flows","Build wireframes","Create a clickable prototype"]],
-            ["Design System","Create consistent interfaces",["Build components","Define typography and spacing","Create responsive screens"]],
-            ["Portfolio","Tell the story",["Create two case studies","Build your portfolio","Get feedback from a peer"]],
-            ["Career Ready","Interview + internships",["Practice portfolio interviews","Prepare your resume","Apply to design internships"]]
+            ["Design Foundation","Visual and UX fundamentals",[
+                "Learn design principles",
+                "Understand typography",
+                "Learn colour theory",
+                "Study accessibility",
+                "Recreate two strong interfaces"
+            ]],
+            ["UX Research","Understand real users",[
+                "Create research questions",
+                "Conduct user interviews",
+                "Create user personas",
+                "Identify pain points",
+                "Write a problem statement"
+            ]],
+            ["Information Architecture","Organize digital experiences",[
+                "Create content structures",
+                "Build user flows",
+                "Create navigation systems",
+                "Create sitemaps",
+                "Test information architecture"
+            ]],
+            ["Wireframing","Turn ideas into structure",[
+                "Create low-fidelity wireframes",
+                "Design mobile layouts",
+                "Design desktop layouts",
+                "Review wireframes with users",
+                "Iterate based on feedback"
+            ]],
+            ["UI Design","Create polished interfaces",[
+                "Create high-fidelity screens",
+                "Use typography systems",
+                "Build colour systems",
+                "Design responsive components",
+                "Create a polished product screen"
+            ]],
+            ["Design Systems","Build consistent interfaces",[
+                "Create reusable components",
+                "Define spacing rules",
+                "Create typography tokens",
+                "Create colour tokens",
+                "Build a mini design system"
+            ]],
+            ["Prototyping","Create realistic product experiences",[
+                "Build clickable prototypes",
+                "Create micro-interactions",
+                "Prototype user flows",
+                "Test prototypes",
+                "Iterate based on feedback"
+            ]],
+            ["Usability Testing","Validate design decisions",[
+                "Create usability tests",
+                "Recruit test users",
+                "Observe user behaviour",
+                "Document findings",
+                "Improve the product based on evidence"
+            ]],
+            ["Advanced Projects","Build real-world design work",[
+                "Design a mobile application",
+                "Design a SaaS dashboard",
+                "Redesign an existing product",
+                "Create a complete user flow",
+                "Publish the projects"
+            ]],
+            ["Case Studies","Tell the story behind your designs",[
+                "Define the problem",
+                "Show research",
+                "Explain design decisions",
+                "Show iterations",
+                "Present measurable outcomes"
+            ]],
+            ["Portfolio","Create a professional design portfolio",[
+                "Select your best projects",
+                "Create project thumbnails",
+                "Write case studies",
+                "Build an online portfolio",
+                "Get portfolio feedback"
+            ]],
+            ["Resume + ATS","Prepare for applications",[
+                "Create a designer resume",
+                "Add measurable project outcomes",
+                "Tailor your resume",
+                "Run ATS checks",
+                "Optimize your LinkedIn profile"
+            ]],
+            ["Design Interview","Prepare for design interviews",[
+                "Practice portfolio presentations",
+                "Practice design challenges",
+                "Explain design decisions",
+                "Practice UX research questions",
+                "Complete a mock interview"
+            ]],
+            ["Internship Applications","Start applying strategically",[
+                "Find design internships",
+                "Build an application tracker",
+                "Customize applications",
+                "Apply consistently",
+                "Review recruiter feedback"
+            ]],
+            ["Job Ready","Final professional readiness",[
+                "Complete portfolio review",
+                "Practice a full portfolio interview",
+                "Prepare HR answers",
+                "Review resume and LinkedIn",
+                "Start applying to design roles"
+            ]]
         ]
     },
+
     hr: {
         title: "HR + AI Professional Roadmap",
         desc: "Build practical HR capability with modern people operations and responsible AI skills.",
         courseIds: ["hr-ai"],
         stages: [
-            ["Foundation","HR fundamentals",["Understand recruitment lifecycle","Learn onboarding basics","Study employee lifecycle"]],
-            ["Recruitment","Talent acquisition",["Write job descriptions","Build a screening workflow","Practice candidate communication"]],
-            ["People Analytics","Use data for decisions",["Learn HR metrics","Build a simple people dashboard","Interpret employee data"]],
-            ["AI in HR","Responsible AI workflows",["Explore AI-assisted recruitment","Learn bias and privacy basics","Build an HR AI workflow"]],
-            ["Career Ready","Resume + communication",["Create an HR resume","Practice behavioural interviews","Build a professional profile"]],
-            ["Internship","Apply and grow",["Find HR internships","Track applications","Review interview performance"]]
+            ["HR Foundation","Core human resource management",[
+                "Understand HR functions",
+                "Learn employee lifecycle",
+                "Understand HR policies",
+                "Study workplace communication",
+                "Create an HR process map"
+            ]],
+            ["Recruitment","Talent acquisition fundamentals",[
+                "Write effective job descriptions",
+                "Build sourcing strategies",
+                "Create screening workflows",
+                "Learn interview basics",
+                "Practice candidate communication"
+            ]],
+            ["Talent Acquisition","Build scalable hiring processes",[
+                "Understand recruitment funnels",
+                "Create candidate scorecards",
+                "Learn employer branding",
+                "Track recruitment KPIs",
+                "Build a hiring workflow"
+            ]],
+            ["Employee Lifecycle","Manage the employee journey",[
+                "Design onboarding",
+                "Understand probation processes",
+                "Create employee documentation",
+                "Learn offboarding basics",
+                "Build an employee lifecycle checklist"
+            ]],
+            ["Payroll & Compliance","Understand HR operations",[
+                "Learn payroll fundamentals",
+                "Understand attendance processes",
+                "Study basic labour compliance concepts",
+                "Maintain HR records",
+                "Create a compliance checklist"
+            ]],
+            ["Performance Management","Help teams perform better",[
+                "Understand KPIs and KRAs",
+                "Create performance review templates",
+                "Learn feedback frameworks",
+                "Design goal-setting workflows",
+                "Build a performance dashboard"
+            ]],
+            ["HR Analytics","Use data for people decisions",[
+                "Learn HR metrics",
+                "Analyse attrition",
+                "Build an employee dashboard",
+                "Interpret people data",
+                "Present HR recommendations"
+            ]],
+            ["AI in HR","Use AI responsibly",[
+                "Explore AI-assisted recruitment",
+                "Use AI for HR documentation",
+                "Create AI-assisted interview workflows",
+                "Understand bias and privacy",
+                "Build a responsible HR AI workflow"
+            ]],
+            ["HR Automation","Improve operational efficiency",[
+                "Map repetitive HR processes",
+                "Design automated workflows",
+                "Create HR templates",
+                "Connect HR data sources",
+                "Build an HR automation prototype"
+            ]],
+            ["Real-World HR Projects","Build proof of skill",[
+                "Create a recruitment project",
+                "Create an onboarding project",
+                "Build an HR dashboard",
+                "Create an AI HR workflow",
+                "Document project outcomes"
+            ]],
+            ["Portfolio","Show your HR capabilities",[
+                "Create an HR portfolio",
+                "Document projects",
+                "Create process case studies",
+                "Publish your work",
+                "Get professional feedback"
+            ]],
+            ["Resume + ATS","Prepare for HR applications",[
+                "Create an ATS-friendly HR resume",
+                "Add measurable achievements",
+                "Tailor resume for HR roles",
+                "Run an ATS check",
+                "Optimize LinkedIn"
+            ]],
+            ["HR Interview Preparation","Become interview-ready",[
+                "Practice HR questions",
+                "Practice behavioural interviews",
+                "Explain HR projects",
+                "Practice HR case studies",
+                "Complete a mock interview"
+            ]],
+            ["Internship Applications","Start applying strategically",[
+                "Find HR internships",
+                "Create an application tracker",
+                "Customize applications",
+                "Apply consistently",
+                "Review feedback"
+            ]],
+            ["Job Ready","Final professional readiness",[
+                "Complete portfolio review",
+                "Practice a mock HR interview",
+                "Prepare HR answers",
+                "Review resume and LinkedIn",
+                "Start applying to HR roles"
+            ]]
         ]
     }
 };
-
 let career = "frontend";
 let stage = 0;
 let currentUser = null;
@@ -315,6 +839,14 @@ function renderRoadmap() {
 
                     render();
 
+                    const headers =
+                        document.querySelectorAll(".full-stage-header");
+
+                    headers[index]?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
                 }
             );
 
@@ -326,69 +858,112 @@ function renderRoadmap() {
     );
 }
 
+function renderAllStagesSummary() {
+
+    const box = $("allStagesSummary");
+    if (!box) return;
+
+    const roadmap = getCareer();
+
+    box.innerHTML = `
+        <div class="all-stages-title">
+            <span>COMPLETE ROADMAP</span>
+            <strong>${roadmap.stages.length} Stages</strong>
+        </div>
+        <div class="all-stages-list">
+            ${roadmap.stages.map((item, index) => {
+                const done = item[2].every(
+                    (_, taskIndex) =>
+                        isTaskDone(index, taskIndex)
+                );
+
+                return `
+                    <button
+                        class="all-stage-chip ${done ? "done" : ""} ${index === stage ? "selected" : ""}"
+                        data-stage="${index}"
+                    >
+                        <span>${done ? "✓" : index + 1}</span>
+                        ${item[0]}
+                    </button>
+                `;
+            }).join("")}
+        </div>
+    `;
+
+    box.querySelectorAll(".all-stage-chip")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                stage =
+                    Number(
+                        button.dataset.stage
+                    );
+
+                render();
+
+                requestAnimationFrame(() => {
+
+                    document
+                        .querySelectorAll(
+                            ".full-stage-header"
+                        )[stage]
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                });
+
+            });
+
+        });
+}
+
 function renderMilestones() {
 
-    const roadmap =
-        getCareer();
-
-    const current =
-        roadmap.stages[stage];
-
-    $("stageTitle").textContent =
-        `Stage ${stage + 1} — ${current[0]}`;
-
-    $("stageDesc").textContent =
-        current[1];
-
-    const stageCompleted =
-        current[2].every(
-            (_, index) =>
-                isTaskDone(
-                    stage,
-                    index
-                )
-        );
-
-    $("stageBadge").textContent =
-        stageCompleted
-            ? "COMPLETED"
-            : "CURRENT";
-
-    const container =
-        $("milestones");
+    const roadmap = getCareer();
+    const container = $("milestones");
 
     container.innerHTML = "";
 
-    current[2].forEach(
-        (task, index) => {
+    roadmap.stages.forEach((current, stageIndex) => {
 
-            const done =
-                isTaskDone(
-                    stage,
-                    index
-                );
+        const stageCompleted = current[2].every(
+            (_, taskIndex) => isTaskDone(stageIndex, taskIndex)
+        );
 
-            const row =
-                document.createElement(
-                    "div"
-                );
+        const stageHeader = document.createElement("div");
+        stageHeader.className = "full-stage-header";
+        stageHeader.innerHTML = `
+            <div>
+                <span class="full-stage-number">STAGE ${stageIndex + 1}</span>
+                <h2>${current[0]}</h2>
+                <p>${current[1]}</p>
+            </div>
+            <span class="stage-badge ${stageCompleted ? "stage-done" : ""}">
+                ${stageCompleted ? "COMPLETED" : stageIndex === stage ? "CURRENT" : "UP NEXT"}
+            </span>
+        `;
+
+        container.appendChild(stageHeader);
+
+        current[2].forEach((task, taskIndex) => {
+
+            const done = isTaskDone(stageIndex, taskIndex);
+
+            const row = document.createElement("div");
 
             row.className =
-                `milestone ${
-                    done
-                        ? "done"
-                        : "current"
-                }`;
+                `milestone ${done ? "done" : stageIndex === stage ? "current" : ""}`;
 
             row.innerHTML = `
                 <div class="node">
-                    ${done ? "✓" : index + 1}
+                    ${done ? "✓" : taskIndex + 1}
                 </div>
 
                 <div>
-                    <h3>
-                        ${task}
-                    </h3>
+                    <h3>${task}</h3>
 
                     <p>
                         ${
@@ -413,41 +988,42 @@ function renderMilestones() {
 
                 <div class="milestone-actions">
                     <button
-                        class="small-btn ${
-                            done
-                                ? ""
-                                : "complete"
-                        }"
-                        data-stage="${stage}"
-                        data-task="${index}"
+                        class="small-btn ${done ? "" : "complete"}"
+                        data-stage="${stageIndex}"
+                        data-task="${taskIndex}"
                     >
-                        ${
-                            done
-                                ? "Undo"
-                                : "Complete"
-                        }
+                        ${done ? "Undo" : "Complete"}
                     </button>
                 </div>
             `;
 
-            row.querySelector(
-                "button"
-            ).addEventListener(
+            row.querySelector("button").addEventListener(
                 "click",
-                () =>
-                    toggleTask(
-                        stage,
-                        index,
-                        done
-                    )
+                () => toggleTask(stageIndex, taskIndex, done)
             );
 
-            container.appendChild(
-                row
-            );
+            container.appendChild(row);
+        });
+    });
 
-        }
+    /*
+     * Keep the selected stage heading synchronized with the
+     * roadmap, while showing the complete roadmap below it.
+     */
+    const selected = roadmap.stages[stage];
+
+    $("stageTitle").textContent =
+        `Stage ${stage + 1} — ${selected[0]}`;
+
+    $("stageDesc").textContent =
+        selected[1];
+
+    const selectedDone = selected[2].every(
+        (_, taskIndex) => isTaskDone(stage, taskIndex)
     );
+
+    $("stageBadge").textContent =
+        selectedDone ? "COMPLETED" : "CURRENT";
 }
 
 async function toggleTask(
@@ -579,6 +1155,8 @@ function render() {
     renderRecommendation();
 
     renderCourseConnection();
+
+    renderAllStagesSummary();
 
 }
 
