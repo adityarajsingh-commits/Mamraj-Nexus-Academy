@@ -17,10 +17,75 @@
 @media(max-width:1000px){.side{width:225px}.main{margin-left:225px}.filters{display:none}.hero{grid-template-columns:1fr}.layout{grid-template-columns:210px minmax(0,1fr)}}
 @media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:16px 12px 35px}.heading{align-items:flex-start;flex-direction:column}.heading h1{font-size:27px}.career-select,.career-select select{width:100%}.hero{padding:17px}.layout{grid-template-columns:1fr}.roadmap-list{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:11px 8px 30px}.heading h1{font-size:24px}.hero h2{font-size:18px}.roadmap-list{grid-template-columns:1fr}.content-card,.panel{padding:14px}.milestone{grid-template-columns:32px 1fr}.milestone-actions{grid-column:2}.stage-head{align-items:flex-start}}
+
+.mobile-menu{
+display:none;
+position:fixed;
+top:14px;
+left:12px;
+width:42px;
+height:42px;
+border-radius:12px;
+border:1px solid #e9e1db;
+background:#fff;
+color:#263a7a;
+z-index:1001;
+box-shadow:0 6px 20px rgba(32,25,75,.10)
+}
+.sidebar-backdrop{display:none}
+.side{
+height:100vh;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+}
+.side::-webkit-scrollbar{width:4px}
+.side::-webkit-scrollbar-thumb{background:#ffffff25;border-radius:10px}
+@media(max-width:760px){
+.mobile-menu{display:grid;place-items:center}
+.side{
+transform:translateX(-100%);
+transition:transform .25s ease;
+z-index:1000;
+width:258px!important;
+padding:22px 12px!important;
+}
+.side.open{transform:translateX(0)}
+.sidebar-backdrop{
+position:fixed;
+inset:0;
+background:rgba(10,18,45,.45);
+z-index:999;
+}
+.sidebar-backdrop.show{display:block}
+.side .brand{justify-content:flex-start;padding-bottom:28px}
+.side .brand>div:last-child,
+.side .label,
+.side .nav span,
+.side .help{display:block}
+.side .nav a{
+width:auto;
+height:52px;
+padding:0 18px;
+justify-content:flex-start;
+margin:0;
+}
+.main{margin-left:0!important}
+.top{padding-left:64px!important}
+}
+@media(max-width:480px){
+.side{width:275px!important}
+.top{padding-left:60px!important}
+}
+
 </style>
 </head>
 <body>
-<aside class="side">
+<button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="side" id="sideMenu">
 <div class="brand"><div class="mark">M</div><div><b>MamRaj <span>Nexus</span></b><small>NEXUS ACADEMY</small></div></div>
 <div class="label">MAIN</div><nav class="nav">
 <a href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a><a href="courses.html"><i class="fa-solid fa-book-open"></i><span>My Courses</span></a><a class="active" href="learning-path.html"><i class="fa-solid fa-route"></i><span>Learning Path</span></a><a href="projects.html"><i class="fa-solid fa-folder"></i><span>Projects</span></a></nav>
@@ -39,55 +104,801 @@
 <section class="content-card"><div class="stage-head"><div><h2 id="stageTitle">Stage 1 — Foundation</h2><p id="stageDesc">Build the essential foundation for your selected career.</p></div><span class="stage-badge" id="stageBadge">CURRENT</span></div><div class="milestones" id="milestones"></div><div class="recommend"><h3><i class="fa-solid fa-wand-magic-sparkles"></i> Shivay AI Recommendation</h3><p id="recommend">Complete the current stage first, then use your projects to prove the skill rather than only listing it on your resume.</p></div></section>
 </section>
 </div></main>
-<script>
-const roadmaps={
-frontend:{title:"Frontend Developer Roadmap",desc:"Build modern web interfaces, ship projects and become internship-ready.",stages:[
-["Foundation","HTML, CSS & responsive layouts",["Learn semantic HTML and accessibility","Build a responsive landing page","Practice Flexbox and Grid"]],
-["JavaScript","Core JavaScript & browser logic",["Learn functions, arrays and objects","Work with DOM events","Build an interactive mini app"]],
-["Modern Frontend","React and component-based development",["Learn React fundamentals","Build reusable components","Connect a public API"]],
-["Projects","Build proof of skill",["Build a student dashboard","Deploy a production-style project","Document projects on GitHub"]],
-["Career Ready","Resume, ATS & portfolio",["Create your ATS-friendly resume","Run your resume through ATS Checker","Prepare your portfolio"]],
-["Internship","Interview + applications",["Practice role-specific interviews","Apply to matching internships","Track applications and feedback"]]]},
-data:{title:"Data Analyst Roadmap",desc:"Turn raw data into useful business insights and build an analytics portfolio.",stages:[
-["Foundation","Excel, data thinking & statistics",["Master spreadsheet basics","Learn descriptive statistics","Clean a sample dataset"]],
-["SQL","Query and transform data",["Learn SELECT, WHERE and GROUP BY","Practice JOINs","Solve 20 SQL problems"]],
-["Analytics","Python / BI / visualization",["Analyse a real dataset","Build a dashboard","Explain three business insights"]],
-["Projects","Create an analytics portfolio",["Complete an end-to-end analysis","Publish a dashboard","Write a case study"]],
-["Career Ready","Resume + ATS + interview",["Build an analyst resume","Run an ATS check","Practice SQL interviews"]],
-["Internship","Apply and improve",["Apply to analytics internships","Track applications","Review feedback with Shivay AI"]]]},
-uiux:{title:"UI/UX Designer Roadmap",desc:"Learn user-centred design, create strong case studies and build a portfolio.",stages:[
-["Foundation","UX principles & visual basics",["Learn design fundamentals","Study accessibility","Recreate two good interfaces"]],
-["Research","Understand real users",["Create interview questions","Conduct user research","Write a problem statement"]],
-["Design","Wireframes and prototypes",["Create user flows","Build wireframes","Create a clickable prototype"]],
-["Design System","Create consistent interfaces",["Build components","Define typography and spacing","Create responsive screens"]],
-["Portfolio","Tell the story",["Create two case studies","Build your portfolio","Get feedback from a peer"]],
-["Career Ready","Interview + internships",["Practice portfolio interviews","Prepare your resume","Apply to design internships"]]]},
-hr:{title:"HR + AI Professional Roadmap",desc:"Build practical HR capability with modern people operations and responsible AI skills.",stages:[
-["Foundation","HR fundamentals",["Understand recruitment lifecycle","Learn onboarding basics","Study employee lifecycle"]],
-["Recruitment","Talent acquisition",["Write job descriptions","Build a screening workflow","Practice candidate communication"]],
-["People Analytics","Use data for decisions",["Learn HR metrics","Build a simple people dashboard","Interpret employee data"]],
-["AI in HR","Responsible AI workflows",["Explore AI-assisted recruitment","Learn bias and privacy basics","Build an HR AI workflow"]],
-["Career Ready","Resume + communication",["Create an HR resume","Practice behavioural interviews","Build a professional profile"]],
-["Internship","Apply and grow",["Find HR internships","Track applications","Review interview performance"]]]}
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {
+    getFirestore,
+    doc,
+    collection,
+    onSnapshot,
+    setDoc,
+    updateDoc,
+    arrayUnion,
+    arrayRemove
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+    authDomain: "mamraj-nexus-academy.firebaseapp.com",
+    projectId: "mamraj-nexus-academy",
+    storageBucket: "mamraj-nexus-academy.firebasestorage.app",
+    messagingSenderId: "548826957068",
+    appId: "1:548826957068:web:29b02f77dc20feaf28f529"
 };
-let career="frontend",stage=0;
-const state=JSON.parse(localStorage.getItem("mamrajLearningPath")||"{}");
-function save(){state[career]=state[career]||{};state[career].completed=state[career].completed||[];localStorage.setItem("mamrajLearningPath",JSON.stringify(state))}
-function render(){
- const data=roadmaps[career],completed=state[career]?.completed||[];
- document.getElementById("heroTitle").textContent=data.title;document.getElementById("heroText").textContent=data.desc;
- const pct=Math.round(completed.length/data.stages.length*100);document.getElementById("percent").textContent=pct+"%";document.getElementById("progressBar").style.width=pct+"%";document.getElementById("progressText").textContent=`${completed.length} of ${data.stages.length} milestones completed`;
- const list=document.getElementById("roadmap");list.innerHTML="";
- data.stages.forEach((st,i)=>{const b=document.createElement("button");b.className=i===stage?"active":"";b.innerHTML=`<span class="step-no">${completed.includes(i)?"✓":i+1}</span><div><b>${st[0]}</b><small>${st[1]}</small></div>`;b.onclick=()=>{stage=i;render()};list.appendChild(b)});
- const st=data.stages[stage];document.getElementById("stageTitle").textContent=`Stage ${stage+1} — ${st[0]}`;document.getElementById("stageDesc").textContent=st[1];document.getElementById("stageBadge").textContent=completed.includes(stage)?"COMPLETED":"CURRENT";
- const box=document.getElementById("milestones");box.innerHTML="";
- st[2].forEach((task,i)=>{const done=completed.includes(`${stage}-${i}`);const row=document.createElement("div");row.className="milestone "+(done?"done":"current");row.innerHTML=`<div class="node">${done?"✓":i+1}</div><div><h3>${task}</h3><p>${done?"Completed milestone. Keep the proof in your portfolio.":"Complete this task and mark it done when you have evidence of the skill."}</p><span class="task">${career==="frontend"?"Build / Code":career==="data"?"Analyse / Dashboard":career==="uiux"?"Design / Case Study":"Practice / Document"}</span></div><div class="milestone-actions"><button class="small-btn complete">${done?"Undo":"Complete"}</button></div>`;row.querySelector("button").onclick=()=>{const key=`${stage}-${i}`,arr=state[career].completed||[];state[career].completed=arr.includes(key)?arr.filter(x=>x!==key):[...arr,key];save();render()};box.appendChild(row)});
- document.getElementById("recommend").textContent=completed.length===data.stages.length?"Excellent — your roadmap is complete. Refresh your resume, portfolio and interview practice before applying.":completed.includes(stage)?"Stage completed. Move to the next stage and keep your project evidence ready.":"Complete the current tasks, then mark them done. Shivay AI can help explain any topic you get stuck on.";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+
+const CATALOG = {
+    frontend: {
+        title: "Frontend Developer Roadmap",
+        desc: "Build modern web interfaces, ship projects and become internship-ready.",
+        courseIds: ["web-development"],
+        stages: [
+            ["Foundation","HTML, CSS & responsive layouts",["Learn semantic HTML and accessibility","Build a responsive landing page","Practice Flexbox and Grid"]],
+            ["JavaScript","Core JavaScript & browser logic",["Learn functions, arrays and objects","Work with DOM events","Build an interactive mini app"]],
+            ["Modern Frontend","React and component-based development",["Learn React fundamentals","Build reusable components","Connect a public API"]],
+            ["Projects","Build proof of skill",["Build a student dashboard","Deploy a production-style project","Document projects on GitHub"]],
+            ["Career Ready","Resume, ATS & portfolio",["Create your ATS-friendly resume","Run your resume through ATS Checker","Prepare your portfolio"]],
+            ["Internship","Interview + applications",["Practice role-specific interviews","Apply to matching internships","Track applications and feedback"]]
+        ]
+    },
+    data: {
+        title: "Data Analyst Roadmap",
+        desc: "Turn raw data into useful business insights and build an analytics portfolio.",
+        courseIds: ["data-analytics"],
+        stages: [
+            ["Foundation","Excel, data thinking & statistics",["Master spreadsheet basics","Learn descriptive statistics","Clean a sample dataset"]],
+            ["SQL","Query and transform data",["Learn SELECT, WHERE and GROUP BY","Practice JOINs","Solve 20 SQL problems"]],
+            ["Analytics","Python / BI / visualization",["Analyse a real dataset","Build a dashboard","Explain three business insights"]],
+            ["Projects","Create an analytics portfolio",["Complete an end-to-end analysis","Publish a dashboard","Write a case study"]],
+            ["Career Ready","Resume + ATS + interview",["Build an analyst resume","Run an ATS check","Practice SQL interviews"]],
+            ["Internship","Apply and improve",["Apply to analytics internships","Track applications","Review feedback with Shivay AI"]]
+        ]
+    },
+    uiux: {
+        title: "UI/UX Designer Roadmap",
+        desc: "Learn user-centred design, create strong case studies and build a portfolio.",
+        courseIds: ["ui-ux"],
+        stages: [
+            ["Foundation","UX principles & visual basics",["Learn design fundamentals","Study accessibility","Recreate two good interfaces"]],
+            ["Research","Understand real users",["Create interview questions","Conduct user research","Write a problem statement"]],
+            ["Design","Wireframes and prototypes",["Create user flows","Build wireframes","Create a clickable prototype"]],
+            ["Design System","Create consistent interfaces",["Build components","Define typography and spacing","Create responsive screens"]],
+            ["Portfolio","Tell the story",["Create two case studies","Build your portfolio","Get feedback from a peer"]],
+            ["Career Ready","Interview + internships",["Practice portfolio interviews","Prepare your resume","Apply to design internships"]]
+        ]
+    },
+    hr: {
+        title: "HR + AI Professional Roadmap",
+        desc: "Build practical HR capability with modern people operations and responsible AI skills.",
+        courseIds: ["hr-ai"],
+        stages: [
+            ["Foundation","HR fundamentals",["Understand recruitment lifecycle","Learn onboarding basics","Study employee lifecycle"]],
+            ["Recruitment","Talent acquisition",["Write job descriptions","Build a screening workflow","Practice candidate communication"]],
+            ["People Analytics","Use data for decisions",["Learn HR metrics","Build a simple people dashboard","Interpret employee data"]],
+            ["AI in HR","Responsible AI workflows",["Explore AI-assisted recruitment","Learn bias and privacy basics","Build an HR AI workflow"]],
+            ["Career Ready","Resume + communication",["Create an HR resume","Practice behavioural interviews","Build a professional profile"]],
+            ["Internship","Apply and grow",["Find HR internships","Track applications","Review interview performance"]]
+        ]
+    }
+};
+
+let career = "frontend";
+let stage = 0;
+let currentUser = null;
+let unsubscribeUser = null;
+let unsubscribeCourses = null;
+
+let progressState = {
+    completedTasks: [],
+    completedStages: []
+};
+
+let studentCourses = [];
+
+function getCareer() {
+    return CATALOG[career];
 }
-document.getElementById("career").onchange=e=>{career=e.target.value;stage=0;render();};
-document.getElementById("theme").onclick=()=>document.body.classList.toggle("dark-preview");
-render();
-(async()=>{try{const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:29b02f77dc20feaf28f529"});onAuthStateChanged(getAuth(app),u=>{if(!u)return;const n=u.displayName||"Student";document.getElementById("name").textContent=n;document.getElementById("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST"})}catch(e){console.warn(e)}})();
+
+function stateKey() {
+    return `learningPath_${career}`;
+}
+
+function getTaskKey(stageIndex, taskIndex) {
+    return `${stageIndex}-${taskIndex}`;
+}
+
+function isTaskDone(stageIndex, taskIndex) {
+    return progressState.completedTasks.includes(
+        getTaskKey(stageIndex, taskIndex)
+    );
+}
+
+function calculateProgress() {
+    const roadmap = getCareer();
+
+    const total =
+        roadmap.stages.reduce(
+            (sum, stage) => sum + stage[2].length,
+            0
+        );
+
+    const completed =
+        progressState.completedTasks.length;
+
+    return total
+        ? Math.round((completed / total) * 100)
+        : 0;
+}
+
+function updateHero() {
+
+    const roadmap = getCareer();
+
+    const percent =
+        calculateProgress();
+
+    $("heroTitle").textContent =
+        roadmap.title;
+
+    $("heroText").textContent =
+        roadmap.desc;
+
+    $("percent").textContent =
+        `${percent}%`;
+
+    $("progressBar").style.width =
+        `${percent}%`;
+
+    const total =
+        roadmap.stages.reduce(
+            (sum, stage) =>
+                sum + stage[2].length,
+            0
+        );
+
+    $("progressText").textContent =
+        `${progressState.completedTasks.length} of ${total} milestones completed`;
+}
+
+function renderRoadmap() {
+
+    const roadmap =
+        getCareer();
+
+    const container =
+        $("roadmap");
+
+    container.innerHTML = "";
+
+    roadmap.stages.forEach(
+        (item, index) => {
+
+            const completed =
+                item[2].every(
+                    (_, taskIndex) =>
+                        isTaskDone(
+                            index,
+                            taskIndex
+                        )
+                );
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                index === stage
+                    ? "active"
+                    : "";
+
+            button.innerHTML = `
+                <span class="step-no">
+                    ${completed ? "✓" : index + 1}
+                </span>
+
+                <div>
+                    <b>${item[0]}</b>
+                    <small>${item[1]}</small>
+                </div>
+            `;
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    stage = index;
+
+                    render();
+
+                }
+            );
+
+            container.appendChild(
+                button
+            );
+
+        }
+    );
+}
+
+function renderMilestones() {
+
+    const roadmap =
+        getCareer();
+
+    const current =
+        roadmap.stages[stage];
+
+    $("stageTitle").textContent =
+        `Stage ${stage + 1} — ${current[0]}`;
+
+    $("stageDesc").textContent =
+        current[1];
+
+    const stageCompleted =
+        current[2].every(
+            (_, index) =>
+                isTaskDone(
+                    stage,
+                    index
+                )
+        );
+
+    $("stageBadge").textContent =
+        stageCompleted
+            ? "COMPLETED"
+            : "CURRENT";
+
+    const container =
+        $("milestones");
+
+    container.innerHTML = "";
+
+    current[2].forEach(
+        (task, index) => {
+
+            const done =
+                isTaskDone(
+                    stage,
+                    index
+                );
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                `milestone ${
+                    done
+                        ? "done"
+                        : "current"
+                }`;
+
+            row.innerHTML = `
+                <div class="node">
+                    ${done ? "✓" : index + 1}
+                </div>
+
+                <div>
+                    <h3>
+                        ${task}
+                    </h3>
+
+                    <p>
+                        ${
+                            done
+                                ? "Completed milestone. Keep the proof in your portfolio."
+                                : "Complete this task and mark it done when you have evidence of the skill."
+                        }
+                    </p>
+
+                    <span class="task">
+                        ${
+                            career === "frontend"
+                                ? "Build / Code"
+                                : career === "data"
+                                    ? "Analyse / Dashboard"
+                                    : career === "uiux"
+                                        ? "Design / Case Study"
+                                        : "Practice / Document"
+                        }
+                    </span>
+                </div>
+
+                <div class="milestone-actions">
+                    <button
+                        class="small-btn ${
+                            done
+                                ? ""
+                                : "complete"
+                        }"
+                        data-stage="${stage}"
+                        data-task="${index}"
+                    >
+                        ${
+                            done
+                                ? "Undo"
+                                : "Complete"
+                        }
+                    </button>
+                </div>
+            `;
+
+            row.querySelector(
+                "button"
+            ).addEventListener(
+                "click",
+                () =>
+                    toggleTask(
+                        stage,
+                        index,
+                        done
+                    )
+            );
+
+            container.appendChild(
+                row
+            );
+
+        }
+    );
+}
+
+async function toggleTask(
+    stageIndex,
+    taskIndex,
+    done
+) {
+
+    if (!currentUser) return;
+
+    const key =
+        getTaskKey(
+            stageIndex,
+            taskIndex
+        );
+
+    const ref =
+        doc(
+            db,
+            "users",
+            currentUser.uid,
+            "learningPaths",
+            career
+        );
+
+    try {
+
+        if (done) {
+
+            await updateDoc(
+                ref,
+                {
+                    completedTasks:
+                        arrayRemove(key)
+                }
+            );
+
+        } else {
+
+            await setDoc(
+                ref,
+                {
+                    career,
+                    completedTasks:
+                        arrayUnion(key),
+                    updatedAt:
+                        new Date()
+                },
+                {
+                    merge: true
+                }
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Learning path update failed:",
+            error
+        );
+
+        alert(
+            "Could not save your progress. Please try again."
+        );
+
+    }
+}
+
+function renderRecommendation() {
+
+    const roadmap =
+        getCareer();
+
+    const totalStages =
+        roadmap.stages.length;
+
+    const allCompleted =
+        progressState.completedTasks.length ===
+        roadmap.stages.reduce(
+            (sum, item) =>
+                sum + item[2].length,
+            0
+        );
+
+    if (allCompleted) {
+
+        $("recommend").textContent =
+            "Excellent — your roadmap is complete. Refresh your resume, portfolio and interview practice before applying.";
+
+        return;
+    }
+
+    const currentStage =
+        roadmap.stages[stage];
+
+    const currentDone =
+        currentStage[2].every(
+            (_, index) =>
+                isTaskDone(
+                    stage,
+                    index
+                )
+        );
+
+    if (currentDone) {
+
+        $("recommend").textContent =
+            stage < totalStages - 1
+                ? `Stage completed. Move to Stage ${stage + 2} — ${roadmap.stages[stage + 1][0]} and keep your project evidence ready.`
+                : "Your final stage is complete. Review your portfolio and start applying.";
+
+    } else {
+
+        $("recommend").textContent =
+            `Focus on ${currentStage[0]} first. Complete the tasks, then mark them done when you have real evidence of the skill.`;
+
+    }
+}
+
+function render() {
+
+    updateHero();
+
+    renderRoadmap();
+
+    renderMilestones();
+
+    renderRecommendation();
+
+    renderCourseConnection();
+
+}
+
+function renderCourseConnection() {
+
+    const roadmap =
+        getCareer();
+
+    const matched =
+        studentCourses.filter(
+            course =>
+                roadmap.courseIds.includes(
+                    course.id
+                ) ||
+                roadmap.courseIds.includes(
+                    course.courseId
+                )
+        );
+
+    if (!matched.length) return;
+
+    const course =
+        matched[0];
+
+    const progress =
+        Number(
+            course.progress ??
+            course.progressPercent ??
+            0
+        );
+
+    const label =
+        document.querySelector(
+            ".hero small"
+        );
+
+    if (label) {
+
+        label.textContent =
+            `${progress}% course progress • ${progressState.completedTasks.length} roadmap milestones complete`;
+
+    }
+}
+
+function subscribeToLearningPath(uid) {
+
+    if (unsubscribeUser)
+        unsubscribeUser();
+
+    if (unsubscribeCourses)
+        unsubscribeCourses();
+
+    const pathRef =
+        doc(
+            db,
+            "users",
+            uid,
+            "learningPaths",
+            career
+        );
+
+    unsubscribeUser =
+        onSnapshot(
+            pathRef,
+            snapshot => {
+
+                const data =
+                    snapshot.exists()
+                        ? snapshot.data()
+                        : {};
+
+                progressState = {
+
+                    completedTasks:
+                        Array.isArray(
+                            data.completedTasks
+                        )
+                            ? data.completedTasks
+                            : [],
+
+                    completedStages:
+                        Array.isArray(
+                            data.completedStages
+                        )
+                            ? data.completedStages
+                            : []
+
+                };
+
+                render();
+
+            },
+            error => {
+
+                console.error(
+                    "Learning path listener:",
+                    error
+                );
+
+            }
+        );
+
+
+    unsubscribeCourses =
+        onSnapshot(
+            collection(
+                db,
+                "users",
+                uid,
+                "courses"
+            ),
+            snapshot => {
+
+                studentCourses =
+                    snapshot.docs.map(
+                        item => ({
+                            id: item.id,
+                            ...item.data()
+                        })
+                    );
+
+                render();
+
+            },
+            error => {
+
+                console.warn(
+                    "Course connection:",
+                    error
+                );
+
+            }
+        );
+
+}
+
+function updateCareer() {
+
+    stage = 0;
+
+    if (currentUser) {
+
+        subscribeToLearningPath(
+            currentUser.uid
+        );
+
+    } else {
+
+        render();
+
+    }
+
+}
+
+$("career").addEventListener(
+    "change",
+    event => {
+
+        career =
+            event.target.value;
+
+        updateCareer();
+
+    }
+);
+
+$("theme").addEventListener(
+    "click",
+    () => {
+
+        document.body.classList.toggle(
+            "dark-preview"
+        );
+
+    }
+);
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+$("search")?.addEventListener(
+    "input",
+    event => {
+
+        const query =
+            event.target.value
+                .toLowerCase()
+                .trim();
+
+        document.querySelectorAll(
+            ".nav a"
+        ).forEach(link => {
+
+            const text =
+                link.textContent
+                    .toLowerCase();
+
+            link.style.display =
+                !query ||
+                text.includes(query)
+                    ? ""
+                    : "none";
+
+        });
+
+    }
+);
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+const side =
+    $("sideMenu");
+
+const menu =
+    $("mobileMenu");
+
+const backdrop =
+    $("sidebarBackdrop");
+
+function closeSidebar() {
+
+    side?.classList.remove(
+        "open"
+    );
+
+    backdrop?.classList.remove(
+        "show"
+    );
+
+}
+
+menu?.addEventListener(
+    "click",
+    () => {
+
+        side?.classList.toggle(
+            "open"
+        );
+
+        backdrop?.classList.toggle(
+            "show"
+        );
+
+    }
+);
+
+backdrop?.addEventListener(
+    "click",
+    closeSidebar
+);
+
+document.querySelectorAll(
+    ".side a"
+).forEach(
+    link =>
+        link.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    window.innerWidth <= 760
+                ) {
+
+                    closeSidebar();
+
+                }
+
+            }
+        )
+);
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+        currentUser =
+            user;
+
+        window.__MAMRAJ_CURRENT_USER =
+            user;
+
+        const name =
+            user.displayName ||
+            "Student";
+
+        $("name").textContent =
+            name;
+
+        $("avatar").textContent =
+            name
+                .trim()
+                .split(/\s+/)
+                .slice(0, 2)
+                .map(x => x[0])
+                .join("")
+                .toUpperCase() ||
+            "ST";
+
+        subscribeToLearningPath(
+            user.uid
+        );
+
+    }
+);
 </script>
 </body>
 </html>
