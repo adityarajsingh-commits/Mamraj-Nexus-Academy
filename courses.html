@@ -22,7 +22,9 @@ body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overf
 @media(max-width:760px){.side{width:68px;padding:16px 8px}.main{margin-left:68px}.brand{justify-content:center;padding-bottom:24px}.brand>div:last-child,.label,.nav span,.help{display:none}.nav a{width:50px;height:50px;padding:0;justify-content:center;margin:auto}.top{height:70px;padding:0 12px}.profile>div:last-child{display:none}.content{padding:16px 12px 35px}.heading{align-items:flex-start}.heading h1{font-size:27px}.view-toggle{display:none}.summary{gap:9px}.summary-card{padding:13px}.summary-icon{width:36px;height:36px}.summary-card strong{font-size:17px}.toolbar{align-items:stretch;flex-direction:column}.sort{width:100%}.courses{grid-template-columns:1fr}}
 @media(max-width:480px){.side{width:58px}.main{margin-left:58px}.mark{width:40px;height:40px}.nav a{width:42px;height:44px}.top{padding:0 8px}.search{height:40px;padding:0 11px}.search input{font-size:10px}.actions .icon{display:none}.avatar{width:37px;height:37px}.content{padding:11px 8px 30px}.heading h1{font-size:24px}.summary{grid-template-columns:1fr 1fr}.summary-card{padding:10px;gap:8px}.summary-icon{width:31px;height:31px}.summary-card strong{font-size:15px}.cover{height:155px}}
 </style>
-</head>
+<style>
+.search-results{position:fixed;top:74px;left:292px;width:min(450px,calc(100vw - 320px));z-index:100;background:#fff;border:1px solid #e9e1db;border-radius:14px;box-shadow:0 15px 40px rgba(32,25,75,.12);display:none}
+</style></head>
 <body>
 <div class="side">
 <div class="brand"><div class="mark">M</div><div><b>MamRaj <span>Nexus</span></b><small>NEXUS ACADEMY</small></div></div>
@@ -43,9 +45,9 @@ body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overf
 
 <main class="main">
 <header class="top">
-<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" placeholder="Search courses, internships, skills..."></div>
+<div class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" autocomplete="off" placeholder="Search courses, internships, skills..."></div><div id="searchResults" class="search-results"></div>
 <div class="filters"><button class="filter active">All</button><button class="filter">Courses</button><button class="filter">Internships</button><button class="filter">Projects</button><button class="filter">Skills</button></div>
-<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small>Student</small></div></div></div>
+<div class="actions"><button class="icon"><i class="fa-regular fa-bell"></i></button><button class="icon"><i class="fa-regular fa-envelope"></i></button><button class="icon" id="theme"><i class="fa-solid fa-moon"></i></button><div class="profile"><div class="avatar" id="avatar">ST</div><div><b id="name">Student</b><small id="profileEmail">Loading...</small></div></div></div>
 </header>
 
 <div class="content">
@@ -53,10 +55,10 @@ body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overf
 <div class="heading"><div><h1>My Courses</h1><p>Learn at your pace, build projects and become career-ready.</p></div><div class="view-toggle"><button class="active"><i class="fa-solid fa-grip"></i></button><button><i class="fa-solid fa-list"></i></button></div></div>
 
 <section class="summary">
-<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-book-open"></i></div><div><small>Enrolled Courses</small><strong>06</strong></div></div>
-<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-play"></i></div><div><small>In Progress</small><strong>03</strong></div></div>
-<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-check"></i></div><div><small>Completed</small><strong>02</strong></div></div>
-<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-clock"></i></div><div><small>Learning Hours</small><strong>42.5</strong></div></div>
+<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-book-open"></i></div><div><small>Enrolled Courses</small><strong id="enrolledCount">0</strong></div></div>
+<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-play"></i></div><div><small>In Progress</small><strong id="inProgressCount">0</strong></div></div>
+<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-check"></i></div><div><small>Completed</small><strong id="completedCount">0</strong></div></div>
+<div class="summary-card"><div class="summary-icon"><i class="fa-solid fa-clock"></i></div><div><small>Learning Hours</small><strong id="hoursCount">0</strong></div></div>
 </section>
 
 <div class="toolbar">
@@ -64,84 +66,136 @@ body{font-family:Manrope,sans-serif;background:var(--bg);color:var(--text);overf
 <select class="sort" id="sort"><option>Recently Added</option><option>Progress: High to Low</option><option>Progress: Low to High</option></select>
 </div>
 
-<section class="courses" id="courses">
-
-<article class="course" data-status="progress" data-name="Full-Stack Web Development" data-progress="68">
-<div class="cover"><span class="badge">WEB DEVELOPMENT</span><i class="fa-solid fa-code"></i><div class="cover-title"><h3>Full-Stack Web Development</h3><span>6 Month Professional Program</span></div></div>
-<div class="body"><p>Master HTML, CSS, JavaScript, React, backend, databases and practical full-stack development.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>48 Topics</span><span><i class="fa-solid fa-diagram-project"></i>10+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>68%</span></div><div class="bar"><span style="width:68%"></span></div><div class="card-bottom"><span class="status">● In Progress</span><button class="continue" onclick="location.href='course.html?course=web-development'">Continue →</button></div></div>
-</article>
-
-<article class="course" data-status="progress" data-name="Data Analytics" data-progress="42">
-<div class="cover"><span class="badge">DATA ANALYTICS</span><i class="fa-solid fa-chart-line"></i><div class="cover-title"><h3>Data Analytics</h3><span>Professional Career Program</span></div></div>
-<div class="body"><p>Build practical skills in spreadsheets, SQL, statistics, visualization and data-driven decision making.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>40 Topics</span><span><i class="fa-solid fa-diagram-project"></i>8+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>42%</span></div><div class="bar"><span style="width:42%"></span></div><div class="card-bottom"><span class="status">● In Progress</span><button class="continue" onclick="location.href='course.html?course=data-analytics'">Continue →</button></div></div>
-</article>
-
-<article class="course" data-status="progress" data-name="Human Resource Management with AI" data-progress="31">
-<div class="cover"><span class="badge">HR & AI</span><i class="fa-solid fa-users"></i><div class="cover-title"><h3>Human Resource Management with AI</h3><span>Professional Career Program</span></div></div>
-<div class="body"><p>Learn recruitment, employee lifecycle, HR analytics and practical AI-assisted HR workflows.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>36 Topics</span><span><i class="fa-solid fa-diagram-project"></i>7+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>31%</span></div><div class="bar"><span style="width:31%"></span></div><div class="card-bottom"><span class="status">● In Progress</span><button class="continue" onclick="location.href='course.html?course=hr-ai'">Continue →</button></div></div>
-</article>
-
-<article class="course" data-status="completed" data-name="UI/UX Design" data-progress="100">
-<div class="cover"><span class="badge">DESIGN</span><i class="fa-solid fa-pen-ruler"></i><div class="cover-title"><h3>UI/UX Design</h3><span>Professional Design Program</span></div></div>
-<div class="body"><p>Design user-friendly digital experiences through research, wireframes, prototypes and design systems.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>42 Topics</span><span><i class="fa-solid fa-diagram-project"></i>8+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>100%</span></div><div class="bar"><span style="width:100%"></span></div><div class="card-bottom"><span class="status">✓ Completed</span><button class="continue light" onclick="location.href='certifications.html'">Certificate →</button></div></div>
-</article>
-
-<article class="course" data-status="completed" data-name="Digital Marketing" data-progress="100">
-<div class="cover"><span class="badge">MARKETING</span><i class="fa-solid fa-bullhorn"></i><div class="cover-title"><h3>Digital Marketing</h3><span>Professional Career Program</span></div></div>
-<div class="body"><p>Learn content, social media, SEO, campaign planning, analytics and practical digital marketing.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>38 Topics</span><span><i class="fa-solid fa-diagram-project"></i>7+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>100%</span></div><div class="bar"><span style="width:100%"></span></div><div class="card-bottom"><span class="status">✓ Completed</span><button class="continue light" onclick="location.href='certifications.html'">Certificate →</button></div></div>
-</article>
-
-<article class="course" data-status="notstarted" data-name="Business & Entrepreneurship" data-progress="0">
-<div class="cover"><span class="badge">BUSINESS</span><i class="fa-solid fa-lightbulb"></i><div class="cover-title"><h3>Business & Entrepreneurship</h3><span>Professional Career Program</span></div></div>
-<div class="body"><p>Understand business fundamentals, idea validation, strategy, branding and building a practical venture.</p><div class="meta"><span><i class="fa-regular fa-clock"></i>6 Months</span><span><i class="fa-solid fa-layer-group"></i>35 Topics</span><span><i class="fa-solid fa-diagram-project"></i>6+ Projects</span></div><div class="progress-row"><span>Course Progress</span><span>0%</span></div><div class="bar"><span style="width:0%"></span></div><div class="card-bottom"><span class="status" style="color:#8b8f9d">○ Not Started</span><button class="continue" onclick="location.href='course.html?course=business'">Start →</button></div></div>
-</article>
-
-</section>
+<section class="courses" id="courses"></section>
 <div class="empty" id="empty">No courses found.</div>
 </div>
 </main>
 
-<script>
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.addEventListener("click",()=>{
-document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-tab.classList.add("active");
-const f=tab.dataset.filter;
-document.querySelectorAll(".course").forEach(card=>{
-card.style.display=(f==="all"||card.dataset.status===f)?"":"none";
-});
-});
-});
-document.getElementById("search").addEventListener("input",e=>{
-const q=e.target.value.toLowerCase().trim();let n=0;
-document.querySelectorAll(".course").forEach(card=>{
-const ok=card.dataset.name.toLowerCase().includes(q);
-card.style.display=ok?"":"none";if(ok)n++;
-});
-document.getElementById("empty").style.display=n?"none":"block";
-});
-document.getElementById("sort").addEventListener("change",e=>{
-const box=document.getElementById("courses");
-const cards=[...box.children];
-if(e.target.value==="Progress: High to Low")cards.sort((a,b)=>+b.dataset.progress-+a.dataset.progress);
-if(e.target.value==="Progress: Low to High")cards.sort((a,b)=>+a.dataset.progress-+b.dataset.progress);
-cards.forEach(c=>box.appendChild(c));
-});
-document.getElementById("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import { getFirestore, collection, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-(async()=>{
-try{
-const {initializeApp}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js");
-const {getAuth,onAuthStateChanged}=await import("https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js");
-const app=initializeApp({apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",authDomain:"mamraj-nexus-academy.firebaseapp.com",projectId:"mamraj-nexus-academy",storageBucket:"mamraj-nexus-academy.firebasestorage.app",messagingSenderId:"548826957068",appId:"1:548826957068:web:29b02f77dc20feaf28f529"});
-onAuthStateChanged(getAuth(app),u=>{
-if(!u)return;
-const n=u.displayName||"Student";
-document.getElementById("name").textContent=n;
-document.getElementById("avatar").textContent=n.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST";
+const firebaseConfig={
+ apiKey:"AIzaSyB7FZRTl4Sial-kzZ0nFsFo7FGcz5J8kxw",
+ authDomain:"mamraj-nexus-academy.firebaseapp.com",
+ projectId:"mamraj-nexus-academy",
+ storageBucket:"mamraj-nexus-academy.firebasestorage.app",
+ messagingSenderId:"548826957068",
+ appId:"1:548826957068:web:29b02f77dc20feaf28f529"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+const $=id=>document.getElementById(id);
+
+let allCourses=[];
+let activeFilter="all";
+
+const CATALOG={
+ "web-development":{category:"WEB DEVELOPMENT",title:"Full-Stack Web Development",subtitle:"6 Month Professional Program",description:"Master HTML, CSS, JavaScript, React, backend, databases and practical full-stack development.",duration:"6 Months",topics:"48 Topics",projects:"10+ Projects",icon:"fa-code"},
+ "data-analytics":{category:"DATA ANALYTICS",title:"Data Analytics",subtitle:"Professional Career Program",description:"Build practical skills in spreadsheets, SQL, statistics, visualization and data-driven decision making.",duration:"6 Months",topics:"40 Topics",projects:"8+ Projects",icon:"fa-chart-line"},
+ "hr-ai":{category:"HR & AI",title:"Human Resource Management with AI",subtitle:"Professional Career Program",description:"Learn recruitment, employee lifecycle, HR analytics and practical AI-assisted HR workflows.",duration:"6 Months",topics:"36 Topics",projects:"7+ Projects",icon:"fa-users"},
+ "ui-ux":{category:"DESIGN",title:"UI/UX Design",subtitle:"Professional Design Program",description:"Design user-friendly digital experiences through research, wireframes, prototypes and design systems.",duration:"6 Months",topics:"42 Topics",projects:"8+ Projects",icon:"fa-pen-ruler"},
+ "digital-marketing":{category:"MARKETING",title:"Digital Marketing",subtitle:"Professional Career Program",description:"Learn content, social media, SEO, campaign planning, analytics and practical digital marketing.",duration:"6 Months",topics:"38 Topics",projects:"7+ Projects",icon:"fa-bullhorn"},
+ "business":{category:"BUSINESS",title:"Business & Entrepreneurship",subtitle:"Professional Career Program",description:"Understand business fundamentals, idea validation, strategy, branding and building a practical venture.",duration:"6 Months",topics:"35 Topics",projects:"6+ Projects",icon:"fa-lightbulb"}
+};
+
+function escapeHTML(v){
+ return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+}
+
+function normalizeCourse(d){
+ const x=d.data();
+ const id=d.id;
+ const base=CATALOG[id]||CATALOG[x.courseId]||{};
+ const progress=Math.max(0,Math.min(100,Number(x.progress??x.progressPercent??0)));
+ const completed=x.completed===true||x.status==="completed"||progress>=100;
+ return {id,...base,...x,progress,completed};
+}
+
+function renderCourses(){
+ const box=$("courses"), empty=$("empty");
+ const q=($("search")?.value||"").toLowerCase().trim();
+
+ let list=allCourses.filter(c=>{
+   const status=c.completed?"completed":c.progress>0?"progress":"notstarted";
+   const filterOK=activeFilter==="all"||status===activeFilter;
+   const searchOK=!q||(c.title||c.name||"").toLowerCase().includes(q)||(c.category||"").toLowerCase().includes(q);
+   return filterOK&&searchOK;
+ });
+
+ const sort=$("sort")?.value;
+ if(sort==="Progress: High to Low") list.sort((a,b)=>b.progress-a.progress);
+ if(sort==="Progress: Low to High") list.sort((a,b)=>a.progress-b.progress);
+
+ box.innerHTML=list.map(c=>{
+   const title=c.title||c.courseName||c.name||"Course";
+   const category=c.category||"COURSE";
+   const status=c.completed?"completed":c.progress>0?"progress":"notstarted";
+   const button=c.completed?"Certificate →":c.progress>0?"Continue →":"Start →";
+   const url=c.completed?"certifications.html":`course.html?course=${encodeURIComponent(c.id)}`;
+   const statusText=c.completed?"✓ Completed":c.progress>0?"● In Progress":"○ Not Started";
+   return `<article class="course" data-status="${status}" data-name="${escapeHTML(title)}" data-progress="${c.progress}">
+     <div class="cover"><span class="badge">${escapeHTML(category)}</span><i class="fa-solid ${escapeHTML(c.icon||"fa-book-open")}"></i><div class="cover-title"><h3>${escapeHTML(title)}</h3><span>${escapeHTML(c.subtitle||"Professional Career Program")}</span></div></div>
+     <div class="body"><p>${escapeHTML(c.description||"Build practical skills through structured lessons, projects and real-world learning.")}</p>
+     <div class="meta"><span><i class="fa-regular fa-clock"></i>${escapeHTML(c.duration||"Self paced")}</span><span><i class="fa-solid fa-layer-group"></i>${escapeHTML(c.topics||"Topics")}</span><span><i class="fa-solid fa-diagram-project"></i>${escapeHTML(c.projects||"Projects")}</span></div>
+     <div class="progress-row"><span>Course Progress</span><span>${c.progress}%</span></div><div class="bar"><span style="width:${c.progress}%"></span></div>
+     <div class="card-bottom"><span class="status" ${status==="notstarted"?'style="color:#8b8f9d"':''}>${statusText}</span><button class="continue ${c.completed?"light":""}" onclick="location.href='${url}'">${button}</button></div></div>
+   </article>`;
+ }).join("");
+
+ empty.style.display=list.length?"none":"block";
+ updateSummary();
+}
+
+function updateSummary(){
+ const enrolled=allCourses.length;
+ const progress=allCourses.filter(c=>c.progress>0&&!c.completed).length;
+ const completed=allCourses.filter(c=>c.completed).length;
+ const hours=allCourses.reduce((s,c)=>s+Number(c.learningHours??c.hours??0),0);
+ $("enrolledCount").textContent=enrolled;
+ $("inProgressCount").textContent=progress;
+ $("completedCount").textContent=completed;
+ $("hoursCount").textContent=hours%1?hours.toFixed(1):hours;
+}
+
+function bindControls(){
+ document.querySelectorAll(".tab").forEach(tab=>tab.addEventListener("click",()=>{
+   document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+   tab.classList.add("active");
+   activeFilter=tab.dataset.filter||"all";
+   renderCourses();
+ }));
+ $("search")?.addEventListener("input",renderCourses);
+ $("sort")?.addEventListener("change",renderCourses);
+ $("theme")?.addEventListener("click",()=>document.body.classList.toggle("dark-preview"));
+}
+
+onAuthStateChanged(auth,user=>{
+ if(!user){location.href="login.html";return;}
+ window.__MAMRAJ_CURRENT_USER=user;
+ const name=user.displayName||"Student";
+ $("name").textContent=name;
+ $("profileEmail").textContent=user.email||"";
+ $("avatar").textContent=name.trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase()||"ST";
+
+ onSnapshot(collection(db,"users",user.uid,"courses"),snap=>{
+   allCourses=snap.docs.map(normalizeCourse);
+   renderCourses();
+ },err=>console.error("Courses:",err));
+
+ onSnapshot(doc(db,"users",user.uid),snap=>{
+   if(snap.exists()){
+     const p=snap.data();
+     if(p.name)$("name").textContent=p.name;
+     if(p.email)$("profileEmail").textContent=p.email;
+   }
+ },err=>console.warn("Profile:",err));
 });
-}catch(e){console.warn("Firebase:",e)}
-})();
+
+bindControls();
 </script>
 </body>
 </html>
