@@ -203,8 +203,105 @@ margin:0;
 }
 
 </style>
+
+<style>
+.page-loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#f7f4f1,#fff);
+    transition:opacity .35s ease,visibility .35s ease;
+}
+.page-loader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+.loader-card{
+    width:min(390px,calc(100vw - 36px));
+    padding:30px 24px;
+    text-align:center;
+    background:#fff;
+    border:1px solid #e9e1db;
+    border-radius:22px;
+    box-shadow:0 20px 60px rgba(32,25,75,.12);
+}
+.loader-logo{
+    width:58px;
+    height:58px;
+    margin:0 auto 16px;
+    display:grid;
+    place-items:center;
+    border-radius:17px;
+    background:#263a7a;
+    color:#fff;
+    font-size:23px;
+    animation:loaderPulse 1.6s ease-in-out infinite;
+}
+.loader-spinner{
+    width:30px;
+    height:30px;
+    margin:0 auto 15px;
+    border:3px solid #eee7e1;
+    border-top-color:#cf9878;
+    border-radius:50%;
+    animation:loaderSpin .8s linear infinite;
+}
+.loader-card h2{
+    margin:0;
+    color:#263a7a;
+    font-size:18px;
+}
+.loader-card p{
+    margin:7px 0 18px;
+    color:#7c8298;
+    font-size:10px;
+}
+.loader-tips{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    text-align:left;
+    padding:12px 14px;
+    border-radius:12px;
+    background:#faf7f4;
+}
+.loader-tips span{
+    font-size:9px;
+    color:#626a83;
+}
+.loader-tips i{
+    width:18px;
+    color:#cf9878;
+}
+@keyframes loaderSpin{
+    to{transform:rotate(360deg)}
+}
+@keyframes loaderPulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.06)}
+}
+</style>
+
 </head>
 <body>
+
+<div id="pageLoader" class="page-loader">
+  <div class="loader-card">
+    <div class="loader-logo"><i class="fa-solid fa-route"></i></div>
+    <div class="loader-spinner"></div>
+    <h2>Building your learning path</h2>
+    <p id="loaderMessage">Syncing your courses and progress...</p>
+    <div class="loader-tips">
+      <span><i class="fa-solid fa-circle-check"></i> Loading roadmap</span>
+      <span><i class="fa-solid fa-database"></i> Syncing Firebase</span>
+      <span><i class="fa-solid fa-user-graduate"></i> Personalizing your path</span>
+    </div>
+  </div>
+</div>
+
 <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
 <i class="fa-solid fa-bars"></i>
 </button>
@@ -1223,6 +1320,7 @@ function subscribeToLearningPath(uid) {
             pathRef,
             snapshot => {
 
+                updateLoaderMessage("Your personalized roadmap is ready...");
                 const data =
                     snapshot.exists()
                         ? snapshot.data()
@@ -1247,6 +1345,7 @@ function subscribeToLearningPath(uid) {
                 };
 
                 render();
+                hidePageLoader();
 
             },
             error => {
@@ -1255,6 +1354,9 @@ function subscribeToLearningPath(uid) {
                     "Learning path listener:",
                     error
                 );
+                updateLoaderMessage("Starting your learning path...");
+                render();
+                hidePageLoader();
 
             }
         );
@@ -1431,6 +1533,17 @@ document.querySelectorAll(
         )
 );
 
+
+function hidePageLoader() {
+    const loader = document.getElementById("pageLoader");
+    if (loader) loader.classList.add("hide");
+}
+
+function updateLoaderMessage(message) {
+    const text = document.getElementById("loaderMessage");
+    if (text) text.textContent = message;
+}
+
 /* =====================================================
    AUTH
 ===================================================== */
@@ -1477,6 +1590,15 @@ onAuthStateChanged(
 
     }
 );
+
+setTimeout(() => {
+    const loader = document.getElementById("pageLoader");
+    if (loader && !loader.classList.contains("hide")) {
+        updateLoaderMessage("Still loading — you can start exploring the roadmap...");
+        setTimeout(hidePageLoader, 700);
+    }
+}, 9000);
+
 </script>
 </body>
 </html>
