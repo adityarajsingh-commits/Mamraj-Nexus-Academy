@@ -124,7 +124,54 @@ set("completedLessons",c.reduce((s,x)=>s+Number(x.completedLessons??x.lessonsCom
 set("certificateCount",cert.filter(x=>x.paymentVerified===true||x.earned===true||x.status==="earned").length);
 continueLearning();
 }
+const DEFAULT_COURSE = {
+  id: "web-development",
+  title: "Full-Stack Web Development",
+  category: "WEB DEVELOPMENT",
+  description: "Start mastering HTML, CSS, JavaScript, and React.",
+  progress: 0
+};
 
+function updateContinueLearningCard(course) {
+  const cardTitle = document.querySelector(".continue-title") || document.getElementById("activeCourseTitle");
+  const cardDesc = document.querySelector(".continue-desc") || document.getElementById("activeCourseDesc");
+  const cardProgress = document.querySelector(".continue-progress") || document.getElementById("activeCourseProgress");
+  const cardProgressBar = document.querySelector(".continue-bar") || document.getElementById("activeCourseBar");
+  const continueBtn = document.querySelector(".continue-btn") || document.getElementById("continueBtn");
+
+  const active = course || DEFAULT_COURSE;
+  const targetUrl = `course.html?course=${encodeURIComponent(active.id)}`;
+
+  if (cardTitle) cardTitle.textContent = active.title || "Full-Stack Web Development";
+  if (cardDesc) cardDesc.textContent = active.description || "Start learning at your own pace.";
+  if (cardProgress) cardProgress.textContent = `${active.progress || 0}% completed`;
+  if (cardProgressBar) cardProgressBar.style.width = `${active.progress || 0}%`;
+
+  if (continueBtn) {
+    continueBtn.textContent = active.progress > 0 ? "Continue" : "Start Learning";
+    continueBtn.onclick = () => {
+      window.location.href = targetUrl;
+    };
+    continueBtn.style.cursor = "pointer";
+    continueBtn.removeAttribute("disabled");
+  }
+}
+
+// Inside your onAuthStateChanged / Firestore Snapshot listener:
+onSnapshot(collection(db, "users", user.uid, "courses"), snap => {
+  if (!snap.empty) {
+    const courses = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    // Pick the most recently active or in-progress course
+    const activeCourse = courses.find(c => (c.progress > 0 && c.progress < 100)) || courses[0];
+    updateContinueLearningCard(activeCourse);
+  } else {
+    // Fallback: If no courses exist yet, load default catalog course
+    updateContinueLearningCard(DEFAULT_COURSE);
+  }
+}, error => {
+  console.warn("Firestore error, loading default course:", error);
+  updateContinueLearningCard(DEFAULT_COURSE);
+});
 function continueLearning(){
 const c=data.courses;
 if(!c.length){
